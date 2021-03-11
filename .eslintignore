@@ -1,0 +1,10 @@
+# generated code
+generated
+*.generated.*
+
+# 3rd party code
+node_modules
+
+# build output
+build
+dist
