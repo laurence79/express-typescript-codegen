@@ -1,7 +1,7 @@
 {
   "name": "express-typescript-codegen",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "description": "Generate typed request handlers from an OpenApi spec.",
   "keywords": [],
   "homepage": "https://github.com/laurence79/express-typescript-codegen#readme",
