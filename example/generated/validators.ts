@@ -2,7 +2,7 @@ import Ajv, { ValidateFunction } from 'ajv';
 import { RequestHandler } from 'express';
 import schema from './schema.json';
 
-const ajv = new Ajv();
+const ajv = new Ajv({ strict: false });
 ajv.addSchema(schema);
 
 const bodyValidator = (validator: ValidateFunction): RequestHandler => {
