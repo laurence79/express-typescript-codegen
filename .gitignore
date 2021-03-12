@@ -1,18 +1,12 @@
-# sensitive
-*.local*
-*/google_application_credentials.json
-
 # dependencies
 node_modules
 
 # caches
 .eslintcache
 
-# production
-build
-dist
-
 # misc
 .DS_Store
 npm-debug.log*
-firestore-debug.log*
+
+# build output
+dist

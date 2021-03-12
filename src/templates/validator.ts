@@ -1,10 +1,13 @@
 import { initLower } from '../helpers/initLower';
 import { initUpper } from '../helpers/initUpper';
 
-export const validator = (operationIds: string[]): string => `
+export const validatorTemplate = (
+  operationIds: string[],
+  jsonSchemaFilename: string
+): string => `
 import Ajv, { ValidateFunction } from 'ajv';
 import { RequestHandler } from 'express';
-import schema from './schema.json';
+import schema from './${jsonSchemaFilename}';
 
 const ajv = new Ajv();
 ajv.addSchema(schema);

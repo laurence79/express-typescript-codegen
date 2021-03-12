@@ -1,1 +1,3 @@
-export * from './typeNameForReference';
+export * from './typeDefForObject';
+export * from './typeDefForSchema';
+export * from './typeDefForReference';

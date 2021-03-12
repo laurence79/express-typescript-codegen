@@ -1,0 +1,119 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "ApiResponse": {
+      "type": "object",
+      "properties": {
+        "code": { "type": "integer", "format": "int32" },
+        "type": { "type": "string" },
+        "message": { "type": "string" }
+      }
+    },
+    "Category": {
+      "type": "object",
+      "xml": { "name": "Category" },
+      "properties": {
+        "id": { "type": "integer", "format": "int64" },
+        "name": { "type": "string" }
+      }
+    },
+    "Pet": {
+      "type": "object",
+      "required": ["name", "photoUrls"],
+      "xml": { "name": "Pet" },
+      "properties": {
+        "id": { "type": "integer", "format": "int64" },
+        "category": { "$ref": "#/definitions/Category" },
+        "name": { "type": "string", "example": "doggie" },
+        "photoUrls": {
+          "type": "array",
+          "xml": { "wrapped": true },
+          "items": { "type": "string", "xml": { "name": "photoUrl" } }
+        },
+        "tags": {
+          "type": "array",
+          "xml": { "wrapped": true },
+          "items": { "xml": { "name": "tag" }, "$ref": "#/definitions/Tag" }
+        },
+        "status": {
+          "type": "string",
+          "description": "pet status in the store",
+          "enum": ["available", "pending", "sold"]
+        }
+      }
+    },
+    "Tag": {
+      "type": "object",
+      "xml": { "name": "Tag" },
+      "properties": {
+        "id": { "type": "integer", "format": "int64" },
+        "name": { "type": "string" }
+      }
+    },
+    "Order": {
+      "type": "object",
+      "xml": { "name": "Order" },
+      "properties": {
+        "id": { "type": "integer", "format": "int64" },
+        "petId": { "type": "integer", "format": "int64" },
+        "quantity": { "type": "integer", "format": "int32" },
+        "shipDate": { "type": "string", "format": "date-time" },
+        "status": {
+          "type": "string",
+          "description": "Order Status",
+          "enum": ["placed", "approved", "delivered"]
+        },
+        "complete": { "type": "boolean" }
+      }
+    },
+    "User": {
+      "type": "object",
+      "xml": { "name": "User" },
+      "properties": {
+        "id": { "type": "integer", "format": "int64" },
+        "username": { "type": "string" },
+        "firstName": { "type": "string" },
+        "lastName": { "type": "string" },
+        "email": { "type": "string" },
+        "password": { "type": "string" },
+        "phone": { "type": "string" },
+        "userStatus": {
+          "type": "integer",
+          "format": "int32",
+          "description": "User Status"
+        }
+      }
+    },
+    "UploadFile200ResponseBody": { "$ref": "#/definitions/ApiResponse" },
+    "AddPetRequestBody": { "$ref": "#/definitions/Pet" },
+    "UpdatePetRequestBody": { "$ref": "#/definitions/Pet" },
+    "FindPetsByStatus200ResponseBody": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/Pet" }
+    },
+    "FindPetsByTags200ResponseBody": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/Pet" }
+    },
+    "GetPetById200ResponseBody": { "$ref": "#/definitions/Pet" },
+    "PlaceOrderRequestBody": { "$ref": "#/definitions/Order" },
+    "PlaceOrder200ResponseBody": { "$ref": "#/definitions/Order" },
+    "GetOrderById200ResponseBody": { "$ref": "#/definitions/Order" },
+    "GetInventory200ResponseBody": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "format": "int32" }
+    },
+    "CreateUsersWithArrayInputRequestBody": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/User" }
+    },
+    "CreateUsersWithListInputRequestBody": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/User" }
+    },
+    "GetUserByName200ResponseBody": { "$ref": "#/definitions/User" },
+    "UpdateUserRequestBody": { "$ref": "#/definitions/User" },
+    "LoginUser200ResponseBody": { "type": "string" },
+    "CreateUserRequestBody": { "$ref": "#/definitions/User" }
+  }
+}

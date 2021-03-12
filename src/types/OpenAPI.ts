@@ -1,16 +1,16 @@
-import * as OpenAPIV2 from './OpenAPIV2';
-import * as OpenAPIV3 from './OpenAPIV3';
+import * as OpenApiV2 from './OpenApiV2';
+import * as OpenApiV3 from './OpenApiV3';
 
-export type Document = OpenAPIV2.Document | OpenAPIV3.Document;
-export type Operation = OpenAPIV2.OperationObject | OpenAPIV3.OperationObject;
+export type Document = OpenApiV2.Document | OpenApiV3.Document;
+export type Operation = OpenApiV2.OperationObject | OpenApiV3.OperationObject;
 export type Parameter =
-  | OpenAPIV3.ReferenceObject
-  | OpenAPIV3.ParameterObject
-  | OpenAPIV2.ReferenceObject
-  | OpenAPIV2.Parameter;
+  | OpenApiV3.ReferenceObject
+  | OpenApiV3.ParameterObject
+  | OpenApiV2.ReferenceObject
+  | OpenApiV2.Parameter;
 export type Parameters =
-  | (OpenAPIV3.ReferenceObject | OpenAPIV3.ParameterObject)[]
-  | (OpenAPIV2.ReferenceObject | OpenAPIV2.Parameter)[];
+  | (OpenApiV3.ReferenceObject | OpenApiV3.ParameterObject)[]
+  | (OpenApiV2.ReferenceObject | OpenApiV2.Parameter)[];
 
 export interface Request {
   body?: any;

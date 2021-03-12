@@ -126,7 +126,7 @@ export interface NonArraySchemaObject extends BaseSchemaObject {
 }
 
 export interface BaseSchemaObject {
-  // JSON schema allowed properties, adjusted for OpenAPI
+  // JSON schema allowed properties, adjusted for OpenApi
   title?: string;
   description?: string;
   format?: string;
@@ -155,7 +155,7 @@ export interface BaseSchemaObject {
   anyOf?: (ReferenceObject | SchemaObject)[];
   not?: ReferenceObject | SchemaObject;
 
-  // OpenAPI-specific properties
+  // OpenApi-specific properties
   nullable?: boolean;
   discriminator?: DiscriminatorObject;
   readOnly?: boolean;

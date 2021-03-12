@@ -1,26 +1,46 @@
-import * as OpenAPIV2 from '../../types/OpenAPIV2';
+import * as OpenApiV2 from '../../types/OpenApiV2';
 import { dereferenceParameterObject } from './dereferenceParameterObject';
 import { isReferenceObject } from './isReferenceObject';
-import { mapOperations, MappedOperation } from './mapOperations';
 
-type MappedParameters = MappedOperation & {
+type MappedOperation = {
   path: string;
   method: string;
   operationId: string;
-  parameters: OpenAPIV2.ParameterObject[];
+  operation: OpenApiV2.OperationObject;
+  parameters: OpenApiV2.ParameterObject[];
 };
 
 export const mapParameters = (
-  document: OpenAPIV2.Document
-): MappedParameters[] => {
-  return mapOperations(document).compactMap(v => {
-    const { parameters } = v.operation;
-    const inlined = parameters?.map(p =>
-      isReferenceObject(p) ? dereferenceParameterObject(p, document) : p
-    );
-    return {
-      ...v,
-      parameters: inlined ?? []
-    };
+  document: OpenApiV2.Document
+): MappedOperation[] => {
+  return Object.keys(document.paths).flatMap(path => {
+    if (typeof path !== 'string') return [];
+
+    const pathObject = document.paths[path];
+
+    return Object.keys(pathObject).compactMap(method => {
+      const operationObject = pathObject[method];
+
+      if (typeof operationObject !== 'object') {
+        return undefined;
+      }
+      if (!('operationId' in operationObject) || !operationObject.operationId) {
+        throw new Error(`OperationId required for ${method} ${path}`);
+      }
+
+      const { operationId } = operationObject;
+      const { parameters } = operationObject;
+      const inlined = parameters?.map(p =>
+        isReferenceObject(p) ? dereferenceParameterObject(p, document) : p
+      );
+
+      return {
+        path,
+        method,
+        operationId,
+        operation: operationObject,
+        parameters: inlined ?? []
+      };
+    });
   });
 };

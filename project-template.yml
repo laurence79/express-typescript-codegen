@@ -1,9 +1,9 @@
 uses:
   repo: git@github.com:rivr-systems/oap-repo-templates.git
-  path: internal-code-library
+  path: public-code-library
 
 parameters:
-  projectName: "@rivr-systems/oap-service-lib-logging"
-  projectTitle: "Logging for Order and Pay services"
-  projectDescription: "A library that adds common logging functions, including inherited loggers"
-  repoName: "oap-service-lib-logging"
+  projectName: "express-typescript-codegen"
+  projectTitle: "Express Typescript Code Generator"
+  projectDescription: "Generate typed request handlers from an OpenApi spec."
+  repoName: "express-typescript-codegen"

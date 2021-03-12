@@ -1,10 +1,11 @@
-import * as OpenAPIV2 from '../../types/OpenAPIV2';
+import * as OpenApiV2 from '../../types/OpenApiV2';
 import { dereference } from './dereference';
 
 export const dereferenceResponseObject = (
-  reference: OpenAPIV2.ReferenceObject,
-  doc: OpenAPIV2.Document
-): OpenAPIV2.ResponseObject => {
+  reference: OpenApiV2.ReferenceObject,
+  doc: OpenApiV2.Document
+): OpenApiV2.ResponseObject => {
   const { $ref } = reference;
+
   return dereference(doc.responses, $ref, '#/responses/');
 };
