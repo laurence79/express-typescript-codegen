@@ -4,8 +4,8 @@ import {
   isReferenceObject,
   mapParameters
 } from '../helpers/v2';
-import * as OpenApi from '../types/OpenApi';
-import * as OpenApiV2 from '../types/OpenApiV2';
+import * as OpenApi from '../types/OpenApis';
+import * as OpenApiV2 from '../types/OpenApisV2';
 import 'ts-array-extensions';
 import { initLower } from '../helpers/initLower';
 import { LogFn, Logger, progress, success } from '../lib/cli-logging';
@@ -72,13 +72,13 @@ const fromV3 = (): { operationId: string; code: string }[] => {
 export const generateRequestHandlersTypes = ({
   jsonSchemaTypesModuleName,
   logger,
-  openAPIDocument,
+  openApiDocument,
   pathParameterTypesModuleName,
   queryTypesModuleName
 }: {
   jsonSchemaTypesModuleName: string;
   logger?: Logger;
-  openAPIDocument: OpenApi.Document;
+  openApiDocument: OpenApi.Document;
   pathParameterTypesModuleName: string;
   queryTypesModuleName: string;
 }): string => {
@@ -87,7 +87,7 @@ export const generateRequestHandlersTypes = ({
   );
 
   const types =
-    'swagger' in openAPIDocument ? fromV2(openAPIDocument, log) : fromV3();
+    'swagger' in openApiDocument ? fromV2(openApiDocument, log) : fromV3();
 
   const code = `
   import { RequestHandler } from '@laurence79/express-async-request-handler';

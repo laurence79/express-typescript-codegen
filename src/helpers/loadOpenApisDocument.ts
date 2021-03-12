@@ -2,23 +2,23 @@ import fs from 'fs';
 import path from 'path';
 import yaml from 'yaml';
 import { Logger, success } from '../lib/cli-logging';
-import * as OpenApi from '../types/OpenApi';
+import * as OpenApi from '../types/OpenApis';
 
 export const loadOpenApiDocument = ({
-  openAPIDocumentFilename,
+  openApiDocumentFilename,
   logger
 }: {
-  openAPIDocumentFilename: string;
+  openApiDocumentFilename: string;
   logger?: Logger;
 }): OpenApi.Document => {
-  const log = logger?.create(`Loading swagger file ${openAPIDocumentFilename}`);
+  const log = logger?.create(`Loading swagger file ${openApiDocumentFilename}`);
 
-  if (!fs.existsSync(openAPIDocumentFilename)) {
-    throw new Error(`File ${openAPIDocumentFilename} does not exist`);
+  if (!fs.existsSync(openApiDocumentFilename)) {
+    throw new Error(`File ${openApiDocumentFilename} does not exist`);
   }
 
-  const extension = path.extname(openAPIDocumentFilename);
-  const data = fs.readFileSync(openAPIDocumentFilename, 'UTF-8');
+  const extension = path.extname(openApiDocumentFilename);
+  const data = fs.readFileSync(openApiDocumentFilename, 'UTF-8');
 
   const doc = (() => {
     if (['.yaml', '.yml'].includes(extension)) {

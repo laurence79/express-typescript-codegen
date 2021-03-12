@@ -1,4 +1,4 @@
-import { createJsonSchemaFromOpenApiDocument } from './helpers/createJsonSchemaFromOpenAPIDocument';
+import { createJsonSchemaFromOpenApiDocument } from './helpers/createJsonSchemaFromOpenApisDocument';
 import {
   generateRequestHandlersTypes,
   generatePathParameterTypes,
@@ -7,7 +7,7 @@ import {
   generateTypesFromJsonSchema,
   generateJSONSchemaValidators
 } from './generators';
-import { loadOpenApiDocument } from './helpers/loadOpenApiDocument';
+import { loadOpenApiDocument } from './helpers/loadOpenApisDocument';
 import { writeFiles } from './helpers/writeFiles';
 import { GenerateCodeOptions } from './types/GenerateCodeOptions';
 
@@ -28,16 +28,16 @@ export const generateCode = (inputOptions: GenerateCodeOptions): void => {
     ...inputOptions
   };
 
-  const openAPIDocument = loadOpenApiDocument(options);
+  const openApiDocument = loadOpenApiDocument(options);
 
   const jsonSchema = createJsonSchemaFromOpenApiDocument({
     ...options,
-    openAPIDocument
+    openApiDocument
   });
 
   const renderDeps = {
     ...options,
-    openAPIDocument,
+    openApiDocument,
     jsonSchema
   };
 

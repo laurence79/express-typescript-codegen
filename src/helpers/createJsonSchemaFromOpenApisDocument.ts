@@ -7,8 +7,8 @@ import {
   mapParameters,
   convertSchemaToJsonSchema
 } from './v2';
-import * as OpenApi from '../types/OpenApi';
-import * as OpenApiV2 from '../types/OpenApiV2';
+import * as OpenApi from '../types/OpenApis';
+import * as OpenApiV2 from '../types/OpenApisV2';
 import 'ts-array-extensions';
 import { LogFn, Logger, progress, success } from '../lib/cli-logging';
 
@@ -77,16 +77,16 @@ const fromV3 = (): JSONSchema7 => {
 };
 
 export const createJsonSchemaFromOpenApiDocument = ({
-  openAPIDocument,
+  openApiDocument,
   logger
 }: {
-  openAPIDocument: OpenApi.Document;
+  openApiDocument: OpenApi.Document;
   logger?: Logger;
 }): JSONSchema7 => {
   const log = logger?.create(`Generating JSON schema from Open API Document`);
 
   const schema =
-    'swagger' in openAPIDocument ? fromV2(openAPIDocument, log) : fromV3();
+    'swagger' in openApiDocument ? fromV2(openApiDocument, log) : fromV3();
 
   log?.(progress(`Validating JSON schema`));
 

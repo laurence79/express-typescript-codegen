@@ -1,7 +1,7 @@
 import { initUpper } from '../helpers/initUpper';
 import { mapParameters } from '../helpers/v2';
-import * as OpenApi from '../types/OpenApi';
-import * as OpenApiV2 from '../types/OpenApiV2';
+import * as OpenApi from '../types/OpenApis';
+import * as OpenApiV2 from '../types/OpenApisV2';
 import 'ts-array-extensions';
 import { initLower } from '../helpers/initLower';
 import { LogFn, Logger, progress, success } from '../lib/cli-logging';
@@ -47,18 +47,18 @@ const fromV3 = (): {
 export const generateRouter = ({
   jsonSchemaValidatorsModuleName,
   logger,
-  openAPIDocument,
+  openApiDocument,
   requestHandlersModuleName
 }: {
   jsonSchemaValidatorsModuleName: string;
   logger?: Logger;
-  openAPIDocument: OpenApi.Document;
+  openApiDocument: OpenApi.Document;
   requestHandlersModuleName: string;
 }): string => {
   const log = logger?.create('Generating router');
 
   const types =
-    'swagger' in openAPIDocument ? fromV2(openAPIDocument, log) : fromV3();
+    'swagger' in openApiDocument ? fromV2(openApiDocument, log) : fromV3();
 
   const argumentList = types
     .map(({ handlerInstanceName }) => handlerInstanceName)

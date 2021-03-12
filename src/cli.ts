@@ -19,7 +19,7 @@ const cmd = new commander.Command('generate')
 
     try {
       generateCode({
-        openAPIDocumentFilename: specFilename,
+        openApiDocumentFilename: specFilename,
         outputDirectory,
         logger
       });

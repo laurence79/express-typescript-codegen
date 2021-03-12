@@ -1,7 +1,7 @@
 import { initUpper } from '../helpers/initUpper';
 import { mapParameters } from '../helpers/v2';
-import * as OpenApi from '../types/OpenApi';
-import * as OpenApiV2 from '../types/OpenApiV2';
+import * as OpenApi from '../types/OpenApis';
+import * as OpenApiV2 from '../types/OpenApisV2';
 import 'ts-array-extensions';
 import { LogFn, Logger, progress, success } from '../lib/cli-logging';
 
@@ -28,16 +28,16 @@ const fromV3 = (): string[] => {
 };
 
 export const generateURLQueryTypes = ({
-  openAPIDocument,
+  openApiDocument,
   logger
 }: {
-  openAPIDocument: OpenApi.Document;
+  openApiDocument: OpenApi.Document;
   logger?: Logger;
 }): string => {
   const log = logger?.create('Generating typescript types for queries');
 
   const types =
-    'swagger' in openAPIDocument ? fromV2(openAPIDocument, log) : fromV3();
+    'swagger' in openApiDocument ? fromV2(openApiDocument, log) : fromV3();
 
   const code = `
   import { ParsedQs } from 'qs';

@@ -5,7 +5,7 @@ export type GenerateCodeOptions = {
   jsonSchemaTypesModuleName?: string;
   jsonSchemaValidatorsModuleName?: string;
   logger?: Logger;
-  openAPIDocumentFilename: string;
+  openApiDocumentFilename: string;
   outputDirectory?: string;
   pathParameterTypesModuleName?: string;
   requestHandlersModuleName?: string;

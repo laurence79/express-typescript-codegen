@@ -1,4 +1,4 @@
-import * as OpenApiV2 from '../../types/OpenApiV2';
+import * as OpenApiV2 from '../../types/OpenApisV2';
 
 export function isReferenceObject(
   object: unknown
