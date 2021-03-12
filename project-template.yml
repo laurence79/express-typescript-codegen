@@ -1,6 +1,6 @@
 uses:
   repo: git@github.com:rivr-systems/oap-repo-templates.git
-  path: public-code-library
+  path: public-cli
 
 parameters:
   projectName: "express-typescript-codegen"
