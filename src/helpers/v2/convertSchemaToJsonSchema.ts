@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { JSONSchema7 } from 'json-schema';
-import * as OpenApiV2 from '../../types/OpenApisV2';
+import * as OpenApiV2 from '../../types/OpenApiV2';
 
 const mapProperties = (properties: {
   [name: string]: OpenApiV2.SchemaObject;

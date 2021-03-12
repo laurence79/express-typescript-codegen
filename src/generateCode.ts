@@ -1,4 +1,4 @@
-import { createJsonSchemaFromOpenApiDocument } from './helpers/createJsonSchemaFromOpenApisDocument';
+import { createJsonSchemaFromOpenApiDocument } from './helpers/createJsonSchemaFromOpenApiDocument';
 import {
   generateRequestHandlersTypes,
   generatePathParameterTypes,
@@ -7,7 +7,7 @@ import {
   generateTypesFromJsonSchema,
   generateJSONSchemaValidators
 } from './generators';
-import { loadOpenApiDocument } from './helpers/loadOpenApisDocument';
+import { loadOpenApiDocument } from './helpers/loadOpenApiDocument';
 import { writeFiles } from './helpers/writeFiles';
 import { GenerateCodeOptions } from './types/GenerateCodeOptions';
 

@@ -1,6 +1,6 @@
 import { mapParameters } from '../helpers/v2';
-import * as OpenApi from '../types/OpenApis';
-import * as OpenApiV2 from '../types/OpenApisV2';
+import * as OpenApi from '../types/OpenApi';
+import * as OpenApiV2 from '../types/OpenApiV2';
 import 'ts-array-extensions';
 import { validatorTemplate } from '../templates';
 import { Logger, success } from '../lib/cli-logging';

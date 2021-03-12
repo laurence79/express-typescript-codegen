@@ -1,5 +1,5 @@
-import * as OpenApiV2 from './OpenApisV2';
-import * as OpenApiV3 from './OpenApisV3';
+import * as OpenApiV2 from './OpenApiV2';
+import * as OpenApiV3 from './OpenApiV3';
 
 export type Document = OpenApiV2.Document | OpenApiV3.Document;
 export type Operation = OpenApiV2.OperationObject | OpenApiV3.OperationObject;
