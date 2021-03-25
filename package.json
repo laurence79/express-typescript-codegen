@@ -22,7 +22,7 @@
     "dist/"
   ],
   "scripts": {
-    "run-example": "dist/index.js generate ./example/swagger.json ./example/generated",
+    "run-example": "dist/index.js generate ./example/swagger.json ./example/generated --client --server --stubs",
     "boiler-update": "./node_modules/.bin/boiler-sync update",
     "lint": "./node_modules/.bin/eslint --cache 'src/**/*.ts' --quiet",
     "lint:watch": "./node_modules/.bin/esw --cache 'src/**/*.ts' --watch",
@@ -56,6 +56,7 @@
     "yaml": "^1.7.2"
   },
   "devDependencies": {
+    "@laurence79/express-async-request-handler": "^0.1.1",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^11.2.0",
     "@rollup/plugin-typescript": "^8.2.0",
@@ -75,6 +76,7 @@
     "@typescript-eslint/eslint-plugin": "^4.15.2",
     "@typescript-eslint/parser": "^4.15.2",
     "boiler-sync": "^0.2.1",
+    "cross-fetch": "^3.1.2",
     "eslint": "^7.20.0",
     "eslint-config-airbnb-typescript": "^12.3.1",
     "eslint-config-prettier": "^8.1.0",

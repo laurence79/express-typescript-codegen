@@ -1,50 +1,50 @@
 import { initUpper } from '../helpers/initUpper';
-import {
-  dereferenceResponseObject,
-  isReferenceObject,
-  mapParameters
-} from '../helpers/v2';
+import { mapOperations } from '../helpers/v2';
 import * as OpenApi from '../types/OpenApi';
 import * as OpenApiV2 from '../types/OpenApiV2';
 import 'ts-array-extensions';
 import { initLower } from '../helpers/initLower';
 import { LogFn, Logger, progress, success } from '../lib/cli-logging';
+import { responseBodyTypeNameTemplate } from '../templates';
+import { parametersTypeNameTemplate } from '../templates/parametersTypeName';
 
 const fromV2 = (
   document: OpenApiV2.Document,
   log?: LogFn
 ): { operationId: string; code: string }[] => {
-  return mapParameters(document).map(
-    ({ operationId, parameters, operation: { responses } }) => {
-      const paramsType = `Param.${initUpper(operationId)}Params`;
-
+  return mapOperations(document).map(
+    ({ operationId, parameters, responses }) => {
       const responseBodyType =
-        Object.keys(responses)
-          .compactMap(statusCode => {
-            const response = responses[statusCode];
-            const responseObject = isReferenceObject(response)
-              ? dereferenceResponseObject(response, document)
-              : response;
-            if (!responseObject) {
-              return undefined;
-            }
-            const { schema } = responseObject;
+        responses
+          .compactMap(({ statusCode, response }) => {
+            const { schema } = response;
             if (!schema) {
               return undefined;
             }
-            return `Schema.${initUpper(operationId)}${statusCode}ResponseBody`;
+            return `Schema.${responseBodyTypeNameTemplate(
+              operationId,
+              statusCode
+            )}`;
           })
           .join(' | ') || 'unknown';
 
-      const statusCodes = Object.keys(responses)
-        .map(k => (k === 'default' ? 'number' : k))
+      const statusCodes = responses
+        .map(({ statusCode }) =>
+          statusCode === 'default' ? 'number' : statusCode
+        )
         .join(' | ');
 
-      const requestBodyType = parameters.some(p => p.in === 'body')
-        ? `Schema.${initUpper(operationId)}RequestBody`
+      const bodyParamType = parameters.some(p => p.in === 'body')
+        ? `Schema.${parametersTypeNameTemplate(operationId, 'body')}`
         : 'unknown';
 
-      const queryType = `Query.${initUpper(operationId)}Query`;
+      const queryParamsType = parameters.some(p => p.in === 'query')
+        ? `Schema.${parametersTypeNameTemplate(operationId, 'query')}`
+        : 'unknown';
+
+      const pathParamsType = parameters.some(p => p.in === 'path')
+        ? `Schema.${parametersTypeNameTemplate(operationId, 'path')}`
+        : 'unknown';
 
       const typeName = `${initUpper(operationId)}RequestHandler`;
 
@@ -53,10 +53,10 @@ const fromV2 = (
       return {
         code: `export type ${typeName} =
           RequestHandler<
-            ${paramsType},
+            ${pathParamsType},
             ${responseBodyType},
-            ${requestBodyType},
-            ${queryType},
+            ${bodyParamType},
+            ${queryParamsType},
             Record<string, any>,
             ${statusCodes}>`,
         operationId
@@ -70,17 +70,13 @@ const fromV3 = (): { operationId: string; code: string }[] => {
 };
 
 export const generateRequestHandlersTypes = ({
-  jsonSchemaTypesModuleName,
+  schemaTypesModuleName,
   logger,
-  openApiDocument,
-  pathParameterTypesModuleName,
-  queryTypesModuleName
+  openApiDocument
 }: {
-  jsonSchemaTypesModuleName: string;
+  schemaTypesModuleName: string;
   logger?: Logger;
   openApiDocument: OpenApi.Document;
-  pathParameterTypesModuleName: string;
-  queryTypesModuleName: string;
 }): string => {
   const log = logger?.create(
     'Generating typescript types for request handlers'
@@ -91,9 +87,7 @@ export const generateRequestHandlersTypes = ({
 
   const code = `
   import { RequestHandler } from '@laurence79/express-async-request-handler';
-  import * as Schema from './${jsonSchemaTypesModuleName}';
-  import * as Query from './${queryTypesModuleName}';
-  import * as Param from './${pathParameterTypesModuleName}';
+  import * as Schema from './${schemaTypesModuleName}';
   
   ${types.map(t => t.code).join('\n\n')}
 

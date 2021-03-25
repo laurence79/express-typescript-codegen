@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import prettier from 'prettier';
-import { Logger, progress, success } from '../lib/cli-logging';
+import { Logger, progress, success, warn } from '../lib/cli-logging';
 
 export const prettierStyle = {
   arrowParens: 'avoid',
@@ -43,10 +43,18 @@ export const writeFiles = ({
 
     const fullFileName = path.join(outputDirectory, filename);
 
-    const formattedContent = prettier.format(content, {
-      ...prettierStyle,
-      parser
-    });
+    const formattedContent = (() => {
+      try {
+        return prettier.format(content, {
+          ...prettierStyle,
+          parser
+        });
+      } catch (e) {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        log?.(warn(e.message));
+        return content;
+      }
+    })();
 
     fs.writeFileSync(fullFileName, formattedContent);
   });

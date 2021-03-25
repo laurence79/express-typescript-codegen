@@ -158,7 +158,7 @@ export interface InBodyParameterObject extends ParameterObject {
 }
 
 export interface GeneralParameterObject extends ParameterObject, ItemsObject {
-  in: 'path' | 'query' | 'header' | 'form';
+  in: 'path' | 'query' | 'header' | 'formData';
   allowEmptyValue?: boolean;
 }
 
@@ -180,7 +180,7 @@ export interface PathsObject {
 }
 
 export interface ParametersDefinitionsObject {
-  [index: string]: ParameterObject;
+  [index: string]: Parameter;
 }
 
 export interface ParameterObject {

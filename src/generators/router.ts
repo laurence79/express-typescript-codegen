@@ -1,5 +1,5 @@
 import { initUpper } from '../helpers/initUpper';
-import { mapParameters } from '../helpers/v2';
+import { mapOperations } from '../helpers/v2';
 import * as OpenApi from '../types/OpenApi';
 import * as OpenApiV2 from '../types/OpenApiV2';
 import 'ts-array-extensions';
@@ -10,30 +10,26 @@ const fromV2 = (
   document: OpenApiV2.Document,
   log?: LogFn
 ): { route: string; handlerInstanceName: string; handlerType: string }[] => {
-  return mapParameters(document).map(
-    ({ method, parameters, path, operationId }) => {
-      const hasBody = parameters.some(p => p.in === 'body');
-      const bodyValidatorName = `Validators.${initLower(operationId)}`;
-      const handlerType = `RequestHandlers.${initUpper(
-        operationId
-      )}RequestHandler`;
-      const handlerInstanceName = `${initLower(operationId)}`;
-      const requestHandlersPath = path.replace(
-        /\{(?:.*?)\}/g,
-        x => `:${x.substr(1, x.length - 2)}`
-      );
+  return mapOperations(document).map(({ method, path, operationId }) => {
+    const handlerType = `RequestHandlers.${initUpper(
+      operationId
+    )}RequestHandler`;
 
-      log?.(progress(`Adding ${method} ${requestHandlersPath}`));
+    const handlerInstanceName = `${initLower(operationId)}`;
 
-      return {
-        route: `.${method}('${requestHandlersPath}', ${
-          hasBody ? `${bodyValidatorName}, ` : ''
-        } ${handlerInstanceName})`,
-        handlerInstanceName,
-        handlerType
-      };
-    }
-  );
+    const requestHandlersPath = path.replace(
+      /\{(?:.*?)\}/g,
+      x => `:${x.substr(1, x.length - 2)}`
+    );
+
+    log?.(progress(`Adding ${method} ${requestHandlersPath}`));
+
+    return {
+      route: `.${method}('${requestHandlersPath}', Validators.${operationId}, ${handlerInstanceName})`,
+      handlerInstanceName,
+      handlerType
+    };
+  });
 };
 
 const fromV3 = (): {
@@ -45,12 +41,12 @@ const fromV3 = (): {
 };
 
 export const generateRouter = ({
-  jsonSchemaValidatorsModuleName,
+  requestSchemaValidatorsModuleName,
   logger,
   openApiDocument,
   requestHandlersModuleName
 }: {
-  jsonSchemaValidatorsModuleName: string;
+  requestSchemaValidatorsModuleName: string;
   logger?: Logger;
   openApiDocument: OpenApi.Document;
   requestHandlersModuleName: string;
@@ -67,7 +63,7 @@ export const generateRouter = ({
   const code = `
   import { Router } from 'express';
   import * as RequestHandlers from './${requestHandlersModuleName}';
-  import * as Validators from './${jsonSchemaValidatorsModuleName}';
+  import * as Validators from './${requestSchemaValidatorsModuleName}';
   
   export const router = ({ ${argumentList} }: RequestHandlers.RequestHandlers): Router => {
     return Router()
