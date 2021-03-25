@@ -20,7 +20,7 @@ const fromV2 = (document: OpenApiV2.Document, log?: LogFn) => {
 
       const interpolationPath =
         '`${this.baseUrl}' +
-        path.replace(/\{(?:.*?)\}/g, x => `:${x.substr(1, x.length - 2)}`) +
+        path.replace(/\{(?:.*?)\}/g, x => '$' + x) +
         (queryArgs.any() ? '?${query}' : '') +
         '`';
 
@@ -93,7 +93,11 @@ public async ${operationId}(${
 
   const { status } = response;
 
-  ${hasResponseBody ? 'const responseBody = await response.json();' : ''}
+  ${
+    hasResponseBody
+      ? 'const responseBody = (await response.json()) as unknown;'
+      : ''
+  }
 
   this.logger?.('REST API Call', {
     ${[
@@ -107,9 +111,9 @@ public async ${operationId}(${
   });
 
   return {
-    status: status as ${statusCodes},
+    status,
     body: ${hasResponseBody ? 'responseBody' : 'undefined'}
-  };
+  } as Responses.${responseTypeName};
 }`;
     }
   );

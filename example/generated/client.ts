@@ -34,9 +34,9 @@ export class Client {
     });
 
     return {
-      status: status as 405,
+      status,
       body: undefined
-    };
+    } as Responses.AddPetResponse;
   }
 
   public async updatePet(args: {
@@ -62,9 +62,9 @@ export class Client {
     });
 
     return {
-      status: status as 400 | 404 | 405,
+      status,
       body: undefined
-    };
+    } as Responses.UpdatePetResponse;
   }
 
   public async findPetsByStatus(
@@ -83,7 +83,7 @@ export class Client {
 
     const { status } = response;
 
-    const responseBody = await response.json();
+    const responseBody = (await response.json()) as unknown;
 
     this.logger?.('REST API Call', {
       method,
@@ -93,9 +93,9 @@ export class Client {
     });
 
     return {
-      status: status as 200 | 400,
+      status,
       body: responseBody
-    };
+    } as Responses.FindPetsByStatusResponse;
   }
 
   public async findPetsByTags(
@@ -114,7 +114,7 @@ export class Client {
 
     const { status } = response;
 
-    const responseBody = await response.json();
+    const responseBody = (await response.json()) as unknown;
 
     this.logger?.('REST API Call', {
       method,
@@ -124,9 +124,9 @@ export class Client {
     });
 
     return {
-      status: status as 200 | 400,
+      status,
       body: responseBody
-    };
+    } as Responses.FindPetsByTagsResponse;
   }
 
   public async getPetById(
@@ -135,7 +135,7 @@ export class Client {
     const { petId } = args;
 
     const method = 'GET';
-    const url = `${this.baseUrl}/pet/:petId`;
+    const url = `${this.baseUrl}/pet/${petId}`;
 
     const response = await fetch(url, {
       method
@@ -143,7 +143,7 @@ export class Client {
 
     const { status } = response;
 
-    const responseBody = await response.json();
+    const responseBody = (await response.json()) as unknown;
 
     this.logger?.('REST API Call', {
       method,
@@ -154,9 +154,9 @@ export class Client {
     });
 
     return {
-      status: status as 200 | 400 | 404,
+      status,
       body: responseBody
-    };
+    } as Responses.GetPetByIdResponse;
   }
 
   public async updatePetWithForm(
@@ -165,7 +165,7 @@ export class Client {
     const { petId, name, status } = args;
 
     const method = 'POST';
-    const url = `${this.baseUrl}/pet/:petId`;
+    const url = `${this.baseUrl}/pet/${petId}`;
 
     const response = await fetch(url, {
       method
@@ -181,9 +181,9 @@ export class Client {
     });
 
     return {
-      status: status as 405,
+      status,
       body: undefined
-    };
+    } as Responses.UpdatePetWithFormResponse;
   }
 
   public async deletePet(
@@ -192,7 +192,7 @@ export class Client {
     const { api_key, petId } = args;
 
     const method = 'DELETE';
-    const url = `${this.baseUrl}/pet/:petId`;
+    const url = `${this.baseUrl}/pet/${petId}`;
 
     const response = await fetch(url, {
       method,
@@ -210,9 +210,9 @@ export class Client {
     });
 
     return {
-      status: status as 400 | 404,
+      status,
       body: undefined
-    };
+    } as Responses.DeletePetResponse;
   }
 
   public async placeOrder(args: {
@@ -230,7 +230,7 @@ export class Client {
 
     const { status } = response;
 
-    const responseBody = await response.json();
+    const responseBody = (await response.json()) as unknown;
 
     this.logger?.('REST API Call', {
       method,
@@ -241,9 +241,9 @@ export class Client {
     });
 
     return {
-      status: status as 200 | 400,
+      status,
       body: responseBody
-    };
+    } as Responses.PlaceOrderResponse;
   }
 
   public async getOrderById(
@@ -252,7 +252,7 @@ export class Client {
     const { orderId } = args;
 
     const method = 'GET';
-    const url = `${this.baseUrl}/store/order/:orderId`;
+    const url = `${this.baseUrl}/store/order/${orderId}`;
 
     const response = await fetch(url, {
       method
@@ -260,7 +260,7 @@ export class Client {
 
     const { status } = response;
 
-    const responseBody = await response.json();
+    const responseBody = (await response.json()) as unknown;
 
     this.logger?.('REST API Call', {
       method,
@@ -271,9 +271,9 @@ export class Client {
     });
 
     return {
-      status: status as 200 | 400 | 404,
+      status,
       body: responseBody
-    };
+    } as Responses.GetOrderByIdResponse;
   }
 
   public async deleteOrder(
@@ -282,7 +282,7 @@ export class Client {
     const { orderId } = args;
 
     const method = 'DELETE';
-    const url = `${this.baseUrl}/store/order/:orderId`;
+    const url = `${this.baseUrl}/store/order/${orderId}`;
 
     const response = await fetch(url, {
       method
@@ -298,9 +298,9 @@ export class Client {
     });
 
     return {
-      status: status as 400 | 404,
+      status,
       body: undefined
-    };
+    } as Responses.DeleteOrderResponse;
   }
 
   public async getInventory(): Promise<Responses.GetInventoryResponse> {
@@ -313,7 +313,7 @@ export class Client {
 
     const { status } = response;
 
-    const responseBody = await response.json();
+    const responseBody = (await response.json()) as unknown;
 
     this.logger?.('REST API Call', {
       method,
@@ -323,9 +323,9 @@ export class Client {
     });
 
     return {
-      status: status as 200,
+      status,
       body: responseBody
-    };
+    } as Responses.GetInventoryResponse;
   }
 
   public async createUsersWithArrayInput(args: {
@@ -351,9 +351,9 @@ export class Client {
     });
 
     return {
-      status: status as number,
+      status,
       body: undefined
-    };
+    } as Responses.CreateUsersWithArrayInputResponse;
   }
 
   public async createUsersWithListInput(args: {
@@ -379,9 +379,9 @@ export class Client {
     });
 
     return {
-      status: status as number,
+      status,
       body: undefined
-    };
+    } as Responses.CreateUsersWithListInputResponse;
   }
 
   public async getUserByName(
@@ -390,7 +390,7 @@ export class Client {
     const { username } = args;
 
     const method = 'GET';
-    const url = `${this.baseUrl}/user/:username`;
+    const url = `${this.baseUrl}/user/${username}`;
 
     const response = await fetch(url, {
       method
@@ -398,7 +398,7 @@ export class Client {
 
     const { status } = response;
 
-    const responseBody = await response.json();
+    const responseBody = (await response.json()) as unknown;
 
     this.logger?.('REST API Call', {
       method,
@@ -409,9 +409,9 @@ export class Client {
     });
 
     return {
-      status: status as 200 | 400 | 404,
+      status,
       body: responseBody
-    };
+    } as Responses.GetUserByNameResponse;
   }
 
   public async updateUser(
@@ -420,7 +420,7 @@ export class Client {
     const { username, body } = args;
 
     const method = 'PUT';
-    const url = `${this.baseUrl}/user/:username`;
+    const url = `${this.baseUrl}/user/${username}`;
 
     const response = await fetch(url, {
       method,
@@ -438,9 +438,9 @@ export class Client {
     });
 
     return {
-      status: status as 400 | 404,
+      status,
       body: undefined
-    };
+    } as Responses.UpdateUserResponse;
   }
 
   public async deleteUser(
@@ -449,7 +449,7 @@ export class Client {
     const { username } = args;
 
     const method = 'DELETE';
-    const url = `${this.baseUrl}/user/:username`;
+    const url = `${this.baseUrl}/user/${username}`;
 
     const response = await fetch(url, {
       method
@@ -465,9 +465,9 @@ export class Client {
     });
 
     return {
-      status: status as 400 | 404,
+      status,
       body: undefined
-    };
+    } as Responses.DeleteUserResponse;
   }
 
   public async loginUser(
@@ -486,7 +486,7 @@ export class Client {
 
     const { status } = response;
 
-    const responseBody = await response.json();
+    const responseBody = (await response.json()) as unknown;
 
     this.logger?.('REST API Call', {
       method,
@@ -496,9 +496,9 @@ export class Client {
     });
 
     return {
-      status: status as 200 | 400,
+      status,
       body: responseBody
-    };
+    } as Responses.LoginUserResponse;
   }
 
   public async logoutUser(): Promise<Responses.LogoutUserResponse> {
@@ -518,9 +518,9 @@ export class Client {
     });
 
     return {
-      status: status as number,
+      status,
       body: undefined
-    };
+    } as Responses.LogoutUserResponse;
   }
 
   public async createUser(args: {
@@ -546,8 +546,8 @@ export class Client {
     });
 
     return {
-      status: status as number,
+      status,
       body: undefined
-    };
+    } as Responses.CreateUserResponse;
   }
 }
