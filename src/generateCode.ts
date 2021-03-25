@@ -56,7 +56,7 @@ export const generateCode = (inputOptions: GenerateCodeOptions): void => {
   };
 
   const files: { filename: string; content: string }[] = [
-    when(['SERVER', 'STUBS'], () => ({
+    when(['SERVER'], () => ({
       filename: options.jsonSchemaFilename,
       content: JSON.stringify(jsonSchema)
     })),
@@ -64,15 +64,15 @@ export const generateCode = (inputOptions: GenerateCodeOptions): void => {
       filename: `${options.schemaTypesModuleName}.ts`,
       content: generateTypesFromJsonSchema(renderDeps)
     },
-    when(['SERVER', 'STUBS'], () => ({
+    when(['SERVER'], () => ({
       filename: `${options.requestSchemaValidatorsModuleName}.ts`,
       content: generateRequestValidators(renderDeps)
     })),
-    when(['SERVER', 'STUBS'], () => ({
+    when(['SERVER'], () => ({
       filename: `${options.requestHandlersModuleName}.ts`,
       content: generateRequestHandlersTypes(renderDeps)
     })),
-    when(['SERVER', 'STUBS'], () => ({
+    when(['SERVER'], () => ({
       filename: `${options.routerModuleName}.ts`,
       content: generateRouter(renderDeps)
     })),
