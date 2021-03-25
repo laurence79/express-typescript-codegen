@@ -1,5 +1,6 @@
 export * from './client';
 export * from './clientResponseTypes';
+export * from './indexGenerator';
 export * from './jsonSchema';
 export * from './requestHandlersTypes';
 export * from './requestValidators';

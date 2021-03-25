@@ -6,7 +6,8 @@ import {
   generateRequestValidators,
   generateClientResponseTypes,
   generateClient,
-  generateServerStub
+  generateServerStub,
+  generateIndex
 } from './generators';
 import { loadOpenApiDocument } from './helpers/loadOpenApiDocument';
 import { writeFiles } from './helpers/writeFiles';
@@ -87,7 +88,11 @@ export const generateCode = (inputOptions: GenerateCodeOptions): void => {
     when(['STUBS'], () => ({
       filename: `${options.serverStubsModuleName}.ts`,
       content: generateServerStub(renderDeps)
-    }))
+    })),
+    {
+      filename: 'index.ts',
+      content: generateIndex(renderDeps)
+    }
   ].compact();
 
   writeFiles({ ...options, files });
