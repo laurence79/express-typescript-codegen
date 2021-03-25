@@ -14,22 +14,36 @@ const { version } = packageJson;
 const cmd = new commander.Command('generate')
   .description('Generates Express types and functions from the spec.')
   .arguments('<spec-filename> <output-directory>')
-  .action((specFilename: string, outputDirectory: string) => {
-    const logger = processLogger();
+  .option('--client', 'output client modules')
+  .option('--server', 'output server modules')
+  .option('--stubs', 'output server stub modules')
+  .action(
+    (
+      specFilename: string,
+      outputDirectory: string,
+      options: { client: boolean; server: boolean; stubs: boolean }
+    ) => {
+      const logger = processLogger();
 
-    try {
-      generateCode({
-        openApiDocumentFilename: specFilename,
-        outputDirectory,
-        logger
-      });
+      try {
+        generateCode({
+          openApiDocumentFilename: specFilename,
+          output: [
+            ...(options.client ? (['CLIENT'] as const) : []),
+            ...(options.server ? (['SERVER'] as const) : []),
+            ...(options.stubs ? (['STUBS'] as const) : [])
+          ],
+          outputDirectory,
+          logger
+        });
 
-      logger.log(chalk.green('\nCompleted successfully!\n\n'));
-    } catch (e: unknown) {
-      logger.error(
-        `\nFAILED. ${e instanceof Error ? e.message : 'Unknown error'}\n\n`
-      );
+        logger.log(chalk.green('\nCompleted successfully!\n\n'));
+      } catch (e: unknown) {
+        logger.error(
+          `\nFAILED. ${e instanceof Error ? e.message : 'Unknown error'}\n\n`
+        );
+      }
     }
-  });
+  );
 
 commander.program.version(version).addCommand(cmd).parse();

@@ -18,12 +18,12 @@ export const typeDefForSchema = (schema: JSONSchema7Definition): string => {
 
   const { type, enum: enumProp } = schema;
 
-  if (type === 'object') {
-    return typeDefForObject(schema, typeDefForSchema);
+  if (enumProp) {
+    return typeDefForEnum(enumProp, typeDefForSchema);
   }
 
-  if (enumProp) {
-    return typeDefForEnum(enumProp);
+  if (type === 'object') {
+    return typeDefForObject(schema, typeDefForSchema);
   }
 
   if (

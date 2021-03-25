@@ -1,190 +1,178 @@
 import { RequestHandler } from '@laurence79/express-async-request-handler';
-import * as Schema from './types';
-import * as Query from './queryTypes';
-import * as Param from './parameterTypes';
-
-export type UploadFileRequestHandler = RequestHandler<
-  Param.UploadFileParams,
-  Schema.UploadFile200ResponseBody,
-  unknown,
-  Query.UploadFileQuery,
-  Record<string, any>,
-  200
->;
+import * as Schema from './schemaTypes';
 
 export type AddPetRequestHandler = RequestHandler<
-  Param.AddPetParams,
+  unknown,
   unknown,
   Schema.AddPetRequestBody,
-  Query.AddPetQuery,
+  unknown,
   Record<string, any>,
   405
 >;
 
 export type UpdatePetRequestHandler = RequestHandler<
-  Param.UpdatePetParams,
+  unknown,
   unknown,
   Schema.UpdatePetRequestBody,
-  Query.UpdatePetQuery,
+  unknown,
   Record<string, any>,
   400 | 404 | 405
 >;
 
 export type FindPetsByStatusRequestHandler = RequestHandler<
-  Param.FindPetsByStatusParams,
+  unknown,
   Schema.FindPetsByStatus200ResponseBody,
   unknown,
-  Query.FindPetsByStatusQuery,
+  Schema.FindPetsByStatusRequestQuery,
   Record<string, any>,
   200 | 400
 >;
 
 export type FindPetsByTagsRequestHandler = RequestHandler<
-  Param.FindPetsByTagsParams,
+  unknown,
   Schema.FindPetsByTags200ResponseBody,
   unknown,
-  Query.FindPetsByTagsQuery,
+  Schema.FindPetsByTagsRequestQuery,
   Record<string, any>,
   200 | 400
 >;
 
 export type GetPetByIdRequestHandler = RequestHandler<
-  Param.GetPetByIdParams,
+  Schema.GetPetByIdRequestPath,
   Schema.GetPetById200ResponseBody,
   unknown,
-  Query.GetPetByIdQuery,
+  unknown,
   Record<string, any>,
   200 | 400 | 404
 >;
 
 export type UpdatePetWithFormRequestHandler = RequestHandler<
-  Param.UpdatePetWithFormParams,
+  Schema.UpdatePetWithFormRequestPath,
   unknown,
   unknown,
-  Query.UpdatePetWithFormQuery,
+  unknown,
   Record<string, any>,
   405
 >;
 
 export type DeletePetRequestHandler = RequestHandler<
-  Param.DeletePetParams,
+  Schema.DeletePetRequestPath,
   unknown,
   unknown,
-  Query.DeletePetQuery,
+  unknown,
   Record<string, any>,
   400 | 404
 >;
 
 export type PlaceOrderRequestHandler = RequestHandler<
-  Param.PlaceOrderParams,
+  unknown,
   Schema.PlaceOrder200ResponseBody,
   Schema.PlaceOrderRequestBody,
-  Query.PlaceOrderQuery,
+  unknown,
   Record<string, any>,
   200 | 400
 >;
 
 export type GetOrderByIdRequestHandler = RequestHandler<
-  Param.GetOrderByIdParams,
+  Schema.GetOrderByIdRequestPath,
   Schema.GetOrderById200ResponseBody,
   unknown,
-  Query.GetOrderByIdQuery,
+  unknown,
   Record<string, any>,
   200 | 400 | 404
 >;
 
 export type DeleteOrderRequestHandler = RequestHandler<
-  Param.DeleteOrderParams,
+  Schema.DeleteOrderRequestPath,
   unknown,
   unknown,
-  Query.DeleteOrderQuery,
+  unknown,
   Record<string, any>,
   400 | 404
 >;
 
 export type GetInventoryRequestHandler = RequestHandler<
-  Param.GetInventoryParams,
+  unknown,
   Schema.GetInventory200ResponseBody,
   unknown,
-  Query.GetInventoryQuery,
+  unknown,
   Record<string, any>,
   200
 >;
 
 export type CreateUsersWithArrayInputRequestHandler = RequestHandler<
-  Param.CreateUsersWithArrayInputParams,
+  unknown,
   unknown,
   Schema.CreateUsersWithArrayInputRequestBody,
-  Query.CreateUsersWithArrayInputQuery,
+  unknown,
   Record<string, any>,
   number
 >;
 
 export type CreateUsersWithListInputRequestHandler = RequestHandler<
-  Param.CreateUsersWithListInputParams,
+  unknown,
   unknown,
   Schema.CreateUsersWithListInputRequestBody,
-  Query.CreateUsersWithListInputQuery,
+  unknown,
   Record<string, any>,
   number
 >;
 
 export type GetUserByNameRequestHandler = RequestHandler<
-  Param.GetUserByNameParams,
+  Schema.GetUserByNameRequestPath,
   Schema.GetUserByName200ResponseBody,
   unknown,
-  Query.GetUserByNameQuery,
+  unknown,
   Record<string, any>,
   200 | 400 | 404
 >;
 
 export type UpdateUserRequestHandler = RequestHandler<
-  Param.UpdateUserParams,
+  Schema.UpdateUserRequestPath,
   unknown,
   Schema.UpdateUserRequestBody,
-  Query.UpdateUserQuery,
+  unknown,
   Record<string, any>,
   400 | 404
 >;
 
 export type DeleteUserRequestHandler = RequestHandler<
-  Param.DeleteUserParams,
+  Schema.DeleteUserRequestPath,
   unknown,
   unknown,
-  Query.DeleteUserQuery,
+  unknown,
   Record<string, any>,
   400 | 404
 >;
 
 export type LoginUserRequestHandler = RequestHandler<
-  Param.LoginUserParams,
+  unknown,
   Schema.LoginUser200ResponseBody,
   unknown,
-  Query.LoginUserQuery,
+  Schema.LoginUserRequestQuery,
   Record<string, any>,
   200 | 400
 >;
 
 export type LogoutUserRequestHandler = RequestHandler<
-  Param.LogoutUserParams,
   unknown,
   unknown,
-  Query.LogoutUserQuery,
+  unknown,
+  unknown,
   Record<string, any>,
   number
 >;
 
 export type CreateUserRequestHandler = RequestHandler<
-  Param.CreateUserParams,
+  unknown,
   unknown,
   Schema.CreateUserRequestBody,
-  Query.CreateUserQuery,
+  unknown,
   Record<string, any>,
   number
 >;
 
 export type RequestHandlers = {
-  uploadFile: UploadFileRequestHandler;
   addPet: AddPetRequestHandler;
   updatePet: UpdatePetRequestHandler;
   findPetsByStatus: FindPetsByStatusRequestHandler;

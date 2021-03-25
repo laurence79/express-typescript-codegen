@@ -22,6 +22,9 @@ const progressLogger = (start: number): LogFn => {
 
 export const success = (): string => chalk.green(' -> SUCCESS');
 
+export const warn = (message: string): string =>
+  chalk.yellow(` -> WARNING: ${message}`);
+
 export const progress = (message: string): string =>
   chalk.blue(` -> ${message}`);
 

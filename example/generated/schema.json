@@ -1,6 +1,182 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "definitions": {
+    "AddPetRequestBody": { "$ref": "#/definitions/Pet" },
+    "UpdatePetRequestBody": { "$ref": "#/definitions/Pet" },
+    "FindPetsByStatusRequestQuery": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": {
+          "description": "Status values that need to be considered for filter",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["available", "pending", "sold"],
+            "default": "available"
+          },
+          "collectionFormat": "multi"
+        }
+      }
+    },
+    "FindPetsByStatus200ResponseBody": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/Pet" }
+    },
+    "FindPetsByTagsRequestQuery": {
+      "type": "object",
+      "required": ["tags"],
+      "properties": {
+        "tags": {
+          "description": "Tags to filter by",
+          "type": "array",
+          "items": { "type": "string" },
+          "collectionFormat": "multi"
+        }
+      }
+    },
+    "FindPetsByTags200ResponseBody": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/Pet" }
+    },
+    "GetPetByIdRequestPath": {
+      "type": "object",
+      "required": ["petId"],
+      "properties": {
+        "petId": {
+          "description": "ID of pet to return",
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "GetPetById200ResponseBody": { "$ref": "#/definitions/Pet" },
+    "UpdatePetWithFormRequestPath": {
+      "type": "object",
+      "required": ["petId"],
+      "properties": {
+        "petId": {
+          "description": "ID of pet that needs to be updated",
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "UpdatePetWithFormRequestFormData": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "name": { "description": "Updated name of the pet", "type": "string" },
+        "status": {
+          "description": "Updated status of the pet",
+          "type": "string"
+        }
+      }
+    },
+    "DeletePetRequestHeader": {
+      "type": "object",
+      "required": [],
+      "properties": { "api_key": { "type": "string" } }
+    },
+    "DeletePetRequestPath": {
+      "type": "object",
+      "required": ["petId"],
+      "properties": {
+        "petId": {
+          "description": "Pet id to delete",
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "PlaceOrderRequestBody": { "$ref": "#/definitions/Order" },
+    "PlaceOrder200ResponseBody": { "$ref": "#/definitions/Order" },
+    "GetOrderByIdRequestPath": {
+      "type": "object",
+      "required": ["orderId"],
+      "properties": {
+        "orderId": {
+          "description": "ID of pet that needs to be fetched",
+          "type": "integer",
+          "maximum": 10,
+          "minimum": 1,
+          "format": "int64"
+        }
+      }
+    },
+    "GetOrderById200ResponseBody": { "$ref": "#/definitions/Order" },
+    "DeleteOrderRequestPath": {
+      "type": "object",
+      "required": ["orderId"],
+      "properties": {
+        "orderId": {
+          "description": "ID of the order that needs to be deleted",
+          "type": "integer",
+          "minimum": 1,
+          "format": "int64"
+        }
+      }
+    },
+    "GetInventory200ResponseBody": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "format": "int32" }
+    },
+    "CreateUsersWithArrayInputRequestBody": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/User" }
+    },
+    "CreateUsersWithListInputRequestBody": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/User" }
+    },
+    "GetUserByNameRequestPath": {
+      "type": "object",
+      "required": ["username"],
+      "properties": {
+        "username": {
+          "description": "The name that needs to be fetched. Use user1 for testing. ",
+          "type": "string"
+        }
+      }
+    },
+    "GetUserByName200ResponseBody": { "$ref": "#/definitions/User" },
+    "UpdateUserRequestPath": {
+      "type": "object",
+      "required": ["username"],
+      "properties": {
+        "username": {
+          "description": "name that need to be updated",
+          "type": "string"
+        }
+      }
+    },
+    "UpdateUserRequestBody": { "$ref": "#/definitions/User" },
+    "DeleteUserRequestPath": {
+      "type": "object",
+      "required": ["username"],
+      "properties": {
+        "username": {
+          "description": "The name that needs to be deleted",
+          "type": "string"
+        }
+      }
+    },
+    "LoginUserRequestQuery": {
+      "type": "object",
+      "required": ["username", "password"],
+      "properties": {
+        "username": {
+          "description": "The user name for login",
+          "type": "string"
+        },
+        "password": {
+          "description": "The password for login in clear text",
+          "type": "string"
+        }
+      }
+    },
+    "LoginUser200ResponseBody": { "type": "string" },
+    "CreateUserRequestBody": { "$ref": "#/definitions/User" },
     "ApiResponse": {
       "type": "object",
       "properties": {
@@ -83,37 +259,6 @@
           "description": "User Status"
         }
       }
-    },
-    "UploadFile200ResponseBody": { "$ref": "#/definitions/ApiResponse" },
-    "AddPetRequestBody": { "$ref": "#/definitions/Pet" },
-    "UpdatePetRequestBody": { "$ref": "#/definitions/Pet" },
-    "FindPetsByStatus200ResponseBody": {
-      "type": "array",
-      "items": { "$ref": "#/definitions/Pet" }
-    },
-    "FindPetsByTags200ResponseBody": {
-      "type": "array",
-      "items": { "$ref": "#/definitions/Pet" }
-    },
-    "GetPetById200ResponseBody": { "$ref": "#/definitions/Pet" },
-    "PlaceOrderRequestBody": { "$ref": "#/definitions/Order" },
-    "PlaceOrder200ResponseBody": { "$ref": "#/definitions/Order" },
-    "GetOrderById200ResponseBody": { "$ref": "#/definitions/Order" },
-    "GetInventory200ResponseBody": {
-      "type": "object",
-      "additionalProperties": { "type": "integer", "format": "int32" }
-    },
-    "CreateUsersWithArrayInputRequestBody": {
-      "type": "array",
-      "items": { "$ref": "#/definitions/User" }
-    },
-    "CreateUsersWithListInputRequestBody": {
-      "type": "array",
-      "items": { "$ref": "#/definitions/User" }
-    },
-    "GetUserByName200ResponseBody": { "$ref": "#/definitions/User" },
-    "UpdateUserRequestBody": { "$ref": "#/definitions/User" },
-    "LoginUser200ResponseBody": { "type": "string" },
-    "CreateUserRequestBody": { "$ref": "#/definitions/User" }
+    }
   }
 }

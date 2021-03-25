@@ -1,25 +1,28 @@
-import { createJsonSchemaFromOpenApiDocument } from './helpers/createJsonSchemaFromOpenApiDocument';
+import { generateJsonSchema } from './generators/jsonSchema';
 import {
   generateRequestHandlersTypes,
-  generatePathParameterTypes,
-  generateURLQueryTypes,
   generateRouter,
   generateTypesFromJsonSchema,
-  generateJSONSchemaValidators
+  generateRequestValidators,
+  generateClientResponseTypes,
+  generateClient,
+  generateServerStub
 } from './generators';
 import { loadOpenApiDocument } from './helpers/loadOpenApiDocument';
 import { writeFiles } from './helpers/writeFiles';
 import { GenerateCodeOptions } from './types/GenerateCodeOptions';
 
 const defaultOptions = {
+  clientModuleName: 'client',
+  clientResponseTypesModuleName: 'clientResponseTypes',
   jsonSchemaFilename: 'schema.json',
-  jsonSchemaTypesModuleName: 'types',
-  jsonSchemaValidatorsModuleName: 'validators',
+  output: ['CLIENT', 'SERVER', 'STUBS'],
   outputDirectory: 'generated',
-  pathParameterTypesModuleName: 'parameterTypes',
   requestHandlersModuleName: 'handlers',
-  queryTypesModuleName: 'queryTypes',
-  routerModuleName: 'router'
+  requestSchemaValidatorsModuleName: 'requestValidators',
+  routerModuleName: 'router',
+  schemaTypesModuleName: 'schemaTypes',
+  serverStubsModuleName: 'serverStubs'
 };
 
 export const generateCode = (inputOptions: GenerateCodeOptions): void => {
@@ -30,7 +33,7 @@ export const generateCode = (inputOptions: GenerateCodeOptions): void => {
 
   const openApiDocument = loadOpenApiDocument(options);
 
-  const jsonSchema = createJsonSchemaFromOpenApiDocument({
+  const jsonSchema = generateJsonSchema({
     ...options,
     openApiDocument
   });
@@ -41,36 +44,51 @@ export const generateCode = (inputOptions: GenerateCodeOptions): void => {
     jsonSchema
   };
 
+  const when = (
+    targets: GenerateCodeOptions['output'],
+    generator: () => { filename: string; content: string }
+  ): { filename: string; content: string } | null => {
+    if (targets.union(options.output).any()) {
+      return generator();
+    }
+
+    return null;
+  };
+
   const files: { filename: string; content: string }[] = [
-    {
+    when(['SERVER', 'STUBS'], () => ({
       filename: options.jsonSchemaFilename,
       content: JSON.stringify(jsonSchema)
-    },
+    })),
     {
-      filename: `${options.jsonSchemaTypesModuleName}.ts`,
+      filename: `${options.schemaTypesModuleName}.ts`,
       content: generateTypesFromJsonSchema(renderDeps)
     },
-    {
-      filename: `${options.jsonSchemaValidatorsModuleName}.ts`,
-      content: generateJSONSchemaValidators(renderDeps)
-    },
-    {
-      filename: `${options.queryTypesModuleName}.ts`,
-      content: generateURLQueryTypes(renderDeps)
-    },
-    {
-      filename: `${options.pathParameterTypesModuleName}.ts`,
-      content: generatePathParameterTypes(renderDeps)
-    },
-    {
+    when(['SERVER', 'STUBS'], () => ({
+      filename: `${options.requestSchemaValidatorsModuleName}.ts`,
+      content: generateRequestValidators(renderDeps)
+    })),
+    when(['SERVER', 'STUBS'], () => ({
       filename: `${options.requestHandlersModuleName}.ts`,
       content: generateRequestHandlersTypes(renderDeps)
-    },
-    {
+    })),
+    when(['SERVER', 'STUBS'], () => ({
       filename: `${options.routerModuleName}.ts`,
       content: generateRouter(renderDeps)
-    }
-  ];
+    })),
+    when(['CLIENT'], () => ({
+      filename: `${options.clientResponseTypesModuleName}.ts`,
+      content: generateClientResponseTypes(renderDeps)
+    })),
+    when(['CLIENT'], () => ({
+      filename: `${options.clientModuleName}.ts`,
+      content: generateClient(renderDeps)
+    })),
+    when(['STUBS'], () => ({
+      filename: `${options.serverStubsModuleName}.ts`,
+      content: generateServerStub(renderDeps)
+    }))
+  ].compact();
 
   writeFiles({ ...options, files });
 };
