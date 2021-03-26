@@ -25,7 +25,7 @@ const fromV2 = (
     log?.(progress(`Adding ${method} ${requestHandlersPath}`));
 
     return {
-      route: `.${method}('${requestHandlersPath}', Validators.${operationId}, ${handlerInstanceName})`,
+      route: `.${method}('${requestHandlersPath}', Validators.${operationId}(options), ${handlerInstanceName})`,
       handlerInstanceName,
       handlerType
     };
@@ -65,7 +65,7 @@ export const generateRouter = ({
   import * as RequestHandlers from './${requestHandlersModuleName}';
   import * as Validators from './${requestSchemaValidatorsModuleName}';
   
-  export const router = ({ ${argumentList} }: RequestHandlers.RequestHandlers): Router => {
+  export const router = ({ ${argumentList} }: RequestHandlers.RequestHandlers, options?: Validators.ValidationOptions): Router => {
     return Router()
       ${types.map(t => t.route).join('\n')}
   }

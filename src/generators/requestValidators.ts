@@ -17,10 +17,26 @@ const fromV2 = (
       properties: parameters
         .map(p => p.in)
         .distinct()
-        .map(p => ({
-          requestPropertyName: p === 'header' ? 'headers' : p,
-          typeName: parametersTypeNameTemplate(operationId, p)
-        }))
+        .map(p => {
+          const requestPropertyName = (() => {
+            if (p === 'header') {
+              return 'headers';
+            }
+
+            if (p === 'path') {
+              return 'params';
+            }
+
+            return p;
+          })();
+
+          const typeName = parametersTypeNameTemplate(operationId, p);
+
+          return {
+            requestPropertyName,
+            typeName
+          };
+        })
     };
   });
 };

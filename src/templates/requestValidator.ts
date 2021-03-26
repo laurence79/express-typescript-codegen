@@ -7,7 +7,8 @@ export const requestValidatorTemplate = (
     }[];
   }[],
   jsonSchemaFilename: string
-): string => `
+): string =>
+  `
 import Ajv, { ValidateFunction } from 'ajv';
 import { RequestHandler, Request } from 'express';
 import schema from './${jsonSchemaFilename}';
@@ -15,18 +16,31 @@ import schema from './${jsonSchemaFilename}';
 const ajv = new Ajv({ strict: false });
 ajv.addSchema(schema);
 
-type V = [ValidateFunction, (req: Request) => unknown];
+type Validating = 'body' | 'headers' | 'query' | 'params';
 
-const validator = (validations: V[]): RequestHandler => {
+type V = [ValidateFunction, (req: Request) => unknown, Validating];
+
+export type ValidationOptions = {
+  logger?: (req: Request) => (message: string, data: Record<string, unknown>) => void;
+};
+
+const validator = (validations: V[], options?: ValidationOptions): RequestHandler => {
   return (req, res, next) => {
     if (validations.every(([fn, sel]) => fn(sel(req)))) {
       return next();
     }
 
+    const errors = validations
+      .flatMap(([v, _, validating]) => v.errors?.map(e => ` +
+  // eslint-disable-next-line no-template-curly-in-string
+  '`${validating}${e.dataPath} ${e.message}`' +
+  `))
+      .compact();
+
+    options?.logger?.(req)('Request validation failed', { errors })
+
     res.status(400).send({
-      errors: validations
-        .flatMap(([v]) => v.errors)
-        .map(e => e.message ?? '') ?? ['Unknown validation error']
+      errors
     });
   };
 };
@@ -34,14 +48,14 @@ const validator = (validations: V[]): RequestHandler => {
 ${types
   .map(
     ({ operationId, properties }) => `
-export const ${operationId} = validator([
+export const ${operationId} = (options?: ValidationOptions) => validator([
   ${properties
     .map(
       ({ requestPropertyName, typeName }) =>
-        `[ajv.getSchema('#/definitions/${typeName}')!, p => p.${requestPropertyName}]`
+        `[ajv.getSchema('#/definitions/${typeName}')!, p => p.${requestPropertyName}, '${requestPropertyName}']`
     )
     .join(',\n')}
-]);`
+], options);`
   )
   .join('\n')}
 `;
