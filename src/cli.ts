@@ -38,10 +38,18 @@ const cmd = new commander.Command('generate')
         });
 
         logger.log(chalk.green('\nCompleted successfully!\n\n'));
+
+        process.exit(0);
       } catch (e: unknown) {
         logger.error(
-          `\nFAILED. ${e instanceof Error ? e.message : 'Unknown error'}\n\n`
+          `\nFAILED. ${
+            e instanceof Error
+              ? `${e.message}\n${e.stack ?? ''}`
+              : 'Unknown error'
+          }\n\n`
         );
+
+        process.exit(1);
       }
     }
   );
