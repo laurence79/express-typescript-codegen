@@ -78,7 +78,7 @@ const fromV2 = (document: OpenApiV2.Document, log?: LogFn): JSONSchema7 => {
     });
   });
 
-  Object.keys(document.definitions).forEach(key => {
+  Object.keys(document.definitions ?? {}).forEach(key => {
     const value = document.definitions?.[key];
 
     if (value) {
