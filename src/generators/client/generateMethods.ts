@@ -51,12 +51,14 @@ export const generateMethods = (
             .map(q => q.name)
             .join(', ')} });`;
 
+      const headers = headerArgs
+        .map(h => h.name)
+        .concat(bodyArg ? [`'Content-Type': 'application/json'`] : []);
+
       const fetchOpts = `{
         ${[
           'method',
-          ...(headerArgs.any()
-            ? [`headers: {${headerArgs.map(h => h.name).join(',')}}`]
-            : []),
+          ...(headers.any() ? [`headers: {${headers.join(',')}}`] : []),
           ...(bodyArg ? [`body: JSON.stringify(${bodyArg.name})`] : []),
           ...(formDataArgs.any() ? ['body: formData'] : [])
         ].join(',\n')}
