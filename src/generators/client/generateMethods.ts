@@ -76,18 +76,18 @@ export const generateMethods = (
 
           const response = await fetch(url, ${fetchOpts});
 
-          const { status } = response;
+          const { status: $status } = response;
 
-          this.logger?.('REST API Call', { method, url, status });
+          this.logger?.('REST API Call', { method, url, status: $status });
 
-          switch (status) {
+          switch ($status) {
             ${responses
               .map(
                 r => `
             ${
               r.statusCode === 'default' ? `default` : `case ${r.statusCode}`
             }: return {
-              status,
+              status: $status,
               body: ${
                 r.response.schema?.type === 'file'
                   ? 'await response.blob()'
@@ -108,7 +108,7 @@ export const generateMethods = (
                 : `
                 default:
                   throw new Error(` +
-                  '`Unexpected status ${status}`' +
+                  '`Unexpected status ${$status}`' +
                   `)
               `
             }
