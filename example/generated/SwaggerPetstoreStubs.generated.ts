@@ -1,6 +1,98 @@
 import { RequestHandler } from '@laurence79/express-async-request-handler';
 import { Router } from 'express';
-import * as Schema from './schemaTypes';
+
+export type AddPetRequestBody = Pet;
+
+export type UpdatePetRequestBody = Pet;
+
+export type FindPetsByStatusRequestQuery = {
+  status: Array<'available' | 'pending' | 'sold'>;
+};
+
+export type FindPetsByStatus200ResponseBody = Array<Pet>;
+
+export type FindPetsByTagsRequestQuery = { tags: Array<string> };
+
+export type FindPetsByTags200ResponseBody = Array<Pet>;
+
+export type GetPetByIdRequestPath = { petId: number };
+
+export type GetPetById200ResponseBody = Pet;
+
+export type UpdatePetWithFormRequestPath = { petId: number };
+
+export type UpdatePetWithFormRequestBody = { name?: string; status?: string };
+
+export type DeletePetRequestHeader = { api_key?: string };
+
+export type DeletePetRequestPath = { petId: number };
+
+export type PlaceOrderRequestBody = Order;
+
+export type PlaceOrder200ResponseBody = Order;
+
+export type GetOrderByIdRequestPath = { orderId: number };
+
+export type GetOrderById200ResponseBody = Order;
+
+export type DeleteOrderRequestPath = { orderId: number };
+
+export type GetInventory200ResponseBody = unknown;
+
+export type CreateUsersWithArrayInputRequestBody = Array<User>;
+
+export type CreateUsersWithListInputRequestBody = Array<User>;
+
+export type GetUserByNameRequestPath = { username: string };
+
+export type GetUserByName200ResponseBody = User;
+
+export type UpdateUserRequestPath = { username: string };
+
+export type UpdateUserRequestBody = User;
+
+export type DeleteUserRequestPath = { username: string };
+
+export type LoginUserRequestQuery = { username: string; password: string };
+
+export type LoginUser200ResponseBody = string;
+
+export type CreateUserRequestBody = User;
+
+export type ApiResponse = { code?: number; type?: string; message?: string };
+
+export type Category = { id?: number; name?: string };
+
+export type Pet = {
+  id?: number;
+  category?: Category;
+  name: string;
+  photoUrls: Array<string>;
+  tags?: Array<Tag>;
+  status?: 'available' | 'pending' | 'sold';
+};
+
+export type Tag = { id?: number; name?: string };
+
+export type Order = {
+  id?: number;
+  petId?: number;
+  quantity?: number;
+  shipDate?: string;
+  status?: 'placed' | 'approved' | 'delivered';
+  complete?: boolean;
+};
+
+export type User = {
+  id?: number;
+  username?: string;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  password?: string;
+  phone?: string;
+  userStatus?: number;
+};
 
 type RequestLog<THeaders, TParams, TQuery, TBody> = {
   headers: THeaders;
@@ -86,7 +178,7 @@ type MethodStubs = {
     unknown,
     unknown,
     unknown,
-    Schema.AddPetRequestBody,
+    AddPetRequestBody,
     405,
     unknown
   >;
@@ -94,45 +186,45 @@ type MethodStubs = {
     unknown,
     unknown,
     unknown,
-    Schema.UpdatePetRequestBody,
+    UpdatePetRequestBody,
     400 | 404 | 405,
     unknown
   >;
   readonly findPetsByStatus: MethodStub<
     unknown,
     unknown,
-    Schema.FindPetsByStatusRequestQuery,
+    FindPetsByStatusRequestQuery,
     unknown,
     200 | 400,
-    Schema.FindPetsByStatus200ResponseBody
+    FindPetsByStatus200ResponseBody
   >;
   readonly findPetsByTags: MethodStub<
     unknown,
     unknown,
-    Schema.FindPetsByTagsRequestQuery,
+    FindPetsByTagsRequestQuery,
     unknown,
     200 | 400,
-    Schema.FindPetsByTags200ResponseBody
+    FindPetsByTags200ResponseBody
   >;
   readonly getPetById: MethodStub<
     unknown,
-    Schema.GetPetByIdRequestPath,
+    GetPetByIdRequestPath,
     unknown,
     unknown,
     200 | 400 | 404,
-    Schema.GetPetById200ResponseBody
+    GetPetById200ResponseBody
   >;
   readonly updatePetWithForm: MethodStub<
     unknown,
-    Schema.UpdatePetWithFormRequestPath,
+    UpdatePetWithFormRequestPath,
     unknown,
-    unknown,
+    UpdatePetWithFormRequestBody,
     405,
     unknown
   >;
   readonly deletePet: MethodStub<
-    Schema.DeletePetRequestHeader,
-    Schema.DeletePetRequestPath,
+    DeletePetRequestHeader,
+    DeletePetRequestPath,
     unknown,
     unknown,
     400 | 404,
@@ -142,21 +234,21 @@ type MethodStubs = {
     unknown,
     unknown,
     unknown,
-    Schema.PlaceOrderRequestBody,
+    PlaceOrderRequestBody,
     200 | 400,
-    Schema.PlaceOrder200ResponseBody
+    PlaceOrder200ResponseBody
   >;
   readonly getOrderById: MethodStub<
     unknown,
-    Schema.GetOrderByIdRequestPath,
+    GetOrderByIdRequestPath,
     unknown,
     unknown,
     200 | 400 | 404,
-    Schema.GetOrderById200ResponseBody
+    GetOrderById200ResponseBody
   >;
   readonly deleteOrder: MethodStub<
     unknown,
-    Schema.DeleteOrderRequestPath,
+    DeleteOrderRequestPath,
     unknown,
     unknown,
     400 | 404,
@@ -168,13 +260,13 @@ type MethodStubs = {
     unknown,
     unknown,
     200,
-    Schema.GetInventory200ResponseBody
+    GetInventory200ResponseBody
   >;
   readonly createUsersWithArrayInput: MethodStub<
     unknown,
     unknown,
     unknown,
-    Schema.CreateUsersWithArrayInputRequestBody,
+    CreateUsersWithArrayInputRequestBody,
     number,
     unknown
   >;
@@ -182,29 +274,29 @@ type MethodStubs = {
     unknown,
     unknown,
     unknown,
-    Schema.CreateUsersWithListInputRequestBody,
+    CreateUsersWithListInputRequestBody,
     number,
     unknown
   >;
   readonly getUserByName: MethodStub<
     unknown,
-    Schema.GetUserByNameRequestPath,
+    GetUserByNameRequestPath,
     unknown,
     unknown,
     200 | 400 | 404,
-    Schema.GetUserByName200ResponseBody
+    GetUserByName200ResponseBody
   >;
   readonly updateUser: MethodStub<
     unknown,
-    Schema.UpdateUserRequestPath,
+    UpdateUserRequestPath,
     unknown,
-    Schema.UpdateUserRequestBody,
+    UpdateUserRequestBody,
     400 | 404,
     unknown
   >;
   readonly deleteUser: MethodStub<
     unknown,
-    Schema.DeleteUserRequestPath,
+    DeleteUserRequestPath,
     unknown,
     unknown,
     400 | 404,
@@ -213,10 +305,10 @@ type MethodStubs = {
   readonly loginUser: MethodStub<
     unknown,
     unknown,
-    Schema.LoginUserRequestQuery,
+    LoginUserRequestQuery,
     unknown,
     200 | 400,
-    Schema.LoginUser200ResponseBody
+    LoginUser200ResponseBody
   >;
   readonly logoutUser: MethodStub<
     unknown,
@@ -230,19 +322,19 @@ type MethodStubs = {
     unknown,
     unknown,
     unknown,
-    Schema.CreateUserRequestBody,
+    CreateUserRequestBody,
     number,
     unknown
   >;
 };
 
-export type ServiceStub = {
+export type SwaggerPetstoreServiceStub = {
   readonly middleware: RequestHandler;
   readonly reset: () => void;
   readonly stubs: () => MethodStubs;
 };
 
-export const serviceStub = (): ServiceStub => {
+export const swaggerPetstoreServiceStub = (): SwaggerPetstoreServiceStub => {
   let methodStubs: MethodStubs;
   let currentRouter: RequestHandler;
 

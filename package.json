@@ -22,7 +22,7 @@
     "dist/"
   ],
   "scripts": {
-    "run-example": "dist/index.js generate ./example/swagger.json ./example/generated --client --server --stubs",
+    "run-example": "dist/index.js generate ./example/swagger.json --filename ./example/generated --template client",
     "boiler-update": "./node_modules/.bin/boiler-sync update",
     "lint": "./node_modules/.bin/eslint --cache 'src/**/*.ts' --quiet",
     "lint:watch": "./node_modules/.bin/esw --cache 'src/**/*.ts' --watch",

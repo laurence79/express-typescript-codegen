@@ -3,6 +3,7 @@ import commander from 'commander';
 import chalk from 'chalk';
 import { processLogger } from './lib/cli-logging';
 import { generateCode } from './generateCode';
+import { GenerateCodeOptions } from './types/GenerateCodeOptions';
 
 const packageJsonContent = fs.readFileSync(
   `${__dirname}/../package.json`,
@@ -12,28 +13,48 @@ const packageJson = JSON.parse(packageJsonContent) as { version: string };
 const { version } = packageJson;
 
 const cmd = new commander.Command('generate')
-  .description('Generates Express types and functions from the spec.')
-  .arguments('<spec-filename> <output-directory>')
-  .option('--client', 'output client modules')
-  .option('--server', 'output server modules')
-  .option('--stubs', 'output server stub modules')
+  .description('Generates typescript code from the spec.')
+  .arguments('<spec-filename>')
+  .option(
+    '--template <template>',
+    'the type to output. client, server or stubs. Default client'
+  )
+  .option(
+    '--filename <filename>',
+    'the file to output. Defaults to <service-name><output-type>.generated.ts'
+  )
+  .option(
+    '--service-name <name>',
+    'the name of the service. Defaults to info.title from the open api document'
+  )
   .action(
     (
       specFilename: string,
-      outputDirectory: string,
-      options: { client: boolean; server: boolean; stubs: boolean }
+      options: {
+        template: string | undefined;
+        filename: string | undefined;
+        serviceName: string | undefined;
+      }
     ) => {
       const logger = processLogger();
+
+      if (
+        options.template &&
+        !['client', 'server', 'stubs'].includes(options.template.toLowerCase())
+      ) {
+        commander.help({ error: true });
+      }
+
+      const output = (options.template
+        ? options.template.toUpperCase()
+        : 'CLIENT') as GenerateCodeOptions['output'];
 
       try {
         generateCode({
           openApiDocumentFilename: specFilename,
-          output: [
-            ...(options.client ? (['CLIENT'] as const) : []),
-            ...(options.server ? (['SERVER'] as const) : []),
-            ...(options.stubs ? (['STUBS'] as const) : [])
-          ],
-          outputDirectory,
+          output,
+          outputFilename: options.filename,
+          serviceName: options.serviceName,
           logger
         });
 

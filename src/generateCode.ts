@@ -1,29 +1,16 @@
-import { generateJsonSchema } from './generators/jsonSchema';
-import {
-  generateRequestHandlersTypes,
-  generateRouter,
-  generateTypesFromJsonSchema,
-  generateRequestValidators,
-  generateClientResponseTypes,
-  generateClient,
-  generateServerStub,
-  generateIndex
-} from './generators';
+import path from 'path';
+import { generateClient } from './generators/client/client';
+import { generateServer } from './generators/server/server';
+import { generateStubs } from './generators/stubs/stubs';
+import { assertNever } from './helpers/assertNever';
+import { initUpper } from './helpers/initUpper';
 import { loadOpenApiDocument } from './helpers/loadOpenApiDocument';
-import { writeFiles } from './helpers/writeFiles';
+import { writeFile } from './helpers/writeFile';
+import { serviceNameTemplate } from './templates';
 import { GenerateCodeOptions } from './types/GenerateCodeOptions';
 
 const defaultOptions = {
-  clientModuleName: 'client',
-  clientResponseTypesModuleName: 'clientResponseTypes',
-  jsonSchemaFilename: 'schema.json',
-  output: ['CLIENT', 'SERVER', 'STUBS'],
-  outputDirectory: 'generated',
-  requestHandlersModuleName: 'handlers',
-  requestSchemaValidatorsModuleName: 'requestValidators',
-  routerModuleName: 'router',
-  schemaTypesModuleName: 'schemaTypes',
-  serverStubsModuleName: 'serverStubs'
+  output: 'CLIENT'
 };
 
 export const generateCode = (inputOptions: GenerateCodeOptions): void => {
@@ -34,66 +21,47 @@ export const generateCode = (inputOptions: GenerateCodeOptions): void => {
 
   const openApiDocument = loadOpenApiDocument(options);
 
-  const jsonSchema = generateJsonSchema({
-    ...options,
-    openApiDocument
-  });
+  const serviceName =
+    inputOptions.serviceName ?? serviceNameTemplate(openApiDocument.info.title);
+
+  const filename = (() => {
+    const file = `${serviceName}${initUpper(
+      options.output.toLowerCase()
+    )}.generated.ts`;
+
+    if (!options.outputFilename) {
+      return file;
+    }
+
+    if (path.extname(options.outputFilename)) {
+      return options.outputFilename;
+    }
+
+    return path.join(options.outputFilename, file);
+  })();
 
   const renderDeps = {
     ...options,
     openApiDocument,
-    jsonSchema
+    serviceName,
+    filename
   };
 
-  const when = (
-    targets: GenerateCodeOptions['output'],
-    generator: () => { filename: string; content: string }
-  ): { filename: string; content: string } | null => {
-    if (targets.union(options.output).any()) {
-      return generator();
+  const method = (() => {
+    switch (options.output) {
+      case 'CLIENT':
+        return generateClient;
+      case 'SERVER':
+        return generateServer;
+      case 'STUBS':
+        return generateStubs;
+      default:
+        return assertNever(options.output);
     }
+  })();
 
-    return null;
-  };
-
-  const files: { filename: string; content: string }[] = [
-    when(['SERVER'], () => ({
-      filename: options.jsonSchemaFilename,
-      content: JSON.stringify(jsonSchema)
-    })),
-    {
-      filename: `${options.schemaTypesModuleName}.ts`,
-      content: generateTypesFromJsonSchema(renderDeps)
-    },
-    when(['SERVER'], () => ({
-      filename: `${options.requestSchemaValidatorsModuleName}.ts`,
-      content: generateRequestValidators(renderDeps)
-    })),
-    when(['SERVER'], () => ({
-      filename: `${options.requestHandlersModuleName}.ts`,
-      content: generateRequestHandlersTypes(renderDeps)
-    })),
-    when(['SERVER'], () => ({
-      filename: `${options.routerModuleName}.ts`,
-      content: generateRouter(renderDeps)
-    })),
-    when(['CLIENT'], () => ({
-      filename: `${options.clientResponseTypesModuleName}.ts`,
-      content: generateClientResponseTypes(renderDeps)
-    })),
-    when(['CLIENT'], () => ({
-      filename: `${options.clientModuleName}.ts`,
-      content: generateClient(renderDeps)
-    })),
-    when(['STUBS'], () => ({
-      filename: `${options.serverStubsModuleName}.ts`,
-      content: generateServerStub(renderDeps)
-    })),
-    {
-      filename: 'index.ts',
-      content: generateIndex(renderDeps)
-    }
-  ].compact();
-
-  writeFiles({ ...options, files });
+  writeFile({
+    ...renderDeps,
+    content: method(renderDeps)
+  });
 };
