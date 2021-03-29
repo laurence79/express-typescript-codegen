@@ -1,6 +1,6 @@
 /* eslint-disable prefer-template */
 /* eslint-disable no-template-curly-in-string */
-import { mapOperations } from '../../helpers/v2';
+import { mapOperations, typeDefForSchema } from '../../helpers/v2';
 import * as OpenApiV2 from '../../types/OpenApiV2';
 import { LogFn, progress } from '../../lib/cli-logging';
 import { generateResponseType } from './generateResponseType';
@@ -91,7 +91,11 @@ export const generateMethods = (
               body: ${
                 r.response.schema?.type === 'file'
                   ? 'await response.blob()'
-                  : 'await response.json()'
+                  : `(await response.json()) as ${
+                      r.response.schema
+                        ? typeDefForSchema(r.response.schema)
+                        : 'unknown'
+                    }`
               }
             }
             `
