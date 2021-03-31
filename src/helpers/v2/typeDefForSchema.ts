@@ -1,7 +1,7 @@
 import * as OpenApiV2 from '../../types/OpenApiV2';
-import { typeDefForEnum } from './typeDefForEnum';
 import { typeDefForObject } from './typeDefForObject';
 import { typeDefForReference } from './typeDefForReference';
+import { typeDefForEnum } from './typeDefForEnum';
 
 export const typeDefForSchema = (schema: OpenApiV2.SchemaObject): string => {
   if (typeof schema === 'boolean') {
@@ -16,14 +16,29 @@ export const typeDefForSchema = (schema: OpenApiV2.SchemaObject): string => {
     throw new Error(`Schema nodes must have a type. ${JSON.stringify(schema)}`);
   }
 
-  const { type, enum: enumProp } = schema;
+  const { type, enum: enumProp, allOf } = schema;
 
   if (enumProp) {
     return typeDefForEnum(enumProp, typeDefForSchema);
   }
 
   if (type === 'object') {
-    return typeDefForObject(schema, typeDefForSchema);
+    const def = typeDefForObject(schema, typeDefForSchema);
+
+    if (allOf) {
+      return allOf
+        .map(m => typeDefForSchema(m as OpenApiV2.SchemaObject))
+        .concat(def)
+        .join(' & ');
+    }
+
+    return def;
+  }
+
+  if (allOf) {
+    return allOf
+      .map(m => typeDefForSchema(m as OpenApiV2.SchemaObject))
+      .join(' & ');
   }
 
   if (

@@ -1,8 +1,7 @@
-import { JSONSchema4Type } from 'json-schema';
 import * as OpenApiV2 from '../../types/OpenApiV2';
 
 export const typeDefForEnum = (
-  members: JSONSchema4Type[],
+  members: NonNullable<OpenApiV2.SchemaObject['enum']>,
   onwardLookup: (schema: OpenApiV2.SchemaObject) => string
 ): string => {
   return members
@@ -14,14 +13,9 @@ export const typeDefForEnum = (
         return 'null';
       }
       if (typeof e === 'object') {
-        if (Array.isArray(e)) {
-          throw new Error(
-            "Don't know what to do with an array-like enum member"
-          );
-        }
         return onwardLookup(e);
       }
-      return e.toString();
+      throw new Error(`Unexpected enum member`);
     })
     .join(' | ');
 };

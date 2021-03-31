@@ -16,14 +16,27 @@ export const typeDefForSchema = (schema: JSONSchema7Definition): string => {
     throw new Error(`Schema nodes must have a type.`);
   }
 
-  const { type, enum: enumProp } = schema;
+  const { type, enum: enumProp, allOf } = schema;
 
   if (enumProp) {
     return typeDefForEnum(enumProp, typeDefForSchema);
   }
 
   if (type === 'object') {
-    return typeDefForObject(schema, typeDefForSchema);
+    const def = typeDefForObject(schema, typeDefForSchema);
+
+    if (allOf) {
+      return allOf
+        .map(m => typeDefForSchema(m))
+        .concat(def)
+        .join(' & ');
+    }
+
+    return def;
+  }
+
+  if (allOf) {
+    return allOf.map(m => typeDefForSchema(m)).join(' & ');
   }
 
   if (

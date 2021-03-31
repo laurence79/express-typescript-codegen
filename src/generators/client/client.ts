@@ -3,8 +3,8 @@
 import * as OpenApi from '../../types/OpenApi';
 import 'ts-array-extensions';
 import { Logger, success } from '../../lib/cli-logging';
-import { generateTypes } from '../../helpers/v2';
 import { generateMethods } from './generateMethods';
+import { generateTypes } from './generateTypes';
 
 const fromV3 = () => {
   throw new Error('OpenApi 3 not supported');

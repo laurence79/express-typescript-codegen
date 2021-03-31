@@ -3,7 +3,6 @@ export * from './dereference';
 export * from './dereferenceParameter';
 export * from './dereferenceResponseObject';
 export * from './dereferenceSchemaObject';
-export * from '../../generators/client/generateTypes';
 export * from './isReferenceObject';
 export * from './mapOperations';
 export * from './methodsOfPathItemObject';
