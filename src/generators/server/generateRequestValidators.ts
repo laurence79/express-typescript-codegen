@@ -47,7 +47,7 @@ export const generateRequestValidators = (
 
       return (
         `
-        const ${operationId}Validator = (options: ValidationOptions): RequestHandler => {
+        const ${operationId}Validator = (options?: ValidationOptions): RequestHandler => {
           ${parameterTypes
             .map(
               ([validator, type]) => `
@@ -69,7 +69,7 @@ export const generateRequestValidators = (
               return next();
             }
 
-            const errors = [
+            const errors = ([
               ${parameterTypes
                 .map(
                   ([validator, _, requestProperty]) => `
@@ -77,7 +77,7 @@ export const generateRequestValidators = (
               `
                 )
                 .join(',\n')}
-            ].flatMap(([validator, path]) =>
+            ] as const).flatMap(([validator, path]) =>
               validator.errors?.map(e => ` +
         '`${path}${e.dataPath} ${e.message}`' +
         `)

@@ -1,0 +1,562 @@
+swagger: '2.0'
+info:
+  title: Order and Pay Payment Gateway
+  description: Provides stripe payment services for the order and pay applications
+  version: 1.1.0
+
+paths:
+  /health:
+    get:
+      operationId: getHealth
+      summary: Checks that the service is up
+      produces:
+        - 'application/json'
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: object
+            properties:
+              ok:
+                type: boolean
+
+  /payment-intent:
+    post:
+      operationId: postPaymentIntent
+      summary: Creates a payment intent.
+      consumes:
+        - 'application/json'
+      produces:
+        - 'application/json'
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/PostPaymentIntentRequestPayload'
+        - $ref: '#/parameters/AuthenticationHeader'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/PaymentIntentResponsePayload'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/PaymentIntentBadRequestResponsePayload'
+        '401':
+          $ref: '#/responses/UnauthenticatedResponse'
+        '403':
+          $ref: '#/responses/NotAuthorisedResponse'
+
+  /venue-config:
+    parameters:
+      - $ref: '#/parameters/AuthenticationHeader'
+    get:
+      operationId: getVenueConfigs
+      summary: Returns configurations for the supplied filters
+      produces:
+        - 'application/json'
+      parameters:
+        - $ref: '#/parameters/VenueIdQueryParameter'
+        - in: query
+          name: status
+          type: string
+          enum:
+            - CURRENT
+            - REPLACED
+          description: The status of the configs to return
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/VenueConfigResponsePayload'
+        '400':
+          $ref: '#/responses/BadRequestResponse'
+        '401':
+          $ref: '#/responses/UnauthenticatedResponse'
+        '403':
+          $ref: '#/responses/NotAuthorisedResponse'
+
+    post:
+      operationId: postVenueConfig
+      summary: Create a stripe configuration for the venue
+      consumes:
+        - 'application/json'
+      produces:
+        - 'application/json'
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/VenueConfigRequestPayload'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/VenueConfigResponsePayload'
+        '400':
+          $ref: '#/responses/BadRequestResponse'
+        '401':
+          $ref: '#/responses/UnauthenticatedResponse'
+        '403':
+          $ref: '#/responses/NotAuthorisedResponse'
+
+  /venue-config/{id}:
+    parameters:
+      - $ref: '#/parameters/AuthenticationHeader'
+      - $ref: '#/parameters/IdPathParameter'
+    get:
+      operationId: getVenueConfigById
+      summary: Returns the configuration for the supplied id
+      produces:
+        - 'application/json'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/VenueConfigResponsePayload'
+        '400':
+          $ref: '#/responses/BadRequestResponse'
+        '401':
+          $ref: '#/responses/UnauthenticatedResponse'
+        '403':
+          $ref: '#/responses/NotAuthorisedResponse'
+        '404':
+          $ref: '#/responses/NotFoundResponse'
+
+  /venue-stripe-account:
+    parameters:
+      - $ref: '#/parameters/AuthenticationHeader'
+    get:
+      deprecated: true
+      operationId: getVenueStripeAccountByVenueId
+      summary: Returns the stripeAccount for the supplied venue ID.
+      produces:
+        - 'application/json'
+      parameters:
+        - $ref: '#/parameters/RequiredVenueIdQueryParameter'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/VenueStripeAccountResponsePayload'
+        '400':
+          $ref: '#/responses/BadRequestResponse'
+        '401':
+          $ref: '#/responses/UnauthenticatedResponse'
+        '403':
+          $ref: '#/responses/NotAuthorisedResponse'
+        '404':
+          $ref: '#/responses/NotFoundResponse'
+
+    post:
+      deprecated: true
+      operationId: postVenueStripeAccount
+      summary: Creates an association between a venue and a stripe account.
+      consumes:
+        - 'application/json'
+      produces:
+        - 'application/json'
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/PostVenueStripeAccountRequestPayload'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/VenueStripeAccountResponsePayload'
+        '400':
+          $ref: '#/responses/BadRequestResponse'
+        '401':
+          $ref: '#/responses/UnauthenticatedResponse'
+        '403':
+          $ref: '#/responses/NotAuthorisedResponse'
+
+  /venue-stripe-account/{id}:
+    parameters:
+      - $ref: '#/parameters/AuthenticationHeader'
+      - $ref: '#/parameters/IdPathParameter'
+    get:
+      deprecated: true
+      operationId: getVenueStripeAccountById
+      summary: Returns the stripeAccount for the supplied ID.
+      produces:
+        - 'application/json'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/VenueStripeAccountResponsePayload'
+        '400':
+          $ref: '#/responses/BadRequestResponse'
+        '401':
+          $ref: '#/responses/UnauthenticatedResponse'
+        '403':
+          $ref: '#/responses/NotAuthorisedResponse'
+        '404':
+          $ref: '#/responses/NotFoundResponse'
+
+    delete:
+      deprecated: true
+      operationId: deleteVenueStripeAccount
+      summary: Deletes the association between the supplied Stripe account and venue.
+      responses:
+        '200':
+          description: Success
+        '400':
+          $ref: '#/responses/BadRequestResponse'
+        '401':
+          $ref: '#/responses/UnauthenticatedResponse'
+        '403':
+          $ref: '#/responses/NotAuthorisedResponse'
+        '404':
+          $ref: '#/responses/NotFoundResponse'
+
+  /venue-statement-suffix:
+    parameters:
+      - $ref: '#/parameters/AuthenticationHeader'
+    get:
+      deprecated: true
+      operationId: getVenueStatementSuffixByVenueId
+      summary: Returns the statement suffix mapping for the supplied venue ID.
+      produces:
+        - 'application/json'
+      parameters:
+        - $ref: '#/parameters/RequiredVenueIdQueryParameter'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/VenueStatementSuffixResponsePayload'
+        '400':
+          $ref: '#/responses/BadRequestResponse'
+        '401':
+          $ref: '#/responses/UnauthenticatedResponse'
+        '403':
+          $ref: '#/responses/NotAuthorisedResponse'
+        '404':
+          $ref: '#/responses/NotFoundResponse'
+
+    post:
+      deprecated: true
+      operationId: postVenueStatementSuffix
+      summary: Creates an association between a venue and a statement suffix.
+      produces:
+        - 'application/json'
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/PostVenueStatementSuffixRequestPayload'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/VenueStatementSuffixResponsePayload'
+        '400':
+          $ref: '#/responses/BadRequestResponse'
+        '401':
+          $ref: '#/responses/UnauthenticatedResponse'
+        '403':
+          $ref: '#/responses/NotAuthorisedResponse'
+
+  /venue-statement-suffix/{id}:
+    parameters:
+      - $ref: '#/parameters/IdPathParameter'
+      - $ref: '#/parameters/AuthenticationHeader'
+    get:
+      deprecated: true
+      operationId: getVenueStatementSuffixById
+      summary: Returns the statement suffix for the supplied ID.
+      produces:
+        - 'application/json'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/VenueStatementSuffixResponsePayload'
+        '400':
+          $ref: '#/responses/BadRequestResponse'
+        '401':
+          $ref: '#/responses/UnauthenticatedResponse'
+        '403':
+          $ref: '#/responses/NotAuthorisedResponse'
+        '404':
+          $ref: '#/responses/NotFoundResponse'
+
+    delete:
+      deprecated: true
+      operationId: deleteVenueStatementSuffix
+      summary: Deletes the association between the supplied statement suffix and venue.
+      produces:
+        - 'application/json'
+      responses:
+        '200':
+          description: Success
+        '400':
+          $ref: '#/responses/BadRequestResponse'
+        '401':
+          $ref: '#/responses/UnauthenticatedResponse'
+        '403':
+          $ref: '#/responses/NotAuthorisedResponse'
+        '404':
+          $ref: '#/responses/NotFoundResponse'
+
+responses:
+  BadRequestResponse:
+    description: Bad request
+    schema:
+      $ref: '#/definitions/BadRequestResponsePayload'
+
+  UnauthenticatedResponse:
+    description: Unauthenticated
+
+  NotAuthorisedResponse:
+    description: Not authorised
+
+  NotFoundResponse:
+    description: Not found
+
+parameters:
+  AuthenticationHeader:
+    in: header
+    name: Authorization
+    type: string
+    required: true
+    description: The authentication token, e.g. "Bearer <token>"
+
+  RequiredVenueIdQueryParameter:
+    in: query
+    name: venueId
+    type: string
+    required: true
+    description: The venue Id
+
+  VenueIdQueryParameter:
+    in: query
+    name: venueId
+    type: string
+    description: The venue Id
+
+  IdPathParameter:
+    in: path
+    name: id
+    type: string
+    required: true
+    description: The Id of the object to return
+
+definitions:
+  BadRequestResponsePayload:
+    type: object
+    properties:
+      errors:
+        type: array
+        items:
+          type: string
+    required:
+      - errors
+
+  PaymentIntentBadRequestResponsePayload:
+    type: object
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: '#/definitions/PaymentIntentBadRequestError'
+    required:
+      - errors
+
+  PaymentIntentBadRequestError:
+    type: object
+    properties:
+      errorType:
+        $ref: '#/definitions/PaymentIntentBadRequestErrorType'
+      errorMessage:
+        type: string
+    required:
+      - errorType
+
+  PaymentIntentBadRequestErrorType:
+    type: string
+    enum:
+      - MISSING_STRIPE_ACCOUNT
+      - REQUIRED_PAYLOAD_DATA_MISSING
+
+  PaymentIntentResponsePayload:
+    type: object
+    properties:
+      clientSecret:
+        type: string
+        example: abc123
+    required:
+      - clientSecret
+
+  PostPaymentIntentRequestPayload:
+    type: object
+    properties:
+      amount:
+        type: number
+        example: 12345
+      orderId:
+        type: string
+        example: abc123
+      venueId:
+        type: string
+        example: abc123
+    required:
+      - amount
+      - orderId
+      - venueId
+
+  Config:
+    type: object
+    enum:
+      - type: object
+        properties:
+          configType:
+            type: string
+            enum:
+              - DIRECT
+          statementSuffix:
+            type: string
+            example: 'ALLBARONE'
+        required:
+          - configType
+          - statementSuffix
+      - type: object
+        properties:
+          configType:
+            type: string
+            enum:
+              - CONNECT
+          stripeAccountId:
+            type: string
+            example: '1234'
+        required:
+          - configType
+          - stripeAccountId
+
+  VenueConfigRequestPayload:
+    type: object
+    properties:
+      venueId:
+        type: string
+        example: '1234'
+      config:
+        $ref: '#/definitions/Config'
+    required:
+      - config
+      - venueId
+
+  VenueConfigResponsePayload:
+    type: object
+    properties:
+      id:
+        type: string
+        example: '1234'
+      venueId:
+        type: string
+        example: '1234'
+      config:
+        $ref: '#/definitions/Config'
+      status:
+        $ref: '#/definitions/StripeConfigStatus'
+      createDateTime:
+        type: string
+        example: '2020-08-10T21:07:38.123Z'
+      createUserId:
+        type: string
+        example: 'abc123'
+    required:
+      - id
+      - config
+      - venueId
+      - status
+      - createDateTime
+      - createUserId
+
+  StripeConfigStatus:
+    type: string
+    enum:
+      - CURRENT
+      - REPLACED
+
+  VenueStripeAccountResponsePayload:
+    type: object
+    properties:
+      id:
+        type: string
+        example: '1234'
+      stripeAccountId:
+        type: string
+        example: '1234'
+      venueId:
+        type: string
+        example: All bar one
+      modifyDateTime:
+        type: string
+        example: '2020-08-10T21:07:38.123Z'
+      modifyUserId:
+        type: string
+        example: 'abc123'
+    required:
+      - id
+      - stripeAccountId
+      - venueId
+      - modifyDateTime
+      - modifyUserId
+
+  PostVenueStripeAccountRequestPayload:
+    type: object
+    properties:
+      stripeAccountId:
+        type: string
+        example: '1234'
+      venueId:
+        type: string
+        example: abc123
+    required:
+      - stripeAccountId
+      - venueId
+
+  VenueStatementSuffixResponsePayload:
+    type: object
+    properties:
+      id:
+        type: string
+        example: '1234'
+      statementSuffix:
+        type: string
+        example: 'ALLBARONE'
+      venueId:
+        type: string
+        example: All bar one
+      modifyDateTime:
+        type: string
+        example: '2020-08-10T21:07:38.123Z'
+      modifyUserId:
+        type: string
+        example: 'abc123'
+    required:
+      - id
+      - statementSuffix
+      - venueId
+      - modifyDateTime
+      - modifyUserId
+
+  PostVenueStatementSuffixRequestPayload:
+    type: object
+    properties:
+      statementSuffix:
+        type: string
+        example: 'ALLBARONE'
+      venueId:
+        type: string
+        example: abc123
+    required:
+      - statementSuffix
+      - venueId
