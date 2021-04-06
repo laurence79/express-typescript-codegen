@@ -62,19 +62,19 @@ export class SwaggerPetstoreClient {
       body: JSON.stringify(body)
     });
 
-    const { status } = response;
+    const { status: $status } = response;
 
-    this.logger?.('REST API Call', { method, url, status });
+    this.logger?.('REST API Call', { method, url, status: $status });
 
-    switch (status) {
+    switch ($status) {
       case 405:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as unknown
         };
 
       default:
-        throw new Error(`Unexpected status ${status}`);
+        throw new Error(`Unexpected status ${$status}`);
     }
   }
 
@@ -95,36 +95,36 @@ export class SwaggerPetstoreClient {
       body: JSON.stringify(body)
     });
 
-    const { status } = response;
+    const { status: $status } = response;
 
-    this.logger?.('REST API Call', { method, url, status });
+    this.logger?.('REST API Call', { method, url, status: $status });
 
-    switch (status) {
+    switch ($status) {
       case 400:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as unknown
         };
 
       case 404:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as unknown
         };
 
       case 405:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as unknown
         };
 
       default:
-        throw new Error(`Unexpected status ${status}`);
+        throw new Error(`Unexpected status ${$status}`);
     }
   }
 
   public async findPetsByStatus(args: {
-    status: Array<'available' | 'pending' | 'sold'>;
+    status: string;
   }): Promise<
     ResponseWithData<200, Array<Pet>> | ResponseWithData<400, unknown>
   > {
@@ -139,30 +139,30 @@ export class SwaggerPetstoreClient {
       method
     });
 
-    const { status } = response;
+    const { status: $status } = response;
 
-    this.logger?.('REST API Call', { method, url, status });
+    this.logger?.('REST API Call', { method, url, status: $status });
 
-    switch (status) {
+    switch ($status) {
       case 200:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as Array<Pet>
         };
 
       case 400:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as unknown
         };
 
       default:
-        throw new Error(`Unexpected status ${status}`);
+        throw new Error(`Unexpected status ${$status}`);
     }
   }
 
   public async findPetsByTags(args: {
-    tags: Array<string>;
+    tags: string;
   }): Promise<
     ResponseWithData<200, Array<Pet>> | ResponseWithData<400, unknown>
   > {
@@ -177,30 +177,30 @@ export class SwaggerPetstoreClient {
       method
     });
 
-    const { status } = response;
+    const { status: $status } = response;
 
-    this.logger?.('REST API Call', { method, url, status });
+    this.logger?.('REST API Call', { method, url, status: $status });
 
-    switch (status) {
+    switch ($status) {
       case 200:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as Array<Pet>
         };
 
       case 400:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as unknown
         };
 
       default:
-        throw new Error(`Unexpected status ${status}`);
+        throw new Error(`Unexpected status ${$status}`);
     }
   }
 
   public async getPetById(args: {
-    petId: number;
+    petId: string;
   }): Promise<
     | ResponseWithData<200, Pet>
     | ResponseWithData<400, unknown>
@@ -215,44 +215,43 @@ export class SwaggerPetstoreClient {
       method
     });
 
-    const { status } = response;
+    const { status: $status } = response;
 
-    this.logger?.('REST API Call', { method, url, status });
+    this.logger?.('REST API Call', { method, url, status: $status });
 
-    switch (status) {
+    switch ($status) {
       case 200:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as Pet
         };
 
       case 400:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as unknown
         };
 
       case 404:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as unknown
         };
 
       default:
-        throw new Error(`Unexpected status ${status}`);
+        throw new Error(`Unexpected status ${$status}`);
     }
   }
 
   public async updatePetWithForm(args: {
-    petId: number;
-    name?: string;
-    status?: string;
+    petId: string;
+    body: { name?: string; status?: string };
   }): Promise<ResponseWithData<405, unknown>> {
-    const { petId, name, status } = args;
+    const { petId, body } = args;
 
     const formData = new FormData();
-    formData.append('name', name);
-    formData.append('status', status);
+    formData.append('name', body.name);
+    formData.append('status', body.status);
 
     const method = 'POST';
     const url = `${this.baseUrl}/pet/${petId}`;
@@ -262,25 +261,25 @@ export class SwaggerPetstoreClient {
       body: formData
     });
 
-    const { status } = response;
+    const { status: $status } = response;
 
-    this.logger?.('REST API Call', { method, url, status });
+    this.logger?.('REST API Call', { method, url, status: $status });
 
-    switch (status) {
+    switch ($status) {
       case 405:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as unknown
         };
 
       default:
-        throw new Error(`Unexpected status ${status}`);
+        throw new Error(`Unexpected status ${$status}`);
     }
   }
 
   public async deletePet(args: {
     api_key?: string;
-    petId: number;
+    petId: string;
   }): Promise<ResponseWithData<400, unknown> | ResponseWithData<404, unknown>> {
     const { api_key, petId } = args;
 
@@ -292,25 +291,25 @@ export class SwaggerPetstoreClient {
       headers: { api_key }
     });
 
-    const { status } = response;
+    const { status: $status } = response;
 
-    this.logger?.('REST API Call', { method, url, status });
+    this.logger?.('REST API Call', { method, url, status: $status });
 
-    switch (status) {
+    switch ($status) {
       case 400:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as unknown
         };
 
       case 404:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as unknown
         };
 
       default:
-        throw new Error(`Unexpected status ${status}`);
+        throw new Error(`Unexpected status ${$status}`);
     }
   }
 
@@ -327,30 +326,30 @@ export class SwaggerPetstoreClient {
       body: JSON.stringify(body)
     });
 
-    const { status } = response;
+    const { status: $status } = response;
 
-    this.logger?.('REST API Call', { method, url, status });
+    this.logger?.('REST API Call', { method, url, status: $status });
 
-    switch (status) {
+    switch ($status) {
       case 200:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as Order
         };
 
       case 400:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as unknown
         };
 
       default:
-        throw new Error(`Unexpected status ${status}`);
+        throw new Error(`Unexpected status ${$status}`);
     }
   }
 
   public async getOrderById(args: {
-    orderId: number;
+    orderId: string;
   }): Promise<
     | ResponseWithData<200, Order>
     | ResponseWithData<400, unknown>
@@ -365,36 +364,36 @@ export class SwaggerPetstoreClient {
       method
     });
 
-    const { status } = response;
+    const { status: $status } = response;
 
-    this.logger?.('REST API Call', { method, url, status });
+    this.logger?.('REST API Call', { method, url, status: $status });
 
-    switch (status) {
+    switch ($status) {
       case 200:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as Order
         };
 
       case 400:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as unknown
         };
 
       case 404:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as unknown
         };
 
       default:
-        throw new Error(`Unexpected status ${status}`);
+        throw new Error(`Unexpected status ${$status}`);
     }
   }
 
   public async deleteOrder(args: {
-    orderId: number;
+    orderId: string;
   }): Promise<ResponseWithData<400, unknown> | ResponseWithData<404, unknown>> {
     const { orderId } = args;
 
@@ -405,25 +404,25 @@ export class SwaggerPetstoreClient {
       method
     });
 
-    const { status } = response;
+    const { status: $status } = response;
 
-    this.logger?.('REST API Call', { method, url, status });
+    this.logger?.('REST API Call', { method, url, status: $status });
 
-    switch (status) {
+    switch ($status) {
       case 400:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as unknown
         };
 
       case 404:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as unknown
         };
 
       default:
-        throw new Error(`Unexpected status ${status}`);
+        throw new Error(`Unexpected status ${$status}`);
     }
   }
 
@@ -435,19 +434,19 @@ export class SwaggerPetstoreClient {
       method
     });
 
-    const { status } = response;
+    const { status: $status } = response;
 
-    this.logger?.('REST API Call', { method, url, status });
+    this.logger?.('REST API Call', { method, url, status: $status });
 
-    switch (status) {
+    switch ($status) {
       case 200:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as unknown
         };
 
       default:
-        throw new Error(`Unexpected status ${status}`);
+        throw new Error(`Unexpected status ${$status}`);
     }
   }
 
@@ -464,15 +463,15 @@ export class SwaggerPetstoreClient {
       body: JSON.stringify(body)
     });
 
-    const { status } = response;
+    const { status: $status } = response;
 
-    this.logger?.('REST API Call', { method, url, status });
+    this.logger?.('REST API Call', { method, url, status: $status });
 
-    switch (status) {
+    switch ($status) {
       default:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as unknown
         };
     }
   }
@@ -490,15 +489,15 @@ export class SwaggerPetstoreClient {
       body: JSON.stringify(body)
     });
 
-    const { status } = response;
+    const { status: $status } = response;
 
-    this.logger?.('REST API Call', { method, url, status });
+    this.logger?.('REST API Call', { method, url, status: $status });
 
-    switch (status) {
+    switch ($status) {
       default:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as unknown
         };
     }
   }
@@ -519,31 +518,31 @@ export class SwaggerPetstoreClient {
       method
     });
 
-    const { status } = response;
+    const { status: $status } = response;
 
-    this.logger?.('REST API Call', { method, url, status });
+    this.logger?.('REST API Call', { method, url, status: $status });
 
-    switch (status) {
+    switch ($status) {
       case 200:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as User
         };
 
       case 400:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as unknown
         };
 
       case 404:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as unknown
         };
 
       default:
-        throw new Error(`Unexpected status ${status}`);
+        throw new Error(`Unexpected status ${$status}`);
     }
   }
 
@@ -561,25 +560,25 @@ export class SwaggerPetstoreClient {
       body: JSON.stringify(body)
     });
 
-    const { status } = response;
+    const { status: $status } = response;
 
-    this.logger?.('REST API Call', { method, url, status });
+    this.logger?.('REST API Call', { method, url, status: $status });
 
-    switch (status) {
+    switch ($status) {
       case 400:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as unknown
         };
 
       case 404:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as unknown
         };
 
       default:
-        throw new Error(`Unexpected status ${status}`);
+        throw new Error(`Unexpected status ${$status}`);
     }
   }
 
@@ -595,25 +594,25 @@ export class SwaggerPetstoreClient {
       method
     });
 
-    const { status } = response;
+    const { status: $status } = response;
 
-    this.logger?.('REST API Call', { method, url, status });
+    this.logger?.('REST API Call', { method, url, status: $status });
 
-    switch (status) {
+    switch ($status) {
       case 400:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as unknown
         };
 
       case 404:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as unknown
         };
 
       default:
-        throw new Error(`Unexpected status ${status}`);
+        throw new Error(`Unexpected status ${$status}`);
     }
   }
 
@@ -632,25 +631,25 @@ export class SwaggerPetstoreClient {
       method
     });
 
-    const { status } = response;
+    const { status: $status } = response;
 
-    this.logger?.('REST API Call', { method, url, status });
+    this.logger?.('REST API Call', { method, url, status: $status });
 
-    switch (status) {
+    switch ($status) {
       case 200:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as string
         };
 
       case 400:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as unknown
         };
 
       default:
-        throw new Error(`Unexpected status ${status}`);
+        throw new Error(`Unexpected status ${$status}`);
     }
   }
 
@@ -662,15 +661,15 @@ export class SwaggerPetstoreClient {
       method
     });
 
-    const { status } = response;
+    const { status: $status } = response;
 
-    this.logger?.('REST API Call', { method, url, status });
+    this.logger?.('REST API Call', { method, url, status: $status });
 
-    switch (status) {
+    switch ($status) {
       default:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as unknown
         };
     }
   }
@@ -688,15 +687,15 @@ export class SwaggerPetstoreClient {
       body: JSON.stringify(body)
     });
 
-    const { status } = response;
+    const { status: $status } = response;
 
-    this.logger?.('REST API Call', { method, url, status });
+    this.logger?.('REST API Call', { method, url, status: $status });
 
-    switch (status) {
+    switch ($status) {
       default:
         return {
-          status,
-          body: await response.json()
+          status: $status,
+          body: (await response.json()) as unknown
         };
     }
   }

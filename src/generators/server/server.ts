@@ -3,15 +3,11 @@
 import * as OpenApi from '../../types/OpenApi';
 import 'ts-array-extensions';
 import { Logger, success } from '../../lib/cli-logging';
-import { generateServerTypes } from '../generateServerTypes';
-import { generateRequestHandlersTypes } from './generateRequestHandlersTypes';
-import { generateRouter } from './generateRouter';
-import { generateJsonSchema } from '../generateJsonSchema';
-import { generateRequestValidators } from './generateRequestValidators';
-
-const fromV3 = () => {
-  throw new Error('OpenApi 3 not supported');
-};
+import { generateServerTypes } from '../server-types';
+import { generateRequestHandlersTypes } from './request-handlers-types';
+import { generateRouter } from './router';
+import { generateJsonSchema } from '../json-schema';
+import { generateRequestValidators } from './request-validators';
 
 export const generateServer = ({
   logger,
@@ -24,30 +20,11 @@ export const generateServer = ({
 }): string => {
   const log = logger?.create('Generating server');
 
-  const jsonSchema =
-    'swagger' in openApiDocument
-      ? generateJsonSchema(openApiDocument, log)
-      : fromV3();
-
-  const types =
-    'swagger' in openApiDocument
-      ? generateServerTypes(openApiDocument, jsonSchema, log)
-      : fromV3();
-
-  const handlers =
-    'swagger' in openApiDocument
-      ? generateRequestHandlersTypes(openApiDocument, log)
-      : fromV3();
-
-  const validators =
-    'swagger' in openApiDocument
-      ? generateRequestValidators(openApiDocument, log)
-      : fromV3();
-
-  const router =
-    'swagger' in openApiDocument
-      ? generateRouter(openApiDocument, serviceName, log)
-      : fromV3();
+  const jsonSchema = generateJsonSchema(openApiDocument, log);
+  const types = generateServerTypes(openApiDocument, jsonSchema, log);
+  const handlers = generateRequestHandlersTypes(openApiDocument, log);
+  const validators = generateRequestValidators(openApiDocument, log);
+  const router = generateRouter(openApiDocument, serviceName, log);
 
   const code = `
     import Ajv from 'ajv';
@@ -58,14 +35,14 @@ export const generateServer = ({
       logger?: (req: Request) => (message: string, data: Record<string, unknown>) => void;
     };
 
-    ${types.join('\n\n')}
+    ${types}
 
-    ${handlers.join('\n\n')}
+    ${handlers}
 
     const ajv = new Ajv({ strict: false });
     ajv.addSchema(${JSON.stringify(jsonSchema)});
 
-    ${validators.join('\n\n')}
+    ${validators}
 
     ${router}
   `;
