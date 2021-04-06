@@ -3,12 +3,8 @@
 import * as OpenApi from '../../types/OpenApi';
 import 'ts-array-extensions';
 import { Logger, success } from '../../lib/cli-logging';
-import { generateMethods } from './generateMethods';
-import { generateTypes } from './generateTypes';
-
-const fromV3 = () => {
-  throw new Error('OpenApi 3 not supported');
-};
+import { generateMethods } from './methods';
+import { generateTypes } from './types';
 
 export const generateClient = ({
   logger,
@@ -21,15 +17,9 @@ export const generateClient = ({
 }): string => {
   const log = logger?.create('Generating client');
 
-  const types =
-    'swagger' in openApiDocument
-      ? generateTypes(openApiDocument, log)
-      : fromV3();
+  const types = generateTypes(openApiDocument, log);
 
-  const methods =
-    'swagger' in openApiDocument
-      ? generateMethods(openApiDocument, log)
-      : fromV3();
+  const methods = generateMethods(openApiDocument, log);
 
   const code = `
     import qs from 'qs';

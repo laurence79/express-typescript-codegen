@@ -1,7 +1,7 @@
 import path from 'path';
 import { generateClient } from './generators/client/client';
 import { generateServer } from './generators/server/server';
-import { generateStubs } from './generators/stubs/stubs';
+import { generateStubs } from './generators/stubs';
 import { assertNever } from './helpers/assertNever';
 import { initUpper } from './helpers/initUpper';
 import { loadOpenApiDocument } from './helpers/loadOpenApiDocument';

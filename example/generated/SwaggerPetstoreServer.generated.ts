@@ -107,7 +107,7 @@ export type AddPetRequestHandler = RequestHandler<
   AddPetRequestBody,
   unknown,
   Record<string, any>,
-  405
+  number
 >;
 
 export type UpdatePetRequestHandler = RequestHandler<
@@ -116,7 +116,7 @@ export type UpdatePetRequestHandler = RequestHandler<
   UpdatePetRequestBody,
   unknown,
   Record<string, any>,
-  400 | 404 | 405
+  number
 >;
 
 export type FindPetsByStatusRequestHandler = RequestHandler<
@@ -125,7 +125,7 @@ export type FindPetsByStatusRequestHandler = RequestHandler<
   unknown,
   FindPetsByStatusRequestQuery,
   Record<string, any>,
-  200 | 400
+  number
 >;
 
 export type FindPetsByTagsRequestHandler = RequestHandler<
@@ -134,7 +134,7 @@ export type FindPetsByTagsRequestHandler = RequestHandler<
   unknown,
   FindPetsByTagsRequestQuery,
   Record<string, any>,
-  200 | 400
+  number
 >;
 
 export type GetPetByIdRequestHandler = RequestHandler<
@@ -143,7 +143,7 @@ export type GetPetByIdRequestHandler = RequestHandler<
   unknown,
   unknown,
   Record<string, any>,
-  200 | 400 | 404
+  number
 >;
 
 export type UpdatePetWithFormRequestHandler = RequestHandler<
@@ -152,7 +152,7 @@ export type UpdatePetWithFormRequestHandler = RequestHandler<
   UpdatePetWithFormRequestBody,
   unknown,
   Record<string, any>,
-  405
+  number
 >;
 
 export type DeletePetRequestHandler = RequestHandler<
@@ -161,7 +161,7 @@ export type DeletePetRequestHandler = RequestHandler<
   unknown,
   unknown,
   Record<string, any>,
-  400 | 404
+  number
 >;
 
 export type PlaceOrderRequestHandler = RequestHandler<
@@ -170,7 +170,7 @@ export type PlaceOrderRequestHandler = RequestHandler<
   PlaceOrderRequestBody,
   unknown,
   Record<string, any>,
-  200 | 400
+  number
 >;
 
 export type GetOrderByIdRequestHandler = RequestHandler<
@@ -179,7 +179,7 @@ export type GetOrderByIdRequestHandler = RequestHandler<
   unknown,
   unknown,
   Record<string, any>,
-  200 | 400 | 404
+  number
 >;
 
 export type DeleteOrderRequestHandler = RequestHandler<
@@ -188,7 +188,7 @@ export type DeleteOrderRequestHandler = RequestHandler<
   unknown,
   unknown,
   Record<string, any>,
-  400 | 404
+  number
 >;
 
 export type GetInventoryRequestHandler = RequestHandler<
@@ -197,7 +197,7 @@ export type GetInventoryRequestHandler = RequestHandler<
   unknown,
   unknown,
   Record<string, any>,
-  200
+  number
 >;
 
 export type CreateUsersWithArrayInputRequestHandler = RequestHandler<
@@ -224,7 +224,7 @@ export type GetUserByNameRequestHandler = RequestHandler<
   unknown,
   unknown,
   Record<string, any>,
-  200 | 400 | 404
+  number
 >;
 
 export type UpdateUserRequestHandler = RequestHandler<
@@ -233,7 +233,7 @@ export type UpdateUserRequestHandler = RequestHandler<
   UpdateUserRequestBody,
   unknown,
   Record<string, any>,
-  400 | 404
+  number
 >;
 
 export type DeleteUserRequestHandler = RequestHandler<
@@ -242,7 +242,7 @@ export type DeleteUserRequestHandler = RequestHandler<
   unknown,
   unknown,
   Record<string, any>,
-  400 | 404
+  number
 >;
 
 export type LoginUserRequestHandler = RequestHandler<
@@ -251,7 +251,7 @@ export type LoginUserRequestHandler = RequestHandler<
   unknown,
   LoginUserRequestQuery,
   Record<string, any>,
-  200 | 400
+  number
 >;
 
 export type LogoutUserRequestHandler = RequestHandler<
@@ -274,23 +274,41 @@ export type CreateUserRequestHandler = RequestHandler<
 
 export type RequestHandlers = {
   addPet: AddPetRequestHandler;
+
   updatePet: UpdatePetRequestHandler;
+
   findPetsByStatus: FindPetsByStatusRequestHandler;
+
   findPetsByTags: FindPetsByTagsRequestHandler;
+
   getPetById: GetPetByIdRequestHandler;
+
   updatePetWithForm: UpdatePetWithFormRequestHandler;
+
   deletePet: DeletePetRequestHandler;
+
   placeOrder: PlaceOrderRequestHandler;
+
   getOrderById: GetOrderByIdRequestHandler;
+
   deleteOrder: DeleteOrderRequestHandler;
+
   getInventory: GetInventoryRequestHandler;
+
   createUsersWithArrayInput: CreateUsersWithArrayInputRequestHandler;
+
   createUsersWithListInput: CreateUsersWithListInputRequestHandler;
+
   getUserByName: GetUserByNameRequestHandler;
+
   updateUser: UpdateUserRequestHandler;
+
   deleteUser: DeleteUserRequestHandler;
+
   loginUser: LoginUserRequestHandler;
+
   logoutUser: LogoutUserRequestHandler;
+
   createUser: CreateUserRequestHandler;
 };
 
@@ -555,15 +573,15 @@ ajv.addSchema({
   }
 });
 
-const addPetValidator = (options: ValidationOptions): RequestHandler => {
-  const validateBody = ajv.getSchema('#/definitions/AddPetRequestBody')!;
+const addPetValidator = (options?: ValidationOptions): RequestHandler => {
+  const body = ajv.getSchema('#/definitions/AddPetRequestBody')!;
 
   return (req, res, next) => {
-    if ([validateBody(req.body)].every(r => r)) {
+    if ([body(req.body)].every(r => r)) {
       return next();
     }
 
-    const errors = [[validateBody, 'body']]
+    const errors = ([[body, 'body']] as const)
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
       )
@@ -577,15 +595,15 @@ const addPetValidator = (options: ValidationOptions): RequestHandler => {
   };
 };
 
-const updatePetValidator = (options: ValidationOptions): RequestHandler => {
-  const validateBody = ajv.getSchema('#/definitions/UpdatePetRequestBody')!;
+const updatePetValidator = (options?: ValidationOptions): RequestHandler => {
+  const body = ajv.getSchema('#/definitions/UpdatePetRequestBody')!;
 
   return (req, res, next) => {
-    if ([validateBody(req.body)].every(r => r)) {
+    if ([body(req.body)].every(r => r)) {
       return next();
     }
 
-    const errors = [[validateBody, 'body']]
+    const errors = ([[body, 'body']] as const)
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
       )
@@ -600,18 +618,16 @@ const updatePetValidator = (options: ValidationOptions): RequestHandler => {
 };
 
 const findPetsByStatusValidator = (
-  options: ValidationOptions
+  options?: ValidationOptions
 ): RequestHandler => {
-  const validateQuery = ajv.getSchema(
-    '#/definitions/FindPetsByStatusRequestQuery'
-  )!;
+  const query = ajv.getSchema('#/definitions/FindPetsByStatusRequestQuery')!;
 
   return (req, res, next) => {
-    if ([validateQuery(req.query)].every(r => r)) {
+    if ([query(req.query)].every(r => r)) {
       return next();
     }
 
-    const errors = [[validateQuery, 'query']]
+    const errors = ([[query, 'query']] as const)
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
       )
@@ -626,18 +642,16 @@ const findPetsByStatusValidator = (
 };
 
 const findPetsByTagsValidator = (
-  options: ValidationOptions
+  options?: ValidationOptions
 ): RequestHandler => {
-  const validateQuery = ajv.getSchema(
-    '#/definitions/FindPetsByTagsRequestQuery'
-  )!;
+  const query = ajv.getSchema('#/definitions/FindPetsByTagsRequestQuery')!;
 
   return (req, res, next) => {
-    if ([validateQuery(req.query)].every(r => r)) {
+    if ([query(req.query)].every(r => r)) {
       return next();
     }
 
-    const errors = [[validateQuery, 'query']]
+    const errors = ([[query, 'query']] as const)
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
       )
@@ -651,15 +665,15 @@ const findPetsByTagsValidator = (
   };
 };
 
-const getPetByIdValidator = (options: ValidationOptions): RequestHandler => {
-  const validatePath = ajv.getSchema('#/definitions/GetPetByIdRequestPath')!;
+const getPetByIdValidator = (options?: ValidationOptions): RequestHandler => {
+  const params = ajv.getSchema('#/definitions/GetPetByIdRequestPath')!;
 
   return (req, res, next) => {
-    if ([validatePath(req.params)].every(r => r)) {
+    if ([params(req.params)].every(r => r)) {
       return next();
     }
 
-    const errors = [[validatePath, 'params']]
+    const errors = ([[params, 'params']] as const)
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
       )
@@ -674,25 +688,21 @@ const getPetByIdValidator = (options: ValidationOptions): RequestHandler => {
 };
 
 const updatePetWithFormValidator = (
-  options: ValidationOptions
+  options?: ValidationOptions
 ): RequestHandler => {
-  const validatePath = ajv.getSchema(
-    '#/definitions/UpdatePetWithFormRequestPath'
-  )!;
+  const params = ajv.getSchema('#/definitions/UpdatePetWithFormRequestPath')!;
 
-  const validateFormData = ajv.getSchema(
-    '#/definitions/UpdatePetWithFormRequestBody'
-  )!;
+  const body = ajv.getSchema('#/definitions/UpdatePetWithFormRequestBody')!;
 
   return (req, res, next) => {
-    if ([validatePath(req.params), validateFormData(req.body)].every(r => r)) {
+    if ([params(req.params), body(req.body)].every(r => r)) {
       return next();
     }
 
-    const errors = [
-      [validatePath, 'params'],
-      [validateFormData, 'body']
-    ]
+    const errors = ([
+      [params, 'params'],
+      [body, 'body']
+    ] as const)
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
       )
@@ -706,20 +716,20 @@ const updatePetWithFormValidator = (
   };
 };
 
-const deletePetValidator = (options: ValidationOptions): RequestHandler => {
-  const validateHeader = ajv.getSchema('#/definitions/DeletePetRequestHeader')!;
+const deletePetValidator = (options?: ValidationOptions): RequestHandler => {
+  const headers = ajv.getSchema('#/definitions/DeletePetRequestHeader')!;
 
-  const validatePath = ajv.getSchema('#/definitions/DeletePetRequestPath')!;
+  const params = ajv.getSchema('#/definitions/DeletePetRequestPath')!;
 
   return (req, res, next) => {
-    if ([validateHeader(req.headers), validatePath(req.params)].every(r => r)) {
+    if ([headers(req.headers), params(req.params)].every(r => r)) {
       return next();
     }
 
-    const errors = [
-      [validateHeader, 'headers'],
-      [validatePath, 'params']
-    ]
+    const errors = ([
+      [headers, 'headers'],
+      [params, 'params']
+    ] as const)
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
       )
@@ -733,15 +743,15 @@ const deletePetValidator = (options: ValidationOptions): RequestHandler => {
   };
 };
 
-const placeOrderValidator = (options: ValidationOptions): RequestHandler => {
-  const validateBody = ajv.getSchema('#/definitions/PlaceOrderRequestBody')!;
+const placeOrderValidator = (options?: ValidationOptions): RequestHandler => {
+  const body = ajv.getSchema('#/definitions/PlaceOrderRequestBody')!;
 
   return (req, res, next) => {
-    if ([validateBody(req.body)].every(r => r)) {
+    if ([body(req.body)].every(r => r)) {
       return next();
     }
 
-    const errors = [[validateBody, 'body']]
+    const errors = ([[body, 'body']] as const)
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
       )
@@ -755,15 +765,15 @@ const placeOrderValidator = (options: ValidationOptions): RequestHandler => {
   };
 };
 
-const getOrderByIdValidator = (options: ValidationOptions): RequestHandler => {
-  const validatePath = ajv.getSchema('#/definitions/GetOrderByIdRequestPath')!;
+const getOrderByIdValidator = (options?: ValidationOptions): RequestHandler => {
+  const params = ajv.getSchema('#/definitions/GetOrderByIdRequestPath')!;
 
   return (req, res, next) => {
-    if ([validatePath(req.params)].every(r => r)) {
+    if ([params(req.params)].every(r => r)) {
       return next();
     }
 
-    const errors = [[validatePath, 'params']]
+    const errors = ([[params, 'params']] as const)
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
       )
@@ -777,15 +787,15 @@ const getOrderByIdValidator = (options: ValidationOptions): RequestHandler => {
   };
 };
 
-const deleteOrderValidator = (options: ValidationOptions): RequestHandler => {
-  const validatePath = ajv.getSchema('#/definitions/DeleteOrderRequestPath')!;
+const deleteOrderValidator = (options?: ValidationOptions): RequestHandler => {
+  const params = ajv.getSchema('#/definitions/DeleteOrderRequestPath')!;
 
   return (req, res, next) => {
-    if ([validatePath(req.params)].every(r => r)) {
+    if ([params(req.params)].every(r => r)) {
       return next();
     }
 
-    const errors = [[validatePath, 'params']]
+    const errors = ([[params, 'params']] as const)
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
       )
@@ -800,18 +810,18 @@ const deleteOrderValidator = (options: ValidationOptions): RequestHandler => {
 };
 
 const createUsersWithArrayInputValidator = (
-  options: ValidationOptions
+  options?: ValidationOptions
 ): RequestHandler => {
-  const validateBody = ajv.getSchema(
+  const body = ajv.getSchema(
     '#/definitions/CreateUsersWithArrayInputRequestBody'
   )!;
 
   return (req, res, next) => {
-    if ([validateBody(req.body)].every(r => r)) {
+    if ([body(req.body)].every(r => r)) {
       return next();
     }
 
-    const errors = [[validateBody, 'body']]
+    const errors = ([[body, 'body']] as const)
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
       )
@@ -826,18 +836,18 @@ const createUsersWithArrayInputValidator = (
 };
 
 const createUsersWithListInputValidator = (
-  options: ValidationOptions
+  options?: ValidationOptions
 ): RequestHandler => {
-  const validateBody = ajv.getSchema(
+  const body = ajv.getSchema(
     '#/definitions/CreateUsersWithListInputRequestBody'
   )!;
 
   return (req, res, next) => {
-    if ([validateBody(req.body)].every(r => r)) {
+    if ([body(req.body)].every(r => r)) {
       return next();
     }
 
-    const errors = [[validateBody, 'body']]
+    const errors = ([[body, 'body']] as const)
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
       )
@@ -851,15 +861,17 @@ const createUsersWithListInputValidator = (
   };
 };
 
-const getUserByNameValidator = (options: ValidationOptions): RequestHandler => {
-  const validatePath = ajv.getSchema('#/definitions/GetUserByNameRequestPath')!;
+const getUserByNameValidator = (
+  options?: ValidationOptions
+): RequestHandler => {
+  const params = ajv.getSchema('#/definitions/GetUserByNameRequestPath')!;
 
   return (req, res, next) => {
-    if ([validatePath(req.params)].every(r => r)) {
+    if ([params(req.params)].every(r => r)) {
       return next();
     }
 
-    const errors = [[validatePath, 'params']]
+    const errors = ([[params, 'params']] as const)
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
       )
@@ -873,20 +885,20 @@ const getUserByNameValidator = (options: ValidationOptions): RequestHandler => {
   };
 };
 
-const updateUserValidator = (options: ValidationOptions): RequestHandler => {
-  const validatePath = ajv.getSchema('#/definitions/UpdateUserRequestPath')!;
+const updateUserValidator = (options?: ValidationOptions): RequestHandler => {
+  const params = ajv.getSchema('#/definitions/UpdateUserRequestPath')!;
 
-  const validateBody = ajv.getSchema('#/definitions/UpdateUserRequestBody')!;
+  const body = ajv.getSchema('#/definitions/UpdateUserRequestBody')!;
 
   return (req, res, next) => {
-    if ([validatePath(req.params), validateBody(req.body)].every(r => r)) {
+    if ([params(req.params), body(req.body)].every(r => r)) {
       return next();
     }
 
-    const errors = [
-      [validatePath, 'params'],
-      [validateBody, 'body']
-    ]
+    const errors = ([
+      [params, 'params'],
+      [body, 'body']
+    ] as const)
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
       )
@@ -900,15 +912,15 @@ const updateUserValidator = (options: ValidationOptions): RequestHandler => {
   };
 };
 
-const deleteUserValidator = (options: ValidationOptions): RequestHandler => {
-  const validatePath = ajv.getSchema('#/definitions/DeleteUserRequestPath')!;
+const deleteUserValidator = (options?: ValidationOptions): RequestHandler => {
+  const params = ajv.getSchema('#/definitions/DeleteUserRequestPath')!;
 
   return (req, res, next) => {
-    if ([validatePath(req.params)].every(r => r)) {
+    if ([params(req.params)].every(r => r)) {
       return next();
     }
 
-    const errors = [[validatePath, 'params']]
+    const errors = ([[params, 'params']] as const)
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
       )
@@ -922,15 +934,15 @@ const deleteUserValidator = (options: ValidationOptions): RequestHandler => {
   };
 };
 
-const loginUserValidator = (options: ValidationOptions): RequestHandler => {
-  const validateQuery = ajv.getSchema('#/definitions/LoginUserRequestQuery')!;
+const loginUserValidator = (options?: ValidationOptions): RequestHandler => {
+  const query = ajv.getSchema('#/definitions/LoginUserRequestQuery')!;
 
   return (req, res, next) => {
-    if ([validateQuery(req.query)].every(r => r)) {
+    if ([query(req.query)].every(r => r)) {
       return next();
     }
 
-    const errors = [[validateQuery, 'query']]
+    const errors = ([[query, 'query']] as const)
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
       )
@@ -944,15 +956,15 @@ const loginUserValidator = (options: ValidationOptions): RequestHandler => {
   };
 };
 
-const createUserValidator = (options: ValidationOptions): RequestHandler => {
-  const validateBody = ajv.getSchema('#/definitions/CreateUserRequestBody')!;
+const createUserValidator = (options?: ValidationOptions): RequestHandler => {
+  const body = ajv.getSchema('#/definitions/CreateUserRequestBody')!;
 
   return (req, res, next) => {
-    if ([validateBody(req.body)].every(r => r)) {
+    if ([body(req.body)].every(r => r)) {
       return next();
     }
 
-    const errors = [[validateBody, 'body']]
+    const errors = ([[body, 'body']] as const)
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
       )
