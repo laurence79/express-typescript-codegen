@@ -111,12 +111,16 @@ export const clientMethodTemplate = ({
     x => `$${x}`
   )}${queryParams.any() ? '?${query}' : ''}\``;
 
+  const headers = headerParams
+    .map(h => h.name)
+    .concat(
+      body?.type === 'json' ? ["'Content-Type': 'application/json'"] : []
+    );
+
   const fetchOpts = `{
       ${[
         'method',
-        ...(headerParams.any()
-          ? [`headers: {${headerParams.map(h => h.name).join(',')}}`]
-          : []),
+        ...(headers.any() ? [`headers: {${headers.join(',')}}`] : []),
 
         ...(body?.type === 'json' ? ['body: JSON.stringify(body)'] : []),
 
