@@ -40,33 +40,33 @@ export const fromV2 = (
         ? parametersTypeNameTemplate(operationId, 'body')
         : 'unknown';
 
-      const responseBodyType =
+      const responseStubType =
         responses
           .map(({ statusCode, response }) => {
-            const { schema } = response;
+            const statusCodeType =
+              statusCode === 'default' ? 'number' : statusCode;
 
-            if (!schema) {
-              return 'unknown';
-            }
+            const responseBodyType = (() => {
+              const { schema } = response;
 
-            return responseBodyTypeNameTemplate(operationId, statusCode);
+              if (!schema) {
+                return 'undefined';
+              }
+
+              return responseBodyTypeNameTemplate(operationId, statusCode);
+            })();
+
+            return `ResponseStub<${statusCodeType}, ${responseBodyType}>`;
           })
           .distinct()
-          .join(' | ') || 'unknown';
-
-      const statusCodes = responses
-        .map(({ statusCode }) =>
-          statusCode === 'default' ? 'number' : statusCode
-        )
-        .join(' | ');
+          .join(' | ') || 'ResponseStub';
 
       const methodStubType = `MethodStub<
         ${headersType},
         ${pathParamsType},
         ${queryParamsType},
         ${requestBodyType},
-        ${statusCodes},
-        ${responseBodyType}
+        ${responseStubType}
       >`;
 
       const requestHandlerPath = path.replace(

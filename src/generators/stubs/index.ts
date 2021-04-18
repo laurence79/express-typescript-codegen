@@ -41,7 +41,7 @@ export const generateStubs = ({
       body: TBody;
     };
 
-    type ResponseStub<TStatus extends number, TBody> = {
+    type ResponseStub<TStatus extends number = number, TBody = unknown> = {
       statusCode: TStatus;
       body: TBody;
     };
@@ -51,18 +51,17 @@ export const generateStubs = ({
       TParams,
       TQuery,
       TRequestBody,
-      TStatus extends number,
-      TResponseBody
+      TResponseStub extends ResponseStub
     > = {
       requestHandler: RequestHandler<
         TParams,
-        TResponseBody,
+        TResponseStub['body'],
         TRequestBody,
         TQuery,
         Record<string, unknown>,
-        TStatus
+        TResponseStub['statusCode']
       >;
-      respondWith(data: ResponseStub<TStatus, TResponseBody>): void;
+      respondWith(data: TResponseStub): void;
       callLog(): RequestLog<THeaders, TParams, TQuery, TRequestBody>[];
     };
 
@@ -71,19 +70,11 @@ export const generateStubs = ({
       TParams,
       TQuery,
       TRequestBody,
-      TStatus extends number,
-      TResponseBody
-    >(): MethodStub<
-      THeaders,
-      TParams,
-      TQuery,
-      TRequestBody,
-      TStatus,
-      TResponseBody
-    > => {
+      TResponseStub extends ResponseStub
+    >(): MethodStub<THeaders, TParams, TQuery, TRequestBody, TResponseStub> => {
       const log: RequestLog<THeaders, TParams, TQuery, TRequestBody>[] = [];
 
-      let responseStub: ResponseStub<TStatus, TResponseBody> | null = null;
+      let responseStub: TResponseStub | null = null;
 
       return {
         requestHandler: (req, res) => {

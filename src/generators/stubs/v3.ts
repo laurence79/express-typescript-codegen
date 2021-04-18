@@ -37,34 +37,34 @@ export const fromV3 = (
         ? parametersTypeNameTemplate(operationId, 'body')
         : 'unknown';
 
-      const responseBodyType =
+      const responseStubType =
         responses
           .map(({ statusCode, response }) => {
-            if (
-              !response.content ||
-              Object.keys(response.content).length === 0
-            ) {
-              return 'unknown';
-            }
+            const statusCodeType =
+              statusCode === 'default' ? 'number' : statusCode;
 
-            return responseBodyTypeNameTemplate(operationId, statusCode);
+            const responseBodyType = (() => {
+              if (
+                !response.content ||
+                Object.keys(response.content).length === 0
+              ) {
+                return 'undefined';
+              }
+
+              return responseBodyTypeNameTemplate(operationId, statusCode);
+            })();
+
+            return `ResponseStub<${statusCodeType}, ${responseBodyType}>`;
           })
           .distinct()
           .join(' | ') || 'unknown';
-
-      const statusCodes = responses
-        .map(({ statusCode }) =>
-          statusCode === 'default' ? 'number' : statusCode
-        )
-        .join(' | ');
 
       const methodStubType = `MethodStub<
         ${headersType},
         ${pathParamsType},
         ${queryParamsType},
         ${requestBodyType},
-        ${statusCodes},
-        ${responseBodyType}
+        ${responseStubType}
       >`;
 
       const requestHandlerPath = path.replace(

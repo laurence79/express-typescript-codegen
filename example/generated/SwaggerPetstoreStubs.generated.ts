@@ -101,7 +101,7 @@ type RequestLog<THeaders, TParams, TQuery, TBody> = {
   body: TBody;
 };
 
-type ResponseStub<TStatus extends number, TBody> = {
+type ResponseStub<TStatus extends number = number, TBody = unknown> = {
   statusCode: TStatus;
   body: TBody;
 };
@@ -111,18 +111,17 @@ type MethodStub<
   TParams,
   TQuery,
   TRequestBody,
-  TStatus extends number,
-  TResponseBody
+  TResponseStub extends ResponseStub
 > = {
   requestHandler: RequestHandler<
     TParams,
-    TResponseBody,
+    TResponseStub['body'],
     TRequestBody,
     TQuery,
     Record<string, unknown>,
-    TStatus
+    TResponseStub['statusCode']
   >;
-  respondWith(data: ResponseStub<TStatus, TResponseBody>): void;
+  respondWith(data: TResponseStub): void;
   callLog(): RequestLog<THeaders, TParams, TQuery, TRequestBody>[];
 };
 
@@ -131,19 +130,11 @@ const methodStub = <
   TParams,
   TQuery,
   TRequestBody,
-  TStatus extends number,
-  TResponseBody
->(): MethodStub<
-  THeaders,
-  TParams,
-  TQuery,
-  TRequestBody,
-  TStatus,
-  TResponseBody
-> => {
+  TResponseStub extends ResponseStub
+>(): MethodStub<THeaders, TParams, TQuery, TRequestBody, TResponseStub> => {
   const log: RequestLog<THeaders, TParams, TQuery, TRequestBody>[] = [];
 
-  let responseStub: ResponseStub<TStatus, TResponseBody> | null = null;
+  let responseStub: TResponseStub | null = null;
 
   return {
     requestHandler: (req, res) => {
@@ -179,152 +170,143 @@ type MethodStubs = {
     unknown,
     unknown,
     AddPetRequestBody,
-    405,
-    unknown
+    ResponseStub<405, undefined>
   >;
   readonly updatePet: MethodStub<
     unknown,
     unknown,
     unknown,
     UpdatePetRequestBody,
-    400 | 404 | 405,
-    unknown
+    | ResponseStub<400, undefined>
+    | ResponseStub<404, undefined>
+    | ResponseStub<405, undefined>
   >;
   readonly findPetsByStatus: MethodStub<
     unknown,
     unknown,
     FindPetsByStatusRequestQuery,
     unknown,
-    200 | 400,
-    FindPetsByStatus200ResponseBody | unknown
+    | ResponseStub<200, FindPetsByStatus200ResponseBody>
+    | ResponseStub<400, undefined>
   >;
   readonly findPetsByTags: MethodStub<
     unknown,
     unknown,
     FindPetsByTagsRequestQuery,
     unknown,
-    200 | 400,
-    FindPetsByTags200ResponseBody | unknown
+    | ResponseStub<200, FindPetsByTags200ResponseBody>
+    | ResponseStub<400, undefined>
   >;
   readonly getPetById: MethodStub<
     unknown,
     GetPetByIdRequestPath,
     unknown,
     unknown,
-    200 | 400 | 404,
-    GetPetById200ResponseBody | unknown
+    | ResponseStub<200, GetPetById200ResponseBody>
+    | ResponseStub<400, undefined>
+    | ResponseStub<404, undefined>
   >;
   readonly updatePetWithForm: MethodStub<
     unknown,
     UpdatePetWithFormRequestPath,
     unknown,
     UpdatePetWithFormRequestBody,
-    405,
-    unknown
+    ResponseStub<405, undefined>
   >;
   readonly deletePet: MethodStub<
     DeletePetRequestHeader,
     DeletePetRequestPath,
     unknown,
     unknown,
-    400 | 404,
-    unknown
+    ResponseStub<400, undefined> | ResponseStub<404, undefined>
   >;
   readonly placeOrder: MethodStub<
     unknown,
     unknown,
     unknown,
     PlaceOrderRequestBody,
-    200 | 400,
-    PlaceOrder200ResponseBody | unknown
+    ResponseStub<200, PlaceOrder200ResponseBody> | ResponseStub<400, undefined>
   >;
   readonly getOrderById: MethodStub<
     unknown,
     GetOrderByIdRequestPath,
     unknown,
     unknown,
-    200 | 400 | 404,
-    GetOrderById200ResponseBody | unknown
+    | ResponseStub<200, GetOrderById200ResponseBody>
+    | ResponseStub<400, undefined>
+    | ResponseStub<404, undefined>
   >;
   readonly deleteOrder: MethodStub<
     unknown,
     DeleteOrderRequestPath,
     unknown,
     unknown,
-    400 | 404,
-    unknown
+    ResponseStub<400, undefined> | ResponseStub<404, undefined>
   >;
   readonly getInventory: MethodStub<
     unknown,
     unknown,
     unknown,
     unknown,
-    200,
-    GetInventory200ResponseBody
+    ResponseStub<200, GetInventory200ResponseBody>
   >;
   readonly createUsersWithArrayInput: MethodStub<
     unknown,
     unknown,
     unknown,
     CreateUsersWithArrayInputRequestBody,
-    number,
-    unknown
+    ResponseStub<number, undefined>
   >;
   readonly createUsersWithListInput: MethodStub<
     unknown,
     unknown,
     unknown,
     CreateUsersWithListInputRequestBody,
-    number,
-    unknown
+    ResponseStub<number, undefined>
   >;
   readonly getUserByName: MethodStub<
     unknown,
     GetUserByNameRequestPath,
     unknown,
     unknown,
-    200 | 400 | 404,
-    GetUserByName200ResponseBody | unknown
+    | ResponseStub<200, GetUserByName200ResponseBody>
+    | ResponseStub<400, undefined>
+    | ResponseStub<404, undefined>
   >;
   readonly updateUser: MethodStub<
     unknown,
     UpdateUserRequestPath,
     unknown,
     UpdateUserRequestBody,
-    400 | 404,
-    unknown
+    ResponseStub<400, undefined> | ResponseStub<404, undefined>
   >;
   readonly deleteUser: MethodStub<
     unknown,
     DeleteUserRequestPath,
     unknown,
     unknown,
-    400 | 404,
-    unknown
+    ResponseStub<400, undefined> | ResponseStub<404, undefined>
   >;
   readonly loginUser: MethodStub<
     unknown,
     unknown,
     LoginUserRequestQuery,
     unknown,
-    200 | 400,
-    LoginUser200ResponseBody | unknown
+    ResponseStub<200, LoginUser200ResponseBody> | ResponseStub<400, undefined>
   >;
   readonly logoutUser: MethodStub<
     unknown,
     unknown,
     unknown,
     unknown,
-    number,
-    unknown
+    ResponseStub<number, undefined>
   >;
   readonly createUser: MethodStub<
     unknown,
     unknown,
     unknown,
     CreateUserRequestBody,
-    number,
-    unknown
+    ResponseStub<number, undefined>
   >;
 };
 
