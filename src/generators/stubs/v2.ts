@@ -42,13 +42,16 @@ export const fromV2 = (
 
       const responseBodyType =
         responses
-          .compactMap(({ statusCode, response }) => {
+          .map(({ statusCode, response }) => {
             const { schema } = response;
+
             if (!schema) {
-              return undefined;
+              return 'unknown';
             }
+
             return responseBodyTypeNameTemplate(operationId, statusCode);
           })
+          .distinct()
           .join(' | ') || 'unknown';
 
       const statusCodes = responses

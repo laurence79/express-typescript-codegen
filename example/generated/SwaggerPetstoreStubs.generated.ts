@@ -196,7 +196,7 @@ type MethodStubs = {
     FindPetsByStatusRequestQuery,
     unknown,
     200 | 400,
-    FindPetsByStatus200ResponseBody
+    FindPetsByStatus200ResponseBody | unknown
   >;
   readonly findPetsByTags: MethodStub<
     unknown,
@@ -204,7 +204,7 @@ type MethodStubs = {
     FindPetsByTagsRequestQuery,
     unknown,
     200 | 400,
-    FindPetsByTags200ResponseBody
+    FindPetsByTags200ResponseBody | unknown
   >;
   readonly getPetById: MethodStub<
     unknown,
@@ -212,7 +212,7 @@ type MethodStubs = {
     unknown,
     unknown,
     200 | 400 | 404,
-    GetPetById200ResponseBody
+    GetPetById200ResponseBody | unknown
   >;
   readonly updatePetWithForm: MethodStub<
     unknown,
@@ -236,7 +236,7 @@ type MethodStubs = {
     unknown,
     PlaceOrderRequestBody,
     200 | 400,
-    PlaceOrder200ResponseBody
+    PlaceOrder200ResponseBody | unknown
   >;
   readonly getOrderById: MethodStub<
     unknown,
@@ -244,7 +244,7 @@ type MethodStubs = {
     unknown,
     unknown,
     200 | 400 | 404,
-    GetOrderById200ResponseBody
+    GetOrderById200ResponseBody | unknown
   >;
   readonly deleteOrder: MethodStub<
     unknown,
@@ -284,7 +284,7 @@ type MethodStubs = {
     unknown,
     unknown,
     200 | 400 | 404,
-    GetUserByName200ResponseBody
+    GetUserByName200ResponseBody | unknown
   >;
   readonly updateUser: MethodStub<
     unknown,
@@ -308,7 +308,7 @@ type MethodStubs = {
     LoginUserRequestQuery,
     unknown,
     200 | 400,
-    LoginUser200ResponseBody
+    LoginUser200ResponseBody | unknown
   >;
   readonly logoutUser: MethodStub<
     unknown,

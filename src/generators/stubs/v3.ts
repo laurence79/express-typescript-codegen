@@ -39,15 +39,17 @@ export const fromV3 = (
 
       const responseBodyType =
         responses
-          .compactMap(({ statusCode, response }) => {
+          .map(({ statusCode, response }) => {
             if (
               !response.content ||
               Object.keys(response.content).length === 0
             ) {
-              return undefined;
+              return 'unknown';
             }
+
             return responseBodyTypeNameTemplate(operationId, statusCode);
           })
+          .distinct()
           .join(' | ') || 'unknown';
 
       const statusCodes = responses
