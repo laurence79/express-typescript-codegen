@@ -82,8 +82,7 @@ export const fromV3 = (document: OpenApiV3.Document, log?: LogFn): string[] => {
           if (!response.content || Object.keys(response.content).length === 0) {
             return {
               statusCode,
-              type: 'json',
-              jsonType: 'unknown'
+              type: 'none'
             };
           }
 

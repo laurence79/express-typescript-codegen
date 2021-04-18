@@ -51,7 +51,7 @@ export class SwaggerPetstoreClient {
 
   public async addPet(args: {
     body: Pet;
-  }): Promise<ResponseWithData<405, unknown>> {
+  }): Promise<ResponseWithData<405, undefined>> {
     const { body } = args;
 
     const method = 'POST';
@@ -71,7 +71,7 @@ export class SwaggerPetstoreClient {
       case 405:
         return {
           status: $status,
-          body: (await response.json()) as unknown
+          body: undefined
         };
 
       default:
@@ -82,9 +82,9 @@ export class SwaggerPetstoreClient {
   public async updatePet(args: {
     body: Pet;
   }): Promise<
-    | ResponseWithData<400, unknown>
-    | ResponseWithData<404, unknown>
-    | ResponseWithData<405, unknown>
+    | ResponseWithData<400, undefined>
+    | ResponseWithData<404, undefined>
+    | ResponseWithData<405, undefined>
   > {
     const { body } = args;
 
@@ -105,19 +105,19 @@ export class SwaggerPetstoreClient {
       case 400:
         return {
           status: $status,
-          body: (await response.json()) as unknown
+          body: undefined
         };
 
       case 404:
         return {
           status: $status,
-          body: (await response.json()) as unknown
+          body: undefined
         };
 
       case 405:
         return {
           status: $status,
-          body: (await response.json()) as unknown
+          body: undefined
         };
 
       default:
@@ -128,7 +128,7 @@ export class SwaggerPetstoreClient {
   public async findPetsByStatus(args: {
     status: string;
   }): Promise<
-    ResponseWithData<200, Array<Pet>> | ResponseWithData<400, unknown>
+    ResponseWithData<200, Array<Pet>> | ResponseWithData<400, undefined>
   > {
     const { status } = args;
 
@@ -155,7 +155,7 @@ export class SwaggerPetstoreClient {
       case 400:
         return {
           status: $status,
-          body: (await response.json()) as unknown
+          body: undefined
         };
 
       default:
@@ -166,7 +166,7 @@ export class SwaggerPetstoreClient {
   public async findPetsByTags(args: {
     tags: string;
   }): Promise<
-    ResponseWithData<200, Array<Pet>> | ResponseWithData<400, unknown>
+    ResponseWithData<200, Array<Pet>> | ResponseWithData<400, undefined>
   > {
     const { tags } = args;
 
@@ -193,7 +193,7 @@ export class SwaggerPetstoreClient {
       case 400:
         return {
           status: $status,
-          body: (await response.json()) as unknown
+          body: undefined
         };
 
       default:
@@ -205,8 +205,8 @@ export class SwaggerPetstoreClient {
     petId: string;
   }): Promise<
     | ResponseWithData<200, Pet>
-    | ResponseWithData<400, unknown>
-    | ResponseWithData<404, unknown>
+    | ResponseWithData<400, undefined>
+    | ResponseWithData<404, undefined>
   > {
     const { petId } = args;
 
@@ -231,13 +231,13 @@ export class SwaggerPetstoreClient {
       case 400:
         return {
           status: $status,
-          body: (await response.json()) as unknown
+          body: undefined
         };
 
       case 404:
         return {
           status: $status,
-          body: (await response.json()) as unknown
+          body: undefined
         };
 
       default:
@@ -248,7 +248,7 @@ export class SwaggerPetstoreClient {
   public async updatePetWithForm(args: {
     petId: string;
     body: { name?: string; status?: string };
-  }): Promise<ResponseWithData<405, unknown>> {
+  }): Promise<ResponseWithData<405, undefined>> {
     const { petId, body } = args;
 
     const formData = new FormData();
@@ -271,7 +271,7 @@ export class SwaggerPetstoreClient {
       case 405:
         return {
           status: $status,
-          body: (await response.json()) as unknown
+          body: undefined
         };
 
       default:
@@ -282,7 +282,9 @@ export class SwaggerPetstoreClient {
   public async deletePet(args: {
     api_key?: string;
     petId: string;
-  }): Promise<ResponseWithData<400, unknown> | ResponseWithData<404, unknown>> {
+  }): Promise<
+    ResponseWithData<400, undefined> | ResponseWithData<404, undefined>
+  > {
     const { api_key, petId } = args;
 
     const method = 'DELETE';
@@ -301,13 +303,13 @@ export class SwaggerPetstoreClient {
       case 400:
         return {
           status: $status,
-          body: (await response.json()) as unknown
+          body: undefined
         };
 
       case 404:
         return {
           status: $status,
-          body: (await response.json()) as unknown
+          body: undefined
         };
 
       default:
@@ -317,7 +319,7 @@ export class SwaggerPetstoreClient {
 
   public async placeOrder(args: {
     body: Order;
-  }): Promise<ResponseWithData<200, Order> | ResponseWithData<400, unknown>> {
+  }): Promise<ResponseWithData<200, Order> | ResponseWithData<400, undefined>> {
     const { body } = args;
 
     const method = 'POST';
@@ -343,7 +345,7 @@ export class SwaggerPetstoreClient {
       case 400:
         return {
           status: $status,
-          body: (await response.json()) as unknown
+          body: undefined
         };
 
       default:
@@ -355,8 +357,8 @@ export class SwaggerPetstoreClient {
     orderId: string;
   }): Promise<
     | ResponseWithData<200, Order>
-    | ResponseWithData<400, unknown>
-    | ResponseWithData<404, unknown>
+    | ResponseWithData<400, undefined>
+    | ResponseWithData<404, undefined>
   > {
     const { orderId } = args;
 
@@ -381,13 +383,13 @@ export class SwaggerPetstoreClient {
       case 400:
         return {
           status: $status,
-          body: (await response.json()) as unknown
+          body: undefined
         };
 
       case 404:
         return {
           status: $status,
-          body: (await response.json()) as unknown
+          body: undefined
         };
 
       default:
@@ -397,7 +399,9 @@ export class SwaggerPetstoreClient {
 
   public async deleteOrder(args: {
     orderId: string;
-  }): Promise<ResponseWithData<400, unknown> | ResponseWithData<404, unknown>> {
+  }): Promise<
+    ResponseWithData<400, undefined> | ResponseWithData<404, undefined>
+  > {
     const { orderId } = args;
 
     const method = 'DELETE';
@@ -415,13 +419,13 @@ export class SwaggerPetstoreClient {
       case 400:
         return {
           status: $status,
-          body: (await response.json()) as unknown
+          body: undefined
         };
 
       case 404:
         return {
           status: $status,
-          body: (await response.json()) as unknown
+          body: undefined
         };
 
       default:
@@ -455,7 +459,7 @@ export class SwaggerPetstoreClient {
 
   public async createUsersWithArrayInput(args: {
     body: Array<User>;
-  }): Promise<ResponseWithData<number, unknown>> {
+  }): Promise<ResponseWithData<number, undefined>> {
     const { body } = args;
 
     const method = 'POST';
@@ -475,14 +479,14 @@ export class SwaggerPetstoreClient {
       default:
         return {
           status: $status,
-          body: (await response.json()) as unknown
+          body: undefined
         };
     }
   }
 
   public async createUsersWithListInput(args: {
     body: Array<User>;
-  }): Promise<ResponseWithData<number, unknown>> {
+  }): Promise<ResponseWithData<number, undefined>> {
     const { body } = args;
 
     const method = 'POST';
@@ -502,7 +506,7 @@ export class SwaggerPetstoreClient {
       default:
         return {
           status: $status,
-          body: (await response.json()) as unknown
+          body: undefined
         };
     }
   }
@@ -511,8 +515,8 @@ export class SwaggerPetstoreClient {
     username: string;
   }): Promise<
     | ResponseWithData<200, User>
-    | ResponseWithData<400, unknown>
-    | ResponseWithData<404, unknown>
+    | ResponseWithData<400, undefined>
+    | ResponseWithData<404, undefined>
   > {
     const { username } = args;
 
@@ -537,13 +541,13 @@ export class SwaggerPetstoreClient {
       case 400:
         return {
           status: $status,
-          body: (await response.json()) as unknown
+          body: undefined
         };
 
       case 404:
         return {
           status: $status,
-          body: (await response.json()) as unknown
+          body: undefined
         };
 
       default:
@@ -554,7 +558,9 @@ export class SwaggerPetstoreClient {
   public async updateUser(args: {
     username: string;
     body: User;
-  }): Promise<ResponseWithData<400, unknown> | ResponseWithData<404, unknown>> {
+  }): Promise<
+    ResponseWithData<400, undefined> | ResponseWithData<404, undefined>
+  > {
     const { username, body } = args;
 
     const method = 'PUT';
@@ -574,13 +580,13 @@ export class SwaggerPetstoreClient {
       case 400:
         return {
           status: $status,
-          body: (await response.json()) as unknown
+          body: undefined
         };
 
       case 404:
         return {
           status: $status,
-          body: (await response.json()) as unknown
+          body: undefined
         };
 
       default:
@@ -590,7 +596,9 @@ export class SwaggerPetstoreClient {
 
   public async deleteUser(args: {
     username: string;
-  }): Promise<ResponseWithData<400, unknown> | ResponseWithData<404, unknown>> {
+  }): Promise<
+    ResponseWithData<400, undefined> | ResponseWithData<404, undefined>
+  > {
     const { username } = args;
 
     const method = 'DELETE';
@@ -608,13 +616,13 @@ export class SwaggerPetstoreClient {
       case 400:
         return {
           status: $status,
-          body: (await response.json()) as unknown
+          body: undefined
         };
 
       case 404:
         return {
           status: $status,
-          body: (await response.json()) as unknown
+          body: undefined
         };
 
       default:
@@ -625,7 +633,9 @@ export class SwaggerPetstoreClient {
   public async loginUser(args: {
     username: string;
     password: string;
-  }): Promise<ResponseWithData<200, string> | ResponseWithData<400, unknown>> {
+  }): Promise<
+    ResponseWithData<200, string> | ResponseWithData<400, undefined>
+  > {
     const { username, password } = args;
 
     const query = qs.stringify({ username, password });
@@ -651,7 +661,7 @@ export class SwaggerPetstoreClient {
       case 400:
         return {
           status: $status,
-          body: (await response.json()) as unknown
+          body: undefined
         };
 
       default:
@@ -659,7 +669,7 @@ export class SwaggerPetstoreClient {
     }
   }
 
-  public async logoutUser(): Promise<ResponseWithData<number, unknown>> {
+  public async logoutUser(): Promise<ResponseWithData<number, undefined>> {
     const method = 'GET';
     const url = `${this.baseUrl}/user/logout`;
 
@@ -675,14 +685,14 @@ export class SwaggerPetstoreClient {
       default:
         return {
           status: $status,
-          body: (await response.json()) as unknown
+          body: undefined
         };
     }
   }
 
   public async createUser(args: {
     body: User;
-  }): Promise<ResponseWithData<number, unknown>> {
+  }): Promise<ResponseWithData<number, undefined>> {
     const { body } = args;
 
     const method = 'POST';
@@ -702,7 +712,7 @@ export class SwaggerPetstoreClient {
       default:
         return {
           status: $status,
-          body: (await response.json()) as unknown
+          body: undefined
         };
     }
   }

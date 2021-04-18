@@ -28,7 +28,7 @@ export type ClientMethodTemplateArgs = {
     | null;
   responses: ({
     statusCode: 'default' | string;
-  } & ({ type: 'json'; jsonType: string } | { type: 'binary' }))[];
+  } & ({ type: 'json'; jsonType: string } | { type: 'binary' | 'none' }))[];
 };
 
 export const clientMethodTemplate = ({
@@ -76,7 +76,13 @@ export const clientMethodTemplate = ({
     .map(r => {
       const statusCodeType =
         r.statusCode === 'default' ? 'number' : r.statusCode;
-      const dataType = r.type === 'binary' ? 'Blob' : r.jsonType;
+
+      const dataType = (() => {
+        if (r.type === 'binary') return 'Blob';
+        if (r.type === 'json') return r.jsonType;
+        return 'undefined';
+      })();
+
       return `ResponseWithData<${statusCodeType}, ${dataType}>`;
     })
     .join(' | ');
@@ -131,20 +137,26 @@ export const clientMethodTemplate = ({
   const responseSwitch = `
     switch ($status) {
       ${responses
-        .map(
-          r => `
-            ${
-              r.statusCode === 'default' ? `default` : `case ${r.statusCode}`
-            }: return {
-              status: $status,
-              body: ${
-                r.type === 'json'
-                  ? `(await response.json()) as ${r.jsonType}`
-                  : 'await response.blob()'
-              }
+        .map(r => {
+          const bodyExpression = (() => {
+            if (r.type === 'json') {
+              return `(await response.json()) as ${r.jsonType}`;
             }
-            `
-        )
+
+            if (r.type === 'binary') return 'await response.blob()';
+
+            return 'undefined';
+          })();
+
+          return `
+              ${
+                r.statusCode === 'default' ? `default` : `case ${r.statusCode}`
+              }: return {
+                status: $status,
+                body: ${bodyExpression}
+              }
+            `;
+        })
         .join('\n')}
 
       ${

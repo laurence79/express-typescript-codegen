@@ -67,10 +67,17 @@ export const fromV2 = (document: OpenApiV2.Document, log?: LogFn): string[] => {
 
           const { schema } = response;
 
+          if (schema) {
+            return {
+              statusCode,
+              type: 'json',
+              jsonType: schema ? HelpersV2.typeDefForSchema(schema) : 'unknown'
+            };
+          }
+
           return {
             statusCode,
-            type: 'json',
-            jsonType: schema ? HelpersV2.typeDefForSchema(schema) : 'unknown'
+            type: 'none'
           };
         })
       });
