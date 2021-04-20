@@ -581,16 +581,20 @@ const addPetValidator = (options?: ValidationOptions): RequestHandler => {
       return next();
     }
 
-    const errors = ([[body, 'body']] as const)
+    const fields = ([[body, 'body']] as const)
       .flatMap(([validator, path]) =>
-        validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
+        validator.errors?.map(e => ({
+          path: `${path}${e.dataPath}`,
+          message: e.message
+        }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { errors });
+    options?.logger?.(req)('Request validation failed', { fields });
 
     res.status(400).send({
-      errors
+      type: 'REQUEST_VALIDATION_FAILED',
+      fields
     });
   };
 };
@@ -603,16 +607,20 @@ const updatePetValidator = (options?: ValidationOptions): RequestHandler => {
       return next();
     }
 
-    const errors = ([[body, 'body']] as const)
+    const fields = ([[body, 'body']] as const)
       .flatMap(([validator, path]) =>
-        validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
+        validator.errors?.map(e => ({
+          path: `${path}${e.dataPath}`,
+          message: e.message
+        }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { errors });
+    options?.logger?.(req)('Request validation failed', { fields });
 
     res.status(400).send({
-      errors
+      type: 'REQUEST_VALIDATION_FAILED',
+      fields
     });
   };
 };
@@ -627,16 +635,20 @@ const findPetsByStatusValidator = (
       return next();
     }
 
-    const errors = ([[query, 'query']] as const)
+    const fields = ([[query, 'query']] as const)
       .flatMap(([validator, path]) =>
-        validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
+        validator.errors?.map(e => ({
+          path: `${path}${e.dataPath}`,
+          message: e.message
+        }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { errors });
+    options?.logger?.(req)('Request validation failed', { fields });
 
     res.status(400).send({
-      errors
+      type: 'REQUEST_VALIDATION_FAILED',
+      fields
     });
   };
 };
@@ -651,16 +663,20 @@ const findPetsByTagsValidator = (
       return next();
     }
 
-    const errors = ([[query, 'query']] as const)
+    const fields = ([[query, 'query']] as const)
       .flatMap(([validator, path]) =>
-        validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
+        validator.errors?.map(e => ({
+          path: `${path}${e.dataPath}`,
+          message: e.message
+        }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { errors });
+    options?.logger?.(req)('Request validation failed', { fields });
 
     res.status(400).send({
-      errors
+      type: 'REQUEST_VALIDATION_FAILED',
+      fields
     });
   };
 };
@@ -673,16 +689,20 @@ const getPetByIdValidator = (options?: ValidationOptions): RequestHandler => {
       return next();
     }
 
-    const errors = ([[params, 'params']] as const)
+    const fields = ([[params, 'params']] as const)
       .flatMap(([validator, path]) =>
-        validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
+        validator.errors?.map(e => ({
+          path: `${path}${e.dataPath}`,
+          message: e.message
+        }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { errors });
+    options?.logger?.(req)('Request validation failed', { fields });
 
     res.status(400).send({
-      errors
+      type: 'REQUEST_VALIDATION_FAILED',
+      fields
     });
   };
 };
@@ -699,19 +719,23 @@ const updatePetWithFormValidator = (
       return next();
     }
 
-    const errors = ([
+    const fields = ([
       [params, 'params'],
       [body, 'body']
     ] as const)
       .flatMap(([validator, path]) =>
-        validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
+        validator.errors?.map(e => ({
+          path: `${path}${e.dataPath}`,
+          message: e.message
+        }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { errors });
+    options?.logger?.(req)('Request validation failed', { fields });
 
     res.status(400).send({
-      errors
+      type: 'REQUEST_VALIDATION_FAILED',
+      fields
     });
   };
 };
@@ -726,19 +750,23 @@ const deletePetValidator = (options?: ValidationOptions): RequestHandler => {
       return next();
     }
 
-    const errors = ([
+    const fields = ([
       [headers, 'headers'],
       [params, 'params']
     ] as const)
       .flatMap(([validator, path]) =>
-        validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
+        validator.errors?.map(e => ({
+          path: `${path}${e.dataPath}`,
+          message: e.message
+        }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { errors });
+    options?.logger?.(req)('Request validation failed', { fields });
 
     res.status(400).send({
-      errors
+      type: 'REQUEST_VALIDATION_FAILED',
+      fields
     });
   };
 };
@@ -751,16 +779,20 @@ const placeOrderValidator = (options?: ValidationOptions): RequestHandler => {
       return next();
     }
 
-    const errors = ([[body, 'body']] as const)
+    const fields = ([[body, 'body']] as const)
       .flatMap(([validator, path]) =>
-        validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
+        validator.errors?.map(e => ({
+          path: `${path}${e.dataPath}`,
+          message: e.message
+        }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { errors });
+    options?.logger?.(req)('Request validation failed', { fields });
 
     res.status(400).send({
-      errors
+      type: 'REQUEST_VALIDATION_FAILED',
+      fields
     });
   };
 };
@@ -773,16 +805,20 @@ const getOrderByIdValidator = (options?: ValidationOptions): RequestHandler => {
       return next();
     }
 
-    const errors = ([[params, 'params']] as const)
+    const fields = ([[params, 'params']] as const)
       .flatMap(([validator, path]) =>
-        validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
+        validator.errors?.map(e => ({
+          path: `${path}${e.dataPath}`,
+          message: e.message
+        }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { errors });
+    options?.logger?.(req)('Request validation failed', { fields });
 
     res.status(400).send({
-      errors
+      type: 'REQUEST_VALIDATION_FAILED',
+      fields
     });
   };
 };
@@ -795,16 +831,20 @@ const deleteOrderValidator = (options?: ValidationOptions): RequestHandler => {
       return next();
     }
 
-    const errors = ([[params, 'params']] as const)
+    const fields = ([[params, 'params']] as const)
       .flatMap(([validator, path]) =>
-        validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
+        validator.errors?.map(e => ({
+          path: `${path}${e.dataPath}`,
+          message: e.message
+        }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { errors });
+    options?.logger?.(req)('Request validation failed', { fields });
 
     res.status(400).send({
-      errors
+      type: 'REQUEST_VALIDATION_FAILED',
+      fields
     });
   };
 };
@@ -821,16 +861,20 @@ const createUsersWithArrayInputValidator = (
       return next();
     }
 
-    const errors = ([[body, 'body']] as const)
+    const fields = ([[body, 'body']] as const)
       .flatMap(([validator, path]) =>
-        validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
+        validator.errors?.map(e => ({
+          path: `${path}${e.dataPath}`,
+          message: e.message
+        }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { errors });
+    options?.logger?.(req)('Request validation failed', { fields });
 
     res.status(400).send({
-      errors
+      type: 'REQUEST_VALIDATION_FAILED',
+      fields
     });
   };
 };
@@ -847,16 +891,20 @@ const createUsersWithListInputValidator = (
       return next();
     }
 
-    const errors = ([[body, 'body']] as const)
+    const fields = ([[body, 'body']] as const)
       .flatMap(([validator, path]) =>
-        validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
+        validator.errors?.map(e => ({
+          path: `${path}${e.dataPath}`,
+          message: e.message
+        }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { errors });
+    options?.logger?.(req)('Request validation failed', { fields });
 
     res.status(400).send({
-      errors
+      type: 'REQUEST_VALIDATION_FAILED',
+      fields
     });
   };
 };
@@ -871,16 +919,20 @@ const getUserByNameValidator = (
       return next();
     }
 
-    const errors = ([[params, 'params']] as const)
+    const fields = ([[params, 'params']] as const)
       .flatMap(([validator, path]) =>
-        validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
+        validator.errors?.map(e => ({
+          path: `${path}${e.dataPath}`,
+          message: e.message
+        }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { errors });
+    options?.logger?.(req)('Request validation failed', { fields });
 
     res.status(400).send({
-      errors
+      type: 'REQUEST_VALIDATION_FAILED',
+      fields
     });
   };
 };
@@ -895,19 +947,23 @@ const updateUserValidator = (options?: ValidationOptions): RequestHandler => {
       return next();
     }
 
-    const errors = ([
+    const fields = ([
       [params, 'params'],
       [body, 'body']
     ] as const)
       .flatMap(([validator, path]) =>
-        validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
+        validator.errors?.map(e => ({
+          path: `${path}${e.dataPath}`,
+          message: e.message
+        }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { errors });
+    options?.logger?.(req)('Request validation failed', { fields });
 
     res.status(400).send({
-      errors
+      type: 'REQUEST_VALIDATION_FAILED',
+      fields
     });
   };
 };
@@ -920,16 +976,20 @@ const deleteUserValidator = (options?: ValidationOptions): RequestHandler => {
       return next();
     }
 
-    const errors = ([[params, 'params']] as const)
+    const fields = ([[params, 'params']] as const)
       .flatMap(([validator, path]) =>
-        validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
+        validator.errors?.map(e => ({
+          path: `${path}${e.dataPath}`,
+          message: e.message
+        }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { errors });
+    options?.logger?.(req)('Request validation failed', { fields });
 
     res.status(400).send({
-      errors
+      type: 'REQUEST_VALIDATION_FAILED',
+      fields
     });
   };
 };
@@ -942,16 +1002,20 @@ const loginUserValidator = (options?: ValidationOptions): RequestHandler => {
       return next();
     }
 
-    const errors = ([[query, 'query']] as const)
+    const fields = ([[query, 'query']] as const)
       .flatMap(([validator, path]) =>
-        validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
+        validator.errors?.map(e => ({
+          path: `${path}${e.dataPath}`,
+          message: e.message
+        }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { errors });
+    options?.logger?.(req)('Request validation failed', { fields });
 
     res.status(400).send({
-      errors
+      type: 'REQUEST_VALIDATION_FAILED',
+      fields
     });
   };
 };
@@ -964,16 +1028,20 @@ const createUserValidator = (options?: ValidationOptions): RequestHandler => {
       return next();
     }
 
-    const errors = ([[body, 'body']] as const)
+    const fields = ([[body, 'body']] as const)
       .flatMap(([validator, path]) =>
-        validator.errors?.map(e => `${path}${e.dataPath} ${e.message}`)
+        validator.errors?.map(e => ({
+          path: `${path}${e.dataPath}`,
+          message: e.message
+        }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { errors });
+    options?.logger?.(req)('Request validation failed', { fields });
 
     res.status(400).send({
-      errors
+      type: 'REQUEST_VALIDATION_FAILED',
+      fields
     });
   };
 };

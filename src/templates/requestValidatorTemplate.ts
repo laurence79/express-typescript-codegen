@@ -33,7 +33,7 @@ export const requestValidatorTemplate = ({
           return next();
         }
 
-        const errors = ([
+        const fields = ([
           ${parameterTypes
             .map(
               ({ requestProperty }) => `
@@ -42,15 +42,19 @@ export const requestValidatorTemplate = ({
             )
             .join(',\n')}
         ] as const).flatMap(([validator, path]) =>
-          validator.errors?.map(e => ` +
-    '`${path}${e.dataPath} ${e.message}`' +
-    `)
+          validator.errors?.map(e => ({
+            path: ` +
+    '`${path}${e.dataPath}`,' +
+    `
+            message: e.message
+          }))
         ).compact();
 
-        options?.logger?.(req)('Request validation failed', { errors });
+        options?.logger?.(req)('Request validation failed', { fields });
 
         res.status(400).send({
-          errors
+          type: 'REQUEST_VALIDATION_FAILED',
+          fields
         });
       };
     };
