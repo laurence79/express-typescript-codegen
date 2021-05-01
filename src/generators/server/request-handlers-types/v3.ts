@@ -26,7 +26,7 @@ export const fromV3 = (document: OpenApiV3.Document, log?: LogFn): string => {
           })
           .join(' | ') || 'unknown';
 
-      const statusCodes = responses
+      const statusCodeType = responses
         .map(({ statusCode }) =>
           statusCode === 'default' ? 'number' : statusCode
         )
@@ -58,7 +58,7 @@ export const fromV3 = (document: OpenApiV3.Document, log?: LogFn): string => {
         responseBodyType,
         bodyParamType,
         queryParamsType,
-        statusCodes
+        statusCodeType
       };
     }
   );

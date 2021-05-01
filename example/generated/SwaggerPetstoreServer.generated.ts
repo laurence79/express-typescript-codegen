@@ -107,7 +107,7 @@ export type AddPetRequestHandler = RequestHandler<
   AddPetRequestBody,
   unknown,
   Record<string, any>,
-  number
+  405
 >;
 
 export type UpdatePetRequestHandler = RequestHandler<
@@ -116,7 +116,7 @@ export type UpdatePetRequestHandler = RequestHandler<
   UpdatePetRequestBody,
   unknown,
   Record<string, any>,
-  number
+  400 | 404 | 405
 >;
 
 export type FindPetsByStatusRequestHandler = RequestHandler<
@@ -125,7 +125,7 @@ export type FindPetsByStatusRequestHandler = RequestHandler<
   unknown,
   FindPetsByStatusRequestQuery,
   Record<string, any>,
-  number
+  200 | 400
 >;
 
 export type FindPetsByTagsRequestHandler = RequestHandler<
@@ -134,7 +134,7 @@ export type FindPetsByTagsRequestHandler = RequestHandler<
   unknown,
   FindPetsByTagsRequestQuery,
   Record<string, any>,
-  number
+  200 | 400
 >;
 
 export type GetPetByIdRequestHandler = RequestHandler<
@@ -143,7 +143,7 @@ export type GetPetByIdRequestHandler = RequestHandler<
   unknown,
   unknown,
   Record<string, any>,
-  number
+  200 | 400 | 404
 >;
 
 export type UpdatePetWithFormRequestHandler = RequestHandler<
@@ -152,7 +152,7 @@ export type UpdatePetWithFormRequestHandler = RequestHandler<
   UpdatePetWithFormRequestBody,
   unknown,
   Record<string, any>,
-  number
+  405
 >;
 
 export type DeletePetRequestHandler = RequestHandler<
@@ -161,7 +161,7 @@ export type DeletePetRequestHandler = RequestHandler<
   unknown,
   unknown,
   Record<string, any>,
-  number
+  400 | 404
 >;
 
 export type PlaceOrderRequestHandler = RequestHandler<
@@ -170,7 +170,7 @@ export type PlaceOrderRequestHandler = RequestHandler<
   PlaceOrderRequestBody,
   unknown,
   Record<string, any>,
-  number
+  200 | 400
 >;
 
 export type GetOrderByIdRequestHandler = RequestHandler<
@@ -179,7 +179,7 @@ export type GetOrderByIdRequestHandler = RequestHandler<
   unknown,
   unknown,
   Record<string, any>,
-  number
+  200 | 400 | 404
 >;
 
 export type DeleteOrderRequestHandler = RequestHandler<
@@ -188,7 +188,7 @@ export type DeleteOrderRequestHandler = RequestHandler<
   unknown,
   unknown,
   Record<string, any>,
-  number
+  400 | 404
 >;
 
 export type GetInventoryRequestHandler = RequestHandler<
@@ -197,7 +197,7 @@ export type GetInventoryRequestHandler = RequestHandler<
   unknown,
   unknown,
   Record<string, any>,
-  number
+  200
 >;
 
 export type CreateUsersWithArrayInputRequestHandler = RequestHandler<
@@ -224,7 +224,7 @@ export type GetUserByNameRequestHandler = RequestHandler<
   unknown,
   unknown,
   Record<string, any>,
-  number
+  200 | 400 | 404
 >;
 
 export type UpdateUserRequestHandler = RequestHandler<
@@ -233,7 +233,7 @@ export type UpdateUserRequestHandler = RequestHandler<
   UpdateUserRequestBody,
   unknown,
   Record<string, any>,
-  number
+  400 | 404
 >;
 
 export type DeleteUserRequestHandler = RequestHandler<
@@ -242,7 +242,7 @@ export type DeleteUserRequestHandler = RequestHandler<
   unknown,
   unknown,
   Record<string, any>,
-  number
+  400 | 404
 >;
 
 export type LoginUserRequestHandler = RequestHandler<
@@ -251,7 +251,7 @@ export type LoginUserRequestHandler = RequestHandler<
   unknown,
   LoginUserRequestQuery,
   Record<string, any>,
-  number
+  200 | 400
 >;
 
 export type LogoutUserRequestHandler = RequestHandler<
