@@ -31,9 +31,27 @@ export const generateServer = ({
     import { Request, Router } from 'express';
     import { RequestHandler } from '@laurence79/express-async-request-handler';
 
+    export type TypedParams = Record<string, string | number | boolean>;
+
     export type ValidationOptions = {
-      logger?: (req: Request) => (message: string, data: Record<string, unknown>) => void;
+      logger?: (
+        req: Request<TypedParams, unknown, unknown, TypedQsRecord>
+      ) => (message: string, data: Record<string, unknown>) => void;
     };
+    
+    export interface TypedQsArray extends Array<TypedQsElement> {}
+    
+    export interface TypedQsRecord extends Record<string, TypedQsElement> {}
+    
+    export type TypedQsElement =
+      | undefined
+      | string
+      | boolean
+      | number
+      | TypedQsArray
+      | TypedQsRecord;
+    
+    export type ValidationRequestHandler = RequestHandler<TypedParams, unknown, unknown, TypedQsRecord>;
 
     ${types}
 

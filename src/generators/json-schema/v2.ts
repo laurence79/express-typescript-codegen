@@ -68,7 +68,16 @@ export const fromV2 = (
           return;
         }
 
-        schema.properties[name] = rest;
+        const propertyType = (() => {
+          if (rest.type === 'array') {
+            return { anyOf: [rest, rest.items] };
+          }
+
+          return rest;
+        })();
+
+        schema.properties[name] = propertyType;
+
         if (required) {
           schema.required = [...schema.required, name];
         }

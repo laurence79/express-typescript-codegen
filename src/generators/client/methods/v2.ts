@@ -43,18 +43,25 @@ export const fromV2 = (document: OpenApiV2.Document, log?: LogFn): string[] => {
         httpMethod: method,
         methodName: operationId,
         openApiPath: path,
-        pathParams: parameters.filter(p => p.in === 'path').map(p => p.name),
+        pathParams: parameters
+          .filter(p => p.in === 'path')
+          .map(p => ({
+            name: p.name,
+            type: HelpersV2.typeDefForSchema({ ...p, required: [] })
+          })),
         queryParams: parameters
           .filter(p => p.in === 'query')
           .map(p => ({
             name: p.name,
-            required: p.required ?? false
+            required: p.required ?? false,
+            type: p.schema ? HelpersV2.typeDefForSchema(p.schema) : 'string'
           })),
         headerParams: parameters
           .filter(p => p.in === 'header')
           .map(p => ({
             name: p.name,
-            required: p.required ?? false
+            required: p.required ?? false,
+            type: p.schema ? HelpersV2.typeDefForSchema(p.schema) : 'string'
           })),
         body: jsonBody() ?? formDataBody(),
         responses: responses.map(({ statusCode, response }) => {

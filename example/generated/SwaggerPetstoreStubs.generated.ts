@@ -6,12 +6,16 @@ export type AddPetRequestBody = Pet;
 export type UpdatePetRequestBody = Pet;
 
 export type FindPetsByStatusRequestQuery = {
-  status: Array<'available' | 'pending' | 'sold'>;
+  status:
+    | Array<'available' | 'pending' | 'sold'>
+    | 'available'
+    | 'pending'
+    | 'sold';
 };
 
 export type FindPetsByStatus200ResponseBody = Array<Pet>;
 
-export type FindPetsByTagsRequestQuery = { tags: Array<string> };
+export type FindPetsByTagsRequestQuery = { tags: Array<string> | string };
 
 export type FindPetsByTags200ResponseBody = Array<Pet>;
 

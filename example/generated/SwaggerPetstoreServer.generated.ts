@@ -2,23 +2,48 @@ import Ajv from 'ajv';
 import { Request, Router } from 'express';
 import { RequestHandler } from '@laurence79/express-async-request-handler';
 
+export type TypedParams = Record<string, string | number | boolean>;
+
 export type ValidationOptions = {
   logger?: (
-    req: Request
+    req: Request<TypedParams, unknown, unknown, TypedQsRecord>
   ) => (message: string, data: Record<string, unknown>) => void;
 };
+
+export interface TypedQsArray extends Array<TypedQsElement> {}
+
+export interface TypedQsRecord extends Record<string, TypedQsElement> {}
+
+export type TypedQsElement =
+  | undefined
+  | string
+  | boolean
+  | number
+  | TypedQsArray
+  | TypedQsRecord;
+
+export type ValidationRequestHandler = RequestHandler<
+  TypedParams,
+  unknown,
+  unknown,
+  TypedQsRecord
+>;
 
 export type AddPetRequestBody = Pet;
 
 export type UpdatePetRequestBody = Pet;
 
 export type FindPetsByStatusRequestQuery = {
-  status: Array<'available' | 'pending' | 'sold'>;
+  status:
+    | Array<'available' | 'pending' | 'sold'>
+    | 'available'
+    | 'pending'
+    | 'sold';
 };
 
 export type FindPetsByStatus200ResponseBody = Array<Pet>;
 
-export type FindPetsByTagsRequestQuery = { tags: Array<string> };
+export type FindPetsByTagsRequestQuery = { tags: Array<string> | string };
 
 export type FindPetsByTags200ResponseBody = Array<Pet>;
 
@@ -323,14 +348,24 @@ ajv.addSchema({
       required: ['status'],
       properties: {
         status: {
-          description: 'Status values that need to be considered for filter',
-          type: 'array',
-          items: {
-            type: 'string',
-            enum: ['available', 'pending', 'sold'],
-            default: 'available'
-          },
-          collectionFormat: 'multi'
+          anyOf: [
+            {
+              description:
+                'Status values that need to be considered for filter',
+              type: 'array',
+              items: {
+                type: 'string',
+                enum: ['available', 'pending', 'sold'],
+                default: 'available'
+              },
+              collectionFormat: 'multi'
+            },
+            {
+              type: 'string',
+              enum: ['available', 'pending', 'sold'],
+              default: 'available'
+            }
+          ]
         }
       }
     },
@@ -343,10 +378,15 @@ ajv.addSchema({
       required: ['tags'],
       properties: {
         tags: {
-          description: 'Tags to filter by',
-          type: 'array',
-          items: { type: 'string' },
-          collectionFormat: 'multi'
+          anyOf: [
+            {
+              description: 'Tags to filter by',
+              type: 'array',
+              items: { type: 'string' },
+              collectionFormat: 'multi'
+            },
+            { type: 'string' }
+          ]
         }
       }
     },
@@ -573,7 +613,9 @@ ajv.addSchema({
   }
 });
 
-const addPetValidator = (options?: ValidationOptions): RequestHandler => {
+const addPetValidator = (
+  options?: ValidationOptions
+): ValidationRequestHandler => {
   const body = ajv.getSchema('#/definitions/AddPetRequestBody')!;
 
   return (req, res, next) => {
@@ -599,7 +641,9 @@ const addPetValidator = (options?: ValidationOptions): RequestHandler => {
   };
 };
 
-const updatePetValidator = (options?: ValidationOptions): RequestHandler => {
+const updatePetValidator = (
+  options?: ValidationOptions
+): ValidationRequestHandler => {
   const body = ajv.getSchema('#/definitions/UpdatePetRequestBody')!;
 
   return (req, res, next) => {
@@ -627,7 +671,7 @@ const updatePetValidator = (options?: ValidationOptions): RequestHandler => {
 
 const findPetsByStatusValidator = (
   options?: ValidationOptions
-): RequestHandler => {
+): ValidationRequestHandler => {
   const query = ajv.getSchema('#/definitions/FindPetsByStatusRequestQuery')!;
 
   return (req, res, next) => {
@@ -655,7 +699,7 @@ const findPetsByStatusValidator = (
 
 const findPetsByTagsValidator = (
   options?: ValidationOptions
-): RequestHandler => {
+): ValidationRequestHandler => {
   const query = ajv.getSchema('#/definitions/FindPetsByTagsRequestQuery')!;
 
   return (req, res, next) => {
@@ -681,7 +725,9 @@ const findPetsByTagsValidator = (
   };
 };
 
-const getPetByIdValidator = (options?: ValidationOptions): RequestHandler => {
+const getPetByIdValidator = (
+  options?: ValidationOptions
+): ValidationRequestHandler => {
   const params = ajv.getSchema('#/definitions/GetPetByIdRequestPath')!;
 
   return (req, res, next) => {
@@ -709,7 +755,7 @@ const getPetByIdValidator = (options?: ValidationOptions): RequestHandler => {
 
 const updatePetWithFormValidator = (
   options?: ValidationOptions
-): RequestHandler => {
+): ValidationRequestHandler => {
   const params = ajv.getSchema('#/definitions/UpdatePetWithFormRequestPath')!;
 
   const body = ajv.getSchema('#/definitions/UpdatePetWithFormRequestBody')!;
@@ -740,7 +786,9 @@ const updatePetWithFormValidator = (
   };
 };
 
-const deletePetValidator = (options?: ValidationOptions): RequestHandler => {
+const deletePetValidator = (
+  options?: ValidationOptions
+): ValidationRequestHandler => {
   const headers = ajv.getSchema('#/definitions/DeletePetRequestHeader')!;
 
   const params = ajv.getSchema('#/definitions/DeletePetRequestPath')!;
@@ -771,7 +819,9 @@ const deletePetValidator = (options?: ValidationOptions): RequestHandler => {
   };
 };
 
-const placeOrderValidator = (options?: ValidationOptions): RequestHandler => {
+const placeOrderValidator = (
+  options?: ValidationOptions
+): ValidationRequestHandler => {
   const body = ajv.getSchema('#/definitions/PlaceOrderRequestBody')!;
 
   return (req, res, next) => {
@@ -797,7 +847,9 @@ const placeOrderValidator = (options?: ValidationOptions): RequestHandler => {
   };
 };
 
-const getOrderByIdValidator = (options?: ValidationOptions): RequestHandler => {
+const getOrderByIdValidator = (
+  options?: ValidationOptions
+): ValidationRequestHandler => {
   const params = ajv.getSchema('#/definitions/GetOrderByIdRequestPath')!;
 
   return (req, res, next) => {
@@ -823,7 +875,9 @@ const getOrderByIdValidator = (options?: ValidationOptions): RequestHandler => {
   };
 };
 
-const deleteOrderValidator = (options?: ValidationOptions): RequestHandler => {
+const deleteOrderValidator = (
+  options?: ValidationOptions
+): ValidationRequestHandler => {
   const params = ajv.getSchema('#/definitions/DeleteOrderRequestPath')!;
 
   return (req, res, next) => {
@@ -851,7 +905,7 @@ const deleteOrderValidator = (options?: ValidationOptions): RequestHandler => {
 
 const createUsersWithArrayInputValidator = (
   options?: ValidationOptions
-): RequestHandler => {
+): ValidationRequestHandler => {
   const body = ajv.getSchema(
     '#/definitions/CreateUsersWithArrayInputRequestBody'
   )!;
@@ -881,7 +935,7 @@ const createUsersWithArrayInputValidator = (
 
 const createUsersWithListInputValidator = (
   options?: ValidationOptions
-): RequestHandler => {
+): ValidationRequestHandler => {
   const body = ajv.getSchema(
     '#/definitions/CreateUsersWithListInputRequestBody'
   )!;
@@ -911,7 +965,7 @@ const createUsersWithListInputValidator = (
 
 const getUserByNameValidator = (
   options?: ValidationOptions
-): RequestHandler => {
+): ValidationRequestHandler => {
   const params = ajv.getSchema('#/definitions/GetUserByNameRequestPath')!;
 
   return (req, res, next) => {
@@ -937,7 +991,9 @@ const getUserByNameValidator = (
   };
 };
 
-const updateUserValidator = (options?: ValidationOptions): RequestHandler => {
+const updateUserValidator = (
+  options?: ValidationOptions
+): ValidationRequestHandler => {
   const params = ajv.getSchema('#/definitions/UpdateUserRequestPath')!;
 
   const body = ajv.getSchema('#/definitions/UpdateUserRequestBody')!;
@@ -968,7 +1024,9 @@ const updateUserValidator = (options?: ValidationOptions): RequestHandler => {
   };
 };
 
-const deleteUserValidator = (options?: ValidationOptions): RequestHandler => {
+const deleteUserValidator = (
+  options?: ValidationOptions
+): ValidationRequestHandler => {
   const params = ajv.getSchema('#/definitions/DeleteUserRequestPath')!;
 
   return (req, res, next) => {
@@ -994,7 +1052,9 @@ const deleteUserValidator = (options?: ValidationOptions): RequestHandler => {
   };
 };
 
-const loginUserValidator = (options?: ValidationOptions): RequestHandler => {
+const loginUserValidator = (
+  options?: ValidationOptions
+): ValidationRequestHandler => {
   const query = ajv.getSchema('#/definitions/LoginUserRequestQuery')!;
 
   return (req, res, next) => {
@@ -1020,7 +1080,9 @@ const loginUserValidator = (options?: ValidationOptions): RequestHandler => {
   };
 };
 
-const createUserValidator = (options?: ValidationOptions): RequestHandler => {
+const createUserValidator = (
+  options?: ValidationOptions
+): ValidationRequestHandler => {
   const body = ajv.getSchema('#/definitions/CreateUserRequestBody')!;
 
   return (req, res, next) => {

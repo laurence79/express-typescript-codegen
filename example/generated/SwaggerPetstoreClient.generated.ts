@@ -202,7 +202,7 @@ export class SwaggerPetstoreClient {
   }
 
   public async getPetById(args: {
-    petId: string;
+    petId: number;
   }): Promise<
     | ResponseWithData<200, Pet>
     | ResponseWithData<400, undefined>
@@ -246,7 +246,7 @@ export class SwaggerPetstoreClient {
   }
 
   public async updatePetWithForm(args: {
-    petId: string;
+    petId: number;
     body: { name?: string; status?: string };
   }): Promise<ResponseWithData<405, undefined>> {
     const { petId, body } = args;
@@ -281,7 +281,7 @@ export class SwaggerPetstoreClient {
 
   public async deletePet(args: {
     api_key?: string;
-    petId: string;
+    petId: number;
   }): Promise<
     ResponseWithData<400, undefined> | ResponseWithData<404, undefined>
   > {
@@ -354,7 +354,7 @@ export class SwaggerPetstoreClient {
   }
 
   public async getOrderById(args: {
-    orderId: string;
+    orderId: number;
   }): Promise<
     | ResponseWithData<200, Order>
     | ResponseWithData<400, undefined>
@@ -398,7 +398,7 @@ export class SwaggerPetstoreClient {
   }
 
   public async deleteOrder(args: {
-    orderId: string;
+    orderId: number;
   }): Promise<
     ResponseWithData<400, undefined> | ResponseWithData<404, undefined>
   > {

@@ -64,18 +64,25 @@ export const fromV3 = (document: OpenApiV3.Document, log?: LogFn): string[] => {
         httpMethod: method,
         methodName: operationId,
         openApiPath: path,
-        pathParams: parameters.filter(p => p.in === 'path').map(p => p.name),
+        pathParams: parameters
+          .filter(p => p.in === 'path')
+          .map(p => ({
+            name: p.name,
+            type: p.schema ? HelpersV3.typeDefForSchema(p.schema) : 'string'
+          })),
         queryParams: parameters
           .filter(p => p.in === 'query')
           .map(p => ({
             name: p.name,
-            required: p.required ?? false
+            required: p.required ?? false,
+            type: p.schema ? HelpersV3.typeDefForSchema(p.schema) : 'string'
           })),
         headerParams: parameters
           .filter(p => p.in === 'header')
           .map(p => ({
             name: p.name,
-            required: p.required ?? false
+            required: p.required ?? false,
+            type: p.schema ? HelpersV3.typeDefForSchema(p.schema) : 'string'
           })),
         body,
         responses: responses.map(({ statusCode, response }) => {

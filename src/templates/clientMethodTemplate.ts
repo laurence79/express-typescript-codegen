@@ -8,12 +8,17 @@ export type ClientMethodTemplateArgs = {
   queryParams: {
     name: string;
     required: boolean;
+    type: string;
   }[];
   headerParams: {
     name: string;
     required: boolean;
+    type: string;
   }[];
-  pathParams: string[];
+  pathParams: {
+    name: string;
+    type: string;
+  }[];
   body:
     | {
         type: 'json';
@@ -64,8 +69,9 @@ export const clientMethodTemplate = ({
 
   const functionArguments = queryParams
     .concat(headerParams)
-    .map(({ name, required }) => ({ name, required, type: 'string' }))
-    .concat(pathParams.map(name => ({ name, required: true, type: 'string' })))
+    .concat(
+      pathParams.map(({ name, type }) => ({ name, required: true, type }))
+    )
     .concat(bodyArg ? [bodyArg] : []);
 
   const functionArgumentSignature = functionArguments.any()
@@ -89,8 +95,10 @@ export const clientMethodTemplate = ({
 
   const paramNames = headerParams
     .concat(queryParams)
+    .concat(
+      pathParams.map(({ name, type }) => ({ name, required: true, type }))
+    )
     .map(({ name }) => name)
-    .concat(pathParams)
     .concat(bodyArg ? [bodyArg.name] : []);
 
   const decomposeParameters = paramNames.any()

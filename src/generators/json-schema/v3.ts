@@ -73,7 +73,25 @@ export const fromV3 = (
           // eslint-disable-next-line @typescript-eslint/naming-convention
           const { in: _, name, required, ...rest } = v;
 
-          schema.properties[name] = rest.schema ?? { type: 'string' };
+          const propertyType = (() => {
+            if (!rest.schema) {
+              return { type: 'string' } as OpenApiV3.NonArraySchemaObject;
+            }
+
+            if ('$ref' in rest.schema) {
+              return rest.schema;
+            }
+
+            if (rest.schema.type === 'array') {
+              return {
+                anyOf: [rest.schema, rest.schema.items]
+              };
+            }
+
+            return rest.schema;
+          })();
+
+          schema.properties[name] = propertyType;
 
           if (required) {
             schema.required = [...schema.required, name];

@@ -11,7 +11,7 @@ export const requestValidatorTemplate = ({
 }): string => {
   return (
     `
-    const ${functionName} = (options?: ValidationOptions): RequestHandler => {
+    const ${functionName} = (options?: ValidationOptions): ValidationRequestHandler => {
       ${parameterTypes
         .map(
           ({ typeName, requestProperty }) => `
