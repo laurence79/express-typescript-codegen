@@ -1,39 +1,43 @@
 import qs from 'qs';
 import { fetch } from 'cross-fetch';
 
-export type ApiResponse = { code?: number; type?: string; message?: string };
-
-export type Category = { id?: number; name?: string };
-
-export type Pet = {
-  id?: number;
-  category?: Category;
-  name: string;
-  photoUrls: Array<string>;
-  tags?: Array<Tag>;
-  status?: 'available' | 'pending' | 'sold';
+export type ApiResponse = {
+  code: number | null;
+  type: string | null;
+  message: string | null;
 };
 
-export type Tag = { id?: number; name?: string };
+export type Category = { id: number | null; name: string | null };
+
+export type Pet = {
+  id: number | null;
+  category: Category | null;
+  name: string;
+  photoUrls: Array<string>;
+  tags: Array<Tag> | null;
+  status: 'available' | 'pending' | 'sold' | null;
+};
+
+export type Tag = { id: number | null; name: string | null };
 
 export type Order = {
-  id?: number;
-  petId?: number;
-  quantity?: number;
-  shipDate?: string;
-  status?: 'placed' | 'approved' | 'delivered';
-  complete?: boolean;
+  id: number | null;
+  petId: number | null;
+  quantity: number | null;
+  shipDate: string | null;
+  status: 'placed' | 'approved' | 'delivered' | null;
+  complete: boolean | null;
 };
 
 export type User = {
-  id?: number;
-  username?: string;
-  firstName?: string;
-  lastName?: string;
-  email?: string;
-  password?: string;
-  phone?: string;
-  userStatus?: number;
+  id: number | null;
+  username: string | null;
+  firstName: string | null;
+  lastName: string | null;
+  email: string | null;
+  password: string | null;
+  phone: string | null;
+  userStatus: number | null;
 };
 
 type ResponseWithData<TStatus, TData> = {
