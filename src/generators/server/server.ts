@@ -57,7 +57,7 @@ export const generateServer = ({
 
     ${handlers}
 
-    const ajv = new Ajv({ strict: false });
+    const ajv = new Ajv({ strict: false, coerceTypes: true });
     ajv.addSchema(${JSON.stringify(jsonSchema)});
 
     ${validators}

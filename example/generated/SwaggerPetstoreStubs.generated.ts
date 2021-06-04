@@ -132,7 +132,7 @@ type MethodStub<
     Record<string, unknown>,
     TResponseStub['statusCode']
   >;
-  respondWith(data: TResponseStub): void;
+  respondWith(data: TResponseStub | TResponseStub[]): void;
   callLog(): RequestLog<THeaders, TParams, TQuery, TRequestBody>[];
 };
 
@@ -145,7 +145,7 @@ const methodStub = <
 >(): MethodStub<THeaders, TParams, TQuery, TRequestBody, TResponseStub> => {
   const log: RequestLog<THeaders, TParams, TQuery, TRequestBody>[] = [];
 
-  let responseStub: TResponseStub | null = null;
+  let responseStub: TResponseStub | TResponseStub[] | null = null;
 
   return {
     requestHandler: (req, res) => {
@@ -162,7 +162,17 @@ const methodStub = <
         throw new Error('Method not stubbed');
       }
 
-      res.status(responseStub.statusCode).send(responseStub.body);
+      if (Array.isArray(responseStub)) {
+        const stub = responseStub.shift();
+
+        if (!stub) {
+          throw new Error('No more stubbed responses left');
+        }
+
+        return res.status(stub.statusCode).send(stub.body);
+      }
+
+      return res.status(responseStub.statusCode).send(responseStub.body);
     },
 
     respondWith(data) {

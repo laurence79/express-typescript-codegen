@@ -344,7 +344,7 @@ export type RequestHandlers = {
   createUser: CreateUserRequestHandler;
 };
 
-const ajv = new Ajv({ strict: false });
+const ajv = new Ajv({ strict: false, coerceTypes: true });
 ajv.addSchema({
   $schema: 'http://json-schema.org/draft-07/schema#',
   definitions: {
