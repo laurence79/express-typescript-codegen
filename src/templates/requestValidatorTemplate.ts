@@ -1,8 +1,10 @@
 /* eslint-disable no-template-curly-in-string */
 export const requestValidatorTemplate = ({
+  requestHandlerTypeName,
   functionName,
   parameterTypes
 }: {
+  requestHandlerTypeName: string;
   functionName: string;
   parameterTypes: {
     typeName: string;
@@ -11,7 +13,7 @@ export const requestValidatorTemplate = ({
 }): string => {
   return (
     `
-    const ${functionName} = (options?: ValidationOptions): ValidationRequestHandler => {
+    const ${functionName} = (options?: ValidationOptions): ${requestHandlerTypeName} => {
       ${parameterTypes
         .map(
           ({ typeName, requestProperty }) => `
@@ -46,11 +48,11 @@ export const requestValidatorTemplate = ({
             path: ` +
     '`${path}${e.dataPath}`,' +
     `
-            message: e.message
+            message: e.message ?? 'Unknown'
           }))
         ).compact();
 
-        options?.logger?.(req)('Request validation failed', { fields });
+        options?.logger?.(req as Request)('Request validation failed', { fields });
 
         res.status(400).send({
           type: 'REQUEST_VALIDATION_FAILED',

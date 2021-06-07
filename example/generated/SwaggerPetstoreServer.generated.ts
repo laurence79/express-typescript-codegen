@@ -2,32 +2,11 @@ import Ajv from 'ajv';
 import { Request, Router } from 'express';
 import { RequestHandler } from '@laurence79/express-async-request-handler';
 
-export type TypedParams = Record<string, string | number | boolean>;
-
 export type ValidationOptions = {
   logger?: (
-    req: Request<TypedParams, unknown, unknown, TypedQsRecord>
+    req: Request
   ) => (message: string, data: Record<string, unknown>) => void;
 };
-
-export interface TypedQsArray extends Array<TypedQsElement> {}
-
-export interface TypedQsRecord extends Record<string, TypedQsElement> {}
-
-export type TypedQsElement =
-  | undefined
-  | string
-  | boolean
-  | number
-  | TypedQsArray
-  | TypedQsRecord;
-
-export type ValidationRequestHandler = RequestHandler<
-  TypedParams,
-  unknown,
-  unknown,
-  TypedQsRecord
->;
 
 export type AddPetRequestBody = Pet;
 
@@ -620,9 +599,7 @@ ajv.addSchema({
   }
 });
 
-const addPetValidator = (
-  options?: ValidationOptions
-): ValidationRequestHandler => {
+const addPetValidator = (options?: ValidationOptions): AddPetRequestHandler => {
   const body = ajv.getSchema('#/definitions/AddPetRequestBody')!;
 
   return (req, res, next) => {
@@ -634,12 +611,12 @@ const addPetValidator = (
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => ({
           path: `${path}${e.dataPath}`,
-          message: e.message
+          message: e.message ?? 'Unknown'
         }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { fields });
+    options?.logger?.(req as Request)('Request validation failed', { fields });
 
     res.status(400).send({
       type: 'REQUEST_VALIDATION_FAILED',
@@ -650,7 +627,7 @@ const addPetValidator = (
 
 const updatePetValidator = (
   options?: ValidationOptions
-): ValidationRequestHandler => {
+): UpdatePetRequestHandler => {
   const body = ajv.getSchema('#/definitions/UpdatePetRequestBody')!;
 
   return (req, res, next) => {
@@ -662,12 +639,12 @@ const updatePetValidator = (
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => ({
           path: `${path}${e.dataPath}`,
-          message: e.message
+          message: e.message ?? 'Unknown'
         }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { fields });
+    options?.logger?.(req as Request)('Request validation failed', { fields });
 
     res.status(400).send({
       type: 'REQUEST_VALIDATION_FAILED',
@@ -678,7 +655,7 @@ const updatePetValidator = (
 
 const findPetsByStatusValidator = (
   options?: ValidationOptions
-): ValidationRequestHandler => {
+): FindPetsByStatusRequestHandler => {
   const query = ajv.getSchema('#/definitions/FindPetsByStatusRequestQuery')!;
 
   return (req, res, next) => {
@@ -690,12 +667,12 @@ const findPetsByStatusValidator = (
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => ({
           path: `${path}${e.dataPath}`,
-          message: e.message
+          message: e.message ?? 'Unknown'
         }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { fields });
+    options?.logger?.(req as Request)('Request validation failed', { fields });
 
     res.status(400).send({
       type: 'REQUEST_VALIDATION_FAILED',
@@ -706,7 +683,7 @@ const findPetsByStatusValidator = (
 
 const findPetsByTagsValidator = (
   options?: ValidationOptions
-): ValidationRequestHandler => {
+): FindPetsByTagsRequestHandler => {
   const query = ajv.getSchema('#/definitions/FindPetsByTagsRequestQuery')!;
 
   return (req, res, next) => {
@@ -718,12 +695,12 @@ const findPetsByTagsValidator = (
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => ({
           path: `${path}${e.dataPath}`,
-          message: e.message
+          message: e.message ?? 'Unknown'
         }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { fields });
+    options?.logger?.(req as Request)('Request validation failed', { fields });
 
     res.status(400).send({
       type: 'REQUEST_VALIDATION_FAILED',
@@ -734,7 +711,7 @@ const findPetsByTagsValidator = (
 
 const getPetByIdValidator = (
   options?: ValidationOptions
-): ValidationRequestHandler => {
+): GetPetByIdRequestHandler => {
   const params = ajv.getSchema('#/definitions/GetPetByIdRequestPath')!;
 
   return (req, res, next) => {
@@ -746,12 +723,12 @@ const getPetByIdValidator = (
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => ({
           path: `${path}${e.dataPath}`,
-          message: e.message
+          message: e.message ?? 'Unknown'
         }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { fields });
+    options?.logger?.(req as Request)('Request validation failed', { fields });
 
     res.status(400).send({
       type: 'REQUEST_VALIDATION_FAILED',
@@ -762,7 +739,7 @@ const getPetByIdValidator = (
 
 const updatePetWithFormValidator = (
   options?: ValidationOptions
-): ValidationRequestHandler => {
+): UpdatePetWithFormRequestHandler => {
   const params = ajv.getSchema('#/definitions/UpdatePetWithFormRequestPath')!;
 
   const body = ajv.getSchema('#/definitions/UpdatePetWithFormRequestBody')!;
@@ -779,12 +756,12 @@ const updatePetWithFormValidator = (
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => ({
           path: `${path}${e.dataPath}`,
-          message: e.message
+          message: e.message ?? 'Unknown'
         }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { fields });
+    options?.logger?.(req as Request)('Request validation failed', { fields });
 
     res.status(400).send({
       type: 'REQUEST_VALIDATION_FAILED',
@@ -795,7 +772,7 @@ const updatePetWithFormValidator = (
 
 const deletePetValidator = (
   options?: ValidationOptions
-): ValidationRequestHandler => {
+): DeletePetRequestHandler => {
   const headers = ajv.getSchema('#/definitions/DeletePetRequestHeader')!;
 
   const params = ajv.getSchema('#/definitions/DeletePetRequestPath')!;
@@ -812,12 +789,12 @@ const deletePetValidator = (
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => ({
           path: `${path}${e.dataPath}`,
-          message: e.message
+          message: e.message ?? 'Unknown'
         }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { fields });
+    options?.logger?.(req as Request)('Request validation failed', { fields });
 
     res.status(400).send({
       type: 'REQUEST_VALIDATION_FAILED',
@@ -828,7 +805,7 @@ const deletePetValidator = (
 
 const placeOrderValidator = (
   options?: ValidationOptions
-): ValidationRequestHandler => {
+): PlaceOrderRequestHandler => {
   const body = ajv.getSchema('#/definitions/PlaceOrderRequestBody')!;
 
   return (req, res, next) => {
@@ -840,12 +817,12 @@ const placeOrderValidator = (
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => ({
           path: `${path}${e.dataPath}`,
-          message: e.message
+          message: e.message ?? 'Unknown'
         }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { fields });
+    options?.logger?.(req as Request)('Request validation failed', { fields });
 
     res.status(400).send({
       type: 'REQUEST_VALIDATION_FAILED',
@@ -856,7 +833,7 @@ const placeOrderValidator = (
 
 const getOrderByIdValidator = (
   options?: ValidationOptions
-): ValidationRequestHandler => {
+): GetOrderByIdRequestHandler => {
   const params = ajv.getSchema('#/definitions/GetOrderByIdRequestPath')!;
 
   return (req, res, next) => {
@@ -868,12 +845,12 @@ const getOrderByIdValidator = (
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => ({
           path: `${path}${e.dataPath}`,
-          message: e.message
+          message: e.message ?? 'Unknown'
         }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { fields });
+    options?.logger?.(req as Request)('Request validation failed', { fields });
 
     res.status(400).send({
       type: 'REQUEST_VALIDATION_FAILED',
@@ -884,7 +861,7 @@ const getOrderByIdValidator = (
 
 const deleteOrderValidator = (
   options?: ValidationOptions
-): ValidationRequestHandler => {
+): DeleteOrderRequestHandler => {
   const params = ajv.getSchema('#/definitions/DeleteOrderRequestPath')!;
 
   return (req, res, next) => {
@@ -896,12 +873,12 @@ const deleteOrderValidator = (
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => ({
           path: `${path}${e.dataPath}`,
-          message: e.message
+          message: e.message ?? 'Unknown'
         }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { fields });
+    options?.logger?.(req as Request)('Request validation failed', { fields });
 
     res.status(400).send({
       type: 'REQUEST_VALIDATION_FAILED',
@@ -912,7 +889,7 @@ const deleteOrderValidator = (
 
 const createUsersWithArrayInputValidator = (
   options?: ValidationOptions
-): ValidationRequestHandler => {
+): CreateUsersWithArrayInputRequestHandler => {
   const body = ajv.getSchema(
     '#/definitions/CreateUsersWithArrayInputRequestBody'
   )!;
@@ -926,12 +903,12 @@ const createUsersWithArrayInputValidator = (
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => ({
           path: `${path}${e.dataPath}`,
-          message: e.message
+          message: e.message ?? 'Unknown'
         }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { fields });
+    options?.logger?.(req as Request)('Request validation failed', { fields });
 
     res.status(400).send({
       type: 'REQUEST_VALIDATION_FAILED',
@@ -942,7 +919,7 @@ const createUsersWithArrayInputValidator = (
 
 const createUsersWithListInputValidator = (
   options?: ValidationOptions
-): ValidationRequestHandler => {
+): CreateUsersWithListInputRequestHandler => {
   const body = ajv.getSchema(
     '#/definitions/CreateUsersWithListInputRequestBody'
   )!;
@@ -956,12 +933,12 @@ const createUsersWithListInputValidator = (
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => ({
           path: `${path}${e.dataPath}`,
-          message: e.message
+          message: e.message ?? 'Unknown'
         }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { fields });
+    options?.logger?.(req as Request)('Request validation failed', { fields });
 
     res.status(400).send({
       type: 'REQUEST_VALIDATION_FAILED',
@@ -972,7 +949,7 @@ const createUsersWithListInputValidator = (
 
 const getUserByNameValidator = (
   options?: ValidationOptions
-): ValidationRequestHandler => {
+): GetUserByNameRequestHandler => {
   const params = ajv.getSchema('#/definitions/GetUserByNameRequestPath')!;
 
   return (req, res, next) => {
@@ -984,12 +961,12 @@ const getUserByNameValidator = (
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => ({
           path: `${path}${e.dataPath}`,
-          message: e.message
+          message: e.message ?? 'Unknown'
         }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { fields });
+    options?.logger?.(req as Request)('Request validation failed', { fields });
 
     res.status(400).send({
       type: 'REQUEST_VALIDATION_FAILED',
@@ -1000,7 +977,7 @@ const getUserByNameValidator = (
 
 const updateUserValidator = (
   options?: ValidationOptions
-): ValidationRequestHandler => {
+): UpdateUserRequestHandler => {
   const params = ajv.getSchema('#/definitions/UpdateUserRequestPath')!;
 
   const body = ajv.getSchema('#/definitions/UpdateUserRequestBody')!;
@@ -1017,12 +994,12 @@ const updateUserValidator = (
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => ({
           path: `${path}${e.dataPath}`,
-          message: e.message
+          message: e.message ?? 'Unknown'
         }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { fields });
+    options?.logger?.(req as Request)('Request validation failed', { fields });
 
     res.status(400).send({
       type: 'REQUEST_VALIDATION_FAILED',
@@ -1033,7 +1010,7 @@ const updateUserValidator = (
 
 const deleteUserValidator = (
   options?: ValidationOptions
-): ValidationRequestHandler => {
+): DeleteUserRequestHandler => {
   const params = ajv.getSchema('#/definitions/DeleteUserRequestPath')!;
 
   return (req, res, next) => {
@@ -1045,12 +1022,12 @@ const deleteUserValidator = (
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => ({
           path: `${path}${e.dataPath}`,
-          message: e.message
+          message: e.message ?? 'Unknown'
         }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { fields });
+    options?.logger?.(req as Request)('Request validation failed', { fields });
 
     res.status(400).send({
       type: 'REQUEST_VALIDATION_FAILED',
@@ -1061,7 +1038,7 @@ const deleteUserValidator = (
 
 const loginUserValidator = (
   options?: ValidationOptions
-): ValidationRequestHandler => {
+): LoginUserRequestHandler => {
   const query = ajv.getSchema('#/definitions/LoginUserRequestQuery')!;
 
   return (req, res, next) => {
@@ -1073,12 +1050,12 @@ const loginUserValidator = (
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => ({
           path: `${path}${e.dataPath}`,
-          message: e.message
+          message: e.message ?? 'Unknown'
         }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { fields });
+    options?.logger?.(req as Request)('Request validation failed', { fields });
 
     res.status(400).send({
       type: 'REQUEST_VALIDATION_FAILED',
@@ -1089,7 +1066,7 @@ const loginUserValidator = (
 
 const createUserValidator = (
   options?: ValidationOptions
-): ValidationRequestHandler => {
+): CreateUserRequestHandler => {
   const body = ajv.getSchema('#/definitions/CreateUserRequestBody')!;
 
   return (req, res, next) => {
@@ -1101,12 +1078,12 @@ const createUserValidator = (
       .flatMap(([validator, path]) =>
         validator.errors?.map(e => ({
           path: `${path}${e.dataPath}`,
-          message: e.message
+          message: e.message ?? 'Unknown'
         }))
       )
       .compact();
 
-    options?.logger?.(req)('Request validation failed', { fields });
+    options?.logger?.(req as Request)('Request validation failed', { fields });
 
     res.status(400).send({
       type: 'REQUEST_VALIDATION_FAILED',

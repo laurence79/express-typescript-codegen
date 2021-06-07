@@ -9,6 +9,7 @@ import {
 } from '../../../templates';
 import { LogFn, progress } from '../../../lib/cli-logging';
 import { expressRequestPropertyName } from '../../../helpers/open-api/expressRequestPropertyName';
+import { initUpper } from '../../../helpers/initUpper';
 
 export const fromV3 = (
   openApiDocument: OpenApiV3.Document,
@@ -35,9 +36,12 @@ export const fromV3 = (
         return undefined;
       }
 
+      const requestHandlerTypeName = `${initUpper(operationId)}RequestHandler`;
+
       log?.(progress(`Generating ${operationId}Validator`));
 
       return requestValidatorTemplate({
+        requestHandlerTypeName,
         functionName: requestValidatorFunctionNameTemplate(operationId),
         parameterTypes
       });
