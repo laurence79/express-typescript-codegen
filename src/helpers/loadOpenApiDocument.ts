@@ -18,7 +18,7 @@ export const loadOpenApiDocument = ({
   }
 
   const extension = path.extname(openApiDocumentFilename);
-  const data = fs.readFileSync(openApiDocumentFilename, 'UTF-8');
+  const data = fs.readFileSync(openApiDocumentFilename, 'utf-8');
 
   const doc = (() => {
     if (['.yaml', '.yml'].includes(extension)) {

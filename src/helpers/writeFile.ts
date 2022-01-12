@@ -48,8 +48,9 @@ export const writeFile = ({
         parser
       });
     } catch (e) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      log?.(warn(e.message));
+      if (e instanceof Error) {
+        log?.(warn(e.message));
+      }
       return content;
     }
   })();

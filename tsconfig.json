@@ -1,4 +1,5 @@
 {
+  "extends": "./tsconfig.node14.json",
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
@@ -8,7 +9,6 @@
     "baseUrl": ".",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "lib": ["ES2019"],
     "moduleResolution": "node",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
@@ -25,10 +25,8 @@
     "strictFunctionTypes": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
-    "target": "ES2019",
-    "types": ["node", "@types/ts-nameof", "jest"],
-    "typeRoots": ["node_modules/@types"]
+    "types": ["node", "@types/ts-nameof", "jest"]
   },
   "exclude": ["node_modules"],
-  "include": ["src", ".eslintrc.js", "jest.config.js", "rollup.config.js"]
+  "include": ["src", ".eslintrc.js", "jest.config.js", "rollup.config.js", "example"]
 }

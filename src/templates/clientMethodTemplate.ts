@@ -126,7 +126,13 @@ export const clientMethodTemplate = ({
   )}${queryParams.any() ? '?${query}' : ''}\``;
 
   const headers = headerParams
-    .map(h => h.name)
+    .map(h => {
+      if (h.required) {
+        return h.name;
+      }
+
+      return `...(typeof ${h.name} !== 'undefined' ? { ${h.name} } : {})`;
+    })
     .concat(
       body?.type === 'json' ? ["'Content-Type': 'application/json'"] : []
     );
