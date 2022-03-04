@@ -38,6 +38,11 @@ export const typeDefForSchema = (
       return base ? `${base} & (${union})` : union;
     }
 
+    if (!schema.type) {
+      // default to object
+      return base ?? 'unknown';
+    }
+
     if (schema.type === 'object') {
       return base ?? 'unknown';
     }
