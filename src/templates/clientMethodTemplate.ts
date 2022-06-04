@@ -5,6 +5,7 @@ export type ClientMethodTemplateArgs = {
   httpMethod: string;
   methodName: string;
   openApiPath: string;
+  queryArrayFormat: 'repeat' | 'comma';
   queryParams: {
     name: string;
     required: boolean;
@@ -41,6 +42,7 @@ export const clientMethodTemplate = ({
   methodName,
   openApiPath,
   pathParams,
+  queryArrayFormat,
   queryParams,
   headerParams,
   body,
@@ -108,7 +110,9 @@ export const clientMethodTemplate = ({
   const composeQuery = queryParams.any()
     ? `const query = qs.stringify({ ${queryParams
         .map(q => q.name)
-        .join(', ')} });`
+        .join(', ')} }${
+        queryArrayFormat === 'comma' ? ", { arrayFormat: 'comma' }" : ''
+      });`
     : '';
 
   const composeFormData =

@@ -49,6 +49,11 @@ export const fromV2 = (document: OpenApiV2.Document, log?: LogFn): string[] => {
             name: p.name,
             type: HelpersV2.typeDefForSchema({ ...p, required: [] })
           })),
+        queryArrayFormat: parameters
+          .filter(p => p.in === 'query')
+          .some(p => p.collectionFormat === 'csv')
+          ? 'comma'
+          : 'repeat',
         queryParams: parameters
           .filter(p => p.in === 'query')
           .map(p => ({

@@ -70,6 +70,11 @@ export const fromV3 = (document: OpenApiV3.Document, log?: LogFn): string[] => {
             name: p.name,
             type: p.schema ? HelpersV3.typeDefForSchema(p.schema) : 'string'
           })),
+        queryArrayFormat: parameters
+          .filter(p => p.in === 'query')
+          .some(p => p.explode === false)
+          ? 'comma'
+          : 'repeat',
         queryParams: parameters
           .filter(p => p.in === 'query')
           .map(p => ({
