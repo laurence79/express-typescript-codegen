@@ -21,7 +21,7 @@ export const typeDefForObject = (
     const isRequired = requiredProperties.includes(propertyName);
     const propertyType = recursiveLookup(propertyObject);
 
-    return `${propertyName}${isRequired ? '' : '?'}: ${propertyType}`;
+    return `"${propertyName}"${isRequired ? '' : '?'}: ${propertyType}`;
   });
 
   return `{ ${propertyList.join('; ')} }`;

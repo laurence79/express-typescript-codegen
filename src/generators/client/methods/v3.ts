@@ -98,14 +98,25 @@ export const fromV3 = (document: OpenApiV3.Document, log?: LogFn): string[] => {
             };
           }
 
-          if (response.content && 'application/json' in response.content) {
-            const { schema } = response.content['application/json'];
+          if (response.content) {
+            if ('application/json' in response.content) {
+              const { schema } = response.content['application/json'];
 
-            return {
-              statusCode,
-              type: 'json',
-              jsonType: schema ? HelpersV3.typeDefForSchema(schema) : 'unknown'
-            };
+              return {
+                statusCode,
+                type: 'json',
+                jsonType: schema
+                  ? HelpersV3.typeDefForSchema(schema)
+                  : 'unknown'
+              };
+            }
+
+            if ('text/html' in response.content) {
+              return {
+                statusCode,
+                type: 'text'
+              };
+            }
           }
 
           return {

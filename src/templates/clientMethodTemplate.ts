@@ -1,4 +1,5 @@
 /* eslint-disable no-template-curly-in-string */
+import { aliasIfReserved, aliasNameIfReserved } from './aliasIfReserved';
 import { objectTemplate } from './objectTemplate';
 
 export type ClientMethodTemplateArgs = {
@@ -34,7 +35,10 @@ export type ClientMethodTemplateArgs = {
     | null;
   responses: ({
     statusCode: 'default' | string;
-  } & ({ type: 'json'; jsonType: string } | { type: 'binary' | 'none' }))[];
+  } & (
+    | { type: 'json'; jsonType: string }
+    | { type: 'binary' | 'text' | 'none' }
+  ))[];
 };
 
 export const clientMethodTemplate = ({
@@ -86,7 +90,8 @@ export const clientMethodTemplate = ({
         r.statusCode === 'default' ? 'number' : r.statusCode;
 
       const dataType = (() => {
-        if (r.type === 'binary') return 'Blob';
+        if (r.type === 'binary') return 'globalThis.Blob';
+        if (r.type === 'text') return 'string';
         if (r.type === 'json') return r.jsonType;
         return 'undefined';
       })();
@@ -104,12 +109,12 @@ export const clientMethodTemplate = ({
     .concat(bodyArg ? [bodyArg.name] : []);
 
   const decomposeParameters = paramNames.any()
-    ? `const {${paramNames.join(', ')}} = args;`
+    ? `const {${paramNames.map(aliasIfReserved).join(', ')}} = args;`
     : '';
 
   const composeQuery = queryParams.any()
     ? `const query = qs.stringify({ ${queryParams
-        .map(q => q.name)
+        .map(q => aliasIfReserved(q.name))
         .join(', ')} }${
         queryArrayFormat === 'comma' ? ", { arrayFormat: 'comma' }" : ''
       });`
@@ -132,10 +137,12 @@ export const clientMethodTemplate = ({
   const headers = headerParams
     .map(h => {
       if (h.required) {
-        return h.name;
+        return aliasIfReserved(h.name);
       }
 
-      return `...(typeof ${h.name} !== 'undefined' ? { ${h.name} } : {})`;
+      return `...(typeof ${aliasNameIfReserved(
+        h.name
+      )} !== 'undefined' ? { ${aliasIfReserved(h.name)} } : {})`;
     })
     .concat(
       body?.type === 'json' ? ["'Content-Type': 'application/json'"] : []
@@ -162,6 +169,8 @@ export const clientMethodTemplate = ({
             }
 
             if (r.type === 'binary') return 'await response.blob()';
+
+            if (r.type === 'text') return 'await response.text()';
 
             return 'undefined';
           })();
@@ -190,7 +199,7 @@ export const clientMethodTemplate = ({
     }
   `;
 
-  return `public async ${methodName}(${functionArgumentSignature}): 
+  return `public async "${methodName}"(${functionArgumentSignature}): 
     Promise<${responseType}> {
 
     ${decomposeParameters}
