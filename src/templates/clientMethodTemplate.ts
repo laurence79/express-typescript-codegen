@@ -78,8 +78,7 @@ export const clientMethodTemplate = ({
     .concat(
       pathParams.map(({ name, type }) => ({ name, required: true, type }))
     )
-    .concat(bodyArg ? [bodyArg] : [])
-    .concat([{ name: 'headers', required: false, type: 'HeadersInit' }]);
+    .concat(bodyArg ? [bodyArg] : []);
 
   const functionArgumentSignature = (functionArguments.any()
     ? [`args: ${objectTemplate(functionArguments)}`]
@@ -110,8 +109,7 @@ export const clientMethodTemplate = ({
       pathParams.map(({ name, type }) => ({ name, required: true, type }))
     )
     .map(({ name }) => name)
-    .concat(bodyArg ? [bodyArg.name] : [])
-    .concat('headers');
+    .concat(bodyArg ? [bodyArg.name] : []);
 
   const decomposeParameters = paramNames.any()
     ? `const {${paramNames.map(aliasIfReserved).join(', ')}} = args;`
@@ -152,17 +150,19 @@ export const clientMethodTemplate = ({
         h.name
       )} !== 'undefined' ? { ${aliasIfReserved(h.name)} } : {})`;
     })
-    .concat(body?.type === 'json' ? ["'Content-Type': 'application/json'"] : [])
-    .concat('...headers');
+    .concat(
+      body?.type === 'json' ? ["'Content-Type': 'application/json'"] : []
+    );
 
   const fetchOpts = `{
       ${[
         'method',
-        `headers: {${headers.join(',')}}`,
 
         ...(body?.type === 'json' ? ['body: JSON.stringify(body)'] : []),
 
         ...(body?.type === 'form' ? ['body: formData'] : []),
+
+        ...(headers.any() ? [`headers: { ${headers.join(',\n')} }`] : []),
 
         '...options'
       ].join(',\n')}
