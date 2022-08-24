@@ -53,18 +53,20 @@ export class SwaggerPetstoreClient {
     private readonly logger?: LogFn
   ) {}
 
-  public async addPet(args: {
-    body: Pet;
-  }): Promise<ResponseWithData<405, undefined>> {
-    const { body } = args;
+  public async addPet(
+    args: { body: Pet; headers?: HeadersInit },
+    options?: RequestInit
+  ): Promise<ResponseWithData<405, undefined>> {
+    const { body, headers } = args;
 
     const method = 'POST';
     const url = `${this.baseUrl}/pet`;
 
     const response = await fetch(url, {
       method,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
+      headers: { 'Content-Type': 'application/json', ...headers },
+      body: JSON.stringify(body),
+      ...options
     });
 
     const { status: $status } = response;
@@ -83,22 +85,24 @@ export class SwaggerPetstoreClient {
     }
   }
 
-  public async updatePet(args: {
-    body: Pet;
-  }): Promise<
+  public async updatePet(
+    args: { body: Pet; headers?: HeadersInit },
+    options?: RequestInit
+  ): Promise<
     | ResponseWithData<400, undefined>
     | ResponseWithData<404, undefined>
     | ResponseWithData<405, undefined>
   > {
-    const { body } = args;
+    const { body, headers } = args;
 
     const method = 'PUT';
     const url = `${this.baseUrl}/pet`;
 
     const response = await fetch(url, {
       method,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
+      headers: { 'Content-Type': 'application/json', ...headers },
+      body: JSON.stringify(body),
+      ...options
     });
 
     const { status: $status } = response;
@@ -129,12 +133,13 @@ export class SwaggerPetstoreClient {
     }
   }
 
-  public async findPetsByStatus(args: {
-    status: string;
-  }): Promise<
+  public async findPetsByStatus(
+    args: { status: string; headers?: HeadersInit },
+    options?: RequestInit
+  ): Promise<
     ResponseWithData<200, Array<Pet>> | ResponseWithData<400, undefined>
   > {
-    const { status } = args;
+    const { status, headers } = args;
 
     const query = qs.stringify({ status });
 
@@ -142,7 +147,9 @@ export class SwaggerPetstoreClient {
     const url = `${this.baseUrl}/pet/findByStatus?${query}`;
 
     const response = await fetch(url, {
-      method
+      method,
+      headers: { ...headers },
+      ...options
     });
 
     const { status: $status } = response;
@@ -167,12 +174,13 @@ export class SwaggerPetstoreClient {
     }
   }
 
-  public async findPetsByTags(args: {
-    tags: string;
-  }): Promise<
+  public async findPetsByTags(
+    args: { tags: string; headers?: HeadersInit },
+    options?: RequestInit
+  ): Promise<
     ResponseWithData<200, Array<Pet>> | ResponseWithData<400, undefined>
   > {
-    const { tags } = args;
+    const { tags, headers } = args;
 
     const query = qs.stringify({ tags });
 
@@ -180,7 +188,9 @@ export class SwaggerPetstoreClient {
     const url = `${this.baseUrl}/pet/findByTags?${query}`;
 
     const response = await fetch(url, {
-      method
+      method,
+      headers: { ...headers },
+      ...options
     });
 
     const { status: $status } = response;
@@ -205,20 +215,23 @@ export class SwaggerPetstoreClient {
     }
   }
 
-  public async getPetById(args: {
-    petId: number;
-  }): Promise<
+  public async getPetById(
+    args: { petId: number; headers?: HeadersInit },
+    options?: RequestInit
+  ): Promise<
     | ResponseWithData<200, Pet>
     | ResponseWithData<400, undefined>
     | ResponseWithData<404, undefined>
   > {
-    const { petId } = args;
+    const { petId, headers } = args;
 
     const method = 'GET';
     const url = `${this.baseUrl}/pet/${petId}`;
 
     const response = await fetch(url, {
-      method
+      method,
+      headers: { ...headers },
+      ...options
     });
 
     const { status: $status } = response;
@@ -249,22 +262,28 @@ export class SwaggerPetstoreClient {
     }
   }
 
-  public async updatePetWithForm(args: {
-    petId: number;
-    body: { name?: string; status?: string };
-  }): Promise<ResponseWithData<405, undefined>> {
-    const { petId, body } = args;
+  public async updatePetWithForm(
+    args: {
+      petId: number;
+      body: { name?: string; status?: string };
+      headers?: HeadersInit;
+    },
+    options?: RequestInit
+  ): Promise<ResponseWithData<405, undefined>> {
+    const { petId, body, headers } = args;
 
     const formData = new FormData();
-    formData.append('name', body.name);
-    formData.append('status', body.status);
+    if (body.name) formData.append('name', body.name);
+    if (body.status) formData.append('status', body.status);
 
     const method = 'POST';
     const url = `${this.baseUrl}/pet/${petId}`;
 
     const response = await fetch(url, {
       method,
-      body: formData
+      headers: { ...headers },
+      body: formData,
+      ...options
     });
 
     const { status: $status } = response;
@@ -283,20 +302,24 @@ export class SwaggerPetstoreClient {
     }
   }
 
-  public async deletePet(args: {
-    api_key?: string;
-    petId: number;
-  }): Promise<
+  public async deletePet(
+    args: { api_key?: string; petId: number; headers?: HeadersInit },
+    options?: RequestInit
+  ): Promise<
     ResponseWithData<400, undefined> | ResponseWithData<404, undefined>
   > {
-    const { api_key, petId } = args;
+    const { api_key, petId, headers } = args;
 
     const method = 'DELETE';
     const url = `${this.baseUrl}/pet/${petId}`;
 
     const response = await fetch(url, {
       method,
-      headers: { api_key }
+      headers: {
+        ...(typeof api_key !== 'undefined' ? { api_key } : {}),
+        ...headers
+      },
+      ...options
     });
 
     const { status: $status } = response;
@@ -321,18 +344,20 @@ export class SwaggerPetstoreClient {
     }
   }
 
-  public async placeOrder(args: {
-    body: Order;
-  }): Promise<ResponseWithData<200, Order> | ResponseWithData<400, undefined>> {
-    const { body } = args;
+  public async placeOrder(
+    args: { body: Order; headers?: HeadersInit },
+    options?: RequestInit
+  ): Promise<ResponseWithData<200, Order> | ResponseWithData<400, undefined>> {
+    const { body, headers } = args;
 
     const method = 'POST';
     const url = `${this.baseUrl}/store/order`;
 
     const response = await fetch(url, {
       method,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
+      headers: { 'Content-Type': 'application/json', ...headers },
+      body: JSON.stringify(body),
+      ...options
     });
 
     const { status: $status } = response;
@@ -357,20 +382,23 @@ export class SwaggerPetstoreClient {
     }
   }
 
-  public async getOrderById(args: {
-    orderId: number;
-  }): Promise<
+  public async getOrderById(
+    args: { orderId: number; headers?: HeadersInit },
+    options?: RequestInit
+  ): Promise<
     | ResponseWithData<200, Order>
     | ResponseWithData<400, undefined>
     | ResponseWithData<404, undefined>
   > {
-    const { orderId } = args;
+    const { orderId, headers } = args;
 
     const method = 'GET';
     const url = `${this.baseUrl}/store/order/${orderId}`;
 
     const response = await fetch(url, {
-      method
+      method,
+      headers: { ...headers },
+      ...options
     });
 
     const { status: $status } = response;
@@ -401,18 +429,21 @@ export class SwaggerPetstoreClient {
     }
   }
 
-  public async deleteOrder(args: {
-    orderId: number;
-  }): Promise<
+  public async deleteOrder(
+    args: { orderId: number; headers?: HeadersInit },
+    options?: RequestInit
+  ): Promise<
     ResponseWithData<400, undefined> | ResponseWithData<404, undefined>
   > {
-    const { orderId } = args;
+    const { orderId, headers } = args;
 
     const method = 'DELETE';
     const url = `${this.baseUrl}/store/order/${orderId}`;
 
     const response = await fetch(url, {
-      method
+      method,
+      headers: { ...headers },
+      ...options
     });
 
     const { status: $status } = response;
@@ -437,12 +468,19 @@ export class SwaggerPetstoreClient {
     }
   }
 
-  public async getInventory(): Promise<ResponseWithData<200, unknown>> {
+  public async getInventory(
+    args: { headers?: HeadersInit },
+    options?: RequestInit
+  ): Promise<ResponseWithData<200, unknown>> {
+    const { headers } = args;
+
     const method = 'GET';
     const url = `${this.baseUrl}/store/inventory`;
 
     const response = await fetch(url, {
-      method
+      method,
+      headers: { ...headers },
+      ...options
     });
 
     const { status: $status } = response;
@@ -461,18 +499,20 @@ export class SwaggerPetstoreClient {
     }
   }
 
-  public async createUsersWithArrayInput(args: {
-    body: Array<User>;
-  }): Promise<ResponseWithData<number, undefined>> {
-    const { body } = args;
+  public async createUsersWithArrayInput(
+    args: { body: Array<User>; headers?: HeadersInit },
+    options?: RequestInit
+  ): Promise<ResponseWithData<number, undefined>> {
+    const { body, headers } = args;
 
     const method = 'POST';
     const url = `${this.baseUrl}/user/createWithArray`;
 
     const response = await fetch(url, {
       method,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
+      headers: { 'Content-Type': 'application/json', ...headers },
+      body: JSON.stringify(body),
+      ...options
     });
 
     const { status: $status } = response;
@@ -488,18 +528,20 @@ export class SwaggerPetstoreClient {
     }
   }
 
-  public async createUsersWithListInput(args: {
-    body: Array<User>;
-  }): Promise<ResponseWithData<number, undefined>> {
-    const { body } = args;
+  public async createUsersWithListInput(
+    args: { body: Array<User>; headers?: HeadersInit },
+    options?: RequestInit
+  ): Promise<ResponseWithData<number, undefined>> {
+    const { body, headers } = args;
 
     const method = 'POST';
     const url = `${this.baseUrl}/user/createWithList`;
 
     const response = await fetch(url, {
       method,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
+      headers: { 'Content-Type': 'application/json', ...headers },
+      body: JSON.stringify(body),
+      ...options
     });
 
     const { status: $status } = response;
@@ -515,20 +557,23 @@ export class SwaggerPetstoreClient {
     }
   }
 
-  public async getUserByName(args: {
-    username: string;
-  }): Promise<
+  public async getUserByName(
+    args: { username: string; headers?: HeadersInit },
+    options?: RequestInit
+  ): Promise<
     | ResponseWithData<200, User>
     | ResponseWithData<400, undefined>
     | ResponseWithData<404, undefined>
   > {
-    const { username } = args;
+    const { username, headers } = args;
 
     const method = 'GET';
     const url = `${this.baseUrl}/user/${username}`;
 
     const response = await fetch(url, {
-      method
+      method,
+      headers: { ...headers },
+      ...options
     });
 
     const { status: $status } = response;
@@ -559,21 +604,22 @@ export class SwaggerPetstoreClient {
     }
   }
 
-  public async updateUser(args: {
-    username: string;
-    body: User;
-  }): Promise<
+  public async updateUser(
+    args: { username: string; body: User; headers?: HeadersInit },
+    options?: RequestInit
+  ): Promise<
     ResponseWithData<400, undefined> | ResponseWithData<404, undefined>
   > {
-    const { username, body } = args;
+    const { username, body, headers } = args;
 
     const method = 'PUT';
     const url = `${this.baseUrl}/user/${username}`;
 
     const response = await fetch(url, {
       method,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
+      headers: { 'Content-Type': 'application/json', ...headers },
+      body: JSON.stringify(body),
+      ...options
     });
 
     const { status: $status } = response;
@@ -598,18 +644,21 @@ export class SwaggerPetstoreClient {
     }
   }
 
-  public async deleteUser(args: {
-    username: string;
-  }): Promise<
+  public async deleteUser(
+    args: { username: string; headers?: HeadersInit },
+    options?: RequestInit
+  ): Promise<
     ResponseWithData<400, undefined> | ResponseWithData<404, undefined>
   > {
-    const { username } = args;
+    const { username, headers } = args;
 
     const method = 'DELETE';
     const url = `${this.baseUrl}/user/${username}`;
 
     const response = await fetch(url, {
-      method
+      method,
+      headers: { ...headers },
+      ...options
     });
 
     const { status: $status } = response;
@@ -634,13 +683,11 @@ export class SwaggerPetstoreClient {
     }
   }
 
-  public async loginUser(args: {
-    username: string;
-    password: string;
-  }): Promise<
-    ResponseWithData<200, string> | ResponseWithData<400, undefined>
-  > {
-    const { username, password } = args;
+  public async loginUser(
+    args: { username: string; password: string; headers?: HeadersInit },
+    options?: RequestInit
+  ): Promise<ResponseWithData<200, string> | ResponseWithData<400, undefined>> {
+    const { username, password, headers } = args;
 
     const query = qs.stringify({ username, password });
 
@@ -648,7 +695,9 @@ export class SwaggerPetstoreClient {
     const url = `${this.baseUrl}/user/login?${query}`;
 
     const response = await fetch(url, {
-      method
+      method,
+      headers: { ...headers },
+      ...options
     });
 
     const { status: $status } = response;
@@ -673,12 +722,19 @@ export class SwaggerPetstoreClient {
     }
   }
 
-  public async logoutUser(): Promise<ResponseWithData<number, undefined>> {
+  public async logoutUser(
+    args: { headers?: HeadersInit },
+    options?: RequestInit
+  ): Promise<ResponseWithData<number, undefined>> {
+    const { headers } = args;
+
     const method = 'GET';
     const url = `${this.baseUrl}/user/logout`;
 
     const response = await fetch(url, {
-      method
+      method,
+      headers: { ...headers },
+      ...options
     });
 
     const { status: $status } = response;
@@ -694,18 +750,20 @@ export class SwaggerPetstoreClient {
     }
   }
 
-  public async createUser(args: {
-    body: User;
-  }): Promise<ResponseWithData<number, undefined>> {
-    const { body } = args;
+  public async createUser(
+    args: { body: User; headers?: HeadersInit },
+    options?: RequestInit
+  ): Promise<ResponseWithData<number, undefined>> {
+    const { body, headers } = args;
 
     const method = 'POST';
     const url = `${this.baseUrl}/user`;
 
     const response = await fetch(url, {
       method,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
+      headers: { 'Content-Type': 'application/json', ...headers },
+      body: JSON.stringify(body),
+      ...options
     });
 
     const { status: $status } = response;

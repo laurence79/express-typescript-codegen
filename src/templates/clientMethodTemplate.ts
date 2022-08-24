@@ -81,9 +81,12 @@ export const clientMethodTemplate = ({
     .concat(bodyArg ? [bodyArg] : [])
     .concat([{ name: 'headers', required: false, type: 'HeadersInit' }]);
 
-  const functionArgumentSignature = functionArguments.any()
-    ? `args: ${objectTemplate(functionArguments)}`
-    : '';
+  const functionArgumentSignature = (functionArguments.any()
+    ? [`args: ${objectTemplate(functionArguments)}`]
+    : []
+  )
+    .concat('options?: RequestInit')
+    .join(',\n');
 
   const responseType = responses
     .map(r => {
@@ -126,7 +129,10 @@ export const clientMethodTemplate = ({
     body?.type === 'form'
       ? `const formData = new FormData();
       ${body.fields
-        .map(f => `formData.append('${f.name}', body.${f.name});`)
+        .map(
+          f =>
+            `if (body.${f.name}) formData.append('${f.name}', body.${f.name});`
+        )
         .join('\n')}
     `
       : '';
@@ -156,7 +162,9 @@ export const clientMethodTemplate = ({
 
         ...(body?.type === 'json' ? ['body: JSON.stringify(body)'] : []),
 
-        ...(body?.type === 'form' ? ['body: formData'] : [])
+        ...(body?.type === 'form' ? ['body: formData'] : []),
+
+        '...options'
       ].join(',\n')}
     }`;
 
