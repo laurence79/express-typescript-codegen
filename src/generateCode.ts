@@ -1,6 +1,7 @@
 import path from 'path';
 import { generateClient } from './generators/client/client';
-import { generateServer } from './generators/server/server';
+import { generateServerClasses } from './generators/server-classes/server';
+import { generateServerFunctional } from './generators/server-functional/server';
 import { generateStubs } from './generators/stubs';
 import { assertNever } from './helpers/assertNever';
 import { initUpper } from './helpers/initUpper';
@@ -25,9 +26,11 @@ export const generateCode = (inputOptions: GenerateCodeOptions): void => {
     inputOptions.serviceName ?? serviceNameTemplate(openApiDocument.info.title);
 
   const filename = (() => {
-    const file = `${serviceName}${initUpper(
-      options.output.toLowerCase()
-    )}.generated.ts`;
+    const outputTypeName = initUpper(
+      options.output.toLowerCase().replace('-', ' ')
+    ).replace(' ', '');
+
+    const file = `${serviceName}${outputTypeName}.generated.ts`;
 
     if (!options.outputFilename) {
       return file;
@@ -52,7 +55,10 @@ export const generateCode = (inputOptions: GenerateCodeOptions): void => {
       case 'CLIENT':
         return generateClient;
       case 'SERVER':
-        return generateServer;
+      case 'SERVER-FUNCTIONAL':
+        return generateServerFunctional;
+      case 'SERVER-CLASSES':
+        return generateServerClasses;
       case 'STUBS':
         return generateStubs;
       default:

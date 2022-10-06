@@ -9,7 +9,7 @@ import { generateRouter } from './router';
 import { generateJsonSchema } from '../json-schema';
 import { generateRequestValidators } from './request-validators';
 
-export const generateServer = ({
+export const generateServerFunctional = ({
   logger,
   openApiDocument,
   serviceName
