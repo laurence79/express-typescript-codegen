@@ -1,4 +1,5 @@
 import * as OpenApiV3 from '../../../types/OpenApiV3';
+import { inferOperationId } from '../../inferOperationId';
 import { dereferenceParameter } from './dereferenceParameter';
 import { dereferenceRequestBodyObject } from './dereferenceRequestBodyObject';
 import { dereferenceResponseObject } from './dereferenceResponseObject';
@@ -30,15 +31,8 @@ export const mapOperations = (
 
     return methodsOfPathItemObject(pathObject).map(
       ([method, operationObject]) => {
-        if (
-          !('operationId' in operationObject) ||
-          !operationObject.operationId
-        ) {
-          throw new Error(`OperationId required for ${method} ${path}`);
-        }
-
         const {
-          operationId,
+          operationId = inferOperationId(method, path),
           parameters = [],
           responses,
           requestBody

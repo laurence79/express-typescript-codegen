@@ -12,11 +12,7 @@ export const typeDefForSchema = (schema: OpenApiV2.SchemaObject): string => {
     return typeDefForReference(schema.$ref);
   }
 
-  if (!('type' in schema)) {
-    throw new Error(`Schema nodes must have a type. ${JSON.stringify(schema)}`);
-  }
-
-  const { type, enum: enumProp, allOf } = schema;
+  const { type = 'object', enum: enumProp, allOf } = schema;
 
   if (enumProp) {
     return typeDefForEnum(enumProp);

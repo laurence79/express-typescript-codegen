@@ -1,6 +1,7 @@
 import * as OpenApiV2 from '../../../types/OpenApiV2';
 import { dereferenceParameter } from './dereferenceParameter';
 import { dereferenceResponseObject } from './dereferenceResponseObject';
+import { inferOperationId } from '../../inferOperationId';
 import { isReferenceObject } from './isReferenceObject';
 import { methodsOfPathItemObject } from './methodsOfPathItemObject';
 
@@ -28,14 +29,11 @@ export const mapOperations = (
 
     return methodsOfPathItemObject(pathObject).map(
       ([method, operationObject]) => {
-        if (
-          !('operationId' in operationObject) ||
-          !operationObject.operationId
-        ) {
-          throw new Error(`OperationId required for ${method} ${path}`);
-        }
-
-        const { operationId, parameters = [], responses } = operationObject;
+        const {
+          operationId = inferOperationId(method, path),
+          parameters = [],
+          responses
+        } = operationObject;
 
         const inlinedParameters = pathParameters
           .concat(parameters)
