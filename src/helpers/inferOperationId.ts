@@ -12,7 +12,7 @@ export const inferOperationId = (method: string, path: string): string => {
 
   const remainingPath = path
     .replace(varsRegex, '')
-    .replace(/\//g, ' ')
+    .replace(/\/|-|_/g, ' ')
     .split(' ')
     .map(initUpper)
     .join('');

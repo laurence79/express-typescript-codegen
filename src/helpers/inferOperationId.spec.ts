@@ -4,10 +4,10 @@ import 'ts-array-extensions';
 describe('inferOperationId', () => {
   it('works', () => {
     const result = inferOperationId(
-      'get',
-      '/clients/{clientId}/posts/{postId}'
+      'put',
+      '/commands/add-weigh-in/{commandId}'
     );
 
-    expect(result).toEqual('getClientsPostsByClientIdAndPostId');
+    expect(result).toEqual('putCommandsAddWeighInByCommandId');
   });
 });
