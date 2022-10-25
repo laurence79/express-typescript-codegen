@@ -14,6 +14,9 @@ export const typeDefForEnum = (
       if (typeof e === 'number') {
         return `${e}`;
       }
+      if (typeof e === 'boolean') {
+        return e ? 'true' : 'false';
+      }
       if (typeof e === 'object') {
         return JSON.stringify(e);
       }
