@@ -74,7 +74,7 @@ export const typeDefForSchema = (
       return `Array<${typeDefForSchema(items)}>`;
     }
 
-    throw new Error(`Unrecognized type in schema ${JSON.stringify(schema)}`);
+    return 'unknown';
   })();
 
   if ('nullable' in schema && schema.nullable) {

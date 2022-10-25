@@ -61,5 +61,5 @@ export const typeDefForSchema = (schema: OpenApiV2.SchemaObject): string => {
     return `Array<${typeDefForSchema(items)}>`;
   }
 
-  throw new Error(`Unrecognized type ${type?.toString() ?? ''}`);
+  return 'unknown';
 };

@@ -1,6 +1,7 @@
 /* eslint-disable no-template-curly-in-string */
 import { aliasIfReserved, aliasNameIfReserved } from './aliasIfReserved';
 import { objectTemplate } from './objectTemplate';
+import { safeName } from './safeName';
 
 export type ClientMethodTemplateArgs = {
   httpMethod: string;
@@ -112,12 +113,15 @@ export const clientMethodTemplate = ({
     .concat(bodyArg ? [bodyArg.name] : []);
 
   const decomposeParameters = paramNames.any()
-    ? `const {${paramNames.map(aliasIfReserved).join(', ')}} = args;`
+    ? `const {${paramNames
+        .map(safeName)
+        .map(aliasIfReserved)
+        .join(', ')}} = args;`
     : '';
 
   const composeQuery = queryParams.any()
     ? `const query = qs.stringify({ ${queryParams
-        .map(q => aliasIfReserved(q.name))
+        .map(q => `["${q.name}"]: ${safeName(aliasIfReserved(q.name))}`)
         .join(', ')} }${
         queryArrayFormat === 'comma' ? ", { arrayFormat: 'comma' }" : ''
       });`
@@ -143,12 +147,12 @@ export const clientMethodTemplate = ({
   const headers = headerParams
     .map(h => {
       if (h.required) {
-        return aliasIfReserved(h.name);
+        return `[${h.name}]: ${safeName(aliasIfReserved(h.name))}`;
       }
 
-      return `...(typeof ${aliasNameIfReserved(
+      return `...(typeof ${aliasNameIfReserved(h.name)} !== 'undefined' ? { [${
         h.name
-      )} !== 'undefined' ? { ${aliasIfReserved(h.name)} } : {})`;
+      }]: ${safeName(aliasIfReserved(h.name))} } : {})`;
     })
     .concat(
       body?.type === 'json' ? ["'Content-Type': 'application/json'"] : []
