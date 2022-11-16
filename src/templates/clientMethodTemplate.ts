@@ -147,7 +147,7 @@ export const clientMethodTemplate = ({
   const headers = headerParams
     .map(h => {
       if (h.required) {
-        return `[${h.name}]: ${safeName(aliasIfReserved(h.name))}`;
+        return `["${h.name}"]: ${safeName(aliasIfReserved(h.name))}`;
       }
 
       return `...(typeof ${aliasNameIfReserved(h.name)} !== 'undefined' ? { [${
