@@ -25,7 +25,7 @@ export const getSecurityParams = (
       }
 
       return {
-        name: 'Authorization',
+        name: 'authorization',
         in: 'header'
       };
     })
