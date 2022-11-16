@@ -2,6 +2,7 @@ import * as OpenApiV3 from '../../../types/OpenApiV3';
 import { typeDefForObject } from './typeDefForObject';
 import { typeDefForReference } from '../typeDefForReference';
 import { typeDefForEnum } from './typeDefForEnum';
+import { isObjectSchema } from './isObjectSchema';
 
 export const typeDefForSchema = (
   schema: OpenApiV3.SchemaObject | OpenApiV3.ReferenceObject,
@@ -18,10 +19,9 @@ export const typeDefForSchema = (
       return typeDefForEnum(enumProp);
     }
 
-    const base =
-      schema.type === 'object'
-        ? typeDefForObject(schema, typeDefForSchema)
-        : null;
+    const base = isObjectSchema(schema)
+      ? typeDefForObject(schema, typeDefForSchema)
+      : null;
 
     if (allOf) {
       return allOf

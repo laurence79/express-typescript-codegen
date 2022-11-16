@@ -1,4 +1,5 @@
 import { JSONSchema7Definition } from 'json-schema';
+import { isObjectSchema } from './isObjectSchema';
 import { typeDefForEnum } from './typeDefForEnum';
 import { typeDefForObject } from './typeDefForObject';
 import { typeDefForReference } from './typeDefForReference';
@@ -31,10 +32,9 @@ export const typeDefForSchema = (schema: JSONSchema7Definition): string => {
       return typeDefForEnum(enumProp, typeDefForSchema);
     }
 
-    const base =
-      schema.type === 'object'
-        ? typeDefForObject(schema, typeDefForSchema)
-        : null;
+    const base = isObjectSchema(schema)
+      ? typeDefForObject(schema, typeDefForSchema)
+      : null;
 
     if (allOf) {
       return allOf
@@ -51,7 +51,7 @@ export const typeDefForSchema = (schema: JSONSchema7Definition): string => {
       return base ? `${base} & (${union})` : union;
     }
 
-    if (schema.type === 'object') {
+    if (isObjectSchema(schema)) {
       return base ?? 'unknown';
     }
 
