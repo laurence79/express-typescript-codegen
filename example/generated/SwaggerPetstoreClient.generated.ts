@@ -308,7 +308,7 @@ export class SwaggerPetstoreClient {
     const response = await fetch(url, {
       method,
       headers: {
-        ...(typeof api_key !== 'undefined' ? { [api_key]: api_key } : {})
+        ...(typeof api_key !== 'undefined' ? { ['api_key']: api_key } : {})
       },
       ...options
     });

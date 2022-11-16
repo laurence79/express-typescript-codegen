@@ -150,9 +150,9 @@ export const clientMethodTemplate = ({
         return `["${h.name}"]: ${safeName(aliasIfReserved(h.name))}`;
       }
 
-      return `...(typeof ${aliasNameIfReserved(h.name)} !== 'undefined' ? { [${
+      return `...(typeof ${aliasNameIfReserved(h.name)} !== 'undefined' ? { ["${
         h.name
-      }]: ${safeName(aliasIfReserved(h.name))} } : {})`;
+      }"]: ${safeName(aliasIfReserved(h.name))} } : {})`;
     })
     .concat(
       body?.type === 'json' ? ["'Content-Type': 'application/json'"] : []
