@@ -3,6 +3,7 @@ import { inferOperationId } from '../../inferOperationId';
 import { dereferenceParameter } from './dereferenceParameter';
 import { dereferenceRequestBodyObject } from './dereferenceRequestBodyObject';
 import { dereferenceResponseObject } from './dereferenceResponseObject';
+import { getSecurityParams } from './getSecurityParams';
 import { isReferenceObject } from './isReferenceObject';
 import { methodsOfPathItemObject } from './methodsOfPathItemObject';
 
@@ -29,6 +30,8 @@ export const mapOperations = (
 
     const pathParameters = pathObject.parameters ?? [];
 
+    const globalSecurityParameters = getSecurityParams(document, document);
+
     return methodsOfPathItemObject(pathObject).map(
       ([method, operationObject]) => {
         const {
@@ -42,7 +45,9 @@ export const mapOperations = (
           .concat(parameters)
           .map(p =>
             isReferenceObject(p) ? dereferenceParameter(p, document) : p
-          );
+          )
+          .concat(globalSecurityParameters)
+          .concat(getSecurityParams(document, operationObject));
 
         const inlinedRequestBody =
           requestBody && isReferenceObject(requestBody)

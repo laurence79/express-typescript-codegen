@@ -141,7 +141,7 @@ export class SwaggerPetstoreClient {
   > {
     const { status } = args;
 
-    const query = qs.stringify({ status });
+    const query = qs.stringify({ ['status']: status });
 
     const method = 'GET';
     const url = `${this.baseUrl}/pet/findByStatus?${query}`;
@@ -181,7 +181,7 @@ export class SwaggerPetstoreClient {
   > {
     const { tags } = args;
 
-    const query = qs.stringify({ tags });
+    const query = qs.stringify({ ['tags']: tags });
 
     const method = 'GET';
     const url = `${this.baseUrl}/pet/findByTags?${query}`;
@@ -307,7 +307,9 @@ export class SwaggerPetstoreClient {
 
     const response = await fetch(url, {
       method,
-      headers: { ...(typeof api_key !== 'undefined' ? { api_key } : {}) },
+      headers: {
+        ...(typeof api_key !== 'undefined' ? { [api_key]: api_key } : {})
+      },
       ...options
     });
 
@@ -670,7 +672,10 @@ export class SwaggerPetstoreClient {
   ): Promise<ResponseWithData<200, string> | ResponseWithData<400, undefined>> {
     const { username, password } = args;
 
-    const query = qs.stringify({ username, password });
+    const query = qs.stringify({
+      ['username']: username,
+      ['password']: password
+    });
 
     const method = 'GET';
     const url = `${this.baseUrl}/user/login?${query}`;

@@ -22,7 +22,7 @@
     "dist/"
   ],
   "scripts": {
-    "run-example": "ts-node --files src/index.ts generate ./example/swagger.json --filename ./example/generated --template client",
+    "run-example": "ts-node --files src/index.ts generate ./example/swagger.json --filename ./example/generated --template server-functional",
     "boiler-update": "./node_modules/.bin/boiler-sync update",
     "lint": "./node_modules/.bin/eslint --cache 'src/**/*.ts' --quiet",
     "lint:watch": "./node_modules/.bin/esw --cache 'src/**/*.ts' --watch",

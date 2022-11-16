@@ -4,6 +4,8 @@ export * from './dereferenceParameter';
 export * from './dereferenceRequestBodyObject';
 export * from './dereferenceResponseObject';
 export * from './dereferenceSchemaObject';
+export * from './dereferenceSecurityScheme';
+export * from './isObjectSchema';
 export * from './isReferenceObject';
 export * from './mapOperations';
 export * from './methodsOfPathItemObject';
