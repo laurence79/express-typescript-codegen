@@ -12,16 +12,23 @@ import { generateRequestValidators } from './request-validators';
 export const generateServerFunctional = ({
   logger,
   openApiDocument,
-  serviceName
+  serviceName,
+  nonRequiredType
 }: {
   logger?: Logger;
   openApiDocument: OpenApi.Document;
   serviceName: string;
+  nonRequiredType: 'optional' | 'nullable' | 'both';
 }): string => {
   const log = logger?.create('Generating server');
 
   const jsonSchema = generateJsonSchema(openApiDocument, log);
-  const types = generateServerTypes(openApiDocument, jsonSchema, log);
+  const types = generateServerTypes(
+    openApiDocument,
+    jsonSchema,
+    { nonRequiredType },
+    log
+  );
   const handlers = generateRequestHandlersTypes(openApiDocument, log);
   const validators = generateRequestValidators(openApiDocument, log);
   const router = generateRouter(openApiDocument, serviceName, log);

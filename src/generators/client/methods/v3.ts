@@ -6,7 +6,13 @@ import {
   ClientMethodTemplateArgs
 } from '../../../templates';
 
-export const fromV3 = (document: OpenApiV3.Document, log?: LogFn): string[] => {
+export const fromV3 = (
+  document: OpenApiV3.Document,
+  options: {
+    nonRequiredType: 'optional' | 'nullable' | 'both';
+  },
+  log?: LogFn
+): string[] => {
   return HelpersV3.mapOperations(document).map(
     ({ method, parameters, path, operationId, responses, requestBody }) => {
       log?.(progress(`Adding ${method} ${path}`));
@@ -20,7 +26,9 @@ export const fromV3 = (document: OpenApiV3.Document, log?: LogFn): string[] => {
           return {
             type: 'json' as const,
             required: requestBody.required ?? false,
-            jsonType: schema ? HelpersV3.typeDefForSchema(schema) : 'unknown'
+            jsonType: schema
+              ? HelpersV3.typeDefForSchema(schema, options)
+              : 'unknown'
           } as ClientMethodTemplateArgs['body'];
         }
 
@@ -60,71 +68,83 @@ export const fromV3 = (document: OpenApiV3.Document, log?: LogFn): string[] => {
         return null;
       })();
 
-      return clientMethodTemplate({
-        httpMethod: method,
-        methodName: operationId,
-        openApiPath: path,
-        pathParams: parameters
-          .filter(p => p.in === 'path')
-          .map(p => ({
-            name: p.name,
-            type: p.schema ? HelpersV3.typeDefForSchema(p.schema) : 'string'
-          })),
-        queryArrayFormat: parameters
-          .filter(p => p.in === 'query')
-          .some(p => p.explode === false)
-          ? 'comma'
-          : 'repeat',
-        queryParams: parameters
-          .filter(p => p.in === 'query')
-          .map(p => ({
-            name: p.name,
-            required: p.required ?? false,
-            type: p.schema ? HelpersV3.typeDefForSchema(p.schema) : 'string'
-          })),
-        headerParams: parameters
-          .filter(p => p.in === 'header')
-          .map(p => ({
-            name: p.name,
-            required: p.required ?? false,
-            type: p.schema ? HelpersV3.typeDefForSchema(p.schema) : 'string'
-          })),
-        body,
-        responses: responses.map(({ statusCode, response }) => {
-          if (!response.content || Object.keys(response.content).length === 0) {
+      return clientMethodTemplate(
+        {
+          httpMethod: method,
+          methodName: operationId,
+          openApiPath: path,
+          pathParams: parameters
+            .filter(p => p.in === 'path')
+            .map(p => ({
+              name: p.name,
+              type: p.schema
+                ? HelpersV3.typeDefForSchema(p.schema, options)
+                : 'string'
+            })),
+          queryArrayFormat: parameters
+            .filter(p => p.in === 'query')
+            .some(p => p.explode === false)
+            ? 'comma'
+            : 'repeat',
+          queryParams: parameters
+            .filter(p => p.in === 'query')
+            .map(p => ({
+              name: p.name,
+              required: p.required ?? false,
+              type: p.schema
+                ? HelpersV3.typeDefForSchema(p.schema, options)
+                : 'string'
+            })),
+          headerParams: parameters
+            .filter(p => p.in === 'header')
+            .map(p => ({
+              name: p.name,
+              required: p.required ?? false,
+              type: p.schema
+                ? HelpersV3.typeDefForSchema(p.schema, options)
+                : 'string'
+            })),
+          body,
+          responses: responses.map(({ statusCode, response }) => {
+            if (
+              !response.content ||
+              Object.keys(response.content).length === 0
+            ) {
+              return {
+                statusCode,
+                type: 'none'
+              };
+            }
+
+            if (response.content) {
+              if ('application/json' in response.content) {
+                const { schema } = response.content['application/json'];
+
+                return {
+                  statusCode,
+                  type: 'json',
+                  jsonType: schema
+                    ? HelpersV3.typeDefForSchema(schema, options)
+                    : 'unknown'
+                };
+              }
+
+              if ('text/html' in response.content) {
+                return {
+                  statusCode,
+                  type: 'text'
+                };
+              }
+            }
+
             return {
               statusCode,
-              type: 'none'
+              type: 'binary'
             };
-          }
-
-          if (response.content) {
-            if ('application/json' in response.content) {
-              const { schema } = response.content['application/json'];
-
-              return {
-                statusCode,
-                type: 'json',
-                jsonType: schema
-                  ? HelpersV3.typeDefForSchema(schema)
-                  : 'unknown'
-              };
-            }
-
-            if ('text/html' in response.content) {
-              return {
-                statusCode,
-                type: 'text'
-              };
-            }
-          }
-
-          return {
-            statusCode,
-            type: 'binary'
-          };
-        })
-      });
+          })
+        },
+        options
+      );
     }
   );
 };

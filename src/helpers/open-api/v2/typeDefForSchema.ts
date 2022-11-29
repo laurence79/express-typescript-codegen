@@ -3,7 +3,13 @@ import { typeDefForObject } from './typeDefForObject';
 import { typeDefForReference } from '../typeDefForReference';
 import { typeDefForEnum } from './typeDefForEnum';
 
-export const typeDefForSchema = (schema: OpenApiV2.SchemaObject): string => {
+export const typeDefForSchema = (
+  schema: OpenApiV2.SchemaObject,
+  options: {
+    nonRequiredType: 'optional' | 'nullable' | 'both';
+    binaryType?: 'Buffer' | 'Blob';
+  }
+): string => {
   if (typeof schema === 'boolean') {
     throw new Error(`Schema nodes must be an object.`);
   }
@@ -19,11 +25,11 @@ export const typeDefForSchema = (schema: OpenApiV2.SchemaObject): string => {
   }
 
   if (type === 'object') {
-    const def = typeDefForObject(schema, typeDefForSchema);
+    const def = typeDefForObject(schema, typeDefForSchema, options);
 
     if (allOf) {
       return allOf
-        .map(m => typeDefForSchema(m as OpenApiV2.SchemaObject))
+        .map(m => typeDefForSchema(m as OpenApiV2.SchemaObject, options))
         .concat(def)
         .join(' & ');
     }
@@ -33,7 +39,7 @@ export const typeDefForSchema = (schema: OpenApiV2.SchemaObject): string => {
 
   if (allOf) {
     return allOf
-      .map(m => typeDefForSchema(m as OpenApiV2.SchemaObject))
+      .map(m => typeDefForSchema(m as OpenApiV2.SchemaObject, options))
       .join(' & ');
   }
 
@@ -58,7 +64,7 @@ export const typeDefForSchema = (schema: OpenApiV2.SchemaObject): string => {
     if (Array.isArray(items)) {
       throw new Error(`Array items property must be singular.`);
     }
-    return `Array<${typeDefForSchema(items)}>`;
+    return `Array<${typeDefForSchema(items, options)}>`;
   }
 
   return 'unknown';

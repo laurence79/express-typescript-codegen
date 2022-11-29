@@ -2,9 +2,19 @@ import * as OpenApiV2 from '../../../types/OpenApiV2';
 
 export const typeDefForObject = (
   objectSchema: OpenApiV2.SchemaObject,
-  recursiveLookup: (schema: OpenApiV2.SchemaObject) => string
+  recursiveLookup: (
+    schema: OpenApiV2.SchemaObject,
+    options: {
+      nonRequiredType: 'optional' | 'nullable' | 'both';
+    }
+  ) => string,
+  options: {
+    nonRequiredType: 'optional' | 'nullable' | 'both';
+  }
 ): string => {
   const { required, properties } = objectSchema;
+
+  const { nonRequiredType = 'undefined' } = options;
 
   if (!properties) return 'unknown';
 
@@ -17,9 +27,13 @@ export const typeDefForObject = (
 
     const propertyObject = properties[propertyName];
     const isRequired = requiredProperties.includes(propertyName);
-    const propertyType = recursiveLookup(propertyObject);
+    const propertyType = recursiveLookup(propertyObject, options);
 
-    return `"${propertyName}": ${propertyType}${isRequired ? '' : ' | null'}`;
+    if (nonRequiredType === 'undefined') {
+      return `"${propertyName}"${isRequired ? '' : '?'}: ${propertyType}`;
+    }
+
+    return `"${propertyName}": ${propertyType}${!isRequired ? ' | null' : ''}`;
   });
 
   return `{ ${propertyList.join('; ')} }`;

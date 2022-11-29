@@ -11,4 +11,5 @@ export type GenerateCodeOptions = {
     | 'STUBS';
   outputFilename?: string;
   serviceName?: string;
+  nonRequiredType: 'nullable' | 'optional' | 'both';
 };

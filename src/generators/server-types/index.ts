@@ -8,12 +8,15 @@ import { fromJsonSchema } from './jsonSchema';
 export const generateServerTypes = (
   openApiDocument: OpenApi.Document,
   jsonSchema: JSONSchema7,
+  options: {
+    nonRequiredType: 'optional' | 'nullable' | 'both';
+  },
   log?: LogFn
 ): string => {
   log?.(progress('Generating typescript types'));
 
   const types = [
-    ...fromJsonSchema(jsonSchema, log),
+    ...fromJsonSchema(jsonSchema, options, log),
     ...('swagger' in openApiDocument
       ? fromV2(openApiDocument, log)
       : fromV3(openApiDocument, log))

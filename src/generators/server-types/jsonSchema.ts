@@ -6,6 +6,9 @@ import { safeName } from '../../templates/safeName';
 
 export const fromJsonSchema = (
   jsonSchema: JSONSchema7,
+  options: {
+    nonRequiredType: 'optional' | 'nullable' | 'both';
+  },
   log?: LogFn
 ): string[] => {
   const { definitions } = jsonSchema;
@@ -20,7 +23,8 @@ export const fromJsonSchema = (
     log?.(progress(typeName));
 
     return `export type ${initUpper(safeName(typeName))} = ${typeDefForSchema(
-      definition
+      definition,
+      options
     )};`;
   });
 };

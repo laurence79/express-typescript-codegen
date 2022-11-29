@@ -10,7 +10,12 @@ declare module 'json-schema' {
   }
 }
 
-export const typeDefForSchema = (schema: JSONSchema7Definition): string => {
+export const typeDefForSchema = (
+  schema: JSONSchema7Definition,
+  options: {
+    nonRequiredType: 'optional' | 'nullable' | 'both';
+  }
+): string => {
   if (typeof schema === 'boolean') {
     throw new Error(`Schema nodes must be an object.`);
   }
@@ -29,16 +34,16 @@ export const typeDefForSchema = (schema: JSONSchema7Definition): string => {
     const { enum: enumProp, allOf, oneOf, anyOf } = schema;
 
     if (enumProp) {
-      return typeDefForEnum(enumProp, typeDefForSchema);
+      return typeDefForEnum(enumProp, typeDefForSchema, options);
     }
 
     const base = isObjectSchema(schema)
-      ? typeDefForObject(schema, typeDefForSchema)
+      ? typeDefForObject(schema, typeDefForSchema, options)
       : null;
 
     if (allOf) {
       return allOf
-        .map(m => typeDefForSchema(m))
+        .map(m => typeDefForSchema(m, options))
         .concat(base ? [base] : [])
         .join(' & ');
     }
@@ -46,7 +51,7 @@ export const typeDefForSchema = (schema: JSONSchema7Definition): string => {
     const unionOf = (oneOf ?? []).concat(anyOf ?? []);
 
     if (unionOf.length > 0) {
-      const union = unionOf.map(m => typeDefForSchema(m)).join(' | ');
+      const union = unionOf.map(m => typeDefForSchema(m, options)).join(' | ');
 
       return base ? `${base} & (${union})` : union;
     }
@@ -76,7 +81,7 @@ export const typeDefForSchema = (schema: JSONSchema7Definition): string => {
       if (Array.isArray(items)) {
         throw new Error(`Array items property must be singular.`);
       }
-      return `Array<${typeDefForSchema(items)}>`;
+      return `Array<${typeDefForSchema(items, options)}>`;
     }
 
     return 'unknown';

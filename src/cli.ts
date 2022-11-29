@@ -27,6 +27,11 @@ const cmd = new commander.Command('generate')
     '--service-name <name>',
     'the name of the service. Defaults to info.title from the open api document'
   )
+  .option(
+    '--not-required-type <nullable|optional|both>',
+    'what type fields should be if they are not in the required list. Defaults to undefined',
+    'optional'
+  )
   .action(
     (
       specFilename: string,
@@ -34,6 +39,7 @@ const cmd = new commander.Command('generate')
         template: string | undefined;
         filename: string | undefined;
         serviceName: string | undefined;
+        notRequiredType: 'nullable' | 'optional' | 'both';
       }
     ) => {
       const logger = processLogger();
@@ -51,6 +57,14 @@ const cmd = new commander.Command('generate')
         commander.help({ error: true });
       }
 
+      if (
+        !(['nullable', 'optional', 'both'] as const).includes(
+          options.notRequiredType
+        )
+      ) {
+        commander.help({ error: true });
+      }
+
       const output = (options.template
         ? options.template.toUpperCase()
         : 'CLIENT') as GenerateCodeOptions['output'];
@@ -61,7 +75,8 @@ const cmd = new commander.Command('generate')
           output,
           outputFilename: options.filename,
           serviceName: options.serviceName,
-          logger
+          logger,
+          nonRequiredType: options.notRequiredType
         });
 
         logger.log(chalk.green('\nCompleted successfully!\n\n'));

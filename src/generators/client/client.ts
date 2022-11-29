@@ -9,17 +9,19 @@ import { generateTypes } from './types';
 export const generateClient = ({
   logger,
   openApiDocument,
-  serviceName
+  serviceName,
+  nonRequiredType
 }: {
   logger?: Logger;
   openApiDocument: OpenApi.Document;
   serviceName: string;
+  nonRequiredType: 'optional' | 'nullable' | 'both';
 }): string => {
   const log = logger?.create('Generating client');
 
-  const types = generateTypes(openApiDocument, log);
+  const types = generateTypes(openApiDocument, { nonRequiredType }, log);
 
-  const methods = generateMethods(openApiDocument, log);
+  const methods = generateMethods(openApiDocument, { nonRequiredType }, log);
 
   const code = `
     import qs from 'qs';

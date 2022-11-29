@@ -2,7 +2,15 @@ import { JSONSchema7Definition, JSONSchema7Type } from 'json-schema';
 
 export const typeDefForEnum = (
   members: JSONSchema7Type[],
-  onwardLookup: (schema: JSONSchema7Definition) => string
+  onwardLookup: (
+    schema: JSONSchema7Definition,
+    options: {
+      nonRequiredType: 'optional' | 'nullable' | 'both';
+    }
+  ) => string,
+  options: {
+    nonRequiredType: 'optional' | 'nullable' | 'both';
+  }
 ): string => {
   return members
     .map(e => {
@@ -18,7 +26,7 @@ export const typeDefForEnum = (
             "Don't know what to do with an array-like enum member"
           );
         }
-        return onwardLookup(e);
+        return onwardLookup(e, options);
       }
       return e.toString();
     })

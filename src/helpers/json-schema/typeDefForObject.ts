@@ -1,8 +1,17 @@
 import { JSONSchema7, JSONSchema7Definition } from 'json-schema';
+import { fieldTemplate } from '../../templates';
 
 export const typeDefForObject = (
   objectSchema: JSONSchema7,
-  recursiveLookup: (schema: JSONSchema7Definition) => string
+  recursiveLookup: (
+    schema: JSONSchema7Definition,
+    options: {
+      nonRequiredType: 'optional' | 'nullable' | 'both';
+    }
+  ) => string,
+  options: {
+    nonRequiredType: 'optional' | 'nullable' | 'both';
+  }
 ): string => {
   const { required, properties } = objectSchema;
 
@@ -17,9 +26,9 @@ export const typeDefForObject = (
 
     const propertyObject = properties[propertyName];
     const isRequired = requiredProperties.includes(propertyName);
-    const propertyType = recursiveLookup(propertyObject);
+    const propertyType = recursiveLookup(propertyObject, options);
 
-    return `"${propertyName}"${isRequired ? '' : '?'}: ${propertyType}`;
+    return fieldTemplate(propertyName, isRequired, propertyType, options);
   });
 
   return `{ ${propertyList.join('; ')} }`;

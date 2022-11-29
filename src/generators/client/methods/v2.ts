@@ -6,7 +6,13 @@ import {
   ClientMethodTemplateArgs
 } from '../../../templates';
 
-export const fromV2 = (document: OpenApiV2.Document, log?: LogFn): string[] => {
+export const fromV2 = (
+  document: OpenApiV2.Document,
+  options: {
+    nonRequiredType: 'optional' | 'nullable' | 'both';
+  },
+  log?: LogFn
+): string[] => {
   return HelpersV2.mapOperations(document).map(
     ({ method, parameters, path, operationId, responses }) => {
       log?.(progress(`Adding ${method} ${path}`));
@@ -18,7 +24,7 @@ export const fromV2 = (document: OpenApiV2.Document, log?: LogFn): string[] => {
 
         return {
           type: 'json',
-          jsonType: HelpersV2.typeDefForSchema(bodyArg.schema),
+          jsonType: HelpersV2.typeDefForSchema(bodyArg.schema, options),
           required: bodyArg.required ?? false
         };
       };
@@ -39,60 +45,69 @@ export const fromV2 = (document: OpenApiV2.Document, log?: LogFn): string[] => {
         };
       };
 
-      return clientMethodTemplate({
-        httpMethod: method,
-        methodName: operationId,
-        openApiPath: path,
-        pathParams: parameters
-          .filter(p => p.in === 'path')
-          .map(p => ({
-            name: p.name,
-            type: HelpersV2.typeDefForSchema({ ...p, required: [] })
-          })),
-        queryArrayFormat: parameters
-          .filter(p => p.in === 'query')
-          .some(p => p.collectionFormat === 'csv')
-          ? 'comma'
-          : 'repeat',
-        queryParams: parameters
-          .filter(p => p.in === 'query')
-          .map(p => ({
-            name: p.name,
-            required: p.required ?? false,
-            type: p.schema ? HelpersV2.typeDefForSchema(p.schema) : 'string'
-          })),
-        headerParams: parameters
-          .filter(p => p.in === 'header')
-          .map(p => ({
-            name: p.name,
-            required: p.required ?? false,
-            type: p.schema ? HelpersV2.typeDefForSchema(p.schema) : 'string'
-          })),
-        body: jsonBody() ?? formDataBody(),
-        responses: responses.map(({ statusCode, response }) => {
-          if (response.schema?.type === 'file') {
+      return clientMethodTemplate(
+        {
+          httpMethod: method,
+          methodName: operationId,
+          openApiPath: path,
+          pathParams: parameters
+            .filter(p => p.in === 'path')
+            .map(p => ({
+              name: p.name,
+              type: HelpersV2.typeDefForSchema({ ...p, required: [] }, options)
+            })),
+          queryArrayFormat: parameters
+            .filter(p => p.in === 'query')
+            .some(p => p.collectionFormat === 'csv')
+            ? 'comma'
+            : 'repeat',
+          queryParams: parameters
+            .filter(p => p.in === 'query')
+            .map(p => ({
+              name: p.name,
+              required: p.required ?? false,
+              type: p.schema
+                ? HelpersV2.typeDefForSchema(p.schema, options)
+                : 'string'
+            })),
+          headerParams: parameters
+            .filter(p => p.in === 'header')
+            .map(p => ({
+              name: p.name,
+              required: p.required ?? false,
+              type: p.schema
+                ? HelpersV2.typeDefForSchema(p.schema, options)
+                : 'string'
+            })),
+          body: jsonBody() ?? formDataBody(),
+          responses: responses.map(({ statusCode, response }) => {
+            if (response.schema?.type === 'file') {
+              return {
+                statusCode,
+                type: 'binary'
+              };
+            }
+
+            const { schema } = response;
+
+            if (schema) {
+              return {
+                statusCode,
+                type: 'json',
+                jsonType: schema
+                  ? HelpersV2.typeDefForSchema(schema, options)
+                  : 'unknown'
+              };
+            }
+
             return {
               statusCode,
-              type: 'binary'
+              type: 'none'
             };
-          }
-
-          const { schema } = response;
-
-          if (schema) {
-            return {
-              statusCode,
-              type: 'json',
-              jsonType: schema ? HelpersV2.typeDefForSchema(schema) : 'unknown'
-            };
-          }
-
-          return {
-            statusCode,
-            type: 'none'
-          };
-        })
-      });
+          })
+        },
+        options
+      );
     }
   );
 };

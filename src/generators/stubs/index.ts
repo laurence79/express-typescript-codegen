@@ -13,16 +13,23 @@ import { safeName } from '../../templates/safeName';
 export const generateStubs = ({
   logger,
   openApiDocument,
-  serviceName
+  serviceName,
+  nonRequiredType
 }: {
   logger?: Logger;
   openApiDocument: OpenApi.Document;
   serviceName: string;
+  nonRequiredType: 'optional' | 'nullable' | 'both';
 }): string => {
   const log = logger?.create('Generating server stubs');
 
   const jsonSchema = generateJsonSchema(openApiDocument, log);
-  const types = generateServerTypes(openApiDocument, jsonSchema, log);
+  const types = generateServerTypes(
+    openApiDocument,
+    jsonSchema,
+    { nonRequiredType },
+    log
+  );
 
   const data =
     'swagger' in openApiDocument

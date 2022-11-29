@@ -11,16 +11,23 @@ import { requestValidationMiddlewareClassTemplate } from '../../templates/reques
 
 export const generateServerClasses = ({
   logger,
-  openApiDocument
+  openApiDocument,
+  nonRequiredType
 }: {
   logger?: Logger;
   openApiDocument: OpenApi.Document;
   serviceName: string;
+  nonRequiredType: 'optional' | 'nullable' | 'both';
 }): string => {
   const log = logger?.create('Generating server');
 
   const jsonSchema = generateJsonSchema(openApiDocument, log);
-  const types = generateServerTypes(openApiDocument, jsonSchema, log);
+  const types = generateServerTypes(
+    openApiDocument,
+    jsonSchema,
+    { nonRequiredType },
+    log
+  );
   const controllers = generateControllers(openApiDocument, log);
   const validators = generateRequestValidators(
     openApiDocument,

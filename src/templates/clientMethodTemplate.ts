@@ -42,17 +42,22 @@ export type ClientMethodTemplateArgs = {
   ))[];
 };
 
-export const clientMethodTemplate = ({
-  httpMethod,
-  methodName,
-  openApiPath,
-  pathParams,
-  queryArrayFormat,
-  queryParams,
-  headerParams,
-  body,
-  responses
-}: ClientMethodTemplateArgs): string => {
+export const clientMethodTemplate = (
+  {
+    httpMethod,
+    methodName,
+    openApiPath,
+    pathParams,
+    queryArrayFormat,
+    queryParams,
+    headerParams,
+    body,
+    responses
+  }: ClientMethodTemplateArgs,
+  options: {
+    nonRequiredType: 'optional' | 'nullable' | 'both';
+  }
+): string => {
   const bodyArg = (() => {
     if (!body) return undefined;
 
@@ -64,7 +69,8 @@ export const clientMethodTemplate = ({
               name: f.name,
               required: f.required,
               type: f.binary ? 'Blob' : 'string'
-            }))
+            })),
+            options
           );
 
     return {
@@ -82,7 +88,7 @@ export const clientMethodTemplate = ({
     .concat(bodyArg ? [bodyArg] : []);
 
   const functionArgumentSignature = (functionArguments.any()
-    ? [`args: ${objectTemplate(functionArguments)}`]
+    ? [`args: ${objectTemplate(functionArguments, options)}`]
     : []
   )
     .concat('options?: RequestInit')
@@ -150,7 +156,9 @@ export const clientMethodTemplate = ({
         return `["${h.name}"]: ${safeName(aliasIfReserved(h.name))}`;
       }
 
-      return `...(typeof ${aliasNameIfReserved(h.name)} !== 'undefined' ? { ["${
+      return `...(typeof ${aliasNameIfReserved(
+        h.name
+      )} !== 'undefined' && ${aliasNameIfReserved(h.name)} !== null ? { ["${
         h.name
       }"]: ${safeName(aliasIfReserved(h.name))} } : {})`;
     })

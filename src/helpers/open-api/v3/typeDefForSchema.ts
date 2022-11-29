@@ -6,11 +6,16 @@ import { isObjectSchema } from './isObjectSchema';
 
 export const typeDefForSchema = (
   schema: OpenApiV3.SchemaObject | OpenApiV3.ReferenceObject,
-  binaryType: 'Buffer' | 'Blob' = 'Buffer'
+  options: {
+    nonRequiredType: 'optional' | 'nullable' | 'both';
+    binaryType?: 'Buffer' | 'Blob';
+  }
 ): string => {
   if ('$ref' in schema) {
     return typeDefForReference(schema.$ref);
   }
+
+  const { binaryType = 'Buffer' } = options;
 
   const { enum: enumProp, allOf, oneOf, anyOf } = schema;
 
@@ -20,12 +25,12 @@ export const typeDefForSchema = (
     }
 
     const base = isObjectSchema(schema)
-      ? typeDefForObject(schema, typeDefForSchema)
+      ? typeDefForObject(schema, typeDefForSchema, options)
       : null;
 
     if (allOf) {
       return allOf
-        .map(m => typeDefForSchema(m))
+        .map(m => typeDefForSchema(m, options))
         .concat(base ? [base] : [])
         .join(' & ');
     }
@@ -33,7 +38,7 @@ export const typeDefForSchema = (
     const unionOf = (oneOf ?? []).concat(anyOf ?? []);
 
     if (unionOf.length > 0) {
-      const union = unionOf.map(m => typeDefForSchema(m)).join(' | ');
+      const union = unionOf.map(m => typeDefForSchema(m, options)).join(' | ');
 
       return base ? `${base} & (${union})` : union;
     }
@@ -71,7 +76,7 @@ export const typeDefForSchema = (
       if (Array.isArray(items)) {
         throw new Error(`Array items property must be singular.`);
       }
-      return `Array<${typeDefForSchema(items)}>`;
+      return `Array<${typeDefForSchema(items, options)}>`;
     }
 
     return 'unknown';
