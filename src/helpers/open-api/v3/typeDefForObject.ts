@@ -1,3 +1,4 @@
+import { fieldTemplate } from '../../../templates';
 import * as OpenApiV3 from '../../../types/OpenApiV3';
 
 export const typeDefForObject = (
@@ -14,8 +15,6 @@ export const typeDefForObject = (
 ): string => {
   const { required, properties } = objectSchema;
 
-  const { nonRequiredType = 'undefined' } = options;
-
   if (!properties) return 'unknown';
 
   const requiredProperties = Array.isArray(required) ? required : [];
@@ -29,11 +28,7 @@ export const typeDefForObject = (
     const isRequired = requiredProperties.includes(propertyName);
     const propertyType = recursiveLookup(propertyObject, options);
 
-    if (nonRequiredType === 'undefined') {
-      return `"${propertyName}"${isRequired ? '' : '?'}: ${propertyType}`;
-    }
-
-    return `"${propertyName}": ${propertyType}${!isRequired ? ' | null' : ''}`;
+    return fieldTemplate(propertyName, isRequired, propertyType, options);
   });
 
   return `{ ${propertyList.join('; ')} }`;
