@@ -6,36 +6,49 @@ export type ControllerTemplateArgs = {
   controllerTypeName: string;
   controllerMethodName: string;
   pathParamsType?: string;
-  responseBodyType?: string;
   bodyParamType?: string;
   queryParamsType?: string;
-  statusCodeType?: string;
+  responseTypes?: {
+    bodyType?: string;
+    statusCodeType?: string;
+  }[];
 };
+
 export const controllerTemplate = ({
   requestTypeName,
   responseTypeName,
   controllerTypeName,
   controllerMethodName,
   pathParamsType = 'ParamsDictionary',
-  responseBodyType = 'unknown',
   bodyParamType = 'unknown',
   queryParamsType = 'ParsedQs',
-  statusCodeType = 'number'
+  responseTypes = [{ bodyType: 'unknown', statusCodeType: 'number' }]
 }: ControllerTemplateArgs): string => {
   return `
     export type ${requestTypeName} = Request<
       ${pathParamsType},
-      ${responseBodyType},
+      ${
+        responseTypes
+          .compactMap(({ bodyType }) => bodyType)
+          .distinct()
+          .join(' | ') || 'unknown'
+      },
       ${bodyParamType},
       ${queryParamsType},
       Record<string, any>
     >;
 
-    export type ${responseTypeName} = Response<
-      ${responseBodyType},
-      Record<string, any>,
-      ${statusCodeType}
-    >;
+    export type ${responseTypeName} = ${responseTypes
+    .map(
+      ({ bodyType = 'unknown', statusCodeType = 'number' }) => `
+      Response<
+        ${bodyType},
+        Record<string, any>,
+        ${statusCodeType}
+      >
+    `
+    )
+    .join(' | ')};
 
     export interface ${controllerTypeName} {
       ${controllerMethodName}(
