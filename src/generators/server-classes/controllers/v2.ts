@@ -13,16 +13,22 @@ import { initLower } from '../../../helpers/initLower';
 export const fromV2 = (document: OpenApiV2.Document, log?: LogFn): string => {
   const handlers = mapOperations(document).map(
     ({ operationId, parameters, responses, path, method }) => {
-      const responseTypes = responses.compactMap(({ statusCode, response }) => {
-        const bodyType = !response.schema
-          ? undefined
-          : responseBodyTypeNameTemplate(operationId, statusCode);
+      const responseBodyType =
+        responses
+          .compactMap(({ statusCode, response }) => {
+            const { schema } = response;
+            if (!schema) {
+              return undefined;
+            }
+            return responseBodyTypeNameTemplate(operationId, statusCode);
+          })
+          .join(' | ') || undefined;
 
-        return {
-          bodyType,
-          statusCodeType: statusCode === 'default' ? 'number' : statusCode
-        };
-      });
+      const statusCodeType = responses
+        .map(({ statusCode }) =>
+          statusCode === 'default' ? 'number' : statusCode
+        )
+        .join(' | ');
 
       const bodyParamType = parameters.some(
         p => p.in === 'body' || (p.in === 'formData' && p.type !== 'file')
@@ -58,9 +64,10 @@ export const fromV2 = (document: OpenApiV2.Document, log?: LogFn): string => {
         controllerTypeName,
         controllerMethodName,
         pathParamsType,
+        responseBodyType,
         bodyParamType,
         queryParamsType,
-        responseTypes
+        statusCodeType
       };
     }
   );
