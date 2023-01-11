@@ -156,11 +156,13 @@ export const clientMethodTemplate = (
         return `["${h.name}"]: ${safeName(aliasIfReserved(h.name))}`;
       }
 
-      return `...(typeof ${aliasNameIfReserved(
-        h.name
-      )} !== 'undefined' && ${aliasNameIfReserved(h.name)} !== null ? { ["${
-        h.name
-      }"]: ${safeName(aliasIfReserved(h.name))} } : {})`;
+      return `...(typeof ${safeName(
+        aliasNameIfReserved(h.name)
+      )} !== 'undefined' && ${safeName(
+        aliasNameIfReserved(h.name)
+      )} !== null ? { ["${h.name}"]: ${safeName(
+        aliasIfReserved(h.name)
+      )} } : {})`;
     })
     .concat(
       body?.type === 'json' ? ["'Content-Type': 'application/json'"] : []
