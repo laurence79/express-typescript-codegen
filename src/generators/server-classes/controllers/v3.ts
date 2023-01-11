@@ -40,7 +40,7 @@ export const fromV3 = (document: OpenApiV3.Document, log?: LogFn): string => {
 
       const requestTypeName = `${initUpper(operationId)}Request`;
       const responseTypeName = `${initUpper(operationId)}Response`;
-      const controllerTypeName = `${initUpper(operationId)}Controller`;
+      const controllerTypeName = `${initUpper(operationId)}Handler`;
       const controllerMethodName = initLower(operationId);
 
       const expressPath = path.replace(
