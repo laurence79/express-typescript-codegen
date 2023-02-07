@@ -14,7 +14,7 @@ const { version } = packageJson;
 
 const cmd = new commander.Command('generate')
   .description('Generates typescript code from the spec.')
-  .arguments('<spec-filename>')
+  .arguments('<spec-filename-or-url>')
   .option(
     '--template <template>',
     'the type to output. client, server or stubs. Default client'
@@ -33,8 +33,8 @@ const cmd = new commander.Command('generate')
     'optional'
   )
   .action(
-    (
-      specFilename: string,
+    async (
+      specFilenameOrUrl: string,
       options: {
         template: string | undefined;
         filename: string | undefined;
@@ -70,8 +70,8 @@ const cmd = new commander.Command('generate')
         : 'CLIENT') as GenerateCodeOptions['output'];
 
       try {
-        generateCode({
-          openApiDocumentFilename: specFilename,
+        await generateCode({
+          openApiDocumentFilenameOrUrl: specFilenameOrUrl,
           output,
           outputFilename: options.filename,
           serviceName: options.serviceName,

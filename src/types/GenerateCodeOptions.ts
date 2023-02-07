@@ -2,7 +2,7 @@ import { Logger } from '../lib/cli-logging';
 
 export type GenerateCodeOptions = {
   logger?: Logger;
-  openApiDocumentFilename: string;
+  openApiDocumentFilenameOrUrl: string;
   output:
     | 'SERVER'
     | 'SERVER-FUNCTIONAL'

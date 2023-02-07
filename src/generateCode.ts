@@ -14,13 +14,15 @@ const defaultOptions = {
   output: 'CLIENT'
 };
 
-export const generateCode = (inputOptions: GenerateCodeOptions): void => {
+export const generateCode = async (
+  inputOptions: GenerateCodeOptions
+): Promise<void> => {
   const options = {
     ...defaultOptions,
     ...inputOptions
   };
 
-  const openApiDocument = loadOpenApiDocument(options);
+  const openApiDocument = await loadOpenApiDocument(options);
 
   const serviceName =
     inputOptions.serviceName ?? serviceNameTemplate(openApiDocument.info.title);
