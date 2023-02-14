@@ -47,7 +47,9 @@ export const mapOperations = (
             isReferenceObject(p) ? dereferenceParameter(p, document) : p
           )
           .concat(globalSecurityParameters)
-          .concat(getSecurityParams(document, operationObject));
+          .concat(getSecurityParams(document, operationObject))
+          .groupBy(p => p.name)
+          .compactMap(g => g.values.first());
 
         const inlinedRequestBody =
           requestBody && isReferenceObject(requestBody)
