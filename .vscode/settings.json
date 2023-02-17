@@ -23,6 +23,7 @@
     "nameof",
     "openapi",
     "rivr",
+    "tsyringe",
     "ttsc",
     "ttypescript"
   ]

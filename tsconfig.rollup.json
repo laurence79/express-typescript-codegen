@@ -2,7 +2,8 @@
   "extends": "./tsconfig.release.json",
   "compilerOptions": {
     "downlevelIteration": true,
-    "outDir": ".",
+    "outDir": "dist",
+    "declarationDir": "dist/types",
     "module": "esnext",
     "target": "es5"
   }
