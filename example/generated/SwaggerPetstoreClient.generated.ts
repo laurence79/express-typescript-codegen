@@ -1,43 +1,39 @@
 import qs from 'qs';
 import { fetch } from 'cross-fetch';
 
-export type ApiResponse = {
-  code: number | null;
-  type: string | null;
-  message: string | null;
-};
+export type ApiResponse = { code?: number; type?: string; message?: string };
 
-export type Category = { id: number | null; name: string | null };
+export type Category = { id?: number; name?: string };
 
 export type Pet = {
-  id: number | null;
-  category: Category | null;
+  id?: number;
+  category?: Category;
   name: string;
   photoUrls: Array<string>;
-  tags: Array<Tag> | null;
-  status: 'available' | 'pending' | 'sold' | null;
+  tags?: Array<Tag>;
+  status?: 'available' | 'pending' | 'sold';
 };
 
-export type Tag = { id: number | null; name: string | null };
+export type Tag = { id?: number; name?: string };
 
 export type Order = {
-  id: number | null;
-  petId: number | null;
-  quantity: number | null;
-  shipDate: string | null;
-  status: 'placed' | 'approved' | 'delivered' | null;
-  complete: boolean | null;
+  id?: number;
+  petId?: number;
+  quantity?: number;
+  shipDate?: string;
+  status?: 'placed' | 'approved' | 'delivered';
+  complete?: boolean;
 };
 
 export type User = {
-  id: number | null;
-  username: string | null;
-  firstName: string | null;
-  lastName: string | null;
-  email: string | null;
-  password: string | null;
-  phone: string | null;
-  userStatus: number | null;
+  id?: number;
+  username?: string;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  password?: string;
+  phone?: string;
+  userStatus?: number;
 };
 
 type ResponseWithData<TStatus, TData> = {
@@ -308,7 +304,9 @@ export class SwaggerPetstoreClient {
     const response = await fetch(url, {
       method,
       headers: {
-        ...(typeof api_key !== 'undefined' ? { ['api_key']: api_key } : {})
+        ...(typeof api_key !== 'undefined' && api_key !== null
+          ? { ['api_key']: api_key }
+          : {})
       },
       ...options
     });

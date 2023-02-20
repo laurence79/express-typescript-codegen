@@ -18,7 +18,9 @@ export const fromV3 = (
       return undefined;
     }
 
-    const name = typeName(String(key));
+    const name = typeName(
+      'title' in value && value.title ? value.title : String(key)
+    );
 
     log?.(progress(`adding ${name}`));
 
