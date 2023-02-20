@@ -1,4 +1,5 @@
 import { typeName } from './typeName';
+import 'ts-array-extensions';
 
 describe('typeName', () => {
   it('underscored', () => {
@@ -15,5 +16,9 @@ describe('typeName', () => {
 
   it('pascal', () => {
     expect(typeName('WidgetBuilder')).toEqual('WidgetBuilder');
+  });
+
+  it('mixed', () => {
+    expect(typeName('default_widget-builder')).toEqual('DefaultWidgetBuilder');
   });
 });
