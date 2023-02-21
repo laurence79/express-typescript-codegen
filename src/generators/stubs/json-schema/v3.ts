@@ -1,9 +1,9 @@
 import { JSONSchema7 } from 'json-schema';
-import * as HelpersV3 from '../../helpers/open-api/v3';
-import * as OpenApiV3 from '../../types/OpenApiV3';
-import { LogFn, progress } from '../../lib/cli-logging';
-import { responseBodyTypeNameTemplate } from '../../templates';
-import { parametersTypeNameTemplate } from '../../templates/parametersTypeName';
+import * as HelpersV3 from '../../../helpers/open-api/v3';
+import * as OpenApiV3 from '../../../types/OpenApiV3';
+import { LogFn, progress } from '../../../lib/cli-logging';
+import { responseBodyTypeNameTemplate } from '../../../templates';
+import { parametersTypeNameTemplate } from '../../../templates/parametersTypeName';
 
 export const PERMITTED_TYPES = ['path', 'query', 'header', 'cookie'];
 

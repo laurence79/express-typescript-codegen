@@ -11,6 +11,7 @@ export const fromV3 = (
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
   },
+  emitType: (name: string, definition: string) => void,
   log?: LogFn
 ): string[] => {
   return HelpersV3.mapOperations(document).map(
@@ -27,7 +28,7 @@ export const fromV3 = (
             type: 'json' as const,
             required: requestBody.required ?? false,
             jsonType: schema
-              ? HelpersV3.typeDefForSchema(schema, options)
+              ? HelpersV3.typeDefForSchema(schema, options, emitType)
               : 'unknown'
           } as ClientMethodTemplateArgs['body'];
         }
@@ -78,7 +79,7 @@ export const fromV3 = (
             .map(p => ({
               name: p.name,
               type: p.schema
-                ? HelpersV3.typeDefForSchema(p.schema, options)
+                ? HelpersV3.typeDefForSchema(p.schema, options, emitType)
                 : 'string'
             })),
           queryArrayFormat: parameters
@@ -92,7 +93,7 @@ export const fromV3 = (
               name: p.name,
               required: p.required ?? false,
               type: p.schema
-                ? HelpersV3.typeDefForSchema(p.schema, options)
+                ? HelpersV3.typeDefForSchema(p.schema, options, emitType)
                 : 'string'
             })),
           headerParams: parameters
@@ -101,7 +102,7 @@ export const fromV3 = (
               name: p.name,
               required: p.required ?? false,
               type: p.schema
-                ? HelpersV3.typeDefForSchema(p.schema, options)
+                ? HelpersV3.typeDefForSchema(p.schema, options, emitType)
                 : 'string'
             })),
           body,
@@ -124,7 +125,7 @@ export const fromV3 = (
                   statusCode,
                   type: 'json',
                   jsonType: schema
-                    ? HelpersV3.typeDefForSchema(schema, options)
+                    ? HelpersV3.typeDefForSchema(schema, options, emitType)
                     : 'unknown'
                 };
               }

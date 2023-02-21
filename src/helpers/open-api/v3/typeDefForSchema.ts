@@ -9,7 +9,8 @@ export const typeDefForSchema = (
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
     binaryType?: 'Buffer' | 'Blob';
-  }
+  },
+  emitType: (name: string, definition: string) => void
 ): string => {
   if ('$ref' in schema) {
     return typeDefForReference(schema.$ref);
@@ -17,7 +18,7 @@ export const typeDefForSchema = (
 
   const { binaryType = 'Buffer' } = options;
 
-  const { enum: enumProp, allOf, oneOf, anyOf } = schema;
+  const { enum: enumProp, allOf, oneOf, anyOf, title } = schema;
 
   const preliminaryType = (() => {
     if (enumProp) {
@@ -25,12 +26,12 @@ export const typeDefForSchema = (
     }
 
     const base = isObjectSchema(schema)
-      ? typeDefForObject(schema, typeDefForSchema, options)
+      ? typeDefForObject(schema, typeDefForSchema, options, emitType)
       : null;
 
     if (allOf) {
       return allOf
-        .map(m => typeDefForSchema(m, options))
+        .map(m => typeDefForSchema(m, options, emitType))
         .concat(base ? [base] : [])
         .join(' & ');
     }
@@ -38,7 +39,9 @@ export const typeDefForSchema = (
     const unionOf = (oneOf ?? []).concat(anyOf ?? []);
 
     if (unionOf.length > 0) {
-      const union = unionOf.map(m => typeDefForSchema(m, options)).join(' | ');
+      const union = unionOf
+        .map(m => typeDefForSchema(m, options, emitType))
+        .join(' | ');
 
       return base ? `${base} & (${union})` : union;
     }
@@ -76,15 +79,22 @@ export const typeDefForSchema = (
       if (Array.isArray(items)) {
         throw new Error(`Array items property must be singular.`);
       }
-      return `Array<${typeDefForSchema(items, options)}>`;
+      return `Array<${typeDefForSchema(items, options, emitType)}>`;
     }
 
     return 'unknown';
   })();
 
-  if ('nullable' in schema && schema.nullable) {
-    return `${preliminaryType} | null`;
+  const code =
+    'nullable' in schema && schema.nullable
+      ? `${preliminaryType} | null`
+      : preliminaryType;
+
+  if (title) {
+    emitType(title, code);
+
+    return title;
   }
 
-  return preliminaryType;
+  return code;
 };

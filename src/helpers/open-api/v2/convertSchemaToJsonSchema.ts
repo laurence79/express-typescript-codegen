@@ -16,17 +16,25 @@ const mapProperties = (properties: {
 };
 
 export const convertSchemaToJsonSchema = (
-  schema: OpenApiV2.SchemaObject
+  schemas: OpenApiV2.SchemaObject | OpenApiV2.SchemaObject[]
 ): JSONSchema7 => {
   /**
    * This currently does nothing, but is a placeholder for removing
    * unsupported features from Open Api
    */
 
-  const { properties, ...rest } = schema;
+  const convert = (schema: OpenApiV2.SchemaObject): JSONSchema7 => {
+    const { properties, ...rest } = schema;
 
-  return {
-    ...rest,
-    ...(properties ? { properties: mapProperties(properties) } : undefined)
-  } as JSONSchema7;
+    return {
+      ...rest,
+      ...(properties ? { properties: mapProperties(properties) } : undefined)
+    } as JSONSchema7;
+  };
+
+  if (Array.isArray(schemas)) {
+    return { anyOf: schemas.map(convert) };
+  }
+
+  return convert(schemas);
 };

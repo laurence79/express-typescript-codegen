@@ -51,8 +51,6 @@ const cmd = new commander.Command('generate')
         ![
           'client',
           'server',
-          'server-functional',
-          'server-classes',
           'stubs'
         ].includes(options.template.toLowerCase())
       ) {

@@ -1,9 +1,9 @@
 import qs from 'qs';
 import { fetch } from 'cross-fetch';
 
-export type ApiResponse = { code?: number; type?: string; message?: string };
-
 export type Category = { id?: number; name?: string };
+
+export type Tag = { id?: number; name?: string };
 
 export type Pet = {
   id?: number;
@@ -13,8 +13,6 @@ export type Pet = {
   tags?: Array<Tag>;
   status?: 'available' | 'pending' | 'sold';
 };
-
-export type Tag = { id?: number; name?: string };
 
 export type Order = {
   id?: number;

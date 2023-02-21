@@ -7,11 +7,13 @@ export const typeDefForObject = (
     schema: OpenApiV2.SchemaObject,
     options: {
       nonRequiredType: 'optional' | 'nullable' | 'both';
-    }
+    },
+    emitType: (name: string, definition: string) => void
   ) => string,
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
-  }
+  },
+  emitType: (name: string, definition: string) => void
 ): string => {
   const { required, properties } = objectSchema;
 
@@ -26,7 +28,7 @@ export const typeDefForObject = (
 
     const propertyObject = properties[propertyName];
     const isRequired = requiredProperties.includes(propertyName);
-    const propertyType = recursiveLookup(propertyObject, options);
+    const propertyType = recursiveLookup(propertyObject, options, emitType);
 
     return fieldTemplate(propertyName, isRequired, propertyType, options);
   });

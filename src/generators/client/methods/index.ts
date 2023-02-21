@@ -8,9 +8,10 @@ export const generateMethods = (
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
   },
+  emitType: (name: string, code: string) => void,
   log?: LogFn
 ): string[] => {
   return 'swagger' in openApiDocument
-    ? fromV2(openApiDocument, options, log)
-    : fromV3(openApiDocument, options, log);
+    ? fromV2(openApiDocument, options, emitType, log)
+    : fromV3(openApiDocument, options, emitType, log);
 };

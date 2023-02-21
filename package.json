@@ -21,7 +21,7 @@
     "dist/"
   ],
   "scripts": {
-    "run-example": "ts-node --files src/cli.ts generate ./example/swagger.json --filename ./example/generated --template server-functional",
+    "run-example": "ts-node --files src/cli.ts generate ./example/swagger.json --filename ./example/generated --template server",
     "boiler-update": "boiler-sync update",
     "lint": "eslint --cache 'src/**/*.ts' --quiet",
     "lint:watch": "esw --cache 'src/**/*.ts' --watch",
@@ -65,6 +65,7 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-watch": "^7.0.0",
     "express": "4.17.1",
+    "express-json-validator-middleware": "^3.0.1",
     "express-serve-static-core": "^0.1.1",
     "jest": "^27.4.7",
     "prettier": "^2.2.1",

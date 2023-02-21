@@ -2,11 +2,11 @@ import { JSONSchema7 } from 'json-schema';
 import {
   mapOperations,
   convertSchemaToJsonSchema
-} from '../../helpers/open-api/v2';
-import * as OpenApiV2 from '../../types/OpenApiV2';
-import { LogFn, progress } from '../../lib/cli-logging';
-import { responseBodyTypeNameTemplate } from '../../templates';
-import { parametersTypeNameTemplate } from '../../templates/parametersTypeName';
+} from '../../../helpers/open-api/v2';
+import * as OpenApiV2 from '../../../types/OpenApiV2';
+import { LogFn, progress } from '../../../lib/cli-logging';
+import { responseBodyTypeNameTemplate } from '../../../templates';
+import { parametersTypeNameTemplate } from '../../../templates/parametersTypeName';
 
 export const PERMITTED_TYPES = ['body', 'path', 'query', 'header', 'formData'];
 

@@ -1,3 +1,5 @@
+import { JSONSchema7 } from 'json-schema';
+
 export type ControllerTemplateArgs = {
   httpMethod: string;
   expressPath: string;
@@ -10,6 +12,9 @@ export type ControllerTemplateArgs = {
   bodyParamType?: string;
   queryParamsType?: string;
   statusCodeType?: string;
+  querySchema?: JSONSchema7;
+  bodySchema?: JSONSchema7;
+  pathSchema?: JSONSchema7;
 };
 export const controllerTemplate = ({
   requestTypeName,

@@ -1,4 +1,11 @@
 export const requestValidationMiddlewareClassTemplate = (): string => `
+type RequestValidators = {
+  headers?: AnyValidateFunction;
+  params?: AnyValidateFunction;
+  body?: AnyValidateFunction;
+  query?: AnyValidateFunction;
+}
+
 @injectable()
 export class RequestValidationMiddlewareLogger {
   info(message: string, meta: Record<string, unknown>): void {
@@ -59,7 +66,7 @@ export class RequestValidationMiddleware {
         .flat();
 
       if (errors.none()) {
-        return next();
+        return next?.();
       }
 
       this.logger.info('Request validation failed', { errors });

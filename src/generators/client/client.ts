@@ -4,7 +4,6 @@ import * as OpenApi from '../../types/OpenApi';
 import 'ts-array-extensions';
 import { Logger, success } from '../../lib/cli-logging';
 import { generateMethods } from './methods';
-import { generateTypes } from './types';
 
 export const generateClient = ({
   logger,
@@ -19,15 +18,24 @@ export const generateClient = ({
 }): string => {
   const log = logger?.create('Generating client');
 
-  const types = generateTypes(openApiDocument, { nonRequiredType }, log);
+  const types: Record<string, string> = {};
 
-  const methods = generateMethods(openApiDocument, { nonRequiredType }, log);
+  const methods = generateMethods(
+    openApiDocument,
+    { nonRequiredType },
+    (name, def) => {
+      types[name] = def;
+    },
+    log
+  );
 
   const code = `
     import qs from 'qs';
     import { fetch } from 'cross-fetch';
 
-    ${types.join('\n\n')}
+    ${Object.entries(types)
+      .map(([name, def]) => `export type ${name} = ${def};`)
+      .join('\n\n')}
 
     type ResponseWithData<TStatus, TData> = {
       status: TStatus;

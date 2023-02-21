@@ -1,6 +1,6 @@
 import { JSONSchema7 } from 'json-schema';
-import { LogFn, progress, success } from '../../lib/cli-logging';
-import * as OpenApi from '../../types/OpenApi';
+import { LogFn, progress, success } from '../../../lib/cli-logging';
+import * as OpenApi from '../../../types/OpenApi';
 import { fromV2 } from './v2';
 import { fromV3 } from './v3';
 import { fromJsonSchema } from './jsonSchema';

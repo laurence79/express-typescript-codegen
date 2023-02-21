@@ -1,4 +1,5 @@
 import $RefParser from '@apidevtools/json-schema-ref-parser';
+import { JSONSchemaObject } from '@apidevtools/json-schema-ref-parser/dist/lib/types';
 import * as OpenApi from '../types/OpenApi';
 
 export const loadOpenApiDocument = async ({
@@ -8,7 +9,13 @@ export const loadOpenApiDocument = async ({
 }): Promise<OpenApi.Document> => {
   const schema = await $RefParser.dereference(source, {
     dereference: {
-      excludedPathMatcher: (path: string) => path.startsWith('#')
+      // eslint-disable-next-line no-return-assign
+      onDereference: (path: string, value: JSONSchemaObject) => {
+        if (!value.title && path.startsWith('#/')) {
+          // eslint-disable-next-line no-param-reassign
+          value.title = path.substring(path.lastIndexOf('/') + 1);
+        }
+      }
     }
   });
 

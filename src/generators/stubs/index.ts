@@ -3,8 +3,8 @@
 import * as OpenApi from '../../types/OpenApi';
 import 'ts-array-extensions';
 import { Logger, success } from '../../lib/cli-logging';
-import { generateJsonSchema } from '../json-schema';
-import { generateServerTypes } from '../server-types';
+import { generateJsonSchema } from './json-schema';
+import { generateServerTypes } from './server-types';
 import { initLower } from '../../helpers/initLower';
 import { fromV2 } from './v2';
 import { fromV3 } from './v3';

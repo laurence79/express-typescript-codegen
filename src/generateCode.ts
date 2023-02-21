@@ -1,7 +1,6 @@
 import path from 'path';
 import { generateClient } from './generators/client/client';
-import { generateServerClasses } from './generators/server-classes/server';
-import { generateServerFunctional } from './generators/server-functional/server';
+import { generateServerClasses } from './generators/server/server';
 import { generateStubs } from './generators/stubs';
 import { assertNever } from './helpers/assertNever';
 import { initUpper } from './helpers/initUpper';
@@ -57,9 +56,6 @@ export const generateCode = async (
       case 'CLIENT':
         return generateClient;
       case 'SERVER':
-      case 'SERVER-FUNCTIONAL':
-        return generateServerFunctional;
-      case 'SERVER-CLASSES':
         return generateServerClasses;
       case 'STUBS':
         return generateStubs;

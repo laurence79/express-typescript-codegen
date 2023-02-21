@@ -1,9 +1,23 @@
 import { RequestHandler } from '@laurence79/express-async-request-handler';
 import { Router } from 'express';
 
-export type AddPetRequestBody = Pet;
+export type AddPetRequestBody = {
+  id?: number;
+  category?: { id?: number; name?: string };
+  name: string;
+  photoUrls: Array<string>;
+  tags?: Array<{ id?: number; name?: string }>;
+  status?: 'available' | 'pending' | 'sold';
+};
 
-export type UpdatePetRequestBody = Pet;
+export type UpdatePetRequestBody = {
+  id?: number;
+  category?: { id?: number; name?: string };
+  name: string;
+  photoUrls: Array<string>;
+  tags?: Array<{ id?: number; name?: string }>;
+  status?: 'available' | 'pending' | 'sold';
+};
 
 export type FindPetsByStatusRequestQuery = {
   status:
@@ -13,15 +27,36 @@ export type FindPetsByStatusRequestQuery = {
     | 'sold';
 };
 
-export type FindPetsByStatus200ResponseBody = Array<Pet>;
+export type FindPetsByStatus200ResponseBody = Array<{
+  id?: number;
+  category?: { id?: number; name?: string };
+  name: string;
+  photoUrls: Array<string>;
+  tags?: Array<{ id?: number; name?: string }>;
+  status?: 'available' | 'pending' | 'sold';
+}>;
 
 export type FindPetsByTagsRequestQuery = { tags: Array<string> | string };
 
-export type FindPetsByTags200ResponseBody = Array<Pet>;
+export type FindPetsByTags200ResponseBody = Array<{
+  id?: number;
+  category?: { id?: number; name?: string };
+  name: string;
+  photoUrls: Array<string>;
+  tags?: Array<{ id?: number; name?: string }>;
+  status?: 'available' | 'pending' | 'sold';
+}>;
 
 export type GetPetByIdRequestPath = { petId: number };
 
-export type GetPetById200ResponseBody = Pet;
+export type GetPetById200ResponseBody = {
+  id?: number;
+  category?: { id?: number; name?: string };
+  name: string;
+  photoUrls: Array<string>;
+  tags?: Array<{ id?: number; name?: string }>;
+  status?: 'available' | 'pending' | 'sold';
+};
 
 export type UpdatePetWithFormRequestPath = { petId: number };
 
@@ -31,29 +66,86 @@ export type DeletePetRequestHeader = { api_key?: string };
 
 export type DeletePetRequestPath = { petId: number };
 
-export type PlaceOrderRequestBody = Order;
+export type PlaceOrderRequestBody = {
+  id?: number;
+  petId?: number;
+  quantity?: number;
+  shipDate?: string;
+  status?: 'placed' | 'approved' | 'delivered';
+  complete?: boolean;
+};
 
-export type PlaceOrder200ResponseBody = Order;
+export type PlaceOrder200ResponseBody = {
+  id?: number;
+  petId?: number;
+  quantity?: number;
+  shipDate?: string;
+  status?: 'placed' | 'approved' | 'delivered';
+  complete?: boolean;
+};
 
 export type GetOrderByIdRequestPath = { orderId: number };
 
-export type GetOrderById200ResponseBody = Order;
+export type GetOrderById200ResponseBody = {
+  id?: number;
+  petId?: number;
+  quantity?: number;
+  shipDate?: string;
+  status?: 'placed' | 'approved' | 'delivered';
+  complete?: boolean;
+};
 
 export type DeleteOrderRequestPath = { orderId: number };
 
 export type GetInventory200ResponseBody = unknown;
 
-export type CreateUsersWithArrayInputRequestBody = Array<User>;
+export type CreateUsersWithArrayInputRequestBody = Array<{
+  id?: number;
+  username?: string;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  password?: string;
+  phone?: string;
+  userStatus?: number;
+}>;
 
-export type CreateUsersWithListInputRequestBody = Array<User>;
+export type CreateUsersWithListInputRequestBody = Array<{
+  id?: number;
+  username?: string;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  password?: string;
+  phone?: string;
+  userStatus?: number;
+}>;
 
 export type GetUserByNameRequestPath = { username: string };
 
-export type GetUserByName200ResponseBody = User;
+export type GetUserByName200ResponseBody = {
+  id?: number;
+  username?: string;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  password?: string;
+  phone?: string;
+  userStatus?: number;
+};
 
 export type UpdateUserRequestPath = { username: string };
 
-export type UpdateUserRequestBody = User;
+export type UpdateUserRequestBody = {
+  id?: number;
+  username?: string;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  password?: string;
+  phone?: string;
+  userStatus?: number;
+};
 
 export type DeleteUserRequestPath = { username: string };
 
@@ -61,7 +153,16 @@ export type LoginUserRequestQuery = { username: string; password: string };
 
 export type LoginUser200ResponseBody = string;
 
-export type CreateUserRequestBody = User;
+export type CreateUserRequestBody = {
+  id?: number;
+  username?: string;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  password?: string;
+  phone?: string;
+  userStatus?: number;
+};
 
 export type ApiResponse = { code?: number; type?: string; message?: string };
 
@@ -69,10 +170,10 @@ export type Category = { id?: number; name?: string };
 
 export type Pet = {
   id?: number;
-  category?: Category;
+  category?: { id?: number; name?: string };
   name: string;
   photoUrls: Array<string>;
-  tags?: Array<Tag>;
+  tags?: Array<{ id?: number; name?: string }>;
   status?: 'available' | 'pending' | 'sold';
 };
 
@@ -85,17 +186,6 @@ export type Order = {
   shipDate?: string;
   status?: 'placed' | 'approved' | 'delivered';
   complete?: boolean;
-};
-
-export type User = {
-  id?: number;
-  username?: string;
-  firstName?: string;
-  lastName?: string;
-  email?: string;
-  password?: string;
-  phone?: string;
-  userStatus?: number;
 };
 
 type RequestLog<THeaders, TParams, TQuery, TBody> = {

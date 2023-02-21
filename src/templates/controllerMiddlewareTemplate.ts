@@ -19,19 +19,10 @@ export const controllerMiddlewareTemplate = (
     @injectable()
     export class ControllerMiddleware {
       constructor(
-        private readonly schema: RequestValidationSchema,
         private readonly resolver: RequestResolverFactory
       ) {}
 
-      private validation(validators: RequestValidators): RequestHandler {
-        return (req, res, next) => {
-          const validator = this.resolver
-            .forRequest(req)
-            .resolve(RequestValidationMiddleware);
-    
-          validator.createMiddleware(validators)(req, res, next);
-        };
-      }
+      private static validate = new Validator({ strict: false, coerceTypes: true }).validate;
 
       ${handlers
         .map(
@@ -40,7 +31,17 @@ export const controllerMiddlewareTemplate = (
         router.${h.httpMethod}(
           '${h.expressPath}',
     
-          this.validation(this.schema.${h.controllerMethodName}()),
+          ${
+            h.bodySchema || h.querySchema || h.pathSchema
+              ? `
+          ControllerMiddleware.validate({
+            ${h.bodySchema ? `body: ${JSON.stringify(h.bodySchema)},` : ''}
+            ${h.querySchema ? `query: ${JSON.stringify(h.querySchema)},` : ''}
+            ${h.pathSchema ? `params: ${JSON.stringify(h.pathSchema)},` : ''}
+          }),
+          `
+              : ''
+          }
     
           asyncRequestHandler<${h.requestTypeName}, ${h.responseTypeName}>(
             async (req, res, next) => {
@@ -58,7 +59,18 @@ export const controllerMiddlewareTemplate = (
       `
         )
         .join('\n')}
-    
+
+      private static validationErrorMiddleware: ErrorRequestHandler = (error, _, response, next) => {
+        if (error instanceof ValidationError) {
+          response.status(400).send({
+            type: 'REQUEST_VALIDATION_FAILED',
+            fields: error.validationErrors
+          });
+          next();
+        } else {
+          next(error);
+        }
+      };    
     
       public apply(expressApp: Express): void {
         const router = Router();
@@ -68,6 +80,8 @@ export const controllerMiddlewareTemplate = (
         .join('\n')}
     
         expressApp.use(router);
+
+        expressApp.use(ControllerMiddleware.validationErrorMiddleware);
       }
     }`;
 };

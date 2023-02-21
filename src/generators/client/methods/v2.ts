@@ -11,6 +11,7 @@ export const fromV2 = (
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
   },
+  emitType: (name: string, definition: string) => void,
   log?: LogFn
 ): string[] => {
   return HelpersV2.mapOperations(document).map(
@@ -20,12 +21,14 @@ export const fromV2 = (
       const jsonBody = (): ClientMethodTemplateArgs['body'] => {
         const bodyArg = parameters.filter(p => p.in === 'body').first();
 
-        if (!bodyArg) return null;
+        if (!bodyArg || bodyArg.in !== 'body') return null;
+
+        const { schema, required = false } = bodyArg;
 
         return {
           type: 'json',
-          jsonType: HelpersV2.typeDefForSchema(bodyArg.schema, options),
-          required: bodyArg.required ?? false
+          jsonType: HelpersV2.typeDefForSchema(schema, options, emitType),
+          required
         };
       };
 
@@ -54,7 +57,11 @@ export const fromV2 = (
             .filter(p => p.in === 'path')
             .map(p => ({
               name: p.name,
-              type: HelpersV2.typeDefForSchema({ ...p, required: [] }, options)
+              type: HelpersV2.typeDefForSchema(
+                { ...p, required: [] },
+                options,
+                emitType
+              )
             })),
           queryArrayFormat: parameters
             .filter(p => p.in === 'query')
@@ -67,7 +74,7 @@ export const fromV2 = (
               name: p.name,
               required: p.required ?? false,
               type: p.schema
-                ? HelpersV2.typeDefForSchema(p.schema, options)
+                ? HelpersV2.typeDefForSchema(p.schema, options, emitType)
                 : 'string'
             })),
           headerParams: parameters
@@ -76,7 +83,7 @@ export const fromV2 = (
               name: p.name,
               required: p.required ?? false,
               type: p.schema
-                ? HelpersV2.typeDefForSchema(p.schema, options)
+                ? HelpersV2.typeDefForSchema(p.schema, options, emitType)
                 : 'string'
             })),
           body: jsonBody() ?? formDataBody(),
@@ -95,7 +102,7 @@ export const fromV2 = (
                 statusCode,
                 type: 'json',
                 jsonType: schema
-                  ? HelpersV2.typeDefForSchema(schema, options)
+                  ? HelpersV2.typeDefForSchema(schema, options, emitType)
                   : 'unknown'
               };
             }

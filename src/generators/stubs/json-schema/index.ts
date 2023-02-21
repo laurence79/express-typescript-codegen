@@ -1,7 +1,7 @@
 import { JSONSchema7 } from 'json-schema';
-import * as OpenApi from '../../types/OpenApi';
+import * as OpenApi from '../../../types/OpenApi';
 import 'ts-array-extensions';
-import { LogFn, progress } from '../../lib/cli-logging';
+import { LogFn, progress } from '../../../lib/cli-logging';
 import { fromV3 } from './v3';
 import { fromV2 } from './v2';
 

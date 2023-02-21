@@ -1,83 +1,20 @@
-import Ajv from 'ajv';
-import { AnyValidateFunction } from 'ajv/dist/core';
 import {
   Request,
   Response,
   Express,
   NextFunction,
   ParamsDictionary,
-  RequestHandler
+  ErrorRequestHandler
 } from 'express-serve-static-core';
 import { Router } from 'express';
 import { asyncRequestHandler } from '@laurence79/express-async-request-handler';
 import { ParsedQs } from 'qs';
 import { injectable } from 'tsyringe';
-
-export type AddPetRequestBody = Pet;
-
-export type UpdatePetRequestBody = Pet;
-
-export type FindPetsByStatusRequestQuery = {
-  status:
-    | Array<'available' | 'pending' | 'sold'>
-    | 'available'
-    | 'pending'
-    | 'sold';
-};
-
-export type FindPetsByStatus200ResponseBody = Array<Pet>;
-
-export type FindPetsByTagsRequestQuery = { tags: Array<string> | string };
-
-export type FindPetsByTags200ResponseBody = Array<Pet>;
-
-export type GetPetByIdRequestPath = { petId: number };
-
-export type GetPetById200ResponseBody = Pet;
-
-export type UpdatePetWithFormRequestPath = { petId: number };
-
-export type UpdatePetWithFormRequestBody = { name?: string; status?: string };
-
-export type DeletePetRequestHeader = { api_key?: string };
-
-export type DeletePetRequestPath = { petId: number };
-
-export type PlaceOrderRequestBody = Order;
-
-export type PlaceOrder200ResponseBody = Order;
-
-export type GetOrderByIdRequestPath = { orderId: number };
-
-export type GetOrderById200ResponseBody = Order;
-
-export type DeleteOrderRequestPath = { orderId: number };
-
-export type GetInventory200ResponseBody = unknown;
-
-export type CreateUsersWithArrayInputRequestBody = Array<User>;
-
-export type CreateUsersWithListInputRequestBody = Array<User>;
-
-export type GetUserByNameRequestPath = { username: string };
-
-export type GetUserByName200ResponseBody = User;
-
-export type UpdateUserRequestPath = { username: string };
-
-export type UpdateUserRequestBody = User;
-
-export type DeleteUserRequestPath = { username: string };
-
-export type LoginUserRequestQuery = { username: string; password: string };
-
-export type LoginUser200ResponseBody = string;
-
-export type CreateUserRequestBody = User;
-
-export type ApiResponse = { code?: number; type?: string; message?: string };
+import { Validator, ValidationError } from 'express-json-validator-middleware';
 
 export type Category = { id?: number; name?: string };
+
+export type Tag = { id?: number; name?: string };
 
 export type Pet = {
   id?: number;
@@ -88,7 +25,25 @@ export type Pet = {
   status?: 'available' | 'pending' | 'sold';
 };
 
-export type Tag = { id?: number; name?: string };
+export type AddPetRequestBody = Pet;
+
+export type UpdatePetRequestBody = Pet;
+
+export type FindPetsByStatus200ResponseBody = Array<Pet>;
+
+export type FindPetsByStatusRequestQuery = { status: unknown };
+
+export type FindPetsByTags200ResponseBody = Array<Pet>;
+
+export type FindPetsByTagsRequestQuery = { tags: unknown };
+
+export type GetPetById200ResponseBody = Pet;
+
+export type GetPetByIdRequestPath = { petId: number };
+
+export type UpdatePetWithFormRequestPath = { petId: number };
+
+export type DeletePetRequestPath = { petId: number };
 
 export type Order = {
   id?: number;
@@ -98,6 +53,18 @@ export type Order = {
   status?: 'placed' | 'approved' | 'delivered';
   complete?: boolean;
 };
+
+export type PlaceOrder200ResponseBody = Order;
+
+export type PlaceOrderRequestBody = Order;
+
+export type GetOrderById200ResponseBody = Order;
+
+export type GetOrderByIdRequestPath = { orderId: number };
+
+export type DeleteOrderRequestPath = { orderId: number };
+
+export type GetInventory200ResponseBody = unknown;
 
 export type User = {
   id?: number;
@@ -110,440 +77,25 @@ export type User = {
   userStatus?: number;
 };
 
-export interface RequestValidators {
-  readonly headers?: AnyValidateFunction;
-  readonly params?: AnyValidateFunction;
-  readonly body?: AnyValidateFunction;
-  readonly query?: AnyValidateFunction;
-}
+export type CreateUsersWithArrayInputRequestBody = Array<User>;
 
-@injectable()
-export class RequestValidationSchema {
-  private readonly ajv = new Ajv({ strict: false, coerceTypes: true });
+export type CreateUsersWithListInputRequestBody = Array<User>;
 
-  constructor() {
-    this.ajv.addSchema({
-      $schema: 'http://json-schema.org/draft-07/schema#',
-      definitions: {
-        AddPetRequestBody: { $ref: '#/definitions/Pet' },
-        UpdatePetRequestBody: { $ref: '#/definitions/Pet' },
-        FindPetsByStatusRequestQuery: {
-          type: 'object',
-          required: ['status'],
-          properties: {
-            status: {
-              anyOf: [
-                {
-                  description:
-                    'Status values that need to be considered for filter',
-                  type: 'array',
-                  items: {
-                    type: 'string',
-                    enum: ['available', 'pending', 'sold'],
-                    default: 'available'
-                  },
-                  collectionFormat: 'multi'
-                },
-                {
-                  type: 'string',
-                  enum: ['available', 'pending', 'sold'],
-                  default: 'available'
-                }
-              ]
-            }
-          }
-        },
-        FindPetsByStatus200ResponseBody: {
-          type: 'array',
-          items: { $ref: '#/definitions/Pet' }
-        },
-        FindPetsByTagsRequestQuery: {
-          type: 'object',
-          required: ['tags'],
-          properties: {
-            tags: {
-              anyOf: [
-                {
-                  description: 'Tags to filter by',
-                  type: 'array',
-                  items: { type: 'string' },
-                  collectionFormat: 'multi'
-                },
-                { type: 'string' }
-              ]
-            }
-          }
-        },
-        FindPetsByTags200ResponseBody: {
-          type: 'array',
-          items: { $ref: '#/definitions/Pet' }
-        },
-        GetPetByIdRequestPath: {
-          type: 'object',
-          required: ['petId'],
-          properties: {
-            petId: {
-              description: 'ID of pet to return',
-              type: 'integer',
-              format: 'int64'
-            }
-          }
-        },
-        GetPetById200ResponseBody: { $ref: '#/definitions/Pet' },
-        UpdatePetWithFormRequestPath: {
-          type: 'object',
-          required: ['petId'],
-          properties: {
-            petId: {
-              description: 'ID of pet that needs to be updated',
-              type: 'integer',
-              format: 'int64'
-            }
-          }
-        },
-        UpdatePetWithFormRequestBody: {
-          type: 'object',
-          required: [],
-          properties: {
-            name: { description: 'Updated name of the pet', type: 'string' },
-            status: { description: 'Updated status of the pet', type: 'string' }
-          }
-        },
-        DeletePetRequestHeader: {
-          type: 'object',
-          required: [],
-          properties: { api_key: { type: 'string' } }
-        },
-        DeletePetRequestPath: {
-          type: 'object',
-          required: ['petId'],
-          properties: {
-            petId: {
-              description: 'Pet id to delete',
-              type: 'integer',
-              format: 'int64'
-            }
-          }
-        },
-        PlaceOrderRequestBody: { $ref: '#/definitions/Order' },
-        PlaceOrder200ResponseBody: { $ref: '#/definitions/Order' },
-        GetOrderByIdRequestPath: {
-          type: 'object',
-          required: ['orderId'],
-          properties: {
-            orderId: {
-              description: 'ID of pet that needs to be fetched',
-              type: 'integer',
-              maximum: 10,
-              minimum: 1,
-              format: 'int64'
-            }
-          }
-        },
-        GetOrderById200ResponseBody: { $ref: '#/definitions/Order' },
-        DeleteOrderRequestPath: {
-          type: 'object',
-          required: ['orderId'],
-          properties: {
-            orderId: {
-              description: 'ID of the order that needs to be deleted',
-              type: 'integer',
-              minimum: 1,
-              format: 'int64'
-            }
-          }
-        },
-        GetInventory200ResponseBody: {
-          type: 'object',
-          additionalProperties: { type: 'integer', format: 'int32' }
-        },
-        CreateUsersWithArrayInputRequestBody: {
-          type: 'array',
-          items: { $ref: '#/definitions/User' }
-        },
-        CreateUsersWithListInputRequestBody: {
-          type: 'array',
-          items: { $ref: '#/definitions/User' }
-        },
-        GetUserByNameRequestPath: {
-          type: 'object',
-          required: ['username'],
-          properties: {
-            username: {
-              description:
-                'The name that needs to be fetched. Use user1 for testing. ',
-              type: 'string'
-            }
-          }
-        },
-        GetUserByName200ResponseBody: { $ref: '#/definitions/User' },
-        UpdateUserRequestPath: {
-          type: 'object',
-          required: ['username'],
-          properties: {
-            username: {
-              description: 'name that need to be updated',
-              type: 'string'
-            }
-          }
-        },
-        UpdateUserRequestBody: { $ref: '#/definitions/User' },
-        DeleteUserRequestPath: {
-          type: 'object',
-          required: ['username'],
-          properties: {
-            username: {
-              description: 'The name that needs to be deleted',
-              type: 'string'
-            }
-          }
-        },
-        LoginUserRequestQuery: {
-          type: 'object',
-          required: ['username', 'password'],
-          properties: {
-            username: {
-              description: 'The user name for login',
-              type: 'string'
-            },
-            password: {
-              description: 'The password for login in clear text',
-              type: 'string'
-            }
-          }
-        },
-        LoginUser200ResponseBody: { type: 'string' },
-        CreateUserRequestBody: { $ref: '#/definitions/User' },
-        ApiResponse: {
-          type: 'object',
-          properties: {
-            code: { type: 'integer', format: 'int32' },
-            type: { type: 'string' },
-            message: { type: 'string' }
-          }
-        },
-        Category: {
-          type: 'object',
-          xml: { name: 'Category' },
-          properties: {
-            id: { type: 'integer', format: 'int64' },
-            name: { type: 'string' }
-          }
-        },
-        Pet: {
-          type: 'object',
-          required: ['name', 'photoUrls'],
-          xml: { name: 'Pet' },
-          properties: {
-            id: { type: 'integer', format: 'int64' },
-            category: { $ref: '#/definitions/Category' },
-            name: { type: 'string', example: 'doggie' },
-            photoUrls: {
-              type: 'array',
-              xml: { wrapped: true },
-              items: { type: 'string', xml: { name: 'photoUrl' } }
-            },
-            tags: {
-              type: 'array',
-              xml: { wrapped: true },
-              items: { xml: { name: 'tag' }, $ref: '#/definitions/Tag' }
-            },
-            status: {
-              type: 'string',
-              description: 'pet status in the store',
-              enum: ['available', 'pending', 'sold']
-            }
-          }
-        },
-        Tag: {
-          type: 'object',
-          xml: { name: 'Tag' },
-          properties: {
-            id: { type: 'integer', format: 'int64' },
-            name: { type: 'string' }
-          }
-        },
-        Order: {
-          type: 'object',
-          xml: { name: 'Order' },
-          properties: {
-            id: { type: 'integer', format: 'int64' },
-            petId: { type: 'integer', format: 'int64' },
-            quantity: { type: 'integer', format: 'int32' },
-            shipDate: { type: 'string', format: 'date-time' },
-            status: {
-              type: 'string',
-              description: 'Order Status',
-              enum: ['placed', 'approved', 'delivered']
-            },
-            complete: { type: 'boolean' }
-          }
-        },
-        User: {
-          type: 'object',
-          xml: { name: 'User' },
-          properties: {
-            id: { type: 'integer', format: 'int64' },
-            username: { type: 'string' },
-            firstName: { type: 'string' },
-            lastName: { type: 'string' },
-            email: { type: 'string' },
-            password: { type: 'string' },
-            phone: { type: 'string' },
-            userStatus: {
-              type: 'integer',
-              format: 'int32',
-              description: 'User Status'
-            }
-          }
-        }
-      }
-    });
-  }
+export type GetUserByName200ResponseBody = User;
 
-  public readonly addPet = (): RequestValidators => ({
-    body: this.ajv.getSchema('#/definitions/AddPetRequestBody')!
-  });
+export type GetUserByNameRequestPath = { username: string };
 
-  public readonly updatePet = (): RequestValidators => ({
-    body: this.ajv.getSchema('#/definitions/UpdatePetRequestBody')!
-  });
+export type UpdateUserRequestBody = User;
 
-  public readonly findPetsByStatus = (): RequestValidators => ({
-    query: this.ajv.getSchema('#/definitions/FindPetsByStatusRequestQuery')!
-  });
+export type UpdateUserRequestPath = { username: string };
 
-  public readonly findPetsByTags = (): RequestValidators => ({
-    query: this.ajv.getSchema('#/definitions/FindPetsByTagsRequestQuery')!
-  });
+export type DeleteUserRequestPath = { username: string };
 
-  public readonly getPetById = (): RequestValidators => ({
-    params: this.ajv.getSchema('#/definitions/GetPetByIdRequestPath')!
-  });
+export type LoginUser200ResponseBody = string;
 
-  public readonly updatePetWithForm = (): RequestValidators => ({
-    params: this.ajv.getSchema('#/definitions/UpdatePetWithFormRequestPath')!,
-    body: this.ajv.getSchema('#/definitions/UpdatePetWithFormRequestBody')!
-  });
+export type LoginUserRequestQuery = { username: string; password: string };
 
-  public readonly deletePet = (): RequestValidators => ({
-    headers: this.ajv.getSchema('#/definitions/DeletePetRequestHeader')!,
-    params: this.ajv.getSchema('#/definitions/DeletePetRequestPath')!
-  });
-
-  public readonly placeOrder = (): RequestValidators => ({
-    body: this.ajv.getSchema('#/definitions/PlaceOrderRequestBody')!
-  });
-
-  public readonly getOrderById = (): RequestValidators => ({
-    params: this.ajv.getSchema('#/definitions/GetOrderByIdRequestPath')!
-  });
-
-  public readonly deleteOrder = (): RequestValidators => ({
-    params: this.ajv.getSchema('#/definitions/DeleteOrderRequestPath')!
-  });
-
-  public readonly getInventory = (): RequestValidators => ({});
-
-  public readonly createUsersWithArrayInput = (): RequestValidators => ({
-    body: this.ajv.getSchema(
-      '#/definitions/CreateUsersWithArrayInputRequestBody'
-    )!
-  });
-
-  public readonly createUsersWithListInput = (): RequestValidators => ({
-    body: this.ajv.getSchema(
-      '#/definitions/CreateUsersWithListInputRequestBody'
-    )!
-  });
-
-  public readonly getUserByName = (): RequestValidators => ({
-    params: this.ajv.getSchema('#/definitions/GetUserByNameRequestPath')!
-  });
-
-  public readonly updateUser = (): RequestValidators => ({
-    params: this.ajv.getSchema('#/definitions/UpdateUserRequestPath')!,
-    body: this.ajv.getSchema('#/definitions/UpdateUserRequestBody')!
-  });
-
-  public readonly deleteUser = (): RequestValidators => ({
-    params: this.ajv.getSchema('#/definitions/DeleteUserRequestPath')!
-  });
-
-  public readonly loginUser = (): RequestValidators => ({
-    query: this.ajv.getSchema('#/definitions/LoginUserRequestQuery')!
-  });
-
-  public readonly logoutUser = (): RequestValidators => ({});
-
-  public readonly createUser = (): RequestValidators => ({
-    body: this.ajv.getSchema('#/definitions/CreateUserRequestBody')!
-  });
-}
-
-@injectable()
-export class RequestValidationMiddlewareLogger {
-  info(message: string, meta: Record<string, unknown>): void {
-    console.info(message, meta);
-  }
-}
-
-@injectable()
-export class RequestValidationMiddleware {
-  constructor(private readonly logger: RequestValidationMiddlewareLogger) {}
-
-  private static validatePart(
-    validator: AnyValidateFunction,
-    part: unknown,
-    path: string
-  ): { path: string; message: string }[] {
-    validator(part);
-    return (
-      validator.errors?.map(e => ({
-        path: `${path}${e.dataPath}`,
-        message: e.message ?? 'Unknown'
-      })) ?? []
-    );
-  }
-
-  public createMiddleware(validators: RequestValidators): RequestHandler {
-    return (req, res, next) => {
-      const { headers, params, body, query } = validators;
-
-      const errors = [
-        headers &&
-          RequestValidationMiddleware.validatePart(
-            headers,
-            req.headers,
-            'headers'
-          ),
-        params &&
-          RequestValidationMiddleware.validatePart(
-            params,
-            req.params,
-            'params'
-          ),
-        body &&
-          RequestValidationMiddleware.validatePart(body, req.body, 'body'),
-        query &&
-          RequestValidationMiddleware.validatePart(query, req.query, 'query')
-      ]
-        .compact()
-        .flat();
-
-      if (errors.none()) {
-        return next();
-      }
-
-      this.logger.info('Request validation failed', { errors });
-
-      return res.status(400).send({
-        type: 'REQUEST_VALIDATION_FAILED',
-        fields: errors
-      });
-    };
-  }
-}
+export type CreateUserRequestBody = User;
 
 export type AddPetRequest = Request<
   ParamsDictionary,
@@ -654,7 +206,7 @@ export interface GetPetByIdController {
 export type UpdatePetWithFormRequest = Request<
   UpdatePetWithFormRequestPath,
   unknown,
-  UpdatePetWithFormRequestBody,
+  unknown,
   ParsedQs,
   Record<string, any>
 >;
@@ -962,26 +514,63 @@ export class RequestResolverFactory {
 
 @injectable()
 export class ControllerMiddleware {
-  constructor(
-    private readonly schema: RequestValidationSchema,
-    private readonly resolver: RequestResolverFactory
-  ) {}
+  constructor(private readonly resolver: RequestResolverFactory) {}
 
-  private validation(validators: RequestValidators): RequestHandler {
-    return (req, res, next) => {
-      const validator = this.resolver
-        .forRequest(req)
-        .resolve(RequestValidationMiddleware);
-
-      validator.createMiddleware(validators)(req, res, next);
-    };
-  }
+  private static validate = new Validator({ strict: false, coerceTypes: true })
+    .validate;
 
   private addAddPetController(router: Router): void {
     router.post(
       '/pet',
 
-      this.validation(this.schema.addPet()),
+      ControllerMiddleware.validate({
+        body: {
+          anyOf: [
+            {
+              type: 'object',
+              required: ['name', 'photoUrls'],
+              xml: { name: 'Pet' },
+              title: 'Pet',
+              properties: {
+                id: { type: 'integer', format: 'int64' },
+                category: {
+                  type: 'object',
+                  xml: { name: 'Category' },
+                  title: 'Category',
+                  properties: {
+                    id: { type: 'integer', format: 'int64' },
+                    name: { type: 'string' }
+                  }
+                },
+                name: { type: 'string', example: 'doggie' },
+                photoUrls: {
+                  type: 'array',
+                  xml: { wrapped: true },
+                  items: { type: 'string', xml: { name: 'photoUrl' } }
+                },
+                tags: {
+                  type: 'array',
+                  xml: { wrapped: true },
+                  items: {
+                    xml: { name: 'tag' },
+                    type: 'object',
+                    properties: {
+                      id: { type: 'integer', format: 'int64' },
+                      name: { type: 'string' }
+                    },
+                    title: 'Tag'
+                  }
+                },
+                status: {
+                  type: 'string',
+                  description: 'pet status in the store',
+                  enum: ['available', 'pending', 'sold']
+                }
+              }
+            }
+          ]
+        }
+      }),
 
       asyncRequestHandler<AddPetRequest, AddPetResponse>(
         async (req, res, next) => {
@@ -999,7 +588,54 @@ export class ControllerMiddleware {
     router.put(
       '/pet',
 
-      this.validation(this.schema.updatePet()),
+      ControllerMiddleware.validate({
+        body: {
+          anyOf: [
+            {
+              type: 'object',
+              required: ['name', 'photoUrls'],
+              xml: { name: 'Pet' },
+              title: 'Pet',
+              properties: {
+                id: { type: 'integer', format: 'int64' },
+                category: {
+                  type: 'object',
+                  xml: { name: 'Category' },
+                  title: 'Category',
+                  properties: {
+                    id: { type: 'integer', format: 'int64' },
+                    name: { type: 'string' }
+                  }
+                },
+                name: { type: 'string', example: 'doggie' },
+                photoUrls: {
+                  type: 'array',
+                  xml: { wrapped: true },
+                  items: { type: 'string', xml: { name: 'photoUrl' } }
+                },
+                tags: {
+                  type: 'array',
+                  xml: { wrapped: true },
+                  items: {
+                    xml: { name: 'tag' },
+                    type: 'object',
+                    properties: {
+                      id: { type: 'integer', format: 'int64' },
+                      name: { type: 'string' }
+                    },
+                    title: 'Tag'
+                  }
+                },
+                status: {
+                  type: 'string',
+                  description: 'pet status in the store',
+                  enum: ['available', 'pending', 'sold']
+                }
+              }
+            }
+          ]
+        }
+      }),
 
       asyncRequestHandler<UpdatePetRequest, UpdatePetResponse>(
         async (req, res, next) => {
@@ -1017,7 +653,34 @@ export class ControllerMiddleware {
     router.get(
       '/pet/findByStatus',
 
-      this.validation(this.schema.findPetsByStatus()),
+      ControllerMiddleware.validate({
+        query: {
+          type: 'object',
+          required: ['status'],
+          properties: {
+            status: {
+              anyOf: [
+                {
+                  description:
+                    'Status values that need to be considered for filter',
+                  type: 'array',
+                  items: {
+                    type: 'string',
+                    enum: ['available', 'pending', 'sold'],
+                    default: 'available'
+                  },
+                  collectionFormat: 'multi'
+                },
+                {
+                  type: 'string',
+                  enum: ['available', 'pending', 'sold'],
+                  default: 'available'
+                }
+              ]
+            }
+          }
+        }
+      }),
 
       asyncRequestHandler<FindPetsByStatusRequest, FindPetsByStatusResponse>(
         async (req, res, next) => {
@@ -1037,7 +700,25 @@ export class ControllerMiddleware {
     router.get(
       '/pet/findByTags',
 
-      this.validation(this.schema.findPetsByTags()),
+      ControllerMiddleware.validate({
+        query: {
+          type: 'object',
+          required: ['tags'],
+          properties: {
+            tags: {
+              anyOf: [
+                {
+                  description: 'Tags to filter by',
+                  type: 'array',
+                  items: { type: 'string' },
+                  collectionFormat: 'multi'
+                },
+                { type: 'string' }
+              ]
+            }
+          }
+        }
+      }),
 
       asyncRequestHandler<FindPetsByTagsRequest, FindPetsByTagsResponse>(
         async (req, res, next) => {
@@ -1057,7 +738,19 @@ export class ControllerMiddleware {
     router.get(
       '/pet/:petId',
 
-      this.validation(this.schema.getPetById()),
+      ControllerMiddleware.validate({
+        params: {
+          type: 'object',
+          required: ['petId'],
+          properties: {
+            petId: {
+              description: 'ID of pet to return',
+              type: 'integer',
+              format: 'int64'
+            }
+          }
+        }
+      }),
 
       asyncRequestHandler<GetPetByIdRequest, GetPetByIdResponse>(
         async (req, res, next) => {
@@ -1075,7 +768,19 @@ export class ControllerMiddleware {
     router.post(
       '/pet/:petId',
 
-      this.validation(this.schema.updatePetWithForm()),
+      ControllerMiddleware.validate({
+        params: {
+          type: 'object',
+          required: ['petId'],
+          properties: {
+            petId: {
+              description: 'ID of pet that needs to be updated',
+              type: 'integer',
+              format: 'int64'
+            }
+          }
+        }
+      }),
 
       asyncRequestHandler<UpdatePetWithFormRequest, UpdatePetWithFormResponse>(
         async (req, res, next) => {
@@ -1095,7 +800,19 @@ export class ControllerMiddleware {
     router.delete(
       '/pet/:petId',
 
-      this.validation(this.schema.deletePet()),
+      ControllerMiddleware.validate({
+        params: {
+          type: 'object',
+          required: ['petId'],
+          properties: {
+            petId: {
+              description: 'Pet id to delete',
+              type: 'integer',
+              format: 'int64'
+            }
+          }
+        }
+      }),
 
       asyncRequestHandler<DeletePetRequest, DeletePetResponse>(
         async (req, res, next) => {
@@ -1113,7 +830,29 @@ export class ControllerMiddleware {
     router.post(
       '/store/order',
 
-      this.validation(this.schema.placeOrder()),
+      ControllerMiddleware.validate({
+        body: {
+          anyOf: [
+            {
+              type: 'object',
+              xml: { name: 'Order' },
+              title: 'Order',
+              properties: {
+                id: { type: 'integer', format: 'int64' },
+                petId: { type: 'integer', format: 'int64' },
+                quantity: { type: 'integer', format: 'int32' },
+                shipDate: { type: 'string', format: 'date-time' },
+                status: {
+                  type: 'string',
+                  description: 'Order Status',
+                  enum: ['placed', 'approved', 'delivered']
+                },
+                complete: { type: 'boolean' }
+              }
+            }
+          ]
+        }
+      }),
 
       asyncRequestHandler<PlaceOrderRequest, PlaceOrderResponse>(
         async (req, res, next) => {
@@ -1131,7 +870,21 @@ export class ControllerMiddleware {
     router.get(
       '/store/order/:orderId',
 
-      this.validation(this.schema.getOrderById()),
+      ControllerMiddleware.validate({
+        params: {
+          type: 'object',
+          required: ['orderId'],
+          properties: {
+            orderId: {
+              description: 'ID of pet that needs to be fetched',
+              type: 'integer',
+              maximum: 10,
+              minimum: 1,
+              format: 'int64'
+            }
+          }
+        }
+      }),
 
       asyncRequestHandler<GetOrderByIdRequest, GetOrderByIdResponse>(
         async (req, res, next) => {
@@ -1149,7 +902,20 @@ export class ControllerMiddleware {
     router.delete(
       '/store/order/:orderId',
 
-      this.validation(this.schema.deleteOrder()),
+      ControllerMiddleware.validate({
+        params: {
+          type: 'object',
+          required: ['orderId'],
+          properties: {
+            orderId: {
+              description: 'ID of the order that needs to be deleted',
+              type: 'integer',
+              minimum: 1,
+              format: 'int64'
+            }
+          }
+        }
+      }),
 
       asyncRequestHandler<DeleteOrderRequest, DeleteOrderResponse>(
         async (req, res, next) => {
@@ -1167,8 +933,6 @@ export class ControllerMiddleware {
     router.get(
       '/store/inventory',
 
-      this.validation(this.schema.getInventory()),
-
       asyncRequestHandler<GetInventoryRequest, GetInventoryResponse>(
         async (req, res, next) => {
           const controller = this.resolver
@@ -1185,7 +949,34 @@ export class ControllerMiddleware {
     router.post(
       '/user/createWithArray',
 
-      this.validation(this.schema.createUsersWithArrayInput()),
+      ControllerMiddleware.validate({
+        body: {
+          anyOf: [
+            {
+              type: 'array',
+              items: {
+                title: 'User',
+                type: 'object',
+                properties: {
+                  id: { type: 'integer', format: 'int64' },
+                  username: { type: 'string' },
+                  firstName: { type: 'string' },
+                  lastName: { type: 'string' },
+                  email: { type: 'string' },
+                  password: { type: 'string' },
+                  phone: { type: 'string' },
+                  userStatus: {
+                    type: 'integer',
+                    format: 'int32',
+                    description: 'User Status'
+                  }
+                },
+                xml: { name: 'User' }
+              }
+            }
+          ]
+        }
+      }),
 
       asyncRequestHandler<
         CreateUsersWithArrayInputRequest,
@@ -1206,7 +997,34 @@ export class ControllerMiddleware {
     router.post(
       '/user/createWithList',
 
-      this.validation(this.schema.createUsersWithListInput()),
+      ControllerMiddleware.validate({
+        body: {
+          anyOf: [
+            {
+              type: 'array',
+              items: {
+                title: 'User',
+                type: 'object',
+                properties: {
+                  id: { type: 'integer', format: 'int64' },
+                  username: { type: 'string' },
+                  firstName: { type: 'string' },
+                  lastName: { type: 'string' },
+                  email: { type: 'string' },
+                  password: { type: 'string' },
+                  phone: { type: 'string' },
+                  userStatus: {
+                    type: 'integer',
+                    format: 'int32',
+                    description: 'User Status'
+                  }
+                },
+                xml: { name: 'User' }
+              }
+            }
+          ]
+        }
+      }),
 
       asyncRequestHandler<
         CreateUsersWithListInputRequest,
@@ -1227,7 +1045,19 @@ export class ControllerMiddleware {
     router.get(
       '/user/:username',
 
-      this.validation(this.schema.getUserByName()),
+      ControllerMiddleware.validate({
+        params: {
+          type: 'object',
+          required: ['username'],
+          properties: {
+            username: {
+              description:
+                'The name that needs to be fetched. Use user1 for testing. ',
+              type: 'string'
+            }
+          }
+        }
+      }),
 
       asyncRequestHandler<GetUserByNameRequest, GetUserByNameResponse>(
         async (req, res, next) => {
@@ -1247,7 +1077,42 @@ export class ControllerMiddleware {
     router.put(
       '/user/:username',
 
-      this.validation(this.schema.updateUser()),
+      ControllerMiddleware.validate({
+        body: {
+          anyOf: [
+            {
+              title: 'User',
+              type: 'object',
+              xml: { name: 'User' },
+              properties: {
+                id: { type: 'integer', format: 'int64' },
+                username: { type: 'string' },
+                firstName: { type: 'string' },
+                lastName: { type: 'string' },
+                email: { type: 'string' },
+                password: { type: 'string' },
+                phone: { type: 'string' },
+                userStatus: {
+                  type: 'integer',
+                  format: 'int32',
+                  description: 'User Status'
+                }
+              }
+            }
+          ]
+        },
+
+        params: {
+          type: 'object',
+          required: ['username'],
+          properties: {
+            username: {
+              description: 'name that need to be updated',
+              type: 'string'
+            }
+          }
+        }
+      }),
 
       asyncRequestHandler<UpdateUserRequest, UpdateUserResponse>(
         async (req, res, next) => {
@@ -1265,7 +1130,18 @@ export class ControllerMiddleware {
     router.delete(
       '/user/:username',
 
-      this.validation(this.schema.deleteUser()),
+      ControllerMiddleware.validate({
+        params: {
+          type: 'object',
+          required: ['username'],
+          properties: {
+            username: {
+              description: 'The name that needs to be deleted',
+              type: 'string'
+            }
+          }
+        }
+      }),
 
       asyncRequestHandler<DeleteUserRequest, DeleteUserResponse>(
         async (req, res, next) => {
@@ -1283,7 +1159,22 @@ export class ControllerMiddleware {
     router.get(
       '/user/login',
 
-      this.validation(this.schema.loginUser()),
+      ControllerMiddleware.validate({
+        query: {
+          type: 'object',
+          required: ['username', 'password'],
+          properties: {
+            username: {
+              description: 'The user name for login',
+              type: 'string'
+            },
+            password: {
+              description: 'The password for login in clear text',
+              type: 'string'
+            }
+          }
+        }
+      }),
 
       asyncRequestHandler<LoginUserRequest, LoginUserResponse>(
         async (req, res, next) => {
@@ -1301,8 +1192,6 @@ export class ControllerMiddleware {
     router.get(
       '/user/logout',
 
-      this.validation(this.schema.logoutUser()),
-
       asyncRequestHandler<LogoutUserRequest, LogoutUserResponse>(
         async (req, res, next) => {
           const controller = this.resolver
@@ -1319,7 +1208,31 @@ export class ControllerMiddleware {
     router.post(
       '/user',
 
-      this.validation(this.schema.createUser()),
+      ControllerMiddleware.validate({
+        body: {
+          anyOf: [
+            {
+              title: 'User',
+              type: 'object',
+              xml: { name: 'User' },
+              properties: {
+                id: { type: 'integer', format: 'int64' },
+                username: { type: 'string' },
+                firstName: { type: 'string' },
+                lastName: { type: 'string' },
+                email: { type: 'string' },
+                password: { type: 'string' },
+                phone: { type: 'string' },
+                userStatus: {
+                  type: 'integer',
+                  format: 'int32',
+                  description: 'User Status'
+                }
+              }
+            }
+          ]
+        }
+      }),
 
       asyncRequestHandler<CreateUserRequest, CreateUserResponse>(
         async (req, res, next) => {
@@ -1332,6 +1245,23 @@ export class ControllerMiddleware {
       )
     );
   }
+
+  private static validationErrorMiddleware: ErrorRequestHandler = (
+    error,
+    _,
+    response,
+    next
+  ) => {
+    if (error instanceof ValidationError) {
+      response.status(400).send({
+        type: 'REQUEST_VALIDATION_FAILED',
+        fields: error.validationErrors
+      });
+      next();
+    } else {
+      next(error);
+    }
+  };
 
   public apply(expressApp: Express): void {
     const router = Router();
@@ -1357,5 +1287,7 @@ export class ControllerMiddleware {
     this.addCreateUserController(router);
 
     expressApp.use(router);
+
+    expressApp.use(ControllerMiddleware.validationErrorMiddleware);
   }
 }

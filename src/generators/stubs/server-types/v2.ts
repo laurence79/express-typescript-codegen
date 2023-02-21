@@ -1,7 +1,7 @@
-import { LogFn, progress } from '../../lib/cli-logging';
-import * as OpenApiV2 from '../../types/OpenApiV2';
-import { mapOperations } from '../../helpers/open-api/v2';
-import { responseBodyTypeNameTemplate } from '../../templates';
+import { LogFn, progress } from '../../../lib/cli-logging';
+import * as OpenApiV2 from '../../../types/OpenApiV2';
+import { mapOperations } from '../../../helpers/open-api/v2';
+import { responseBodyTypeNameTemplate } from '../../../templates';
 
 export const fromV2 = (document: OpenApiV2.Document, log?: LogFn): string[] => {
   return mapOperations(document).flatMap(({ operationId, responses }) => {
