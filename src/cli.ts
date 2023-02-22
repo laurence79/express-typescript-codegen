@@ -48,11 +48,7 @@ const cmd = new commander.Command('generate')
 
       if (
         options.template &&
-        ![
-          'client',
-          'server',
-          'stubs'
-        ].includes(options.template.toLowerCase())
+        !['client', 'server', 'stubs'].includes(options.template.toLowerCase())
       ) {
         commander.help({ error: true });
       }

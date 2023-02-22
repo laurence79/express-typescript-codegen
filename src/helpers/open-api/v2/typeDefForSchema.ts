@@ -2,6 +2,7 @@ import * as OpenApiV2 from '../../../types/OpenApiV2';
 import { typeDefForObject } from './typeDefForObject';
 import { typeDefForReference } from '../typeDefForReference';
 import { typeDefForEnum } from './typeDefForEnum';
+import { typeName } from '../typeName';
 
 export const typeDefForSchema = (
   schemas: OpenApiV2.SchemaObject | OpenApiV2.SchemaObject[],
@@ -83,9 +84,11 @@ export const typeDefForSchema = (
     })();
 
     if (title) {
-      emitType(title, code);
+      const typeTitle = typeName(title);
 
-      return title;
+      emitType(typeTitle, code);
+
+      return typeTitle;
     }
 
     return code;

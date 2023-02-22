@@ -3,6 +3,7 @@ import { typeDefForObject } from './typeDefForObject';
 import { typeDefForReference } from '../typeDefForReference';
 import { typeDefForEnum } from './typeDefForEnum';
 import { isObjectSchema } from './isObjectSchema';
+import { typeName } from '../typeName';
 
 export const typeDefForSchema = (
   schema: OpenApiV3.SchemaObject | OpenApiV3.ReferenceObject,
@@ -91,9 +92,11 @@ export const typeDefForSchema = (
       : preliminaryType;
 
   if (title) {
-    emitType(title, code);
+    const type = typeName(title);
 
-    return title;
+    emitType(type, code);
+
+    return type;
   }
 
   return code;

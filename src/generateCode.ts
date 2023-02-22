@@ -4,10 +4,11 @@ import { generateServerClasses } from './generators/server/server';
 import { generateStubs } from './generators/stubs';
 import { assertNever } from './helpers/assertNever';
 import { initUpper } from './helpers/initUpper';
-import { loadOpenApiDocument } from './helpers/loadOpenApiDocument';
+import { load } from './helpers/load';
 import { writeFile } from './helpers/writeFile';
 import { serviceNameTemplate } from './templates';
 import { GenerateCodeOptions } from './types/GenerateCodeOptions';
+import * as OpenApi from './types/OpenApi';
 
 const defaultOptions = {
   output: 'CLIENT'
@@ -21,7 +22,10 @@ export const generateCode = async (
     ...inputOptions
   };
 
-  const openApiDocument = await loadOpenApiDocument(options);
+  const openApiDocument = ((await load(
+    options.openApiDocumentFilenameOrUrl,
+    options.logger
+  )) as unknown) as OpenApi.Document;
 
   const serviceName =
     inputOptions.serviceName ?? serviceNameTemplate(openApiDocument.info.title);

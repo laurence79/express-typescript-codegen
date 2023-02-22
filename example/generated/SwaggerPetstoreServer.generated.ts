@@ -552,12 +552,12 @@ export class ControllerMiddleware {
                   type: 'array',
                   xml: { wrapped: true },
                   items: {
-                    xml: { name: 'tag' },
                     type: 'object',
                     properties: {
                       id: { type: 'integer', format: 'int64' },
                       name: { type: 'string' }
                     },
+                    xml: { name: 'Tag' },
                     title: 'Tag'
                   }
                 },
@@ -617,12 +617,12 @@ export class ControllerMiddleware {
                   type: 'array',
                   xml: { wrapped: true },
                   items: {
-                    xml: { name: 'tag' },
                     type: 'object',
                     properties: {
                       id: { type: 'integer', format: 'int64' },
                       name: { type: 'string' }
                     },
+                    xml: { name: 'Tag' },
                     title: 'Tag'
                   }
                 },
@@ -955,7 +955,6 @@ export class ControllerMiddleware {
             {
               type: 'array',
               items: {
-                title: 'User',
                 type: 'object',
                 properties: {
                   id: { type: 'integer', format: 'int64' },
@@ -971,7 +970,8 @@ export class ControllerMiddleware {
                     description: 'User Status'
                   }
                 },
-                xml: { name: 'User' }
+                xml: { name: 'User' },
+                title: 'user'
               }
             }
           ]
@@ -1003,7 +1003,6 @@ export class ControllerMiddleware {
             {
               type: 'array',
               items: {
-                title: 'User',
                 type: 'object',
                 properties: {
                   id: { type: 'integer', format: 'int64' },
@@ -1019,7 +1018,8 @@ export class ControllerMiddleware {
                     description: 'User Status'
                   }
                 },
-                xml: { name: 'User' }
+                xml: { name: 'User' },
+                title: 'user'
               }
             }
           ]
@@ -1081,9 +1081,9 @@ export class ControllerMiddleware {
         body: {
           anyOf: [
             {
-              title: 'User',
               type: 'object',
               xml: { name: 'User' },
+              title: 'user',
               properties: {
                 id: { type: 'integer', format: 'int64' },
                 username: { type: 'string' },
@@ -1212,9 +1212,9 @@ export class ControllerMiddleware {
         body: {
           anyOf: [
             {
-              title: 'User',
               type: 'object',
               xml: { name: 'User' },
+              title: 'user',
               properties: {
                 id: { type: 'integer', format: 'int64' },
                 username: { type: 'string' },

@@ -2,7 +2,8 @@ type Reference = {
   $ref: string;
 };
 
-export const dereference = <T>(
+// eslint-disable-next-line @typescript-eslint/ban-types
+export const dereference = <T extends object>(
   references: { [key: string]: T | Reference | undefined } | undefined,
   $ref: string,
   prefix: string
