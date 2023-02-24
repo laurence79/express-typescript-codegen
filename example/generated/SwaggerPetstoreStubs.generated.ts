@@ -27,7 +27,7 @@ export type UpdatePetWithFormRequestPath = { petId: number };
 
 export type UpdatePetWithFormRequestBody = { name?: string; status?: string };
 
-export type DeletePetRequestHeader = { api_key?: string };
+export type DeletePetRequestHeader = { apiKey?: string };
 
 export type DeletePetRequestPath = { petId: number };
 

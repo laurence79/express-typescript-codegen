@@ -289,12 +289,12 @@ export class SwaggerPetstoreClient {
   }
 
   public async deletePet(
-    args: { api_key?: string; petId: number },
+    args: { apiKey?: string; petId: number },
     options?: RequestInit
   ): Promise<
     ResponseWithData<400, undefined> | ResponseWithData<404, undefined>
   > {
-    const { api_key, petId } = args;
+    const { apiKey, petId } = args;
 
     const method = 'DELETE';
     const url = `${this.baseUrl}/pet/${petId}`;
@@ -302,8 +302,8 @@ export class SwaggerPetstoreClient {
     const response = await fetch(url, {
       method,
       headers: {
-        ...(typeof api_key !== 'undefined' && api_key !== null
-          ? { ['api_key']: api_key }
+        ...(typeof apiKey !== 'undefined' && apiKey !== null
+          ? { ['api_key']: apiKey }
           : {})
       },
       ...options

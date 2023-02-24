@@ -2,7 +2,7 @@ import * as OpenApiV2 from '../../../types/OpenApiV2';
 import { typeDefForObject } from './typeDefForObject';
 import { typeDefForReference } from './typeDefForReference';
 import { typeDefForEnum } from './typeDefForEnum';
-import { typeName } from '../typeName';
+import { makeIdentifier } from '../../../templates/makeIdentifier';
 import { TypeDefContext } from '../TypeDefContext';
 
 export const typeDefForSchema = (
@@ -31,7 +31,7 @@ export const typeDefForSchema = (
 
     const { enum: enumProp, allOf, title } = schema;
 
-    const type = title ? typeName(title) : undefined;
+    const type = title ? makeIdentifier(title) : undefined;
 
     if (type) {
       if (!context.shouldEmitType(type)) {

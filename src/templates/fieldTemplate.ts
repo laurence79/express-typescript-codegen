@@ -1,4 +1,4 @@
-import { safeName } from './safeName';
+import { IdentifierFormat, makeIdentifier } from './makeIdentifier';
 
 export const fieldTemplate = (
   name: string,
@@ -8,7 +8,7 @@ export const fieldTemplate = (
     nonRequiredType: 'optional' | 'nullable' | 'both';
   }
 ): string => {
-  const fieldName = safeName(name);
+  const fieldName = makeIdentifier(name, IdentifierFormat.camelCase);
 
   if (required) {
     return `${fieldName}: ${type}`;

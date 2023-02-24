@@ -1,10 +1,19 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-continue */
-const initCap = (value: string) => {
-  return value
-    .toLowerCase()
-    .replace(/(?:^|\s)[a-z]/g, (m: string) => m.toUpperCase());
-};
+
+import { initCap } from './initCap';
+
+export class IdentifierFormat {
+  private constructor(public readonly joinWords: (words: string[]) => string) {}
+
+  public static pascalCase = new IdentifierFormat(words =>
+    words.map(initCap).join('')
+  );
+
+  public static camelCase = new IdentifierFormat(words =>
+    words.map((w, i) => (i !== 0 ? initCap(w) : w.toLowerCase())).join('')
+  );
+}
 
 function getCharClass(char: string) {
   if (/[A-Z]/.test(char)) return 'UPPER';
@@ -50,6 +59,9 @@ function* getWords(input: string) {
   }
 }
 
-export const typeName = (schemaName: string): string => {
-  return [...getWords(schemaName)].map(initCap).join('');
+export const makeIdentifier = (
+  source: string,
+  format = IdentifierFormat.pascalCase
+): string => {
+  return format.joinWords([...getWords(source)]);
 };

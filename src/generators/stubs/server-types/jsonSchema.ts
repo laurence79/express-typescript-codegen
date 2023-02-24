@@ -1,8 +1,7 @@
 import { JSONSchema7 } from 'json-schema';
 import { LogFn, progress } from '../../../lib/cli-logging';
 import { typeDefForSchema } from '../../../helpers/json-schema';
-import { initUpper } from '../../../helpers/initUpper';
-import { safeName } from '../../../templates/safeName';
+import { makeIdentifier } from '../../../templates/makeIdentifier';
 
 export const fromJsonSchema = (
   jsonSchema: JSONSchema7,
@@ -22,7 +21,7 @@ export const fromJsonSchema = (
 
     log?.(progress(typeName));
 
-    return `export type ${initUpper(safeName(typeName))} = ${typeDefForSchema(
+    return `export type ${makeIdentifier(typeName)} = ${typeDefForSchema(
       definition,
       options
     )};`;

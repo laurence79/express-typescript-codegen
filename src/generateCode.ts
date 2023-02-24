@@ -6,7 +6,7 @@ import { assertNever } from './helpers/assertNever';
 import { initUpper } from './helpers/initUpper';
 import { load } from './helpers/load';
 import { writeFile } from './helpers/writeFile';
-import { serviceNameTemplate } from './templates';
+import { makeIdentifier } from './templates/makeIdentifier';
 import { GenerateCodeOptions } from './types/GenerateCodeOptions';
 import * as OpenApi from './types/OpenApi';
 
@@ -28,7 +28,7 @@ export const generateCode = async (
   )) as unknown) as OpenApi.Document;
 
   const serviceName =
-    inputOptions.serviceName ?? serviceNameTemplate(openApiDocument.info.title);
+    inputOptions.serviceName ?? makeIdentifier(openApiDocument.info.title);
 
   const filename = (() => {
     const outputTypeName = initUpper(

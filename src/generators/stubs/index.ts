@@ -8,7 +8,10 @@ import { generateServerTypes } from './server-types';
 import { initLower } from '../../helpers/initLower';
 import { fromV2 } from './v2';
 import { fromV3 } from './v3';
-import { safeName } from '../../templates/safeName';
+import {
+  makeIdentifier,
+  IdentifierFormat
+} from '../../templates/makeIdentifier';
 
 export const generateStubs = ({
   logger,
@@ -126,7 +129,10 @@ export const generateStubs = ({
       ${data
         .map(
           ({ operationId, methodStubType }) =>
-            `readonly ${safeName(operationId)}: ${methodStubType};`
+            `readonly ${makeIdentifier(
+              operationId,
+              IdentifierFormat.camelCase
+            )}: ${methodStubType};`
         )
         .join('\n')}
     };
@@ -145,7 +151,13 @@ export const generateStubs = ({
       const reset = () => {
         methodStubs = {
           ${data
-            .map(({ operationId }) => `${safeName(operationId)}: methodStub()`)
+            .map(
+              ({ operationId }) =>
+                `${makeIdentifier(
+                  operationId,
+                  IdentifierFormat.camelCase
+                )}: methodStub()`
+            )
             .join(',\n')}
         };
 
@@ -153,8 +165,9 @@ export const generateStubs = ({
           ${data
             .map(
               ({ method, operationId, requestHandlerPath }) =>
-                `.${method}('${requestHandlerPath}', methodStubs.${safeName(
-                  operationId
+                `.${method}('${requestHandlerPath}', methodStubs.${makeIdentifier(
+                  operationId,
+                  IdentifierFormat.camelCase
                 )}.requestHandler)`
             )
             .join('\n')}

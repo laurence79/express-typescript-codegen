@@ -1,8 +1,8 @@
 import { initUpper } from '../helpers/initUpper';
-import { safeName } from './safeName';
+import { makeIdentifier } from './makeIdentifier';
 
 export const responseBodyTypeNameTemplate = (
   operationId: string,
   statusCode: string
 ): string =>
-  `${initUpper(safeName(operationId))}${initUpper(statusCode)}ResponseBody`;
+  `${makeIdentifier(operationId)}${initUpper(statusCode)}ResponseBody`;
