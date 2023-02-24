@@ -7,9 +7,5 @@ export const dereferenceResponseObject = (
 ): OpenApiV3.ResponseObject => {
   const { $ref } = reference;
 
-  return dereference(
-    doc.components?.responses,
-    $ref,
-    '#/components/responses/'
-  );
+  return dereference(doc, $ref);
 };

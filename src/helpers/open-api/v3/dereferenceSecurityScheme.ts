@@ -7,9 +7,5 @@ export const dereferenceSecurityScheme = (
 ): OpenApiV3.SecuritySchemeObject => {
   const { $ref } = reference;
 
-  return dereference(
-    doc.components?.securitySchemes,
-    $ref,
-    '#/components/securitySchemes/'
-  );
+  return dereference(doc, $ref);
 };

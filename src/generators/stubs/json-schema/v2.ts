@@ -1,7 +1,7 @@
 import { JSONSchema7 } from 'json-schema';
 import {
   mapOperations,
-  convertSchemaToJsonSchema
+  exportAsJsonSchema
 } from '../../../helpers/open-api/v2';
 import * as OpenApiV2 from '../../../types/OpenApiV2';
 import { LogFn, progress } from '../../../lib/cli-logging';
@@ -43,7 +43,7 @@ export const fromV2 = (
 
         log?.(progress(`adding ${typeName}`));
 
-        definitions[typeName] = convertSchemaToJsonSchema(schema);
+        definitions[typeName] = exportAsJsonSchema(schema, document);
 
         return;
       }
@@ -85,7 +85,7 @@ export const fromV2 = (
 
       log?.(progress(`adding ${typeName}`));
 
-      definitions[typeName] = convertSchemaToJsonSchema(schema);
+      definitions[typeName] = exportAsJsonSchema(schema, document);
     });
 
     responses.forEach(({ statusCode, response }) => {
@@ -103,7 +103,7 @@ export const fromV2 = (
 
       log?.(progress(`adding ${key}`));
 
-      definitions[key] = convertSchemaToJsonSchema(schema);
+      definitions[key] = exportAsJsonSchema(schema, document);
     });
   });
 
@@ -113,7 +113,7 @@ export const fromV2 = (
     if (value) {
       log?.(progress(`adding ${key}`));
 
-      definitions[key] = convertSchemaToJsonSchema(value);
+      definitions[key] = exportAsJsonSchema(value, document);
     }
   });
 

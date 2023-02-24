@@ -1,19 +1,22 @@
 import { fieldTemplate } from '../../../templates';
 import * as OpenApiV2 from '../../../types/OpenApiV2';
+import { TypeDefContext } from '../TypeDefContext';
 
 export const typeDefForObject = (
   objectSchema: OpenApiV2.SchemaObject,
+  document: OpenApiV2.Document,
   recursiveLookup: (
     schema: OpenApiV2.SchemaObject,
+    document: OpenApiV2.Document,
     options: {
       nonRequiredType: 'optional' | 'nullable' | 'both';
     },
-    emitType: (name: string, definition: string) => void
+    context: TypeDefContext
   ) => string,
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
   },
-  emitType: (name: string, definition: string) => void
+  context: TypeDefContext
 ): string => {
   const { required, properties } = objectSchema;
 
@@ -28,7 +31,12 @@ export const typeDefForObject = (
 
     const propertyObject = properties[propertyName];
     const isRequired = requiredProperties.includes(propertyName);
-    const propertyType = recursiveLookup(propertyObject, options, emitType);
+    const propertyType = recursiveLookup(
+      propertyObject,
+      document,
+      options,
+      context
+    );
 
     return fieldTemplate(propertyName, isRequired, propertyType, options);
   });

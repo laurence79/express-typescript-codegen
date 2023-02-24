@@ -525,23 +525,16 @@ export class ControllerMiddleware {
 
       ControllerMiddleware.validate({
         body: {
-          anyOf: [
-            {
+          $ref: '#/definitions/Pet',
+          definitions: {
+            Pet: {
               type: 'object',
               required: ['name', 'photoUrls'],
               xml: { name: 'Pet' },
               title: 'Pet',
               properties: {
                 id: { type: 'integer', format: 'int64' },
-                category: {
-                  type: 'object',
-                  xml: { name: 'Category' },
-                  title: 'Category',
-                  properties: {
-                    id: { type: 'integer', format: 'int64' },
-                    name: { type: 'string' }
-                  }
-                },
+                category: { $ref: '#/definitions/Category' },
                 name: { type: 'string', example: 'doggie' },
                 photoUrls: {
                   type: 'array',
@@ -551,15 +544,7 @@ export class ControllerMiddleware {
                 tags: {
                   type: 'array',
                   xml: { wrapped: true },
-                  items: {
-                    type: 'object',
-                    properties: {
-                      id: { type: 'integer', format: 'int64' },
-                      name: { type: 'string' }
-                    },
-                    xml: { name: 'Tag' },
-                    title: 'Tag'
-                  }
+                  items: { xml: { name: 'tag' }, $ref: '#/definitions/Tag' }
                 },
                 status: {
                   type: 'string',
@@ -567,8 +552,26 @@ export class ControllerMiddleware {
                   enum: ['available', 'pending', 'sold']
                 }
               }
+            },
+            Category: {
+              type: 'object',
+              xml: { name: 'Category' },
+              title: 'Category',
+              properties: {
+                id: { type: 'integer', format: 'int64' },
+                name: { type: 'string' }
+              }
+            },
+            Tag: {
+              type: 'object',
+              xml: { name: 'Tag' },
+              title: 'Tag',
+              properties: {
+                id: { type: 'integer', format: 'int64' },
+                name: { type: 'string' }
+              }
             }
-          ]
+          }
         }
       }),
 
@@ -590,23 +593,16 @@ export class ControllerMiddleware {
 
       ControllerMiddleware.validate({
         body: {
-          anyOf: [
-            {
+          $ref: '#/definitions/Pet',
+          definitions: {
+            Pet: {
               type: 'object',
               required: ['name', 'photoUrls'],
               xml: { name: 'Pet' },
               title: 'Pet',
               properties: {
                 id: { type: 'integer', format: 'int64' },
-                category: {
-                  type: 'object',
-                  xml: { name: 'Category' },
-                  title: 'Category',
-                  properties: {
-                    id: { type: 'integer', format: 'int64' },
-                    name: { type: 'string' }
-                  }
-                },
+                category: { $ref: '#/definitions/Category' },
                 name: { type: 'string', example: 'doggie' },
                 photoUrls: {
                   type: 'array',
@@ -616,15 +612,7 @@ export class ControllerMiddleware {
                 tags: {
                   type: 'array',
                   xml: { wrapped: true },
-                  items: {
-                    type: 'object',
-                    properties: {
-                      id: { type: 'integer', format: 'int64' },
-                      name: { type: 'string' }
-                    },
-                    xml: { name: 'Tag' },
-                    title: 'Tag'
-                  }
+                  items: { xml: { name: 'tag' }, $ref: '#/definitions/Tag' }
                 },
                 status: {
                   type: 'string',
@@ -632,8 +620,26 @@ export class ControllerMiddleware {
                   enum: ['available', 'pending', 'sold']
                 }
               }
+            },
+            Category: {
+              type: 'object',
+              xml: { name: 'Category' },
+              title: 'Category',
+              properties: {
+                id: { type: 'integer', format: 'int64' },
+                name: { type: 'string' }
+              }
+            },
+            Tag: {
+              type: 'object',
+              xml: { name: 'Tag' },
+              title: 'Tag',
+              properties: {
+                id: { type: 'integer', format: 'int64' },
+                name: { type: 'string' }
+              }
             }
-          ]
+          }
         }
       }),
 
@@ -832,8 +838,9 @@ export class ControllerMiddleware {
 
       ControllerMiddleware.validate({
         body: {
-          anyOf: [
-            {
+          $ref: '#/definitions/Order',
+          definitions: {
+            Order: {
               type: 'object',
               xml: { name: 'Order' },
               title: 'Order',
@@ -850,7 +857,7 @@ export class ControllerMiddleware {
                 complete: { type: 'boolean' }
               }
             }
-          ]
+          }
         }
       }),
 
@@ -951,30 +958,29 @@ export class ControllerMiddleware {
 
       ControllerMiddleware.validate({
         body: {
-          anyOf: [
-            {
-              type: 'array',
-              items: {
-                type: 'object',
-                properties: {
-                  id: { type: 'integer', format: 'int64' },
-                  username: { type: 'string' },
-                  firstName: { type: 'string' },
-                  lastName: { type: 'string' },
-                  email: { type: 'string' },
-                  password: { type: 'string' },
-                  phone: { type: 'string' },
-                  userStatus: {
-                    type: 'integer',
-                    format: 'int32',
-                    description: 'User Status'
-                  }
-                },
-                xml: { name: 'User' },
-                title: 'user'
+          type: 'array',
+          items: { $ref: '#/definitions/user' },
+          definitions: {
+            user: {
+              type: 'object',
+              xml: { name: 'User' },
+              title: 'user',
+              properties: {
+                id: { type: 'integer', format: 'int64' },
+                username: { type: 'string' },
+                firstName: { type: 'string' },
+                lastName: { type: 'string' },
+                email: { type: 'string' },
+                password: { type: 'string' },
+                phone: { type: 'string' },
+                userStatus: {
+                  type: 'integer',
+                  format: 'int32',
+                  description: 'User Status'
+                }
               }
             }
-          ]
+          }
         }
       }),
 
@@ -999,30 +1005,29 @@ export class ControllerMiddleware {
 
       ControllerMiddleware.validate({
         body: {
-          anyOf: [
-            {
-              type: 'array',
-              items: {
-                type: 'object',
-                properties: {
-                  id: { type: 'integer', format: 'int64' },
-                  username: { type: 'string' },
-                  firstName: { type: 'string' },
-                  lastName: { type: 'string' },
-                  email: { type: 'string' },
-                  password: { type: 'string' },
-                  phone: { type: 'string' },
-                  userStatus: {
-                    type: 'integer',
-                    format: 'int32',
-                    description: 'User Status'
-                  }
-                },
-                xml: { name: 'User' },
-                title: 'user'
+          type: 'array',
+          items: { $ref: '#/definitions/user' },
+          definitions: {
+            user: {
+              type: 'object',
+              xml: { name: 'User' },
+              title: 'user',
+              properties: {
+                id: { type: 'integer', format: 'int64' },
+                username: { type: 'string' },
+                firstName: { type: 'string' },
+                lastName: { type: 'string' },
+                email: { type: 'string' },
+                password: { type: 'string' },
+                phone: { type: 'string' },
+                userStatus: {
+                  type: 'integer',
+                  format: 'int32',
+                  description: 'User Status'
+                }
               }
             }
-          ]
+          }
         }
       }),
 
@@ -1079,8 +1084,9 @@ export class ControllerMiddleware {
 
       ControllerMiddleware.validate({
         body: {
-          anyOf: [
-            {
+          $ref: '#/definitions/user',
+          definitions: {
+            user: {
               type: 'object',
               xml: { name: 'User' },
               title: 'user',
@@ -1099,7 +1105,7 @@ export class ControllerMiddleware {
                 }
               }
             }
-          ]
+          }
         },
 
         params: {
@@ -1210,8 +1216,9 @@ export class ControllerMiddleware {
 
       ControllerMiddleware.validate({
         body: {
-          anyOf: [
-            {
+          $ref: '#/definitions/user',
+          definitions: {
+            user: {
               type: 'object',
               xml: { name: 'User' },
               title: 'user',
@@ -1230,7 +1237,7 @@ export class ControllerMiddleware {
                 }
               }
             }
-          ]
+          }
         }
       }),
 

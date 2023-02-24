@@ -1,27 +1,22 @@
-type Reference = {
-  $ref: string;
-};
+import JsonPointer from 'json-pointer';
+import * as OpenApiV3 from '../../../types/OpenApiV3';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export const dereference = <T extends object>(
-  references: { [key: string]: T | Reference | undefined } | undefined,
-  $ref: string,
-  prefix: string
+  document: OpenApiV3.Document,
+  $ref: string
 ): T => {
-  let current: Reference | T | undefined = {
+  let current: OpenApiV3.ReferenceObject | T | undefined = {
     $ref
   };
 
   while (current && '$ref' in current) {
-    if (!current.$ref.startsWith(prefix)) {
-      throw new Error(`Invalid $ref ${$ref}`);
-    }
+    const pointer = current.$ref.split('#')[1];
 
-    const name: string = current.$ref.substring(
-      current.$ref.lastIndexOf('/') + 1
-    );
-
-    current = references?.[name];
+    current = JsonPointer.get(document, pointer) as
+      | OpenApiV3.ReferenceObject
+      | T
+      | undefined;
   }
 
   if (!current) throw new Error(`Failed to deference ${$ref}`);

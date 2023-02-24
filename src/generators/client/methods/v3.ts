@@ -5,13 +5,14 @@ import {
   clientMethodTemplate,
   ClientMethodTemplateArgs
 } from '../../../templates';
+import { TypeDefContext } from '../../../helpers/open-api/TypeDefContext';
 
 export const fromV3 = (
   document: OpenApiV3.Document,
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
   },
-  emitType: (name: string, definition: string) => void,
+  context: TypeDefContext,
   log?: LogFn
 ): string[] => {
   return HelpersV3.mapOperations(document).map(
@@ -28,7 +29,7 @@ export const fromV3 = (
             type: 'json' as const,
             required: requestBody.required ?? false,
             jsonType: schema
-              ? HelpersV3.typeDefForSchema(schema, options, emitType)
+              ? HelpersV3.typeDefForSchema(schema, document, options, context)
               : 'unknown'
           } as ClientMethodTemplateArgs['body'];
         }
@@ -79,7 +80,12 @@ export const fromV3 = (
             .map(p => ({
               name: p.name,
               type: p.schema
-                ? HelpersV3.typeDefForSchema(p.schema, options, emitType)
+                ? HelpersV3.typeDefForSchema(
+                    p.schema,
+                    document,
+                    options,
+                    context
+                  )
                 : 'string'
             })),
           queryArrayFormat: parameters
@@ -93,7 +99,12 @@ export const fromV3 = (
               name: p.name,
               required: p.required ?? false,
               type: p.schema
-                ? HelpersV3.typeDefForSchema(p.schema, options, emitType)
+                ? HelpersV3.typeDefForSchema(
+                    p.schema,
+                    document,
+                    options,
+                    context
+                  )
                 : 'string'
             })),
           headerParams: parameters
@@ -102,7 +113,12 @@ export const fromV3 = (
               name: p.name,
               required: p.required ?? false,
               type: p.schema
-                ? HelpersV3.typeDefForSchema(p.schema, options, emitType)
+                ? HelpersV3.typeDefForSchema(
+                    p.schema,
+                    document,
+                    options,
+                    context
+                  )
                 : 'string'
             })),
           body,
@@ -125,7 +141,12 @@ export const fromV3 = (
                   statusCode,
                   type: 'json',
                   jsonType: schema
-                    ? HelpersV3.typeDefForSchema(schema, options, emitType)
+                    ? HelpersV3.typeDefForSchema(
+                        schema,
+                        document,
+                        options,
+                        context
+                      )
                     : 'unknown'
                 };
               }

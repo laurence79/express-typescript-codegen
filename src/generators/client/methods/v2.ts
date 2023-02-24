@@ -5,13 +5,14 @@ import {
   clientMethodTemplate,
   ClientMethodTemplateArgs
 } from '../../../templates';
+import { TypeDefContext } from '../../../helpers/open-api/TypeDefContext';
 
 export const fromV2 = (
   document: OpenApiV2.Document,
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
   },
-  emitType: (name: string, definition: string) => void,
+  context: TypeDefContext,
   log?: LogFn
 ): string[] => {
   return HelpersV2.mapOperations(document).map(
@@ -27,7 +28,12 @@ export const fromV2 = (
 
         return {
           type: 'json',
-          jsonType: HelpersV2.typeDefForSchema(schema, options, emitType),
+          jsonType: HelpersV2.typeDefForSchema(
+            schema,
+            document,
+            options,
+            context
+          ),
           required
         };
       };
@@ -59,8 +65,9 @@ export const fromV2 = (
               name: p.name,
               type: HelpersV2.typeDefForSchema(
                 { ...p, required: [] },
+                document,
                 options,
-                emitType
+                context
               )
             })),
           queryArrayFormat: parameters
@@ -74,7 +81,12 @@ export const fromV2 = (
               name: p.name,
               required: p.required ?? false,
               type: p.schema
-                ? HelpersV2.typeDefForSchema(p.schema, options, emitType)
+                ? HelpersV2.typeDefForSchema(
+                    p.schema,
+                    document,
+                    options,
+                    context
+                  )
                 : 'string'
             })),
           headerParams: parameters
@@ -83,7 +95,12 @@ export const fromV2 = (
               name: p.name,
               required: p.required ?? false,
               type: p.schema
-                ? HelpersV2.typeDefForSchema(p.schema, options, emitType)
+                ? HelpersV2.typeDefForSchema(
+                    p.schema,
+                    document,
+                    options,
+                    context
+                  )
                 : 'string'
             })),
           body: jsonBody() ?? formDataBody(),
@@ -102,7 +119,12 @@ export const fromV2 = (
                 statusCode,
                 type: 'json',
                 jsonType: schema
-                  ? HelpersV2.typeDefForSchema(schema, options, emitType)
+                  ? HelpersV2.typeDefForSchema(
+                      schema,
+                      document,
+                      options,
+                      context
+                    )
                   : 'unknown'
               };
             }

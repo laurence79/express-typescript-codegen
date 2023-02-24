@@ -7,5 +7,5 @@ export const dereferenceSchemaObject = (
 ): OpenApiV3.SchemaObject => {
   const { $ref } = reference;
 
-  return dereference(doc.components?.schemas, $ref, '#/components/schemas/');
+  return dereference(doc, $ref);
 };

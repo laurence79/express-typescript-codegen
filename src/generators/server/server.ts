@@ -4,6 +4,7 @@ import * as OpenApi from '../../types/OpenApi';
 import 'ts-array-extensions';
 import { Logger, success } from '../../lib/cli-logging';
 import { generateControllers } from './controllers';
+import { TypeDefContext } from '../../helpers/open-api/TypeDefContext';
 
 export const generateServerClasses = ({
   logger,
@@ -17,14 +18,12 @@ export const generateServerClasses = ({
 }): string => {
   const log = logger?.create('Generating server');
 
-  const types: Record<string, string> = {};
+  const context = new TypeDefContext();
 
   const controllers = generateControllers(
     openApiDocument,
     { nonRequiredType },
-    (name, def) => {
-      types[name] = def;
-    },
+    context,
     log
   );
 
@@ -36,9 +35,7 @@ export const generateServerClasses = ({
     import { injectable } from 'tsyringe';
     import { Validator, ValidationError } from 'express-json-validator-middleware';
     
-    ${Object.entries(types)
-      .map(([name, def]) => `export type ${name} = ${def};`)
-      .join('\n\n')}
+    ${context.generateCode()}
 
     ${controllers}
   `;

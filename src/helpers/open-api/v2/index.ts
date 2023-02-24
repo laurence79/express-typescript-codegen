@@ -1,4 +1,4 @@
-export * from './convertSchemaToJsonSchema';
+export * from './exportAsJsonSchema';
 export * from './dereference';
 export * from './dereferenceParameter';
 export * from './dereferenceResponseObject';

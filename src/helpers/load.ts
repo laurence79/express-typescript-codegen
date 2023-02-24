@@ -1,3 +1,5 @@
+/* eslint-disable max-classes-per-file */
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable no-param-reassign */
 import type { Json, JsonArray, JsonMap } from '@laurence79/ts-json';
 import fs from 'fs';
@@ -6,42 +8,19 @@ import yaml from 'yaml';
 import jsonPointer from 'json-pointer';
 import { promisify } from 'util';
 import { Logger, success } from '../lib/cli-logging';
+import * as OpenApi from '../types/OpenApi';
+import * as OpenApiV3 from '../types/OpenApiV3';
+import * as OpenApiV2 from '../types/OpenApiV2';
+import { AsyncJsonWalker } from './AsyncJsonWalker';
 
 const fileExists = promisify(fs.exists);
 const readFile = promisify(fs.readFile);
 
-const loadFromFile = async (source: string, logger?: Logger): Promise<Json> => {
-  const log = logger?.create(`Loading OpenAPI file ${source}`);
+type JsonReferenceObject =
+  | OpenApiV2.ReferenceObject
+  | OpenApiV3.ReferenceObject;
 
-  if (!(await fileExists(source))) {
-    throw new Error(`File ${source} does not exist`);
-  }
-
-  const extension = path.extname(source);
-  const data = await readFile(source, 'utf-8');
-
-  const doc = (() => {
-    if (['.yaml', '.yml'].includes(extension)) {
-      return yaml.parse(data) as Json;
-    }
-
-    if (extension === '.json') {
-      return JSON.parse(data) as Json;
-    }
-
-    throw new Error(`Unsupported extension ${extension}`);
-  })();
-
-  log?.(success());
-
-  return doc;
-};
-
-type JsonReference = {
-  $ref: string;
-};
-
-const isReference = (node: unknown): node is JsonReference => {
+const isReference = (node: unknown): node is JsonReferenceObject => {
   return (
     typeof node === 'object' &&
     node !== null &&
@@ -49,14 +28,6 @@ const isReference = (node: unknown): node is JsonReference => {
     typeof node.$ref === 'string'
   );
 };
-
-type Walkable = JsonArray | JsonMap;
-
-const isWalkable = (node: unknown): node is Walkable => {
-  return typeof node === 'object' && node !== null;
-};
-
-type Files = Map<string, Walkable>;
 
 const getAbsolutePath = (
   refBasePath: string,
@@ -69,128 +40,160 @@ const getAbsolutePath = (
   return path.join(path.dirname(refBasePath), referencePath);
 };
 
-const inferTitle = (referencePath: string, pointer: string): string | null => {
-  if (pointer) {
-    return pointer.substring(pointer.lastIndexOf('/') + 1);
+class Reference {
+  constructor(reference: string, refBasePath: string) {
+    const [referencePath, pointer] = reference.split('#');
+
+    this.filename = referencePath
+      ? getAbsolutePath(refBasePath, referencePath)
+      : refBasePath;
+
+    this.pointer = pointer;
+
+    this.$ = [this.filename, pointer].join('#');
   }
 
-  if (referencePath) {
-    return path.parse(referencePath).name;
-  }
+  public readonly filename: string;
 
-  return null;
-};
+  public readonly pointer: string;
 
-const dereference = async (
-  refBasePath: string,
-  reference: JsonReference,
-  files: Files,
-  logger?: Logger
-): Promise<Json> => {
-  const { $ref } = reference;
+  public readonly $: string;
+}
 
-  const [referencePath, pointer] = $ref.split('#');
+class Loader {
+  constructor(private readonly logger?: Logger) {}
 
-  const file = referencePath
-    ? getAbsolutePath(refBasePath, referencePath)
-    : refBasePath;
+  private readonly files = new Map<string, Promise<JsonMap>>();
 
-  const refDoc = await (async () => {
-    const cachedDoc = files.get(file);
+  private async loadFromFile(filename: string): Promise<JsonMap> {
+    const log = this.logger?.create(`Loading file ${filename}`);
 
-    if (!cachedDoc) {
-      const doc = await loadFromFile(file);
+    if (!(await fileExists(filename))) {
+      throw new Error(`File ${filename} does not exist`);
+    }
 
-      if (!isWalkable(doc)) {
-        throw new Error(`Can not walk ${file}`);
+    const extension = path.extname(filename);
+    const data = await readFile(filename, 'utf-8');
+
+    const doc = (() => {
+      if (['.yaml', '.yml'].includes(extension)) {
+        return yaml.parse(data) as JsonMap;
       }
 
-      files.set(file, doc);
-      // eslint-disable-next-line @typescript-eslint/no-use-before-define
-      await walk(doc, file, files, logger);
+      if (extension === '.json') {
+        return JSON.parse(data) as JsonMap;
+      }
 
-      return doc;
-    }
+      throw new Error(`Unsupported extension ${extension}`);
+    })();
 
-    return cachedDoc;
-  })();
+    log?.(success());
 
-  const node = pointer ? (jsonPointer.get(refDoc, pointer) as Json) : refDoc;
-
-  if (isReference(node)) {
-    return dereference(file, node, files, logger);
+    return doc;
   }
 
-  if (typeof node === 'object' && node && !Array.isArray(node) && !node.title) {
-    node.title = inferTitle(referencePath, pointer);
+  private static async makeReferencesAbsolute(
+    filename: string,
+    doc: JsonMap | JsonArray
+  ): Promise<void> {
+    await AsyncJsonWalker.walk(doc, item => {
+      if (isReference(item)) {
+        const ref = new Reference(item.$ref, filename);
+        item.$ref = ref.$;
+      }
+    });
   }
 
-  return node;
-};
-
-const walkArray = async (
-  node: JsonArray,
-  refBasePath: string,
-  files: Files,
-  logger?: Logger
-): Promise<void> => {
-  await node.forEachAsync(async (item, index) => {
-    if (isReference(item)) {
-      node[index] = await dereference(refBasePath, item, files, logger);
-      return;
+  public async load(filename: string): Promise<JsonMap> {
+    if (!this.files.has(filename)) {
+      this.files.set(
+        filename,
+        (async () => {
+          const doc = await this.loadFromFile(filename);
+          await Loader.makeReferencesAbsolute(filename, doc);
+          return doc;
+        })()
+      );
     }
 
-    if (isWalkable(item)) {
-      // eslint-disable-next-line @typescript-eslint/no-use-before-define
-      await walk(item, refBasePath, files, logger);
-    }
-  });
-};
+    return this.files.get(filename)!;
+  }
+}
 
-const walkMap = async (
-  node: JsonMap,
-  refBasePath: string,
-  files: Files,
-  logger?: Logger
-): Promise<void> => {
-  await Object.entries(node).forEachAsync(async ([key, item]) => {
-    if (isReference(item)) {
-      node[key] = await dereference(refBasePath, item, files, logger);
-      return;
-    }
-
-    if (isWalkable(item)) {
-      // eslint-disable-next-line @typescript-eslint/no-use-before-define
-      await walk(item, refBasePath, files, logger);
-    }
-  });
-};
-
-const walk = async (
-  node: Walkable,
-  refBasePath: string,
-  files: Files,
-  logger?: Logger
-): Promise<void> => {
-  if (Array.isArray(node)) {
-    await walkArray(node, refBasePath, files, logger);
-    return;
+const inferTitle = (node: JsonMap, reference: Reference): string => {
+  if (node.title && typeof node.title === 'string') {
+    return node.title;
   }
 
-  await walkMap(node, refBasePath, files, logger);
+  if (!reference.pointer) {
+    return path.parse(reference.filename).name;
+  }
+
+  return reference.pointer.substring(reference.pointer.lastIndexOf('/') + 1);
+};
+
+const componentKeyForPointer = (ptr: string): string => {
+  const p = jsonPointer.parse(ptr).reverse();
+
+  if (p.includes('schema')) {
+    return 'schemas';
+  }
+  if (p.includes('parameters')) {
+    return 'parameters';
+  }
+  if (p.includes('responses')) {
+    return 'responses';
+  }
+
+  return 'schemas';
 };
 
 export const load = async (source: string, logger?: Logger): Promise<Json> => {
-  const data = await loadFromFile(source, logger);
+  const filename = path.isAbsolute(source)
+    ? source
+    : path.join(process.cwd(), source);
 
-  if (!isWalkable(data)) {
-    throw new Error(`Can not walk ${source}`);
-  }
+  const loader = new Loader(logger);
 
-  const files = new Map<string, Walkable>();
-  files.set(source, data);
+  const doc = ((await loader.load(filename)) as unknown) as OpenApi.Document &
+    JsonMap;
 
-  await walk(data, source, files, logger);
+  const walked: string[] = [];
 
-  return data;
+  const walkFn = async (node: JsonMap, ptr: string) => {
+    if (!isReference(node) || walked.includes(ptr)) {
+      return;
+    }
+
+    walked.push(ptr);
+
+    const ref = new Reference(node.$ref, filename);
+
+    const refDoc = await loader.load(ref.filename);
+    const refNode = jsonPointer.get(refDoc, ref.pointer) as JsonMap;
+    const title = inferTitle(refNode, ref);
+    refNode.title = title;
+
+    if (ref.filename !== filename) {
+      const newRef = (() => {
+        if ('swagger' in doc) {
+          return new Reference(`#/definitions/${title}`, filename);
+        }
+
+        const key = componentKeyForPointer(ptr);
+
+        return new Reference(`#/components/${key}/${title}`, filename);
+      })();
+
+      jsonPointer.set(doc, newRef.pointer, refNode);
+
+      node.$ref = newRef.$;
+
+      await AsyncJsonWalker.walk(doc, walkFn, newRef.pointer);
+    }
+  };
+
+  await AsyncJsonWalker.walk(doc, walkFn);
+
+  return doc;
 };

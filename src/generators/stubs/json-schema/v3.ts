@@ -38,7 +38,7 @@ export const fromV3 = (
           )
         ]
           .compact()
-          .map(HelpersV3.convertSchemaToJsonSchema);
+          .map(s => HelpersV3.exportAsJsonSchema(s, document));
 
         if (structuredContent.length > 0) {
           definitions[typeName] =
@@ -100,7 +100,7 @@ export const fromV3 = (
 
         log?.(progress(`adding ${typeName}`));
 
-        definitions[typeName] = HelpersV3.convertSchemaToJsonSchema(schema);
+        definitions[typeName] = HelpersV3.exportAsJsonSchema(schema, document);
       });
 
       responses.forEach(({ statusCode, response }) => {
@@ -118,7 +118,7 @@ export const fromV3 = (
 
         log?.(progress(`adding ${key}`));
 
-        definitions[key] = HelpersV3.convertSchemaToJsonSchema(schema);
+        definitions[key] = HelpersV3.exportAsJsonSchema(schema, document);
       });
     }
   );
@@ -129,7 +129,7 @@ export const fromV3 = (
     if (value) {
       log?.(progress(`adding ${key}`));
 
-      definitions[key] = HelpersV3.convertSchemaToJsonSchema(value);
+      definitions[key] = HelpersV3.exportAsJsonSchema(value, document);
     }
   });
 

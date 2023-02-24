@@ -7,9 +7,5 @@ export const dereferenceParameter = (
 ): OpenApiV3.ParameterObject => {
   const { $ref } = reference;
 
-  return dereference(
-    doc.components?.parameters,
-    $ref,
-    '#/components/parameters/'
-  );
+  return dereference(doc, $ref);
 };

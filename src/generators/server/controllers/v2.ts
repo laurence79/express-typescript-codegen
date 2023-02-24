@@ -9,13 +9,14 @@ import {
 import { controllersTemplate } from '../../../templates/controllersTemplate';
 import { initUpper } from '../../../helpers/initUpper';
 import { initLower } from '../../../helpers/initLower';
+import { TypeDefContext } from '../../../helpers/open-api/TypeDefContext';
 
 export const fromV2 = (
   document: OpenApiV2.Document,
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
   },
-  emitType: (name: string, code: string) => void,
+  context: TypeDefContext,
   log?: LogFn
 ): string => {
   const handlers = HelpersV2.mapOperations(document).map(
@@ -32,12 +33,13 @@ export const fromV2 = (
 
             const name = responseBodyTypeNameTemplate(operationId, statusCode);
 
-            emitType(
+            context.emitType(
               name,
               HelpersV2.typeDefForSchema(
                 schema,
+                document,
                 { nonRequiredType: 'optional' },
-                emitType
+                context
               )
             );
 
@@ -69,14 +71,14 @@ export const fromV2 = (
 
           log?.(progress(`adding ${typeName}`));
 
-          emitType(
+          context.emitType(
             typeName,
-            HelpersV2.typeDefForSchema(schemas, options, emitType)
+            HelpersV2.typeDefForSchema(schemas, document, options, context)
           );
 
           return [
             typeName,
-            HelpersV2.convertSchemaToJsonSchema(schemas)
+            HelpersV2.exportAsJsonSchema(schemas, document)
           ] as const;
         }
 
@@ -115,12 +117,15 @@ export const fromV2 = (
           }
         });
 
-        emitType(
+        context.emitType(
           typeName,
-          HelpersV2.typeDefForSchema(schema, options, emitType)
+          HelpersV2.typeDefForSchema(schema, document, options, context)
         );
 
-        return [typeName, HelpersV2.convertSchemaToJsonSchema(schema)] as const;
+        return [
+          typeName,
+          HelpersV2.exportAsJsonSchema(schema, document)
+        ] as const;
       };
 
       const [bodyParamType, bodySchema] = nameAndSchemaForParams('body');

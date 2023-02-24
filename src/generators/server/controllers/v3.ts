@@ -9,6 +9,7 @@ import {
 import { controllersTemplate } from '../../../templates/controllersTemplate';
 import { initUpper } from '../../../helpers/initUpper';
 import { initLower } from '../../../helpers/initLower';
+import { TypeDefContext } from '../../../helpers/open-api/TypeDefContext';
 
 const convertFormDataToSchemaObject = (
   formData?: OpenApiV3.MediaTypeObject
@@ -26,7 +27,7 @@ export const fromV3 = (
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
   },
-  emitType: (name: string, code: string) => void,
+  context: TypeDefContext,
   log?: LogFn
 ): string => {
   const handlers = HelpersV3.mapOperations(document).map(
@@ -45,9 +46,9 @@ export const fromV3 = (
             const name = responseBodyTypeNameTemplate(operationId, statusCode);
 
             if (schema) {
-              emitType(
+              context.emitType(
                 name,
-                HelpersV3.typeDefForSchema(schema, options, emitType)
+                HelpersV3.typeDefForSchema(schema, document, options, context)
               );
             }
 
@@ -86,12 +87,12 @@ export const fromV3 = (
 
         const typeName = parametersTypeNameTemplate(operationId, 'body');
 
-        emitType(
+        context.emitType(
           typeName,
-          HelpersV3.typeDefForSchema(schema, options, emitType)
+          HelpersV3.typeDefForSchema(schema, document, options, context)
         );
 
-        return [typeName, HelpersV3.convertSchemaToJsonSchema(schema)];
+        return [typeName, HelpersV3.exportAsJsonSchema(schema, document)];
       })();
 
       const nameAndSchemaForParams = (type: 'path' | 'query') => {
@@ -142,12 +143,15 @@ export const fromV3 = (
           }
         });
 
-        emitType(
+        context.emitType(
           typeName,
-          HelpersV3.typeDefForSchema(schema, options, emitType)
+          HelpersV3.typeDefForSchema(schema, document, options, context)
         );
 
-        return [typeName, HelpersV3.convertSchemaToJsonSchema(schema)] as const;
+        return [
+          typeName,
+          HelpersV3.exportAsJsonSchema(schema, document)
+        ] as const;
       };
 
       const [queryParamsType, querySchema] = nameAndSchemaForParams('query');

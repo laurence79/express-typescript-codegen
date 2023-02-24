@@ -7,9 +7,5 @@ export const dereferenceRequestBodyObject = (
 ): OpenApiV3.RequestBodyObject => {
   const { $ref } = reference;
 
-  return dereference(
-    doc.components?.requestBodies,
-    $ref,
-    '#/components/requestBodies/'
-  );
+  return dereference(doc, $ref);
 };
