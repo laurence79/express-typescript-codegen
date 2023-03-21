@@ -19,7 +19,7 @@ const cmd = new commander.Command('generate')
   .arguments('<spec-filename-or-url>')
   .option(
     '--template <template>',
-    'the type to output. client, server or stubs. Default client'
+    'the type to output. client, server, stubs or types. Default client'
   )
   .option(
     '--filename <filename>',
@@ -48,7 +48,9 @@ const cmd = new commander.Command('generate')
 
       if (
         options.template &&
-        !['client', 'server', 'stubs'].includes(options.template.toLowerCase())
+        !['client', 'server', 'stubs', 'types'].includes(
+          options.template.toLowerCase()
+        )
       ) {
         commander.help({ error: true });
       }

@@ -2,6 +2,7 @@ import path from 'path';
 import { generateClient } from './generators/client/client';
 import { generateServerClasses } from './generators/server/server';
 import { generateStubs } from './generators/stubs';
+import { generateTypes } from './generators/types/types';
 import { assertNever } from './helpers/assertNever';
 import { initUpper } from './helpers/initUpper';
 import { load } from './helpers/load';
@@ -63,6 +64,8 @@ export const generateCode = async (
         return generateServerClasses;
       case 'STUBS':
         return generateStubs;
+      case 'TYPES':
+        return generateTypes;
       default:
         return assertNever(options.output);
     }
