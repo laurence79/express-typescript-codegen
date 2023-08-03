@@ -21,11 +21,9 @@
   "typescript.referencesCodeLens.enabled": true,
   "cSpell.words": [
     "apidevtools",
-    "nameof",
     "openapi",
     "rivr",
     "tsyringe",
-    "ttsc",
-    "ttypescript"
+    "ttsc"
   ]
 }

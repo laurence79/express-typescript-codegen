@@ -1,6 +1,5 @@
 import typescript from '@rollup/plugin-typescript';
 import json from '@rollup/plugin-json';
-import ttypescript from 'ttypescript';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import shebang from 'rollup-plugin-preserve-shebang';
 import dts from 'rollup-plugin-dts';
@@ -29,10 +28,10 @@ export default [
       nodeResolve({
         preferBuiltins: true
       }),
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       shebang(),
       typescript({
-        tsconfig: './tsconfig.rollup.json',
-        typescript: ttypescript
+        tsconfig: './tsconfig.rollup.json'
       })
     ]
   },

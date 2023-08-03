@@ -16,7 +16,6 @@
     "noImplicitThis": true,
     "noImplicitReturns": true,
     "noUnusedParameters": true,
-    "plugins": [{ "transform": "ts-nameof", "type": "raw" }],
     "pretty": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
@@ -25,7 +24,7 @@
     "strictFunctionTypes": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
-    "types": ["node", "@types/ts-nameof", "jest"]
+    "types": ["node", "jest"]
   },
   "exclude": ["node_modules"],
   "include": ["src", ".eslintrc.js", "jest.config.js", "rollup.config.js", "example"]

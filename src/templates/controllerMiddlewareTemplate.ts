@@ -47,9 +47,9 @@ export const controllerMiddlewareTemplate = (
             async (req, res, next) => {
               const controller = this.resolver
                 .forRequest(req)
-                .resolve<${h.controllerTypeName}>(
-                  nameof<${h.controllerTypeName}>()
-                );
+                .resolve<${h.controllerTypeName}>(Handlers.${
+            h.controllerTypeName
+          });
     
               await controller.${h.controllerMethodName}(req, res, next);
             }

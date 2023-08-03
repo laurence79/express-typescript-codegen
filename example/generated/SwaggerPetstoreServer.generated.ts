@@ -97,6 +97,28 @@ export type LoginUserRequestQuery = { username: string; password: string };
 
 export type CreateUserRequestBody = User;
 
+export const Handlers = {
+  AddPetController: 'AddPetController',
+  UpdatePetController: 'UpdatePetController',
+  FindPetsByStatusController: 'FindPetsByStatusController',
+  FindPetsByTagsController: 'FindPetsByTagsController',
+  GetPetByIdController: 'GetPetByIdController',
+  UpdatePetWithFormController: 'UpdatePetWithFormController',
+  DeletePetController: 'DeletePetController',
+  PlaceOrderController: 'PlaceOrderController',
+  GetOrderByIdController: 'GetOrderByIdController',
+  DeleteOrderController: 'DeleteOrderController',
+  GetInventoryController: 'GetInventoryController',
+  CreateUsersWithArrayInputController: 'CreateUsersWithArrayInputController',
+  CreateUsersWithListInputController: 'CreateUsersWithListInputController',
+  GetUserByNameController: 'GetUserByNameController',
+  UpdateUserController: 'UpdateUserController',
+  DeleteUserController: 'DeleteUserController',
+  LoginUserController: 'LoginUserController',
+  LogoutUserController: 'LogoutUserController',
+  CreateUserController: 'CreateUserController'
+};
+
 export type AddPetRequest = Request<
   ParamsDictionary,
   unknown,
@@ -579,7 +601,7 @@ export class ControllerMiddleware {
         async (req, res, next) => {
           const controller = this.resolver
             .forRequest(req)
-            .resolve<AddPetController>(nameof<AddPetController>());
+            .resolve<AddPetController>(Handlers.AddPetController);
 
           await controller.addPet(req, res, next);
         }
@@ -647,7 +669,7 @@ export class ControllerMiddleware {
         async (req, res, next) => {
           const controller = this.resolver
             .forRequest(req)
-            .resolve<UpdatePetController>(nameof<UpdatePetController>());
+            .resolve<UpdatePetController>(Handlers.UpdatePetController);
 
           await controller.updatePet(req, res, next);
         }
@@ -693,7 +715,7 @@ export class ControllerMiddleware {
           const controller = this.resolver
             .forRequest(req)
             .resolve<FindPetsByStatusController>(
-              nameof<FindPetsByStatusController>()
+              Handlers.FindPetsByStatusController
             );
 
           await controller.findPetsByStatus(req, res, next);
@@ -731,7 +753,7 @@ export class ControllerMiddleware {
           const controller = this.resolver
             .forRequest(req)
             .resolve<FindPetsByTagsController>(
-              nameof<FindPetsByTagsController>()
+              Handlers.FindPetsByTagsController
             );
 
           await controller.findPetsByTags(req, res, next);
@@ -762,7 +784,7 @@ export class ControllerMiddleware {
         async (req, res, next) => {
           const controller = this.resolver
             .forRequest(req)
-            .resolve<GetPetByIdController>(nameof<GetPetByIdController>());
+            .resolve<GetPetByIdController>(Handlers.GetPetByIdController);
 
           await controller.getPetById(req, res, next);
         }
@@ -793,7 +815,7 @@ export class ControllerMiddleware {
           const controller = this.resolver
             .forRequest(req)
             .resolve<UpdatePetWithFormController>(
-              nameof<UpdatePetWithFormController>()
+              Handlers.UpdatePetWithFormController
             );
 
           await controller.updatePetWithForm(req, res, next);
@@ -824,7 +846,7 @@ export class ControllerMiddleware {
         async (req, res, next) => {
           const controller = this.resolver
             .forRequest(req)
-            .resolve<DeletePetController>(nameof<DeletePetController>());
+            .resolve<DeletePetController>(Handlers.DeletePetController);
 
           await controller.deletePet(req, res, next);
         }
@@ -865,7 +887,7 @@ export class ControllerMiddleware {
         async (req, res, next) => {
           const controller = this.resolver
             .forRequest(req)
-            .resolve<PlaceOrderController>(nameof<PlaceOrderController>());
+            .resolve<PlaceOrderController>(Handlers.PlaceOrderController);
 
           await controller.placeOrder(req, res, next);
         }
@@ -897,7 +919,7 @@ export class ControllerMiddleware {
         async (req, res, next) => {
           const controller = this.resolver
             .forRequest(req)
-            .resolve<GetOrderByIdController>(nameof<GetOrderByIdController>());
+            .resolve<GetOrderByIdController>(Handlers.GetOrderByIdController);
 
           await controller.getOrderById(req, res, next);
         }
@@ -928,7 +950,7 @@ export class ControllerMiddleware {
         async (req, res, next) => {
           const controller = this.resolver
             .forRequest(req)
-            .resolve<DeleteOrderController>(nameof<DeleteOrderController>());
+            .resolve<DeleteOrderController>(Handlers.DeleteOrderController);
 
           await controller.deleteOrder(req, res, next);
         }
@@ -944,7 +966,7 @@ export class ControllerMiddleware {
         async (req, res, next) => {
           const controller = this.resolver
             .forRequest(req)
-            .resolve<GetInventoryController>(nameof<GetInventoryController>());
+            .resolve<GetInventoryController>(Handlers.GetInventoryController);
 
           await controller.getInventory(req, res, next);
         }
@@ -991,7 +1013,7 @@ export class ControllerMiddleware {
         const controller = this.resolver
           .forRequest(req)
           .resolve<CreateUsersWithArrayInputController>(
-            nameof<CreateUsersWithArrayInputController>()
+            Handlers.CreateUsersWithArrayInputController
           );
 
         await controller.createUsersWithArrayInput(req, res, next);
@@ -1038,7 +1060,7 @@ export class ControllerMiddleware {
         const controller = this.resolver
           .forRequest(req)
           .resolve<CreateUsersWithListInputController>(
-            nameof<CreateUsersWithListInputController>()
+            Handlers.CreateUsersWithListInputController
           );
 
         await controller.createUsersWithListInput(req, res, next);
@@ -1068,9 +1090,7 @@ export class ControllerMiddleware {
         async (req, res, next) => {
           const controller = this.resolver
             .forRequest(req)
-            .resolve<GetUserByNameController>(
-              nameof<GetUserByNameController>()
-            );
+            .resolve<GetUserByNameController>(Handlers.GetUserByNameController);
 
           await controller.getUserByName(req, res, next);
         }
@@ -1124,7 +1144,7 @@ export class ControllerMiddleware {
         async (req, res, next) => {
           const controller = this.resolver
             .forRequest(req)
-            .resolve<UpdateUserController>(nameof<UpdateUserController>());
+            .resolve<UpdateUserController>(Handlers.UpdateUserController);
 
           await controller.updateUser(req, res, next);
         }
@@ -1153,7 +1173,7 @@ export class ControllerMiddleware {
         async (req, res, next) => {
           const controller = this.resolver
             .forRequest(req)
-            .resolve<DeleteUserController>(nameof<DeleteUserController>());
+            .resolve<DeleteUserController>(Handlers.DeleteUserController);
 
           await controller.deleteUser(req, res, next);
         }
@@ -1186,7 +1206,7 @@ export class ControllerMiddleware {
         async (req, res, next) => {
           const controller = this.resolver
             .forRequest(req)
-            .resolve<LoginUserController>(nameof<LoginUserController>());
+            .resolve<LoginUserController>(Handlers.LoginUserController);
 
           await controller.loginUser(req, res, next);
         }
@@ -1202,7 +1222,7 @@ export class ControllerMiddleware {
         async (req, res, next) => {
           const controller = this.resolver
             .forRequest(req)
-            .resolve<LogoutUserController>(nameof<LogoutUserController>());
+            .resolve<LogoutUserController>(Handlers.LogoutUserController);
 
           await controller.logoutUser(req, res, next);
         }
@@ -1245,7 +1265,7 @@ export class ControllerMiddleware {
         async (req, res, next) => {
           const controller = this.resolver
             .forRequest(req)
-            .resolve<CreateUserController>(nameof<CreateUserController>());
+            .resolve<CreateUserController>(Handlers.CreateUserController);
 
           await controller.createUser(req, res, next);
         }
