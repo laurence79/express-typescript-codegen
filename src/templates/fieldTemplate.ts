@@ -1,5 +1,3 @@
-import { IdentifierFormat, makeIdentifier } from './makeIdentifier';
-
 export const fieldTemplate = (
   name: string,
   required: boolean,
@@ -8,7 +6,7 @@ export const fieldTemplate = (
     nonRequiredType: 'optional' | 'nullable' | 'both';
   }
 ): string => {
-  const fieldName = makeIdentifier(name, IdentifierFormat.camelCase);
+  const fieldName = `"${name}"`;
 
   if (required) {
     return `${fieldName}: ${type}`;
@@ -17,8 +15,8 @@ export const fieldTemplate = (
   const { nonRequiredType } = options;
 
   const fieldNameWithOptional = ['optional', 'both'].includes(nonRequiredType)
-    ? `"${fieldName}"?`
-    : `"${fieldName}"`;
+    ? `${fieldName}?`
+    : fieldName;
 
   const typeWithNull = ['nullable', 'both'].includes(nonRequiredType)
     ? `${type} | null`

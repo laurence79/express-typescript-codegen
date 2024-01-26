@@ -1,6 +1,4 @@
 /* eslint-disable no-template-curly-in-string */
-import { aliasIfReserved, aliasNameIfReserved } from './aliasIfReserved';
-import { IdentifierFormat, makeIdentifier } from './makeIdentifier';
 import { objectTemplate } from './objectTemplate';
 
 export type ClientMethodTemplateArgs = {
@@ -110,29 +108,9 @@ export const clientMethodTemplate = (
     })
     .join(' | ');
 
-  const paramNames = headerParams
-    .concat(queryParams)
-    .concat(
-      pathParams.map(({ name, type }) => ({ name, required: true, type }))
-    )
-    .map(({ name }) => name)
-    .concat(bodyArg ? [bodyArg.name] : []);
-
-  const decomposeParameters = paramNames.any()
-    ? `const {${paramNames
-        .map(name => makeIdentifier(name, IdentifierFormat.camelCase))
-        .map(aliasIfReserved)
-        .join(', ')}} = args;`
-    : '';
-
   const composeQuery = queryParams.any()
     ? `const query = qs.stringify({ ${queryParams
-        .map(
-          q =>
-            `["${q.name}"]: ${aliasNameIfReserved(
-              makeIdentifier(q.name, IdentifierFormat.camelCase)
-            )}`
-        )
+        .map(q => `["${q.name}"]: args["${q.name}"]`)
         .join(', ')} }${
         queryArrayFormat === 'comma' ? ", { arrayFormat: 'comma' }" : ''
       });`
@@ -144,7 +122,7 @@ export const clientMethodTemplate = (
       ${body.fields
         .map(
           f =>
-            `if (body.${f.name}) formData.append('${f.name}', body.${f.name});`
+            `if (body["${f.name}"]) formData.append('${f.name}', body["${f.name}"]);`
         )
         .join('\n')}
     `
@@ -152,20 +130,16 @@ export const clientMethodTemplate = (
 
   const url = `\`\${this.baseUrl}${openApiPath.replace(
     /\{(?:.*?)\}/g,
-    x => `$${x}`
+    x => `$\{args["${x.slice(1, x.length - 1)}"]}`
   )}${queryParams.any() ? '?${query}' : ''}\``;
 
   const headers = headerParams
     .map(h => {
-      const localVarName = aliasNameIfReserved(
-        makeIdentifier(h.name, IdentifierFormat.camelCase)
-      );
-
       if (h.required) {
-        return `["${h.name}"]: ${localVarName}`;
+        return `["${h.name}"]: args["${h.name}"]`;
       }
 
-      return `...(typeof ${localVarName} !== 'undefined' && ${localVarName} !== null ? { ["${h.name}"]: ${localVarName} } : {})`;
+      return `...(typeof args["${h.name}"] !== 'undefined' && args["${h.name}"] !== null ? { ["${h.name}"]: args["${h.name}"] } : {})`;
     })
     .concat(
       body?.type === 'json' ? ["'Content-Type': 'application/json'"] : []
@@ -175,7 +149,7 @@ export const clientMethodTemplate = (
       ${[
         'method',
 
-        ...(body?.type === 'json' ? ['body: JSON.stringify(body)'] : []),
+        ...(body?.type === 'json' ? ['body: JSON.stringify(args.body)'] : []),
 
         ...(body?.type === 'form' ? ['body: formData'] : []),
 
@@ -227,8 +201,6 @@ export const clientMethodTemplate = (
 
   return `public async "${methodName}"(${functionArgumentSignature}): 
     Promise<${responseType}> {
-
-    ${decomposeParameters}
 
     ${composeQuery}
 
