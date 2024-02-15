@@ -11,6 +11,7 @@ export const fromV3 = (
   document: OpenApiV3.Document,
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
+    readonlyDTOs: boolean;
   },
   context: TypeDefContext,
   log?: LogFn

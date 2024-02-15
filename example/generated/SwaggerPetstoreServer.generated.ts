@@ -12,46 +12,46 @@ import { ParsedQs } from 'qs';
 import { injectable } from 'tsyringe';
 import { Validator, ValidationError } from 'express-json-validator-middleware';
 
-export type Category = { id?: number; name?: string };
+export type Category = { readonly id?: number; readonly name?: string };
 
-export type Tag = { id?: number; name?: string };
+export type Tag = { readonly id?: number; readonly name?: string };
 
 export type Pet = {
-  id?: number;
-  category?: Category;
-  name: string;
-  photoUrls: Array<string>;
-  tags?: Array<Tag>;
-  status?: 'available' | 'pending' | 'sold';
+  readonly id?: number;
+  readonly category?: Category;
+  readonly name: string;
+  readonly photoUrls: ReadonlyArray<string>;
+  readonly tags?: ReadonlyArray<Tag>;
+  readonly status?: 'available' | 'pending' | 'sold';
 };
 
 export type AddPetRequestBody = Pet;
 
 export type UpdatePetRequestBody = Pet;
 
-export type FindPetsByStatus200ResponseBody = Array<Pet>;
+export type FindPetsByStatus200ResponseBody = ReadonlyArray<Pet>;
 
-export type FindPetsByStatusRequestQuery = { status: unknown };
+export type FindPetsByStatusRequestQuery = { readonly status: unknown };
 
-export type FindPetsByTags200ResponseBody = Array<Pet>;
+export type FindPetsByTags200ResponseBody = ReadonlyArray<Pet>;
 
-export type FindPetsByTagsRequestQuery = { tags: unknown };
+export type FindPetsByTagsRequestQuery = { readonly tags: unknown };
 
 export type GetPetById200ResponseBody = Pet;
 
-export type GetPetByIdRequestPath = { petId: number };
+export type GetPetByIdRequestPath = { readonly petId: number };
 
-export type UpdatePetWithFormRequestPath = { petId: number };
+export type UpdatePetWithFormRequestPath = { readonly petId: number };
 
-export type DeletePetRequestPath = { petId: number };
+export type DeletePetRequestPath = { readonly petId: number };
 
 export type Order = {
-  id?: number;
-  petId?: number;
-  quantity?: number;
-  shipDate?: string;
-  status?: 'placed' | 'approved' | 'delivered';
-  complete?: boolean;
+  readonly id?: number;
+  readonly petId?: number;
+  readonly quantity?: number;
+  readonly shipDate?: string;
+  readonly status?: 'placed' | 'approved' | 'delivered';
+  readonly complete?: boolean;
 };
 
 export type PlaceOrder200ResponseBody = Order;
@@ -60,40 +60,43 @@ export type PlaceOrderRequestBody = Order;
 
 export type GetOrderById200ResponseBody = Order;
 
-export type GetOrderByIdRequestPath = { orderId: number };
+export type GetOrderByIdRequestPath = { readonly orderId: number };
 
-export type DeleteOrderRequestPath = { orderId: number };
+export type DeleteOrderRequestPath = { readonly orderId: number };
 
 export type GetInventory200ResponseBody = unknown;
 
 export type User = {
-  id?: number;
-  username?: string;
-  firstName?: string;
-  lastName?: string;
-  email?: string;
-  password?: string;
-  phone?: string;
-  userStatus?: number;
+  readonly id?: number;
+  readonly username?: string;
+  readonly firstName?: string;
+  readonly lastName?: string;
+  readonly email?: string;
+  readonly password?: string;
+  readonly phone?: string;
+  readonly userStatus?: number;
 };
 
-export type CreateUsersWithArrayInputRequestBody = Array<User>;
+export type CreateUsersWithArrayInputRequestBody = ReadonlyArray<User>;
 
-export type CreateUsersWithListInputRequestBody = Array<User>;
+export type CreateUsersWithListInputRequestBody = ReadonlyArray<User>;
 
 export type GetUserByName200ResponseBody = User;
 
-export type GetUserByNameRequestPath = { username: string };
+export type GetUserByNameRequestPath = { readonly username: string };
 
 export type UpdateUserRequestBody = User;
 
-export type UpdateUserRequestPath = { username: string };
+export type UpdateUserRequestPath = { readonly username: string };
 
-export type DeleteUserRequestPath = { username: string };
+export type DeleteUserRequestPath = { readonly username: string };
 
 export type LoginUser200ResponseBody = string;
 
-export type LoginUserRequestQuery = { username: string; password: string };
+export type LoginUserRequestQuery = {
+  readonly username: string;
+  readonly password: string;
+};
 
 export type CreateUserRequestBody = User;
 

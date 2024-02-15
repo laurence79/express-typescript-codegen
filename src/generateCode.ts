@@ -1,11 +1,10 @@
 import path from 'path';
 import { generateClient } from './generators/client/client';
 import { generateServerClasses } from './generators/server/server';
-import { generateStubs } from './generators/stubs';
 import { generateTypes } from './generators/types/types';
 import { assertNever } from './helpers/assertNever';
 import { initUpper } from './helpers/initUpper';
-import { load } from './helpers/load';
+import { load } from './helpers/document-loader/load';
 import { writeFile } from './helpers/writeFile';
 import { makeIdentifier } from './templates/makeIdentifier';
 import { GenerateCodeOptions } from './types/GenerateCodeOptions';
@@ -62,8 +61,6 @@ export const generateCode = async (
         return generateClient;
       case 'SERVER':
         return generateServerClasses;
-      case 'STUBS':
-        return generateStubs;
       case 'TYPES':
         return generateTypes;
       default:

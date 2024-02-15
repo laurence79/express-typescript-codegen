@@ -21,7 +21,13 @@
     "dist/"
   ],
   "scripts": {
-    "run-example": "ts-node --files src/cli.ts generate ./example/swagger.json --filename ./example/generated --template client",
+    "gen": "npm-run-all gen:*",
+    "gen:v2-server": "ts-node --files src/cli.ts generate ./example/swagger.json --readonly-dtos --filename ./example/generated --template server",
+    "gen:v2-client": "ts-node --files src/cli.ts generate ./example/swagger.json --readonly-dtos --filename ./example/generated --template client",
+    "gen:v2-types": "ts-node --files src/cli.ts generate ./example/swagger.json --readonly-dtos --filename ./example/generated --template types",
+    "gen:v3-server": "ts-node --files src/cli.ts generate ./example/api.github.com.yaml --readonly-dtos --filename ./example/generated --template server",
+    "gen:v3-client": "ts-node --files src/cli.ts generate ./example/api.github.com.yaml --readonly-dtos --filename ./example/generated --template client",
+    "gen:v3-types": "ts-node --files src/cli.ts generate ./example/api.github.com.yaml --readonly-dtos --filename ./example/generated --template types",
     "boiler-update": "boiler-sync update",
     "lint": "eslint --cache 'src/**/*.ts' --quiet",
     "lint:watch": "esw --cache 'src/**/*.ts' --watch",
@@ -47,7 +53,7 @@
     "@rollup/plugin-node-resolve": "^11.2.0",
     "@rollup/plugin-typescript": "^8.2.0",
     "@types/express": "^4.17.11",
-    "@types/express-serve-static-core": "^4.17.18",
+    "@types/express-serve-static-core": "^4.17.32",
     "@types/jest": "^27.4.0",
     "@types/json-pointer": "^1.0.31",
     "@types/json-schema": "^7.0.7",
@@ -68,8 +74,8 @@
     "eslint-watch": "^7.0.0",
     "express": "4.17.1",
     "express-json-validator-middleware": "^3.0.1",
-    "express-serve-static-core": "^0.1.1",
     "jest": "^27.4.7",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "qs": "^6.9.6",
     "rollup": "^2.41.0",
@@ -79,7 +85,7 @@
     "ts-jest": "^27.1.2",
     "ts-node": "^10.9.1",
     "tslib": "^2.2.0",
-    "tsyringe": "^4.7.0",
+    "tsyringe": "^4.8.0",
     "typescript": "^4.9.5"
   },
   "peerDependencies": {

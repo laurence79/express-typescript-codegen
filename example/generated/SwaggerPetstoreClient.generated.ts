@@ -1,37 +1,37 @@
 import qs from 'qs';
 import { fetch } from 'cross-fetch';
 
-export type Category = { id?: number; name?: string };
+export type Category = { readonly id?: number; readonly name?: string };
 
-export type Tag = { id?: number; name?: string };
+export type Tag = { readonly id?: number; readonly name?: string };
 
 export type Pet = {
-  id?: number;
-  category?: Category;
-  name: string;
-  photoUrls: Array<string>;
-  tags?: Array<Tag>;
-  status?: 'available' | 'pending' | 'sold';
+  readonly id?: number;
+  readonly category?: Category;
+  readonly name: string;
+  readonly photoUrls: ReadonlyArray<string>;
+  readonly tags?: ReadonlyArray<Tag>;
+  readonly status?: 'available' | 'pending' | 'sold';
 };
 
 export type Order = {
-  id?: number;
-  petId?: number;
-  quantity?: number;
-  shipDate?: string;
-  status?: 'placed' | 'approved' | 'delivered';
-  complete?: boolean;
+  readonly id?: number;
+  readonly petId?: number;
+  readonly quantity?: number;
+  readonly shipDate?: string;
+  readonly status?: 'placed' | 'approved' | 'delivered';
+  readonly complete?: boolean;
 };
 
 export type User = {
-  id?: number;
-  username?: string;
-  firstName?: string;
-  lastName?: string;
-  email?: string;
-  password?: string;
-  phone?: string;
-  userStatus?: number;
+  readonly id?: number;
+  readonly username?: string;
+  readonly firstName?: string;
+  readonly lastName?: string;
+  readonly email?: string;
+  readonly password?: string;
+  readonly phone?: string;
+  readonly userStatus?: number;
 };
 
 type ResponseWithData<TStatus, TData> = {
@@ -48,17 +48,15 @@ export class SwaggerPetstoreClient {
   ) {}
 
   public async addPet(
-    args: { body: Pet },
+    args: { readonly body: Pet },
     options?: RequestInit
   ): Promise<ResponseWithData<405, undefined>> {
-    const { body } = args;
-
     const method = 'POST';
     const url = `${this.baseUrl}/pet`;
 
     const response = await fetch(url, {
       method,
-      body: JSON.stringify(body),
+      body: JSON.stringify(args.body),
       headers: { 'Content-Type': 'application/json' },
       ...options
     });
@@ -80,21 +78,19 @@ export class SwaggerPetstoreClient {
   }
 
   public async updatePet(
-    args: { body: Pet },
+    args: { readonly body: Pet },
     options?: RequestInit
   ): Promise<
     | ResponseWithData<400, undefined>
     | ResponseWithData<404, undefined>
     | ResponseWithData<405, undefined>
   > {
-    const { body } = args;
-
     const method = 'PUT';
     const url = `${this.baseUrl}/pet`;
 
     const response = await fetch(url, {
       method,
-      body: JSON.stringify(body),
+      body: JSON.stringify(args.body),
       headers: { 'Content-Type': 'application/json' },
       ...options
     });
@@ -128,14 +124,12 @@ export class SwaggerPetstoreClient {
   }
 
   public async findPetsByStatus(
-    args: { status: string },
+    args: { readonly status: string },
     options?: RequestInit
   ): Promise<
-    ResponseWithData<200, Array<Pet>> | ResponseWithData<400, undefined>
+    ResponseWithData<200, ReadonlyArray<Pet>> | ResponseWithData<400, undefined>
   > {
-    const { status } = args;
-
-    const query = qs.stringify({ ['status']: status });
+    const query = qs.stringify({ ['status']: args['status'] });
 
     const method = 'GET';
     const url = `${this.baseUrl}/pet/findByStatus?${query}`;
@@ -153,7 +147,7 @@ export class SwaggerPetstoreClient {
       case 200:
         return {
           status: $status,
-          body: (await response.json()) as Array<Pet>
+          body: (await response.json()) as ReadonlyArray<Pet>
         };
 
       case 400:
@@ -168,14 +162,12 @@ export class SwaggerPetstoreClient {
   }
 
   public async findPetsByTags(
-    args: { tags: string },
+    args: { readonly tags: string },
     options?: RequestInit
   ): Promise<
-    ResponseWithData<200, Array<Pet>> | ResponseWithData<400, undefined>
+    ResponseWithData<200, ReadonlyArray<Pet>> | ResponseWithData<400, undefined>
   > {
-    const { tags } = args;
-
-    const query = qs.stringify({ ['tags']: tags });
+    const query = qs.stringify({ ['tags']: args['tags'] });
 
     const method = 'GET';
     const url = `${this.baseUrl}/pet/findByTags?${query}`;
@@ -193,7 +185,7 @@ export class SwaggerPetstoreClient {
       case 200:
         return {
           status: $status,
-          body: (await response.json()) as Array<Pet>
+          body: (await response.json()) as ReadonlyArray<Pet>
         };
 
       case 400:
@@ -208,17 +200,15 @@ export class SwaggerPetstoreClient {
   }
 
   public async getPetById(
-    args: { petId: number },
+    args: { readonly petId: number },
     options?: RequestInit
   ): Promise<
     | ResponseWithData<200, Pet>
     | ResponseWithData<400, undefined>
     | ResponseWithData<404, undefined>
   > {
-    const { petId } = args;
-
     const method = 'GET';
-    const url = `${this.baseUrl}/pet/${petId}`;
+    const url = `${this.baseUrl}/pet/${args['petId']}`;
 
     const response = await fetch(url, {
       method,
@@ -254,17 +244,18 @@ export class SwaggerPetstoreClient {
   }
 
   public async updatePetWithForm(
-    args: { petId: number; body: { name?: string; status?: string } },
+    args: {
+      readonly petId: number;
+      readonly body: { readonly name?: string; readonly status?: string };
+    },
     options?: RequestInit
   ): Promise<ResponseWithData<405, undefined>> {
-    const { petId, body } = args;
-
     const formData = new FormData();
-    if (body.name) formData.append('name', body.name);
-    if (body.status) formData.append('status', body.status);
+    if (args.body['name']) formData.append('name', args.body['name']);
+    if (args.body['status']) formData.append('status', args.body['status']);
 
     const method = 'POST';
-    const url = `${this.baseUrl}/pet/${petId}`;
+    const url = `${this.baseUrl}/pet/${args['petId']}`;
 
     const response = await fetch(url, {
       method,
@@ -289,21 +280,19 @@ export class SwaggerPetstoreClient {
   }
 
   public async deletePet(
-    args: { apiKey?: string; petId: number },
+    args: { readonly api_key?: string; readonly petId: number },
     options?: RequestInit
   ): Promise<
     ResponseWithData<400, undefined> | ResponseWithData<404, undefined>
   > {
-    const { apiKey, petId } = args;
-
     const method = 'DELETE';
-    const url = `${this.baseUrl}/pet/${petId}`;
+    const url = `${this.baseUrl}/pet/${args['petId']}`;
 
     const response = await fetch(url, {
       method,
       headers: {
-        ...(typeof apiKey !== 'undefined' && apiKey !== null
-          ? { ['api_key']: apiKey }
+        ...(typeof args['api_key'] !== 'undefined' && args['api_key'] !== null
+          ? { ['api_key']: args['api_key'] }
           : {})
       },
       ...options
@@ -332,17 +321,15 @@ export class SwaggerPetstoreClient {
   }
 
   public async placeOrder(
-    args: { body: Order },
+    args: { readonly body: Order },
     options?: RequestInit
   ): Promise<ResponseWithData<200, Order> | ResponseWithData<400, undefined>> {
-    const { body } = args;
-
     const method = 'POST';
     const url = `${this.baseUrl}/store/order`;
 
     const response = await fetch(url, {
       method,
-      body: JSON.stringify(body),
+      body: JSON.stringify(args.body),
       headers: { 'Content-Type': 'application/json' },
       ...options
     });
@@ -370,17 +357,15 @@ export class SwaggerPetstoreClient {
   }
 
   public async getOrderById(
-    args: { orderId: number },
+    args: { readonly orderId: number },
     options?: RequestInit
   ): Promise<
     | ResponseWithData<200, Order>
     | ResponseWithData<400, undefined>
     | ResponseWithData<404, undefined>
   > {
-    const { orderId } = args;
-
     const method = 'GET';
-    const url = `${this.baseUrl}/store/order/${orderId}`;
+    const url = `${this.baseUrl}/store/order/${args['orderId']}`;
 
     const response = await fetch(url, {
       method,
@@ -416,15 +401,13 @@ export class SwaggerPetstoreClient {
   }
 
   public async deleteOrder(
-    args: { orderId: number },
+    args: { readonly orderId: number },
     options?: RequestInit
   ): Promise<
     ResponseWithData<400, undefined> | ResponseWithData<404, undefined>
   > {
-    const { orderId } = args;
-
     const method = 'DELETE';
-    const url = `${this.baseUrl}/store/order/${orderId}`;
+    const url = `${this.baseUrl}/store/order/${args['orderId']}`;
 
     const response = await fetch(url, {
       method,
@@ -481,17 +464,15 @@ export class SwaggerPetstoreClient {
   }
 
   public async createUsersWithArrayInput(
-    args: { body: Array<User> },
+    args: { readonly body: ReadonlyArray<User> },
     options?: RequestInit
   ): Promise<ResponseWithData<number, undefined>> {
-    const { body } = args;
-
     const method = 'POST';
     const url = `${this.baseUrl}/user/createWithArray`;
 
     const response = await fetch(url, {
       method,
-      body: JSON.stringify(body),
+      body: JSON.stringify(args.body),
       headers: { 'Content-Type': 'application/json' },
       ...options
     });
@@ -510,17 +491,15 @@ export class SwaggerPetstoreClient {
   }
 
   public async createUsersWithListInput(
-    args: { body: Array<User> },
+    args: { readonly body: ReadonlyArray<User> },
     options?: RequestInit
   ): Promise<ResponseWithData<number, undefined>> {
-    const { body } = args;
-
     const method = 'POST';
     const url = `${this.baseUrl}/user/createWithList`;
 
     const response = await fetch(url, {
       method,
-      body: JSON.stringify(body),
+      body: JSON.stringify(args.body),
       headers: { 'Content-Type': 'application/json' },
       ...options
     });
@@ -539,17 +518,15 @@ export class SwaggerPetstoreClient {
   }
 
   public async getUserByName(
-    args: { username: string },
+    args: { readonly username: string },
     options?: RequestInit
   ): Promise<
     | ResponseWithData<200, User>
     | ResponseWithData<400, undefined>
     | ResponseWithData<404, undefined>
   > {
-    const { username } = args;
-
     const method = 'GET';
-    const url = `${this.baseUrl}/user/${username}`;
+    const url = `${this.baseUrl}/user/${args['username']}`;
 
     const response = await fetch(url, {
       method,
@@ -585,19 +562,17 @@ export class SwaggerPetstoreClient {
   }
 
   public async updateUser(
-    args: { username: string; body: User },
+    args: { readonly username: string; readonly body: User },
     options?: RequestInit
   ): Promise<
     ResponseWithData<400, undefined> | ResponseWithData<404, undefined>
   > {
-    const { username, body } = args;
-
     const method = 'PUT';
-    const url = `${this.baseUrl}/user/${username}`;
+    const url = `${this.baseUrl}/user/${args['username']}`;
 
     const response = await fetch(url, {
       method,
-      body: JSON.stringify(body),
+      body: JSON.stringify(args.body),
       headers: { 'Content-Type': 'application/json' },
       ...options
     });
@@ -625,15 +600,13 @@ export class SwaggerPetstoreClient {
   }
 
   public async deleteUser(
-    args: { username: string },
+    args: { readonly username: string },
     options?: RequestInit
   ): Promise<
     ResponseWithData<400, undefined> | ResponseWithData<404, undefined>
   > {
-    const { username } = args;
-
     const method = 'DELETE';
-    const url = `${this.baseUrl}/user/${username}`;
+    const url = `${this.baseUrl}/user/${args['username']}`;
 
     const response = await fetch(url, {
       method,
@@ -663,14 +636,12 @@ export class SwaggerPetstoreClient {
   }
 
   public async loginUser(
-    args: { username: string; password: string },
+    args: { readonly username: string; readonly password: string },
     options?: RequestInit
   ): Promise<ResponseWithData<200, string> | ResponseWithData<400, undefined>> {
-    const { username, password } = args;
-
     const query = qs.stringify({
-      ['username']: username,
-      ['password']: password
+      ['username']: args['username'],
+      ['password']: args['password']
     });
 
     const method = 'GET';
@@ -728,17 +699,15 @@ export class SwaggerPetstoreClient {
   }
 
   public async createUser(
-    args: { body: User },
+    args: { readonly body: User },
     options?: RequestInit
   ): Promise<ResponseWithData<number, undefined>> {
-    const { body } = args;
-
     const method = 'POST';
     const url = `${this.baseUrl}/user`;
 
     const response = await fetch(url, {
       method,
-      body: JSON.stringify(body),
+      body: JSON.stringify(args.body),
       headers: { 'Content-Type': 'application/json' },
       ...options
     });

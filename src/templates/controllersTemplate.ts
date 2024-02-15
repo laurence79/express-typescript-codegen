@@ -10,7 +10,7 @@ export const controllersTemplate = (
   return `
     export const Handlers = {
       ${controllers
-        .map(c => `${c.controllerTypeName}: '${c.controllerTypeName}'`)
+        .map(c => `"${c.controllerTypeName}": '${c.controllerTypeName}'`)
         .join(',\n')}
     }
 

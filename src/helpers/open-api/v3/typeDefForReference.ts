@@ -8,6 +8,7 @@ export const typeDefForReference = (
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
     binaryType?: 'Buffer' | 'Blob';
+    readonlyDTOs: boolean;
   },
   context: TypeDefContext,
   recursiveLookup: (
@@ -15,6 +16,7 @@ export const typeDefForReference = (
     document: OpenApiV3.Document,
     options: {
       nonRequiredType: 'optional' | 'nullable' | 'both';
+      readonlyDTOs: boolean;
     },
     context: TypeDefContext
   ) => string

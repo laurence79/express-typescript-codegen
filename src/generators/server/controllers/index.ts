@@ -8,6 +8,7 @@ export const generateControllers = (
   openApiDocument: OpenApi.Document,
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
+    readonlyDTOs: boolean;
   },
   context: TypeDefContext,
   log?: LogFn

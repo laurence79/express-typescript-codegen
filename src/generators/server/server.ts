@@ -9,12 +9,14 @@ import { TypeDefContext } from '../../helpers/open-api/TypeDefContext';
 export const generateServerClasses = ({
   logger,
   openApiDocument,
-  nonRequiredType
+  nonRequiredType,
+  readonlyDTOs
 }: {
   logger?: Logger;
   openApiDocument: OpenApi.Document;
   serviceName: string;
   nonRequiredType: 'optional' | 'nullable' | 'both';
+  readonlyDTOs: boolean;
 }): string => {
   const log = logger?.create('Generating server');
 
@@ -22,7 +24,7 @@ export const generateServerClasses = ({
 
   const controllers = generateControllers(
     openApiDocument,
-    { nonRequiredType },
+    { nonRequiredType, readonlyDTOs },
     context,
     log
   );

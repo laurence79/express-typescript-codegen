@@ -7,9 +7,9 @@ import {
   parametersTypeNameTemplate
 } from '../../../templates';
 import { controllersTemplate } from '../../../templates/controllersTemplate';
-import { initUpper } from '../../../helpers/initUpper';
 import { initLower } from '../../../helpers/initLower';
 import { TypeDefContext } from '../../../helpers/open-api/TypeDefContext';
+import { makeIdentifier } from '../../../templates/makeIdentifier';
 
 const convertFormDataToSchemaObject = (
   formData?: OpenApiV3.MediaTypeObject
@@ -26,6 +26,7 @@ export const fromV3 = (
   document: OpenApiV3.Document,
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
+    readonlyDTOs: boolean;
   },
   context: TypeDefContext,
   log?: LogFn
@@ -157,10 +158,12 @@ export const fromV3 = (
       const [queryParamsType, querySchema] = nameAndSchemaForParams('query');
       const [pathParamsType, pathSchema] = nameAndSchemaForParams('path');
 
-      const requestTypeName = `${initUpper(operationId)}Request`;
-      const responseTypeName = `${initUpper(operationId)}Response`;
-      const controllerTypeName = `${initUpper(operationId)}Handler`;
-      const controllerMethodName = initLower(operationId);
+      const operationIdAsIdentifier = makeIdentifier(operationId);
+
+      const requestTypeName = `${operationIdAsIdentifier}Request`;
+      const responseTypeName = `${operationIdAsIdentifier}Response`;
+      const controllerTypeName = `${operationIdAsIdentifier}Handler`;
+      const controllerMethodName = initLower(operationIdAsIdentifier);
 
       const expressPath = path.replace(
         /\{(?:.*?)\}/g,

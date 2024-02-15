@@ -4,6 +4,7 @@ export const objectTemplate = (
   fields: { name: string; required: boolean; type: string }[],
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
+    readonlyDTOs: boolean;
   }
 ): string => {
   return fields.none()

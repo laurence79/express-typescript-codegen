@@ -10,11 +10,13 @@ export const typeDefForObject = (
     document: OpenApiV2.Document,
     options: {
       nonRequiredType: 'optional' | 'nullable' | 'both';
+      readonlyDTOs: boolean;
     },
     context: TypeDefContext
   ) => string,
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
+    readonlyDTOs: boolean;
   },
   context: TypeDefContext
 ): string => {

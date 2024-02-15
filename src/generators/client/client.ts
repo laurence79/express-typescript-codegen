@@ -10,12 +10,14 @@ export const generateClient = ({
   logger,
   openApiDocument,
   serviceName,
-  nonRequiredType
+  nonRequiredType,
+  readonlyDTOs
 }: {
   logger?: Logger;
   openApiDocument: OpenApi.Document;
   serviceName: string;
   nonRequiredType: 'optional' | 'nullable' | 'both';
+  readonlyDTOs: boolean;
 }): string => {
   const log = logger?.create('Generating client');
 
@@ -23,7 +25,7 @@ export const generateClient = ({
 
   const methods = generateMethods(
     openApiDocument,
-    { nonRequiredType },
+    { nonRequiredType, readonlyDTOs },
     context,
     log
   );

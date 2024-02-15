@@ -1,18 +1,18 @@
-export type Category = { id?: number; name?: string };
+export type Category = { readonly id?: number; readonly name?: string };
 
-export type Tag = { id?: number; name?: string };
+export type Tag = { readonly id?: number; readonly name?: string };
 
 export type Pet = {
-  id?: number;
-  category?: Category;
-  name: string;
-  photoUrls: Array<string>;
-  tags?: Array<Tag>;
-  status?: 'available' | 'pending' | 'sold';
+  readonly id?: number;
+  readonly category?: Category;
+  readonly name: string;
+  readonly photoUrls: ReadonlyArray<string>;
+  readonly tags?: ReadonlyArray<Tag>;
+  readonly status?: 'available' | 'pending' | 'sold';
 };
 
 export type AddPetRequest = {
-  body: { body: Pet };
+  body: { readonly body: Pet };
   path: {};
   query: {};
   header: {};
@@ -21,7 +21,7 @@ export type AddPetRequest = {
 export type AddPetResponse = { status: 405; body: unknown };
 
 export type UpdatePetRequest = {
-  body: { body: Pet };
+  body: { readonly body: Pet };
   path: {};
   query: {};
   header: {};
@@ -35,28 +35,28 @@ export type UpdatePetResponse =
 export type FindPetsByStatusRequest = {
   body: {};
   path: {};
-  query: { status: string };
+  query: { readonly status: string };
   header: {};
 };
 
 export type FindPetsByStatusResponse =
-  | { status: 200; body: Array<Pet> }
+  | { status: 200; body: ReadonlyArray<Pet> }
   | { status: 400; body: unknown };
 
 export type FindPetsByTagsRequest = {
   body: {};
   path: {};
-  query: { tags: string };
+  query: { readonly tags: string };
   header: {};
 };
 
 export type FindPetsByTagsResponse =
-  | { status: 200; body: Array<Pet> }
+  | { status: 200; body: ReadonlyArray<Pet> }
   | { status: 400; body: unknown };
 
 export type GetPetByIdRequest = {
   body: {};
-  path: { petId: string };
+  path: { readonly petId: string };
   query: {};
   header: {};
 };
@@ -68,7 +68,7 @@ export type GetPetByIdResponse =
 
 export type UpdatePetWithFormRequest = {
   body: {};
-  path: { petId: string };
+  path: { readonly petId: string };
   query: {};
   header: {};
 };
@@ -77,9 +77,9 @@ export type UpdatePetWithFormResponse = { status: 405; body: unknown };
 
 export type DeletePetRequest = {
   body: {};
-  path: { petId: string };
+  path: { readonly petId: string };
   query: {};
-  header: { apiKey?: string };
+  header: { readonly api_key?: string };
 };
 
 export type DeletePetResponse =
@@ -87,16 +87,16 @@ export type DeletePetResponse =
   | { status: 404; body: unknown };
 
 export type Order = {
-  id?: number;
-  petId?: number;
-  quantity?: number;
-  shipDate?: string;
-  status?: 'placed' | 'approved' | 'delivered';
-  complete?: boolean;
+  readonly id?: number;
+  readonly petId?: number;
+  readonly quantity?: number;
+  readonly shipDate?: string;
+  readonly status?: 'placed' | 'approved' | 'delivered';
+  readonly complete?: boolean;
 };
 
 export type PlaceOrderRequest = {
-  body: { body: Order };
+  body: { readonly body: Order };
   path: {};
   query: {};
   header: {};
@@ -108,7 +108,7 @@ export type PlaceOrderResponse =
 
 export type GetOrderByIdRequest = {
   body: {};
-  path: { orderId: string };
+  path: { readonly orderId: string };
   query: {};
   header: {};
 };
@@ -120,7 +120,7 @@ export type GetOrderByIdResponse =
 
 export type DeleteOrderRequest = {
   body: {};
-  path: { orderId: string };
+  path: { readonly orderId: string };
   query: {};
   header: {};
 };
@@ -134,43 +134,43 @@ export type GetInventoryRequest = { body: {}; path: {}; query: {}; header: {} };
 export type GetInventoryResponse = { status: 200; body: unknown };
 
 export type User = {
-  id?: number;
-  username?: string;
-  firstName?: string;
-  lastName?: string;
-  email?: string;
-  password?: string;
-  phone?: string;
-  userStatus?: number;
+  readonly id?: number;
+  readonly username?: string;
+  readonly firstName?: string;
+  readonly lastName?: string;
+  readonly email?: string;
+  readonly password?: string;
+  readonly phone?: string;
+  readonly userStatus?: number;
 };
 
 export type CreateUsersWithArrayInputRequest = {
-  body: { body: Array<User> };
+  body: { readonly body: ReadonlyArray<User> };
   path: {};
   query: {};
   header: {};
 };
 
 export type CreateUsersWithArrayInputResponse = {
-  status: default;
+  status: number;
   body: unknown;
 };
 
 export type CreateUsersWithListInputRequest = {
-  body: { body: Array<User> };
+  body: { readonly body: ReadonlyArray<User> };
   path: {};
   query: {};
   header: {};
 };
 
 export type CreateUsersWithListInputResponse = {
-  status: default;
+  status: number;
   body: unknown;
 };
 
 export type GetUserByNameRequest = {
   body: {};
-  path: { username: string };
+  path: { readonly username: string };
   query: {};
   header: {};
 };
@@ -181,8 +181,8 @@ export type GetUserByNameResponse =
   | { status: 404; body: unknown };
 
 export type UpdateUserRequest = {
-  body: { body: User };
-  path: { username: string };
+  body: { readonly body: User };
+  path: { readonly username: string };
   query: {};
   header: {};
 };
@@ -193,7 +193,7 @@ export type UpdateUserResponse =
 
 export type DeleteUserRequest = {
   body: {};
-  path: { username: string };
+  path: { readonly username: string };
   query: {};
   header: {};
 };
@@ -205,7 +205,7 @@ export type DeleteUserResponse =
 export type LoginUserRequest = {
   body: {};
   path: {};
-  query: { username: string; password: string };
+  query: { readonly username: string; readonly password: string };
   header: {};
 };
 
@@ -215,13 +215,13 @@ export type LoginUserResponse =
 
 export type LogoutUserRequest = { body: {}; path: {}; query: {}; header: {} };
 
-export type LogoutUserResponse = { status: default; body: unknown };
+export type LogoutUserResponse = { status: number; body: unknown };
 
 export type CreateUserRequest = {
-  body: { body: User };
+  body: { readonly body: User };
   path: {};
   query: {};
   header: {};
 };
 
-export type CreateUserResponse = { status: default; body: unknown };
+export type CreateUserResponse = { status: number; body: unknown };

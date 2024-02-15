@@ -8,6 +8,7 @@ export const fromV2 = (
   document: OpenApiV2.Document,
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
+    readonlyDTOs: boolean;
   },
   context: TypeDefContext,
   log?: LogFn
@@ -68,7 +69,9 @@ export const fromV2 = (
           return 'unknown';
         })();
 
-        return `{ status: ${statusCode}; body: ${bodyType}}`;
+        const statusCodeType = statusCode === 'default' ? 'number' : statusCode;
+
+        return `{ status: ${statusCodeType}; body: ${bodyType}}`;
       });
 
       context.emitType(

@@ -54,6 +54,7 @@ export const clientMethodTemplate = (
   }: ClientMethodTemplateArgs,
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
+    readonlyDTOs: boolean;
   }
 ): string => {
   const bodyArg = (() => {
@@ -122,7 +123,7 @@ export const clientMethodTemplate = (
       ${body.fields
         .map(
           f =>
-            `if (body["${f.name}"]) formData.append('${f.name}', body["${f.name}"]);`
+            `if (args.body["${f.name}"]) formData.append('${f.name}', args.body["${f.name}"]);`
         )
         .join('\n')}
     `

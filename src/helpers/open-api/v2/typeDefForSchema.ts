@@ -11,6 +11,7 @@ export const typeDefForSchema = (
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
     binaryType?: 'Buffer' | 'Blob';
+    readonlyDTOs: boolean;
   },
   context: TypeDefContext
 ): string => {
@@ -105,7 +106,13 @@ export const typeDefForSchema = (
         if (Array.isArray(items)) {
           throw new Error(`Array items property must be singular.`);
         }
-        return `Array<${typeDefForSchema(items, document, options, context)}>`;
+        const arrayType = options.readonlyDTOs ? 'ReadonlyArray' : 'Array';
+        return `${arrayType}<${typeDefForSchema(
+          items,
+          document,
+          options,
+          context
+        )}>`;
       }
 
       return 'unknown';

@@ -4,15 +4,18 @@ export const fieldTemplate = (
   type: string,
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
+    readonlyDTOs: boolean;
   }
 ): string => {
   const fieldName = `"${name}"`;
 
-  if (required) {
-    return `${fieldName}: ${type}`;
-  }
+  const { nonRequiredType, readonlyDTOs } = options;
 
-  const { nonRequiredType } = options;
+  const accessModifier = readonlyDTOs ? 'readonly ' : '';
+
+  if (required) {
+    return `${accessModifier}${fieldName}: ${type}`;
+  }
 
   const fieldNameWithOptional = ['optional', 'both'].includes(nonRequiredType)
     ? `${fieldName}?`
@@ -22,5 +25,5 @@ export const fieldTemplate = (
     ? `${type} | null`
     : type;
 
-  return `${fieldNameWithOptional}: ${typeWithNull}`;
+  return `${accessModifier}${fieldNameWithOptional}: ${typeWithNull}`;
 };

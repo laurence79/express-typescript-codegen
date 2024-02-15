@@ -8,6 +8,7 @@ export const generate = (
   openApiDocument: OpenApi.Document,
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
+    readonlyDTOs: boolean;
   },
   context: TypeDefContext,
   log?: LogFn

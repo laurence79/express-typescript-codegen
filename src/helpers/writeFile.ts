@@ -3,7 +3,7 @@ import path from 'path';
 import prettier from 'prettier';
 import { Logger, progress, success, warn } from '../lib/cli-logging';
 
-export const prettierStyle = {
+const prettierStyle = {
   arrowParens: 'avoid',
   semi: true,
   trailingComma: 'none',

@@ -9,17 +9,19 @@ import { TypeDefContext } from '../../helpers/open-api/TypeDefContext';
 export const generateTypes = ({
   logger,
   openApiDocument,
-  nonRequiredType
+  nonRequiredType,
+  readonlyDTOs
 }: {
   logger?: Logger;
   openApiDocument: OpenApi.Document;
   nonRequiredType: 'optional' | 'nullable' | 'both';
+  readonlyDTOs: boolean;
 }): string => {
   const log = logger?.create('Generating types');
 
   const context = new TypeDefContext();
 
-  generate(openApiDocument, { nonRequiredType }, context, log);
+  generate(openApiDocument, { nonRequiredType, readonlyDTOs }, context, log);
 
   const code = context.generateCode();
 

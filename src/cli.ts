@@ -19,7 +19,7 @@ const cmd = new commander.Command('generate')
   .arguments('<spec-filename-or-url>')
   .option(
     '--template <template>',
-    'the type to output. client, server, stubs or types. Default client'
+    'the type to output. client, server or types. Default client'
   )
   .option(
     '--filename <filename>',
@@ -34,6 +34,11 @@ const cmd = new commander.Command('generate')
     'what type fields should be if they are not in the required list. Defaults to undefined',
     'optional'
   )
+  .option(
+    '--readonly-dtos',
+    'specifies that fields in DTOs, and array types therein should be prefixed with `readonly`. Defaults to false',
+    'optional'
+  )
   .action(
     async (
       specFilenameOrUrl: string,
@@ -42,15 +47,14 @@ const cmd = new commander.Command('generate')
         filename: string | undefined;
         serviceName: string | undefined;
         notRequiredType: 'nullable' | 'optional' | 'both';
+        readonlyDtos: boolean;
       }
     ) => {
       const logger = processLogger();
 
       if (
         options.template &&
-        !['client', 'server', 'stubs', 'types'].includes(
-          options.template.toLowerCase()
-        )
+        !['client', 'server', 'types'].includes(options.template.toLowerCase())
       ) {
         commander.help({ error: true });
       }
@@ -74,7 +78,8 @@ const cmd = new commander.Command('generate')
           outputFilename: options.filename,
           serviceName: options.serviceName,
           logger,
-          nonRequiredType: options.notRequiredType
+          nonRequiredType: options.notRequiredType,
+          readonlyDTOs: options.readonlyDtos
         });
 
         logger.log(chalk.green('\nCompleted successfully!\n\n'));
