@@ -131,7 +131,7 @@ export const clientMethodTemplate = (
 
   const url = `\`\${this.baseUrl}${openApiPath.replace(
     /\{(?:.*?)\}/g,
-    x => `$\{args["${x.slice(1, x.length - 1)}"]}`
+    x => `$\{encodeURIComponent(args["${x.slice(1, x.length - 1)}"])}`
   )}${queryParams.any() ? '?${query}' : ''}\``;
 
   const headers = headerParams

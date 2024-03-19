@@ -208,7 +208,7 @@ export class SwaggerPetstoreClient {
     | ResponseWithData<404, undefined>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/pet/${args['petId']}`;
+    const url = `${this.baseUrl}/pet/${encodeURIComponent(args['petId'])}`;
 
     const response = await fetch(url, {
       method,
@@ -255,7 +255,7 @@ export class SwaggerPetstoreClient {
     if (args.body['status']) formData.append('status', args.body['status']);
 
     const method = 'POST';
-    const url = `${this.baseUrl}/pet/${args['petId']}`;
+    const url = `${this.baseUrl}/pet/${encodeURIComponent(args['petId'])}`;
 
     const response = await fetch(url, {
       method,
@@ -286,7 +286,7 @@ export class SwaggerPetstoreClient {
     ResponseWithData<400, undefined> | ResponseWithData<404, undefined>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/pet/${args['petId']}`;
+    const url = `${this.baseUrl}/pet/${encodeURIComponent(args['petId'])}`;
 
     const response = await fetch(url, {
       method,
@@ -365,7 +365,9 @@ export class SwaggerPetstoreClient {
     | ResponseWithData<404, undefined>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/store/order/${args['orderId']}`;
+    const url = `${this.baseUrl}/store/order/${encodeURIComponent(
+      args['orderId']
+    )}`;
 
     const response = await fetch(url, {
       method,
@@ -407,7 +409,9 @@ export class SwaggerPetstoreClient {
     ResponseWithData<400, undefined> | ResponseWithData<404, undefined>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/store/order/${args['orderId']}`;
+    const url = `${this.baseUrl}/store/order/${encodeURIComponent(
+      args['orderId']
+    )}`;
 
     const response = await fetch(url, {
       method,
@@ -526,7 +530,7 @@ export class SwaggerPetstoreClient {
     | ResponseWithData<404, undefined>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/user/${args['username']}`;
+    const url = `${this.baseUrl}/user/${encodeURIComponent(args['username'])}`;
 
     const response = await fetch(url, {
       method,
@@ -568,7 +572,7 @@ export class SwaggerPetstoreClient {
     ResponseWithData<400, undefined> | ResponseWithData<404, undefined>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/user/${args['username']}`;
+    const url = `${this.baseUrl}/user/${encodeURIComponent(args['username'])}`;
 
     const response = await fetch(url, {
       method,
@@ -606,7 +610,7 @@ export class SwaggerPetstoreClient {
     ResponseWithData<400, undefined> | ResponseWithData<404, undefined>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/user/${args['username']}`;
+    const url = `${this.baseUrl}/user/${encodeURIComponent(args['username'])}`;
 
     const response = await fetch(url, {
       method,
