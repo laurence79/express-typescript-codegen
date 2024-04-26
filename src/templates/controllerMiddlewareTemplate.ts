@@ -4,23 +4,10 @@ export const controllerMiddlewareTemplate = (
   handlers: ControllerTemplateArgs[]
 ): string => {
   return `
-    export interface RequestResolver {
-      resolve<T>(token: 
-        | { new (...args: any[]): T; }
-        | string
-        | symbol): T;
-    }
+    type Token<T> = { new(...args: any[]): T } | object;
 
-    @injectable()
-    export class RequestResolverFactory {
-      constructor(public readonly forRequest: (req: Request) => RequestResolver) {};
-    }
-
-    @injectable()
-    export class ControllerMiddleware {
-      constructor(
-        private readonly resolver: RequestResolverFactory
-      ) {}
+    export abstract class ControllerMiddleware {
+      abstract resolver<T>(req: Request, token: Token<T>): T;
 
       private static validate = new Validator({ strict: false, coerceTypes: true }).validate;
 
@@ -43,17 +30,19 @@ export const controllerMiddlewareTemplate = (
               : ''
           }
     
-          asyncRequestHandler<${h.requestTypeName}, ${h.responseTypeName}>(
-            async (req, res, next) => {
-              const controller = this.resolver
-                .forRequest(req)
-                .resolve<${h.controllerTypeName}>(Handlers.${
-            h.controllerTypeName
-          });
+          async (req, res, next) => {
+            try {
+              const controller = this.resolver(req, ${h.controllerTypeName});
     
-              await controller.${h.controllerMethodName}(req, res, next);
+              await controller.${h.controllerMethodName}(
+                req as ${h.requestTypeName},
+                res as ${h.responseTypeName},
+                next
+              );
+            } catch (e: unknown) {
+              next(e);
             }
-          )
+          }
         );
       }
       `

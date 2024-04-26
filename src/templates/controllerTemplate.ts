@@ -42,8 +42,8 @@ export const controllerTemplate = ({
       ${statusCodeType}
     >;
 
-    export interface ${controllerTypeName} {
-      ${controllerMethodName}(
+    export abstract class ${controllerTypeName} {
+      abstract ${controllerMethodName}(
         req: ${requestTypeName},
         res: ${responseTypeName},
         next: NextFunction

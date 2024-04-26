@@ -1,4 +1,4 @@
-import {
+import type {
   Request,
   Response,
   Express,
@@ -7,9 +7,7 @@ import {
   ErrorRequestHandler
 } from 'express-serve-static-core';
 import { Router } from 'express';
-import { asyncRequestHandler } from '@laurence79/express-async-request-handler';
 import { ParsedQs } from 'qs';
-import { injectable } from 'tsyringe';
 import { Validator, ValidationError } from 'express-json-validator-middleware';
 
 export type Category = { readonly id?: number; readonly name?: string };
@@ -100,28 +98,6 @@ export type LoginUserRequestQuery = {
 
 export type CreateUserRequestBody = User;
 
-export const Handlers = {
-  AddPetController: 'AddPetController',
-  UpdatePetController: 'UpdatePetController',
-  FindPetsByStatusController: 'FindPetsByStatusController',
-  FindPetsByTagsController: 'FindPetsByTagsController',
-  GetPetByIdController: 'GetPetByIdController',
-  UpdatePetWithFormController: 'UpdatePetWithFormController',
-  DeletePetController: 'DeletePetController',
-  PlaceOrderController: 'PlaceOrderController',
-  GetOrderByIdController: 'GetOrderByIdController',
-  DeleteOrderController: 'DeleteOrderController',
-  GetInventoryController: 'GetInventoryController',
-  CreateUsersWithArrayInputController: 'CreateUsersWithArrayInputController',
-  CreateUsersWithListInputController: 'CreateUsersWithListInputController',
-  GetUserByNameController: 'GetUserByNameController',
-  UpdateUserController: 'UpdateUserController',
-  DeleteUserController: 'DeleteUserController',
-  LoginUserController: 'LoginUserController',
-  LogoutUserController: 'LogoutUserController',
-  CreateUserController: 'CreateUserController'
-};
-
 export type AddPetRequest = Request<
   ParamsDictionary,
   unknown,
@@ -132,8 +108,8 @@ export type AddPetRequest = Request<
 
 export type AddPetResponse = Response<unknown, Record<string, any>, 405>;
 
-export interface AddPetController {
-  addPet(
+export abstract class AddPetController {
+  abstract addPet(
     req: AddPetRequest,
     res: AddPetResponse,
     next: NextFunction
@@ -154,8 +130,8 @@ export type UpdatePetResponse = Response<
   400 | 404 | 405
 >;
 
-export interface UpdatePetController {
-  updatePet(
+export abstract class UpdatePetController {
+  abstract updatePet(
     req: UpdatePetRequest,
     res: UpdatePetResponse,
     next: NextFunction
@@ -176,8 +152,8 @@ export type FindPetsByStatusResponse = Response<
   200 | 400
 >;
 
-export interface FindPetsByStatusController {
-  findPetsByStatus(
+export abstract class FindPetsByStatusController {
+  abstract findPetsByStatus(
     req: FindPetsByStatusRequest,
     res: FindPetsByStatusResponse,
     next: NextFunction
@@ -198,8 +174,8 @@ export type FindPetsByTagsResponse = Response<
   200 | 400
 >;
 
-export interface FindPetsByTagsController {
-  findPetsByTags(
+export abstract class FindPetsByTagsController {
+  abstract findPetsByTags(
     req: FindPetsByTagsRequest,
     res: FindPetsByTagsResponse,
     next: NextFunction
@@ -220,8 +196,8 @@ export type GetPetByIdResponse = Response<
   200 | 400 | 404
 >;
 
-export interface GetPetByIdController {
-  getPetById(
+export abstract class GetPetByIdController {
+  abstract getPetById(
     req: GetPetByIdRequest,
     res: GetPetByIdResponse,
     next: NextFunction
@@ -242,8 +218,8 @@ export type UpdatePetWithFormResponse = Response<
   405
 >;
 
-export interface UpdatePetWithFormController {
-  updatePetWithForm(
+export abstract class UpdatePetWithFormController {
+  abstract updatePetWithForm(
     req: UpdatePetWithFormRequest,
     res: UpdatePetWithFormResponse,
     next: NextFunction
@@ -264,8 +240,8 @@ export type DeletePetResponse = Response<
   400 | 404
 >;
 
-export interface DeletePetController {
-  deletePet(
+export abstract class DeletePetController {
+  abstract deletePet(
     req: DeletePetRequest,
     res: DeletePetResponse,
     next: NextFunction
@@ -286,8 +262,8 @@ export type PlaceOrderResponse = Response<
   200 | 400
 >;
 
-export interface PlaceOrderController {
-  placeOrder(
+export abstract class PlaceOrderController {
+  abstract placeOrder(
     req: PlaceOrderRequest,
     res: PlaceOrderResponse,
     next: NextFunction
@@ -308,8 +284,8 @@ export type GetOrderByIdResponse = Response<
   200 | 400 | 404
 >;
 
-export interface GetOrderByIdController {
-  getOrderById(
+export abstract class GetOrderByIdController {
+  abstract getOrderById(
     req: GetOrderByIdRequest,
     res: GetOrderByIdResponse,
     next: NextFunction
@@ -330,8 +306,8 @@ export type DeleteOrderResponse = Response<
   400 | 404
 >;
 
-export interface DeleteOrderController {
-  deleteOrder(
+export abstract class DeleteOrderController {
+  abstract deleteOrder(
     req: DeleteOrderRequest,
     res: DeleteOrderResponse,
     next: NextFunction
@@ -352,8 +328,8 @@ export type GetInventoryResponse = Response<
   200
 >;
 
-export interface GetInventoryController {
-  getInventory(
+export abstract class GetInventoryController {
+  abstract getInventory(
     req: GetInventoryRequest,
     res: GetInventoryResponse,
     next: NextFunction
@@ -374,8 +350,8 @@ export type CreateUsersWithArrayInputResponse = Response<
   number
 >;
 
-export interface CreateUsersWithArrayInputController {
-  createUsersWithArrayInput(
+export abstract class CreateUsersWithArrayInputController {
+  abstract createUsersWithArrayInput(
     req: CreateUsersWithArrayInputRequest,
     res: CreateUsersWithArrayInputResponse,
     next: NextFunction
@@ -396,8 +372,8 @@ export type CreateUsersWithListInputResponse = Response<
   number
 >;
 
-export interface CreateUsersWithListInputController {
-  createUsersWithListInput(
+export abstract class CreateUsersWithListInputController {
+  abstract createUsersWithListInput(
     req: CreateUsersWithListInputRequest,
     res: CreateUsersWithListInputResponse,
     next: NextFunction
@@ -418,8 +394,8 @@ export type GetUserByNameResponse = Response<
   200 | 400 | 404
 >;
 
-export interface GetUserByNameController {
-  getUserByName(
+export abstract class GetUserByNameController {
+  abstract getUserByName(
     req: GetUserByNameRequest,
     res: GetUserByNameResponse,
     next: NextFunction
@@ -440,8 +416,8 @@ export type UpdateUserResponse = Response<
   400 | 404
 >;
 
-export interface UpdateUserController {
-  updateUser(
+export abstract class UpdateUserController {
+  abstract updateUser(
     req: UpdateUserRequest,
     res: UpdateUserResponse,
     next: NextFunction
@@ -462,8 +438,8 @@ export type DeleteUserResponse = Response<
   400 | 404
 >;
 
-export interface DeleteUserController {
-  deleteUser(
+export abstract class DeleteUserController {
+  abstract deleteUser(
     req: DeleteUserRequest,
     res: DeleteUserResponse,
     next: NextFunction
@@ -484,8 +460,8 @@ export type LoginUserResponse = Response<
   200 | 400
 >;
 
-export interface LoginUserController {
-  loginUser(
+export abstract class LoginUserController {
+  abstract loginUser(
     req: LoginUserRequest,
     res: LoginUserResponse,
     next: NextFunction
@@ -502,8 +478,8 @@ export type LogoutUserRequest = Request<
 
 export type LogoutUserResponse = Response<unknown, Record<string, any>, number>;
 
-export interface LogoutUserController {
-  logoutUser(
+export abstract class LogoutUserController {
+  abstract logoutUser(
     req: LogoutUserRequest,
     res: LogoutUserResponse,
     next: NextFunction
@@ -520,26 +496,18 @@ export type CreateUserRequest = Request<
 
 export type CreateUserResponse = Response<unknown, Record<string, any>, number>;
 
-export interface CreateUserController {
-  createUser(
+export abstract class CreateUserController {
+  abstract createUser(
     req: CreateUserRequest,
     res: CreateUserResponse,
     next: NextFunction
   ): Promise<unknown | void>;
 }
 
-export interface RequestResolver {
-  resolve<T>(token: { new (...args: any[]): T } | string | symbol): T;
-}
+type Token<T> = { new (...args: any[]): T } | object;
 
-@injectable()
-export class RequestResolverFactory {
-  constructor(public readonly forRequest: (req: Request) => RequestResolver) {}
-}
-
-@injectable()
-export class ControllerMiddleware {
-  constructor(private readonly resolver: RequestResolverFactory) {}
+export abstract class ControllerMiddleware {
+  abstract resolver<T>(req: Request, token: Token<T>): T;
 
   private static validate = new Validator({ strict: false, coerceTypes: true })
     .validate;
@@ -600,15 +568,19 @@ export class ControllerMiddleware {
         }
       }),
 
-      asyncRequestHandler<AddPetRequest, AddPetResponse>(
-        async (req, res, next) => {
-          const controller = this.resolver
-            .forRequest(req)
-            .resolve<AddPetController>(Handlers.AddPetController);
+      async (req, res, next) => {
+        try {
+          const controller = this.resolver(req, AddPetController);
 
-          await controller.addPet(req, res, next);
+          await controller.addPet(
+            req as AddPetRequest,
+            res as AddPetResponse,
+            next
+          );
+        } catch (e: unknown) {
+          next(e);
         }
-      )
+      }
     );
   }
 
@@ -668,15 +640,19 @@ export class ControllerMiddleware {
         }
       }),
 
-      asyncRequestHandler<UpdatePetRequest, UpdatePetResponse>(
-        async (req, res, next) => {
-          const controller = this.resolver
-            .forRequest(req)
-            .resolve<UpdatePetController>(Handlers.UpdatePetController);
+      async (req, res, next) => {
+        try {
+          const controller = this.resolver(req, UpdatePetController);
 
-          await controller.updatePet(req, res, next);
+          await controller.updatePet(
+            req as UpdatePetRequest,
+            res as UpdatePetResponse,
+            next
+          );
+        } catch (e: unknown) {
+          next(e);
         }
-      )
+      }
     );
   }
 
@@ -713,17 +689,19 @@ export class ControllerMiddleware {
         }
       }),
 
-      asyncRequestHandler<FindPetsByStatusRequest, FindPetsByStatusResponse>(
-        async (req, res, next) => {
-          const controller = this.resolver
-            .forRequest(req)
-            .resolve<FindPetsByStatusController>(
-              Handlers.FindPetsByStatusController
-            );
+      async (req, res, next) => {
+        try {
+          const controller = this.resolver(req, FindPetsByStatusController);
 
-          await controller.findPetsByStatus(req, res, next);
+          await controller.findPetsByStatus(
+            req as FindPetsByStatusRequest,
+            res as FindPetsByStatusResponse,
+            next
+          );
+        } catch (e: unknown) {
+          next(e);
         }
-      )
+      }
     );
   }
 
@@ -751,17 +729,19 @@ export class ControllerMiddleware {
         }
       }),
 
-      asyncRequestHandler<FindPetsByTagsRequest, FindPetsByTagsResponse>(
-        async (req, res, next) => {
-          const controller = this.resolver
-            .forRequest(req)
-            .resolve<FindPetsByTagsController>(
-              Handlers.FindPetsByTagsController
-            );
+      async (req, res, next) => {
+        try {
+          const controller = this.resolver(req, FindPetsByTagsController);
 
-          await controller.findPetsByTags(req, res, next);
+          await controller.findPetsByTags(
+            req as FindPetsByTagsRequest,
+            res as FindPetsByTagsResponse,
+            next
+          );
+        } catch (e: unknown) {
+          next(e);
         }
-      )
+      }
     );
   }
 
@@ -783,15 +763,19 @@ export class ControllerMiddleware {
         }
       }),
 
-      asyncRequestHandler<GetPetByIdRequest, GetPetByIdResponse>(
-        async (req, res, next) => {
-          const controller = this.resolver
-            .forRequest(req)
-            .resolve<GetPetByIdController>(Handlers.GetPetByIdController);
+      async (req, res, next) => {
+        try {
+          const controller = this.resolver(req, GetPetByIdController);
 
-          await controller.getPetById(req, res, next);
+          await controller.getPetById(
+            req as GetPetByIdRequest,
+            res as GetPetByIdResponse,
+            next
+          );
+        } catch (e: unknown) {
+          next(e);
         }
-      )
+      }
     );
   }
 
@@ -813,17 +797,19 @@ export class ControllerMiddleware {
         }
       }),
 
-      asyncRequestHandler<UpdatePetWithFormRequest, UpdatePetWithFormResponse>(
-        async (req, res, next) => {
-          const controller = this.resolver
-            .forRequest(req)
-            .resolve<UpdatePetWithFormController>(
-              Handlers.UpdatePetWithFormController
-            );
+      async (req, res, next) => {
+        try {
+          const controller = this.resolver(req, UpdatePetWithFormController);
 
-          await controller.updatePetWithForm(req, res, next);
+          await controller.updatePetWithForm(
+            req as UpdatePetWithFormRequest,
+            res as UpdatePetWithFormResponse,
+            next
+          );
+        } catch (e: unknown) {
+          next(e);
         }
-      )
+      }
     );
   }
 
@@ -845,15 +831,19 @@ export class ControllerMiddleware {
         }
       }),
 
-      asyncRequestHandler<DeletePetRequest, DeletePetResponse>(
-        async (req, res, next) => {
-          const controller = this.resolver
-            .forRequest(req)
-            .resolve<DeletePetController>(Handlers.DeletePetController);
+      async (req, res, next) => {
+        try {
+          const controller = this.resolver(req, DeletePetController);
 
-          await controller.deletePet(req, res, next);
+          await controller.deletePet(
+            req as DeletePetRequest,
+            res as DeletePetResponse,
+            next
+          );
+        } catch (e: unknown) {
+          next(e);
         }
-      )
+      }
     );
   }
 
@@ -886,15 +876,19 @@ export class ControllerMiddleware {
         }
       }),
 
-      asyncRequestHandler<PlaceOrderRequest, PlaceOrderResponse>(
-        async (req, res, next) => {
-          const controller = this.resolver
-            .forRequest(req)
-            .resolve<PlaceOrderController>(Handlers.PlaceOrderController);
+      async (req, res, next) => {
+        try {
+          const controller = this.resolver(req, PlaceOrderController);
 
-          await controller.placeOrder(req, res, next);
+          await controller.placeOrder(
+            req as PlaceOrderRequest,
+            res as PlaceOrderResponse,
+            next
+          );
+        } catch (e: unknown) {
+          next(e);
         }
-      )
+      }
     );
   }
 
@@ -918,15 +912,19 @@ export class ControllerMiddleware {
         }
       }),
 
-      asyncRequestHandler<GetOrderByIdRequest, GetOrderByIdResponse>(
-        async (req, res, next) => {
-          const controller = this.resolver
-            .forRequest(req)
-            .resolve<GetOrderByIdController>(Handlers.GetOrderByIdController);
+      async (req, res, next) => {
+        try {
+          const controller = this.resolver(req, GetOrderByIdController);
 
-          await controller.getOrderById(req, res, next);
+          await controller.getOrderById(
+            req as GetOrderByIdRequest,
+            res as GetOrderByIdResponse,
+            next
+          );
+        } catch (e: unknown) {
+          next(e);
         }
-      )
+      }
     );
   }
 
@@ -949,15 +947,19 @@ export class ControllerMiddleware {
         }
       }),
 
-      asyncRequestHandler<DeleteOrderRequest, DeleteOrderResponse>(
-        async (req, res, next) => {
-          const controller = this.resolver
-            .forRequest(req)
-            .resolve<DeleteOrderController>(Handlers.DeleteOrderController);
+      async (req, res, next) => {
+        try {
+          const controller = this.resolver(req, DeleteOrderController);
 
-          await controller.deleteOrder(req, res, next);
+          await controller.deleteOrder(
+            req as DeleteOrderRequest,
+            res as DeleteOrderResponse,
+            next
+          );
+        } catch (e: unknown) {
+          next(e);
         }
-      )
+      }
     );
   }
 
@@ -965,15 +967,19 @@ export class ControllerMiddleware {
     router.get(
       '/store/inventory',
 
-      asyncRequestHandler<GetInventoryRequest, GetInventoryResponse>(
-        async (req, res, next) => {
-          const controller = this.resolver
-            .forRequest(req)
-            .resolve<GetInventoryController>(Handlers.GetInventoryController);
+      async (req, res, next) => {
+        try {
+          const controller = this.resolver(req, GetInventoryController);
 
-          await controller.getInventory(req, res, next);
+          await controller.getInventory(
+            req as GetInventoryRequest,
+            res as GetInventoryResponse,
+            next
+          );
+        } catch (e: unknown) {
+          next(e);
         }
-      )
+      }
     );
   }
 
@@ -1009,18 +1015,22 @@ export class ControllerMiddleware {
         }
       }),
 
-      asyncRequestHandler<
-        CreateUsersWithArrayInputRequest,
-        CreateUsersWithArrayInputResponse
-      >(async (req, res, next) => {
-        const controller = this.resolver
-          .forRequest(req)
-          .resolve<CreateUsersWithArrayInputController>(
-            Handlers.CreateUsersWithArrayInputController
+      async (req, res, next) => {
+        try {
+          const controller = this.resolver(
+            req,
+            CreateUsersWithArrayInputController
           );
 
-        await controller.createUsersWithArrayInput(req, res, next);
-      })
+          await controller.createUsersWithArrayInput(
+            req as CreateUsersWithArrayInputRequest,
+            res as CreateUsersWithArrayInputResponse,
+            next
+          );
+        } catch (e: unknown) {
+          next(e);
+        }
+      }
     );
   }
 
@@ -1056,18 +1066,22 @@ export class ControllerMiddleware {
         }
       }),
 
-      asyncRequestHandler<
-        CreateUsersWithListInputRequest,
-        CreateUsersWithListInputResponse
-      >(async (req, res, next) => {
-        const controller = this.resolver
-          .forRequest(req)
-          .resolve<CreateUsersWithListInputController>(
-            Handlers.CreateUsersWithListInputController
+      async (req, res, next) => {
+        try {
+          const controller = this.resolver(
+            req,
+            CreateUsersWithListInputController
           );
 
-        await controller.createUsersWithListInput(req, res, next);
-      })
+          await controller.createUsersWithListInput(
+            req as CreateUsersWithListInputRequest,
+            res as CreateUsersWithListInputResponse,
+            next
+          );
+        } catch (e: unknown) {
+          next(e);
+        }
+      }
     );
   }
 
@@ -1089,15 +1103,19 @@ export class ControllerMiddleware {
         }
       }),
 
-      asyncRequestHandler<GetUserByNameRequest, GetUserByNameResponse>(
-        async (req, res, next) => {
-          const controller = this.resolver
-            .forRequest(req)
-            .resolve<GetUserByNameController>(Handlers.GetUserByNameController);
+      async (req, res, next) => {
+        try {
+          const controller = this.resolver(req, GetUserByNameController);
 
-          await controller.getUserByName(req, res, next);
+          await controller.getUserByName(
+            req as GetUserByNameRequest,
+            res as GetUserByNameResponse,
+            next
+          );
+        } catch (e: unknown) {
+          next(e);
         }
-      )
+      }
     );
   }
 
@@ -1143,15 +1161,19 @@ export class ControllerMiddleware {
         }
       }),
 
-      asyncRequestHandler<UpdateUserRequest, UpdateUserResponse>(
-        async (req, res, next) => {
-          const controller = this.resolver
-            .forRequest(req)
-            .resolve<UpdateUserController>(Handlers.UpdateUserController);
+      async (req, res, next) => {
+        try {
+          const controller = this.resolver(req, UpdateUserController);
 
-          await controller.updateUser(req, res, next);
+          await controller.updateUser(
+            req as UpdateUserRequest,
+            res as UpdateUserResponse,
+            next
+          );
+        } catch (e: unknown) {
+          next(e);
         }
-      )
+      }
     );
   }
 
@@ -1172,15 +1194,19 @@ export class ControllerMiddleware {
         }
       }),
 
-      asyncRequestHandler<DeleteUserRequest, DeleteUserResponse>(
-        async (req, res, next) => {
-          const controller = this.resolver
-            .forRequest(req)
-            .resolve<DeleteUserController>(Handlers.DeleteUserController);
+      async (req, res, next) => {
+        try {
+          const controller = this.resolver(req, DeleteUserController);
 
-          await controller.deleteUser(req, res, next);
+          await controller.deleteUser(
+            req as DeleteUserRequest,
+            res as DeleteUserResponse,
+            next
+          );
+        } catch (e: unknown) {
+          next(e);
         }
-      )
+      }
     );
   }
 
@@ -1205,15 +1231,19 @@ export class ControllerMiddleware {
         }
       }),
 
-      asyncRequestHandler<LoginUserRequest, LoginUserResponse>(
-        async (req, res, next) => {
-          const controller = this.resolver
-            .forRequest(req)
-            .resolve<LoginUserController>(Handlers.LoginUserController);
+      async (req, res, next) => {
+        try {
+          const controller = this.resolver(req, LoginUserController);
 
-          await controller.loginUser(req, res, next);
+          await controller.loginUser(
+            req as LoginUserRequest,
+            res as LoginUserResponse,
+            next
+          );
+        } catch (e: unknown) {
+          next(e);
         }
-      )
+      }
     );
   }
 
@@ -1221,15 +1251,19 @@ export class ControllerMiddleware {
     router.get(
       '/user/logout',
 
-      asyncRequestHandler<LogoutUserRequest, LogoutUserResponse>(
-        async (req, res, next) => {
-          const controller = this.resolver
-            .forRequest(req)
-            .resolve<LogoutUserController>(Handlers.LogoutUserController);
+      async (req, res, next) => {
+        try {
+          const controller = this.resolver(req, LogoutUserController);
 
-          await controller.logoutUser(req, res, next);
+          await controller.logoutUser(
+            req as LogoutUserRequest,
+            res as LogoutUserResponse,
+            next
+          );
+        } catch (e: unknown) {
+          next(e);
         }
-      )
+      }
     );
   }
 
@@ -1264,15 +1298,19 @@ export class ControllerMiddleware {
         }
       }),
 
-      asyncRequestHandler<CreateUserRequest, CreateUserResponse>(
-        async (req, res, next) => {
-          const controller = this.resolver
-            .forRequest(req)
-            .resolve<CreateUserController>(Handlers.CreateUserController);
+      async (req, res, next) => {
+        try {
+          const controller = this.resolver(req, CreateUserController);
 
-          await controller.createUser(req, res, next);
+          await controller.createUser(
+            req as CreateUserRequest,
+            res as CreateUserResponse,
+            next
+          );
+        } catch (e: unknown) {
+          next(e);
         }
-      )
+      }
     );
   }
 

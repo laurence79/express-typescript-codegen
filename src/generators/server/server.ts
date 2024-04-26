@@ -30,11 +30,9 @@ export const generateServerClasses = ({
   );
 
   const code = `
-    import { Request, Response, Express, NextFunction, ParamsDictionary, ErrorRequestHandler } from 'express-serve-static-core';
+    import type { Request, Response, Express, NextFunction, ParamsDictionary, ErrorRequestHandler } from 'express-serve-static-core';
     import { Router } from 'express';
-    import { asyncRequestHandler } from '@laurence79/express-async-request-handler';
     import { ParsedQs } from 'qs';
-    import { injectable } from 'tsyringe';
     import { Validator, ValidationError } from 'express-json-validator-middleware';
     
     ${context.generateCode()}

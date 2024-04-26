@@ -23,7 +23,6 @@
     "apidevtools",
     "openapi",
     "rivr",
-    "tsyringe",
     "ttsc"
   ]
 }
