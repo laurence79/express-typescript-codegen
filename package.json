@@ -89,5 +89,8 @@
   },
   "peerDependencies": {
     "tslib": "^2.2.0"
+  },
+  "engines": {
+    "node": ">=16"
   }
 }

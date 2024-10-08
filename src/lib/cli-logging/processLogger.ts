@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import chalk from 'chalk';
+import readline from 'readline';
 import { LogFn, Logger } from './types';
 
 const o = process.stdout;
@@ -9,7 +10,7 @@ const progressLogger = (start: number): LogFn => {
   let last = 0;
 
   return m => {
-    o.cursorTo(start);
+    readline.cursorTo(o, start);
     o.write(m);
 
     if (m.length < last) {
