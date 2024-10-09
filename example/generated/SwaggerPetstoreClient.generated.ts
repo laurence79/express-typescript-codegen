@@ -39,13 +39,41 @@ type ResponseWithData<TStatus, TData> = {
   body: TData;
 };
 
-type LogFn = (message: string, data: Record<string, unknown>) => void;
+type LegacyLogFn = (message: string, data: Record<string, unknown>) => void;
+
+type Logger = Pick<typeof console, 'info' | 'error'>;
+
+export interface SwaggerPetstoreClientOptions {
+  fetch: typeof fetch;
+  logger: Logger | null;
+  requestOptions: RequestInit;
+}
 
 export class SwaggerPetstoreClient {
   public constructor(
     public readonly baseUrl: string,
-    private readonly logger?: LogFn
-  ) {}
+    options?: Partial<SwaggerPetstoreClientOptions> | LegacyLogFn
+  ) {
+    if (typeof options === 'function') {
+      this.options = {
+        fetch,
+        logger: {
+          info: options,
+          error: options
+        },
+        requestOptions: {}
+      };
+    } else {
+      this.options = {
+        fetch,
+        logger: console,
+        requestOptions: {},
+        ...options
+      };
+    }
+  }
+
+  private readonly options: SwaggerPetstoreClientOptions;
 
   public async addPet(
     args: { readonly body: Pet },
@@ -53,27 +81,45 @@ export class SwaggerPetstoreClient {
   ): Promise<ResponseWithData<405, undefined>> {
     const method = 'POST';
     const url = `${this.baseUrl}/pet`;
-
-    const response = await fetch(url, {
+    const fetchOptions = {
       method,
+      ...options,
+      ...this.options.requestOptions,
       body: JSON.stringify(args.body),
-      headers: { 'Content-Type': 'application/json' },
-      ...options
-    });
+      headers: {
+        'Content-Type': 'application/json',
+        ...options?.headers,
+        ...this.options.requestOptions.headers
+      }
+    };
 
-    const { status: $status } = response;
+    try {
+      const response = await this.options.fetch(url, fetchOptions);
 
-    this.logger?.('REST API Call', { method, url, status: $status });
+      const { status: $status } = response;
 
-    switch ($status) {
-      case 405:
-        return {
-          status: $status,
-          body: undefined
-        };
+      this.options.logger?.info(
+        `[${fetchOptions.method}] ${url} status ${String($status)}`,
+        { responseHeaders: response.headers }
+      );
 
-      default:
-        throw new Error(`Unexpected status ${$status}`);
+      switch ($status) {
+        case 405:
+          return {
+            status: $status,
+            body: undefined
+          };
+
+        default:
+          throw new Error(`Unexpected status ${$status}`);
+      }
+    } catch (error: unknown) {
+      this.options.logger?.error(
+        `Error while ${fetchOptions.method}ing from/to ${url}`,
+        { error }
+      );
+
+      throw error;
     }
   }
 
@@ -87,39 +133,57 @@ export class SwaggerPetstoreClient {
   > {
     const method = 'PUT';
     const url = `${this.baseUrl}/pet`;
-
-    const response = await fetch(url, {
+    const fetchOptions = {
       method,
+      ...options,
+      ...this.options.requestOptions,
       body: JSON.stringify(args.body),
-      headers: { 'Content-Type': 'application/json' },
-      ...options
-    });
+      headers: {
+        'Content-Type': 'application/json',
+        ...options?.headers,
+        ...this.options.requestOptions.headers
+      }
+    };
 
-    const { status: $status } = response;
+    try {
+      const response = await this.options.fetch(url, fetchOptions);
 
-    this.logger?.('REST API Call', { method, url, status: $status });
+      const { status: $status } = response;
 
-    switch ($status) {
-      case 400:
-        return {
-          status: $status,
-          body: undefined
-        };
+      this.options.logger?.info(
+        `[${fetchOptions.method}] ${url} status ${String($status)}`,
+        { responseHeaders: response.headers }
+      );
 
-      case 404:
-        return {
-          status: $status,
-          body: undefined
-        };
+      switch ($status) {
+        case 400:
+          return {
+            status: $status,
+            body: undefined
+          };
 
-      case 405:
-        return {
-          status: $status,
-          body: undefined
-        };
+        case 404:
+          return {
+            status: $status,
+            body: undefined
+          };
 
-      default:
-        throw new Error(`Unexpected status ${$status}`);
+        case 405:
+          return {
+            status: $status,
+            body: undefined
+          };
+
+        default:
+          throw new Error(`Unexpected status ${$status}`);
+      }
+    } catch (error: unknown) {
+      this.options.logger?.error(
+        `Error while ${fetchOptions.method}ing from/to ${url}`,
+        { error }
+      );
+
+      throw error;
     }
   }
 
@@ -133,31 +197,46 @@ export class SwaggerPetstoreClient {
 
     const method = 'GET';
     const url = `${this.baseUrl}/pet/findByStatus?${query}`;
-
-    const response = await fetch(url, {
+    const fetchOptions = {
       method,
-      ...options
-    });
+      ...options,
+      ...this.options.requestOptions,
+      headers: { ...options?.headers, ...this.options.requestOptions.headers }
+    };
 
-    const { status: $status } = response;
+    try {
+      const response = await this.options.fetch(url, fetchOptions);
 
-    this.logger?.('REST API Call', { method, url, status: $status });
+      const { status: $status } = response;
 
-    switch ($status) {
-      case 200:
-        return {
-          status: $status,
-          body: (await response.json()) as ReadonlyArray<Pet>
-        };
+      this.options.logger?.info(
+        `[${fetchOptions.method}] ${url} status ${String($status)}`,
+        { responseHeaders: response.headers }
+      );
 
-      case 400:
-        return {
-          status: $status,
-          body: undefined
-        };
+      switch ($status) {
+        case 200:
+          return {
+            status: $status,
+            body: (await response.json()) as ReadonlyArray<Pet>
+          };
 
-      default:
-        throw new Error(`Unexpected status ${$status}`);
+        case 400:
+          return {
+            status: $status,
+            body: undefined
+          };
+
+        default:
+          throw new Error(`Unexpected status ${$status}`);
+      }
+    } catch (error: unknown) {
+      this.options.logger?.error(
+        `Error while ${fetchOptions.method}ing from/to ${url}`,
+        { error }
+      );
+
+      throw error;
     }
   }
 
@@ -171,31 +250,46 @@ export class SwaggerPetstoreClient {
 
     const method = 'GET';
     const url = `${this.baseUrl}/pet/findByTags?${query}`;
-
-    const response = await fetch(url, {
+    const fetchOptions = {
       method,
-      ...options
-    });
+      ...options,
+      ...this.options.requestOptions,
+      headers: { ...options?.headers, ...this.options.requestOptions.headers }
+    };
 
-    const { status: $status } = response;
+    try {
+      const response = await this.options.fetch(url, fetchOptions);
 
-    this.logger?.('REST API Call', { method, url, status: $status });
+      const { status: $status } = response;
 
-    switch ($status) {
-      case 200:
-        return {
-          status: $status,
-          body: (await response.json()) as ReadonlyArray<Pet>
-        };
+      this.options.logger?.info(
+        `[${fetchOptions.method}] ${url} status ${String($status)}`,
+        { responseHeaders: response.headers }
+      );
 
-      case 400:
-        return {
-          status: $status,
-          body: undefined
-        };
+      switch ($status) {
+        case 200:
+          return {
+            status: $status,
+            body: (await response.json()) as ReadonlyArray<Pet>
+          };
 
-      default:
-        throw new Error(`Unexpected status ${$status}`);
+        case 400:
+          return {
+            status: $status,
+            body: undefined
+          };
+
+        default:
+          throw new Error(`Unexpected status ${$status}`);
+      }
+    } catch (error: unknown) {
+      this.options.logger?.error(
+        `Error while ${fetchOptions.method}ing from/to ${url}`,
+        { error }
+      );
+
+      throw error;
     }
   }
 
@@ -209,37 +303,52 @@ export class SwaggerPetstoreClient {
   > {
     const method = 'GET';
     const url = `${this.baseUrl}/pet/${encodeURIComponent(args['petId'])}`;
-
-    const response = await fetch(url, {
+    const fetchOptions = {
       method,
-      ...options
-    });
+      ...options,
+      ...this.options.requestOptions,
+      headers: { ...options?.headers, ...this.options.requestOptions.headers }
+    };
 
-    const { status: $status } = response;
+    try {
+      const response = await this.options.fetch(url, fetchOptions);
 
-    this.logger?.('REST API Call', { method, url, status: $status });
+      const { status: $status } = response;
 
-    switch ($status) {
-      case 200:
-        return {
-          status: $status,
-          body: (await response.json()) as Pet
-        };
+      this.options.logger?.info(
+        `[${fetchOptions.method}] ${url} status ${String($status)}`,
+        { responseHeaders: response.headers }
+      );
 
-      case 400:
-        return {
-          status: $status,
-          body: undefined
-        };
+      switch ($status) {
+        case 200:
+          return {
+            status: $status,
+            body: (await response.json()) as Pet
+          };
 
-      case 404:
-        return {
-          status: $status,
-          body: undefined
-        };
+        case 400:
+          return {
+            status: $status,
+            body: undefined
+          };
 
-      default:
-        throw new Error(`Unexpected status ${$status}`);
+        case 404:
+          return {
+            status: $status,
+            body: undefined
+          };
+
+        default:
+          throw new Error(`Unexpected status ${$status}`);
+      }
+    } catch (error: unknown) {
+      this.options.logger?.error(
+        `Error while ${fetchOptions.method}ing from/to ${url}`,
+        { error }
+      );
+
+      throw error;
     }
   }
 
@@ -256,26 +365,41 @@ export class SwaggerPetstoreClient {
 
     const method = 'POST';
     const url = `${this.baseUrl}/pet/${encodeURIComponent(args['petId'])}`;
-
-    const response = await fetch(url, {
+    const fetchOptions = {
       method,
+      ...options,
+      ...this.options.requestOptions,
       body: formData,
-      ...options
-    });
+      headers: { ...options?.headers, ...this.options.requestOptions.headers }
+    };
 
-    const { status: $status } = response;
+    try {
+      const response = await this.options.fetch(url, fetchOptions);
 
-    this.logger?.('REST API Call', { method, url, status: $status });
+      const { status: $status } = response;
 
-    switch ($status) {
-      case 405:
-        return {
-          status: $status,
-          body: undefined
-        };
+      this.options.logger?.info(
+        `[${fetchOptions.method}] ${url} status ${String($status)}`,
+        { responseHeaders: response.headers }
+      );
 
-      default:
-        throw new Error(`Unexpected status ${$status}`);
+      switch ($status) {
+        case 405:
+          return {
+            status: $status,
+            body: undefined
+          };
+
+        default:
+          throw new Error(`Unexpected status ${$status}`);
+      }
+    } catch (error: unknown) {
+      this.options.logger?.error(
+        `Error while ${fetchOptions.method}ing from/to ${url}`,
+        { error }
+      );
+
+      throw error;
     }
   }
 
@@ -287,36 +411,52 @@ export class SwaggerPetstoreClient {
   > {
     const method = 'DELETE';
     const url = `${this.baseUrl}/pet/${encodeURIComponent(args['petId'])}`;
-
-    const response = await fetch(url, {
+    const fetchOptions = {
       method,
+      ...options,
+      ...this.options.requestOptions,
       headers: {
         ...(typeof args['api_key'] !== 'undefined' && args['api_key'] !== null
           ? { ['api_key']: args['api_key'] }
-          : {})
-      },
-      ...options
-    });
+          : {}),
+        ...options?.headers,
+        ...this.options.requestOptions.headers
+      }
+    };
 
-    const { status: $status } = response;
+    try {
+      const response = await this.options.fetch(url, fetchOptions);
 
-    this.logger?.('REST API Call', { method, url, status: $status });
+      const { status: $status } = response;
 
-    switch ($status) {
-      case 400:
-        return {
-          status: $status,
-          body: undefined
-        };
+      this.options.logger?.info(
+        `[${fetchOptions.method}] ${url} status ${String($status)}`,
+        { responseHeaders: response.headers }
+      );
 
-      case 404:
-        return {
-          status: $status,
-          body: undefined
-        };
+      switch ($status) {
+        case 400:
+          return {
+            status: $status,
+            body: undefined
+          };
 
-      default:
-        throw new Error(`Unexpected status ${$status}`);
+        case 404:
+          return {
+            status: $status,
+            body: undefined
+          };
+
+        default:
+          throw new Error(`Unexpected status ${$status}`);
+      }
+    } catch (error: unknown) {
+      this.options.logger?.error(
+        `Error while ${fetchOptions.method}ing from/to ${url}`,
+        { error }
+      );
+
+      throw error;
     }
   }
 
@@ -326,33 +466,51 @@ export class SwaggerPetstoreClient {
   ): Promise<ResponseWithData<200, Order> | ResponseWithData<400, undefined>> {
     const method = 'POST';
     const url = `${this.baseUrl}/store/order`;
-
-    const response = await fetch(url, {
+    const fetchOptions = {
       method,
+      ...options,
+      ...this.options.requestOptions,
       body: JSON.stringify(args.body),
-      headers: { 'Content-Type': 'application/json' },
-      ...options
-    });
+      headers: {
+        'Content-Type': 'application/json',
+        ...options?.headers,
+        ...this.options.requestOptions.headers
+      }
+    };
 
-    const { status: $status } = response;
+    try {
+      const response = await this.options.fetch(url, fetchOptions);
 
-    this.logger?.('REST API Call', { method, url, status: $status });
+      const { status: $status } = response;
 
-    switch ($status) {
-      case 200:
-        return {
-          status: $status,
-          body: (await response.json()) as Order
-        };
+      this.options.logger?.info(
+        `[${fetchOptions.method}] ${url} status ${String($status)}`,
+        { responseHeaders: response.headers }
+      );
 
-      case 400:
-        return {
-          status: $status,
-          body: undefined
-        };
+      switch ($status) {
+        case 200:
+          return {
+            status: $status,
+            body: (await response.json()) as Order
+          };
 
-      default:
-        throw new Error(`Unexpected status ${$status}`);
+        case 400:
+          return {
+            status: $status,
+            body: undefined
+          };
+
+        default:
+          throw new Error(`Unexpected status ${$status}`);
+      }
+    } catch (error: unknown) {
+      this.options.logger?.error(
+        `Error while ${fetchOptions.method}ing from/to ${url}`,
+        { error }
+      );
+
+      throw error;
     }
   }
 
@@ -368,37 +526,52 @@ export class SwaggerPetstoreClient {
     const url = `${this.baseUrl}/store/order/${encodeURIComponent(
       args['orderId']
     )}`;
-
-    const response = await fetch(url, {
+    const fetchOptions = {
       method,
-      ...options
-    });
+      ...options,
+      ...this.options.requestOptions,
+      headers: { ...options?.headers, ...this.options.requestOptions.headers }
+    };
 
-    const { status: $status } = response;
+    try {
+      const response = await this.options.fetch(url, fetchOptions);
 
-    this.logger?.('REST API Call', { method, url, status: $status });
+      const { status: $status } = response;
 
-    switch ($status) {
-      case 200:
-        return {
-          status: $status,
-          body: (await response.json()) as Order
-        };
+      this.options.logger?.info(
+        `[${fetchOptions.method}] ${url} status ${String($status)}`,
+        { responseHeaders: response.headers }
+      );
 
-      case 400:
-        return {
-          status: $status,
-          body: undefined
-        };
+      switch ($status) {
+        case 200:
+          return {
+            status: $status,
+            body: (await response.json()) as Order
+          };
 
-      case 404:
-        return {
-          status: $status,
-          body: undefined
-        };
+        case 400:
+          return {
+            status: $status,
+            body: undefined
+          };
 
-      default:
-        throw new Error(`Unexpected status ${$status}`);
+        case 404:
+          return {
+            status: $status,
+            body: undefined
+          };
+
+        default:
+          throw new Error(`Unexpected status ${$status}`);
+      }
+    } catch (error: unknown) {
+      this.options.logger?.error(
+        `Error while ${fetchOptions.method}ing from/to ${url}`,
+        { error }
+      );
+
+      throw error;
     }
   }
 
@@ -412,31 +585,46 @@ export class SwaggerPetstoreClient {
     const url = `${this.baseUrl}/store/order/${encodeURIComponent(
       args['orderId']
     )}`;
-
-    const response = await fetch(url, {
+    const fetchOptions = {
       method,
-      ...options
-    });
+      ...options,
+      ...this.options.requestOptions,
+      headers: { ...options?.headers, ...this.options.requestOptions.headers }
+    };
 
-    const { status: $status } = response;
+    try {
+      const response = await this.options.fetch(url, fetchOptions);
 
-    this.logger?.('REST API Call', { method, url, status: $status });
+      const { status: $status } = response;
 
-    switch ($status) {
-      case 400:
-        return {
-          status: $status,
-          body: undefined
-        };
+      this.options.logger?.info(
+        `[${fetchOptions.method}] ${url} status ${String($status)}`,
+        { responseHeaders: response.headers }
+      );
 
-      case 404:
-        return {
-          status: $status,
-          body: undefined
-        };
+      switch ($status) {
+        case 400:
+          return {
+            status: $status,
+            body: undefined
+          };
 
-      default:
-        throw new Error(`Unexpected status ${$status}`);
+        case 404:
+          return {
+            status: $status,
+            body: undefined
+          };
+
+        default:
+          throw new Error(`Unexpected status ${$status}`);
+      }
+    } catch (error: unknown) {
+      this.options.logger?.error(
+        `Error while ${fetchOptions.method}ing from/to ${url}`,
+        { error }
+      );
+
+      throw error;
     }
   }
 
@@ -445,25 +633,40 @@ export class SwaggerPetstoreClient {
   ): Promise<ResponseWithData<200, unknown>> {
     const method = 'GET';
     const url = `${this.baseUrl}/store/inventory`;
-
-    const response = await fetch(url, {
+    const fetchOptions = {
       method,
-      ...options
-    });
+      ...options,
+      ...this.options.requestOptions,
+      headers: { ...options?.headers, ...this.options.requestOptions.headers }
+    };
 
-    const { status: $status } = response;
+    try {
+      const response = await this.options.fetch(url, fetchOptions);
 
-    this.logger?.('REST API Call', { method, url, status: $status });
+      const { status: $status } = response;
 
-    switch ($status) {
-      case 200:
-        return {
-          status: $status,
-          body: (await response.json()) as unknown
-        };
+      this.options.logger?.info(
+        `[${fetchOptions.method}] ${url} status ${String($status)}`,
+        { responseHeaders: response.headers }
+      );
 
-      default:
-        throw new Error(`Unexpected status ${$status}`);
+      switch ($status) {
+        case 200:
+          return {
+            status: $status,
+            body: (await response.json()) as unknown
+          };
+
+        default:
+          throw new Error(`Unexpected status ${$status}`);
+      }
+    } catch (error: unknown) {
+      this.options.logger?.error(
+        `Error while ${fetchOptions.method}ing from/to ${url}`,
+        { error }
+      );
+
+      throw error;
     }
   }
 
@@ -473,24 +676,42 @@ export class SwaggerPetstoreClient {
   ): Promise<ResponseWithData<number, undefined>> {
     const method = 'POST';
     const url = `${this.baseUrl}/user/createWithArray`;
-
-    const response = await fetch(url, {
+    const fetchOptions = {
       method,
+      ...options,
+      ...this.options.requestOptions,
       body: JSON.stringify(args.body),
-      headers: { 'Content-Type': 'application/json' },
-      ...options
-    });
+      headers: {
+        'Content-Type': 'application/json',
+        ...options?.headers,
+        ...this.options.requestOptions.headers
+      }
+    };
 
-    const { status: $status } = response;
+    try {
+      const response = await this.options.fetch(url, fetchOptions);
 
-    this.logger?.('REST API Call', { method, url, status: $status });
+      const { status: $status } = response;
 
-    switch ($status) {
-      default:
-        return {
-          status: $status,
-          body: undefined
-        };
+      this.options.logger?.info(
+        `[${fetchOptions.method}] ${url} status ${String($status)}`,
+        { responseHeaders: response.headers }
+      );
+
+      switch ($status) {
+        default:
+          return {
+            status: $status,
+            body: undefined
+          };
+      }
+    } catch (error: unknown) {
+      this.options.logger?.error(
+        `Error while ${fetchOptions.method}ing from/to ${url}`,
+        { error }
+      );
+
+      throw error;
     }
   }
 
@@ -500,24 +721,42 @@ export class SwaggerPetstoreClient {
   ): Promise<ResponseWithData<number, undefined>> {
     const method = 'POST';
     const url = `${this.baseUrl}/user/createWithList`;
-
-    const response = await fetch(url, {
+    const fetchOptions = {
       method,
+      ...options,
+      ...this.options.requestOptions,
       body: JSON.stringify(args.body),
-      headers: { 'Content-Type': 'application/json' },
-      ...options
-    });
+      headers: {
+        'Content-Type': 'application/json',
+        ...options?.headers,
+        ...this.options.requestOptions.headers
+      }
+    };
 
-    const { status: $status } = response;
+    try {
+      const response = await this.options.fetch(url, fetchOptions);
 
-    this.logger?.('REST API Call', { method, url, status: $status });
+      const { status: $status } = response;
 
-    switch ($status) {
-      default:
-        return {
-          status: $status,
-          body: undefined
-        };
+      this.options.logger?.info(
+        `[${fetchOptions.method}] ${url} status ${String($status)}`,
+        { responseHeaders: response.headers }
+      );
+
+      switch ($status) {
+        default:
+          return {
+            status: $status,
+            body: undefined
+          };
+      }
+    } catch (error: unknown) {
+      this.options.logger?.error(
+        `Error while ${fetchOptions.method}ing from/to ${url}`,
+        { error }
+      );
+
+      throw error;
     }
   }
 
@@ -531,37 +770,52 @@ export class SwaggerPetstoreClient {
   > {
     const method = 'GET';
     const url = `${this.baseUrl}/user/${encodeURIComponent(args['username'])}`;
-
-    const response = await fetch(url, {
+    const fetchOptions = {
       method,
-      ...options
-    });
+      ...options,
+      ...this.options.requestOptions,
+      headers: { ...options?.headers, ...this.options.requestOptions.headers }
+    };
 
-    const { status: $status } = response;
+    try {
+      const response = await this.options.fetch(url, fetchOptions);
 
-    this.logger?.('REST API Call', { method, url, status: $status });
+      const { status: $status } = response;
 
-    switch ($status) {
-      case 200:
-        return {
-          status: $status,
-          body: (await response.json()) as User
-        };
+      this.options.logger?.info(
+        `[${fetchOptions.method}] ${url} status ${String($status)}`,
+        { responseHeaders: response.headers }
+      );
 
-      case 400:
-        return {
-          status: $status,
-          body: undefined
-        };
+      switch ($status) {
+        case 200:
+          return {
+            status: $status,
+            body: (await response.json()) as User
+          };
 
-      case 404:
-        return {
-          status: $status,
-          body: undefined
-        };
+        case 400:
+          return {
+            status: $status,
+            body: undefined
+          };
 
-      default:
-        throw new Error(`Unexpected status ${$status}`);
+        case 404:
+          return {
+            status: $status,
+            body: undefined
+          };
+
+        default:
+          throw new Error(`Unexpected status ${$status}`);
+      }
+    } catch (error: unknown) {
+      this.options.logger?.error(
+        `Error while ${fetchOptions.method}ing from/to ${url}`,
+        { error }
+      );
+
+      throw error;
     }
   }
 
@@ -573,33 +827,51 @@ export class SwaggerPetstoreClient {
   > {
     const method = 'PUT';
     const url = `${this.baseUrl}/user/${encodeURIComponent(args['username'])}`;
-
-    const response = await fetch(url, {
+    const fetchOptions = {
       method,
+      ...options,
+      ...this.options.requestOptions,
       body: JSON.stringify(args.body),
-      headers: { 'Content-Type': 'application/json' },
-      ...options
-    });
+      headers: {
+        'Content-Type': 'application/json',
+        ...options?.headers,
+        ...this.options.requestOptions.headers
+      }
+    };
 
-    const { status: $status } = response;
+    try {
+      const response = await this.options.fetch(url, fetchOptions);
 
-    this.logger?.('REST API Call', { method, url, status: $status });
+      const { status: $status } = response;
 
-    switch ($status) {
-      case 400:
-        return {
-          status: $status,
-          body: undefined
-        };
+      this.options.logger?.info(
+        `[${fetchOptions.method}] ${url} status ${String($status)}`,
+        { responseHeaders: response.headers }
+      );
 
-      case 404:
-        return {
-          status: $status,
-          body: undefined
-        };
+      switch ($status) {
+        case 400:
+          return {
+            status: $status,
+            body: undefined
+          };
 
-      default:
-        throw new Error(`Unexpected status ${$status}`);
+        case 404:
+          return {
+            status: $status,
+            body: undefined
+          };
+
+        default:
+          throw new Error(`Unexpected status ${$status}`);
+      }
+    } catch (error: unknown) {
+      this.options.logger?.error(
+        `Error while ${fetchOptions.method}ing from/to ${url}`,
+        { error }
+      );
+
+      throw error;
     }
   }
 
@@ -611,31 +883,46 @@ export class SwaggerPetstoreClient {
   > {
     const method = 'DELETE';
     const url = `${this.baseUrl}/user/${encodeURIComponent(args['username'])}`;
-
-    const response = await fetch(url, {
+    const fetchOptions = {
       method,
-      ...options
-    });
+      ...options,
+      ...this.options.requestOptions,
+      headers: { ...options?.headers, ...this.options.requestOptions.headers }
+    };
 
-    const { status: $status } = response;
+    try {
+      const response = await this.options.fetch(url, fetchOptions);
 
-    this.logger?.('REST API Call', { method, url, status: $status });
+      const { status: $status } = response;
 
-    switch ($status) {
-      case 400:
-        return {
-          status: $status,
-          body: undefined
-        };
+      this.options.logger?.info(
+        `[${fetchOptions.method}] ${url} status ${String($status)}`,
+        { responseHeaders: response.headers }
+      );
 
-      case 404:
-        return {
-          status: $status,
-          body: undefined
-        };
+      switch ($status) {
+        case 400:
+          return {
+            status: $status,
+            body: undefined
+          };
 
-      default:
-        throw new Error(`Unexpected status ${$status}`);
+        case 404:
+          return {
+            status: $status,
+            body: undefined
+          };
+
+        default:
+          throw new Error(`Unexpected status ${$status}`);
+      }
+    } catch (error: unknown) {
+      this.options.logger?.error(
+        `Error while ${fetchOptions.method}ing from/to ${url}`,
+        { error }
+      );
+
+      throw error;
     }
   }
 
@@ -650,31 +937,46 @@ export class SwaggerPetstoreClient {
 
     const method = 'GET';
     const url = `${this.baseUrl}/user/login?${query}`;
-
-    const response = await fetch(url, {
+    const fetchOptions = {
       method,
-      ...options
-    });
+      ...options,
+      ...this.options.requestOptions,
+      headers: { ...options?.headers, ...this.options.requestOptions.headers }
+    };
 
-    const { status: $status } = response;
+    try {
+      const response = await this.options.fetch(url, fetchOptions);
 
-    this.logger?.('REST API Call', { method, url, status: $status });
+      const { status: $status } = response;
 
-    switch ($status) {
-      case 200:
-        return {
-          status: $status,
-          body: (await response.json()) as string
-        };
+      this.options.logger?.info(
+        `[${fetchOptions.method}] ${url} status ${String($status)}`,
+        { responseHeaders: response.headers }
+      );
 
-      case 400:
-        return {
-          status: $status,
-          body: undefined
-        };
+      switch ($status) {
+        case 200:
+          return {
+            status: $status,
+            body: (await response.json()) as string
+          };
 
-      default:
-        throw new Error(`Unexpected status ${$status}`);
+        case 400:
+          return {
+            status: $status,
+            body: undefined
+          };
+
+        default:
+          throw new Error(`Unexpected status ${$status}`);
+      }
+    } catch (error: unknown) {
+      this.options.logger?.error(
+        `Error while ${fetchOptions.method}ing from/to ${url}`,
+        { error }
+      );
+
+      throw error;
     }
   }
 
@@ -683,22 +985,37 @@ export class SwaggerPetstoreClient {
   ): Promise<ResponseWithData<number, undefined>> {
     const method = 'GET';
     const url = `${this.baseUrl}/user/logout`;
-
-    const response = await fetch(url, {
+    const fetchOptions = {
       method,
-      ...options
-    });
+      ...options,
+      ...this.options.requestOptions,
+      headers: { ...options?.headers, ...this.options.requestOptions.headers }
+    };
 
-    const { status: $status } = response;
+    try {
+      const response = await this.options.fetch(url, fetchOptions);
 
-    this.logger?.('REST API Call', { method, url, status: $status });
+      const { status: $status } = response;
 
-    switch ($status) {
-      default:
-        return {
-          status: $status,
-          body: undefined
-        };
+      this.options.logger?.info(
+        `[${fetchOptions.method}] ${url} status ${String($status)}`,
+        { responseHeaders: response.headers }
+      );
+
+      switch ($status) {
+        default:
+          return {
+            status: $status,
+            body: undefined
+          };
+      }
+    } catch (error: unknown) {
+      this.options.logger?.error(
+        `Error while ${fetchOptions.method}ing from/to ${url}`,
+        { error }
+      );
+
+      throw error;
     }
   }
 
@@ -708,24 +1025,42 @@ export class SwaggerPetstoreClient {
   ): Promise<ResponseWithData<number, undefined>> {
     const method = 'POST';
     const url = `${this.baseUrl}/user`;
-
-    const response = await fetch(url, {
+    const fetchOptions = {
       method,
+      ...options,
+      ...this.options.requestOptions,
       body: JSON.stringify(args.body),
-      headers: { 'Content-Type': 'application/json' },
-      ...options
-    });
+      headers: {
+        'Content-Type': 'application/json',
+        ...options?.headers,
+        ...this.options.requestOptions.headers
+      }
+    };
 
-    const { status: $status } = response;
+    try {
+      const response = await this.options.fetch(url, fetchOptions);
 
-    this.logger?.('REST API Call', { method, url, status: $status });
+      const { status: $status } = response;
 
-    switch ($status) {
-      default:
-        return {
-          status: $status,
-          body: undefined
-        };
+      this.options.logger?.info(
+        `[${fetchOptions.method}] ${url} status ${String($status)}`,
+        { responseHeaders: response.headers }
+      );
+
+      switch ($status) {
+        default:
+          return {
+            status: $status,
+            body: undefined
+          };
+      }
+    } catch (error: unknown) {
+      this.options.logger?.error(
+        `Error while ${fetchOptions.method}ing from/to ${url}`,
+        { error }
+      );
+
+      throw error;
     }
   }
 }

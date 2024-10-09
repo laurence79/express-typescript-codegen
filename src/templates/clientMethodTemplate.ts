@@ -142,21 +142,23 @@ export const clientMethodTemplate = (
 
       return `...(typeof args["${h.name}"] !== 'undefined' && args["${h.name}"] !== null ? { ["${h.name}"]: args["${h.name}"] } : {})`;
     })
-    .concat(
-      body?.type === 'json' ? ["'Content-Type': 'application/json'"] : []
-    );
+    .concat(body?.type === 'json' ? ["'Content-Type': 'application/json'"] : [])
+    .concat('...options?.headers')
+    .concat('...this.options.requestOptions.headers');
 
   const fetchOpts = `{
       ${[
         'method',
 
+        '...options',
+
+        '...this.options.requestOptions',
+
         ...(body?.type === 'json' ? ['body: JSON.stringify(args.body)'] : []),
 
         ...(body?.type === 'form' ? ['body: formData'] : []),
 
-        ...(headers.any() ? [`headers: { ${headers.join(',\n')} }`] : []),
-
-        '...options'
+        ...(headers.any() ? [`headers: { ${headers.join(',\n')} }`] : [])
       ].join(',\n')}
     }`;
 
@@ -209,13 +211,20 @@ export const clientMethodTemplate = (
 
     const method = '${httpMethod.toUpperCase()}',
     const url = ${url};
+    const fetchOptions = ${fetchOpts};
 
-    const response = await fetch(url, ${fetchOpts});
+    try {
+      const response = await this.options.fetch(url, fetchOptions);
 
-    const { status: $status } = response;
+      const { status: $status } = response;
 
-    this.logger?.('REST API Call', { method, url, status: $status });
+      this.options.logger?.info(\`[\${fetchOptions.method}] \${url} status \${String($status)}\`, { responseHeaders: response.headers });
 
-    ${responseSwitch}
+      ${responseSwitch}
+    } catch (error: unknown) {
+      this.options.logger?.error(\`Error while \${fetchOptions.method}ing from/to \${url}\`, { error });
+
+      throw error;
+    }
   }`;
 };

@@ -40,14 +40,42 @@ export const generate = ({
       status: TStatus;
       body: TData;
     };
-      
-    type LogFn = (message: string, data: Record<string, unknown>) => void;
+    
+    type LegacyLogFn = (message: string, data: Record<string, unknown>) => void;
+
+    type Logger = Pick<typeof console, 'info' | 'error'>;
+
+    export interface ${serviceName}ClientOptions {
+      fetch: typeof fetch;
+      logger: Logger | null;
+      requestOptions: RequestInit;
+    } 
 
     export class ${serviceName}Client {
       public constructor(
         public readonly baseUrl: string,
-        private readonly logger?: LogFn
-      ) {}
+        options?: Partial<${serviceName}ClientOptions> | LegacyLogFn
+      ) {
+        if (typeof options === 'function') {
+          this.options = {
+            fetch,
+            logger: {
+              info: options,
+              error: options
+            },
+            requestOptions: {}
+          }
+        } else {
+          this.options = {
+            fetch,
+            logger: console,
+            requestOptions: {},
+            ...options
+          }
+        };
+      }
+
+      private readonly options: ${serviceName}ClientOptions;
       
       ${methods.join('\n\n')}
     }
