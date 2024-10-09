@@ -9,7 +9,7 @@ export const controllerMiddlewareTemplate = (
     export abstract class ControllerMiddleware {
       abstract resolver<T>(req: Request, token: Token<T>): T;
 
-      private static validate = new Validator({ strict: false, coerceTypes: true }).validate;
+      private static validate = new ExpressJonValidator.Validator({ strict: false, coerceTypes: true }).validate;
 
       ${handlers
         .map(
@@ -35,7 +35,7 @@ export const controllerMiddlewareTemplate = (
               const controller = this.resolver(req, ${h.controllerTypeName});
     
               await controller.${h.controllerMethodName}(
-                req as ${h.requestTypeName},
+                (req as unknown) as ${h.requestTypeName},
                 res as ${h.responseTypeName},
                 next
               );
@@ -50,7 +50,7 @@ export const controllerMiddlewareTemplate = (
         .join('\n')}
 
       private static validationErrorMiddleware: ErrorRequestHandler = (error, _, response, next) => {
-        if (error instanceof ValidationError) {
+        if (error instanceof ExpressJonValidator.ValidationError) {
           response.status(400).send({
             type: 'REQUEST_VALIDATION_FAILED',
             fields: error.validationErrors

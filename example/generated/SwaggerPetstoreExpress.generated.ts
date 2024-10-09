@@ -8,7 +8,7 @@ import type {
 } from 'express-serve-static-core';
 import { Router } from 'express';
 import { ParsedQs } from 'qs';
-import { Validator, ValidationError } from 'express-json-validator-middleware';
+import * as ExpressJonValidator from 'express-json-validator-middleware';
 
 export type Category = { readonly id?: number; readonly name?: string };
 
@@ -488,7 +488,10 @@ export type Handlers = {
   createUser: CreateUserController;
 };
 
-const { validate } = new Validator({ strict: false, coerceTypes: true });
+const { validate } = new ExpressJonValidator.Validator({
+  strict: false,
+  coerceTypes: true
+});
 
 export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
   const router = Router();
@@ -556,7 +559,11 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
       }
 
       try {
-        await handler(req as AddPetRequest, res as AddPetResponse, next);
+        await handler(
+          (req as unknown) as AddPetRequest,
+          res as AddPetResponse,
+          next
+        );
       } catch (e: unknown) {
         next(e);
       }
@@ -626,7 +633,11 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
       }
 
       try {
-        await handler(req as UpdatePetRequest, res as UpdatePetResponse, next);
+        await handler(
+          (req as unknown) as UpdatePetRequest,
+          res as UpdatePetResponse,
+          next
+        );
       } catch (e: unknown) {
         next(e);
       }
@@ -674,7 +685,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          req as FindPetsByStatusRequest,
+          (req as unknown) as FindPetsByStatusRequest,
           res as FindPetsByStatusResponse,
           next
         );
@@ -716,7 +727,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          req as FindPetsByTagsRequest,
+          (req as unknown) as FindPetsByTagsRequest,
           res as FindPetsByTagsResponse,
           next
         );
@@ -752,7 +763,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          req as GetPetByIdRequest,
+          (req as unknown) as GetPetByIdRequest,
           res as GetPetByIdResponse,
           next
         );
@@ -788,7 +799,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          req as UpdatePetWithFormRequest,
+          (req as unknown) as UpdatePetWithFormRequest,
           res as UpdatePetWithFormResponse,
           next
         );
@@ -823,7 +834,11 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
       }
 
       try {
-        await handler(req as DeletePetRequest, res as DeletePetResponse, next);
+        await handler(
+          (req as unknown) as DeletePetRequest,
+          res as DeletePetResponse,
+          next
+        );
       } catch (e: unknown) {
         next(e);
       }
@@ -867,7 +882,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          req as PlaceOrderRequest,
+          (req as unknown) as PlaceOrderRequest,
           res as PlaceOrderResponse,
           next
         );
@@ -905,7 +920,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          req as GetOrderByIdRequest,
+          (req as unknown) as GetOrderByIdRequest,
           res as GetOrderByIdResponse,
           next
         );
@@ -942,7 +957,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          req as DeleteOrderRequest,
+          (req as unknown) as DeleteOrderRequest,
           res as DeleteOrderResponse,
           next
         );
@@ -964,7 +979,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          req as GetInventoryRequest,
+          (req as unknown) as GetInventoryRequest,
           res as GetInventoryResponse,
           next
         );
@@ -1014,7 +1029,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          req as CreateUsersWithArrayInputRequest,
+          (req as unknown) as CreateUsersWithArrayInputRequest,
           res as CreateUsersWithArrayInputResponse,
           next
         );
@@ -1064,7 +1079,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          req as CreateUsersWithListInputRequest,
+          (req as unknown) as CreateUsersWithListInputRequest,
           res as CreateUsersWithListInputResponse,
           next
         );
@@ -1100,7 +1115,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          req as GetUserByNameRequest,
+          (req as unknown) as GetUserByNameRequest,
           res as GetUserByNameResponse,
           next
         );
@@ -1160,7 +1175,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          req as UpdateUserRequest,
+          (req as unknown) as UpdateUserRequest,
           res as UpdateUserResponse,
           next
         );
@@ -1195,7 +1210,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          req as DeleteUserRequest,
+          (req as unknown) as DeleteUserRequest,
           res as DeleteUserResponse,
           next
         );
@@ -1230,7 +1245,11 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
       }
 
       try {
-        await handler(req as LoginUserRequest, res as LoginUserResponse, next);
+        await handler(
+          (req as unknown) as LoginUserRequest,
+          res as LoginUserResponse,
+          next
+        );
       } catch (e: unknown) {
         next(e);
       }
@@ -1249,7 +1268,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          req as LogoutUserRequest,
+          (req as unknown) as LogoutUserRequest,
           res as LogoutUserResponse,
           next
         );
@@ -1298,7 +1317,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          req as CreateUserRequest,
+          (req as unknown) as CreateUserRequest,
           res as CreateUserResponse,
           next
         );
@@ -1316,7 +1335,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
     response,
     next
   ) => {
-    if (error instanceof ValidationError) {
+    if (error instanceof ExpressJonValidator.ValidationError) {
       response.status(400).send({
         type: 'REQUEST_VALIDATION_FAILED',
         fields: error.validationErrors

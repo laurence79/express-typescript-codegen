@@ -33,7 +33,7 @@ export const generate = ({
     import type { Request, Response, Express, NextFunction, ParamsDictionary, ErrorRequestHandler } from 'express-serve-static-core';
     import { Router } from 'express';
     import { ParsedQs } from 'qs';
-    import { Validator, ValidationError } from 'express-json-validator-middleware';
+    import * as ExpressJonValidator from 'express-json-validator-middleware';
     
     ${context.generateCode()}
 

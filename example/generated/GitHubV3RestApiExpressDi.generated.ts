@@ -8,7 +8,7 @@ import type {
 } from 'express-serve-static-core';
 import { Router } from 'express';
 import { ParsedQs } from 'qs';
-import { Validator, ValidationError } from 'express-json-validator-middleware';
+import * as ExpressJonValidator from 'express-json-validator-middleware';
 
 export type Root = {
   readonly current_user_url: string;
@@ -37191,8 +37191,10 @@ type Token<T> = { new (...args: any[]): T } | object;
 export abstract class ControllerMiddleware {
   abstract resolver<T>(req: Request, token: Token<T>): T;
 
-  private static validate = new Validator({ strict: false, coerceTypes: true })
-    .validate;
+  private static validate = new ExpressJonValidator.Validator({
+    strict: false,
+    coerceTypes: true
+  }).validate;
 
   private addMetaRootHandler(router: Router): void {
     router.get(
@@ -37203,7 +37205,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, MetaRootHandler);
 
           await controller.metaRoot(
-            req as MetaRootRequest,
+            (req as unknown) as MetaRootRequest,
             res as MetaRootResponse,
             next
           );
@@ -37223,7 +37225,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, AppsGetAuthenticatedHandler);
 
           await controller.appsGetAuthenticated(
-            req as AppsGetAuthenticatedRequest,
+            (req as unknown) as AppsGetAuthenticatedRequest,
             res as AppsGetAuthenticatedResponse,
             next
           );
@@ -37251,7 +37253,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, AppsCreateFromManifestHandler);
 
           await controller.appsCreateFromManifest(
-            req as AppsCreateFromManifestRequest,
+            (req as unknown) as AppsCreateFromManifestRequest,
             res as AppsCreateFromManifestResponse,
             next
           );
@@ -37274,7 +37276,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.appsGetWebhookConfigForApp(
-            req as AppsGetWebhookConfigForAppRequest,
+            (req as unknown) as AppsGetWebhookConfigForAppRequest,
             res as AppsGetWebhookConfigForAppResponse,
             next
           );
@@ -37344,7 +37346,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.appsUpdateWebhookConfigForApp(
-            req as AppsUpdateWebhookConfigForAppRequest,
+            (req as unknown) as AppsUpdateWebhookConfigForAppRequest,
             res as AppsUpdateWebhookConfigForAppResponse,
             next
           );
@@ -37378,7 +37380,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.appsListWebhookDeliveries(
-            req as AppsListWebhookDeliveriesRequest,
+            (req as unknown) as AppsListWebhookDeliveriesRequest,
             res as AppsListWebhookDeliveriesResponse,
             next
           );
@@ -37406,7 +37408,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, AppsGetWebhookDeliveryHandler);
 
           await controller.appsGetWebhookDelivery(
-            req as AppsGetWebhookDeliveryRequest,
+            (req as unknown) as AppsGetWebhookDeliveryRequest,
             res as AppsGetWebhookDeliveryResponse,
             next
           );
@@ -37437,7 +37439,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.appsRedeliverWebhookDelivery(
-            req as AppsRedeliverWebhookDeliveryRequest,
+            (req as unknown) as AppsRedeliverWebhookDeliveryRequest,
             res as AppsRedeliverWebhookDeliveryResponse,
             next
           );
@@ -37470,7 +37472,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, AppsListInstallationsHandler);
 
           await controller.appsListInstallations(
-            req as AppsListInstallationsRequest,
+            (req as unknown) as AppsListInstallationsRequest,
             res as AppsListInstallationsResponse,
             next
           );
@@ -37498,7 +37500,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, AppsGetInstallationHandler);
 
           await controller.appsGetInstallation(
-            req as AppsGetInstallationRequest,
+            (req as unknown) as AppsGetInstallationRequest,
             res as AppsGetInstallationResponse,
             next
           );
@@ -37526,7 +37528,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, AppsDeleteInstallationHandler);
 
           await controller.appsDeleteInstallation(
-            req as AppsDeleteInstallationRequest,
+            (req as unknown) as AppsDeleteInstallationRequest,
             res as AppsDeleteInstallationResponse,
             next
           );
@@ -37791,7 +37793,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.appsCreateInstallationAccessToken(
-            req as AppsCreateInstallationAccessTokenRequest,
+            (req as unknown) as AppsCreateInstallationAccessTokenRequest,
             res as AppsCreateInstallationAccessTokenResponse,
             next
           );
@@ -37819,7 +37821,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, AppsSuspendInstallationHandler);
 
           await controller.appsSuspendInstallation(
-            req as AppsSuspendInstallationRequest,
+            (req as unknown) as AppsSuspendInstallationRequest,
             res as AppsSuspendInstallationResponse,
             next
           );
@@ -37850,7 +37852,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.appsUnsuspendInstallation(
-            req as AppsUnsuspendInstallationRequest,
+            (req as unknown) as AppsUnsuspendInstallationRequest,
             res as AppsUnsuspendInstallationResponse,
             next
           );
@@ -37890,7 +37892,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, AppsDeleteAuthorizationHandler);
 
           await controller.appsDeleteAuthorization(
-            req as AppsDeleteAuthorizationRequest,
+            (req as unknown) as AppsDeleteAuthorizationRequest,
             res as AppsDeleteAuthorizationResponse,
             next
           );
@@ -37929,7 +37931,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, AppsCheckTokenHandler);
 
           await controller.appsCheckToken(
-            req as AppsCheckTokenRequest,
+            (req as unknown) as AppsCheckTokenRequest,
             res as AppsCheckTokenResponse,
             next
           );
@@ -37968,7 +37970,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, AppsResetTokenHandler);
 
           await controller.appsResetToken(
-            req as AppsResetTokenRequest,
+            (req as unknown) as AppsResetTokenRequest,
             res as AppsResetTokenResponse,
             next
           );
@@ -38008,7 +38010,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, AppsDeleteTokenHandler);
 
           await controller.appsDeleteToken(
-            req as AppsDeleteTokenRequest,
+            (req as unknown) as AppsDeleteTokenRequest,
             res as AppsDeleteTokenResponse,
             next
           );
@@ -38289,7 +38291,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, AppsScopeTokenHandler);
 
           await controller.appsScopeToken(
-            req as AppsScopeTokenRequest,
+            (req as unknown) as AppsScopeTokenRequest,
             res as AppsScopeTokenResponse,
             next
           );
@@ -38317,7 +38319,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, AppsGetBySlugHandler);
 
           await controller.appsGetBySlug(
-            req as AppsGetBySlugRequest,
+            (req as unknown) as AppsGetBySlugRequest,
             res as AppsGetBySlugResponse,
             next
           );
@@ -38340,7 +38342,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codesOfConductGetAllCodesOfConduct(
-            req as CodesOfConductGetAllCodesOfConductRequest,
+            (req as unknown) as CodesOfConductGetAllCodesOfConductRequest,
             res as CodesOfConductGetAllCodesOfConductResponse,
             next
           );
@@ -38371,7 +38373,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codesOfConductGetConductCode(
-            req as CodesOfConductGetConductCodeRequest,
+            (req as unknown) as CodesOfConductGetConductCodeRequest,
             res as CodesOfConductGetConductCodeResponse,
             next
           );
@@ -38391,7 +38393,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, EmojisGetHandler);
 
           await controller.emojisGet(
-            req as EmojisGetRequest,
+            (req as unknown) as EmojisGetRequest,
             res as EmojisGetResponse,
             next
           );
@@ -38430,7 +38432,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminGetServerStatistics(
-            req as EnterpriseAdminGetServerStatisticsRequest,
+            (req as unknown) as EnterpriseAdminGetServerStatisticsRequest,
             res as EnterpriseAdminGetServerStatisticsResponse,
             next
           );
@@ -38463,7 +38465,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsGetActionsCacheUsageForEnterprise(
-            req as ActionsGetActionsCacheUsageForEnterpriseRequest,
+            (req as unknown) as ActionsGetActionsCacheUsageForEnterpriseRequest,
             res as ActionsGetActionsCacheUsageForEnterpriseResponse,
             next
           );
@@ -38496,7 +38498,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminGetGithubActionsPermissionsEnterprise(
-            req as EnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest,
             res as EnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse,
             next
           );
@@ -38556,7 +38558,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminSetGithubActionsPermissionsEnterprise(
-            req as EnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest,
             res as EnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse,
             next
           );
@@ -38597,7 +38599,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise(
-            req as EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest,
             res as EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse,
             next
           );
@@ -38646,7 +38648,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(
-            req as EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest,
             res as EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse,
             next
           );
@@ -38682,7 +38684,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(
-            req as EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest,
             res as EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse,
             next
           );
@@ -38718,7 +38720,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(
-            req as EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest,
             res as EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse,
             next
           );
@@ -38751,7 +38753,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminGetAllowedActionsEnterprise(
-            req as EnterpriseAdminGetAllowedActionsEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminGetAllowedActionsEnterpriseRequest,
             res as EnterpriseAdminGetAllowedActionsEnterpriseResponse,
             next
           );
@@ -38812,7 +38814,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminSetAllowedActionsEnterprise(
-            req as EnterpriseAdminSetAllowedActionsEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminSetAllowedActionsEnterpriseRequest,
             res as EnterpriseAdminSetAllowedActionsEnterpriseResponse,
             next
           );
@@ -38845,7 +38847,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsGetGithubActionsDefaultWorkflowPermissionsEnterprise(
-            req as ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseRequest,
+            (req as unknown) as ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseRequest,
             res as ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseResponse,
             next
           );
@@ -38909,7 +38911,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsSetGithubActionsDefaultWorkflowPermissionsEnterprise(
-            req as ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequest,
+            (req as unknown) as ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequest,
             res as ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseResponse,
             next
           );
@@ -38951,7 +38953,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminListSelfHostedRunnerGroupsForEnterprise(
-            req as EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest,
             res as EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse,
             next
           );
@@ -39038,7 +39040,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(
-            req as EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest,
             res as EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse,
             next
           );
@@ -39074,7 +39076,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminGetSelfHostedRunnerGroupForEnterprise(
-            req as EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest,
             res as EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse,
             next
           );
@@ -39147,7 +39149,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(
-            req as EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest,
             res as EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse,
             next
           );
@@ -39183,7 +39185,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(
-            req as EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest,
             res as EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse,
             next
           );
@@ -39227,7 +39229,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise(
-            req as EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest,
             res as EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse,
             next
           );
@@ -39279,7 +39281,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
-            req as EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest,
             res as EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse,
             next
           );
@@ -39316,7 +39318,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(
-            req as EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest,
             res as EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse,
             next
           );
@@ -39353,7 +39355,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(
-            req as EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest,
             res as EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse,
             next
           );
@@ -39397,7 +39399,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminListSelfHostedRunnersInGroupForEnterprise(
-            req as EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest,
             res as EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse,
             next
           );
@@ -39448,7 +39450,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(
-            req as EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest,
             res as EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse,
             next
           );
@@ -39485,7 +39487,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(
-            req as EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest,
             res as EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse,
             next
           );
@@ -39522,7 +39524,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(
-            req as EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest,
             res as EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse,
             next
           );
@@ -39563,7 +39565,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminListSelfHostedRunnersForEnterprise(
-            req as EnterpriseAdminListSelfHostedRunnersForEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminListSelfHostedRunnersForEnterpriseRequest,
             res as EnterpriseAdminListSelfHostedRunnersForEnterpriseResponse,
             next
           );
@@ -39596,7 +39598,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminListRunnerApplicationsForEnterprise(
-            req as EnterpriseAdminListRunnerApplicationsForEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminListRunnerApplicationsForEnterpriseRequest,
             res as EnterpriseAdminListRunnerApplicationsForEnterpriseResponse,
             next
           );
@@ -39629,7 +39631,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminCreateRegistrationTokenForEnterprise(
-            req as EnterpriseAdminCreateRegistrationTokenForEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminCreateRegistrationTokenForEnterpriseRequest,
             res as EnterpriseAdminCreateRegistrationTokenForEnterpriseResponse,
             next
           );
@@ -39662,7 +39664,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminCreateRemoveTokenForEnterprise(
-            req as EnterpriseAdminCreateRemoveTokenForEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminCreateRemoveTokenForEnterpriseRequest,
             res as EnterpriseAdminCreateRemoveTokenForEnterpriseResponse,
             next
           );
@@ -39698,7 +39700,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminGetSelfHostedRunnerForEnterprise(
-            req as EnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest,
             res as EnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse,
             next
           );
@@ -39734,7 +39736,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminDeleteSelfHostedRunnerFromEnterprise(
-            req as EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest,
             res as EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse,
             next
           );
@@ -39770,7 +39772,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminListLabelsForSelfHostedRunnerForEnterprise(
-            req as EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseRequest,
             res as EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseResponse,
             next
           );
@@ -39821,7 +39823,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterprise(
-            req as EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequest,
             res as EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseResponse,
             next
           );
@@ -39872,7 +39874,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterprise(
-            req as EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequest,
             res as EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseResponse,
             next
           );
@@ -39908,7 +39910,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterprise(
-            req as EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseRequest,
             res as EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseResponse,
             next
           );
@@ -39945,7 +39947,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.enterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterprise(
-            req as EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseRequest,
+            (req as unknown) as EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseRequest,
             res as EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseResponse,
             next
           );
@@ -40024,7 +40026,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codeScanningListAlertsForEnterprise(
-            req as CodeScanningListAlertsForEnterpriseRequest,
+            (req as unknown) as CodeScanningListAlertsForEnterpriseRequest,
             res as CodeScanningListAlertsForEnterpriseResponse,
             next
           );
@@ -40079,7 +40081,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.secretScanningListAlertsForEnterprise(
-            req as SecretScanningListAlertsForEnterpriseRequest,
+            (req as unknown) as SecretScanningListAlertsForEnterpriseRequest,
             res as SecretScanningListAlertsForEnterpriseResponse,
             next
           );
@@ -40120,7 +40122,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.billingGetGithubAdvancedSecurityBillingGhe(
-            req as BillingGetGithubAdvancedSecurityBillingGheRequest,
+            (req as unknown) as BillingGetGithubAdvancedSecurityBillingGheRequest,
             res as BillingGetGithubAdvancedSecurityBillingGheResponse,
             next
           );
@@ -40154,7 +40156,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.activityListPublicEvents(
-            req as ActivityListPublicEventsRequest,
+            (req as unknown) as ActivityListPublicEventsRequest,
             res as ActivityListPublicEventsResponse,
             next
           );
@@ -40174,7 +40176,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ActivityGetFeedsHandler);
 
           await controller.activityGetFeeds(
-            req as ActivityGetFeedsRequest,
+            (req as unknown) as ActivityGetFeedsRequest,
             res as ActivityGetFeedsResponse,
             next
           );
@@ -40206,7 +40208,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GistsListHandler);
 
           await controller.gistsList(
-            req as GistsListRequest,
+            (req as unknown) as GistsListRequest,
             res as GistsListResponse,
             next
           );
@@ -40273,7 +40275,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GistsCreateHandler);
 
           await controller.gistsCreate(
-            req as GistsCreateRequest,
+            (req as unknown) as GistsCreateRequest,
             res as GistsCreateResponse,
             next
           );
@@ -40305,7 +40307,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GistsListPublicHandler);
 
           await controller.gistsListPublic(
-            req as GistsListPublicRequest,
+            (req as unknown) as GistsListPublicRequest,
             res as GistsListPublicResponse,
             next
           );
@@ -40337,7 +40339,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GistsListStarredHandler);
 
           await controller.gistsListStarred(
-            req as GistsListStarredRequest,
+            (req as unknown) as GistsListStarredRequest,
             res as GistsListStarredResponse,
             next
           );
@@ -40365,7 +40367,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GistsGetHandler);
 
           await controller.gistsGet(
-            req as GistsGetRequest,
+            (req as unknown) as GistsGetRequest,
             res as GistsGetResponse,
             next
           );
@@ -40434,7 +40436,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GistsUpdateHandler);
 
           await controller.gistsUpdate(
-            req as GistsUpdateRequest,
+            (req as unknown) as GistsUpdateRequest,
             res as GistsUpdateResponse,
             next
           );
@@ -40462,7 +40464,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GistsDeleteHandler);
 
           await controller.gistsDelete(
-            req as GistsDeleteRequest,
+            (req as unknown) as GistsDeleteRequest,
             res as GistsDeleteResponse,
             next
           );
@@ -40498,7 +40500,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GistsListCommentsHandler);
 
           await controller.gistsListComments(
-            req as GistsListCommentsRequest,
+            (req as unknown) as GistsListCommentsRequest,
             res as GistsListCommentsResponse,
             next
           );
@@ -40539,7 +40541,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GistsCreateCommentHandler);
 
           await controller.gistsCreateComment(
-            req as GistsCreateCommentRequest,
+            (req as unknown) as GistsCreateCommentRequest,
             res as GistsCreateCommentResponse,
             next
           );
@@ -40570,7 +40572,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GistsGetCommentHandler);
 
           await controller.gistsGetComment(
-            req as GistsGetCommentRequest,
+            (req as unknown) as GistsGetCommentRequest,
             res as GistsGetCommentResponse,
             next
           );
@@ -40614,7 +40616,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GistsUpdateCommentHandler);
 
           await controller.gistsUpdateComment(
-            req as GistsUpdateCommentRequest,
+            (req as unknown) as GistsUpdateCommentRequest,
             res as GistsUpdateCommentResponse,
             next
           );
@@ -40645,7 +40647,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GistsDeleteCommentHandler);
 
           await controller.gistsDeleteComment(
-            req as GistsDeleteCommentRequest,
+            (req as unknown) as GistsDeleteCommentRequest,
             res as GistsDeleteCommentResponse,
             next
           );
@@ -40681,7 +40683,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GistsListCommitsHandler);
 
           await controller.gistsListCommits(
-            req as GistsListCommitsRequest,
+            (req as unknown) as GistsListCommitsRequest,
             res as GistsListCommitsResponse,
             next
           );
@@ -40717,7 +40719,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GistsListForksHandler);
 
           await controller.gistsListForks(
-            req as GistsListForksRequest,
+            (req as unknown) as GistsListForksRequest,
             res as GistsListForksResponse,
             next
           );
@@ -40745,7 +40747,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GistsForkHandler);
 
           await controller.gistsFork(
-            req as GistsForkRequest,
+            (req as unknown) as GistsForkRequest,
             res as GistsForkResponse,
             next
           );
@@ -40773,7 +40775,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GistsCheckIsStarredHandler);
 
           await controller.gistsCheckIsStarred(
-            req as GistsCheckIsStarredRequest,
+            (req as unknown) as GistsCheckIsStarredRequest,
             res as GistsCheckIsStarredResponse,
             next
           );
@@ -40801,7 +40803,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GistsStarHandler);
 
           await controller.gistsStar(
-            req as GistsStarRequest,
+            (req as unknown) as GistsStarRequest,
             res as GistsStarResponse,
             next
           );
@@ -40829,7 +40831,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GistsUnstarHandler);
 
           await controller.gistsUnstar(
-            req as GistsUnstarRequest,
+            (req as unknown) as GistsUnstarRequest,
             res as GistsUnstarResponse,
             next
           );
@@ -40857,7 +40859,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GistsGetRevisionHandler);
 
           await controller.gistsGetRevision(
-            req as GistsGetRevisionRequest,
+            (req as unknown) as GistsGetRevisionRequest,
             res as GistsGetRevisionResponse,
             next
           );
@@ -40880,7 +40882,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.gitignoreGetAllTemplates(
-            req as GitignoreGetAllTemplatesRequest,
+            (req as unknown) as GitignoreGetAllTemplatesRequest,
             res as GitignoreGetAllTemplatesResponse,
             next
           );
@@ -40908,7 +40910,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GitignoreGetTemplateHandler);
 
           await controller.gitignoreGetTemplate(
-            req as GitignoreGetTemplateRequest,
+            (req as unknown) as GitignoreGetTemplateRequest,
             res as GitignoreGetTemplateResponse,
             next
           );
@@ -40944,7 +40946,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.appsListReposAccessibleToInstallation(
-            req as AppsListReposAccessibleToInstallationRequest,
+            (req as unknown) as AppsListReposAccessibleToInstallationRequest,
             res as AppsListReposAccessibleToInstallationResponse,
             next
           );
@@ -40967,7 +40969,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.appsRevokeInstallationAccessToken(
-            req as AppsRevokeInstallationAccessTokenRequest,
+            (req as unknown) as AppsRevokeInstallationAccessTokenRequest,
             res as AppsRevokeInstallationAccessTokenResponse,
             next
           );
@@ -41031,7 +41033,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesListHandler);
 
           await controller.issuesList(
-            req as IssuesListRequest,
+            (req as unknown) as IssuesListRequest,
             res as IssuesListResponse,
             next
           );
@@ -41066,7 +41068,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.licensesGetAllCommonlyUsed(
-            req as LicensesGetAllCommonlyUsedRequest,
+            (req as unknown) as LicensesGetAllCommonlyUsedRequest,
             res as LicensesGetAllCommonlyUsedResponse,
             next
           );
@@ -41094,7 +41096,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, LicensesGetHandler);
 
           await controller.licensesGet(
-            req as LicensesGetRequest,
+            (req as unknown) as LicensesGetRequest,
             res as LicensesGetResponse,
             next
           );
@@ -41139,7 +41141,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, MarkdownRenderHandler);
 
           await controller.markdownRender(
-            req as MarkdownRenderRequest,
+            (req as unknown) as MarkdownRenderRequest,
             res as MarkdownRenderResponse,
             next
           );
@@ -41159,7 +41161,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, MarkdownRenderRawHandler);
 
           await controller.markdownRenderRaw(
-            req as MarkdownRenderRawRequest,
+            (req as unknown) as MarkdownRenderRawRequest,
             res as MarkdownRenderRawResponse,
             next
           );
@@ -41190,7 +41192,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.appsGetSubscriptionPlanForAccount(
-            req as AppsGetSubscriptionPlanForAccountRequest,
+            (req as unknown) as AppsGetSubscriptionPlanForAccountRequest,
             res as AppsGetSubscriptionPlanForAccountResponse,
             next
           );
@@ -41221,7 +41223,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, AppsListPlansHandler);
 
           await controller.appsListPlans(
-            req as AppsListPlansRequest,
+            (req as unknown) as AppsListPlansRequest,
             res as AppsListPlansResponse,
             next
           );
@@ -41263,7 +41265,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, AppsListAccountsForPlanHandler);
 
           await controller.appsListAccountsForPlan(
-            req as AppsListAccountsForPlanRequest,
+            (req as unknown) as AppsListAccountsForPlanRequest,
             res as AppsListAccountsForPlanResponse,
             next
           );
@@ -41296,7 +41298,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.appsGetSubscriptionPlanForAccountStubbed(
-            req as AppsGetSubscriptionPlanForAccountStubbedRequest,
+            (req as unknown) as AppsGetSubscriptionPlanForAccountStubbedRequest,
             res as AppsGetSubscriptionPlanForAccountStubbedResponse,
             next
           );
@@ -41327,7 +41329,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, AppsListPlansStubbedHandler);
 
           await controller.appsListPlansStubbed(
-            req as AppsListPlansStubbedRequest,
+            (req as unknown) as AppsListPlansStubbedRequest,
             res as AppsListPlansStubbedResponse,
             next
           );
@@ -41372,7 +41374,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.appsListAccountsForPlanStubbed(
-            req as AppsListAccountsForPlanStubbedRequest,
+            (req as unknown) as AppsListAccountsForPlanStubbedRequest,
             res as AppsListAccountsForPlanStubbedResponse,
             next
           );
@@ -41392,7 +41394,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, MetaGetHandler);
 
           await controller.metaGet(
-            req as MetaGetRequest,
+            (req as unknown) as MetaGetRequest,
             res as MetaGetResponse,
             next
           );
@@ -41433,7 +41435,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.activityListPublicEventsForRepoNetwork(
-            req as ActivityListPublicEventsForRepoNetworkRequest,
+            (req as unknown) as ActivityListPublicEventsForRepoNetworkRequest,
             res as ActivityListPublicEventsForRepoNetworkResponse,
             next
           );
@@ -41473,7 +41475,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.activityListNotificationsForAuthenticatedUser(
-            req as ActivityListNotificationsForAuthenticatedUserRequest,
+            (req as unknown) as ActivityListNotificationsForAuthenticatedUserRequest,
             res as ActivityListNotificationsForAuthenticatedUserResponse,
             next
           );
@@ -41514,7 +41516,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.activityMarkNotificationsAsRead(
-            req as ActivityMarkNotificationsAsReadRequest,
+            (req as unknown) as ActivityMarkNotificationsAsReadRequest,
             res as ActivityMarkNotificationsAsReadResponse,
             next
           );
@@ -41542,7 +41544,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ActivityGetThreadHandler);
 
           await controller.activityGetThread(
-            req as ActivityGetThreadRequest,
+            (req as unknown) as ActivityGetThreadRequest,
             res as ActivityGetThreadResponse,
             next
           );
@@ -41573,7 +41575,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.activityMarkThreadAsRead(
-            req as ActivityMarkThreadAsReadRequest,
+            (req as unknown) as ActivityMarkThreadAsReadRequest,
             res as ActivityMarkThreadAsReadResponse,
             next
           );
@@ -41606,7 +41608,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.activityGetThreadSubscriptionForAuthenticatedUser(
-            req as ActivityGetThreadSubscriptionForAuthenticatedUserRequest,
+            (req as unknown) as ActivityGetThreadSubscriptionForAuthenticatedUserRequest,
             res as ActivityGetThreadSubscriptionForAuthenticatedUserResponse,
             next
           );
@@ -41648,7 +41650,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.activitySetThreadSubscription(
-            req as ActivitySetThreadSubscriptionRequest,
+            (req as unknown) as ActivitySetThreadSubscriptionRequest,
             res as ActivitySetThreadSubscriptionResponse,
             next
           );
@@ -41679,7 +41681,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.activityDeleteThreadSubscription(
-            req as ActivityDeleteThreadSubscriptionRequest,
+            (req as unknown) as ActivityDeleteThreadSubscriptionRequest,
             res as ActivityDeleteThreadSubscriptionResponse,
             next
           );
@@ -41707,7 +41709,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, MetaGetOctocatHandler);
 
           await controller.metaGetOctocat(
-            req as MetaGetOctocatRequest,
+            (req as unknown) as MetaGetOctocatRequest,
             res as MetaGetOctocatResponse,
             next
           );
@@ -41738,7 +41740,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, OrgsListHandler);
 
           await controller.orgsList(
-            req as OrgsListRequest,
+            (req as unknown) as OrgsListRequest,
             res as OrgsListResponse,
             next
           );
@@ -41766,7 +41768,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, OrgsListCustomRolesHandler);
 
           await controller.orgsListCustomRoles(
-            req as OrgsListCustomRolesRequest,
+            (req as unknown) as OrgsListCustomRolesRequest,
             res as OrgsListCustomRolesResponse,
             next
           );
@@ -41794,7 +41796,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, OrgsGetHandler);
 
           await controller.orgsGet(
-            req as OrgsGetRequest,
+            (req as unknown) as OrgsGetRequest,
             res as OrgsGetResponse,
             next
           );
@@ -41956,7 +41958,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, OrgsUpdateHandler);
 
           await controller.orgsUpdate(
-            req as OrgsUpdateRequest,
+            (req as unknown) as OrgsUpdateRequest,
             res as OrgsUpdateResponse,
             next
           );
@@ -41987,7 +41989,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsGetActionsCacheUsageForOrg(
-            req as ActionsGetActionsCacheUsageForOrgRequest,
+            (req as unknown) as ActionsGetActionsCacheUsageForOrgRequest,
             res as ActionsGetActionsCacheUsageForOrgResponse,
             next
           );
@@ -42028,7 +42030,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsGetActionsCacheUsageByRepoForOrg(
-            req as ActionsGetActionsCacheUsageByRepoForOrgRequest,
+            (req as unknown) as ActionsGetActionsCacheUsageByRepoForOrgRequest,
             res as ActionsGetActionsCacheUsageByRepoForOrgResponse,
             next
           );
@@ -42061,7 +42063,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsGetGithubActionsPermissionsOrganization(
-            req as ActionsGetGithubActionsPermissionsOrganizationRequest,
+            (req as unknown) as ActionsGetGithubActionsPermissionsOrganizationRequest,
             res as ActionsGetGithubActionsPermissionsOrganizationResponse,
             next
           );
@@ -42121,7 +42123,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsSetGithubActionsPermissionsOrganization(
-            req as ActionsSetGithubActionsPermissionsOrganizationRequest,
+            (req as unknown) as ActionsSetGithubActionsPermissionsOrganizationRequest,
             res as ActionsSetGithubActionsPermissionsOrganizationResponse,
             next
           );
@@ -42162,7 +42164,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsListSelectedRepositoriesEnabledGithubActionsOrganization(
-            req as ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest,
+            (req as unknown) as ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest,
             res as ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse,
             next
           );
@@ -42211,7 +42213,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
-            req as ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest,
+            (req as unknown) as ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest,
             res as ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse,
             next
           );
@@ -42247,7 +42249,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsEnableSelectedRepositoryGithubActionsOrganization(
-            req as ActionsEnableSelectedRepositoryGithubActionsOrganizationRequest,
+            (req as unknown) as ActionsEnableSelectedRepositoryGithubActionsOrganizationRequest,
             res as ActionsEnableSelectedRepositoryGithubActionsOrganizationResponse,
             next
           );
@@ -42283,7 +42285,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsDisableSelectedRepositoryGithubActionsOrganization(
-            req as ActionsDisableSelectedRepositoryGithubActionsOrganizationRequest,
+            (req as unknown) as ActionsDisableSelectedRepositoryGithubActionsOrganizationRequest,
             res as ActionsDisableSelectedRepositoryGithubActionsOrganizationResponse,
             next
           );
@@ -42314,7 +42316,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsGetAllowedActionsOrganization(
-            req as ActionsGetAllowedActionsOrganizationRequest,
+            (req as unknown) as ActionsGetAllowedActionsOrganizationRequest,
             res as ActionsGetAllowedActionsOrganizationResponse,
             next
           );
@@ -42373,7 +42375,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsSetAllowedActionsOrganization(
-            req as ActionsSetAllowedActionsOrganizationRequest,
+            (req as unknown) as ActionsSetAllowedActionsOrganizationRequest,
             res as ActionsSetAllowedActionsOrganizationResponse,
             next
           );
@@ -42406,7 +42408,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsGetGithubActionsDefaultWorkflowPermissionsOrganization(
-            req as ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationRequest,
+            (req as unknown) as ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationRequest,
             res as ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationResponse,
             next
           );
@@ -42470,7 +42472,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsSetGithubActionsDefaultWorkflowPermissionsOrganization(
-            req as ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequest,
+            (req as unknown) as ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequest,
             res as ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationResponse,
             next
           );
@@ -42512,7 +42514,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsListSelfHostedRunnerGroupsForOrg(
-            req as ActionsListSelfHostedRunnerGroupsForOrgRequest,
+            (req as unknown) as ActionsListSelfHostedRunnerGroupsForOrgRequest,
             res as ActionsListSelfHostedRunnerGroupsForOrgResponse,
             next
           );
@@ -42600,7 +42602,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsCreateSelfHostedRunnerGroupForOrg(
-            req as ActionsCreateSelfHostedRunnerGroupForOrgRequest,
+            (req as unknown) as ActionsCreateSelfHostedRunnerGroupForOrgRequest,
             res as ActionsCreateSelfHostedRunnerGroupForOrgResponse,
             next
           );
@@ -42636,7 +42638,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsGetSelfHostedRunnerGroupForOrg(
-            req as ActionsGetSelfHostedRunnerGroupForOrgRequest,
+            (req as unknown) as ActionsGetSelfHostedRunnerGroupForOrgRequest,
             res as ActionsGetSelfHostedRunnerGroupForOrgResponse,
             next
           );
@@ -42709,7 +42711,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsUpdateSelfHostedRunnerGroupForOrg(
-            req as ActionsUpdateSelfHostedRunnerGroupForOrgRequest,
+            (req as unknown) as ActionsUpdateSelfHostedRunnerGroupForOrgRequest,
             res as ActionsUpdateSelfHostedRunnerGroupForOrgResponse,
             next
           );
@@ -42745,7 +42747,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsDeleteSelfHostedRunnerGroupFromOrg(
-            req as ActionsDeleteSelfHostedRunnerGroupFromOrgRequest,
+            (req as unknown) as ActionsDeleteSelfHostedRunnerGroupFromOrgRequest,
             res as ActionsDeleteSelfHostedRunnerGroupFromOrgResponse,
             next
           );
@@ -42789,7 +42791,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsListRepoAccessToSelfHostedRunnerGroupInOrg(
-            req as ActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest,
+            (req as unknown) as ActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest,
             res as ActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse,
             next
           );
@@ -42841,7 +42843,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsSetRepoAccessToSelfHostedRunnerGroupInOrg(
-            req as ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest,
+            (req as unknown) as ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest,
             res as ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse,
             next
           );
@@ -42878,7 +42880,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(
-            req as ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest,
+            (req as unknown) as ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest,
             res as ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse,
             next
           );
@@ -42922,7 +42924,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsListSelfHostedRunnersInGroupForOrg(
-            req as ActionsListSelfHostedRunnersInGroupForOrgRequest,
+            (req as unknown) as ActionsListSelfHostedRunnersInGroupForOrgRequest,
             res as ActionsListSelfHostedRunnersInGroupForOrgResponse,
             next
           );
@@ -42973,7 +42975,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsSetSelfHostedRunnersInGroupForOrg(
-            req as ActionsSetSelfHostedRunnersInGroupForOrgRequest,
+            (req as unknown) as ActionsSetSelfHostedRunnersInGroupForOrgRequest,
             res as ActionsSetSelfHostedRunnersInGroupForOrgResponse,
             next
           );
@@ -43010,7 +43012,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsAddSelfHostedRunnerToGroupForOrg(
-            req as ActionsAddSelfHostedRunnerToGroupForOrgRequest,
+            (req as unknown) as ActionsAddSelfHostedRunnerToGroupForOrgRequest,
             res as ActionsAddSelfHostedRunnerToGroupForOrgResponse,
             next
           );
@@ -43047,7 +43049,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsRemoveSelfHostedRunnerFromGroupForOrg(
-            req as ActionsRemoveSelfHostedRunnerFromGroupForOrgRequest,
+            (req as unknown) as ActionsRemoveSelfHostedRunnerFromGroupForOrgRequest,
             res as ActionsRemoveSelfHostedRunnerFromGroupForOrgResponse,
             next
           );
@@ -43086,7 +43088,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsListSelfHostedRunnersForOrg(
-            req as ActionsListSelfHostedRunnersForOrgRequest,
+            (req as unknown) as ActionsListSelfHostedRunnersForOrgRequest,
             res as ActionsListSelfHostedRunnersForOrgResponse,
             next
           );
@@ -43117,7 +43119,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsListRunnerApplicationsForOrg(
-            req as ActionsListRunnerApplicationsForOrgRequest,
+            (req as unknown) as ActionsListRunnerApplicationsForOrgRequest,
             res as ActionsListRunnerApplicationsForOrgResponse,
             next
           );
@@ -43148,7 +43150,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsCreateRegistrationTokenForOrg(
-            req as ActionsCreateRegistrationTokenForOrgRequest,
+            (req as unknown) as ActionsCreateRegistrationTokenForOrgRequest,
             res as ActionsCreateRegistrationTokenForOrgResponse,
             next
           );
@@ -43179,7 +43181,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsCreateRemoveTokenForOrg(
-            req as ActionsCreateRemoveTokenForOrgRequest,
+            (req as unknown) as ActionsCreateRemoveTokenForOrgRequest,
             res as ActionsCreateRemoveTokenForOrgResponse,
             next
           );
@@ -43213,7 +43215,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsGetSelfHostedRunnerForOrg(
-            req as ActionsGetSelfHostedRunnerForOrgRequest,
+            (req as unknown) as ActionsGetSelfHostedRunnerForOrgRequest,
             res as ActionsGetSelfHostedRunnerForOrgResponse,
             next
           );
@@ -43247,7 +43249,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsDeleteSelfHostedRunnerFromOrg(
-            req as ActionsDeleteSelfHostedRunnerFromOrgRequest,
+            (req as unknown) as ActionsDeleteSelfHostedRunnerFromOrgRequest,
             res as ActionsDeleteSelfHostedRunnerFromOrgResponse,
             next
           );
@@ -43283,7 +43285,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsListLabelsForSelfHostedRunnerForOrg(
-            req as ActionsListLabelsForSelfHostedRunnerForOrgRequest,
+            (req as unknown) as ActionsListLabelsForSelfHostedRunnerForOrgRequest,
             res as ActionsListLabelsForSelfHostedRunnerForOrgResponse,
             next
           );
@@ -43334,7 +43336,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsAddCustomLabelsToSelfHostedRunnerForOrg(
-            req as ActionsAddCustomLabelsToSelfHostedRunnerForOrgRequest,
+            (req as unknown) as ActionsAddCustomLabelsToSelfHostedRunnerForOrgRequest,
             res as ActionsAddCustomLabelsToSelfHostedRunnerForOrgResponse,
             next
           );
@@ -43385,7 +43387,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsSetCustomLabelsForSelfHostedRunnerForOrg(
-            req as ActionsSetCustomLabelsForSelfHostedRunnerForOrgRequest,
+            (req as unknown) as ActionsSetCustomLabelsForSelfHostedRunnerForOrgRequest,
             res as ActionsSetCustomLabelsForSelfHostedRunnerForOrgResponse,
             next
           );
@@ -43421,7 +43423,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrg(
-            req as ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequest,
+            (req as unknown) as ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequest,
             res as ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgResponse,
             next
           );
@@ -43458,7 +43460,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsRemoveCustomLabelFromSelfHostedRunnerForOrg(
-            req as ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgRequest,
+            (req as unknown) as ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgRequest,
             res as ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgResponse,
             next
           );
@@ -43494,7 +43496,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ActionsListOrgSecretsHandler);
 
           await controller.actionsListOrgSecrets(
-            req as ActionsListOrgSecretsRequest,
+            (req as unknown) as ActionsListOrgSecretsRequest,
             res as ActionsListOrgSecretsResponse,
             next
           );
@@ -43522,7 +43524,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ActionsGetOrgPublicKeyHandler);
 
           await controller.actionsGetOrgPublicKey(
-            req as ActionsGetOrgPublicKeyRequest,
+            (req as unknown) as ActionsGetOrgPublicKeyRequest,
             res as ActionsGetOrgPublicKeyResponse,
             next
           );
@@ -43553,7 +43555,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ActionsGetOrgSecretHandler);
 
           await controller.actionsGetOrgSecret(
-            req as ActionsGetOrgSecretRequest,
+            (req as unknown) as ActionsGetOrgSecretRequest,
             res as ActionsGetOrgSecretResponse,
             next
           );
@@ -43617,7 +43619,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsCreateOrUpdateOrgSecret(
-            req as ActionsCreateOrUpdateOrgSecretRequest,
+            (req as unknown) as ActionsCreateOrUpdateOrgSecretRequest,
             res as ActionsCreateOrUpdateOrgSecretResponse,
             next
           );
@@ -43648,7 +43650,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ActionsDeleteOrgSecretHandler);
 
           await controller.actionsDeleteOrgSecret(
-            req as ActionsDeleteOrgSecretRequest,
+            (req as unknown) as ActionsDeleteOrgSecretRequest,
             res as ActionsDeleteOrgSecretResponse,
             next
           );
@@ -43690,7 +43692,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsListSelectedReposForOrgSecret(
-            req as ActionsListSelectedReposForOrgSecretRequest,
+            (req as unknown) as ActionsListSelectedReposForOrgSecretRequest,
             res as ActionsListSelectedReposForOrgSecretResponse,
             next
           );
@@ -43737,7 +43739,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsSetSelectedReposForOrgSecret(
-            req as ActionsSetSelectedReposForOrgSecretRequest,
+            (req as unknown) as ActionsSetSelectedReposForOrgSecretRequest,
             res as ActionsSetSelectedReposForOrgSecretResponse,
             next
           );
@@ -43772,7 +43774,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsAddSelectedRepoToOrgSecret(
-            req as ActionsAddSelectedRepoToOrgSecretRequest,
+            (req as unknown) as ActionsAddSelectedRepoToOrgSecretRequest,
             res as ActionsAddSelectedRepoToOrgSecretResponse,
             next
           );
@@ -43809,7 +43811,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsRemoveSelectedRepoFromOrgSecret(
-            req as ActionsRemoveSelectedRepoFromOrgSecretRequest,
+            (req as unknown) as ActionsRemoveSelectedRepoFromOrgSecretRequest,
             res as ActionsRemoveSelectedRepoFromOrgSecretResponse,
             next
           );
@@ -43845,7 +43847,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, OrgsListBlockedUsersHandler);
 
           await controller.orgsListBlockedUsers(
-            req as OrgsListBlockedUsersRequest,
+            (req as unknown) as OrgsListBlockedUsersRequest,
             res as OrgsListBlockedUsersResponse,
             next
           );
@@ -43873,7 +43875,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, OrgsCheckBlockedUserHandler);
 
           await controller.orgsCheckBlockedUser(
-            req as OrgsCheckBlockedUserRequest,
+            (req as unknown) as OrgsCheckBlockedUserRequest,
             res as OrgsCheckBlockedUserResponse,
             next
           );
@@ -43901,7 +43903,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, OrgsBlockUserHandler);
 
           await controller.orgsBlockUser(
-            req as OrgsBlockUserRequest,
+            (req as unknown) as OrgsBlockUserRequest,
             res as OrgsBlockUserResponse,
             next
           );
@@ -43929,7 +43931,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, OrgsUnblockUserHandler);
 
           await controller.orgsUnblockUser(
-            req as OrgsUnblockUserRequest,
+            (req as unknown) as OrgsUnblockUserRequest,
             res as OrgsUnblockUserResponse,
             next
           );
@@ -44008,7 +44010,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codeScanningListAlertsForOrg(
-            req as CodeScanningListAlertsForOrgRequest,
+            (req as unknown) as CodeScanningListAlertsForOrgRequest,
             res as CodeScanningListAlertsForOrgResponse,
             next
           );
@@ -44047,7 +44049,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesListInOrganization(
-            req as CodespacesListInOrganizationRequest,
+            (req as unknown) as CodespacesListInOrganizationRequest,
             res as CodespacesListInOrganizationResponse,
             next
           );
@@ -44102,7 +44104,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesSetCodespacesBilling(
-            req as CodespacesSetCodespacesBillingRequest,
+            (req as unknown) as CodespacesSetCodespacesBillingRequest,
             res as CodespacesSetCodespacesBillingResponse,
             next
           );
@@ -44141,7 +44143,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesListOrgSecrets(
-            req as CodespacesListOrgSecretsRequest,
+            (req as unknown) as CodespacesListOrgSecretsRequest,
             res as CodespacesListOrgSecretsResponse,
             next
           );
@@ -44172,7 +44174,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesGetOrgPublicKey(
-            req as CodespacesGetOrgPublicKeyRequest,
+            (req as unknown) as CodespacesGetOrgPublicKeyRequest,
             res as CodespacesGetOrgPublicKeyResponse,
             next
           );
@@ -44203,7 +44205,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, CodespacesGetOrgSecretHandler);
 
           await controller.codespacesGetOrgSecret(
-            req as CodespacesGetOrgSecretRequest,
+            (req as unknown) as CodespacesGetOrgSecretRequest,
             res as CodespacesGetOrgSecretResponse,
             next
           );
@@ -44267,7 +44269,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesCreateOrUpdateOrgSecret(
-            req as CodespacesCreateOrUpdateOrgSecretRequest,
+            (req as unknown) as CodespacesCreateOrUpdateOrgSecretRequest,
             res as CodespacesCreateOrUpdateOrgSecretResponse,
             next
           );
@@ -44301,7 +44303,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesDeleteOrgSecret(
-            req as CodespacesDeleteOrgSecretRequest,
+            (req as unknown) as CodespacesDeleteOrgSecretRequest,
             res as CodespacesDeleteOrgSecretResponse,
             next
           );
@@ -44345,7 +44347,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesListSelectedReposForOrgSecret(
-            req as CodespacesListSelectedReposForOrgSecretRequest,
+            (req as unknown) as CodespacesListSelectedReposForOrgSecretRequest,
             res as CodespacesListSelectedReposForOrgSecretResponse,
             next
           );
@@ -44394,7 +44396,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesSetSelectedReposForOrgSecret(
-            req as CodespacesSetSelectedReposForOrgSecretRequest,
+            (req as unknown) as CodespacesSetSelectedReposForOrgSecretRequest,
             res as CodespacesSetSelectedReposForOrgSecretResponse,
             next
           );
@@ -44429,7 +44431,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesAddSelectedRepoToOrgSecret(
-            req as CodespacesAddSelectedRepoToOrgSecretRequest,
+            (req as unknown) as CodespacesAddSelectedRepoToOrgSecretRequest,
             res as CodespacesAddSelectedRepoToOrgSecretResponse,
             next
           );
@@ -44466,7 +44468,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesRemoveSelectedRepoFromOrgSecret(
-            req as CodespacesRemoveSelectedRepoFromOrgSecretRequest,
+            (req as unknown) as CodespacesRemoveSelectedRepoFromOrgSecretRequest,
             res as CodespacesRemoveSelectedRepoFromOrgSecretResponse,
             next
           );
@@ -44522,7 +44524,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, OrgsCreateCustomRoleHandler);
 
           await controller.orgsCreateCustomRole(
-            req as OrgsCreateCustomRoleRequest,
+            (req as unknown) as OrgsCreateCustomRoleRequest,
             res as OrgsCreateCustomRoleResponse,
             next
           );
@@ -44550,7 +44552,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, OrgsGetCustomRoleHandler);
 
           await controller.orgsGetCustomRole(
-            req as OrgsGetCustomRoleRequest,
+            (req as unknown) as OrgsGetCustomRoleRequest,
             res as OrgsGetCustomRoleResponse,
             next
           );
@@ -44605,7 +44607,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, OrgsUpdateCustomRoleHandler);
 
           await controller.orgsUpdateCustomRole(
-            req as OrgsUpdateCustomRoleRequest,
+            (req as unknown) as OrgsUpdateCustomRoleRequest,
             res as OrgsUpdateCustomRoleResponse,
             next
           );
@@ -44633,7 +44635,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, OrgsDeleteCustomRoleHandler);
 
           await controller.orgsDeleteCustomRole(
-            req as OrgsDeleteCustomRoleRequest,
+            (req as unknown) as OrgsDeleteCustomRoleRequest,
             res as OrgsDeleteCustomRoleResponse,
             next
           );
@@ -44689,7 +44691,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.dependabotListAlertsForOrg(
-            req as DependabotListAlertsForOrgRequest,
+            (req as unknown) as DependabotListAlertsForOrgRequest,
             res as DependabotListAlertsForOrgResponse,
             next
           );
@@ -44728,7 +44730,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.dependabotListOrgSecrets(
-            req as DependabotListOrgSecretsRequest,
+            (req as unknown) as DependabotListOrgSecretsRequest,
             res as DependabotListOrgSecretsResponse,
             next
           );
@@ -44759,7 +44761,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.dependabotGetOrgPublicKey(
-            req as DependabotGetOrgPublicKeyRequest,
+            (req as unknown) as DependabotGetOrgPublicKeyRequest,
             res as DependabotGetOrgPublicKeyResponse,
             next
           );
@@ -44790,7 +44792,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, DependabotGetOrgSecretHandler);
 
           await controller.dependabotGetOrgSecret(
-            req as DependabotGetOrgSecretRequest,
+            (req as unknown) as DependabotGetOrgSecretRequest,
             res as DependabotGetOrgSecretResponse,
             next
           );
@@ -44854,7 +44856,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.dependabotCreateOrUpdateOrgSecret(
-            req as DependabotCreateOrUpdateOrgSecretRequest,
+            (req as unknown) as DependabotCreateOrUpdateOrgSecretRequest,
             res as DependabotCreateOrUpdateOrgSecretResponse,
             next
           );
@@ -44888,7 +44890,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.dependabotDeleteOrgSecret(
-            req as DependabotDeleteOrgSecretRequest,
+            (req as unknown) as DependabotDeleteOrgSecretRequest,
             res as DependabotDeleteOrgSecretResponse,
             next
           );
@@ -44932,7 +44934,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.dependabotListSelectedReposForOrgSecret(
-            req as DependabotListSelectedReposForOrgSecretRequest,
+            (req as unknown) as DependabotListSelectedReposForOrgSecretRequest,
             res as DependabotListSelectedReposForOrgSecretResponse,
             next
           );
@@ -44981,7 +44983,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.dependabotSetSelectedReposForOrgSecret(
-            req as DependabotSetSelectedReposForOrgSecretRequest,
+            (req as unknown) as DependabotSetSelectedReposForOrgSecretRequest,
             res as DependabotSetSelectedReposForOrgSecretResponse,
             next
           );
@@ -45016,7 +45018,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.dependabotAddSelectedRepoToOrgSecret(
-            req as DependabotAddSelectedRepoToOrgSecretRequest,
+            (req as unknown) as DependabotAddSelectedRepoToOrgSecretRequest,
             res as DependabotAddSelectedRepoToOrgSecretResponse,
             next
           );
@@ -45053,7 +45055,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.dependabotRemoveSelectedRepoFromOrgSecret(
-            req as DependabotRemoveSelectedRepoFromOrgSecretRequest,
+            (req as unknown) as DependabotRemoveSelectedRepoFromOrgSecretRequest,
             res as DependabotRemoveSelectedRepoFromOrgSecretResponse,
             next
           );
@@ -45092,7 +45094,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.activityListPublicOrgEvents(
-            req as ActivityListPublicOrgEventsRequest,
+            (req as unknown) as ActivityListPublicOrgEventsRequest,
             res as ActivityListPublicOrgEventsResponse,
             next
           );
@@ -45131,7 +45133,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.orgsListFailedInvitations(
-            req as OrgsListFailedInvitationsRequest,
+            (req as unknown) as OrgsListFailedInvitationsRequest,
             res as OrgsListFailedInvitationsResponse,
             next
           );
@@ -45162,7 +45164,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.orgsListFineGrainedPermissions(
-            req as OrgsListFineGrainedPermissionsRequest,
+            (req as unknown) as OrgsListFineGrainedPermissionsRequest,
             res as OrgsListFineGrainedPermissionsResponse,
             next
           );
@@ -45198,7 +45200,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, OrgsListWebhooksHandler);
 
           await controller.orgsListWebhooks(
-            req as OrgsListWebhooksRequest,
+            (req as unknown) as OrgsListWebhooksRequest,
             res as OrgsListWebhooksResponse,
             next
           );
@@ -45300,7 +45302,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, OrgsCreateWebhookHandler);
 
           await controller.orgsCreateWebhook(
-            req as OrgsCreateWebhookRequest,
+            (req as unknown) as OrgsCreateWebhookRequest,
             res as OrgsCreateWebhookResponse,
             next
           );
@@ -45328,7 +45330,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, OrgsGetWebhookHandler);
 
           await controller.orgsGetWebhook(
-            req as OrgsGetWebhookRequest,
+            (req as unknown) as OrgsGetWebhookRequest,
             res as OrgsGetWebhookResponse,
             next
           );
@@ -45427,7 +45429,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, OrgsUpdateWebhookHandler);
 
           await controller.orgsUpdateWebhook(
-            req as OrgsUpdateWebhookRequest,
+            (req as unknown) as OrgsUpdateWebhookRequest,
             res as OrgsUpdateWebhookResponse,
             next
           );
@@ -45455,7 +45457,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, OrgsDeleteWebhookHandler);
 
           await controller.orgsDeleteWebhook(
-            req as OrgsDeleteWebhookRequest,
+            (req as unknown) as OrgsDeleteWebhookRequest,
             res as OrgsDeleteWebhookResponse,
             next
           );
@@ -45486,7 +45488,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.orgsGetWebhookConfigForOrg(
-            req as OrgsGetWebhookConfigForOrgRequest,
+            (req as unknown) as OrgsGetWebhookConfigForOrgRequest,
             res as OrgsGetWebhookConfigForOrgResponse,
             next
           );
@@ -45562,7 +45564,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.orgsUpdateWebhookConfigForOrg(
-            req as OrgsUpdateWebhookConfigForOrgRequest,
+            (req as unknown) as OrgsUpdateWebhookConfigForOrgRequest,
             res as OrgsUpdateWebhookConfigForOrgResponse,
             next
           );
@@ -45601,7 +45603,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.orgsListWebhookDeliveries(
-            req as OrgsListWebhookDeliveriesRequest,
+            (req as unknown) as OrgsListWebhookDeliveriesRequest,
             res as OrgsListWebhookDeliveriesResponse,
             next
           );
@@ -45633,7 +45635,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, OrgsGetWebhookDeliveryHandler);
 
           await controller.orgsGetWebhookDelivery(
-            req as OrgsGetWebhookDeliveryRequest,
+            (req as unknown) as OrgsGetWebhookDeliveryRequest,
             res as OrgsGetWebhookDeliveryResponse,
             next
           );
@@ -45668,7 +45670,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.orgsRedeliverWebhookDelivery(
-            req as OrgsRedeliverWebhookDeliveryRequest,
+            (req as unknown) as OrgsRedeliverWebhookDeliveryRequest,
             res as OrgsRedeliverWebhookDeliveryResponse,
             next
           );
@@ -45696,7 +45698,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, OrgsPingWebhookHandler);
 
           await controller.orgsPingWebhook(
-            req as OrgsPingWebhookRequest,
+            (req as unknown) as OrgsPingWebhookRequest,
             res as OrgsPingWebhookResponse,
             next
           );
@@ -45724,7 +45726,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, AppsGetOrgInstallationHandler);
 
           await controller.appsGetOrgInstallation(
-            req as AppsGetOrgInstallationRequest,
+            (req as unknown) as AppsGetOrgInstallationRequest,
             res as AppsGetOrgInstallationResponse,
             next
           );
@@ -45763,7 +45765,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.orgsListAppInstallations(
-            req as OrgsListAppInstallationsRequest,
+            (req as unknown) as OrgsListAppInstallationsRequest,
             res as OrgsListAppInstallationsResponse,
             next
           );
@@ -45794,7 +45796,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.interactionsGetRestrictionsForOrg(
-            req as InteractionsGetRestrictionsForOrgRequest,
+            (req as unknown) as InteractionsGetRestrictionsForOrgRequest,
             res as InteractionsGetRestrictionsForOrgResponse,
             next
           );
@@ -45868,7 +45870,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.interactionsSetRestrictionsForOrg(
-            req as InteractionsSetRestrictionsForOrgRequest,
+            (req as unknown) as InteractionsSetRestrictionsForOrgRequest,
             res as InteractionsSetRestrictionsForOrgResponse,
             next
           );
@@ -45899,7 +45901,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.interactionsRemoveRestrictionsForOrg(
-            req as InteractionsRemoveRestrictionsForOrgRequest,
+            (req as unknown) as InteractionsRemoveRestrictionsForOrgRequest,
             res as InteractionsRemoveRestrictionsForOrgResponse,
             next
           );
@@ -45938,7 +45940,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.orgsListPendingInvitations(
-            req as OrgsListPendingInvitationsRequest,
+            (req as unknown) as OrgsListPendingInvitationsRequest,
             res as OrgsListPendingInvitationsResponse,
             next
           );
@@ -45995,7 +45997,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, OrgsCreateInvitationHandler);
 
           await controller.orgsCreateInvitation(
-            req as OrgsCreateInvitationRequest,
+            (req as unknown) as OrgsCreateInvitationRequest,
             res as OrgsCreateInvitationResponse,
             next
           );
@@ -46026,7 +46028,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, OrgsCancelInvitationHandler);
 
           await controller.orgsCancelInvitation(
-            req as OrgsCancelInvitationRequest,
+            (req as unknown) as OrgsCancelInvitationRequest,
             res as OrgsCancelInvitationResponse,
             next
           );
@@ -46065,7 +46067,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, OrgsListInvitationTeamsHandler);
 
           await controller.orgsListInvitationTeams(
-            req as OrgsListInvitationTeamsRequest,
+            (req as unknown) as OrgsListInvitationTeamsRequest,
             res as OrgsListInvitationTeamsResponse,
             next
           );
@@ -46130,7 +46132,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesListForOrgHandler);
 
           await controller.issuesListForOrg(
-            req as IssuesListForOrgRequest,
+            (req as unknown) as IssuesListForOrgRequest,
             res as IssuesListForOrgResponse,
             next
           );
@@ -46176,7 +46178,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, OrgsListMembersHandler);
 
           await controller.orgsListMembers(
-            req as OrgsListMembersRequest,
+            (req as unknown) as OrgsListMembersRequest,
             res as OrgsListMembersResponse,
             next
           );
@@ -46207,7 +46209,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.orgsCheckMembershipForUser(
-            req as OrgsCheckMembershipForUserRequest,
+            (req as unknown) as OrgsCheckMembershipForUserRequest,
             res as OrgsCheckMembershipForUserResponse,
             next
           );
@@ -46235,7 +46237,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, OrgsRemoveMemberHandler);
 
           await controller.orgsRemoveMember(
-            req as OrgsRemoveMemberRequest,
+            (req as unknown) as OrgsRemoveMemberRequest,
             res as OrgsRemoveMemberResponse,
             next
           );
@@ -46274,7 +46276,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesGetCodespacesForUserInOrg(
-            req as CodespacesGetCodespacesForUserInOrgRequest,
+            (req as unknown) as CodespacesGetCodespacesForUserInOrgRequest,
             res as CodespacesGetCodespacesForUserInOrgResponse,
             next
           );
@@ -46309,7 +46311,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesDeleteFromOrganization(
-            req as CodespacesDeleteFromOrganizationRequest,
+            (req as unknown) as CodespacesDeleteFromOrganizationRequest,
             res as CodespacesDeleteFromOrganizationResponse,
             next
           );
@@ -46344,7 +46346,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesStopInOrganization(
-            req as CodespacesStopInOrganizationRequest,
+            (req as unknown) as CodespacesStopInOrganizationRequest,
             res as CodespacesStopInOrganizationResponse,
             next
           );
@@ -46375,7 +46377,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.orgsGetMembershipForUser(
-            req as OrgsGetMembershipForUserRequest,
+            (req as unknown) as OrgsGetMembershipForUserRequest,
             res as OrgsGetMembershipForUserResponse,
             next
           );
@@ -46419,7 +46421,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.orgsSetMembershipForUser(
-            req as OrgsSetMembershipForUserRequest,
+            (req as unknown) as OrgsSetMembershipForUserRequest,
             res as OrgsSetMembershipForUserResponse,
             next
           );
@@ -46450,7 +46452,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.orgsRemoveMembershipForUser(
-            req as OrgsRemoveMembershipForUserRequest,
+            (req as unknown) as OrgsRemoveMembershipForUserRequest,
             res as OrgsRemoveMembershipForUserResponse,
             next
           );
@@ -46507,7 +46509,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, MigrationsListForOrgHandler);
 
           await controller.migrationsListForOrg(
-            req as MigrationsListForOrgRequest,
+            (req as unknown) as MigrationsListForOrgRequest,
             res as MigrationsListForOrgResponse,
             next
           );
@@ -46601,7 +46603,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, MigrationsStartForOrgHandler);
 
           await controller.migrationsStartForOrg(
-            req as MigrationsStartForOrgRequest,
+            (req as unknown) as MigrationsStartForOrgRequest,
             res as MigrationsStartForOrgResponse,
             next
           );
@@ -46662,7 +46664,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.migrationsGetStatusForOrg(
-            req as MigrationsGetStatusForOrgRequest,
+            (req as unknown) as MigrationsGetStatusForOrgRequest,
             res as MigrationsGetStatusForOrgResponse,
             next
           );
@@ -46696,7 +46698,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.migrationsDownloadArchiveForOrg(
-            req as MigrationsDownloadArchiveForOrgRequest,
+            (req as unknown) as MigrationsDownloadArchiveForOrgRequest,
             res as MigrationsDownloadArchiveForOrgResponse,
             next
           );
@@ -46730,7 +46732,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.migrationsDeleteArchiveForOrg(
-            req as MigrationsDeleteArchiveForOrgRequest,
+            (req as unknown) as MigrationsDeleteArchiveForOrgRequest,
             res as MigrationsDeleteArchiveForOrgResponse,
             next
           );
@@ -46765,7 +46767,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.migrationsUnlockRepoForOrg(
-            req as MigrationsUnlockRepoForOrgRequest,
+            (req as unknown) as MigrationsUnlockRepoForOrgRequest,
             res as MigrationsUnlockRepoForOrgResponse,
             next
           );
@@ -46807,7 +46809,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.migrationsListReposForOrg(
-            req as MigrationsListReposForOrgRequest,
+            (req as unknown) as MigrationsListReposForOrgRequest,
             res as MigrationsListReposForOrgResponse,
             next
           );
@@ -46851,7 +46853,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.orgsListOutsideCollaborators(
-            req as OrgsListOutsideCollaboratorsRequest,
+            (req as unknown) as OrgsListOutsideCollaboratorsRequest,
             res as OrgsListOutsideCollaboratorsResponse,
             next
           );
@@ -46896,7 +46898,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.orgsConvertMemberToOutsideCollaborator(
-            req as OrgsConvertMemberToOutsideCollaboratorRequest,
+            (req as unknown) as OrgsConvertMemberToOutsideCollaboratorRequest,
             res as OrgsConvertMemberToOutsideCollaboratorResponse,
             next
           );
@@ -46927,7 +46929,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.orgsRemoveOutsideCollaborator(
-            req as OrgsRemoveOutsideCollaboratorRequest,
+            (req as unknown) as OrgsRemoveOutsideCollaboratorRequest,
             res as OrgsRemoveOutsideCollaboratorResponse,
             next
           );
@@ -46972,7 +46974,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.packagesListPackagesForOrganization(
-            req as PackagesListPackagesForOrganizationRequest,
+            (req as unknown) as PackagesListPackagesForOrganizationRequest,
             res as PackagesListPackagesForOrganizationResponse,
             next
           );
@@ -47010,7 +47012,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.packagesGetPackageForOrganization(
-            req as PackagesGetPackageForOrganizationRequest,
+            (req as unknown) as PackagesGetPackageForOrganizationRequest,
             res as PackagesGetPackageForOrganizationResponse,
             next
           );
@@ -47048,7 +47050,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.packagesDeletePackageForOrg(
-            req as PackagesDeletePackageForOrgRequest,
+            (req as unknown) as PackagesDeletePackageForOrgRequest,
             res as PackagesDeletePackageForOrgResponse,
             next
           );
@@ -47091,7 +47093,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.packagesRestorePackageForOrg(
-            req as PackagesRestorePackageForOrgRequest,
+            (req as unknown) as PackagesRestorePackageForOrgRequest,
             res as PackagesRestorePackageForOrgResponse,
             next
           );
@@ -47144,7 +47146,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.packagesGetAllPackageVersionsForPackageOwnedByOrg(
-            req as PackagesGetAllPackageVersionsForPackageOwnedByOrgRequest,
+            (req as unknown) as PackagesGetAllPackageVersionsForPackageOwnedByOrgRequest,
             res as PackagesGetAllPackageVersionsForPackageOwnedByOrgResponse,
             next
           );
@@ -47190,7 +47192,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.packagesGetPackageVersionForOrganization(
-            req as PackagesGetPackageVersionForOrganizationRequest,
+            (req as unknown) as PackagesGetPackageVersionForOrganizationRequest,
             res as PackagesGetPackageVersionForOrganizationResponse,
             next
           );
@@ -47234,7 +47236,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.packagesDeletePackageVersionForOrg(
-            req as PackagesDeletePackageVersionForOrgRequest,
+            (req as unknown) as PackagesDeletePackageVersionForOrgRequest,
             res as PackagesDeletePackageVersionForOrgResponse,
             next
           );
@@ -47278,7 +47280,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.packagesRestorePackageVersionForOrg(
-            req as PackagesRestorePackageVersionForOrgRequest,
+            (req as unknown) as PackagesRestorePackageVersionForOrgRequest,
             res as PackagesRestorePackageVersionForOrgResponse,
             next
           );
@@ -47319,7 +47321,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ProjectsListForOrgHandler);
 
           await controller.projectsListForOrg(
-            req as ProjectsListForOrgRequest,
+            (req as unknown) as ProjectsListForOrgRequest,
             res as ProjectsListForOrgResponse,
             next
           );
@@ -47359,7 +47361,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ProjectsCreateForOrgHandler);
 
           await controller.projectsCreateForOrg(
-            req as ProjectsCreateForOrgRequest,
+            (req as unknown) as ProjectsCreateForOrgRequest,
             res as ProjectsCreateForOrgResponse,
             next
           );
@@ -47395,7 +47397,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, OrgsListPublicMembersHandler);
 
           await controller.orgsListPublicMembers(
-            req as OrgsListPublicMembersRequest,
+            (req as unknown) as OrgsListPublicMembersRequest,
             res as OrgsListPublicMembersResponse,
             next
           );
@@ -47426,7 +47428,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.orgsCheckPublicMembershipForUser(
-            req as OrgsCheckPublicMembershipForUserRequest,
+            (req as unknown) as OrgsCheckPublicMembershipForUserRequest,
             res as OrgsCheckPublicMembershipForUserResponse,
             next
           );
@@ -47459,7 +47461,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.orgsSetPublicMembershipForAuthenticatedUser(
-            req as OrgsSetPublicMembershipForAuthenticatedUserRequest,
+            (req as unknown) as OrgsSetPublicMembershipForAuthenticatedUserRequest,
             res as OrgsSetPublicMembershipForAuthenticatedUserResponse,
             next
           );
@@ -47492,7 +47494,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.orgsRemovePublicMembershipForAuthenticatedUser(
-            req as OrgsRemovePublicMembershipForAuthenticatedUserRequest,
+            (req as unknown) as OrgsRemovePublicMembershipForAuthenticatedUserRequest,
             res as OrgsRemovePublicMembershipForAuthenticatedUserResponse,
             next
           );
@@ -47546,7 +47548,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposListForOrgHandler);
 
           await controller.reposListForOrg(
-            req as ReposListForOrgRequest,
+            (req as unknown) as ReposListForOrgRequest,
             res as ReposListForOrgResponse,
             next
           );
@@ -47710,7 +47712,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposCreateInOrgHandler);
 
           await controller.reposCreateInOrg(
-            req as ReposCreateInOrgRequest,
+            (req as unknown) as ReposCreateInOrgRequest,
             res as ReposCreateInOrgResponse,
             next
           );
@@ -47764,7 +47766,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.secretScanningListAlertsForOrg(
-            req as SecretScanningListAlertsForOrgRequest,
+            (req as unknown) as SecretScanningListAlertsForOrgRequest,
             res as SecretScanningListAlertsForOrgResponse,
             next
           );
@@ -47795,7 +47797,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.orgsListSecurityManagerTeams(
-            req as OrgsListSecurityManagerTeamsRequest,
+            (req as unknown) as OrgsListSecurityManagerTeamsRequest,
             res as OrgsListSecurityManagerTeamsResponse,
             next
           );
@@ -47829,7 +47831,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.orgsAddSecurityManagerTeam(
-            req as OrgsAddSecurityManagerTeamRequest,
+            (req as unknown) as OrgsAddSecurityManagerTeamRequest,
             res as OrgsAddSecurityManagerTeamResponse,
             next
           );
@@ -47863,7 +47865,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.orgsRemoveSecurityManagerTeam(
-            req as OrgsRemoveSecurityManagerTeamRequest,
+            (req as unknown) as OrgsRemoveSecurityManagerTeamRequest,
             res as OrgsRemoveSecurityManagerTeamResponse,
             next
           );
@@ -47894,7 +47896,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.billingGetGithubActionsBillingOrg(
-            req as BillingGetGithubActionsBillingOrgRequest,
+            (req as unknown) as BillingGetGithubActionsBillingOrgRequest,
             res as BillingGetGithubActionsBillingOrgResponse,
             next
           );
@@ -47935,7 +47937,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.billingGetGithubAdvancedSecurityBillingOrg(
-            req as BillingGetGithubAdvancedSecurityBillingOrgRequest,
+            (req as unknown) as BillingGetGithubAdvancedSecurityBillingOrgRequest,
             res as BillingGetGithubAdvancedSecurityBillingOrgResponse,
             next
           );
@@ -47966,7 +47968,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.billingGetGithubPackagesBillingOrg(
-            req as BillingGetGithubPackagesBillingOrgRequest,
+            (req as unknown) as BillingGetGithubPackagesBillingOrgRequest,
             res as BillingGetGithubPackagesBillingOrgResponse,
             next
           );
@@ -47997,7 +47999,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.billingGetSharedStorageBillingOrg(
-            req as BillingGetSharedStorageBillingOrgRequest,
+            (req as unknown) as BillingGetSharedStorageBillingOrgRequest,
             res as BillingGetSharedStorageBillingOrgResponse,
             next
           );
@@ -48033,7 +48035,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, TeamsListHandler);
 
           await controller.teamsList(
-            req as TeamsListRequest,
+            (req as unknown) as TeamsListRequest,
             res as TeamsListResponse,
             next
           );
@@ -48102,7 +48104,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, TeamsCreateHandler);
 
           await controller.teamsCreate(
-            req as TeamsCreateRequest,
+            (req as unknown) as TeamsCreateRequest,
             res as TeamsCreateResponse,
             next
           );
@@ -48133,7 +48135,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, TeamsGetByNameHandler);
 
           await controller.teamsGetByName(
-            req as TeamsGetByNameRequest,
+            (req as unknown) as TeamsGetByNameRequest,
             res as TeamsGetByNameResponse,
             next
           );
@@ -48193,7 +48195,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, TeamsUpdateInOrgHandler);
 
           await controller.teamsUpdateInOrg(
-            req as TeamsUpdateInOrgRequest,
+            (req as unknown) as TeamsUpdateInOrgRequest,
             res as TeamsUpdateInOrgResponse,
             next
           );
@@ -48224,7 +48226,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, TeamsDeleteInOrgHandler);
 
           await controller.teamsDeleteInOrg(
-            req as TeamsDeleteInOrgRequest,
+            (req as unknown) as TeamsDeleteInOrgRequest,
             res as TeamsDeleteInOrgResponse,
             next
           );
@@ -48272,7 +48274,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsListDiscussionsInOrg(
-            req as TeamsListDiscussionsInOrgRequest,
+            (req as unknown) as TeamsListDiscussionsInOrgRequest,
             res as TeamsListDiscussionsInOrgResponse,
             next
           );
@@ -48327,7 +48329,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsCreateDiscussionInOrg(
-            req as TeamsCreateDiscussionInOrgRequest,
+            (req as unknown) as TeamsCreateDiscussionInOrgRequest,
             res as TeamsCreateDiscussionInOrgResponse,
             next
           );
@@ -48359,7 +48361,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, TeamsGetDiscussionInOrgHandler);
 
           await controller.teamsGetDiscussionInOrg(
-            req as TeamsGetDiscussionInOrgRequest,
+            (req as unknown) as TeamsGetDiscussionInOrgRequest,
             res as TeamsGetDiscussionInOrgResponse,
             next
           );
@@ -48408,7 +48410,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsUpdateDiscussionInOrg(
-            req as TeamsUpdateDiscussionInOrgRequest,
+            (req as unknown) as TeamsUpdateDiscussionInOrgRequest,
             res as TeamsUpdateDiscussionInOrgResponse,
             next
           );
@@ -48443,7 +48445,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsDeleteDiscussionInOrg(
-            req as TeamsDeleteDiscussionInOrgRequest,
+            (req as unknown) as TeamsDeleteDiscussionInOrgRequest,
             res as TeamsDeleteDiscussionInOrgResponse,
             next
           );
@@ -48491,7 +48493,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsListDiscussionCommentsInOrg(
-            req as TeamsListDiscussionCommentsInOrgRequest,
+            (req as unknown) as TeamsListDiscussionCommentsInOrgRequest,
             res as TeamsListDiscussionCommentsInOrgResponse,
             next
           );
@@ -48537,7 +48539,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsCreateDiscussionCommentInOrg(
-            req as TeamsCreateDiscussionCommentInOrgRequest,
+            (req as unknown) as TeamsCreateDiscussionCommentInOrgRequest,
             res as TeamsCreateDiscussionCommentInOrgResponse,
             next
           );
@@ -48573,7 +48575,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsGetDiscussionCommentInOrg(
-            req as TeamsGetDiscussionCommentInOrgRequest,
+            (req as unknown) as TeamsGetDiscussionCommentInOrgRequest,
             res as TeamsGetDiscussionCommentInOrgResponse,
             next
           );
@@ -48620,7 +48622,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsUpdateDiscussionCommentInOrg(
-            req as TeamsUpdateDiscussionCommentInOrgRequest,
+            (req as unknown) as TeamsUpdateDiscussionCommentInOrgRequest,
             res as TeamsUpdateDiscussionCommentInOrgResponse,
             next
           );
@@ -48656,7 +48658,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsDeleteDiscussionCommentInOrg(
-            req as TeamsDeleteDiscussionCommentInOrgRequest,
+            (req as unknown) as TeamsDeleteDiscussionCommentInOrgRequest,
             res as TeamsDeleteDiscussionCommentInOrgResponse,
             next
           );
@@ -48715,7 +48717,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reactionsListForTeamDiscussionCommentInOrg(
-            req as ReactionsListForTeamDiscussionCommentInOrgRequest,
+            (req as unknown) as ReactionsListForTeamDiscussionCommentInOrgRequest,
             res as ReactionsListForTeamDiscussionCommentInOrgResponse,
             next
           );
@@ -48775,7 +48777,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reactionsCreateForTeamDiscussionCommentInOrg(
-            req as ReactionsCreateForTeamDiscussionCommentInOrgRequest,
+            (req as unknown) as ReactionsCreateForTeamDiscussionCommentInOrgRequest,
             res as ReactionsCreateForTeamDiscussionCommentInOrgResponse,
             next
           );
@@ -48820,7 +48822,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reactionsDeleteForTeamDiscussionComment(
-            req as ReactionsDeleteForTeamDiscussionCommentRequest,
+            (req as unknown) as ReactionsDeleteForTeamDiscussionCommentRequest,
             res as ReactionsDeleteForTeamDiscussionCommentResponse,
             next
           );
@@ -48876,7 +48878,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reactionsListForTeamDiscussionInOrg(
-            req as ReactionsListForTeamDiscussionInOrgRequest,
+            (req as unknown) as ReactionsListForTeamDiscussionInOrgRequest,
             res as ReactionsListForTeamDiscussionInOrgResponse,
             next
           );
@@ -48935,7 +48937,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reactionsCreateForTeamDiscussionInOrg(
-            req as ReactionsCreateForTeamDiscussionInOrgRequest,
+            (req as unknown) as ReactionsCreateForTeamDiscussionInOrgRequest,
             res as ReactionsCreateForTeamDiscussionInOrgResponse,
             next
           );
@@ -48971,7 +48973,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reactionsDeleteForTeamDiscussion(
-            req as ReactionsDeleteForTeamDiscussionRequest,
+            (req as unknown) as ReactionsDeleteForTeamDiscussionRequest,
             res as ReactionsDeleteForTeamDiscussionResponse,
             next
           );
@@ -49013,7 +49015,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsListPendingInvitationsInOrg(
-            req as TeamsListPendingInvitationsInOrgRequest,
+            (req as unknown) as TeamsListPendingInvitationsInOrgRequest,
             res as TeamsListPendingInvitationsInOrgResponse,
             next
           );
@@ -49057,7 +49059,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, TeamsListMembersInOrgHandler);
 
           await controller.teamsListMembersInOrg(
-            req as TeamsListMembersInOrgRequest,
+            (req as unknown) as TeamsListMembersInOrgRequest,
             res as TeamsListMembersInOrgResponse,
             next
           );
@@ -49092,7 +49094,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsGetMembershipForUserInOrg(
-            req as TeamsGetMembershipForUserInOrgRequest,
+            (req as unknown) as TeamsGetMembershipForUserInOrgRequest,
             res as TeamsGetMembershipForUserInOrgResponse,
             next
           );
@@ -49141,7 +49143,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsAddOrUpdateMembershipForUserInOrg(
-            req as TeamsAddOrUpdateMembershipForUserInOrgRequest,
+            (req as unknown) as TeamsAddOrUpdateMembershipForUserInOrgRequest,
             res as TeamsAddOrUpdateMembershipForUserInOrgResponse,
             next
           );
@@ -49176,7 +49178,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsRemoveMembershipForUserInOrg(
-            req as TeamsRemoveMembershipForUserInOrgRequest,
+            (req as unknown) as TeamsRemoveMembershipForUserInOrgRequest,
             res as TeamsRemoveMembershipForUserInOrgResponse,
             next
           );
@@ -49215,7 +49217,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, TeamsListProjectsInOrgHandler);
 
           await controller.teamsListProjectsInOrg(
-            req as TeamsListProjectsInOrgRequest,
+            (req as unknown) as TeamsListProjectsInOrgRequest,
             res as TeamsListProjectsInOrgResponse,
             next
           );
@@ -49250,7 +49252,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsCheckPermissionsForProjectInOrg(
-            req as TeamsCheckPermissionsForProjectInOrgRequest,
+            (req as unknown) as TeamsCheckPermissionsForProjectInOrgRequest,
             res as TeamsCheckPermissionsForProjectInOrgResponse,
             next
           );
@@ -49300,7 +49302,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsAddOrUpdateProjectPermissionsInOrg(
-            req as TeamsAddOrUpdateProjectPermissionsInOrgRequest,
+            (req as unknown) as TeamsAddOrUpdateProjectPermissionsInOrgRequest,
             res as TeamsAddOrUpdateProjectPermissionsInOrgResponse,
             next
           );
@@ -49332,7 +49334,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, TeamsRemoveProjectInOrgHandler);
 
           await controller.teamsRemoveProjectInOrg(
-            req as TeamsRemoveProjectInOrgRequest,
+            (req as unknown) as TeamsRemoveProjectInOrgRequest,
             res as TeamsRemoveProjectInOrgResponse,
             next
           );
@@ -49371,7 +49373,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, TeamsListReposInOrgHandler);
 
           await controller.teamsListReposInOrg(
-            req as TeamsListReposInOrgRequest,
+            (req as unknown) as TeamsListReposInOrgRequest,
             res as TeamsListReposInOrgResponse,
             next
           );
@@ -49407,7 +49409,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsCheckPermissionsForRepoInOrg(
-            req as TeamsCheckPermissionsForRepoInOrgRequest,
+            (req as unknown) as TeamsCheckPermissionsForRepoInOrgRequest,
             res as TeamsCheckPermissionsForRepoInOrgResponse,
             next
           );
@@ -49455,7 +49457,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsAddOrUpdateRepoPermissionsInOrg(
-            req as TeamsAddOrUpdateRepoPermissionsInOrgRequest,
+            (req as unknown) as TeamsAddOrUpdateRepoPermissionsInOrgRequest,
             res as TeamsAddOrUpdateRepoPermissionsInOrgResponse,
             next
           );
@@ -49488,7 +49490,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, TeamsRemoveRepoInOrgHandler);
 
           await controller.teamsRemoveRepoInOrg(
-            req as TeamsRemoveRepoInOrgRequest,
+            (req as unknown) as TeamsRemoveRepoInOrgRequest,
             res as TeamsRemoveRepoInOrgResponse,
             next
           );
@@ -49527,7 +49529,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, TeamsListChildInOrgHandler);
 
           await controller.teamsListChildInOrg(
-            req as TeamsListChildInOrgRequest,
+            (req as unknown) as TeamsListChildInOrgRequest,
             res as TeamsListChildInOrgResponse,
             next
           );
@@ -49574,7 +49576,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.orgsEnableOrDisableSecurityProductOnAllOrgRepos(
-            req as OrgsEnableOrDisableSecurityProductOnAllOrgReposRequest,
+            (req as unknown) as OrgsEnableOrDisableSecurityProductOnAllOrgReposRequest,
             res as OrgsEnableOrDisableSecurityProductOnAllOrgReposResponse,
             next
           );
@@ -49602,7 +49604,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ProjectsGetCardHandler);
 
           await controller.projectsGetCard(
-            req as ProjectsGetCardRequest,
+            (req as unknown) as ProjectsGetCardRequest,
             res as ProjectsGetCardResponse,
             next
           );
@@ -49647,7 +49649,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ProjectsUpdateCardHandler);
 
           await controller.projectsUpdateCard(
-            req as ProjectsUpdateCardRequest,
+            (req as unknown) as ProjectsUpdateCardRequest,
             res as ProjectsUpdateCardResponse,
             next
           );
@@ -49675,7 +49677,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ProjectsDeleteCardHandler);
 
           await controller.projectsDeleteCard(
-            req as ProjectsDeleteCardRequest,
+            (req as unknown) as ProjectsDeleteCardRequest,
             res as ProjectsDeleteCardResponse,
             next
           );
@@ -49723,7 +49725,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ProjectsMoveCardHandler);
 
           await controller.projectsMoveCard(
-            req as ProjectsMoveCardRequest,
+            (req as unknown) as ProjectsMoveCardRequest,
             res as ProjectsMoveCardResponse,
             next
           );
@@ -49751,7 +49753,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ProjectsGetColumnHandler);
 
           await controller.projectsGetColumn(
-            req as ProjectsGetColumnRequest,
+            (req as unknown) as ProjectsGetColumnRequest,
             res as ProjectsGetColumnResponse,
             next
           );
@@ -49791,7 +49793,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ProjectsUpdateColumnHandler);
 
           await controller.projectsUpdateColumn(
-            req as ProjectsUpdateColumnRequest,
+            (req as unknown) as ProjectsUpdateColumnRequest,
             res as ProjectsUpdateColumnResponse,
             next
           );
@@ -49819,7 +49821,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ProjectsDeleteColumnHandler);
 
           await controller.projectsDeleteColumn(
-            req as ProjectsDeleteColumnRequest,
+            (req as unknown) as ProjectsDeleteColumnRequest,
             res as ProjectsDeleteColumnResponse,
             next
           );
@@ -49860,7 +49862,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ProjectsListCardsHandler);
 
           await controller.projectsListCards(
-            req as ProjectsListCardsRequest,
+            (req as unknown) as ProjectsListCardsRequest,
             res as ProjectsListCardsResponse,
             next
           );
@@ -49922,7 +49924,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ProjectsCreateCardHandler);
 
           await controller.projectsCreateCard(
-            req as ProjectsCreateCardRequest,
+            (req as unknown) as ProjectsCreateCardRequest,
             res as ProjectsCreateCardResponse,
             next
           );
@@ -49964,7 +49966,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ProjectsMoveColumnHandler);
 
           await controller.projectsMoveColumn(
-            req as ProjectsMoveColumnRequest,
+            (req as unknown) as ProjectsMoveColumnRequest,
             res as ProjectsMoveColumnResponse,
             next
           );
@@ -49992,7 +49994,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ProjectsGetHandler);
 
           await controller.projectsGet(
-            req as ProjectsGetRequest,
+            (req as unknown) as ProjectsGetRequest,
             res as ProjectsGetResponse,
             next
           );
@@ -50054,7 +50056,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ProjectsUpdateHandler);
 
           await controller.projectsUpdate(
-            req as ProjectsUpdateRequest,
+            (req as unknown) as ProjectsUpdateRequest,
             res as ProjectsUpdateResponse,
             next
           );
@@ -50082,7 +50084,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ProjectsDeleteHandler);
 
           await controller.projectsDelete(
-            req as ProjectsDeleteRequest,
+            (req as unknown) as ProjectsDeleteRequest,
             res as ProjectsDeleteResponse,
             next
           );
@@ -50126,7 +50128,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.projectsListCollaborators(
-            req as ProjectsListCollaboratorsRequest,
+            (req as unknown) as ProjectsListCollaboratorsRequest,
             res as ProjectsListCollaboratorsResponse,
             next
           );
@@ -50171,7 +50173,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ProjectsAddCollaboratorHandler);
 
           await controller.projectsAddCollaborator(
-            req as ProjectsAddCollaboratorRequest,
+            (req as unknown) as ProjectsAddCollaboratorRequest,
             res as ProjectsAddCollaboratorResponse,
             next
           );
@@ -50205,7 +50207,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.projectsRemoveCollaborator(
-            req as ProjectsRemoveCollaboratorRequest,
+            (req as unknown) as ProjectsRemoveCollaboratorRequest,
             res as ProjectsRemoveCollaboratorResponse,
             next
           );
@@ -50239,7 +50241,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.projectsGetPermissionForUser(
-            req as ProjectsGetPermissionForUserRequest,
+            (req as unknown) as ProjectsGetPermissionForUserRequest,
             res as ProjectsGetPermissionForUserResponse,
             next
           );
@@ -50275,7 +50277,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ProjectsListColumnsHandler);
 
           await controller.projectsListColumns(
-            req as ProjectsListColumnsRequest,
+            (req as unknown) as ProjectsListColumnsRequest,
             res as ProjectsListColumnsResponse,
             next
           );
@@ -50315,7 +50317,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ProjectsCreateColumnHandler);
 
           await controller.projectsCreateColumn(
-            req as ProjectsCreateColumnRequest,
+            (req as unknown) as ProjectsCreateColumnRequest,
             res as ProjectsCreateColumnResponse,
             next
           );
@@ -50335,7 +50337,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, RateLimitGetHandler);
 
           await controller.rateLimitGet(
-            req as RateLimitGetRequest,
+            (req as unknown) as RateLimitGetRequest,
             res as RateLimitGetResponse,
             next
           );
@@ -50363,7 +50365,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposGetHandler);
 
           await controller.reposGet(
-            req as ReposGetRequest,
+            (req as unknown) as ReposGetRequest,
             res as ReposGetResponse,
             next
           );
@@ -50575,7 +50577,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposUpdateHandler);
 
           await controller.reposUpdate(
-            req as ReposUpdateRequest,
+            (req as unknown) as ReposUpdateRequest,
             res as ReposUpdateResponse,
             next
           );
@@ -50603,7 +50605,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposDeleteHandler);
 
           await controller.reposDelete(
-            req as ReposDeleteRequest,
+            (req as unknown) as ReposDeleteRequest,
             res as ReposDeleteResponse,
             next
           );
@@ -50643,7 +50645,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsListArtifactsForRepo(
-            req as ActionsListArtifactsForRepoRequest,
+            (req as unknown) as ActionsListArtifactsForRepoRequest,
             res as ActionsListArtifactsForRepoResponse,
             next
           );
@@ -50675,7 +50677,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ActionsGetArtifactHandler);
 
           await controller.actionsGetArtifact(
-            req as ActionsGetArtifactRequest,
+            (req as unknown) as ActionsGetArtifactRequest,
             res as ActionsGetArtifactResponse,
             next
           );
@@ -50707,7 +50709,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ActionsDeleteArtifactHandler);
 
           await controller.actionsDeleteArtifact(
-            req as ActionsDeleteArtifactRequest,
+            (req as unknown) as ActionsDeleteArtifactRequest,
             res as ActionsDeleteArtifactResponse,
             next
           );
@@ -50740,7 +50742,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ActionsDownloadArtifactHandler);
 
           await controller.actionsDownloadArtifact(
-            req as ActionsDownloadArtifactRequest,
+            (req as unknown) as ActionsDownloadArtifactRequest,
             res as ActionsDownloadArtifactResponse,
             next
           );
@@ -50771,7 +50773,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsGetActionsCacheUsage(
-            req as ActionsGetActionsCacheUsageRequest,
+            (req as unknown) as ActionsGetActionsCacheUsageRequest,
             res as ActionsGetActionsCacheUsageResponse,
             next
           );
@@ -50830,7 +50832,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsGetActionsCacheList(
-            req as ActionsGetActionsCacheListRequest,
+            (req as unknown) as ActionsGetActionsCacheListRequest,
             res as ActionsGetActionsCacheListResponse,
             next
           );
@@ -50877,7 +50879,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsDeleteActionsCacheByKey(
-            req as ActionsDeleteActionsCacheByKeyRequest,
+            (req as unknown) as ActionsDeleteActionsCacheByKeyRequest,
             res as ActionsDeleteActionsCacheByKeyResponse,
             next
           );
@@ -50912,7 +50914,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsDeleteActionsCacheById(
-            req as ActionsDeleteActionsCacheByIdRequest,
+            (req as unknown) as ActionsDeleteActionsCacheByIdRequest,
             res as ActionsDeleteActionsCacheByIdResponse,
             next
           );
@@ -50947,7 +50949,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsGetJobForWorkflowRun(
-            req as ActionsGetJobForWorkflowRunRequest,
+            (req as unknown) as ActionsGetJobForWorkflowRunRequest,
             res as ActionsGetJobForWorkflowRunResponse,
             next
           );
@@ -50982,7 +50984,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsDownloadJobLogsForWorkflowRun(
-            req as ActionsDownloadJobLogsForWorkflowRunRequest,
+            (req as unknown) as ActionsDownloadJobLogsForWorkflowRunRequest,
             res as ActionsDownloadJobLogsForWorkflowRunResponse,
             next
           );
@@ -51029,7 +51031,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsReRunJobForWorkflowRun(
-            req as ActionsReRunJobForWorkflowRunRequest,
+            (req as unknown) as ActionsReRunJobForWorkflowRunRequest,
             res as ActionsReRunJobForWorkflowRunResponse,
             next
           );
@@ -51062,7 +51064,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsGetGithubActionsPermissionsRepository(
-            req as ActionsGetGithubActionsPermissionsRepositoryRequest,
+            (req as unknown) as ActionsGetGithubActionsPermissionsRepositoryRequest,
             res as ActionsGetGithubActionsPermissionsRepositoryResponse,
             next
           );
@@ -51119,7 +51121,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsSetGithubActionsPermissionsRepository(
-            req as ActionsSetGithubActionsPermissionsRepositoryRequest,
+            (req as unknown) as ActionsSetGithubActionsPermissionsRepositoryRequest,
             res as ActionsSetGithubActionsPermissionsRepositoryResponse,
             next
           );
@@ -51150,7 +51152,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsGetWorkflowAccessToRepository(
-            req as ActionsGetWorkflowAccessToRepositoryRequest,
+            (req as unknown) as ActionsGetWorkflowAccessToRepositoryRequest,
             res as ActionsGetWorkflowAccessToRepositoryResponse,
             next
           );
@@ -51200,7 +51202,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsSetWorkflowAccessToRepository(
-            req as ActionsSetWorkflowAccessToRepositoryRequest,
+            (req as unknown) as ActionsSetWorkflowAccessToRepositoryRequest,
             res as ActionsSetWorkflowAccessToRepositoryResponse,
             next
           );
@@ -51231,7 +51233,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsGetAllowedActionsRepository(
-            req as ActionsGetAllowedActionsRepositoryRequest,
+            (req as unknown) as ActionsGetAllowedActionsRepositoryRequest,
             res as ActionsGetAllowedActionsRepositoryResponse,
             next
           );
@@ -51290,7 +51292,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsSetAllowedActionsRepository(
-            req as ActionsSetAllowedActionsRepositoryRequest,
+            (req as unknown) as ActionsSetAllowedActionsRepositoryRequest,
             res as ActionsSetAllowedActionsRepositoryResponse,
             next
           );
@@ -51323,7 +51325,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsGetGithubActionsDefaultWorkflowPermissionsRepository(
-            req as ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryRequest,
+            (req as unknown) as ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryRequest,
             res as ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryResponse,
             next
           );
@@ -51387,7 +51389,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsSetGithubActionsDefaultWorkflowPermissionsRepository(
-            req as ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequest,
+            (req as unknown) as ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequest,
             res as ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryResponse,
             next
           );
@@ -51426,7 +51428,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsListSelfHostedRunnersForRepo(
-            req as ActionsListSelfHostedRunnersForRepoRequest,
+            (req as unknown) as ActionsListSelfHostedRunnersForRepoRequest,
             res as ActionsListSelfHostedRunnersForRepoResponse,
             next
           );
@@ -51457,7 +51459,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsListRunnerApplicationsForRepo(
-            req as ActionsListRunnerApplicationsForRepoRequest,
+            (req as unknown) as ActionsListRunnerApplicationsForRepoRequest,
             res as ActionsListRunnerApplicationsForRepoResponse,
             next
           );
@@ -51490,7 +51492,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsCreateRegistrationTokenForRepo(
-            req as ActionsCreateRegistrationTokenForRepoRequest,
+            (req as unknown) as ActionsCreateRegistrationTokenForRepoRequest,
             res as ActionsCreateRegistrationTokenForRepoResponse,
             next
           );
@@ -51521,7 +51523,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsCreateRemoveTokenForRepo(
-            req as ActionsCreateRemoveTokenForRepoRequest,
+            (req as unknown) as ActionsCreateRemoveTokenForRepoRequest,
             res as ActionsCreateRemoveTokenForRepoResponse,
             next
           );
@@ -51556,7 +51558,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsGetSelfHostedRunnerForRepo(
-            req as ActionsGetSelfHostedRunnerForRepoRequest,
+            (req as unknown) as ActionsGetSelfHostedRunnerForRepoRequest,
             res as ActionsGetSelfHostedRunnerForRepoResponse,
             next
           );
@@ -51593,7 +51595,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsDeleteSelfHostedRunnerFromRepo(
-            req as ActionsDeleteSelfHostedRunnerFromRepoRequest,
+            (req as unknown) as ActionsDeleteSelfHostedRunnerFromRepoRequest,
             res as ActionsDeleteSelfHostedRunnerFromRepoResponse,
             next
           );
@@ -51630,7 +51632,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsListLabelsForSelfHostedRunnerForRepo(
-            req as ActionsListLabelsForSelfHostedRunnerForRepoRequest,
+            (req as unknown) as ActionsListLabelsForSelfHostedRunnerForRepoRequest,
             res as ActionsListLabelsForSelfHostedRunnerForRepoResponse,
             next
           );
@@ -51682,7 +51684,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsAddCustomLabelsToSelfHostedRunnerForRepo(
-            req as ActionsAddCustomLabelsToSelfHostedRunnerForRepoRequest,
+            (req as unknown) as ActionsAddCustomLabelsToSelfHostedRunnerForRepoRequest,
             res as ActionsAddCustomLabelsToSelfHostedRunnerForRepoResponse,
             next
           );
@@ -51734,7 +51736,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsSetCustomLabelsForSelfHostedRunnerForRepo(
-            req as ActionsSetCustomLabelsForSelfHostedRunnerForRepoRequest,
+            (req as unknown) as ActionsSetCustomLabelsForSelfHostedRunnerForRepoRequest,
             res as ActionsSetCustomLabelsForSelfHostedRunnerForRepoResponse,
             next
           );
@@ -51771,7 +51773,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepo(
-            req as ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequest,
+            (req as unknown) as ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequest,
             res as ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoResponse,
             next
           );
@@ -51809,7 +51811,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsRemoveCustomLabelFromSelfHostedRunnerForRepo(
-            req as ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoRequest,
+            (req as unknown) as ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoRequest,
             res as ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoResponse,
             next
           );
@@ -51873,7 +51875,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsListWorkflowRunsForRepo(
-            req as ActionsListWorkflowRunsForRepoRequest,
+            (req as unknown) as ActionsListWorkflowRunsForRepoRequest,
             res as ActionsListWorkflowRunsForRepoResponse,
             next
           );
@@ -51912,7 +51914,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ActionsGetWorkflowRunHandler);
 
           await controller.actionsGetWorkflowRun(
-            req as ActionsGetWorkflowRunRequest,
+            (req as unknown) as ActionsGetWorkflowRunRequest,
             res as ActionsGetWorkflowRunResponse,
             next
           );
@@ -51947,7 +51949,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsDeleteWorkflowRun(
-            req as ActionsDeleteWorkflowRunRequest,
+            (req as unknown) as ActionsDeleteWorkflowRunRequest,
             res as ActionsDeleteWorkflowRunResponse,
             next
           );
@@ -51979,7 +51981,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ActionsGetReviewsForRunHandler);
 
           await controller.actionsGetReviewsForRun(
-            req as ActionsGetReviewsForRunRequest,
+            (req as unknown) as ActionsGetReviewsForRunRequest,
             res as ActionsGetReviewsForRunResponse,
             next
           );
@@ -52014,7 +52016,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsApproveWorkflowRun(
-            req as ActionsApproveWorkflowRunRequest,
+            (req as unknown) as ActionsApproveWorkflowRunRequest,
             res as ActionsApproveWorkflowRunResponse,
             next
           );
@@ -52057,7 +52059,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsListWorkflowRunArtifacts(
-            req as ActionsListWorkflowRunArtifactsRequest,
+            (req as unknown) as ActionsListWorkflowRunArtifactsRequest,
             res as ActionsListWorkflowRunArtifactsResponse,
             next
           );
@@ -52100,7 +52102,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsGetWorkflowRunAttempt(
-            req as ActionsGetWorkflowRunAttemptRequest,
+            (req as unknown) as ActionsGetWorkflowRunAttemptRequest,
             res as ActionsGetWorkflowRunAttemptResponse,
             next
           );
@@ -52144,7 +52146,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsListJobsForWorkflowRunAttempt(
-            req as ActionsListJobsForWorkflowRunAttemptRequest,
+            (req as unknown) as ActionsListJobsForWorkflowRunAttemptRequest,
             res as ActionsListJobsForWorkflowRunAttemptResponse,
             next
           );
@@ -52182,7 +52184,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsDownloadWorkflowRunAttemptLogs(
-            req as ActionsDownloadWorkflowRunAttemptLogsRequest,
+            (req as unknown) as ActionsDownloadWorkflowRunAttemptLogsRequest,
             res as ActionsDownloadWorkflowRunAttemptLogsResponse,
             next
           );
@@ -52217,7 +52219,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsCancelWorkflowRun(
-            req as ActionsCancelWorkflowRunRequest,
+            (req as unknown) as ActionsCancelWorkflowRunRequest,
             res as ActionsCancelWorkflowRunResponse,
             next
           );
@@ -52265,7 +52267,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsListJobsForWorkflowRun(
-            req as ActionsListJobsForWorkflowRunRequest,
+            (req as unknown) as ActionsListJobsForWorkflowRunRequest,
             res as ActionsListJobsForWorkflowRunResponse,
             next
           );
@@ -52300,7 +52302,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsDownloadWorkflowRunLogs(
-            req as ActionsDownloadWorkflowRunLogsRequest,
+            (req as unknown) as ActionsDownloadWorkflowRunLogsRequest,
             res as ActionsDownloadWorkflowRunLogsResponse,
             next
           );
@@ -52335,7 +52337,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsDeleteWorkflowRunLogs(
-            req as ActionsDeleteWorkflowRunLogsRequest,
+            (req as unknown) as ActionsDeleteWorkflowRunLogsRequest,
             res as ActionsDeleteWorkflowRunLogsResponse,
             next
           );
@@ -52370,7 +52372,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsGetPendingDeploymentsForRun(
-            req as ActionsGetPendingDeploymentsForRunRequest,
+            (req as unknown) as ActionsGetPendingDeploymentsForRunRequest,
             res as ActionsGetPendingDeploymentsForRunResponse,
             next
           );
@@ -52432,7 +52434,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsReviewPendingDeploymentsForRun(
-            req as ActionsReviewPendingDeploymentsForRunRequest,
+            (req as unknown) as ActionsReviewPendingDeploymentsForRunRequest,
             res as ActionsReviewPendingDeploymentsForRunResponse,
             next
           );
@@ -52476,7 +52478,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ActionsReRunWorkflowHandler);
 
           await controller.actionsReRunWorkflow(
-            req as ActionsReRunWorkflowRequest,
+            (req as unknown) as ActionsReRunWorkflowRequest,
             res as ActionsReRunWorkflowResponse,
             next
           );
@@ -52523,7 +52525,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsReRunWorkflowFailedJobs(
-            req as ActionsReRunWorkflowFailedJobsRequest,
+            (req as unknown) as ActionsReRunWorkflowFailedJobsRequest,
             res as ActionsReRunWorkflowFailedJobsResponse,
             next
           );
@@ -52558,7 +52560,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsGetWorkflowRunUsage(
-            req as ActionsGetWorkflowRunUsageRequest,
+            (req as unknown) as ActionsGetWorkflowRunUsageRequest,
             res as ActionsGetWorkflowRunUsageResponse,
             next
           );
@@ -52594,7 +52596,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ActionsListRepoSecretsHandler);
 
           await controller.actionsListRepoSecrets(
-            req as ActionsListRepoSecretsRequest,
+            (req as unknown) as ActionsListRepoSecretsRequest,
             res as ActionsListRepoSecretsResponse,
             next
           );
@@ -52622,7 +52624,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ActionsGetRepoPublicKeyHandler);
 
           await controller.actionsGetRepoPublicKey(
-            req as ActionsGetRepoPublicKeyRequest,
+            (req as unknown) as ActionsGetRepoPublicKeyRequest,
             res as ActionsGetRepoPublicKeyResponse,
             next
           );
@@ -52654,7 +52656,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ActionsGetRepoSecretHandler);
 
           await controller.actionsGetRepoSecret(
-            req as ActionsGetRepoSecretRequest,
+            (req as unknown) as ActionsGetRepoSecretRequest,
             res as ActionsGetRepoSecretResponse,
             next
           );
@@ -52706,7 +52708,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsCreateOrUpdateRepoSecret(
-            req as ActionsCreateOrUpdateRepoSecretRequest,
+            (req as unknown) as ActionsCreateOrUpdateRepoSecretRequest,
             res as ActionsCreateOrUpdateRepoSecretResponse,
             next
           );
@@ -52738,7 +52740,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ActionsDeleteRepoSecretHandler);
 
           await controller.actionsDeleteRepoSecret(
-            req as ActionsDeleteRepoSecretRequest,
+            (req as unknown) as ActionsDeleteRepoSecretRequest,
             res as ActionsDeleteRepoSecretResponse,
             next
           );
@@ -52777,7 +52779,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsListRepoWorkflows(
-            req as ActionsListRepoWorkflowsRequest,
+            (req as unknown) as ActionsListRepoWorkflowsRequest,
             res as ActionsListRepoWorkflowsResponse,
             next
           );
@@ -52809,7 +52811,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ActionsGetWorkflowHandler);
 
           await controller.actionsGetWorkflow(
-            req as ActionsGetWorkflowRequest,
+            (req as unknown) as ActionsGetWorkflowRequest,
             res as ActionsGetWorkflowResponse,
             next
           );
@@ -52841,7 +52843,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ActionsDisableWorkflowHandler);
 
           await controller.actionsDisableWorkflow(
-            req as ActionsDisableWorkflowRequest,
+            (req as unknown) as ActionsDisableWorkflowRequest,
             res as ActionsDisableWorkflowResponse,
             next
           );
@@ -52895,7 +52897,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsCreateWorkflowDispatch(
-            req as ActionsCreateWorkflowDispatchRequest,
+            (req as unknown) as ActionsCreateWorkflowDispatchRequest,
             res as ActionsCreateWorkflowDispatchResponse,
             next
           );
@@ -52927,7 +52929,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ActionsEnableWorkflowHandler);
 
           await controller.actionsEnableWorkflow(
-            req as ActionsEnableWorkflowRequest,
+            (req as unknown) as ActionsEnableWorkflowRequest,
             res as ActionsEnableWorkflowResponse,
             next
           );
@@ -52992,7 +52994,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ActionsListWorkflowRunsHandler);
 
           await controller.actionsListWorkflowRuns(
-            req as ActionsListWorkflowRunsRequest,
+            (req as unknown) as ActionsListWorkflowRunsRequest,
             res as ActionsListWorkflowRunsResponse,
             next
           );
@@ -53024,7 +53026,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ActionsGetWorkflowUsageHandler);
 
           await controller.actionsGetWorkflowUsage(
-            req as ActionsGetWorkflowUsageRequest,
+            (req as unknown) as ActionsGetWorkflowUsageRequest,
             res as ActionsGetWorkflowUsageResponse,
             next
           );
@@ -53060,7 +53062,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesListAssigneesHandler);
 
           await controller.issuesListAssignees(
-            req as IssuesListAssigneesRequest,
+            (req as unknown) as IssuesListAssigneesRequest,
             res as IssuesListAssigneesResponse,
             next
           );
@@ -53095,7 +53097,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.issuesCheckUserCanBeAssigned(
-            req as IssuesCheckUserCanBeAssignedRequest,
+            (req as unknown) as IssuesCheckUserCanBeAssignedRequest,
             res as IssuesCheckUserCanBeAssignedResponse,
             next
           );
@@ -53128,7 +53130,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposListAutolinksHandler);
 
           await controller.reposListAutolinks(
-            req as ReposListAutolinksRequest,
+            (req as unknown) as ReposListAutolinksRequest,
             res as ReposListAutolinksResponse,
             next
           );
@@ -53179,7 +53181,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposCreateAutolinkHandler);
 
           await controller.reposCreateAutolink(
-            req as ReposCreateAutolinkRequest,
+            (req as unknown) as ReposCreateAutolinkRequest,
             res as ReposCreateAutolinkResponse,
             next
           );
@@ -53211,7 +53213,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposGetAutolinkHandler);
 
           await controller.reposGetAutolink(
-            req as ReposGetAutolinkRequest,
+            (req as unknown) as ReposGetAutolinkRequest,
             res as ReposGetAutolinkResponse,
             next
           );
@@ -53243,7 +53245,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposDeleteAutolinkHandler);
 
           await controller.reposDeleteAutolink(
-            req as ReposDeleteAutolinkRequest,
+            (req as unknown) as ReposDeleteAutolinkRequest,
             res as ReposDeleteAutolinkResponse,
             next
           );
@@ -53274,7 +53276,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposEnableAutomatedSecurityFixes(
-            req as ReposEnableAutomatedSecurityFixesRequest,
+            (req as unknown) as ReposEnableAutomatedSecurityFixesRequest,
             res as ReposEnableAutomatedSecurityFixesResponse,
             next
           );
@@ -53305,7 +53307,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposDisableAutomatedSecurityFixes(
-            req as ReposDisableAutomatedSecurityFixesRequest,
+            (req as unknown) as ReposDisableAutomatedSecurityFixesRequest,
             res as ReposDisableAutomatedSecurityFixesResponse,
             next
           );
@@ -53342,7 +53344,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposListBranchesHandler);
 
           await controller.reposListBranches(
-            req as ReposListBranchesRequest,
+            (req as unknown) as ReposListBranchesRequest,
             res as ReposListBranchesResponse,
             next
           );
@@ -53374,7 +53376,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposGetBranchHandler);
 
           await controller.reposGetBranch(
-            req as ReposGetBranchRequest,
+            (req as unknown) as ReposGetBranchRequest,
             res as ReposGetBranchResponse,
             next
           );
@@ -53409,7 +53411,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposGetBranchProtection(
-            req as ReposGetBranchProtectionRequest,
+            (req as unknown) as ReposGetBranchProtectionRequest,
             res as ReposGetBranchProtectionResponse,
             next
           );
@@ -53644,7 +53646,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposUpdateBranchProtection(
-            req as ReposUpdateBranchProtectionRequest,
+            (req as unknown) as ReposUpdateBranchProtectionRequest,
             res as ReposUpdateBranchProtectionResponse,
             next
           );
@@ -53679,7 +53681,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposDeleteBranchProtection(
-            req as ReposDeleteBranchProtectionRequest,
+            (req as unknown) as ReposDeleteBranchProtectionRequest,
             res as ReposDeleteBranchProtectionResponse,
             next
           );
@@ -53714,7 +53716,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposGetAdminBranchProtection(
-            req as ReposGetAdminBranchProtectionRequest,
+            (req as unknown) as ReposGetAdminBranchProtectionRequest,
             res as ReposGetAdminBranchProtectionResponse,
             next
           );
@@ -53749,7 +53751,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposSetAdminBranchProtection(
-            req as ReposSetAdminBranchProtectionRequest,
+            (req as unknown) as ReposSetAdminBranchProtectionRequest,
             res as ReposSetAdminBranchProtectionResponse,
             next
           );
@@ -53784,7 +53786,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposDeleteAdminBranchProtection(
-            req as ReposDeleteAdminBranchProtectionRequest,
+            (req as unknown) as ReposDeleteAdminBranchProtectionRequest,
             res as ReposDeleteAdminBranchProtectionResponse,
             next
           );
@@ -53819,7 +53821,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposGetPullRequestReviewProtection(
-            req as ReposGetPullRequestReviewProtectionRequest,
+            (req as unknown) as ReposGetPullRequestReviewProtectionRequest,
             res as ReposGetPullRequestReviewProtectionResponse,
             next
           );
@@ -53931,7 +53933,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposUpdatePullRequestReviewProtection(
-            req as ReposUpdatePullRequestReviewProtectionRequest,
+            (req as unknown) as ReposUpdatePullRequestReviewProtectionRequest,
             res as ReposUpdatePullRequestReviewProtectionResponse,
             next
           );
@@ -53968,7 +53970,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposDeletePullRequestReviewProtection(
-            req as ReposDeletePullRequestReviewProtectionRequest,
+            (req as unknown) as ReposDeletePullRequestReviewProtectionRequest,
             res as ReposDeletePullRequestReviewProtectionResponse,
             next
           );
@@ -54003,7 +54005,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposGetCommitSignatureProtection(
-            req as ReposGetCommitSignatureProtectionRequest,
+            (req as unknown) as ReposGetCommitSignatureProtectionRequest,
             res as ReposGetCommitSignatureProtectionResponse,
             next
           );
@@ -54038,7 +54040,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposCreateCommitSignatureProtection(
-            req as ReposCreateCommitSignatureProtectionRequest,
+            (req as unknown) as ReposCreateCommitSignatureProtectionRequest,
             res as ReposCreateCommitSignatureProtectionResponse,
             next
           );
@@ -54073,7 +54075,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposDeleteCommitSignatureProtection(
-            req as ReposDeleteCommitSignatureProtectionRequest,
+            (req as unknown) as ReposDeleteCommitSignatureProtectionRequest,
             res as ReposDeleteCommitSignatureProtectionResponse,
             next
           );
@@ -54108,7 +54110,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposGetStatusChecksProtection(
-            req as ReposGetStatusChecksProtectionRequest,
+            (req as unknown) as ReposGetStatusChecksProtectionRequest,
             res as ReposGetStatusChecksProtectionResponse,
             next
           );
@@ -54180,7 +54182,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposUpdateStatusCheckProtection(
-            req as ReposUpdateStatusCheckProtectionRequest,
+            (req as unknown) as ReposUpdateStatusCheckProtectionRequest,
             res as ReposUpdateStatusCheckProtectionResponse,
             next
           );
@@ -54215,7 +54217,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposRemoveStatusCheckProtection(
-            req as ReposRemoveStatusCheckProtectionRequest,
+            (req as unknown) as ReposRemoveStatusCheckProtectionRequest,
             res as ReposRemoveStatusCheckProtectionResponse,
             next
           );
@@ -54250,7 +54252,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposGetAllStatusCheckContexts(
-            req as ReposGetAllStatusCheckContextsRequest,
+            (req as unknown) as ReposGetAllStatusCheckContextsRequest,
             res as ReposGetAllStatusCheckContextsResponse,
             next
           );
@@ -54307,7 +54309,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposAddStatusCheckContexts(
-            req as ReposAddStatusCheckContextsRequest,
+            (req as unknown) as ReposAddStatusCheckContextsRequest,
             res as ReposAddStatusCheckContextsResponse,
             next
           );
@@ -54364,7 +54366,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposSetStatusCheckContexts(
-            req as ReposSetStatusCheckContextsRequest,
+            (req as unknown) as ReposSetStatusCheckContextsRequest,
             res as ReposSetStatusCheckContextsResponse,
             next
           );
@@ -54421,7 +54423,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposRemoveStatusCheckContexts(
-            req as ReposRemoveStatusCheckContextsRequest,
+            (req as unknown) as ReposRemoveStatusCheckContextsRequest,
             res as ReposRemoveStatusCheckContextsResponse,
             next
           );
@@ -54456,7 +54458,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposGetAccessRestrictions(
-            req as ReposGetAccessRestrictionsRequest,
+            (req as unknown) as ReposGetAccessRestrictionsRequest,
             res as ReposGetAccessRestrictionsResponse,
             next
           );
@@ -54491,7 +54493,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposDeleteAccessRestrictions(
-            req as ReposDeleteAccessRestrictionsRequest,
+            (req as unknown) as ReposDeleteAccessRestrictionsRequest,
             res as ReposDeleteAccessRestrictionsResponse,
             next
           );
@@ -54528,7 +54530,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposGetAppsWithAccessToProtectedBranch(
-            req as ReposGetAppsWithAccessToProtectedBranchRequest,
+            (req as unknown) as ReposGetAppsWithAccessToProtectedBranchRequest,
             res as ReposGetAppsWithAccessToProtectedBranchResponse,
             next
           );
@@ -54581,7 +54583,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposAddAppAccessRestrictions(
-            req as ReposAddAppAccessRestrictionsRequest,
+            (req as unknown) as ReposAddAppAccessRestrictionsRequest,
             res as ReposAddAppAccessRestrictionsResponse,
             next
           );
@@ -54634,7 +54636,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposSetAppAccessRestrictions(
-            req as ReposSetAppAccessRestrictionsRequest,
+            (req as unknown) as ReposSetAppAccessRestrictionsRequest,
             res as ReposSetAppAccessRestrictionsResponse,
             next
           );
@@ -54687,7 +54689,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposRemoveAppAccessRestrictions(
-            req as ReposRemoveAppAccessRestrictionsRequest,
+            (req as unknown) as ReposRemoveAppAccessRestrictionsRequest,
             res as ReposRemoveAppAccessRestrictionsResponse,
             next
           );
@@ -54724,7 +54726,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposGetTeamsWithAccessToProtectedBranch(
-            req as ReposGetTeamsWithAccessToProtectedBranchRequest,
+            (req as unknown) as ReposGetTeamsWithAccessToProtectedBranchRequest,
             res as ReposGetTeamsWithAccessToProtectedBranchResponse,
             next
           );
@@ -54781,7 +54783,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposAddTeamAccessRestrictions(
-            req as ReposAddTeamAccessRestrictionsRequest,
+            (req as unknown) as ReposAddTeamAccessRestrictionsRequest,
             res as ReposAddTeamAccessRestrictionsResponse,
             next
           );
@@ -54838,7 +54840,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposSetTeamAccessRestrictions(
-            req as ReposSetTeamAccessRestrictionsRequest,
+            (req as unknown) as ReposSetTeamAccessRestrictionsRequest,
             res as ReposSetTeamAccessRestrictionsResponse,
             next
           );
@@ -54895,7 +54897,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposRemoveTeamAccessRestrictions(
-            req as ReposRemoveTeamAccessRestrictionsRequest,
+            (req as unknown) as ReposRemoveTeamAccessRestrictionsRequest,
             res as ReposRemoveTeamAccessRestrictionsResponse,
             next
           );
@@ -54932,7 +54934,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposGetUsersWithAccessToProtectedBranch(
-            req as ReposGetUsersWithAccessToProtectedBranchRequest,
+            (req as unknown) as ReposGetUsersWithAccessToProtectedBranchRequest,
             res as ReposGetUsersWithAccessToProtectedBranchResponse,
             next
           );
@@ -54985,7 +54987,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposAddUserAccessRestrictions(
-            req as ReposAddUserAccessRestrictionsRequest,
+            (req as unknown) as ReposAddUserAccessRestrictionsRequest,
             res as ReposAddUserAccessRestrictionsResponse,
             next
           );
@@ -55038,7 +55040,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposSetUserAccessRestrictions(
-            req as ReposSetUserAccessRestrictionsRequest,
+            (req as unknown) as ReposSetUserAccessRestrictionsRequest,
             res as ReposSetUserAccessRestrictionsResponse,
             next
           );
@@ -55091,7 +55093,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposRemoveUserAccessRestrictions(
-            req as ReposRemoveUserAccessRestrictionsRequest,
+            (req as unknown) as ReposRemoveUserAccessRestrictionsRequest,
             res as ReposRemoveUserAccessRestrictionsResponse,
             next
           );
@@ -55134,7 +55136,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposRenameBranchHandler);
 
           await controller.reposRenameBranch(
-            req as ReposRenameBranchRequest,
+            (req as unknown) as ReposRenameBranchRequest,
             res as ReposRenameBranchResponse,
             next
           );
@@ -55367,7 +55369,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ChecksCreateHandler);
 
           await controller.checksCreate(
-            req as ChecksCreateRequest,
+            (req as unknown) as ChecksCreateRequest,
             res as ChecksCreateResponse,
             next
           );
@@ -55399,7 +55401,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ChecksGetHandler);
 
           await controller.checksGet(
-            req as ChecksGetRequest,
+            (req as unknown) as ChecksGetRequest,
             res as ChecksGetResponse,
             next
           );
@@ -55628,7 +55630,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ChecksUpdateHandler);
 
           await controller.checksUpdate(
-            req as ChecksUpdateRequest,
+            (req as unknown) as ChecksUpdateRequest,
             res as ChecksUpdateResponse,
             next
           );
@@ -55668,7 +55670,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ChecksListAnnotationsHandler);
 
           await controller.checksListAnnotations(
-            req as ChecksListAnnotationsRequest,
+            (req as unknown) as ChecksListAnnotationsRequest,
             res as ChecksListAnnotationsResponse,
             next
           );
@@ -55700,7 +55702,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ChecksRerequestRunHandler);
 
           await controller.checksRerequestRun(
-            req as ChecksRerequestRunRequest,
+            (req as unknown) as ChecksRerequestRunRequest,
             res as ChecksRerequestRunResponse,
             next
           );
@@ -55739,7 +55741,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ChecksCreateSuiteHandler);
 
           await controller.checksCreateSuite(
-            req as ChecksCreateSuiteRequest,
+            (req as unknown) as ChecksCreateSuiteRequest,
             res as ChecksCreateSuiteResponse,
             next
           );
@@ -55797,7 +55799,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.checksSetSuitesPreferences(
-            req as ChecksSetSuitesPreferencesRequest,
+            (req as unknown) as ChecksSetSuitesPreferencesRequest,
             res as ChecksSetSuitesPreferencesResponse,
             next
           );
@@ -55829,7 +55831,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ChecksGetSuiteHandler);
 
           await controller.checksGetSuite(
-            req as ChecksGetSuiteRequest,
+            (req as unknown) as ChecksGetSuiteRequest,
             res as ChecksGetSuiteResponse,
             next
           );
@@ -55879,7 +55881,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ChecksListForSuiteHandler);
 
           await controller.checksListForSuite(
-            req as ChecksListForSuiteRequest,
+            (req as unknown) as ChecksListForSuiteRequest,
             res as ChecksListForSuiteResponse,
             next
           );
@@ -55911,7 +55913,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ChecksRerequestSuiteHandler);
 
           await controller.checksRerequestSuite(
-            req as ChecksRerequestSuiteRequest,
+            (req as unknown) as ChecksRerequestSuiteRequest,
             res as ChecksRerequestSuiteResponse,
             next
           );
@@ -55995,7 +55997,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codeScanningListAlertsForRepo(
-            req as CodeScanningListAlertsForRepoRequest,
+            (req as unknown) as CodeScanningListAlertsForRepoRequest,
             res as CodeScanningListAlertsForRepoResponse,
             next
           );
@@ -56035,7 +56037,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, CodeScanningGetAlertHandler);
 
           await controller.codeScanningGetAlert(
-            req as CodeScanningGetAlertRequest,
+            (req as unknown) as CodeScanningGetAlertRequest,
             res as CodeScanningGetAlertResponse,
             next
           );
@@ -56114,7 +56116,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, CodeScanningUpdateAlertHandler);
 
           await controller.codeScanningUpdateAlert(
-            req as CodeScanningUpdateAlertRequest,
+            (req as unknown) as CodeScanningUpdateAlertRequest,
             res as CodeScanningUpdateAlertResponse,
             next
           );
@@ -56174,7 +56176,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codeScanningListAlertInstances(
-            req as CodeScanningListAlertInstancesRequest,
+            (req as unknown) as CodeScanningListAlertInstancesRequest,
             res as CodeScanningListAlertInstancesResponse,
             next
           );
@@ -56254,7 +56256,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codeScanningListRecentAnalyses(
-            req as CodeScanningListRecentAnalysesRequest,
+            (req as unknown) as CodeScanningListRecentAnalysesRequest,
             res as CodeScanningListRecentAnalysesResponse,
             next
           );
@@ -56286,7 +56288,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, CodeScanningGetAnalysisHandler);
 
           await controller.codeScanningGetAnalysis(
-            req as CodeScanningGetAnalysisRequest,
+            (req as unknown) as CodeScanningGetAnalysisRequest,
             res as CodeScanningGetAnalysisResponse,
             next
           );
@@ -56326,7 +56328,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codeScanningDeleteAnalysis(
-            req as CodeScanningDeleteAnalysisRequest,
+            (req as unknown) as CodeScanningDeleteAnalysisRequest,
             res as CodeScanningDeleteAnalysisResponse,
             next
           );
@@ -56357,7 +56359,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codeScanningListCodeqlDatabases(
-            req as CodeScanningListCodeqlDatabasesRequest,
+            (req as unknown) as CodeScanningListCodeqlDatabasesRequest,
             res as CodeScanningListCodeqlDatabasesResponse,
             next
           );
@@ -56392,7 +56394,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codeScanningGetCodeqlDatabase(
-            req as CodeScanningGetCodeqlDatabaseRequest,
+            (req as unknown) as CodeScanningGetCodeqlDatabaseRequest,
             res as CodeScanningGetCodeqlDatabaseResponse,
             next
           );
@@ -56478,7 +56480,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, CodeScanningUploadSarifHandler);
 
           await controller.codeScanningUploadSarif(
-            req as CodeScanningUploadSarifRequest,
+            (req as unknown) as CodeScanningUploadSarifRequest,
             res as CodeScanningUploadSarifResponse,
             next
           );
@@ -56510,7 +56512,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, CodeScanningGetSarifHandler);
 
           await controller.codeScanningGetSarif(
-            req as CodeScanningGetSarifRequest,
+            (req as unknown) as CodeScanningGetSarifRequest,
             res as CodeScanningGetSarifResponse,
             next
           );
@@ -56543,7 +56545,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposCodeownersErrorsHandler);
 
           await controller.reposCodeownersErrors(
-            req as ReposCodeownersErrorsRequest,
+            (req as unknown) as ReposCodeownersErrorsRequest,
             res as ReposCodeownersErrorsResponse,
             next
           );
@@ -56584,7 +56586,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesListInRepositoryForAuthenticatedUser(
-            req as CodespacesListInRepositoryForAuthenticatedUserRequest,
+            (req as unknown) as CodespacesListInRepositoryForAuthenticatedUserRequest,
             res as CodespacesListInRepositoryForAuthenticatedUserResponse,
             next
           );
@@ -56671,7 +56673,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesCreateWithRepoForAuthenticatedUser(
-            req as CodespacesCreateWithRepoForAuthenticatedUserRequest,
+            (req as unknown) as CodespacesCreateWithRepoForAuthenticatedUserRequest,
             res as CodespacesCreateWithRepoForAuthenticatedUserResponse,
             next
           );
@@ -56712,7 +56714,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesListDevcontainersInRepositoryForAuthenticatedUser(
-            req as CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequest,
+            (req as unknown) as CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequest,
             res as CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponse,
             next
           );
@@ -56753,7 +56755,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesRepoMachinesForAuthenticatedUser(
-            req as CodespacesRepoMachinesForAuthenticatedUserRequest,
+            (req as unknown) as CodespacesRepoMachinesForAuthenticatedUserRequest,
             res as CodespacesRepoMachinesForAuthenticatedUserResponse,
             next
           );
@@ -56794,7 +56796,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesPreFlightWithRepoForAuthenticatedUser(
-            req as CodespacesPreFlightWithRepoForAuthenticatedUserRequest,
+            (req as unknown) as CodespacesPreFlightWithRepoForAuthenticatedUserRequest,
             res as CodespacesPreFlightWithRepoForAuthenticatedUserResponse,
             next
           );
@@ -56833,7 +56835,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesListRepoSecrets(
-            req as CodespacesListRepoSecretsRequest,
+            (req as unknown) as CodespacesListRepoSecretsRequest,
             res as CodespacesListRepoSecretsResponse,
             next
           );
@@ -56864,7 +56866,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesGetRepoPublicKey(
-            req as CodespacesGetRepoPublicKeyRequest,
+            (req as unknown) as CodespacesGetRepoPublicKeyRequest,
             res as CodespacesGetRepoPublicKeyResponse,
             next
           );
@@ -56896,7 +56898,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, CodespacesGetRepoSecretHandler);
 
           await controller.codespacesGetRepoSecret(
-            req as CodespacesGetRepoSecretRequest,
+            (req as unknown) as CodespacesGetRepoSecretRequest,
             res as CodespacesGetRepoSecretResponse,
             next
           );
@@ -56948,7 +56950,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesCreateOrUpdateRepoSecret(
-            req as CodespacesCreateOrUpdateRepoSecretRequest,
+            (req as unknown) as CodespacesCreateOrUpdateRepoSecretRequest,
             res as CodespacesCreateOrUpdateRepoSecretResponse,
             next
           );
@@ -56983,7 +56985,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesDeleteRepoSecret(
-            req as CodespacesDeleteRepoSecretRequest,
+            (req as unknown) as CodespacesDeleteRepoSecretRequest,
             res as CodespacesDeleteRepoSecretResponse,
             next
           );
@@ -57028,7 +57030,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposListCollaboratorsHandler);
 
           await controller.reposListCollaborators(
-            req as ReposListCollaboratorsRequest,
+            (req as unknown) as ReposListCollaboratorsRequest,
             res as ReposListCollaboratorsResponse,
             next
           );
@@ -57060,7 +57062,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposCheckCollaboratorHandler);
 
           await controller.reposCheckCollaborator(
-            req as ReposCheckCollaboratorRequest,
+            (req as unknown) as ReposCheckCollaboratorRequest,
             res as ReposCheckCollaboratorResponse,
             next
           );
@@ -57104,7 +57106,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposAddCollaboratorHandler);
 
           await controller.reposAddCollaborator(
-            req as ReposAddCollaboratorRequest,
+            (req as unknown) as ReposAddCollaboratorRequest,
             res as ReposAddCollaboratorResponse,
             next
           );
@@ -57136,7 +57138,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposRemoveCollaboratorHandler);
 
           await controller.reposRemoveCollaborator(
-            req as ReposRemoveCollaboratorRequest,
+            (req as unknown) as ReposRemoveCollaboratorRequest,
             res as ReposRemoveCollaboratorResponse,
             next
           );
@@ -57171,7 +57173,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposGetCollaboratorPermissionLevel(
-            req as ReposGetCollaboratorPermissionLevelRequest,
+            (req as unknown) as ReposGetCollaboratorPermissionLevelRequest,
             res as ReposGetCollaboratorPermissionLevelResponse,
             next
           );
@@ -57210,7 +57212,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposListCommitCommentsForRepo(
-            req as ReposListCommitCommentsForRepoRequest,
+            (req as unknown) as ReposListCommitCommentsForRepoRequest,
             res as ReposListCommitCommentsForRepoResponse,
             next
           );
@@ -57242,7 +57244,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposGetCommitCommentHandler);
 
           await controller.reposGetCommitComment(
-            req as ReposGetCommitCommentRequest,
+            (req as unknown) as ReposGetCommitCommentRequest,
             res as ReposGetCommitCommentResponse,
             next
           );
@@ -57285,7 +57287,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposUpdateCommitComment(
-            req as ReposUpdateCommitCommentRequest,
+            (req as unknown) as ReposUpdateCommitCommentRequest,
             res as ReposUpdateCommitCommentResponse,
             next
           );
@@ -57320,7 +57322,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposDeleteCommitComment(
-            req as ReposDeleteCommitCommentRequest,
+            (req as unknown) as ReposDeleteCommitCommentRequest,
             res as ReposDeleteCommitCommentResponse,
             next
           );
@@ -57376,7 +57378,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reactionsListForCommitComment(
-            req as ReactionsListForCommitCommentRequest,
+            (req as unknown) as ReactionsListForCommitCommentRequest,
             res as ReactionsListForCommitCommentResponse,
             next
           );
@@ -57433,7 +57435,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reactionsCreateForCommitComment(
-            req as ReactionsCreateForCommitCommentRequest,
+            (req as unknown) as ReactionsCreateForCommitCommentRequest,
             res as ReactionsCreateForCommitCommentResponse,
             next
           );
@@ -57469,7 +57471,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reactionsDeleteForCommitComment(
-            req as ReactionsDeleteForCommitCommentRequest,
+            (req as unknown) as ReactionsDeleteForCommitCommentRequest,
             res as ReactionsDeleteForCommitCommentResponse,
             next
           );
@@ -57510,7 +57512,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposListCommitsHandler);
 
           await controller.reposListCommits(
-            req as ReposListCommitsRequest,
+            (req as unknown) as ReposListCommitsRequest,
             res as ReposListCommitsResponse,
             next
           );
@@ -57545,7 +57547,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposListBranchesForHeadCommit(
-            req as ReposListBranchesForHeadCommitRequest,
+            (req as unknown) as ReposListBranchesForHeadCommitRequest,
             res as ReposListBranchesForHeadCommitResponse,
             next
           );
@@ -57588,7 +57590,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposListCommentsForCommit(
-            req as ReposListCommentsForCommitRequest,
+            (req as unknown) as ReposListCommentsForCommitRequest,
             res as ReposListCommentsForCommitResponse,
             next
           );
@@ -57647,7 +57649,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposCreateCommitComment(
-            req as ReposCreateCommitCommentRequest,
+            (req as unknown) as ReposCreateCommitCommentRequest,
             res as ReposCreateCommitCommentResponse,
             next
           );
@@ -57692,7 +57694,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposListPullRequestsAssociatedWithCommit(
-            req as ReposListPullRequestsAssociatedWithCommitRequest,
+            (req as unknown) as ReposListPullRequestsAssociatedWithCommitRequest,
             res as ReposListPullRequestsAssociatedWithCommitResponse,
             next
           );
@@ -57732,7 +57734,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposGetCommitHandler);
 
           await controller.reposGetCommit(
-            req as ReposGetCommitRequest,
+            (req as unknown) as ReposGetCommitRequest,
             res as ReposGetCommitResponse,
             next
           );
@@ -57783,7 +57785,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ChecksListForRefHandler);
 
           await controller.checksListForRef(
-            req as ChecksListForRefRequest,
+            (req as unknown) as ChecksListForRefRequest,
             res as ChecksListForRefResponse,
             next
           );
@@ -57825,7 +57827,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ChecksListSuitesForRefHandler);
 
           await controller.checksListSuitesForRef(
-            req as ChecksListSuitesForRefRequest,
+            (req as unknown) as ChecksListSuitesForRefRequest,
             res as ChecksListSuitesForRefResponse,
             next
           );
@@ -57868,7 +57870,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposGetCombinedStatusForRef(
-            req as ReposGetCombinedStatusForRefRequest,
+            (req as unknown) as ReposGetCombinedStatusForRefRequest,
             res as ReposGetCombinedStatusForRefResponse,
             next
           );
@@ -57911,7 +57913,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposListCommitStatusesForRef(
-            req as ReposListCommitStatusesForRefRequest,
+            (req as unknown) as ReposListCommitStatusesForRefRequest,
             res as ReposListCommitStatusesForRefResponse,
             next
           );
@@ -57942,7 +57944,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposGetCommunityProfileMetrics(
-            req as ReposGetCommunityProfileMetricsRequest,
+            (req as unknown) as ReposGetCommunityProfileMetricsRequest,
             res as ReposGetCommunityProfileMetricsResponse,
             next
           );
@@ -57982,7 +57984,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposCompareCommitsHandler);
 
           await controller.reposCompareCommits(
-            req as ReposCompareCommitsRequest,
+            (req as unknown) as ReposCompareCommitsRequest,
             res as ReposCompareCommitsResponse,
             next
           );
@@ -58019,7 +58021,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposGetContentHandler);
 
           await controller.reposGetContent(
-            req as ReposGetContentRequest,
+            (req as unknown) as ReposGetContentRequest,
             res as ReposGetContentResponse,
             next
           );
@@ -58114,7 +58116,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposCreateOrUpdateFileContents(
-            req as ReposCreateOrUpdateFileContentsRequest,
+            (req as unknown) as ReposCreateOrUpdateFileContentsRequest,
             res as ReposCreateOrUpdateFileContentsResponse,
             next
           );
@@ -58195,7 +58197,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposDeleteFileHandler);
 
           await controller.reposDeleteFile(
-            req as ReposDeleteFileRequest,
+            (req as unknown) as ReposDeleteFileRequest,
             res as ReposDeleteFileResponse,
             next
           );
@@ -58232,7 +58234,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposListContributorsHandler);
 
           await controller.reposListContributors(
-            req as ReposListContributorsRequest,
+            (req as unknown) as ReposListContributorsRequest,
             res as ReposListContributorsResponse,
             next
           );
@@ -58291,7 +58293,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.dependabotListAlertsForRepo(
-            req as DependabotListAlertsForRepoRequest,
+            (req as unknown) as DependabotListAlertsForRepoRequest,
             res as DependabotListAlertsForRepoResponse,
             next
           );
@@ -58331,7 +58333,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, DependabotGetAlertHandler);
 
           await controller.dependabotGetAlert(
-            req as DependabotGetAlertRequest,
+            (req as unknown) as DependabotGetAlertRequest,
             res as DependabotGetAlertResponse,
             next
           );
@@ -58403,7 +58405,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, DependabotUpdateAlertHandler);
 
           await controller.dependabotUpdateAlert(
-            req as DependabotUpdateAlertRequest,
+            (req as unknown) as DependabotUpdateAlertRequest,
             res as DependabotUpdateAlertResponse,
             next
           );
@@ -58442,7 +58444,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.dependabotListRepoSecrets(
-            req as DependabotListRepoSecretsRequest,
+            (req as unknown) as DependabotListRepoSecretsRequest,
             res as DependabotListRepoSecretsResponse,
             next
           );
@@ -58473,7 +58475,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.dependabotGetRepoPublicKey(
-            req as DependabotGetRepoPublicKeyRequest,
+            (req as unknown) as DependabotGetRepoPublicKeyRequest,
             res as DependabotGetRepoPublicKeyResponse,
             next
           );
@@ -58505,7 +58507,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, DependabotGetRepoSecretHandler);
 
           await controller.dependabotGetRepoSecret(
-            req as DependabotGetRepoSecretRequest,
+            (req as unknown) as DependabotGetRepoSecretRequest,
             res as DependabotGetRepoSecretResponse,
             next
           );
@@ -58557,7 +58559,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.dependabotCreateOrUpdateRepoSecret(
-            req as DependabotCreateOrUpdateRepoSecretRequest,
+            (req as unknown) as DependabotCreateOrUpdateRepoSecretRequest,
             res as DependabotCreateOrUpdateRepoSecretResponse,
             next
           );
@@ -58592,7 +58594,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.dependabotDeleteRepoSecret(
-            req as DependabotDeleteRepoSecretRequest,
+            (req as unknown) as DependabotDeleteRepoSecretRequest,
             res as DependabotDeleteRepoSecretResponse,
             next
           );
@@ -58632,7 +58634,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.dependencyGraphDiffRange(
-            req as DependencyGraphDiffRangeRequest,
+            (req as unknown) as DependencyGraphDiffRangeRequest,
             res as DependencyGraphDiffRangeResponse,
             next
           );
@@ -58841,7 +58843,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.dependencyGraphCreateRepositorySnapshot(
-            req as DependencyGraphCreateRepositorySnapshotRequest,
+            (req as unknown) as DependencyGraphCreateRepositorySnapshotRequest,
             res as DependencyGraphCreateRepositorySnapshotResponse,
             next
           );
@@ -58881,7 +58883,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposListDeploymentsHandler);
 
           await controller.reposListDeployments(
-            req as ReposListDeploymentsRequest,
+            (req as unknown) as ReposListDeploymentsRequest,
             res as ReposListDeploymentsResponse,
             next
           );
@@ -58973,7 +58975,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposCreateDeploymentHandler);
 
           await controller.reposCreateDeployment(
-            req as ReposCreateDeploymentRequest,
+            (req as unknown) as ReposCreateDeploymentRequest,
             res as ReposCreateDeploymentResponse,
             next
           );
@@ -59005,7 +59007,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposGetDeploymentHandler);
 
           await controller.reposGetDeployment(
-            req as ReposGetDeploymentRequest,
+            (req as unknown) as ReposGetDeploymentRequest,
             res as ReposGetDeploymentResponse,
             next
           );
@@ -59037,7 +59039,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposDeleteDeploymentHandler);
 
           await controller.reposDeleteDeployment(
-            req as ReposDeleteDeploymentRequest,
+            (req as unknown) as ReposDeleteDeploymentRequest,
             res as ReposDeleteDeploymentResponse,
             next
           );
@@ -59080,7 +59082,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposListDeploymentStatuses(
-            req as ReposListDeploymentStatusesRequest,
+            (req as unknown) as ReposListDeploymentStatusesRequest,
             res as ReposListDeploymentStatusesResponse,
             next
           );
@@ -59171,7 +59173,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposCreateDeploymentStatus(
-            req as ReposCreateDeploymentStatusRequest,
+            (req as unknown) as ReposCreateDeploymentStatusRequest,
             res as ReposCreateDeploymentStatusResponse,
             next
           );
@@ -59207,7 +59209,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposGetDeploymentStatus(
-            req as ReposGetDeploymentStatusRequest,
+            (req as unknown) as ReposGetDeploymentStatusRequest,
             res as ReposGetDeploymentStatusResponse,
             next
           );
@@ -59259,7 +59261,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposCreateDispatchEvent(
-            req as ReposCreateDispatchEventRequest,
+            (req as unknown) as ReposCreateDispatchEventRequest,
             res as ReposCreateDispatchEventResponse,
             next
           );
@@ -59295,7 +59297,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposGetAllEnvironmentsHandler);
 
           await controller.reposGetAllEnvironments(
-            req as ReposGetAllEnvironmentsRequest,
+            (req as unknown) as ReposGetAllEnvironmentsRequest,
             res as ReposGetAllEnvironmentsResponse,
             next
           );
@@ -59327,7 +59329,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposGetEnvironmentHandler);
 
           await controller.reposGetEnvironment(
-            req as ReposGetEnvironmentRequest,
+            (req as unknown) as ReposGetEnvironmentRequest,
             res as ReposGetEnvironmentResponse,
             next
           );
@@ -59428,7 +59430,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposCreateOrUpdateEnvironment(
-            req as ReposCreateOrUpdateEnvironmentRequest,
+            (req as unknown) as ReposCreateOrUpdateEnvironmentRequest,
             res as ReposCreateOrUpdateEnvironmentResponse,
             next
           );
@@ -59463,7 +59465,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposDeleteAnEnvironment(
-            req as ReposDeleteAnEnvironmentRequest,
+            (req as unknown) as ReposDeleteAnEnvironmentRequest,
             res as ReposDeleteAnEnvironmentResponse,
             next
           );
@@ -59506,7 +59508,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposListDeploymentBranchPolicies(
-            req as ReposListDeploymentBranchPoliciesRequest,
+            (req as unknown) as ReposListDeploymentBranchPoliciesRequest,
             res as ReposListDeploymentBranchPoliciesResponse,
             next
           );
@@ -59560,7 +59562,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposCreateDeploymentBranchPolicy(
-            req as ReposCreateDeploymentBranchPolicyRequest,
+            (req as unknown) as ReposCreateDeploymentBranchPolicyRequest,
             res as ReposCreateDeploymentBranchPolicyResponse,
             next
           );
@@ -59596,7 +59598,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposGetDeploymentBranchPolicy(
-            req as ReposGetDeploymentBranchPolicyRequest,
+            (req as unknown) as ReposGetDeploymentBranchPolicyRequest,
             res as ReposGetDeploymentBranchPolicyResponse,
             next
           );
@@ -59651,7 +59653,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposUpdateDeploymentBranchPolicy(
-            req as ReposUpdateDeploymentBranchPolicyRequest,
+            (req as unknown) as ReposUpdateDeploymentBranchPolicyRequest,
             res as ReposUpdateDeploymentBranchPolicyResponse,
             next
           );
@@ -59687,7 +59689,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposDeleteDeploymentBranchPolicy(
-            req as ReposDeleteDeploymentBranchPolicyRequest,
+            (req as unknown) as ReposDeleteDeploymentBranchPolicyRequest,
             res as ReposDeleteDeploymentBranchPolicyResponse,
             next
           );
@@ -59723,7 +59725,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ActivityListRepoEventsHandler);
 
           await controller.activityListRepoEvents(
-            req as ActivityListRepoEventsRequest,
+            (req as unknown) as ActivityListRepoEventsRequest,
             res as ActivityListRepoEventsResponse,
             next
           );
@@ -59764,7 +59766,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposListForksHandler);
 
           await controller.reposListForks(
-            req as ReposListForksRequest,
+            (req as unknown) as ReposListForksRequest,
             res as ReposListForksResponse,
             next
           );
@@ -59814,7 +59816,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposCreateForkHandler);
 
           await controller.reposCreateFork(
-            req as ReposCreateForkRequest,
+            (req as unknown) as ReposCreateForkRequest,
             res as ReposCreateForkResponse,
             next
           );
@@ -59856,7 +59858,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GitCreateBlobHandler);
 
           await controller.gitCreateBlob(
-            req as GitCreateBlobRequest,
+            (req as unknown) as GitCreateBlobRequest,
             res as GitCreateBlobResponse,
             next
           );
@@ -59888,7 +59890,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GitGetBlobHandler);
 
           await controller.gitGetBlob(
-            req as GitGetBlobRequest,
+            (req as unknown) as GitGetBlobRequest,
             res as GitGetBlobResponse,
             next
           );
@@ -59986,7 +59988,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GitCreateCommitHandler);
 
           await controller.gitCreateCommit(
-            req as GitCreateCommitRequest,
+            (req as unknown) as GitCreateCommitRequest,
             res as GitCreateCommitResponse,
             next
           );
@@ -60018,7 +60020,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GitGetCommitHandler);
 
           await controller.gitGetCommit(
-            req as GitGetCommitRequest,
+            (req as unknown) as GitGetCommitRequest,
             res as GitGetCommitResponse,
             next
           );
@@ -60050,7 +60052,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GitListMatchingRefsHandler);
 
           await controller.gitListMatchingRefs(
-            req as GitListMatchingRefsRequest,
+            (req as unknown) as GitListMatchingRefsRequest,
             res as GitListMatchingRefsResponse,
             next
           );
@@ -60082,7 +60084,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GitGetRefHandler);
 
           await controller.gitGetRef(
-            req as GitGetRefRequest,
+            (req as unknown) as GitGetRefRequest,
             res as GitGetRefResponse,
             next
           );
@@ -60127,7 +60129,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GitCreateRefHandler);
 
           await controller.gitCreateRef(
-            req as GitCreateRefRequest,
+            (req as unknown) as GitCreateRefRequest,
             res as GitCreateRefResponse,
             next
           );
@@ -60176,7 +60178,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GitUpdateRefHandler);
 
           await controller.gitUpdateRef(
-            req as GitUpdateRefRequest,
+            (req as unknown) as GitUpdateRefRequest,
             res as GitUpdateRefResponse,
             next
           );
@@ -60208,7 +60210,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GitDeleteRefHandler);
 
           await controller.gitDeleteRef(
-            req as GitDeleteRefRequest,
+            (req as unknown) as GitDeleteRefRequest,
             res as GitDeleteRefResponse,
             next
           );
@@ -60281,7 +60283,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GitCreateTagHandler);
 
           await controller.gitCreateTag(
-            req as GitCreateTagRequest,
+            (req as unknown) as GitCreateTagRequest,
             res as GitCreateTagResponse,
             next
           );
@@ -60313,7 +60315,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GitGetTagHandler);
 
           await controller.gitGetTag(
-            req as GitGetTagRequest,
+            (req as unknown) as GitGetTagRequest,
             res as GitGetTagResponse,
             next
           );
@@ -60389,7 +60391,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GitCreateTreeHandler);
 
           await controller.gitCreateTree(
-            req as GitCreateTreeRequest,
+            (req as unknown) as GitCreateTreeRequest,
             res as GitCreateTreeResponse,
             next
           );
@@ -60426,7 +60428,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GitGetTreeHandler);
 
           await controller.gitGetTree(
-            req as GitGetTreeRequest,
+            (req as unknown) as GitGetTreeRequest,
             res as GitGetTreeResponse,
             next
           );
@@ -60462,7 +60464,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposListWebhooksHandler);
 
           await controller.reposListWebhooks(
-            req as ReposListWebhooksRequest,
+            (req as unknown) as ReposListWebhooksRequest,
             res as ReposListWebhooksResponse,
             next
           );
@@ -60568,7 +60570,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposCreateWebhookHandler);
 
           await controller.reposCreateWebhook(
-            req as ReposCreateWebhookRequest,
+            (req as unknown) as ReposCreateWebhookRequest,
             res as ReposCreateWebhookResponse,
             next
           );
@@ -60600,7 +60602,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposGetWebhookHandler);
 
           await controller.reposGetWebhook(
-            req as ReposGetWebhookRequest,
+            (req as unknown) as ReposGetWebhookRequest,
             res as ReposGetWebhookResponse,
             next
           );
@@ -60716,7 +60718,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposUpdateWebhookHandler);
 
           await controller.reposUpdateWebhook(
-            req as ReposUpdateWebhookRequest,
+            (req as unknown) as ReposUpdateWebhookRequest,
             res as ReposUpdateWebhookResponse,
             next
           );
@@ -60748,7 +60750,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposDeleteWebhookHandler);
 
           await controller.reposDeleteWebhook(
-            req as ReposDeleteWebhookRequest,
+            (req as unknown) as ReposDeleteWebhookRequest,
             res as ReposDeleteWebhookResponse,
             next
           );
@@ -60783,7 +60785,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposGetWebhookConfigForRepo(
-            req as ReposGetWebhookConfigForRepoRequest,
+            (req as unknown) as ReposGetWebhookConfigForRepoRequest,
             res as ReposGetWebhookConfigForRepoResponse,
             next
           );
@@ -60864,7 +60866,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposUpdateWebhookConfigForRepo(
-            req as ReposUpdateWebhookConfigForRepoRequest,
+            (req as unknown) as ReposUpdateWebhookConfigForRepoRequest,
             res as ReposUpdateWebhookConfigForRepoResponse,
             next
           );
@@ -60907,7 +60909,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposListWebhookDeliveries(
-            req as ReposListWebhookDeliveriesRequest,
+            (req as unknown) as ReposListWebhookDeliveriesRequest,
             res as ReposListWebhookDeliveriesResponse,
             next
           );
@@ -60940,7 +60942,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposGetWebhookDeliveryHandler);
 
           await controller.reposGetWebhookDelivery(
-            req as ReposGetWebhookDeliveryRequest,
+            (req as unknown) as ReposGetWebhookDeliveryRequest,
             res as ReposGetWebhookDeliveryResponse,
             next
           );
@@ -60976,7 +60978,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposRedeliverWebhookDelivery(
-            req as ReposRedeliverWebhookDeliveryRequest,
+            (req as unknown) as ReposRedeliverWebhookDeliveryRequest,
             res as ReposRedeliverWebhookDeliveryResponse,
             next
           );
@@ -61008,7 +61010,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposPingWebhookHandler);
 
           await controller.reposPingWebhook(
-            req as ReposPingWebhookRequest,
+            (req as unknown) as ReposPingWebhookRequest,
             res as ReposPingWebhookResponse,
             next
           );
@@ -61040,7 +61042,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposTestPushWebhookHandler);
 
           await controller.reposTestPushWebhook(
-            req as ReposTestPushWebhookRequest,
+            (req as unknown) as ReposTestPushWebhookRequest,
             res as ReposTestPushWebhookResponse,
             next
           );
@@ -61071,7 +61073,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.migrationsGetImportStatus(
-            req as MigrationsGetImportStatusRequest,
+            (req as unknown) as MigrationsGetImportStatusRequest,
             res as MigrationsGetImportStatusResponse,
             next
           );
@@ -61131,7 +61133,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, MigrationsStartImportHandler);
 
           await controller.migrationsStartImport(
-            req as MigrationsStartImportRequest,
+            (req as unknown) as MigrationsStartImportRequest,
             res as MigrationsStartImportResponse,
             next
           );
@@ -61189,7 +61191,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, MigrationsUpdateImportHandler);
 
           await controller.migrationsUpdateImport(
-            req as MigrationsUpdateImportRequest,
+            (req as unknown) as MigrationsUpdateImportRequest,
             res as MigrationsUpdateImportResponse,
             next
           );
@@ -61217,7 +61219,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, MigrationsCancelImportHandler);
 
           await controller.migrationsCancelImport(
-            req as MigrationsCancelImportRequest,
+            (req as unknown) as MigrationsCancelImportRequest,
             res as MigrationsCancelImportResponse,
             next
           );
@@ -61253,7 +61255,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.migrationsGetCommitAuthors(
-            req as MigrationsGetCommitAuthorsRequest,
+            (req as unknown) as MigrationsGetCommitAuthorsRequest,
             res as MigrationsGetCommitAuthorsResponse,
             next
           );
@@ -61297,7 +61299,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.migrationsMapCommitAuthor(
-            req as MigrationsMapCommitAuthorRequest,
+            (req as unknown) as MigrationsMapCommitAuthorRequest,
             res as MigrationsMapCommitAuthorResponse,
             next
           );
@@ -61325,7 +61327,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, MigrationsGetLargeFilesHandler);
 
           await controller.migrationsGetLargeFiles(
-            req as MigrationsGetLargeFilesRequest,
+            (req as unknown) as MigrationsGetLargeFilesRequest,
             res as MigrationsGetLargeFilesResponse,
             next
           );
@@ -61369,7 +61371,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.migrationsSetLfsPreference(
-            req as MigrationsSetLfsPreferenceRequest,
+            (req as unknown) as MigrationsSetLfsPreferenceRequest,
             res as MigrationsSetLfsPreferenceResponse,
             next
           );
@@ -61397,7 +61399,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, AppsGetRepoInstallationHandler);
 
           await controller.appsGetRepoInstallation(
-            req as AppsGetRepoInstallationRequest,
+            (req as unknown) as AppsGetRepoInstallationRequest,
             res as AppsGetRepoInstallationResponse,
             next
           );
@@ -61428,7 +61430,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.interactionsGetRestrictionsForRepo(
-            req as InteractionsGetRestrictionsForRepoRequest,
+            (req as unknown) as InteractionsGetRestrictionsForRepoRequest,
             res as InteractionsGetRestrictionsForRepoResponse,
             next
           );
@@ -61502,7 +61504,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.interactionsSetRestrictionsForRepo(
-            req as InteractionsSetRestrictionsForRepoRequest,
+            (req as unknown) as InteractionsSetRestrictionsForRepoRequest,
             res as InteractionsSetRestrictionsForRepoResponse,
             next
           );
@@ -61535,7 +61537,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.interactionsRemoveRestrictionsForRepo(
-            req as InteractionsRemoveRestrictionsForRepoRequest,
+            (req as unknown) as InteractionsRemoveRestrictionsForRepoRequest,
             res as InteractionsRemoveRestrictionsForRepoResponse,
             next
           );
@@ -61571,7 +61573,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposListInvitationsHandler);
 
           await controller.reposListInvitations(
-            req as ReposListInvitationsRequest,
+            (req as unknown) as ReposListInvitationsRequest,
             res as ReposListInvitationsResponse,
             next
           );
@@ -61615,7 +61617,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposUpdateInvitationHandler);
 
           await controller.reposUpdateInvitation(
-            req as ReposUpdateInvitationRequest,
+            (req as unknown) as ReposUpdateInvitationRequest,
             res as ReposUpdateInvitationResponse,
             next
           );
@@ -61647,7 +61649,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposDeleteInvitationHandler);
 
           await controller.reposDeleteInvitation(
-            req as ReposDeleteInvitationRequest,
+            (req as unknown) as ReposDeleteInvitationRequest,
             res as ReposDeleteInvitationResponse,
             next
           );
@@ -61704,7 +61706,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesListForRepoHandler);
 
           await controller.issuesListForRepo(
-            req as IssuesListForRepoRequest,
+            (req as unknown) as IssuesListForRepoRequest,
             res as IssuesListForRepoResponse,
             next
           );
@@ -61786,7 +61788,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesCreateHandler);
 
           await controller.issuesCreate(
-            req as IssuesCreateRequest,
+            (req as unknown) as IssuesCreateRequest,
             res as IssuesCreateResponse,
             next
           );
@@ -61832,7 +61834,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.issuesListCommentsForRepo(
-            req as IssuesListCommentsForRepoRequest,
+            (req as unknown) as IssuesListCommentsForRepoRequest,
             res as IssuesListCommentsForRepoResponse,
             next
           );
@@ -61864,7 +61866,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesGetCommentHandler);
 
           await controller.issuesGetComment(
-            req as IssuesGetCommentRequest,
+            (req as unknown) as IssuesGetCommentRequest,
             res as IssuesGetCommentResponse,
             next
           );
@@ -61907,7 +61909,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesUpdateCommentHandler);
 
           await controller.issuesUpdateComment(
-            req as IssuesUpdateCommentRequest,
+            (req as unknown) as IssuesUpdateCommentRequest,
             res as IssuesUpdateCommentResponse,
             next
           );
@@ -61939,7 +61941,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesDeleteCommentHandler);
 
           await controller.issuesDeleteComment(
-            req as IssuesDeleteCommentRequest,
+            (req as unknown) as IssuesDeleteCommentRequest,
             res as IssuesDeleteCommentResponse,
             next
           );
@@ -61995,7 +61997,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reactionsListForIssueComment(
-            req as ReactionsListForIssueCommentRequest,
+            (req as unknown) as ReactionsListForIssueCommentRequest,
             res as ReactionsListForIssueCommentResponse,
             next
           );
@@ -62052,7 +62054,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reactionsCreateForIssueComment(
-            req as ReactionsCreateForIssueCommentRequest,
+            (req as unknown) as ReactionsCreateForIssueCommentRequest,
             res as ReactionsCreateForIssueCommentResponse,
             next
           );
@@ -62088,7 +62090,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reactionsDeleteForIssueComment(
-            req as ReactionsDeleteForIssueCommentRequest,
+            (req as unknown) as ReactionsDeleteForIssueCommentRequest,
             res as ReactionsDeleteForIssueCommentResponse,
             next
           );
@@ -62124,7 +62126,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesListEventsForRepoHandler);
 
           await controller.issuesListEventsForRepo(
-            req as IssuesListEventsForRepoRequest,
+            (req as unknown) as IssuesListEventsForRepoRequest,
             res as IssuesListEventsForRepoResponse,
             next
           );
@@ -62156,7 +62158,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesGetEventHandler);
 
           await controller.issuesGetEvent(
-            req as IssuesGetEventRequest,
+            (req as unknown) as IssuesGetEventRequest,
             res as IssuesGetEventResponse,
             next
           );
@@ -62188,7 +62190,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesGetHandler);
 
           await controller.issuesGet(
-            req as IssuesGetRequest,
+            (req as unknown) as IssuesGetRequest,
             res as IssuesGetResponse,
             next
           );
@@ -62290,7 +62292,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesUpdateHandler);
 
           await controller.issuesUpdate(
-            req as IssuesUpdateRequest,
+            (req as unknown) as IssuesUpdateRequest,
             res as IssuesUpdateResponse,
             next
           );
@@ -62334,7 +62336,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesAddAssigneesHandler);
 
           await controller.issuesAddAssignees(
-            req as IssuesAddAssigneesRequest,
+            (req as unknown) as IssuesAddAssigneesRequest,
             res as IssuesAddAssigneesResponse,
             next
           );
@@ -62378,7 +62380,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesRemoveAssigneesHandler);
 
           await controller.issuesRemoveAssignees(
-            req as IssuesRemoveAssigneesRequest,
+            (req as unknown) as IssuesRemoveAssigneesRequest,
             res as IssuesRemoveAssigneesResponse,
             next
           );
@@ -62419,7 +62421,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesListCommentsHandler);
 
           await controller.issuesListComments(
-            req as IssuesListCommentsRequest,
+            (req as unknown) as IssuesListCommentsRequest,
             res as IssuesListCommentsResponse,
             next
           );
@@ -62462,7 +62464,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesCreateCommentHandler);
 
           await controller.issuesCreateComment(
-            req as IssuesCreateCommentRequest,
+            (req as unknown) as IssuesCreateCommentRequest,
             res as IssuesCreateCommentResponse,
             next
           );
@@ -62502,7 +62504,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesListEventsHandler);
 
           await controller.issuesListEvents(
-            req as IssuesListEventsRequest,
+            (req as unknown) as IssuesListEventsRequest,
             res as IssuesListEventsResponse,
             next
           );
@@ -62542,7 +62544,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesListLabelsOnIssueHandler);
 
           await controller.issuesListLabelsOnIssue(
-            req as IssuesListLabelsOnIssueRequest,
+            (req as unknown) as IssuesListLabelsOnIssueRequest,
             res as IssuesListLabelsOnIssueResponse,
             next
           );
@@ -62616,7 +62618,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesAddLabelsHandler);
 
           await controller.issuesAddLabels(
-            req as IssuesAddLabelsRequest,
+            (req as unknown) as IssuesAddLabelsRequest,
             res as IssuesAddLabelsResponse,
             next
           );
@@ -62690,7 +62692,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesSetLabelsHandler);
 
           await controller.issuesSetLabels(
-            req as IssuesSetLabelsRequest,
+            (req as unknown) as IssuesSetLabelsRequest,
             res as IssuesSetLabelsResponse,
             next
           );
@@ -62722,7 +62724,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesRemoveAllLabelsHandler);
 
           await controller.issuesRemoveAllLabels(
-            req as IssuesRemoveAllLabelsRequest,
+            (req as unknown) as IssuesRemoveAllLabelsRequest,
             res as IssuesRemoveAllLabelsResponse,
             next
           );
@@ -62755,7 +62757,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesRemoveLabelHandler);
 
           await controller.issuesRemoveLabel(
-            req as IssuesRemoveLabelRequest,
+            (req as unknown) as IssuesRemoveLabelRequest,
             res as IssuesRemoveLabelResponse,
             next
           );
@@ -62800,7 +62802,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesLockHandler);
 
           await controller.issuesLock(
-            req as IssuesLockRequest,
+            (req as unknown) as IssuesLockRequest,
             res as IssuesLockResponse,
             next
           );
@@ -62832,7 +62834,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesUnlockHandler);
 
           await controller.issuesUnlock(
-            req as IssuesUnlockRequest,
+            (req as unknown) as IssuesUnlockRequest,
             res as IssuesUnlockResponse,
             next
           );
@@ -62885,7 +62887,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReactionsListForIssueHandler);
 
           await controller.reactionsListForIssue(
-            req as ReactionsListForIssueRequest,
+            (req as unknown) as ReactionsListForIssueRequest,
             res as ReactionsListForIssueResponse,
             next
           );
@@ -62939,7 +62941,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReactionsCreateForIssueHandler);
 
           await controller.reactionsCreateForIssue(
-            req as ReactionsCreateForIssueRequest,
+            (req as unknown) as ReactionsCreateForIssueRequest,
             res as ReactionsCreateForIssueResponse,
             next
           );
@@ -62972,7 +62974,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReactionsDeleteForIssueHandler);
 
           await controller.reactionsDeleteForIssue(
-            req as ReactionsDeleteForIssueRequest,
+            (req as unknown) as ReactionsDeleteForIssueRequest,
             res as ReactionsDeleteForIssueResponse,
             next
           );
@@ -63015,7 +63017,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.issuesListEventsForTimeline(
-            req as IssuesListEventsForTimelineRequest,
+            (req as unknown) as IssuesListEventsForTimelineRequest,
             res as IssuesListEventsForTimelineResponse,
             next
           );
@@ -63051,7 +63053,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposListDeployKeysHandler);
 
           await controller.reposListDeployKeys(
-            req as ReposListDeployKeysRequest,
+            (req as unknown) as ReposListDeployKeysRequest,
             res as ReposListDeployKeysResponse,
             next
           );
@@ -63093,7 +63095,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposCreateDeployKeyHandler);
 
           await controller.reposCreateDeployKey(
-            req as ReposCreateDeployKeyRequest,
+            (req as unknown) as ReposCreateDeployKeyRequest,
             res as ReposCreateDeployKeyResponse,
             next
           );
@@ -63125,7 +63127,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposGetDeployKeyHandler);
 
           await controller.reposGetDeployKey(
-            req as ReposGetDeployKeyRequest,
+            (req as unknown) as ReposGetDeployKeyRequest,
             res as ReposGetDeployKeyResponse,
             next
           );
@@ -63157,7 +63159,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposDeleteDeployKeyHandler);
 
           await controller.reposDeleteDeployKey(
-            req as ReposDeleteDeployKeyRequest,
+            (req as unknown) as ReposDeleteDeployKeyRequest,
             res as ReposDeleteDeployKeyResponse,
             next
           );
@@ -63193,7 +63195,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesListLabelsForRepoHandler);
 
           await controller.issuesListLabelsForRepo(
-            req as IssuesListLabelsForRepoRequest,
+            (req as unknown) as IssuesListLabelsForRepoRequest,
             res as IssuesListLabelsForRepoResponse,
             next
           );
@@ -63243,7 +63245,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesCreateLabelHandler);
 
           await controller.issuesCreateLabel(
-            req as IssuesCreateLabelRequest,
+            (req as unknown) as IssuesCreateLabelRequest,
             res as IssuesCreateLabelResponse,
             next
           );
@@ -63275,7 +63277,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesGetLabelHandler);
 
           await controller.issuesGetLabel(
-            req as IssuesGetLabelRequest,
+            (req as unknown) as IssuesGetLabelRequest,
             res as IssuesGetLabelResponse,
             next
           );
@@ -63328,7 +63330,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesUpdateLabelHandler);
 
           await controller.issuesUpdateLabel(
-            req as IssuesUpdateLabelRequest,
+            (req as unknown) as IssuesUpdateLabelRequest,
             res as IssuesUpdateLabelResponse,
             next
           );
@@ -63360,7 +63362,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesDeleteLabelHandler);
 
           await controller.issuesDeleteLabel(
-            req as IssuesDeleteLabelRequest,
+            (req as unknown) as IssuesDeleteLabelRequest,
             res as IssuesDeleteLabelResponse,
             next
           );
@@ -63388,7 +63390,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposListLanguagesHandler);
 
           await controller.reposListLanguages(
-            req as ReposListLanguagesRequest,
+            (req as unknown) as ReposListLanguagesRequest,
             res as ReposListLanguagesResponse,
             next
           );
@@ -63416,7 +63418,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposEnableLfsForRepoHandler);
 
           await controller.reposEnableLfsForRepo(
-            req as ReposEnableLfsForRepoRequest,
+            (req as unknown) as ReposEnableLfsForRepoRequest,
             res as ReposEnableLfsForRepoResponse,
             next
           );
@@ -63444,7 +63446,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposDisableLfsForRepoHandler);
 
           await controller.reposDisableLfsForRepo(
-            req as ReposDisableLfsForRepoRequest,
+            (req as unknown) as ReposDisableLfsForRepoRequest,
             res as ReposDisableLfsForRepoResponse,
             next
           );
@@ -63472,7 +63474,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, LicensesGetForRepoHandler);
 
           await controller.licensesGetForRepo(
-            req as LicensesGetForRepoRequest,
+            (req as unknown) as LicensesGetForRepoRequest,
             res as LicensesGetForRepoResponse,
             next
           );
@@ -63512,7 +63514,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposMergeUpstreamHandler);
 
           await controller.reposMergeUpstream(
-            req as ReposMergeUpstreamRequest,
+            (req as unknown) as ReposMergeUpstreamRequest,
             res as ReposMergeUpstreamResponse,
             next
           );
@@ -63562,7 +63564,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposMergeHandler);
 
           await controller.reposMerge(
-            req as ReposMergeRequest,
+            (req as unknown) as ReposMergeRequest,
             res as ReposMergeResponse,
             next
           );
@@ -63613,7 +63615,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesListMilestonesHandler);
 
           await controller.issuesListMilestones(
-            req as IssuesListMilestonesRequest,
+            (req as unknown) as IssuesListMilestonesRequest,
             res as IssuesListMilestonesResponse,
             next
           );
@@ -63669,7 +63671,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesCreateMilestoneHandler);
 
           await controller.issuesCreateMilestone(
-            req as IssuesCreateMilestoneRequest,
+            (req as unknown) as IssuesCreateMilestoneRequest,
             res as IssuesCreateMilestoneResponse,
             next
           );
@@ -63701,7 +63703,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesGetMilestoneHandler);
 
           await controller.issuesGetMilestone(
-            req as IssuesGetMilestoneRequest,
+            (req as unknown) as IssuesGetMilestoneRequest,
             res as IssuesGetMilestoneResponse,
             next
           );
@@ -63760,7 +63762,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesUpdateMilestoneHandler);
 
           await controller.issuesUpdateMilestone(
-            req as IssuesUpdateMilestoneRequest,
+            (req as unknown) as IssuesUpdateMilestoneRequest,
             res as IssuesUpdateMilestoneResponse,
             next
           );
@@ -63792,7 +63794,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, IssuesDeleteMilestoneHandler);
 
           await controller.issuesDeleteMilestone(
-            req as IssuesDeleteMilestoneRequest,
+            (req as unknown) as IssuesDeleteMilestoneRequest,
             res as IssuesDeleteMilestoneResponse,
             next
           );
@@ -63835,7 +63837,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.issuesListLabelsForMilestone(
-            req as IssuesListLabelsForMilestoneRequest,
+            (req as unknown) as IssuesListLabelsForMilestoneRequest,
             res as IssuesListLabelsForMilestoneResponse,
             next
           );
@@ -63880,7 +63882,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.activityListRepoNotificationsForAuthenticatedUser(
-            req as ActivityListRepoNotificationsForAuthenticatedUserRequest,
+            (req as unknown) as ActivityListRepoNotificationsForAuthenticatedUserRequest,
             res as ActivityListRepoNotificationsForAuthenticatedUserResponse,
             next
           );
@@ -63923,7 +63925,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.activityMarkRepoNotificationsAsRead(
-            req as ActivityMarkRepoNotificationsAsReadRequest,
+            (req as unknown) as ActivityMarkRepoNotificationsAsReadRequest,
             res as ActivityMarkRepoNotificationsAsReadResponse,
             next
           );
@@ -63951,7 +63953,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposGetPagesHandler);
 
           await controller.reposGetPages(
-            req as ReposGetPagesRequest,
+            (req as unknown) as ReposGetPagesRequest,
             res as ReposGetPagesResponse,
             next
           );
@@ -64015,7 +64017,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposCreatePagesSiteHandler);
 
           await controller.reposCreatePagesSite(
-            req as ReposCreatePagesSiteRequest,
+            (req as unknown) as ReposCreatePagesSiteRequest,
             res as ReposCreatePagesSiteResponse,
             next
           );
@@ -64110,7 +64112,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposUpdateInformationAboutPagesSite(
-            req as ReposUpdateInformationAboutPagesSiteRequest,
+            (req as unknown) as ReposUpdateInformationAboutPagesSiteRequest,
             res as ReposUpdateInformationAboutPagesSiteResponse,
             next
           );
@@ -64138,7 +64140,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposDeletePagesSiteHandler);
 
           await controller.reposDeletePagesSite(
-            req as ReposDeletePagesSiteRequest,
+            (req as unknown) as ReposDeletePagesSiteRequest,
             res as ReposDeletePagesSiteResponse,
             next
           );
@@ -64174,7 +64176,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposListPagesBuildsHandler);
 
           await controller.reposListPagesBuilds(
-            req as ReposListPagesBuildsRequest,
+            (req as unknown) as ReposListPagesBuildsRequest,
             res as ReposListPagesBuildsResponse,
             next
           );
@@ -64202,7 +64204,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposRequestPagesBuildHandler);
 
           await controller.reposRequestPagesBuild(
-            req as ReposRequestPagesBuildRequest,
+            (req as unknown) as ReposRequestPagesBuildRequest,
             res as ReposRequestPagesBuildResponse,
             next
           );
@@ -64233,7 +64235,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposGetLatestPagesBuild(
-            req as ReposGetLatestPagesBuildRequest,
+            (req as unknown) as ReposGetLatestPagesBuildRequest,
             res as ReposGetLatestPagesBuildResponse,
             next
           );
@@ -64265,7 +64267,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposGetPagesBuildHandler);
 
           await controller.reposGetPagesBuild(
-            req as ReposGetPagesBuildRequest,
+            (req as unknown) as ReposGetPagesBuildRequest,
             res as ReposGetPagesBuildResponse,
             next
           );
@@ -64326,7 +64328,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposCreatePagesDeployment(
-            req as ReposCreatePagesDeploymentRequest,
+            (req as unknown) as ReposCreatePagesDeploymentRequest,
             res as ReposCreatePagesDeploymentResponse,
             next
           );
@@ -64357,7 +64359,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposGetPagesHealthCheck(
-            req as ReposGetPagesHealthCheckRequest,
+            (req as unknown) as ReposGetPagesHealthCheckRequest,
             res as ReposGetPagesHealthCheckResponse,
             next
           );
@@ -64398,7 +64400,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ProjectsListForRepoHandler);
 
           await controller.projectsListForRepo(
-            req as ProjectsListForRepoRequest,
+            (req as unknown) as ProjectsListForRepoRequest,
             res as ProjectsListForRepoResponse,
             next
           );
@@ -64438,7 +64440,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ProjectsCreateForRepoHandler);
 
           await controller.projectsCreateForRepo(
-            req as ProjectsCreateForRepoRequest,
+            (req as unknown) as ProjectsCreateForRepoRequest,
             res as ProjectsCreateForRepoResponse,
             next
           );
@@ -64487,7 +64489,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, PullsListHandler);
 
           await controller.pullsList(
-            req as PullsListRequest,
+            (req as unknown) as PullsListRequest,
             res as PullsListResponse,
             next
           );
@@ -64557,7 +64559,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, PullsCreateHandler);
 
           await controller.pullsCreate(
-            req as PullsCreateRequest,
+            (req as unknown) as PullsCreateRequest,
             res as PullsCreateResponse,
             next
           );
@@ -64602,7 +64604,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.pullsListReviewCommentsForRepo(
-            req as PullsListReviewCommentsForRepoRequest,
+            (req as unknown) as PullsListReviewCommentsForRepoRequest,
             res as PullsListReviewCommentsForRepoResponse,
             next
           );
@@ -64634,7 +64636,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, PullsGetReviewCommentHandler);
 
           await controller.pullsGetReviewComment(
-            req as PullsGetReviewCommentRequest,
+            (req as unknown) as PullsGetReviewCommentRequest,
             res as PullsGetReviewCommentResponse,
             next
           );
@@ -64680,7 +64682,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.pullsUpdateReviewComment(
-            req as PullsUpdateReviewCommentRequest,
+            (req as unknown) as PullsUpdateReviewCommentRequest,
             res as PullsUpdateReviewCommentResponse,
             next
           );
@@ -64715,7 +64717,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.pullsDeleteReviewComment(
-            req as PullsDeleteReviewCommentRequest,
+            (req as unknown) as PullsDeleteReviewCommentRequest,
             res as PullsDeleteReviewCommentResponse,
             next
           );
@@ -64773,7 +64775,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reactionsListForPullRequestReviewComment(
-            req as ReactionsListForPullRequestReviewCommentRequest,
+            (req as unknown) as ReactionsListForPullRequestReviewCommentRequest,
             res as ReactionsListForPullRequestReviewCommentResponse,
             next
           );
@@ -64832,7 +64834,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reactionsCreateForPullRequestReviewComment(
-            req as ReactionsCreateForPullRequestReviewCommentRequest,
+            (req as unknown) as ReactionsCreateForPullRequestReviewCommentRequest,
             res as ReactionsCreateForPullRequestReviewCommentResponse,
             next
           );
@@ -64868,7 +64870,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reactionsDeleteForPullRequestComment(
-            req as ReactionsDeleteForPullRequestCommentRequest,
+            (req as unknown) as ReactionsDeleteForPullRequestCommentRequest,
             res as ReactionsDeleteForPullRequestCommentResponse,
             next
           );
@@ -64900,7 +64902,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, PullsGetHandler);
 
           await controller.pullsGet(
-            req as PullsGetRequest,
+            (req as unknown) as PullsGetRequest,
             res as PullsGetResponse,
             next
           );
@@ -64962,7 +64964,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, PullsUpdateHandler);
 
           await controller.pullsUpdate(
-            req as PullsUpdateRequest,
+            (req as unknown) as PullsUpdateRequest,
             res as PullsUpdateResponse,
             next
           );
@@ -65048,7 +65050,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesCreateWithPrForAuthenticatedUser(
-            req as CodespacesCreateWithPrForAuthenticatedUserRequest,
+            (req as unknown) as CodespacesCreateWithPrForAuthenticatedUserRequest,
             res as CodespacesCreateWithPrForAuthenticatedUserResponse,
             next
           );
@@ -65095,7 +65097,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, PullsListReviewCommentsHandler);
 
           await controller.pullsListReviewComments(
-            req as PullsListReviewCommentsRequest,
+            (req as unknown) as PullsListReviewCommentsRequest,
             res as PullsListReviewCommentsResponse,
             next
           );
@@ -65186,7 +65188,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.pullsCreateReviewComment(
-            req as PullsCreateReviewCommentRequest,
+            (req as unknown) as PullsCreateReviewCommentRequest,
             res as PullsCreateReviewCommentResponse,
             next
           );
@@ -65233,7 +65235,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.pullsCreateReplyForReviewComment(
-            req as PullsCreateReplyForReviewCommentRequest,
+            (req as unknown) as PullsCreateReplyForReviewCommentRequest,
             res as PullsCreateReplyForReviewCommentResponse,
             next
           );
@@ -65273,7 +65275,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, PullsListCommitsHandler);
 
           await controller.pullsListCommits(
-            req as PullsListCommitsRequest,
+            (req as unknown) as PullsListCommitsRequest,
             res as PullsListCommitsResponse,
             next
           );
@@ -65313,7 +65315,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, PullsListFilesHandler);
 
           await controller.pullsListFiles(
-            req as PullsListFilesRequest,
+            (req as unknown) as PullsListFilesRequest,
             res as PullsListFilesResponse,
             next
           );
@@ -65345,7 +65347,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, PullsCheckIfMergedHandler);
 
           await controller.pullsCheckIfMerged(
-            req as PullsCheckIfMergedRequest,
+            (req as unknown) as PullsCheckIfMergedRequest,
             res as PullsCheckIfMergedResponse,
             next
           );
@@ -65402,7 +65404,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, PullsMergeHandler);
 
           await controller.pullsMerge(
-            req as PullsMergeRequest,
+            (req as unknown) as PullsMergeRequest,
             res as PullsMergeResponse,
             next
           );
@@ -65437,7 +65439,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.pullsListRequestedReviewers(
-            req as PullsListRequestedReviewersRequest,
+            (req as unknown) as PullsListRequestedReviewersRequest,
             res as PullsListRequestedReviewersResponse,
             next
           );
@@ -65486,7 +65488,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, PullsRequestReviewersHandler);
 
           await controller.pullsRequestReviewers(
-            req as PullsRequestReviewersRequest,
+            (req as unknown) as PullsRequestReviewersRequest,
             res as PullsRequestReviewersResponse,
             next
           );
@@ -65538,7 +65540,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.pullsRemoveRequestedReviewers(
-            req as PullsRemoveRequestedReviewersRequest,
+            (req as unknown) as PullsRemoveRequestedReviewersRequest,
             res as PullsRemoveRequestedReviewersResponse,
             next
           );
@@ -65578,7 +65580,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, PullsListReviewsHandler);
 
           await controller.pullsListReviews(
-            req as PullsListReviewsRequest,
+            (req as unknown) as PullsListReviewsRequest,
             res as PullsListReviewsResponse,
             next
           );
@@ -65661,7 +65663,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, PullsCreateReviewHandler);
 
           await controller.pullsCreateReview(
-            req as PullsCreateReviewRequest,
+            (req as unknown) as PullsCreateReviewRequest,
             res as PullsCreateReviewResponse,
             next
           );
@@ -65694,7 +65696,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, PullsGetReviewHandler);
 
           await controller.pullsGetReview(
-            req as PullsGetReviewRequest,
+            (req as unknown) as PullsGetReviewRequest,
             res as PullsGetReviewResponse,
             next
           );
@@ -65738,7 +65740,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, PullsUpdateReviewHandler);
 
           await controller.pullsUpdateReview(
-            req as PullsUpdateReviewRequest,
+            (req as unknown) as PullsUpdateReviewRequest,
             res as PullsUpdateReviewResponse,
             next
           );
@@ -65774,7 +65776,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.pullsDeletePendingReview(
-            req as PullsDeletePendingReviewRequest,
+            (req as unknown) as PullsDeletePendingReviewRequest,
             res as PullsDeletePendingReviewResponse,
             next
           );
@@ -65818,7 +65820,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.pullsListCommentsForReview(
-            req as PullsListCommentsForReviewRequest,
+            (req as unknown) as PullsListCommentsForReviewRequest,
             res as PullsListCommentsForReviewResponse,
             next
           );
@@ -65863,7 +65865,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, PullsDismissReviewHandler);
 
           await controller.pullsDismissReview(
-            req as PullsDismissReviewRequest,
+            (req as unknown) as PullsDismissReviewRequest,
             res as PullsDismissReviewResponse,
             next
           );
@@ -65913,7 +65915,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, PullsSubmitReviewHandler);
 
           await controller.pullsSubmitReview(
-            req as PullsSubmitReviewRequest,
+            (req as unknown) as PullsSubmitReviewRequest,
             res as PullsSubmitReviewResponse,
             next
           );
@@ -65957,7 +65959,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, PullsUpdateBranchHandler);
 
           await controller.pullsUpdateBranch(
-            req as PullsUpdateBranchRequest,
+            (req as unknown) as PullsUpdateBranchRequest,
             res as PullsUpdateBranchResponse,
             next
           );
@@ -65990,7 +65992,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposGetReadmeHandler);
 
           await controller.reposGetReadme(
-            req as ReposGetReadmeRequest,
+            (req as unknown) as ReposGetReadmeRequest,
             res as ReposGetReadmeResponse,
             next
           );
@@ -66030,7 +66032,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposGetReadmeInDirectory(
-            req as ReposGetReadmeInDirectoryRequest,
+            (req as unknown) as ReposGetReadmeInDirectoryRequest,
             res as ReposGetReadmeInDirectoryResponse,
             next
           );
@@ -66066,7 +66068,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposListReleasesHandler);
 
           await controller.reposListReleases(
-            req as ReposListReleasesRequest,
+            (req as unknown) as ReposListReleasesRequest,
             res as ReposListReleasesResponse,
             next
           );
@@ -66135,7 +66137,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposCreateReleaseHandler);
 
           await controller.reposCreateRelease(
-            req as ReposCreateReleaseRequest,
+            (req as unknown) as ReposCreateReleaseRequest,
             res as ReposCreateReleaseResponse,
             next
           );
@@ -66167,7 +66169,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposGetReleaseAssetHandler);
 
           await controller.reposGetReleaseAsset(
-            req as ReposGetReleaseAssetRequest,
+            (req as unknown) as ReposGetReleaseAssetRequest,
             res as ReposGetReleaseAssetResponse,
             next
           );
@@ -66215,7 +66217,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposUpdateReleaseAssetHandler);
 
           await controller.reposUpdateReleaseAsset(
-            req as ReposUpdateReleaseAssetRequest,
+            (req as unknown) as ReposUpdateReleaseAssetRequest,
             res as ReposUpdateReleaseAssetResponse,
             next
           );
@@ -66247,7 +66249,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposDeleteReleaseAssetHandler);
 
           await controller.reposDeleteReleaseAsset(
-            req as ReposDeleteReleaseAssetRequest,
+            (req as unknown) as ReposDeleteReleaseAssetRequest,
             res as ReposDeleteReleaseAssetResponse,
             next
           );
@@ -66305,7 +66307,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposGenerateReleaseNotes(
-            req as ReposGenerateReleaseNotesRequest,
+            (req as unknown) as ReposGenerateReleaseNotesRequest,
             res as ReposGenerateReleaseNotesResponse,
             next
           );
@@ -66333,7 +66335,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposGetLatestReleaseHandler);
 
           await controller.reposGetLatestRelease(
-            req as ReposGetLatestReleaseRequest,
+            (req as unknown) as ReposGetLatestReleaseRequest,
             res as ReposGetLatestReleaseResponse,
             next
           );
@@ -66365,7 +66367,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposGetReleaseByTagHandler);
 
           await controller.reposGetReleaseByTag(
-            req as ReposGetReleaseByTagRequest,
+            (req as unknown) as ReposGetReleaseByTagRequest,
             res as ReposGetReleaseByTagResponse,
             next
           );
@@ -66397,7 +66399,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposGetReleaseHandler);
 
           await controller.reposGetRelease(
-            req as ReposGetReleaseRequest,
+            (req as unknown) as ReposGetReleaseRequest,
             res as ReposGetReleaseResponse,
             next
           );
@@ -66461,7 +66463,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposUpdateReleaseHandler);
 
           await controller.reposUpdateRelease(
-            req as ReposUpdateReleaseRequest,
+            (req as unknown) as ReposUpdateReleaseRequest,
             res as ReposUpdateReleaseResponse,
             next
           );
@@ -66493,7 +66495,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposDeleteReleaseHandler);
 
           await controller.reposDeleteRelease(
-            req as ReposDeleteReleaseRequest,
+            (req as unknown) as ReposDeleteReleaseRequest,
             res as ReposDeleteReleaseResponse,
             next
           );
@@ -66533,7 +66535,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposListReleaseAssetsHandler);
 
           await controller.reposListReleaseAssets(
-            req as ReposListReleaseAssetsRequest,
+            (req as unknown) as ReposListReleaseAssetsRequest,
             res as ReposListReleaseAssetsResponse,
             next
           );
@@ -66570,7 +66572,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposUploadReleaseAssetHandler);
 
           await controller.reposUploadReleaseAsset(
-            req as ReposUploadReleaseAssetRequest,
+            (req as unknown) as ReposUploadReleaseAssetRequest,
             res as ReposUploadReleaseAssetResponse,
             next
           );
@@ -66614,7 +66616,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReactionsListForReleaseHandler);
 
           await controller.reactionsListForRelease(
-            req as ReactionsListForReleaseRequest,
+            (req as unknown) as ReactionsListForReleaseRequest,
             res as ReactionsListForReleaseResponse,
             next
           );
@@ -66662,7 +66664,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reactionsCreateForRelease(
-            req as ReactionsCreateForReleaseRequest,
+            (req as unknown) as ReactionsCreateForReleaseRequest,
             res as ReactionsCreateForReleaseResponse,
             next
           );
@@ -66698,7 +66700,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reactionsDeleteForRelease(
-            req as ReactionsDeleteForReleaseRequest,
+            (req as unknown) as ReactionsDeleteForReleaseRequest,
             res as ReactionsDeleteForReleaseResponse,
             next
           );
@@ -66752,7 +66754,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.secretScanningListAlertsForRepo(
-            req as SecretScanningListAlertsForRepoRequest,
+            (req as unknown) as SecretScanningListAlertsForRepoRequest,
             res as SecretScanningListAlertsForRepoResponse,
             next
           );
@@ -66792,7 +66794,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, SecretScanningGetAlertHandler);
 
           await controller.secretScanningGetAlert(
-            req as SecretScanningGetAlertRequest,
+            (req as unknown) as SecretScanningGetAlertRequest,
             res as SecretScanningGetAlertResponse,
             next
           );
@@ -66879,7 +66881,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.secretScanningUpdateAlert(
-            req as SecretScanningUpdateAlertRequest,
+            (req as unknown) as SecretScanningUpdateAlertRequest,
             res as SecretScanningUpdateAlertResponse,
             next
           );
@@ -66930,7 +66932,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.secretScanningListLocationsForAlert(
-            req as SecretScanningListLocationsForAlertRequest,
+            (req as unknown) as SecretScanningListLocationsForAlertRequest,
             res as SecretScanningListLocationsForAlertResponse,
             next
           );
@@ -66969,7 +66971,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.activityListStargazersForRepo(
-            req as ActivityListStargazersForRepoRequest,
+            (req as unknown) as ActivityListStargazersForRepoRequest,
             res as ActivityListStargazersForRepoResponse,
             next
           );
@@ -67000,7 +67002,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposGetCodeFrequencyStats(
-            req as ReposGetCodeFrequencyStatsRequest,
+            (req as unknown) as ReposGetCodeFrequencyStatsRequest,
             res as ReposGetCodeFrequencyStatsResponse,
             next
           );
@@ -67031,7 +67033,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposGetCommitActivityStats(
-            req as ReposGetCommitActivityStatsRequest,
+            (req as unknown) as ReposGetCommitActivityStatsRequest,
             res as ReposGetCommitActivityStatsResponse,
             next
           );
@@ -67062,7 +67064,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposGetContributorsStats(
-            req as ReposGetContributorsStatsRequest,
+            (req as unknown) as ReposGetContributorsStatsRequest,
             res as ReposGetContributorsStatsResponse,
             next
           );
@@ -67093,7 +67095,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposGetParticipationStats(
-            req as ReposGetParticipationStatsRequest,
+            (req as unknown) as ReposGetParticipationStatsRequest,
             res as ReposGetParticipationStatsResponse,
             next
           );
@@ -67121,7 +67123,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposGetPunchCardStatsHandler);
 
           await controller.reposGetPunchCardStats(
-            req as ReposGetPunchCardStatsRequest,
+            (req as unknown) as ReposGetPunchCardStatsRequest,
             res as ReposGetPunchCardStatsResponse,
             next
           );
@@ -67182,7 +67184,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposCreateCommitStatusHandler);
 
           await controller.reposCreateCommitStatus(
-            req as ReposCreateCommitStatusRequest,
+            (req as unknown) as ReposCreateCommitStatusRequest,
             res as ReposCreateCommitStatusResponse,
             next
           );
@@ -67221,7 +67223,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.activityListWatchersForRepo(
-            req as ActivityListWatchersForRepoRequest,
+            (req as unknown) as ActivityListWatchersForRepoRequest,
             res as ActivityListWatchersForRepoResponse,
             next
           );
@@ -67252,7 +67254,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.activityGetRepoSubscription(
-            req as ActivityGetRepoSubscriptionRequest,
+            (req as unknown) as ActivityGetRepoSubscriptionRequest,
             res as ActivityGetRepoSubscriptionResponse,
             next
           );
@@ -67299,7 +67301,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.activitySetRepoSubscription(
-            req as ActivitySetRepoSubscriptionRequest,
+            (req as unknown) as ActivitySetRepoSubscriptionRequest,
             res as ActivitySetRepoSubscriptionResponse,
             next
           );
@@ -67330,7 +67332,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.activityDeleteRepoSubscription(
-            req as ActivityDeleteRepoSubscriptionRequest,
+            (req as unknown) as ActivityDeleteRepoSubscriptionRequest,
             res as ActivityDeleteRepoSubscriptionResponse,
             next
           );
@@ -67366,7 +67368,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposListTagsHandler);
 
           await controller.reposListTags(
-            req as ReposListTagsRequest,
+            (req as unknown) as ReposListTagsRequest,
             res as ReposListTagsResponse,
             next
           );
@@ -67394,7 +67396,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposListTagProtectionHandler);
 
           await controller.reposListTagProtection(
-            req as ReposListTagProtectionRequest,
+            (req as unknown) as ReposListTagProtectionRequest,
             res as ReposListTagProtectionResponse,
             next
           );
@@ -67437,7 +67439,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposCreateTagProtection(
-            req as ReposCreateTagProtectionRequest,
+            (req as unknown) as ReposCreateTagProtectionRequest,
             res as ReposCreateTagProtectionResponse,
             next
           );
@@ -67472,7 +67474,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposDeleteTagProtection(
-            req as ReposDeleteTagProtectionRequest,
+            (req as unknown) as ReposDeleteTagProtectionRequest,
             res as ReposDeleteTagProtectionResponse,
             next
           );
@@ -67507,7 +67509,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposDownloadTarballArchive(
-            req as ReposDownloadTarballArchiveRequest,
+            (req as unknown) as ReposDownloadTarballArchiveRequest,
             res as ReposDownloadTarballArchiveResponse,
             next
           );
@@ -67543,7 +67545,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposListTeamsHandler);
 
           await controller.reposListTeams(
-            req as ReposListTeamsRequest,
+            (req as unknown) as ReposListTeamsRequest,
             res as ReposListTeamsResponse,
             next
           );
@@ -67579,7 +67581,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposGetAllTopicsHandler);
 
           await controller.reposGetAllTopics(
-            req as ReposGetAllTopicsRequest,
+            (req as unknown) as ReposGetAllTopicsRequest,
             res as ReposGetAllTopicsResponse,
             next
           );
@@ -67620,7 +67622,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposReplaceAllTopicsHandler);
 
           await controller.reposReplaceAllTopics(
-            req as ReposReplaceAllTopicsRequest,
+            (req as unknown) as ReposReplaceAllTopicsRequest,
             res as ReposReplaceAllTopicsResponse,
             next
           );
@@ -67655,7 +67657,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposGetClonesHandler);
 
           await controller.reposGetClones(
-            req as ReposGetClonesRequest,
+            (req as unknown) as ReposGetClonesRequest,
             res as ReposGetClonesResponse,
             next
           );
@@ -67683,7 +67685,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposGetTopPathsHandler);
 
           await controller.reposGetTopPaths(
-            req as ReposGetTopPathsRequest,
+            (req as unknown) as ReposGetTopPathsRequest,
             res as ReposGetTopPathsResponse,
             next
           );
@@ -67711,7 +67713,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposGetTopReferrersHandler);
 
           await controller.reposGetTopReferrers(
-            req as ReposGetTopReferrersRequest,
+            (req as unknown) as ReposGetTopReferrersRequest,
             res as ReposGetTopReferrersResponse,
             next
           );
@@ -67746,7 +67748,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposGetViewsHandler);
 
           await controller.reposGetViews(
-            req as ReposGetViewsRequest,
+            (req as unknown) as ReposGetViewsRequest,
             res as ReposGetViewsResponse,
             next
           );
@@ -67792,7 +67794,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposTransferHandler);
 
           await controller.reposTransfer(
-            req as ReposTransferRequest,
+            (req as unknown) as ReposTransferRequest,
             res as ReposTransferResponse,
             next
           );
@@ -67823,7 +67825,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposCheckVulnerabilityAlerts(
-            req as ReposCheckVulnerabilityAlertsRequest,
+            (req as unknown) as ReposCheckVulnerabilityAlertsRequest,
             res as ReposCheckVulnerabilityAlertsResponse,
             next
           );
@@ -67854,7 +67856,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposEnableVulnerabilityAlerts(
-            req as ReposEnableVulnerabilityAlertsRequest,
+            (req as unknown) as ReposEnableVulnerabilityAlertsRequest,
             res as ReposEnableVulnerabilityAlertsResponse,
             next
           );
@@ -67885,7 +67887,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposDisableVulnerabilityAlerts(
-            req as ReposDisableVulnerabilityAlertsRequest,
+            (req as unknown) as ReposDisableVulnerabilityAlertsRequest,
             res as ReposDisableVulnerabilityAlertsResponse,
             next
           );
@@ -67920,7 +67922,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposDownloadZipballArchive(
-            req as ReposDownloadZipballArchiveRequest,
+            (req as unknown) as ReposDownloadZipballArchiveRequest,
             res as ReposDownloadZipballArchiveResponse,
             next
           );
@@ -67986,7 +67988,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposCreateUsingTemplate(
-            req as ReposCreateUsingTemplateRequest,
+            (req as unknown) as ReposCreateUsingTemplateRequest,
             res as ReposCreateUsingTemplateResponse,
             next
           );
@@ -68014,7 +68016,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposListPublicHandler);
 
           await controller.reposListPublic(
-            req as ReposListPublicRequest,
+            (req as unknown) as ReposListPublicRequest,
             res as ReposListPublicResponse,
             next
           );
@@ -68056,7 +68058,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsListEnvironmentSecrets(
-            req as ActionsListEnvironmentSecretsRequest,
+            (req as unknown) as ActionsListEnvironmentSecretsRequest,
             res as ActionsListEnvironmentSecretsResponse,
             next
           );
@@ -68090,7 +68092,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsGetEnvironmentPublicKey(
-            req as ActionsGetEnvironmentPublicKeyRequest,
+            (req as unknown) as ActionsGetEnvironmentPublicKeyRequest,
             res as ActionsGetEnvironmentPublicKeyResponse,
             next
           );
@@ -68125,7 +68127,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsGetEnvironmentSecret(
-            req as ActionsGetEnvironmentSecretRequest,
+            (req as unknown) as ActionsGetEnvironmentSecretRequest,
             res as ActionsGetEnvironmentSecretResponse,
             next
           );
@@ -68180,7 +68182,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsCreateOrUpdateEnvironmentSecret(
-            req as ActionsCreateOrUpdateEnvironmentSecretRequest,
+            (req as unknown) as ActionsCreateOrUpdateEnvironmentSecretRequest,
             res as ActionsCreateOrUpdateEnvironmentSecretResponse,
             next
           );
@@ -68215,7 +68217,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.actionsDeleteEnvironmentSecret(
-            req as ActionsDeleteEnvironmentSecretRequest,
+            (req as unknown) as ActionsDeleteEnvironmentSecretRequest,
             res as ActionsDeleteEnvironmentSecretResponse,
             next
           );
@@ -68249,7 +68251,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, SearchCodeHandler);
 
           await controller.searchCode(
-            req as SearchCodeRequest,
+            (req as unknown) as SearchCodeRequest,
             res as SearchCodeResponse,
             next
           );
@@ -68283,7 +68285,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, SearchCommitsHandler);
 
           await controller.searchCommits(
-            req as SearchCommitsRequest,
+            (req as unknown) as SearchCommitsRequest,
             res as SearchCommitsResponse,
             next
           );
@@ -68335,7 +68337,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.searchIssuesAndPullRequests(
-            req as SearchIssuesAndPullRequestsRequest,
+            (req as unknown) as SearchIssuesAndPullRequestsRequest,
             res as SearchIssuesAndPullRequestsResponse,
             next
           );
@@ -68370,7 +68372,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, SearchLabelsHandler);
 
           await controller.searchLabels(
-            req as SearchLabelsRequest,
+            (req as unknown) as SearchLabelsRequest,
             res as SearchLabelsResponse,
             next
           );
@@ -68407,7 +68409,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, SearchReposHandler);
 
           await controller.searchRepos(
-            req as SearchReposRequest,
+            (req as unknown) as SearchReposRequest,
             res as SearchReposResponse,
             next
           );
@@ -68439,7 +68441,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, SearchTopicsHandler);
 
           await controller.searchTopics(
-            req as SearchTopicsRequest,
+            (req as unknown) as SearchTopicsRequest,
             res as SearchTopicsResponse,
             next
           );
@@ -68476,7 +68478,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, SearchUsersHandler);
 
           await controller.searchUsers(
-            req as SearchUsersRequest,
+            (req as unknown) as SearchUsersRequest,
             res as SearchUsersResponse,
             next
           );
@@ -68504,7 +68506,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, TeamsGetLegacyHandler);
 
           await controller.teamsGetLegacy(
-            req as TeamsGetLegacyRequest,
+            (req as unknown) as TeamsGetLegacyRequest,
             res as TeamsGetLegacyResponse,
             next
           );
@@ -68562,7 +68564,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, TeamsUpdateLegacyHandler);
 
           await controller.teamsUpdateLegacy(
-            req as TeamsUpdateLegacyRequest,
+            (req as unknown) as TeamsUpdateLegacyRequest,
             res as TeamsUpdateLegacyResponse,
             next
           );
@@ -68590,7 +68592,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, TeamsDeleteLegacyHandler);
 
           await controller.teamsDeleteLegacy(
-            req as TeamsDeleteLegacyRequest,
+            (req as unknown) as TeamsDeleteLegacyRequest,
             res as TeamsDeleteLegacyResponse,
             next
           );
@@ -68634,7 +68636,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsListDiscussionsLegacy(
-            req as TeamsListDiscussionsLegacyRequest,
+            (req as unknown) as TeamsListDiscussionsLegacyRequest,
             res as TeamsListDiscussionsLegacyResponse,
             next
           );
@@ -68686,7 +68688,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsCreateDiscussionLegacy(
-            req as TeamsCreateDiscussionLegacyRequest,
+            (req as unknown) as TeamsCreateDiscussionLegacyRequest,
             res as TeamsCreateDiscussionLegacyResponse,
             next
           );
@@ -68720,7 +68722,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsGetDiscussionLegacy(
-            req as TeamsGetDiscussionLegacyRequest,
+            (req as unknown) as TeamsGetDiscussionLegacyRequest,
             res as TeamsGetDiscussionLegacyResponse,
             next
           );
@@ -68768,7 +68770,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsUpdateDiscussionLegacy(
-            req as TeamsUpdateDiscussionLegacyRequest,
+            (req as unknown) as TeamsUpdateDiscussionLegacyRequest,
             res as TeamsUpdateDiscussionLegacyResponse,
             next
           );
@@ -68802,7 +68804,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsDeleteDiscussionLegacy(
-            req as TeamsDeleteDiscussionLegacyRequest,
+            (req as unknown) as TeamsDeleteDiscussionLegacyRequest,
             res as TeamsDeleteDiscussionLegacyResponse,
             next
           );
@@ -68849,7 +68851,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsListDiscussionCommentsLegacy(
-            req as TeamsListDiscussionCommentsLegacyRequest,
+            (req as unknown) as TeamsListDiscussionCommentsLegacyRequest,
             res as TeamsListDiscussionCommentsLegacyResponse,
             next
           );
@@ -68894,7 +68896,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsCreateDiscussionCommentLegacy(
-            req as TeamsCreateDiscussionCommentLegacyRequest,
+            (req as unknown) as TeamsCreateDiscussionCommentLegacyRequest,
             res as TeamsCreateDiscussionCommentLegacyResponse,
             next
           );
@@ -68929,7 +68931,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsGetDiscussionCommentLegacy(
-            req as TeamsGetDiscussionCommentLegacyRequest,
+            (req as unknown) as TeamsGetDiscussionCommentLegacyRequest,
             res as TeamsGetDiscussionCommentLegacyResponse,
             next
           );
@@ -68975,7 +68977,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsUpdateDiscussionCommentLegacy(
-            req as TeamsUpdateDiscussionCommentLegacyRequest,
+            (req as unknown) as TeamsUpdateDiscussionCommentLegacyRequest,
             res as TeamsUpdateDiscussionCommentLegacyResponse,
             next
           );
@@ -69010,7 +69012,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsDeleteDiscussionCommentLegacy(
-            req as TeamsDeleteDiscussionCommentLegacyRequest,
+            (req as unknown) as TeamsDeleteDiscussionCommentLegacyRequest,
             res as TeamsDeleteDiscussionCommentLegacyResponse,
             next
           );
@@ -69068,7 +69070,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reactionsListForTeamDiscussionCommentLegacy(
-            req as ReactionsListForTeamDiscussionCommentLegacyRequest,
+            (req as unknown) as ReactionsListForTeamDiscussionCommentLegacyRequest,
             res as ReactionsListForTeamDiscussionCommentLegacyResponse,
             next
           );
@@ -69127,7 +69129,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reactionsCreateForTeamDiscussionCommentLegacy(
-            req as ReactionsCreateForTeamDiscussionCommentLegacyRequest,
+            (req as unknown) as ReactionsCreateForTeamDiscussionCommentLegacyRequest,
             res as ReactionsCreateForTeamDiscussionCommentLegacyResponse,
             next
           );
@@ -69182,7 +69184,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reactionsListForTeamDiscussionLegacy(
-            req as ReactionsListForTeamDiscussionLegacyRequest,
+            (req as unknown) as ReactionsListForTeamDiscussionLegacyRequest,
             res as ReactionsListForTeamDiscussionLegacyResponse,
             next
           );
@@ -69240,7 +69242,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reactionsCreateForTeamDiscussionLegacy(
-            req as ReactionsCreateForTeamDiscussionLegacyRequest,
+            (req as unknown) as ReactionsCreateForTeamDiscussionLegacyRequest,
             res as ReactionsCreateForTeamDiscussionLegacyResponse,
             next
           );
@@ -69279,7 +69281,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsListPendingInvitationsLegacy(
-            req as TeamsListPendingInvitationsLegacyRequest,
+            (req as unknown) as TeamsListPendingInvitationsLegacyRequest,
             res as TeamsListPendingInvitationsLegacyResponse,
             next
           );
@@ -69320,7 +69322,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, TeamsListMembersLegacyHandler);
 
           await controller.teamsListMembersLegacy(
-            req as TeamsListMembersLegacyRequest,
+            (req as unknown) as TeamsListMembersLegacyRequest,
             res as TeamsListMembersLegacyResponse,
             next
           );
@@ -69351,7 +69353,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, TeamsGetMemberLegacyHandler);
 
           await controller.teamsGetMemberLegacy(
-            req as TeamsGetMemberLegacyRequest,
+            (req as unknown) as TeamsGetMemberLegacyRequest,
             res as TeamsGetMemberLegacyResponse,
             next
           );
@@ -69382,7 +69384,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, TeamsAddMemberLegacyHandler);
 
           await controller.teamsAddMemberLegacy(
-            req as TeamsAddMemberLegacyRequest,
+            (req as unknown) as TeamsAddMemberLegacyRequest,
             res as TeamsAddMemberLegacyResponse,
             next
           );
@@ -69413,7 +69415,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, TeamsRemoveMemberLegacyHandler);
 
           await controller.teamsRemoveMemberLegacy(
-            req as TeamsRemoveMemberLegacyRequest,
+            (req as unknown) as TeamsRemoveMemberLegacyRequest,
             res as TeamsRemoveMemberLegacyResponse,
             next
           );
@@ -69447,7 +69449,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsGetMembershipForUserLegacy(
-            req as TeamsGetMembershipForUserLegacyRequest,
+            (req as unknown) as TeamsGetMembershipForUserLegacyRequest,
             res as TeamsGetMembershipForUserLegacyResponse,
             next
           );
@@ -69495,7 +69497,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsAddOrUpdateMembershipForUserLegacy(
-            req as TeamsAddOrUpdateMembershipForUserLegacyRequest,
+            (req as unknown) as TeamsAddOrUpdateMembershipForUserLegacyRequest,
             res as TeamsAddOrUpdateMembershipForUserLegacyResponse,
             next
           );
@@ -69529,7 +69531,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsRemoveMembershipForUserLegacy(
-            req as TeamsRemoveMembershipForUserLegacyRequest,
+            (req as unknown) as TeamsRemoveMembershipForUserLegacyRequest,
             res as TeamsRemoveMembershipForUserLegacyResponse,
             next
           );
@@ -69565,7 +69567,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, TeamsListProjectsLegacyHandler);
 
           await controller.teamsListProjectsLegacy(
-            req as TeamsListProjectsLegacyRequest,
+            (req as unknown) as TeamsListProjectsLegacyRequest,
             res as TeamsListProjectsLegacyResponse,
             next
           );
@@ -69601,7 +69603,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsCheckPermissionsForProjectLegacy(
-            req as TeamsCheckPermissionsForProjectLegacyRequest,
+            (req as unknown) as TeamsCheckPermissionsForProjectLegacyRequest,
             res as TeamsCheckPermissionsForProjectLegacyResponse,
             next
           );
@@ -69649,7 +69651,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsAddOrUpdateProjectPermissionsLegacy(
-            req as TeamsAddOrUpdateProjectPermissionsLegacyRequest,
+            (req as unknown) as TeamsAddOrUpdateProjectPermissionsLegacyRequest,
             res as TeamsAddOrUpdateProjectPermissionsLegacyResponse,
             next
           );
@@ -69683,7 +69685,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsRemoveProjectLegacy(
-            req as TeamsRemoveProjectLegacyRequest,
+            (req as unknown) as TeamsRemoveProjectLegacyRequest,
             res as TeamsRemoveProjectLegacyResponse,
             next
           );
@@ -69719,7 +69721,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, TeamsListReposLegacyHandler);
 
           await controller.teamsListReposLegacy(
-            req as TeamsListReposLegacyRequest,
+            (req as unknown) as TeamsListReposLegacyRequest,
             res as TeamsListReposLegacyResponse,
             next
           );
@@ -69754,7 +69756,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsCheckPermissionsForRepoLegacy(
-            req as TeamsCheckPermissionsForRepoLegacyRequest,
+            (req as unknown) as TeamsCheckPermissionsForRepoLegacyRequest,
             res as TeamsCheckPermissionsForRepoLegacyResponse,
             next
           );
@@ -69803,7 +69805,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsAddOrUpdateRepoPermissionsLegacy(
-            req as TeamsAddOrUpdateRepoPermissionsLegacyRequest,
+            (req as unknown) as TeamsAddOrUpdateRepoPermissionsLegacyRequest,
             res as TeamsAddOrUpdateRepoPermissionsLegacyResponse,
             next
           );
@@ -69835,7 +69837,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, TeamsRemoveRepoLegacyHandler);
 
           await controller.teamsRemoveRepoLegacy(
-            req as TeamsRemoveRepoLegacyRequest,
+            (req as unknown) as TeamsRemoveRepoLegacyRequest,
             res as TeamsRemoveRepoLegacyResponse,
             next
           );
@@ -69871,7 +69873,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, TeamsListChildLegacyHandler);
 
           await controller.teamsListChildLegacy(
-            req as TeamsListChildLegacyRequest,
+            (req as unknown) as TeamsListChildLegacyRequest,
             res as TeamsListChildLegacyResponse,
             next
           );
@@ -69891,7 +69893,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, UsersGetAuthenticatedHandler);
 
           await controller.usersGetAuthenticated(
-            req as UsersGetAuthenticatedRequest,
+            (req as unknown) as UsersGetAuthenticatedRequest,
             res as UsersGetAuthenticatedResponse,
             next
           );
@@ -69961,7 +69963,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.usersUpdateAuthenticated(
-            req as UsersUpdateAuthenticatedRequest,
+            (req as unknown) as UsersUpdateAuthenticatedRequest,
             res as UsersUpdateAuthenticatedResponse,
             next
           );
@@ -69995,7 +69997,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.usersListBlockedByAuthenticatedUser(
-            req as UsersListBlockedByAuthenticatedUserRequest,
+            (req as unknown) as UsersListBlockedByAuthenticatedUserRequest,
             res as UsersListBlockedByAuthenticatedUserResponse,
             next
           );
@@ -70023,7 +70025,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, UsersCheckBlockedHandler);
 
           await controller.usersCheckBlocked(
-            req as UsersCheckBlockedRequest,
+            (req as unknown) as UsersCheckBlockedRequest,
             res as UsersCheckBlockedResponse,
             next
           );
@@ -70051,7 +70053,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, UsersBlockHandler);
 
           await controller.usersBlock(
-            req as UsersBlockRequest,
+            (req as unknown) as UsersBlockRequest,
             res as UsersBlockResponse,
             next
           );
@@ -70079,7 +70081,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, UsersUnblockHandler);
 
           await controller.usersUnblock(
-            req as UsersUnblockRequest,
+            (req as unknown) as UsersUnblockRequest,
             res as UsersUnblockResponse,
             next
           );
@@ -70114,7 +70116,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesListForAuthenticatedUser(
-            req as CodespacesListForAuthenticatedUserRequest,
+            (req as unknown) as CodespacesListForAuthenticatedUserRequest,
             res as CodespacesListForAuthenticatedUserResponse,
             next
           );
@@ -70245,7 +70247,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesCreateForAuthenticatedUser(
-            req as CodespacesCreateForAuthenticatedUserRequest,
+            (req as unknown) as CodespacesCreateForAuthenticatedUserRequest,
             res as CodespacesCreateForAuthenticatedUserResponse,
             next
           );
@@ -70281,7 +70283,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesListSecretsForAuthenticatedUser(
-            req as CodespacesListSecretsForAuthenticatedUserRequest,
+            (req as unknown) as CodespacesListSecretsForAuthenticatedUserRequest,
             res as CodespacesListSecretsForAuthenticatedUserResponse,
             next
           );
@@ -70306,7 +70308,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesGetPublicKeyForAuthenticatedUser(
-            req as CodespacesGetPublicKeyForAuthenticatedUserRequest,
+            (req as unknown) as CodespacesGetPublicKeyForAuthenticatedUserRequest,
             res as CodespacesGetPublicKeyForAuthenticatedUserResponse,
             next
           );
@@ -70339,7 +70341,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesGetSecretForAuthenticatedUser(
-            req as CodespacesGetSecretForAuthenticatedUserRequest,
+            (req as unknown) as CodespacesGetSecretForAuthenticatedUserRequest,
             res as CodespacesGetSecretForAuthenticatedUserResponse,
             next
           );
@@ -70396,7 +70398,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesCreateOrUpdateSecretForAuthenticatedUser(
-            req as CodespacesCreateOrUpdateSecretForAuthenticatedUserRequest,
+            (req as unknown) as CodespacesCreateOrUpdateSecretForAuthenticatedUserRequest,
             res as CodespacesCreateOrUpdateSecretForAuthenticatedUserResponse,
             next
           );
@@ -70429,7 +70431,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesDeleteSecretForAuthenticatedUser(
-            req as CodespacesDeleteSecretForAuthenticatedUserRequest,
+            (req as unknown) as CodespacesDeleteSecretForAuthenticatedUserRequest,
             res as CodespacesDeleteSecretForAuthenticatedUserResponse,
             next
           );
@@ -70462,7 +70464,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesListRepositoriesForSecretForAuthenticatedUser(
-            req as CodespacesListRepositoriesForSecretForAuthenticatedUserRequest,
+            (req as unknown) as CodespacesListRepositoriesForSecretForAuthenticatedUserRequest,
             res as CodespacesListRepositoriesForSecretForAuthenticatedUserResponse,
             next
           );
@@ -70508,7 +70510,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesSetRepositoriesForSecretForAuthenticatedUser(
-            req as CodespacesSetRepositoriesForSecretForAuthenticatedUserRequest,
+            (req as unknown) as CodespacesSetRepositoriesForSecretForAuthenticatedUserRequest,
             res as CodespacesSetRepositoriesForSecretForAuthenticatedUserResponse,
             next
           );
@@ -70544,7 +70546,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesAddRepositoryForSecretForAuthenticatedUser(
-            req as CodespacesAddRepositoryForSecretForAuthenticatedUserRequest,
+            (req as unknown) as CodespacesAddRepositoryForSecretForAuthenticatedUserRequest,
             res as CodespacesAddRepositoryForSecretForAuthenticatedUserResponse,
             next
           );
@@ -70580,7 +70582,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesRemoveRepositoryForSecretForAuthenticatedUser(
-            req as CodespacesRemoveRepositoryForSecretForAuthenticatedUserRequest,
+            (req as unknown) as CodespacesRemoveRepositoryForSecretForAuthenticatedUserRequest,
             res as CodespacesRemoveRepositoryForSecretForAuthenticatedUserResponse,
             next
           );
@@ -70611,7 +70613,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesGetForAuthenticatedUser(
-            req as CodespacesGetForAuthenticatedUserRequest,
+            (req as unknown) as CodespacesGetForAuthenticatedUserRequest,
             res as CodespacesGetForAuthenticatedUserResponse,
             next
           );
@@ -70662,7 +70664,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesUpdateForAuthenticatedUser(
-            req as CodespacesUpdateForAuthenticatedUserRequest,
+            (req as unknown) as CodespacesUpdateForAuthenticatedUserRequest,
             res as CodespacesUpdateForAuthenticatedUserResponse,
             next
           );
@@ -70693,7 +70695,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesDeleteForAuthenticatedUser(
-            req as CodespacesDeleteForAuthenticatedUserRequest,
+            (req as unknown) as CodespacesDeleteForAuthenticatedUserRequest,
             res as CodespacesDeleteForAuthenticatedUserResponse,
             next
           );
@@ -70724,7 +70726,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesExportForAuthenticatedUser(
-            req as CodespacesExportForAuthenticatedUserRequest,
+            (req as unknown) as CodespacesExportForAuthenticatedUserRequest,
             res as CodespacesExportForAuthenticatedUserResponse,
             next
           );
@@ -70760,7 +70762,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesGetExportDetailsForAuthenticatedUser(
-            req as CodespacesGetExportDetailsForAuthenticatedUserRequest,
+            (req as unknown) as CodespacesGetExportDetailsForAuthenticatedUserRequest,
             res as CodespacesGetExportDetailsForAuthenticatedUserResponse,
             next
           );
@@ -70793,7 +70795,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesCodespaceMachinesForAuthenticatedUser(
-            req as CodespacesCodespaceMachinesForAuthenticatedUserRequest,
+            (req as unknown) as CodespacesCodespaceMachinesForAuthenticatedUserRequest,
             res as CodespacesCodespaceMachinesForAuthenticatedUserResponse,
             next
           );
@@ -70824,7 +70826,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesStartForAuthenticatedUser(
-            req as CodespacesStartForAuthenticatedUserRequest,
+            (req as unknown) as CodespacesStartForAuthenticatedUserRequest,
             res as CodespacesStartForAuthenticatedUserResponse,
             next
           );
@@ -70855,7 +70857,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.codespacesStopForAuthenticatedUser(
-            req as CodespacesStopForAuthenticatedUserRequest,
+            (req as unknown) as CodespacesStopForAuthenticatedUserRequest,
             res as CodespacesStopForAuthenticatedUserResponse,
             next
           );
@@ -70894,7 +70896,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.usersSetPrimaryEmailVisibilityForAuthenticatedUser(
-            req as UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequest,
+            (req as unknown) as UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequest,
             res as UsersSetPrimaryEmailVisibilityForAuthenticatedUserResponse,
             next
           );
@@ -70928,7 +70930,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.usersListEmailsForAuthenticatedUser(
-            req as UsersListEmailsForAuthenticatedUserRequest,
+            (req as unknown) as UsersListEmailsForAuthenticatedUserRequest,
             res as UsersListEmailsForAuthenticatedUserResponse,
             next
           );
@@ -70985,7 +70987,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.usersAddEmailForAuthenticatedUser(
-            req as UsersAddEmailForAuthenticatedUserRequest,
+            (req as unknown) as UsersAddEmailForAuthenticatedUserRequest,
             res as UsersAddEmailForAuthenticatedUserResponse,
             next
           );
@@ -71043,7 +71045,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.usersDeleteEmailForAuthenticatedUser(
-            req as UsersDeleteEmailForAuthenticatedUserRequest,
+            (req as unknown) as UsersDeleteEmailForAuthenticatedUserRequest,
             res as UsersDeleteEmailForAuthenticatedUserResponse,
             next
           );
@@ -71079,7 +71081,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.usersListFollowersForAuthenticatedUser(
-            req as UsersListFollowersForAuthenticatedUserRequest,
+            (req as unknown) as UsersListFollowersForAuthenticatedUserRequest,
             res as UsersListFollowersForAuthenticatedUserResponse,
             next
           );
@@ -71113,7 +71115,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.usersListFollowedByAuthenticatedUser(
-            req as UsersListFollowedByAuthenticatedUserRequest,
+            (req as unknown) as UsersListFollowedByAuthenticatedUserRequest,
             res as UsersListFollowedByAuthenticatedUserResponse,
             next
           );
@@ -71146,7 +71148,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.usersCheckPersonIsFollowedByAuthenticated(
-            req as UsersCheckPersonIsFollowedByAuthenticatedRequest,
+            (req as unknown) as UsersCheckPersonIsFollowedByAuthenticatedRequest,
             res as UsersCheckPersonIsFollowedByAuthenticatedResponse,
             next
           );
@@ -71174,7 +71176,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, UsersFollowHandler);
 
           await controller.usersFollow(
-            req as UsersFollowRequest,
+            (req as unknown) as UsersFollowRequest,
             res as UsersFollowResponse,
             next
           );
@@ -71202,7 +71204,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, UsersUnfollowHandler);
 
           await controller.usersUnfollow(
-            req as UsersUnfollowRequest,
+            (req as unknown) as UsersUnfollowRequest,
             res as UsersUnfollowResponse,
             next
           );
@@ -71236,7 +71238,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.usersListGpgKeysForAuthenticatedUser(
-            req as UsersListGpgKeysForAuthenticatedUserRequest,
+            (req as unknown) as UsersListGpgKeysForAuthenticatedUserRequest,
             res as UsersListGpgKeysForAuthenticatedUserResponse,
             next
           );
@@ -71278,7 +71280,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.usersCreateGpgKeyForAuthenticatedUser(
-            req as UsersCreateGpgKeyForAuthenticatedUserRequest,
+            (req as unknown) as UsersCreateGpgKeyForAuthenticatedUserRequest,
             res as UsersCreateGpgKeyForAuthenticatedUserResponse,
             next
           );
@@ -71309,7 +71311,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.usersGetGpgKeyForAuthenticatedUser(
-            req as UsersGetGpgKeyForAuthenticatedUserRequest,
+            (req as unknown) as UsersGetGpgKeyForAuthenticatedUserRequest,
             res as UsersGetGpgKeyForAuthenticatedUserResponse,
             next
           );
@@ -71342,7 +71344,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.usersDeleteGpgKeyForAuthenticatedUser(
-            req as UsersDeleteGpgKeyForAuthenticatedUserRequest,
+            (req as unknown) as UsersDeleteGpgKeyForAuthenticatedUserRequest,
             res as UsersDeleteGpgKeyForAuthenticatedUserResponse,
             next
           );
@@ -71378,7 +71380,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.appsListInstallationsForAuthenticatedUser(
-            req as AppsListInstallationsForAuthenticatedUserRequest,
+            (req as unknown) as AppsListInstallationsForAuthenticatedUserRequest,
             res as AppsListInstallationsForAuthenticatedUserResponse,
             next
           );
@@ -71419,7 +71421,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.appsListInstallationReposForAuthenticatedUser(
-            req as AppsListInstallationReposForAuthenticatedUserRequest,
+            (req as unknown) as AppsListInstallationReposForAuthenticatedUserRequest,
             res as AppsListInstallationReposForAuthenticatedUserResponse,
             next
           );
@@ -71455,7 +71457,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.appsAddRepoToInstallationForAuthenticatedUser(
-            req as AppsAddRepoToInstallationForAuthenticatedUserRequest,
+            (req as unknown) as AppsAddRepoToInstallationForAuthenticatedUserRequest,
             res as AppsAddRepoToInstallationForAuthenticatedUserResponse,
             next
           );
@@ -71491,7 +71493,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.appsRemoveRepoFromInstallationForAuthenticatedUser(
-            req as AppsRemoveRepoFromInstallationForAuthenticatedUserRequest,
+            (req as unknown) as AppsRemoveRepoFromInstallationForAuthenticatedUserRequest,
             res as AppsRemoveRepoFromInstallationForAuthenticatedUserResponse,
             next
           );
@@ -71516,7 +71518,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.interactionsGetRestrictionsForAuthenticatedUser(
-            req as InteractionsGetRestrictionsForAuthenticatedUserRequest,
+            (req as unknown) as InteractionsGetRestrictionsForAuthenticatedUserRequest,
             res as InteractionsGetRestrictionsForAuthenticatedUserResponse,
             next
           );
@@ -71586,7 +71588,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.interactionsSetRestrictionsForAuthenticatedUser(
-            req as InteractionsSetRestrictionsForAuthenticatedUserRequest,
+            (req as unknown) as InteractionsSetRestrictionsForAuthenticatedUserRequest,
             res as InteractionsSetRestrictionsForAuthenticatedUserResponse,
             next
           );
@@ -71611,7 +71613,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.interactionsRemoveRestrictionsForAuthenticatedUser(
-            req as InteractionsRemoveRestrictionsForAuthenticatedUserRequest,
+            (req as unknown) as InteractionsRemoveRestrictionsForAuthenticatedUserRequest,
             res as InteractionsRemoveRestrictionsForAuthenticatedUserResponse,
             next
           );
@@ -71674,7 +71676,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.issuesListForAuthenticatedUser(
-            req as IssuesListForAuthenticatedUserRequest,
+            (req as unknown) as IssuesListForAuthenticatedUserRequest,
             res as IssuesListForAuthenticatedUserResponse,
             next
           );
@@ -71710,7 +71712,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.usersListPublicSshKeysForAuthenticatedUser(
-            req as UsersListPublicSshKeysForAuthenticatedUserRequest,
+            (req as unknown) as UsersListPublicSshKeysForAuthenticatedUserRequest,
             res as UsersListPublicSshKeysForAuthenticatedUserResponse,
             next
           );
@@ -71754,7 +71756,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.usersCreatePublicSshKeyForAuthenticatedUser(
-            req as UsersCreatePublicSshKeyForAuthenticatedUserRequest,
+            (req as unknown) as UsersCreatePublicSshKeyForAuthenticatedUserRequest,
             res as UsersCreatePublicSshKeyForAuthenticatedUserResponse,
             next
           );
@@ -71787,7 +71789,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.usersGetPublicSshKeyForAuthenticatedUser(
-            req as UsersGetPublicSshKeyForAuthenticatedUserRequest,
+            (req as unknown) as UsersGetPublicSshKeyForAuthenticatedUserRequest,
             res as UsersGetPublicSshKeyForAuthenticatedUserResponse,
             next
           );
@@ -71820,7 +71822,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.usersDeletePublicSshKeyForAuthenticatedUser(
-            req as UsersDeletePublicSshKeyForAuthenticatedUserRequest,
+            (req as unknown) as UsersDeletePublicSshKeyForAuthenticatedUserRequest,
             res as UsersDeletePublicSshKeyForAuthenticatedUserResponse,
             next
           );
@@ -71856,7 +71858,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.appsListSubscriptionsForAuthenticatedUser(
-            req as AppsListSubscriptionsForAuthenticatedUserRequest,
+            (req as unknown) as AppsListSubscriptionsForAuthenticatedUserRequest,
             res as AppsListSubscriptionsForAuthenticatedUserResponse,
             next
           );
@@ -71892,7 +71894,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.appsListSubscriptionsForAuthenticatedUserStubbed(
-            req as AppsListSubscriptionsForAuthenticatedUserStubbedRequest,
+            (req as unknown) as AppsListSubscriptionsForAuthenticatedUserStubbedRequest,
             res as AppsListSubscriptionsForAuthenticatedUserStubbedResponse,
             next
           );
@@ -71929,7 +71931,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.orgsListMembershipsForAuthenticatedUser(
-            req as OrgsListMembershipsForAuthenticatedUserRequest,
+            (req as unknown) as OrgsListMembershipsForAuthenticatedUserRequest,
             res as OrgsListMembershipsForAuthenticatedUserResponse,
             next
           );
@@ -71962,7 +71964,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.orgsGetMembershipForAuthenticatedUser(
-            req as OrgsGetMembershipForAuthenticatedUserRequest,
+            (req as unknown) as OrgsGetMembershipForAuthenticatedUserRequest,
             res as OrgsGetMembershipForAuthenticatedUserResponse,
             next
           );
@@ -72008,7 +72010,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.orgsUpdateMembershipForAuthenticatedUser(
-            req as OrgsUpdateMembershipForAuthenticatedUserRequest,
+            (req as unknown) as OrgsUpdateMembershipForAuthenticatedUserRequest,
             res as OrgsUpdateMembershipForAuthenticatedUserResponse,
             next
           );
@@ -72042,7 +72044,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.migrationsListForAuthenticatedUser(
-            req as MigrationsListForAuthenticatedUserRequest,
+            (req as unknown) as MigrationsListForAuthenticatedUserRequest,
             res as MigrationsListForAuthenticatedUserResponse,
             next
           );
@@ -72143,7 +72145,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.migrationsStartForAuthenticatedUser(
-            req as MigrationsStartForAuthenticatedUserRequest,
+            (req as unknown) as MigrationsStartForAuthenticatedUserRequest,
             res as MigrationsStartForAuthenticatedUserResponse,
             next
           );
@@ -72188,7 +72190,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.migrationsGetStatusForAuthenticatedUser(
-            req as MigrationsGetStatusForAuthenticatedUserRequest,
+            (req as unknown) as MigrationsGetStatusForAuthenticatedUserRequest,
             res as MigrationsGetStatusForAuthenticatedUserResponse,
             next
           );
@@ -72221,7 +72223,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.migrationsGetArchiveForAuthenticatedUser(
-            req as MigrationsGetArchiveForAuthenticatedUserRequest,
+            (req as unknown) as MigrationsGetArchiveForAuthenticatedUserRequest,
             res as MigrationsGetArchiveForAuthenticatedUserResponse,
             next
           );
@@ -72254,7 +72256,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.migrationsDeleteArchiveForAuthenticatedUser(
-            req as MigrationsDeleteArchiveForAuthenticatedUserRequest,
+            (req as unknown) as MigrationsDeleteArchiveForAuthenticatedUserRequest,
             res as MigrationsDeleteArchiveForAuthenticatedUserResponse,
             next
           );
@@ -72290,7 +72292,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.migrationsUnlockRepoForAuthenticatedUser(
-            req as MigrationsUnlockRepoForAuthenticatedUserRequest,
+            (req as unknown) as MigrationsUnlockRepoForAuthenticatedUserRequest,
             res as MigrationsUnlockRepoForAuthenticatedUserResponse,
             next
           );
@@ -72331,7 +72333,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.migrationsListReposForAuthenticatedUser(
-            req as MigrationsListReposForAuthenticatedUserRequest,
+            (req as unknown) as MigrationsListReposForAuthenticatedUserRequest,
             res as MigrationsListReposForAuthenticatedUserResponse,
             next
           );
@@ -72365,7 +72367,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.orgsListForAuthenticatedUser(
-            req as OrgsListForAuthenticatedUserRequest,
+            (req as unknown) as OrgsListForAuthenticatedUserRequest,
             res as OrgsListForAuthenticatedUserResponse,
             next
           );
@@ -72407,7 +72409,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.packagesListPackagesForAuthenticatedUser(
-            req as PackagesListPackagesForAuthenticatedUserRequest,
+            (req as unknown) as PackagesListPackagesForAuthenticatedUserRequest,
             res as PackagesListPackagesForAuthenticatedUserResponse,
             next
           );
@@ -72446,7 +72448,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.packagesGetPackageForAuthenticatedUser(
-            req as PackagesGetPackageForAuthenticatedUserRequest,
+            (req as unknown) as PackagesGetPackageForAuthenticatedUserRequest,
             res as PackagesGetPackageForAuthenticatedUserResponse,
             next
           );
@@ -72485,7 +72487,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.packagesDeletePackageForAuthenticatedUser(
-            req as PackagesDeletePackageForAuthenticatedUserRequest,
+            (req as unknown) as PackagesDeletePackageForAuthenticatedUserRequest,
             res as PackagesDeletePackageForAuthenticatedUserResponse,
             next
           );
@@ -72529,7 +72531,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.packagesRestorePackageForAuthenticatedUser(
-            req as PackagesRestorePackageForAuthenticatedUserRequest,
+            (req as unknown) as PackagesRestorePackageForAuthenticatedUserRequest,
             res as PackagesRestorePackageForAuthenticatedUserResponse,
             next
           );
@@ -72581,7 +72583,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser(
-            req as PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest,
+            (req as unknown) as PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest,
             res as PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse,
             next
           );
@@ -72621,7 +72623,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.packagesGetPackageVersionForAuthenticatedUser(
-            req as PackagesGetPackageVersionForAuthenticatedUserRequest,
+            (req as unknown) as PackagesGetPackageVersionForAuthenticatedUserRequest,
             res as PackagesGetPackageVersionForAuthenticatedUserResponse,
             next
           );
@@ -72661,7 +72663,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.packagesDeletePackageVersionForAuthenticatedUser(
-            req as PackagesDeletePackageVersionForAuthenticatedUserRequest,
+            (req as unknown) as PackagesDeletePackageVersionForAuthenticatedUserRequest,
             res as PackagesDeletePackageVersionForAuthenticatedUserResponse,
             next
           );
@@ -72701,7 +72703,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.packagesRestorePackageVersionForAuthenticatedUser(
-            req as PackagesRestorePackageVersionForAuthenticatedUserRequest,
+            (req as unknown) as PackagesRestorePackageVersionForAuthenticatedUserRequest,
             res as PackagesRestorePackageVersionForAuthenticatedUserResponse,
             next
           );
@@ -72745,7 +72747,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.projectsCreateForAuthenticatedUser(
-            req as ProjectsCreateForAuthenticatedUserRequest,
+            (req as unknown) as ProjectsCreateForAuthenticatedUserRequest,
             res as ProjectsCreateForAuthenticatedUserResponse,
             next
           );
@@ -72781,7 +72783,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.usersListPublicEmailsForAuthenticatedUser(
-            req as UsersListPublicEmailsForAuthenticatedUserRequest,
+            (req as unknown) as UsersListPublicEmailsForAuthenticatedUserRequest,
             res as UsersListPublicEmailsForAuthenticatedUserResponse,
             next
           );
@@ -72837,7 +72839,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposListForAuthenticatedUser(
-            req as ReposListForAuthenticatedUserRequest,
+            (req as unknown) as ReposListForAuthenticatedUserRequest,
             res as ReposListForAuthenticatedUserResponse,
             next
           );
@@ -72997,7 +72999,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposCreateForAuthenticatedUser(
-            req as ReposCreateForAuthenticatedUserRequest,
+            (req as unknown) as ReposCreateForAuthenticatedUserRequest,
             res as ReposCreateForAuthenticatedUserResponse,
             next
           );
@@ -73033,7 +73035,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposListInvitationsForAuthenticatedUser(
-            req as ReposListInvitationsForAuthenticatedUserRequest,
+            (req as unknown) as ReposListInvitationsForAuthenticatedUserRequest,
             res as ReposListInvitationsForAuthenticatedUserResponse,
             next
           );
@@ -73066,7 +73068,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposAcceptInvitationForAuthenticatedUser(
-            req as ReposAcceptInvitationForAuthenticatedUserRequest,
+            (req as unknown) as ReposAcceptInvitationForAuthenticatedUserRequest,
             res as ReposAcceptInvitationForAuthenticatedUserResponse,
             next
           );
@@ -73099,7 +73101,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.reposDeclineInvitationForAuthenticatedUser(
-            req as ReposDeclineInvitationForAuthenticatedUserRequest,
+            (req as unknown) as ReposDeclineInvitationForAuthenticatedUserRequest,
             res as ReposDeclineInvitationForAuthenticatedUserResponse,
             next
           );
@@ -73135,7 +73137,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.usersListSshSigningKeysForAuthenticatedUser(
-            req as UsersListSshSigningKeysForAuthenticatedUserRequest,
+            (req as unknown) as UsersListSshSigningKeysForAuthenticatedUserRequest,
             res as UsersListSshSigningKeysForAuthenticatedUserResponse,
             next
           );
@@ -73181,7 +73183,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.usersCreateSshSigningKeyForAuthenticatedUser(
-            req as UsersCreateSshSigningKeyForAuthenticatedUserRequest,
+            (req as unknown) as UsersCreateSshSigningKeyForAuthenticatedUserRequest,
             res as UsersCreateSshSigningKeyForAuthenticatedUserResponse,
             next
           );
@@ -73214,7 +73216,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.usersGetSshSigningKeyForAuthenticatedUser(
-            req as UsersGetSshSigningKeyForAuthenticatedUserRequest,
+            (req as unknown) as UsersGetSshSigningKeyForAuthenticatedUserRequest,
             res as UsersGetSshSigningKeyForAuthenticatedUserResponse,
             next
           );
@@ -73247,7 +73249,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.usersDeleteSshSigningKeyForAuthenticatedUser(
-            req as UsersDeleteSshSigningKeyForAuthenticatedUserRequest,
+            (req as unknown) as UsersDeleteSshSigningKeyForAuthenticatedUserRequest,
             res as UsersDeleteSshSigningKeyForAuthenticatedUserResponse,
             next
           );
@@ -73293,7 +73295,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.activityListReposStarredByAuthenticatedUser(
-            req as ActivityListReposStarredByAuthenticatedUserRequest,
+            (req as unknown) as ActivityListReposStarredByAuthenticatedUserRequest,
             res as ActivityListReposStarredByAuthenticatedUserResponse,
             next
           );
@@ -73326,7 +73328,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.activityCheckRepoIsStarredByAuthenticatedUser(
-            req as ActivityCheckRepoIsStarredByAuthenticatedUserRequest,
+            (req as unknown) as ActivityCheckRepoIsStarredByAuthenticatedUserRequest,
             res as ActivityCheckRepoIsStarredByAuthenticatedUserResponse,
             next
           );
@@ -73357,7 +73359,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.activityStarRepoForAuthenticatedUser(
-            req as ActivityStarRepoForAuthenticatedUserRequest,
+            (req as unknown) as ActivityStarRepoForAuthenticatedUserRequest,
             res as ActivityStarRepoForAuthenticatedUserResponse,
             next
           );
@@ -73390,7 +73392,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.activityUnstarRepoForAuthenticatedUser(
-            req as ActivityUnstarRepoForAuthenticatedUserRequest,
+            (req as unknown) as ActivityUnstarRepoForAuthenticatedUserRequest,
             res as ActivityUnstarRepoForAuthenticatedUserResponse,
             next
           );
@@ -73426,7 +73428,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.activityListWatchedReposForAuthenticatedUser(
-            req as ActivityListWatchedReposForAuthenticatedUserRequest,
+            (req as unknown) as ActivityListWatchedReposForAuthenticatedUserRequest,
             res as ActivityListWatchedReposForAuthenticatedUserResponse,
             next
           );
@@ -73460,7 +73462,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.teamsListForAuthenticatedUser(
-            req as TeamsListForAuthenticatedUserRequest,
+            (req as unknown) as TeamsListForAuthenticatedUserRequest,
             res as TeamsListForAuthenticatedUserResponse,
             next
           );
@@ -73491,7 +73493,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, UsersListHandler);
 
           await controller.usersList(
-            req as UsersListRequest,
+            (req as unknown) as UsersListRequest,
             res as UsersListResponse,
             next
           );
@@ -73519,7 +73521,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, UsersGetByUsernameHandler);
 
           await controller.usersGetByUsername(
-            req as UsersGetByUsernameRequest,
+            (req as unknown) as UsersGetByUsernameRequest,
             res as UsersGetByUsernameResponse,
             next
           );
@@ -73560,7 +73562,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.activityListEventsForAuthenticatedUser(
-            req as ActivityListEventsForAuthenticatedUserRequest,
+            (req as unknown) as ActivityListEventsForAuthenticatedUserRequest,
             res as ActivityListEventsForAuthenticatedUserResponse,
             next
           );
@@ -73601,7 +73603,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.activityListOrgEventsForAuthenticatedUser(
-            req as ActivityListOrgEventsForAuthenticatedUserRequest,
+            (req as unknown) as ActivityListOrgEventsForAuthenticatedUserRequest,
             res as ActivityListOrgEventsForAuthenticatedUserResponse,
             next
           );
@@ -73640,7 +73642,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.activityListPublicEventsForUser(
-            req as ActivityListPublicEventsForUserRequest,
+            (req as unknown) as ActivityListPublicEventsForUserRequest,
             res as ActivityListPublicEventsForUserResponse,
             next
           );
@@ -73679,7 +73681,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.usersListFollowersForUser(
-            req as UsersListFollowersForUserRequest,
+            (req as unknown) as UsersListFollowersForUserRequest,
             res as UsersListFollowersForUserResponse,
             next
           );
@@ -73718,7 +73720,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.usersListFollowingForUser(
-            req as UsersListFollowingForUserRequest,
+            (req as unknown) as UsersListFollowingForUserRequest,
             res as UsersListFollowingForUserResponse,
             next
           );
@@ -73752,7 +73754,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.usersCheckFollowingForUser(
-            req as UsersCheckFollowingForUserRequest,
+            (req as unknown) as UsersCheckFollowingForUserRequest,
             res as UsersCheckFollowingForUserResponse,
             next
           );
@@ -73789,7 +73791,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GistsListForUserHandler);
 
           await controller.gistsListForUser(
-            req as GistsListForUserRequest,
+            (req as unknown) as GistsListForUserRequest,
             res as GistsListForUserResponse,
             next
           );
@@ -73825,7 +73827,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, UsersListGpgKeysForUserHandler);
 
           await controller.usersListGpgKeysForUser(
-            req as UsersListGpgKeysForUserRequest,
+            (req as unknown) as UsersListGpgKeysForUserRequest,
             res as UsersListGpgKeysForUserResponse,
             next
           );
@@ -73864,7 +73866,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, UsersGetContextForUserHandler);
 
           await controller.usersGetContextForUser(
-            req as UsersGetContextForUserRequest,
+            (req as unknown) as UsersGetContextForUserRequest,
             res as UsersGetContextForUserResponse,
             next
           );
@@ -73892,7 +73894,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, AppsGetUserInstallationHandler);
 
           await controller.appsGetUserInstallation(
-            req as AppsGetUserInstallationRequest,
+            (req as unknown) as AppsGetUserInstallationRequest,
             res as AppsGetUserInstallationResponse,
             next
           );
@@ -73931,7 +73933,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.usersListPublicKeysForUser(
-            req as UsersListPublicKeysForUserRequest,
+            (req as unknown) as UsersListPublicKeysForUserRequest,
             res as UsersListPublicKeysForUserResponse,
             next
           );
@@ -73967,7 +73969,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, OrgsListForUserHandler);
 
           await controller.orgsListForUser(
-            req as OrgsListForUserRequest,
+            (req as unknown) as OrgsListForUserRequest,
             res as OrgsListForUserResponse,
             next
           );
@@ -74012,7 +74014,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.packagesListPackagesForUser(
-            req as PackagesListPackagesForUserRequest,
+            (req as unknown) as PackagesListPackagesForUserRequest,
             res as PackagesListPackagesForUserResponse,
             next
           );
@@ -74050,7 +74052,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.packagesGetPackageForUser(
-            req as PackagesGetPackageForUserRequest,
+            (req as unknown) as PackagesGetPackageForUserRequest,
             res as PackagesGetPackageForUserResponse,
             next
           );
@@ -74088,7 +74090,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.packagesDeletePackageForUser(
-            req as PackagesDeletePackageForUserRequest,
+            (req as unknown) as PackagesDeletePackageForUserRequest,
             res as PackagesDeletePackageForUserResponse,
             next
           );
@@ -74131,7 +74133,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.packagesRestorePackageForUser(
-            req as PackagesRestorePackageForUserRequest,
+            (req as unknown) as PackagesRestorePackageForUserRequest,
             res as PackagesRestorePackageForUserResponse,
             next
           );
@@ -74171,7 +74173,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.packagesGetAllPackageVersionsForPackageOwnedByUser(
-            req as PackagesGetAllPackageVersionsForPackageOwnedByUserRequest,
+            (req as unknown) as PackagesGetAllPackageVersionsForPackageOwnedByUserRequest,
             res as PackagesGetAllPackageVersionsForPackageOwnedByUserResponse,
             next
           );
@@ -74215,7 +74217,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.packagesGetPackageVersionForUser(
-            req as PackagesGetPackageVersionForUserRequest,
+            (req as unknown) as PackagesGetPackageVersionForUserRequest,
             res as PackagesGetPackageVersionForUserResponse,
             next
           );
@@ -74259,7 +74261,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.packagesDeletePackageVersionForUser(
-            req as PackagesDeletePackageVersionForUserRequest,
+            (req as unknown) as PackagesDeletePackageVersionForUserRequest,
             res as PackagesDeletePackageVersionForUserResponse,
             next
           );
@@ -74303,7 +74305,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.packagesRestorePackageVersionForUser(
-            req as PackagesRestorePackageVersionForUserRequest,
+            (req as unknown) as PackagesRestorePackageVersionForUserRequest,
             res as PackagesRestorePackageVersionForUserResponse,
             next
           );
@@ -74344,7 +74346,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ProjectsListForUserHandler);
 
           await controller.projectsListForUser(
-            req as ProjectsListForUserRequest,
+            (req as unknown) as ProjectsListForUserRequest,
             res as ProjectsListForUserResponse,
             next
           );
@@ -74383,7 +74385,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.activityListReceivedEventsForUser(
-            req as ActivityListReceivedEventsForUserRequest,
+            (req as unknown) as ActivityListReceivedEventsForUserRequest,
             res as ActivityListReceivedEventsForUserResponse,
             next
           );
@@ -74424,7 +74426,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.activityListReceivedPublicEventsForUser(
-            req as ActivityListReceivedPublicEventsForUserRequest,
+            (req as unknown) as ActivityListReceivedPublicEventsForUserRequest,
             res as ActivityListReceivedPublicEventsForUserResponse,
             next
           );
@@ -74471,7 +74473,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, ReposListForUserHandler);
 
           await controller.reposListForUser(
-            req as ReposListForUserRequest,
+            (req as unknown) as ReposListForUserRequest,
             res as ReposListForUserResponse,
             next
           );
@@ -74502,7 +74504,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.billingGetGithubActionsBillingUser(
-            req as BillingGetGithubActionsBillingUserRequest,
+            (req as unknown) as BillingGetGithubActionsBillingUserRequest,
             res as BillingGetGithubActionsBillingUserResponse,
             next
           );
@@ -74533,7 +74535,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.billingGetGithubPackagesBillingUser(
-            req as BillingGetGithubPackagesBillingUserRequest,
+            (req as unknown) as BillingGetGithubPackagesBillingUserRequest,
             res as BillingGetGithubPackagesBillingUserResponse,
             next
           );
@@ -74564,7 +74566,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.billingGetSharedStorageBillingUser(
-            req as BillingGetSharedStorageBillingUserRequest,
+            (req as unknown) as BillingGetSharedStorageBillingUserRequest,
             res as BillingGetSharedStorageBillingUserResponse,
             next
           );
@@ -74603,7 +74605,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.usersListSshSigningKeysForUser(
-            req as UsersListSshSigningKeysForUserRequest,
+            (req as unknown) as UsersListSshSigningKeysForUserRequest,
             res as UsersListSshSigningKeysForUserResponse,
             next
           );
@@ -74652,7 +74654,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.activityListReposStarredByUser(
-            req as ActivityListReposStarredByUserRequest,
+            (req as unknown) as ActivityListReposStarredByUserRequest,
             res as ActivityListReposStarredByUserResponse,
             next
           );
@@ -74691,7 +74693,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.activityListReposWatchedByUser(
-            req as ActivityListReposWatchedByUserRequest,
+            (req as unknown) as ActivityListReposWatchedByUserRequest,
             res as ActivityListReposWatchedByUserResponse,
             next
           );
@@ -74711,7 +74713,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, MetaGetZenHandler);
 
           await controller.metaGetZen(
-            req as MetaGetZenRequest,
+            (req as unknown) as MetaGetZenRequest,
             res as MetaGetZenResponse,
             next
           );
@@ -74728,7 +74730,7 @@ export abstract class ControllerMiddleware {
     response,
     next
   ) => {
-    if (error instanceof ValidationError) {
+    if (error instanceof ExpressJonValidator.ValidationError) {
       response.status(400).send({
         type: 'REQUEST_VALIDATION_FAILED',
         fields: error.validationErrors

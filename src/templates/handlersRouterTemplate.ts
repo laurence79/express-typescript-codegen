@@ -10,7 +10,7 @@ export const handlersRouterTemplate = (
         .join(';\n')}
     };
 
-    const { validate } = new Validator({ strict: false, coerceTypes: true });
+    const { validate } = new ExpressJonValidator.Validator({ strict: false, coerceTypes: true });
 
     export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
       const router = Router();
@@ -42,7 +42,7 @@ export const handlersRouterTemplate = (
 
           try {  
             await handler(
-              req as ${h.requestTypeName},
+              (req as unknown) as ${h.requestTypeName},
               res as ${h.responseTypeName},
               next
             );
@@ -59,7 +59,7 @@ export const handlersRouterTemplate = (
 
       const validationErrorHandler: ErrorRequestHandler =
         (error, _, response, next) => {
-          if (error instanceof ValidationError) {
+          if (error instanceof ExpressJonValidator.ValidationError) {
             response.status(400).send({
               type: 'REQUEST_VALIDATION_FAILED',
               fields: error.validationErrors
