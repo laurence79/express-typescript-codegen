@@ -1,7 +1,8 @@
 import path from 'path';
-import { generateClient } from './generators/client/client';
-import { generateServerClasses } from './generators/server/server';
-import { generateTypes } from './generators/types/types';
+import * as Client from './generators/client/generate';
+import * as Express from './generators/express/generate';
+import * as ExpressWithDi from './generators/express-with-di/generate';
+import * as Types from './generators/types/generate';
 import { assertNever } from './helpers/assertNever';
 import { initUpper } from './helpers/initUpper';
 import { load } from './helpers/document-loader/load';
@@ -58,11 +59,16 @@ export const generateCode = async (
   const method = (() => {
     switch (options.output) {
       case 'CLIENT':
-        return generateClient;
+      case 'client':
+        return Client.generate;
       case 'SERVER':
-        return generateServerClasses;
+      case 'express-di':
+        return ExpressWithDi.generate;
+      case 'express':
+        return Express.generate;
       case 'TYPES':
-        return generateTypes;
+      case 'types':
+        return Types.generate;
       default:
         return assertNever(options.output);
     }

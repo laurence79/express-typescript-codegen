@@ -19,7 +19,7 @@ const cmd = new commander.Command('generate')
   .arguments('<spec-filename-or-url>')
   .option(
     '--template <template>',
-    'the type to output. client, server or types. Default client'
+    'the type to output. client, express, express-di or types. Default "client". "server" is an alias for express-di.'
   )
   .option(
     '--filename <filename>',
@@ -54,7 +54,9 @@ const cmd = new commander.Command('generate')
 
       if (
         options.template &&
-        !['client', 'server', 'types'].includes(options.template.toLowerCase())
+        !['client', 'server', 'express', 'express-di', 'types'].includes(
+          options.template.toLowerCase()
+        )
       ) {
         commander.help({ error: true });
       }
@@ -68,8 +70,8 @@ const cmd = new commander.Command('generate')
       }
 
       const output = (options.template
-        ? options.template.toUpperCase()
-        : 'CLIENT') as GenerateCodeOptions['output'];
+        ? options.template
+        : 'client') as GenerateCodeOptions['output'];
 
       try {
         await generateCode({

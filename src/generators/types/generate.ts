@@ -3,10 +3,10 @@
 import * as OpenApi from '../../types/OpenApi';
 import 'ts-array-extensions';
 import { Logger, success } from '../../lib/cli-logging';
-import { generate } from './methods';
+import { generateMethods } from './methods';
 import { TypeDefContext } from '../../helpers/open-api/TypeDefContext';
 
-export const generateTypes = ({
+export const generate = ({
   logger,
   openApiDocument,
   nonRequiredType,
@@ -21,7 +21,12 @@ export const generateTypes = ({
 
   const context = new TypeDefContext();
 
-  generate(openApiDocument, { nonRequiredType, readonlyDTOs }, context, log);
+  generateMethods(
+    openApiDocument,
+    { nonRequiredType, readonlyDTOs },
+    context,
+    log
+  );
 
   const code = context.generateCode();
 

@@ -3,13 +3,12 @@
 import * as OpenApi from '../../types/OpenApi';
 import 'ts-array-extensions';
 import { Logger, success } from '../../lib/cli-logging';
-import { generateMethods } from './methods';
+import { generateHandlers } from './handlers';
 import { TypeDefContext } from '../../helpers/open-api/TypeDefContext';
 
-export const generateClient = ({
+export const generate = ({
   logger,
   openApiDocument,
-  serviceName,
   nonRequiredType,
   readonlyDTOs
 }: {
@@ -19,11 +18,11 @@ export const generateClient = ({
   nonRequiredType: 'optional' | 'nullable' | 'both';
   readonlyDTOs: boolean;
 }): string => {
-  const log = logger?.create('Generating client');
+  const log = logger?.create('Generating');
 
   const context = new TypeDefContext();
 
-  const methods = generateMethods(
+  const controllers = generateHandlers(
     openApiDocument,
     { nonRequiredType, readonlyDTOs },
     context,
@@ -31,26 +30,14 @@ export const generateClient = ({
   );
 
   const code = `
-    import qs from 'qs';
-    import { fetch } from 'cross-fetch';
-
+    import type { Request, Response, Express, NextFunction, ParamsDictionary, ErrorRequestHandler } from 'express-serve-static-core';
+    import { Router } from 'express';
+    import { ParsedQs } from 'qs';
+    import { Validator, ValidationError } from 'express-json-validator-middleware';
+    
     ${context.generateCode()}
 
-    type ResponseWithData<TStatus, TData> = {
-      status: TStatus;
-      body: TData;
-    };
-      
-    type LogFn = (message: string, data: Record<string, unknown>) => void;
-
-    export class ${serviceName}Client {
-      public constructor(
-        public readonly baseUrl: string,
-        private readonly logger?: LogFn
-      ) {}
-      
-      ${methods.join('\n\n')}
-    }
+    ${controllers}
   `;
 
   log?.(success());

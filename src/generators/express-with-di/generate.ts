@@ -6,7 +6,7 @@ import { Logger, success } from '../../lib/cli-logging';
 import { generateControllers } from './controllers';
 import { TypeDefContext } from '../../helpers/open-api/TypeDefContext';
 
-export const generateServerClasses = ({
+export const generate = ({
   logger,
   openApiDocument,
   nonRequiredType,
