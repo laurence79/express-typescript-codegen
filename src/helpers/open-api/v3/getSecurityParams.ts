@@ -10,24 +10,29 @@ export const getSecurityParams = (
   }
 
   return location.security.flatMap(s =>
-    Object.keys(s).map(key => {
+    Object.keys(s).compactMap(key => {
       const scheme = dereferenceSecurityScheme(
         { $ref: `#/components/securitySchemes/${key}` },
         document
       );
 
-      if (scheme.type !== 'http') {
-        throw new Error(`Security scheme type ${scheme.type} not implemented`);
+      if (scheme.type === 'http') {
+        return {
+          name: 'authorization',
+          in: 'header'
+        };
       }
 
-      if (scheme.scheme !== 'bearer') {
-        throw new Error(`Security scheme ${scheme.scheme} not implemented`);
+      if (scheme.type === 'apiKey') {
+        if (scheme.in === 'cookie') {
+          return {
+            name: scheme.name,
+            in: scheme.in
+          };
+        }
       }
 
-      return {
-        name: 'authorization',
-        in: 'header'
-      };
+      return undefined;
     })
   );
 };
