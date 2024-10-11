@@ -1,5 +1,4 @@
 import qs from 'qs';
-import { fetch } from 'cross-fetch';
 
 export type Category = { readonly id?: number; readonly name?: string };
 

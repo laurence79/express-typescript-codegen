@@ -34,7 +34,6 @@ export const generate = ({
 
   const code = `
     import qs from 'qs';
-    import { fetch } from 'cross-fetch';
 
     ${context.generateCode()}
 

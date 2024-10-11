@@ -1,5 +1,4 @@
 import qs from 'qs';
-import { fetch } from 'cross-fetch';
 
 export type Root = {
   readonly current_user_url: string;
