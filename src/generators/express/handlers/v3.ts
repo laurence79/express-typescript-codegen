@@ -9,7 +9,7 @@ import {
 import { initLower } from '../../../helpers/initLower';
 import { TypeDefContext } from '../../../helpers/open-api/TypeDefContext';
 import { makeIdentifier } from '../../../templates/makeIdentifier';
-import { handlersTemplate } from '../../../templates/handlersTemplate';
+import { handlersTemplate } from '../templates/handlersTemplate';
 
 const convertFormDataToSchemaObject = (
   formData?: OpenApiV3.MediaTypeObject

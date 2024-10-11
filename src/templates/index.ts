@@ -1,5 +1,5 @@
-export * from './clientMethodTemplate';
+export * from '../generators/client/templates/clientMethodTemplate';
 export * from './fieldTemplate';
-export * from './objectTemplate';
+export * from '../generators/client/templates/objectTemplate';
 export * from './parametersTypeName';
 export * from './responseBodyTypeName';

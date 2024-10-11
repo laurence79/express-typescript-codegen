@@ -6,7 +6,7 @@ import {
   responseBodyTypeNameTemplate,
   parametersTypeNameTemplate
 } from '../../../templates';
-import { controllersTemplate } from '../../../templates/controllersTemplate';
+import { controllersTemplate } from '../templates/controllersTemplate';
 import { initLower } from '../../../helpers/initLower';
 import { TypeDefContext } from '../../../helpers/open-api/TypeDefContext';
 import { makeIdentifier } from '../../../templates/makeIdentifier';

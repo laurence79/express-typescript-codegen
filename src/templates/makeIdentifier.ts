@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-continue */
 
-import { initCap } from './initCap';
+import { initCap } from '../helpers/initCap';
 
 export class IdentifierFormat {
   private constructor(public readonly joinWords: (words: string[]) => string) {}

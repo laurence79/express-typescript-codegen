@@ -1,4 +1,4 @@
-import { fieldTemplate } from './fieldTemplate';
+import { fieldTemplate } from '../../../templates/fieldTemplate';
 
 export const objectTemplate = (
   fields: { name: string; required: boolean; type: string }[],
