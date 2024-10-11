@@ -10,13 +10,15 @@ export const generate = ({
   logger,
   openApiDocument,
   nonRequiredType,
-  readonlyDTOs
+  readonlyDTOs,
+  emptyType
 }: {
   logger?: Logger;
   openApiDocument: OpenApi.Document;
   serviceName: string;
   nonRequiredType: 'optional' | 'nullable' | 'both';
   readonlyDTOs: boolean;
+  emptyType: 'never' | 'unknown' | '{}';
 }): string => {
   const log = logger?.create('Generating');
 
@@ -24,7 +26,7 @@ export const generate = ({
 
   const controllers = generateHandlers(
     openApiDocument,
-    { nonRequiredType, readonlyDTOs },
+    { nonRequiredType, readonlyDTOs, emptyType },
     context,
     log
   );

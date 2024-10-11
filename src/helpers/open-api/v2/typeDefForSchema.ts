@@ -12,6 +12,7 @@ export const typeDefForSchema = (
     nonRequiredType: 'optional' | 'nullable' | 'both';
     binaryType?: 'Buffer' | 'Blob';
     readonlyDTOs: boolean;
+    emptyType: 'never' | 'unknown' | '{}';
   },
   context: TypeDefContext
 ): string => {
@@ -115,7 +116,7 @@ export const typeDefForSchema = (
         )}>`;
       }
 
-      return 'unknown';
+      return options.emptyType;
     })();
 
     if (type) {

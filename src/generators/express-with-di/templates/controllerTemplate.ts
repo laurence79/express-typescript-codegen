@@ -8,8 +8,8 @@ export type ControllerTemplateArgs = {
   controllerTypeName: string;
   controllerMethodName: string;
   pathParamsType?: string;
-  responseBodyType?: string;
-  bodyParamType?: string;
+  responseBodyType: string;
+  bodyParamType: string;
   queryParamsType?: string;
   statusCodeType?: string;
   querySchema?: JSONSchema7;
@@ -22,8 +22,8 @@ export const controllerTemplate = ({
   controllerTypeName,
   controllerMethodName,
   pathParamsType = 'ParamsDictionary',
-  responseBodyType = 'unknown',
-  bodyParamType = 'unknown',
+  responseBodyType,
+  bodyParamType,
   queryParamsType = 'ParsedQs',
   statusCodeType = 'number'
 }: ControllerTemplateArgs): string => {

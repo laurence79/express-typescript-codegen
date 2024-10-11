@@ -1899,10 +1899,7 @@ export type GistsUpdate404ResponseBody = BasicError;
 export type GistsUpdate422ResponseBody = ValidationError;
 
 export type GistsUpdateRequestBody =
-  | ({ readonly description?: string; readonly files?: unknown } & (
-      | unknown
-      | unknown
-    ))
+  | ({ readonly description?: string; readonly files?: unknown } & unknown)
   | null;
 
 export type GistsUpdateRequestPath = { readonly gist_id: string };
@@ -12039,7 +12036,7 @@ export type ReposCreatePagesSiteRequestBody =
         readonly branch: string;
         readonly path?: '/' | '/docs';
       };
-    } & (unknown | unknown))
+    } & unknown)
   | null;
 
 export type ReposCreatePagesSiteRequestPath = {
@@ -12063,7 +12060,7 @@ export type ReposUpdateInformationAboutPagesSiteRequestBody = {
     | 'master'
     | 'master /docs'
     | { readonly branch: string; readonly path: '/' | '/docs' };
-} & (unknown | unknown | unknown | unknown | unknown);
+} & unknown;
 
 export type ReposUpdateInformationAboutPagesSiteRequestPath = {
   readonly owner: string;
@@ -12975,7 +12972,7 @@ export type PullsRequestReviewers403ResponseBody = BasicError;
 export type PullsRequestReviewersRequestBody = {
   readonly reviewers?: ReadonlyArray<string>;
   readonly team_reviewers?: ReadonlyArray<string>;
-} & (unknown | unknown);
+} & unknown;
 
 export type PullsRequestReviewersRequestPath = {
   readonly owner: string;

@@ -10,9 +10,11 @@ export type GenerateCodeOptions = {
     | 'client'
     | 'express'
     | 'express-di'
-    | 'types';
+    | 'types'
+    | 'msw-handlers';
   outputFilename?: string;
   serviceName?: string;
   nonRequiredType: 'nullable' | 'optional' | 'both';
   readonlyDTOs: boolean;
+  emptyType: 'never' | 'unknown' | '{}';
 };

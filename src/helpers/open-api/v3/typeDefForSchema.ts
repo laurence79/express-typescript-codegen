@@ -13,6 +13,7 @@ export const typeDefForSchema = (
     nonRequiredType: 'optional' | 'nullable' | 'both';
     binaryType?: 'Buffer' | 'Blob';
     readonlyDTOs: boolean;
+    emptyType: 'never' | 'unknown' | '{}';
   },
   context: TypeDefContext
 ): string => {
@@ -52,6 +53,7 @@ export const typeDefForSchema = (
       return allOf
         .map(m => typeDefForSchema(m, document, options, context))
         .concat(base ? [base] : [])
+        .distinct()
         .join(' & ');
     }
 
@@ -60,6 +62,7 @@ export const typeDefForSchema = (
     if (unionOf.length > 0) {
       const union = unionOf
         .map(m => typeDefForSchema(m, document, options, context))
+        .distinct()
         .join(' | ');
 
       return base ? `${base} & (${union})` : union;
@@ -67,11 +70,11 @@ export const typeDefForSchema = (
 
     if (!schema.type) {
       // default to object
-      return base ?? 'unknown';
+      return base ?? options.emptyType;
     }
 
     if (schema.type === 'object') {
-      return base ?? 'unknown';
+      return base ?? options.emptyType;
     }
 
     if (schema.type === 'string') {
@@ -107,7 +110,7 @@ export const typeDefForSchema = (
       )}>`;
     }
 
-    return 'unknown';
+    return options.emptyType;
   })();
 
   const code =

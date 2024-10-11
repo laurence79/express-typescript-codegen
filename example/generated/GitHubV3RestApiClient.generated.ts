@@ -9711,10 +9711,10 @@ export class GitHubV3RestApiClient {
     args: {
       readonly gist_id: string;
       readonly body:
-        | ({ readonly description?: string; readonly files?: unknown } & (
-            | unknown
-            | unknown
-          ))
+        | ({
+            readonly description?: string;
+            readonly files?: unknown;
+          } & unknown)
         | null;
     },
     options?: RequestInit
@@ -44710,7 +44710,7 @@ export class GitHubV3RestApiClient {
               readonly branch: string;
               readonly path?: '/' | '/docs';
             };
-          } & (unknown | unknown))
+          } & unknown)
         | null;
     },
     options?: RequestInit
@@ -44791,7 +44791,7 @@ export class GitHubV3RestApiClient {
           | 'master'
           | 'master /docs'
           | { readonly branch: string; readonly path: '/' | '/docs' };
-      } & (unknown | unknown | unknown | unknown | unknown);
+      } & unknown;
     },
     options?: RequestInit
   ): Promise<
@@ -46957,7 +46957,7 @@ export class GitHubV3RestApiClient {
       readonly body?: {
         readonly reviewers?: ReadonlyArray<string>;
         readonly team_reviewers?: ReadonlyArray<string>;
-      } & (unknown | unknown);
+      } & unknown;
     },
     options?: RequestInit
   ): Promise<

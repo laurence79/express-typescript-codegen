@@ -9,6 +9,7 @@ export const typeDefForReference = (
     nonRequiredType: 'optional' | 'nullable' | 'both';
     binaryType?: 'Buffer' | 'Blob';
     readonlyDTOs: boolean;
+    emptyType: 'never' | 'unknown' | '{}';
   },
   context: TypeDefContext,
   recursiveLookup: (
@@ -17,6 +18,7 @@ export const typeDefForReference = (
     options: {
       nonRequiredType: 'optional' | 'nullable' | 'both';
       readonlyDTOs: boolean;
+      emptyType: 'never' | 'unknown' | '{}';
     },
     context: TypeDefContext
   ) => string

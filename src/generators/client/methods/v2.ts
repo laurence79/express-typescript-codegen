@@ -12,6 +12,7 @@ export const fromV2 = (
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
     readonlyDTOs: boolean;
+    emptyType: 'never' | 'unknown' | '{}';
   },
   context: TypeDefContext,
   log?: LogFn
@@ -126,7 +127,7 @@ export const fromV2 = (
                       options,
                       context
                     )
-                  : 'unknown'
+                  : options.emptyType
               };
             }
 

@@ -12,6 +12,7 @@ export const fromV3 = (
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
     readonlyDTOs: boolean;
+    emptyType: 'never' | 'unknown' | '{}';
   },
   context: TypeDefContext,
   log?: LogFn
@@ -31,7 +32,7 @@ export const fromV3 = (
             required: requestBody.required ?? false,
             jsonType: schema
               ? HelpersV3.typeDefForSchema(schema, document, options, context)
-              : 'unknown'
+              : options.emptyType
           } as ClientMethodTemplateArgs['body'];
         }
 
@@ -148,7 +149,7 @@ export const fromV3 = (
                         options,
                         context
                       )
-                    : 'unknown'
+                    : options.emptyType
                 };
               }
 

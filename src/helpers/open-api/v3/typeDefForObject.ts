@@ -11,18 +11,20 @@ export const typeDefForObject = (
     options: {
       nonRequiredType: 'optional' | 'nullable' | 'both';
       readonlyDTOs: boolean;
+      emptyType: 'never' | 'unknown' | '{}';
     },
     context: TypeDefContext
   ) => string,
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
     readonlyDTOs: boolean;
+    emptyType: 'never' | 'unknown' | '{}';
   },
   context: TypeDefContext
 ): string => {
   const { required, properties } = objectSchema;
 
-  if (!properties) return 'unknown';
+  if (!properties) return options.emptyType;
 
   const requiredProperties = Array.isArray(required) ? required : [];
 

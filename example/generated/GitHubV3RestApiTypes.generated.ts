@@ -2217,10 +2217,7 @@ export type GistsGetResponse =
 
 export type GistsUpdateRequest = {
   body:
-    | ({ readonly description?: string; readonly files?: unknown } & (
-        | unknown
-        | unknown
-      ))
+    | ({ readonly description?: string; readonly files?: unknown } & unknown)
     | null;
   path: { readonly gist_id: string };
   query: {};
@@ -14307,7 +14304,7 @@ export type ReposCreatePagesSiteRequest = {
           readonly branch: string;
           readonly path?: '/' | '/docs';
         };
-      } & (unknown | unknown))
+      } & unknown)
     | null;
   path: { readonly owner: string; readonly repo: string };
   query: {};
@@ -14330,7 +14327,7 @@ export type ReposUpdateInformationAboutPagesSiteRequest = {
       | 'master'
       | 'master /docs'
       | { readonly branch: string; readonly path: '/' | '/docs' };
-  } & (unknown | unknown | unknown | unknown | unknown);
+  } & unknown;
   path: { readonly owner: string; readonly repo: string };
   query: {};
   header: {};
@@ -15330,7 +15327,7 @@ export type PullsRequestReviewersRequest = {
     | ({
         readonly reviewers?: ReadonlyArray<string>;
         readonly team_reviewers?: ReadonlyArray<string>;
-      } & (unknown | unknown))
+      } & unknown)
     | undefined;
   path: {
     readonly owner: string;

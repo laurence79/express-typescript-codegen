@@ -37,7 +37,12 @@ const cmd = new commander.Command('generate')
   .option(
     '--readonly-dtos',
     'specifies that fields in DTOs, and array types therein should be prefixed with `readonly`. Defaults to false',
-    'optional'
+    false
+  )
+  .option(
+    '--empty-type <unknown|never|{}>',
+    'what type should be generated for objects with no properties. Defaults to unknown for all templates expect msw-handlers where the default is never',
+    ''
   )
   .action(
     async (
@@ -48,15 +53,21 @@ const cmd = new commander.Command('generate')
         serviceName: string | undefined;
         notRequiredType: 'nullable' | 'optional' | 'both';
         readonlyDtos: boolean;
+        emptyType: 'never' | 'unknown' | '{}' | '';
       }
     ) => {
       const logger = processLogger();
 
       if (
         options.template &&
-        !['client', 'server', 'express', 'express-di', 'types'].includes(
-          options.template.toLowerCase()
-        )
+        ![
+          'client',
+          'server',
+          'express',
+          'express-di',
+          'types',
+          'msw-handlers'
+        ].includes(options.template.toLowerCase())
       ) {
         commander.help({ error: true });
       }
@@ -81,7 +92,11 @@ const cmd = new commander.Command('generate')
           serviceName: options.serviceName,
           logger,
           nonRequiredType: options.notRequiredType,
-          readonlyDTOs: options.readonlyDtos
+          readonlyDTOs: options.readonlyDtos,
+          emptyType:
+            options.emptyType || options.template === 'msw-handlers'
+              ? 'never'
+              : 'unknown'
         });
 
         logger.log(chalk.green('\nCompleted successfully!\n\n'));

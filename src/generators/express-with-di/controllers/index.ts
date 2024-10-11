@@ -9,6 +9,7 @@ export const generateControllers = (
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
     readonlyDTOs: boolean;
+    emptyType: 'never' | 'unknown' | '{}';
   },
   context: TypeDefContext,
   log?: LogFn

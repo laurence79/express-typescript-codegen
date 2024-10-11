@@ -5,6 +5,7 @@ export const fieldTemplate = (
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
     readonlyDTOs: boolean;
+    emptyType: 'never' | 'unknown' | '{}';
   }
 ): string => {
   const fieldName = `"${name}"`;

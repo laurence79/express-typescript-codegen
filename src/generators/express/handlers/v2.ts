@@ -16,6 +16,7 @@ export const fromV2 = (
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
     readonlyDTOs: boolean;
+    emptyType: 'never' | 'unknown' | '{}';
   },
   context: TypeDefContext,
   log?: LogFn
@@ -155,8 +156,8 @@ export const fromV2 = (
         handlerTypeName,
         handlerInstanceName,
         pathParamsType,
-        responseBodyType,
-        bodyParamType,
+        responseBodyType: responseBodyType || options.emptyType,
+        bodyParamType: bodyParamType || options.emptyType,
         queryParamsType,
         statusCodeType,
         bodySchema,

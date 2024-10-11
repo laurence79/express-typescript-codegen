@@ -23,14 +23,20 @@ export const generate = ({
 
   const context = new TypeDefContext();
 
-  generateMethods(
+  const handlers = generateMethods(
     openApiDocument,
     { nonRequiredType, readonlyDTOs, emptyType },
     context,
     log
   );
 
-  const code = context.generateCode();
+  const code = `
+    import * as msw from 'msw';
+
+    ${context.generateCode()}
+
+    ${handlers.join('\n')}
+  `;
 
   log?.(success());
 

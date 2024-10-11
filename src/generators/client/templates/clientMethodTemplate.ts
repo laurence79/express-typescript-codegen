@@ -55,6 +55,7 @@ export const clientMethodTemplate = (
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
     readonlyDTOs: boolean;
+    emptyType: 'never' | 'unknown' | '{}';
   }
 ): string => {
   const bodyArg = (() => {

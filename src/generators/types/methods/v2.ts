@@ -9,6 +9,7 @@ export const fromV2 = (
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
     readonlyDTOs: boolean;
+    emptyType: 'never' | 'unknown' | '{}';
   },
   context: TypeDefContext,
   log?: LogFn
@@ -66,7 +67,7 @@ export const fromV2 = (
             }
           }
 
-          return 'unknown';
+          return options.emptyType;
         })();
 
         const statusCodeType = statusCode === 'default' ? 'number' : statusCode;

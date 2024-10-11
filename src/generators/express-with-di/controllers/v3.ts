@@ -27,6 +27,7 @@ export const fromV3 = (
   options: {
     nonRequiredType: 'optional' | 'nullable' | 'both';
     readonlyDTOs: boolean;
+    emptyType: 'never' | 'unknown' | '{}';
   },
   context: TypeDefContext,
   log?: LogFn
@@ -182,8 +183,8 @@ export const fromV3 = (
         operationId,
         pathParamsType,
         pathSchema,
-        responseBodyType,
-        bodyParamType,
+        responseBodyType: responseBodyType || options.emptyType,
+        bodyParamType: bodyParamType || options.emptyType,
         bodySchema,
         queryParamsType,
         querySchema,

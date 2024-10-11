@@ -8,8 +8,8 @@ export type HandlerTemplateArgs = {
   handlerTypeName: string;
   handlerInstanceName: string;
   pathParamsType?: string;
-  responseBodyType?: string;
-  bodyParamType?: string;
+  responseBodyType: string;
+  bodyParamType: string;
   queryParamsType?: string;
   statusCodeType?: string;
   querySchema?: JSONSchema7;
@@ -21,8 +21,8 @@ export const handlerTemplate = ({
   responseTypeName,
   handlerTypeName,
   pathParamsType = 'ParamsDictionary',
-  responseBodyType = 'unknown',
-  bodyParamType = 'unknown',
+  responseBodyType,
+  bodyParamType,
   queryParamsType = 'ParsedQs',
   statusCodeType = 'number'
 }: HandlerTemplateArgs): string => {

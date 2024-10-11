@@ -13,10 +13,12 @@ export const fromV3 = (
   },
   context: TypeDefContext,
   log?: LogFn
-): void => {
-  HelpersV3.mapOperations(document).forEach(
+): string[] => {
+  return HelpersV3.mapOperations(document).map(
     ({ method, operationId, parameters, path, responses, requestBody }) => {
       log?.(progress(`Adding from ${method} ${path}`));
+
+      const operationTypePrefix = makeIdentifier(operationId);
 
       const requestBodyType = (() => {
         if (!requestBody) return options.emptyType;
@@ -30,6 +32,7 @@ export const fromV3 = (
               !requestBody.required ? 'undefined' : null
             ]
               .compact()
+              .distinct()
               .join('|');
           }
         }
@@ -43,6 +46,7 @@ export const fromV3 = (
               !requestBody.required ? 'undefined' : null
             ]
               .compact()
+              .distinct()
               .join('|');
           }
         }
@@ -64,7 +68,20 @@ export const fromV3 = (
             {
               type: 'object',
               properties: Object.fromEntries(
-                paramsOfType.map(p => [p.name, p.schema ?? { type: 'string' }])
+                paramsOfType.map(p => {
+                  // for msw, params can only be string or string[]
+                  const inSchema =
+                    p.schema && '$ref' in p.schema
+                      ? HelpersV3.dereferenceSchemaObject(p.schema, document)
+                      : p.schema;
+
+                  const schema: OpenApiV3.SchemaObject =
+                    inSchema?.type === 'array'
+                      ? { type: 'array', items: { type: 'string' } }
+                      : { type: 'string' };
+
+                  return [p.name, schema];
+                })
               ),
               required: paramsOfType.filter(p => p.required).map(p => p.name)
             },
@@ -75,13 +92,27 @@ export const fromV3 = (
         }
       );
 
-      context.emitType(
-        `${makeIdentifier(operationId)}Request`,
-        `{ body: ${requestBodyType}; path: ${pathType}; query: ${queryType}; header: ${headerType} }`
-      );
+      context.emitType(`${operationTypePrefix}RequestQuery`, queryType);
 
-      const responseTypes = responses.map(({ statusCode, response }) => {
-        const bodyType = (() => {
+      context.emitType(`${operationTypePrefix}RequestHeaders`, headerType);
+
+      const requestParamsTypeName = `${operationTypePrefix}RequestParams`;
+      context.emitType(requestParamsTypeName, pathType);
+
+      const requestBodyTypeName = `${operationTypePrefix}RequestBody`;
+      context.emitType(requestBodyTypeName, requestBodyType);
+
+      const statusCodeType = responses
+        .map(({ statusCode }) =>
+          statusCode === 'default' ? 'number' : statusCode
+        )
+        .distinct()
+        .join(' | ');
+
+      context.emitType(`${operationTypePrefix}ResponseStatus`, statusCodeType);
+
+      const responseBodyType = responses
+        .map(({ response }) => {
           if (!response.content || Object.keys(response.content).length === 0) {
             return options.emptyType;
           }
@@ -101,15 +132,31 @@ export const fromV3 = (
           }
 
           return 'Buffer';
-        })();
+        })
+        .distinct()
+        .join(' | ');
 
-        return `{ status: ${statusCode}; body: ${bodyType}}`;
-      });
+      const responseBodyTypeName = `${operationTypePrefix}ResponseBody`;
+      context.emitType(responseBodyTypeName, responseBodyType);
 
+      const resolverTypeName = `${operationTypePrefix}Resolver`;
       context.emitType(
-        `${makeIdentifier(operationId)}Response`,
-        responseTypes.join('|')
+        resolverTypeName,
+        `msw.HttpResponseResolver<${requestParamsTypeName}, ${requestBodyTypeName}, ${responseBodyTypeName}>`
       );
+
+      const expressPath = path.replace(
+        /\{(?:.*?)\}/g,
+        x => `:${x.substr(1, x.length - 2)}`
+      );
+
+      return `
+        export function handle${operationTypePrefix}(
+          resolver: ${resolverTypeName}
+        ) {
+          return msw.http.${method}('${expressPath}', resolver);
+        }
+      `;
     }
   );
 };

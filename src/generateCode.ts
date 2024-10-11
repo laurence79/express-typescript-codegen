@@ -3,6 +3,7 @@ import * as Client from './generators/client/generate';
 import * as Express from './generators/express/generate';
 import * as ExpressWithDi from './generators/express-with-di/generate';
 import * as Types from './generators/types/generate';
+import * as MswHandlers from './generators/msw-handlers/generate';
 import { assertNever } from './helpers/assertNever';
 import { initUpper } from './helpers/initUpper';
 import { load } from './helpers/document-loader/load';
@@ -69,6 +70,8 @@ export const generateCode = async (
       case 'TYPES':
       case 'types':
         return Types.generate;
+      case 'msw-handlers':
+        return MswHandlers.generate;
       default:
         return assertNever(options.output);
     }
