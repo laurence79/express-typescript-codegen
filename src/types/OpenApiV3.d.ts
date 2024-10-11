@@ -38,7 +38,7 @@ export interface LicenseObject {
 export interface ServerObject {
   url: string;
   description?: string;
-  variables?: { [variable: string]: ServerVariableObject };
+  variables?: Record<string, ServerVariableObject>;
 }
 
 export interface ServerVariableObject {
@@ -47,9 +47,7 @@ export interface ServerVariableObject {
   description?: string;
 }
 
-export interface PathsObject {
-  [pattern: string]: PathItemObject;
-}
+export type PathsObject = Record<string, PathItemObject>;
 
 export interface PathItemObject {
   $ref?: string;
@@ -76,7 +74,7 @@ export interface OperationObject {
   parameters?: (ReferenceObject | ParameterObject)[];
   requestBody?: ReferenceObject | RequestBodyObject;
   responses?: ResponsesObject;
-  callbacks?: { [callback: string]: ReferenceObject | CallbackObject };
+  callbacks?: Record<string, ReferenceObject | CallbackObject>;
   deprecated?: boolean;
   security?: SecurityRequirementObject[];
   servers?: ServerObject[];
@@ -92,7 +90,7 @@ export interface ParameterObject extends ParameterBaseObject {
   in: 'path' | 'query' | 'header' | 'cookie';
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface HeaderObject extends ParameterBaseObject {}
 
 export interface ParameterBaseObject {
@@ -105,8 +103,8 @@ export interface ParameterBaseObject {
   allowReserved?: boolean;
   schema?: ReferenceObject | SchemaObject;
   example?: any;
-  examples?: { [media: string]: ReferenceObject | ExampleObject };
-  content?: { [media: string]: MediaTypeObject };
+  examples?: Record<string, ReferenceObject | ExampleObject>;
+  content?: Record<string, MediaTypeObject>;
 }
 export type NonArraySchemaObjectType =
   | 'boolean'
@@ -148,9 +146,7 @@ export interface BaseSchemaObject {
   minProperties?: number;
   required?: string[];
   enum?: any[];
-  properties?: {
-    [name: string]: ReferenceObject | SchemaObject;
-  };
+  properties?: Record<string, ReferenceObject | SchemaObject>;
   allOf?: (ReferenceObject | SchemaObject)[];
   oneOf?: (ReferenceObject | SchemaObject)[];
   anyOf?: (ReferenceObject | SchemaObject)[];
@@ -169,7 +165,7 @@ export interface BaseSchemaObject {
 
 export interface DiscriminatorObject {
   propertyName: string;
-  mapping?: { [value: string]: string };
+  mapping?: Record<string, string>;
 }
 
 export interface XMLObject {
@@ -194,13 +190,13 @@ export interface ExampleObject {
 export interface MediaTypeObject {
   schema?: ReferenceObject | SchemaObject;
   example?: any;
-  examples?: { [media: string]: ReferenceObject | ExampleObject };
-  encoding?: { [media: string]: EncodingObject };
+  examples?: Record<string, ReferenceObject | ExampleObject>;
+  encoding?: Record<string, EncodingObject>;
 }
 
 export interface EncodingObject {
   contentType?: string;
-  headers?: { [header: string]: ReferenceObject | HeaderObject };
+  headers?: Record<string, ReferenceObject | HeaderObject>;
   style?: string;
   explode?: boolean;
   allowReserved?: boolean;
@@ -208,48 +204,42 @@ export interface EncodingObject {
 
 export interface RequestBodyObject {
   description?: string;
-  content: { [media: string]: MediaTypeObject };
+  content: Partial<Record<string, MediaTypeObject>>;
   required?: boolean;
 }
 
-export interface ResponsesObject {
-  [code: string]: ReferenceObject | ResponseObject;
-}
+export type ResponsesObject = Record<string, ReferenceObject | ResponseObject>;
 
 export interface ResponseObject {
   description: string;
-  headers?: { [header: string]: ReferenceObject | HeaderObject };
-  content?: { [media: string]: MediaTypeObject };
-  links?: { [link: string]: ReferenceObject | LinkObject };
+  headers?: Record<string, ReferenceObject | HeaderObject>;
+  content?: Record<string, MediaTypeObject>;
+  links?: Record<string, ReferenceObject | LinkObject>;
 }
 
 export interface LinkObject {
   operationRef?: string;
   operationId?: string;
-  parameters?: { [parameter: string]: any };
+  parameters?: Record<string, any>;
   requestBody?: any;
   description?: string;
   server?: ServerObject;
 }
 
-export interface CallbackObject {
-  [url: string]: PathItemObject;
-}
+export type CallbackObject = Record<string, PathItemObject>;
 
-export interface SecurityRequirementObject {
-  [name: string]: string[];
-}
+export type SecurityRequirementObject = Record<string, string[]>;
 
 export interface ComponentsObject {
-  schemas?: { [key: string]: ReferenceObject | SchemaObject };
-  responses?: { [key: string]: ReferenceObject | ResponseObject };
-  parameters?: { [key: string]: ReferenceObject | ParameterObject };
-  examples?: { [key: string]: ReferenceObject | ExampleObject };
-  requestBodies?: { [key: string]: ReferenceObject | RequestBodyObject };
-  headers?: { [key: string]: ReferenceObject | HeaderObject };
-  securitySchemes?: { [key: string]: ReferenceObject | SecuritySchemeObject };
-  links?: { [key: string]: ReferenceObject | LinkObject };
-  callbacks?: { [key: string]: ReferenceObject | CallbackObject };
+  schemas?: Record<string, ReferenceObject | SchemaObject>;
+  responses?: Record<string, ReferenceObject | ResponseObject>;
+  parameters?: Record<string, ReferenceObject | ParameterObject>;
+  examples?: Record<string, ReferenceObject | ExampleObject>;
+  requestBodies?: Record<string, ReferenceObject | RequestBodyObject>;
+  headers?: Record<string, ReferenceObject | HeaderObject>;
+  securitySchemes?: Record<string, ReferenceObject | SecuritySchemeObject>;
+  links?: Record<string, ReferenceObject | LinkObject>;
+  callbacks?: Record<string, ReferenceObject | CallbackObject>;
 }
 
 export type SecuritySchemeObject =
@@ -278,23 +268,23 @@ export interface OAuth2SecurityScheme {
     implicit?: {
       authorizationUrl: string;
       refreshUrl?: string;
-      scopes: { [scope: string]: string };
+      scopes: Record<string, string>;
     };
     password?: {
       tokenUrl: string;
       refreshUrl?: string;
-      scopes: { [scope: string]: string };
+      scopes: Record<string, string>;
     };
     clientCredentials?: {
       tokenUrl: string;
       refreshUrl?: string;
-      scopes: { [scope: string]: string };
+      scopes: Record<string, string>;
     };
     authorizationCode?: {
       authorizationUrl: string;
       tokenUrl: string;
       refreshUrl?: string;
-      scopes: { [scope: string]: string };
+      scopes: Record<string, string>;
     };
   };
 }

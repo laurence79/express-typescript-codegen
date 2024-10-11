@@ -93,8 +93,10 @@ export const typeDefForSchema = (
       return 'number';
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (schema.type === 'array') {
       const { items } = schema;
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       if (!items) {
         throw new Error(`Array nodes must have an items property.`);
       }

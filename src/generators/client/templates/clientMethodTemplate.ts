@@ -1,7 +1,6 @@
-/* eslint-disable no-template-curly-in-string */
 import { objectTemplate } from './objectTemplate';
 
-export type ClientMethodTemplateArgs = {
+export interface ClientMethodTemplateArgs {
   httpMethod: string;
   methodName: string;
   openApiPath: string;
@@ -33,12 +32,12 @@ export type ClientMethodTemplateArgs = {
       }
     | null;
   responses: ({
-    statusCode: 'default' | string;
+    statusCode: string;
   } & (
     | { type: 'json'; jsonType: string }
     | { type: 'binary' | 'text' | 'none' }
   ))[];
-};
+}
 
 export const clientMethodTemplate = (
   {
@@ -87,9 +86,10 @@ export const clientMethodTemplate = (
     )
     .concat(bodyArg ? [bodyArg] : []);
 
-  const functionArgumentSignature = (functionArguments.any()
-    ? [`args: ${objectTemplate(functionArguments, options)}`]
-    : []
+  const functionArgumentSignature = (
+    functionArguments.any()
+      ? [`args: ${objectTemplate(functionArguments, options)}`]
+      : []
   )
     .concat('options?: RequestInit')
     .join(',\n');

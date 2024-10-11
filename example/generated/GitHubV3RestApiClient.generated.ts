@@ -5691,9 +5691,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationErrorSimple>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/app-manifests/${encodeURIComponent(
-      args['code']
-    )}/conversions`;
+    const url = `${this.baseUrl}/app-manifests/${encodeURIComponent(args['code'])}/conversions`;
     const fetchOptions = {
       method,
       ...options,
@@ -5918,9 +5916,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/app/hook/deliveries/${encodeURIComponent(
-      args['delivery_id']
-    )}`;
+    const url = `${this.baseUrl}/app/hook/deliveries/${encodeURIComponent(args['delivery_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -5979,9 +5975,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/app/hook/deliveries/${encodeURIComponent(
-      args['delivery_id']
-    )}/attempts`;
+    const url = `${this.baseUrl}/app/hook/deliveries/${encodeURIComponent(args['delivery_id'])}/attempts`;
     const fetchOptions = {
       method,
       ...options,
@@ -6093,9 +6087,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, Installation> | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/app/installations/${encodeURIComponent(
-      args['installation_id']
-    )}`;
+    const url = `${this.baseUrl}/app/installations/${encodeURIComponent(args['installation_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -6146,9 +6138,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/app/installations/${encodeURIComponent(
-      args['installation_id']
-    )}`;
+    const url = `${this.baseUrl}/app/installations/${encodeURIComponent(args['installation_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -6210,9 +6200,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/app/installations/${encodeURIComponent(
-      args['installation_id']
-    )}/access_tokens`;
+    const url = `${this.baseUrl}/app/installations/${encodeURIComponent(args['installation_id'])}/access_tokens`;
     const fetchOptions = {
       method,
       ...options,
@@ -6286,9 +6274,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<404, BasicError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/app/installations/${encodeURIComponent(
-      args['installation_id']
-    )}/suspended`;
+    const url = `${this.baseUrl}/app/installations/${encodeURIComponent(args['installation_id'])}/suspended`;
     const fetchOptions = {
       method,
       ...options,
@@ -6339,9 +6325,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/app/installations/${encodeURIComponent(
-      args['installation_id']
-    )}/suspended`;
+    const url = `${this.baseUrl}/app/installations/${encodeURIComponent(args['installation_id'])}/suspended`;
     const fetchOptions = {
       method,
       ...options,
@@ -6395,9 +6379,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<422, ValidationError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/applications/${encodeURIComponent(
-      args['client_id']
-    )}/grant`;
+    const url = `${this.baseUrl}/applications/${encodeURIComponent(args['client_id'])}/grant`;
     const fetchOptions = {
       method,
       ...options,
@@ -6458,9 +6440,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/applications/${encodeURIComponent(
-      args['client_id']
-    )}/token`;
+    const url = `${this.baseUrl}/applications/${encodeURIComponent(args['client_id'])}/token`;
     const fetchOptions = {
       method,
       ...options,
@@ -6526,9 +6506,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/applications/${encodeURIComponent(
-      args['client_id']
-    )}/token`;
+    const url = `${this.baseUrl}/applications/${encodeURIComponent(args['client_id'])}/token`;
     const fetchOptions = {
       method,
       ...options,
@@ -6587,9 +6565,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<422, ValidationError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/applications/${encodeURIComponent(
-      args['client_id']
-    )}/token`;
+    const url = `${this.baseUrl}/applications/${encodeURIComponent(args['client_id'])}/token`;
     const fetchOptions = {
       method,
       ...options,
@@ -6659,9 +6635,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/applications/${encodeURIComponent(
-      args['client_id']
-    )}/token/scoped`;
+    const url = `${this.baseUrl}/applications/${encodeURIComponent(args['client_id'])}/token/scoped`;
     const fetchOptions = {
       method,
       ...options,
@@ -6847,9 +6821,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/codes_of_conduct/${encodeURIComponent(
-      args['key']
-    )}`;
+    const url = `${this.baseUrl}/codes_of_conduct/${encodeURIComponent(args['key'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -6963,9 +6935,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/enterprise-installation/${encodeURIComponent(
-      args['enterprise_or_org']
-    )}/server-statistics?${query}`;
+    const url = `${this.baseUrl}/enterprise-installation/${encodeURIComponent(args['enterprise_or_org'])}/server-statistics?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -7008,9 +6978,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ActionsCacheUsageOrgEnterprise>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/cache/usage`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/cache/usage`;
     const fetchOptions = {
       method,
       ...options,
@@ -7053,9 +7021,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ActionsEnterprisePermissions>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/permissions`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/permissions`;
     const fetchOptions = {
       method,
       ...options,
@@ -7104,9 +7070,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'PUT';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/permissions`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/permissions`;
     const fetchOptions = {
       method,
       ...options,
@@ -7171,9 +7135,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/permissions/organizations?${query}`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/permissions/organizations?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -7224,9 +7186,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'PUT';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/permissions/organizations`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/permissions/organizations`;
     const fetchOptions = {
       method,
       ...options,
@@ -7274,9 +7234,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'PUT';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/permissions/organizations/${encodeURIComponent(args['org_id'])}`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/permissions/organizations/${encodeURIComponent(args['org_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -7319,9 +7277,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/permissions/organizations/${encodeURIComponent(args['org_id'])}`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/permissions/organizations/${encodeURIComponent(args['org_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -7364,9 +7320,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, SelectedActions>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/permissions/selected-actions`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/permissions/selected-actions`;
     const fetchOptions = {
       method,
       ...options,
@@ -7409,9 +7363,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'PUT';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/permissions/selected-actions`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/permissions/selected-actions`;
     const fetchOptions = {
       method,
       ...options,
@@ -7459,9 +7411,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ActionsGetDefaultWorkflowPermissions>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/permissions/workflow`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/permissions/workflow`;
     const fetchOptions = {
       method,
       ...options,
@@ -7507,9 +7457,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'PUT';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/permissions/workflow`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/permissions/workflow`;
     const fetchOptions = {
       method,
       ...options,
@@ -7576,9 +7524,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/runner-groups?${query}`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/runner-groups?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -7635,9 +7581,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<201, RunnerGroupsEnterprise>> {
     const method = 'POST';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/runner-groups`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/runner-groups`;
     const fetchOptions = {
       method,
       ...options,
@@ -7685,9 +7629,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, RunnerGroupsEnterprise>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/runner-groups/${encodeURIComponent(args['runner_group_id'])}`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/runner-groups/${encodeURIComponent(args['runner_group_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -7740,9 +7682,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, RunnerGroupsEnterprise>> {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/runner-groups/${encodeURIComponent(args['runner_group_id'])}`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/runner-groups/${encodeURIComponent(args['runner_group_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -7790,9 +7730,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/runner-groups/${encodeURIComponent(args['runner_group_id'])}`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/runner-groups/${encodeURIComponent(args['runner_group_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -7853,11 +7791,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/runner-groups/${encodeURIComponent(
-      args['runner_group_id']
-    )}/organizations?${query}`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/runner-groups/${encodeURIComponent(args['runner_group_id'])}/organizations?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -7909,11 +7843,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'PUT';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/runner-groups/${encodeURIComponent(
-      args['runner_group_id']
-    )}/organizations`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/runner-groups/${encodeURIComponent(args['runner_group_id'])}/organizations`;
     const fetchOptions = {
       method,
       ...options,
@@ -7965,11 +7895,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'PUT';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/runner-groups/${encodeURIComponent(
-      args['runner_group_id']
-    )}/organizations/${encodeURIComponent(args['org_id'])}`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/runner-groups/${encodeURIComponent(args['runner_group_id'])}/organizations/${encodeURIComponent(args['org_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -8016,11 +7942,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/runner-groups/${encodeURIComponent(
-      args['runner_group_id']
-    )}/organizations/${encodeURIComponent(args['org_id'])}`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/runner-groups/${encodeURIComponent(args['runner_group_id'])}/organizations/${encodeURIComponent(args['org_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -8081,11 +8003,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/runner-groups/${encodeURIComponent(
-      args['runner_group_id']
-    )}/runners?${query}`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/runner-groups/${encodeURIComponent(args['runner_group_id'])}/runners?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -8135,11 +8053,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'PUT';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/runner-groups/${encodeURIComponent(
-      args['runner_group_id']
-    )}/runners`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/runner-groups/${encodeURIComponent(args['runner_group_id'])}/runners`;
     const fetchOptions = {
       method,
       ...options,
@@ -8191,11 +8105,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'PUT';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/runner-groups/${encodeURIComponent(
-      args['runner_group_id']
-    )}/runners/${encodeURIComponent(args['runner_id'])}`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/runner-groups/${encodeURIComponent(args['runner_group_id'])}/runners/${encodeURIComponent(args['runner_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -8242,11 +8152,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/runner-groups/${encodeURIComponent(
-      args['runner_group_id']
-    )}/runners/${encodeURIComponent(args['runner_id'])}`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/runner-groups/${encodeURIComponent(args['runner_group_id'])}/runners/${encodeURIComponent(args['runner_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -8306,9 +8212,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/runners?${query}`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/runners?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -8354,9 +8258,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ReadonlyArray<RunnerApplication>>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/runners/downloads`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/runners/downloads`;
     const fetchOptions = {
       method,
       ...options,
@@ -8399,9 +8301,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<201, AuthenticationToken>> {
     const method = 'POST';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/runners/registration-token`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/runners/registration-token`;
     const fetchOptions = {
       method,
       ...options,
@@ -8444,9 +8344,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<201, AuthenticationToken>> {
     const method = 'POST';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/runners/remove-token`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/runners/remove-token`;
     const fetchOptions = {
       method,
       ...options,
@@ -8489,9 +8387,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, SelfHostedRunners>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/runners/${encodeURIComponent(args['runner_id'])}`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/runners/${encodeURIComponent(args['runner_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -8534,9 +8430,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/runners/${encodeURIComponent(args['runner_id'])}`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/runners/${encodeURIComponent(args['runner_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -8588,9 +8482,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/runners/${encodeURIComponent(args['runner_id'])}/labels`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/runners/${encodeURIComponent(args['runner_id'])}/labels`;
     const fetchOptions = {
       method,
       ...options,
@@ -8656,9 +8548,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationErrorSimple>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/runners/${encodeURIComponent(args['runner_id'])}/labels`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/runners/${encodeURIComponent(args['runner_id'])}/labels`;
     const fetchOptions = {
       method,
       ...options,
@@ -8735,9 +8625,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationErrorSimple>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/runners/${encodeURIComponent(args['runner_id'])}/labels`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/runners/${encodeURIComponent(args['runner_id'])}/labels`;
     const fetchOptions = {
       method,
       ...options,
@@ -8810,9 +8698,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationErrorSimple>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/runners/${encodeURIComponent(args['runner_id'])}/labels`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/runners/${encodeURIComponent(args['runner_id'])}/labels`;
     const fetchOptions = {
       method,
       ...options,
@@ -8884,11 +8770,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationErrorSimple>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/actions/runners/${encodeURIComponent(
-      args['runner_id']
-    )}/labels/${encodeURIComponent(args['name'])}`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/actions/runners/${encodeURIComponent(args['runner_id'])}/labels/${encodeURIComponent(args['name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -8980,9 +8862,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/code-scanning/alerts?${query}`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/code-scanning/alerts?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -9073,9 +8953,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/secret-scanning/alerts?${query}`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/secret-scanning/alerts?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -9146,9 +9024,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(
-      args['enterprise']
-    )}/settings/billing/advanced-security?${query}`;
+    const url = `${this.baseUrl}/enterprises/${encodeURIComponent(args['enterprise'])}/settings/billing/advanced-security?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -9863,9 +9739,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/gists/${encodeURIComponent(
-      args['gist_id']
-    )}/comments?${query}`;
+    const url = `${this.baseUrl}/gists/${encodeURIComponent(args['gist_id'])}/comments?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -9934,9 +9808,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/gists/${encodeURIComponent(
-      args['gist_id']
-    )}/comments`;
+    const url = `${this.baseUrl}/gists/${encodeURIComponent(args['gist_id'])}/comments`;
     const fetchOptions = {
       method,
       ...options,
@@ -10018,9 +9890,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/gists/${encodeURIComponent(
-      args['gist_id']
-    )}/comments/${encodeURIComponent(args['comment_id'])}`;
+    const url = `${this.baseUrl}/gists/${encodeURIComponent(args['gist_id'])}/comments/${encodeURIComponent(args['comment_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -10095,9 +9965,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, GistComment> | ResponseWithData<404, BasicError>
   > {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/gists/${encodeURIComponent(
-      args['gist_id']
-    )}/comments/${encodeURIComponent(args['comment_id'])}`;
+    const url = `${this.baseUrl}/gists/${encodeURIComponent(args['gist_id'])}/comments/${encodeURIComponent(args['comment_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -10156,9 +10024,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/gists/${encodeURIComponent(
-      args['gist_id']
-    )}/comments/${encodeURIComponent(args['comment_id'])}`;
+    const url = `${this.baseUrl}/gists/${encodeURIComponent(args['gist_id'])}/comments/${encodeURIComponent(args['comment_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -10233,9 +10099,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/gists/${encodeURIComponent(
-      args['gist_id']
-    )}/commits?${query}`;
+    const url = `${this.baseUrl}/gists/${encodeURIComponent(args['gist_id'])}/commits?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -10310,9 +10174,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/gists/${encodeURIComponent(
-      args['gist_id']
-    )}/forks?${query}`;
+    const url = `${this.baseUrl}/gists/${encodeURIComponent(args['gist_id'])}/forks?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -10379,9 +10241,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/gists/${encodeURIComponent(
-      args['gist_id']
-    )}/forks`;
+    const url = `${this.baseUrl}/gists/${encodeURIComponent(args['gist_id'])}/forks`;
     const fetchOptions = {
       method,
       ...options,
@@ -10453,9 +10313,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, {}>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/gists/${encodeURIComponent(
-      args['gist_id']
-    )}/star`;
+    const url = `${this.baseUrl}/gists/${encodeURIComponent(args['gist_id'])}/star`;
     const fetchOptions = {
       method,
       ...options,
@@ -10521,9 +10379,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/gists/${encodeURIComponent(
-      args['gist_id']
-    )}/star`;
+    const url = `${this.baseUrl}/gists/${encodeURIComponent(args['gist_id'])}/star`;
     const fetchOptions = {
       method,
       ...options,
@@ -10589,9 +10445,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/gists/${encodeURIComponent(
-      args['gist_id']
-    )}/star`;
+    const url = `${this.baseUrl}/gists/${encodeURIComponent(args['gist_id'])}/star`;
     const fetchOptions = {
       method,
       ...options,
@@ -10657,9 +10511,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/gists/${encodeURIComponent(
-      args['gist_id']
-    )}/${encodeURIComponent(args['sha'])}`;
+    const url = `${this.baseUrl}/gists/${encodeURIComponent(args['gist_id'])}/${encodeURIComponent(args['sha'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -10773,9 +10625,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, GitignoreTemplate> | ResponseWithData<304, undefined>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/gitignore/templates/${encodeURIComponent(
-      args['name']
-    )}`;
+    const url = `${this.baseUrl}/gitignore/templates/${encodeURIComponent(args['name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -11115,9 +10965,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/licenses/${encodeURIComponent(
-      args['license']
-    )}`;
+    const url = `${this.baseUrl}/licenses/${encodeURIComponent(args['license'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -11290,9 +11138,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${
-      this.baseUrl
-    }/marketplace_listing/accounts/${encodeURIComponent(args['account_id'])}`;
+    const url = `${this.baseUrl}/marketplace_listing/accounts/${encodeURIComponent(args['account_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -11429,9 +11275,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/marketplace_listing/plans/${encodeURIComponent(
-      args['plan_id']
-    )}/accounts?${query}`;
+    const url = `${this.baseUrl}/marketplace_listing/plans/${encodeURIComponent(args['plan_id'])}/accounts?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -11496,11 +11340,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, undefined>
   > {
     const method = 'GET';
-    const url = `${
-      this.baseUrl
-    }/marketplace_listing/stubbed/accounts/${encodeURIComponent(
-      args['account_id']
-    )}`;
+    const url = `${this.baseUrl}/marketplace_listing/stubbed/accounts/${encodeURIComponent(args['account_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -11628,11 +11468,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${
-      this.baseUrl
-    }/marketplace_listing/stubbed/plans/${encodeURIComponent(
-      args['plan_id']
-    )}/accounts?${query}`;
+    const url = `${this.baseUrl}/marketplace_listing/stubbed/plans/${encodeURIComponent(args['plan_id'])}/accounts?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -11747,9 +11583,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/networks/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/events?${query}`;
+    const url = `${this.baseUrl}/networks/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/events?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -11993,9 +11827,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<403, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/notifications/threads/${encodeURIComponent(
-      args['thread_id']
-    )}`;
+    const url = `${this.baseUrl}/notifications/threads/${encodeURIComponent(args['thread_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -12060,9 +11892,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<403, BasicError>
   > {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/notifications/threads/${encodeURIComponent(
-      args['thread_id']
-    )}`;
+    const url = `${this.baseUrl}/notifications/threads/${encodeURIComponent(args['thread_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -12122,9 +11952,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<403, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/notifications/threads/${encodeURIComponent(
-      args['thread_id']
-    )}/subscription`;
+    const url = `${this.baseUrl}/notifications/threads/${encodeURIComponent(args['thread_id'])}/subscription`;
     const fetchOptions = {
       method,
       ...options,
@@ -12193,9 +12021,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<403, BasicError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/notifications/threads/${encodeURIComponent(
-      args['thread_id']
-    )}/subscription`;
+    const url = `${this.baseUrl}/notifications/threads/${encodeURIComponent(args['thread_id'])}/subscription`;
     const fetchOptions = {
       method,
       ...options,
@@ -12266,9 +12092,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<403, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/notifications/threads/${encodeURIComponent(
-      args['thread_id']
-    )}/subscription`;
+    const url = `${this.baseUrl}/notifications/threads/${encodeURIComponent(args['thread_id'])}/subscription`;
     const fetchOptions = {
       method,
       ...options,
@@ -12439,9 +12263,7 @@ export class GitHubV3RestApiClient {
     >
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/organizations/${encodeURIComponent(
-      args['organization_id']
-    )}/custom_roles`;
+    const url = `${this.baseUrl}/organizations/${encodeURIComponent(args['organization_id'])}/custom_roles`;
     const fetchOptions = {
       method,
       ...options,
@@ -12642,9 +12464,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ActionsCacheUsageOrgEnterprise>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/cache/usage`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/cache/usage`;
     const fetchOptions = {
       method,
       ...options,
@@ -12704,9 +12524,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/cache/usage-by-repository?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/cache/usage-by-repository?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -12752,9 +12570,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ActionsOrganizationPermissions>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/permissions`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/permissions`;
     const fetchOptions = {
       method,
       ...options,
@@ -12803,9 +12619,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'PUT';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/permissions`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/permissions`;
     const fetchOptions = {
       method,
       ...options,
@@ -12870,9 +12684,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/permissions/repositories?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/permissions/repositories?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -12923,9 +12735,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'PUT';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/permissions/repositories`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/permissions/repositories`;
     const fetchOptions = {
       method,
       ...options,
@@ -12973,11 +12783,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'PUT';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/permissions/repositories/${encodeURIComponent(
-      args['repository_id']
-    )}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/permissions/repositories/${encodeURIComponent(args['repository_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -13020,11 +12826,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/permissions/repositories/${encodeURIComponent(
-      args['repository_id']
-    )}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/permissions/repositories/${encodeURIComponent(args['repository_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -13067,9 +12869,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, SelectedActions>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/permissions/selected-actions`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/permissions/selected-actions`;
     const fetchOptions = {
       method,
       ...options,
@@ -13112,9 +12912,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'PUT';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/permissions/selected-actions`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/permissions/selected-actions`;
     const fetchOptions = {
       method,
       ...options,
@@ -13162,9 +12960,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ActionsGetDefaultWorkflowPermissions>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/permissions/workflow`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/permissions/workflow`;
     const fetchOptions = {
       method,
       ...options,
@@ -13212,9 +13008,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<409, undefined>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/permissions/workflow`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/permissions/workflow`;
     const fetchOptions = {
       method,
       ...options,
@@ -13287,9 +13081,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/runner-groups?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/runner-groups?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -13346,9 +13138,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<201, RunnerGroupsOrg>> {
     const method = 'POST';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/runner-groups`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/runner-groups`;
     const fetchOptions = {
       method,
       ...options,
@@ -13396,9 +13186,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, RunnerGroupsOrg>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/runner-groups/${encodeURIComponent(args['runner_group_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/runner-groups/${encodeURIComponent(args['runner_group_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -13451,9 +13239,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, RunnerGroupsOrg>> {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/runner-groups/${encodeURIComponent(args['runner_group_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/runner-groups/${encodeURIComponent(args['runner_group_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -13501,9 +13287,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/runner-groups/${encodeURIComponent(args['runner_group_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/runner-groups/${encodeURIComponent(args['runner_group_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -13564,11 +13348,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/runner-groups/${encodeURIComponent(
-      args['runner_group_id']
-    )}/repositories?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/runner-groups/${encodeURIComponent(args['runner_group_id'])}/repositories?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -13620,11 +13400,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'PUT';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/runner-groups/${encodeURIComponent(
-      args['runner_group_id']
-    )}/repositories`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/runner-groups/${encodeURIComponent(args['runner_group_id'])}/repositories`;
     const fetchOptions = {
       method,
       ...options,
@@ -13676,11 +13452,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/runner-groups/${encodeURIComponent(
-      args['runner_group_id']
-    )}/repositories/${encodeURIComponent(args['repository_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/runner-groups/${encodeURIComponent(args['runner_group_id'])}/repositories/${encodeURIComponent(args['repository_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -13741,11 +13513,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/runner-groups/${encodeURIComponent(
-      args['runner_group_id']
-    )}/runners?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/runner-groups/${encodeURIComponent(args['runner_group_id'])}/runners?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -13795,11 +13563,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'PUT';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/runner-groups/${encodeURIComponent(
-      args['runner_group_id']
-    )}/runners`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/runner-groups/${encodeURIComponent(args['runner_group_id'])}/runners`;
     const fetchOptions = {
       method,
       ...options,
@@ -13851,11 +13615,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'PUT';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/runner-groups/${encodeURIComponent(
-      args['runner_group_id']
-    )}/runners/${encodeURIComponent(args['runner_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/runner-groups/${encodeURIComponent(args['runner_group_id'])}/runners/${encodeURIComponent(args['runner_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -13902,11 +13662,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/runner-groups/${encodeURIComponent(
-      args['runner_group_id']
-    )}/runners/${encodeURIComponent(args['runner_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/runner-groups/${encodeURIComponent(args['runner_group_id'])}/runners/${encodeURIComponent(args['runner_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -13966,9 +13722,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/runners?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/runners?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -14014,9 +13768,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ReadonlyArray<RunnerApplication>>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/runners/downloads`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/runners/downloads`;
     const fetchOptions = {
       method,
       ...options,
@@ -14059,9 +13811,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<201, AuthenticationToken>> {
     const method = 'POST';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/runners/registration-token`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/runners/registration-token`;
     const fetchOptions = {
       method,
       ...options,
@@ -14104,9 +13854,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<201, AuthenticationToken>> {
     const method = 'POST';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/runners/remove-token`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/runners/remove-token`;
     const fetchOptions = {
       method,
       ...options,
@@ -14149,9 +13897,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, SelfHostedRunners>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/runners/${encodeURIComponent(args['runner_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/runners/${encodeURIComponent(args['runner_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -14194,9 +13940,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/runners/${encodeURIComponent(args['runner_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/runners/${encodeURIComponent(args['runner_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -14248,9 +13992,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/runners/${encodeURIComponent(args['runner_id'])}/labels`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/runners/${encodeURIComponent(args['runner_id'])}/labels`;
     const fetchOptions = {
       method,
       ...options,
@@ -14316,9 +14058,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationErrorSimple>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/runners/${encodeURIComponent(args['runner_id'])}/labels`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/runners/${encodeURIComponent(args['runner_id'])}/labels`;
     const fetchOptions = {
       method,
       ...options,
@@ -14395,9 +14135,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationErrorSimple>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/runners/${encodeURIComponent(args['runner_id'])}/labels`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/runners/${encodeURIComponent(args['runner_id'])}/labels`;
     const fetchOptions = {
       method,
       ...options,
@@ -14469,9 +14207,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/runners/${encodeURIComponent(args['runner_id'])}/labels`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/runners/${encodeURIComponent(args['runner_id'])}/labels`;
     const fetchOptions = {
       method,
       ...options,
@@ -14537,11 +14273,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationErrorSimple>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/runners/${encodeURIComponent(
-      args['runner_id']
-    )}/labels/${encodeURIComponent(args['name'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/runners/${encodeURIComponent(args['runner_id'])}/labels/${encodeURIComponent(args['name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -14616,9 +14348,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/secrets?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/secrets?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -14664,9 +14394,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ActionsPublicKey>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/secrets/public-key`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/secrets/public-key`;
     const fetchOptions = {
       method,
       ...options,
@@ -14709,9 +14437,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ActionsSecretForAnOrganization>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/secrets/${encodeURIComponent(args['secret_name'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/secrets/${encodeURIComponent(args['secret_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -14765,9 +14491,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<201, EmptyObject> | ResponseWithData<204, undefined>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/secrets/${encodeURIComponent(args['secret_name'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/secrets/${encodeURIComponent(args['secret_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -14821,9 +14545,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/secrets/${encodeURIComponent(args['secret_name'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/secrets/${encodeURIComponent(args['secret_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -14884,11 +14606,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/secrets/${encodeURIComponent(
-      args['secret_name']
-    )}/repositories?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/secrets/${encodeURIComponent(args['secret_name'])}/repositories?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -14940,9 +14658,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'PUT';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/secrets/${encodeURIComponent(args['secret_name'])}/repositories`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/secrets/${encodeURIComponent(args['secret_name'])}/repositories`;
     const fetchOptions = {
       method,
       ...options,
@@ -14996,11 +14712,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<409, undefined>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/secrets/${encodeURIComponent(
-      args['secret_name']
-    )}/repositories/${encodeURIComponent(args['repository_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/secrets/${encodeURIComponent(args['secret_name'])}/repositories/${encodeURIComponent(args['repository_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -15055,11 +14767,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<409, undefined>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/actions/secrets/${encodeURIComponent(
-      args['secret_name']
-    )}/repositories/${encodeURIComponent(args['repository_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/actions/secrets/${encodeURIComponent(args['secret_name'])}/repositories/${encodeURIComponent(args['repository_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -15117,9 +14825,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/blocks?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/blocks?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -15164,9 +14870,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/blocks/${encodeURIComponent(args['username'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/blocks/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -15217,9 +14921,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<422, ValidationError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/blocks/${encodeURIComponent(args['username'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/blocks/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -15268,9 +14970,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/blocks/${encodeURIComponent(args['username'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/blocks/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -15347,9 +15047,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/code-scanning/alerts?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/code-scanning/alerts?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -15430,9 +15128,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/codespaces?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/codespaces?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -15525,9 +15221,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<500, BasicError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/codespaces/billing`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/codespaces/billing`;
     const fetchOptions = {
       method,
       ...options,
@@ -15622,9 +15316,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/codespaces/secrets?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/codespaces/secrets?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -15670,9 +15362,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, CodespacesPublicKey>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/codespaces/secrets/public-key`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/codespaces/secrets/public-key`;
     const fetchOptions = {
       method,
       ...options,
@@ -15715,9 +15405,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, CodespacesSecret>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/codespaces/secrets/${encodeURIComponent(args['secret_name'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/codespaces/secrets/${encodeURIComponent(args['secret_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -15774,9 +15462,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/codespaces/secrets/${encodeURIComponent(args['secret_name'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/codespaces/secrets/${encodeURIComponent(args['secret_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -15844,9 +15530,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/codespaces/secrets/${encodeURIComponent(args['secret_name'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/codespaces/secrets/${encodeURIComponent(args['secret_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -15914,11 +15598,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/codespaces/secrets/${encodeURIComponent(
-      args['secret_name']
-    )}/repositories?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/codespaces/secrets/${encodeURIComponent(args['secret_name'])}/repositories?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -15980,11 +15660,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<409, undefined>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/codespaces/secrets/${encodeURIComponent(
-      args['secret_name']
-    )}/repositories`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/codespaces/secrets/${encodeURIComponent(args['secret_name'])}/repositories`;
     const fetchOptions = {
       method,
       ...options,
@@ -16053,11 +15729,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/codespaces/secrets/${encodeURIComponent(
-      args['secret_name']
-    )}/repositories/${encodeURIComponent(args['repository_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/codespaces/secrets/${encodeURIComponent(args['secret_name'])}/repositories/${encodeURIComponent(args['repository_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -16127,11 +15799,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/codespaces/secrets/${encodeURIComponent(
-      args['secret_name']
-    )}/repositories/${encodeURIComponent(args['repository_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/codespaces/secrets/${encodeURIComponent(args['secret_name'])}/repositories/${encodeURIComponent(args['repository_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -16204,9 +15872,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/custom_roles`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/custom_roles`;
     const fetchOptions = {
       method,
       ...options,
@@ -16269,9 +15935,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/custom_roles/${encodeURIComponent(args['role_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/custom_roles/${encodeURIComponent(args['role_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -16333,9 +15997,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/custom_roles/${encodeURIComponent(args['role_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/custom_roles/${encodeURIComponent(args['role_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -16395,9 +16057,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/custom_roles/${encodeURIComponent(args['role_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/custom_roles/${encodeURIComponent(args['role_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -16474,9 +16134,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/dependabot/alerts?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/dependabot/alerts?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -16566,9 +16224,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/dependabot/secrets?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/dependabot/secrets?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -16614,9 +16270,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, DependabotPublicKey>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/dependabot/secrets/public-key`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/dependabot/secrets/public-key`;
     const fetchOptions = {
       method,
       ...options,
@@ -16659,9 +16313,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, DependabotSecretForAnOrganization>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/dependabot/secrets/${encodeURIComponent(args['secret_name'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/dependabot/secrets/${encodeURIComponent(args['secret_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -16715,9 +16367,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<201, EmptyObject> | ResponseWithData<204, undefined>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/dependabot/secrets/${encodeURIComponent(args['secret_name'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/dependabot/secrets/${encodeURIComponent(args['secret_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -16771,9 +16421,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/dependabot/secrets/${encodeURIComponent(args['secret_name'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/dependabot/secrets/${encodeURIComponent(args['secret_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -16834,11 +16482,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/dependabot/secrets/${encodeURIComponent(
-      args['secret_name']
-    )}/repositories?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/dependabot/secrets/${encodeURIComponent(args['secret_name'])}/repositories?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -16890,11 +16534,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'PUT';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/dependabot/secrets/${encodeURIComponent(
-      args['secret_name']
-    )}/repositories`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/dependabot/secrets/${encodeURIComponent(args['secret_name'])}/repositories`;
     const fetchOptions = {
       method,
       ...options,
@@ -16948,11 +16588,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<409, undefined>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/dependabot/secrets/${encodeURIComponent(
-      args['secret_name']
-    )}/repositories/${encodeURIComponent(args['repository_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/dependabot/secrets/${encodeURIComponent(args['secret_name'])}/repositories/${encodeURIComponent(args['repository_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -17007,11 +16643,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<409, undefined>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/dependabot/secrets/${encodeURIComponent(
-      args['secret_name']
-    )}/repositories/${encodeURIComponent(args['repository_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/dependabot/secrets/${encodeURIComponent(args['secret_name'])}/repositories/${encodeURIComponent(args['repository_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -17069,9 +16701,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/events?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/events?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -17126,9 +16756,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/failed_invitations?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/failed_invitations?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -17179,9 +16807,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, ReadonlyArray<OrganizationFineGrainedPermission>>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/fine_grained_permissions`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/fine_grained_permissions`;
     const fetchOptions = {
       method,
       ...options,
@@ -17236,9 +16862,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/hooks?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/hooks?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -17368,9 +16992,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, OrgHook> | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/hooks/${encodeURIComponent(args['hook_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/hooks/${encodeURIComponent(args['hook_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -17437,9 +17059,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/hooks/${encodeURIComponent(args['hook_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/hooks/${encodeURIComponent(args['hook_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -17501,9 +17121,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/hooks/${encodeURIComponent(args['hook_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/hooks/${encodeURIComponent(args['hook_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -17552,9 +17170,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, WebhookConfiguration>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/hooks/${encodeURIComponent(args['hook_id'])}/config`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/hooks/${encodeURIComponent(args['hook_id'])}/config`;
     const fetchOptions = {
       method,
       ...options,
@@ -17606,9 +17222,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, WebhookConfiguration>> {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/hooks/${encodeURIComponent(args['hook_id'])}/config`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/hooks/${encodeURIComponent(args['hook_id'])}/config`;
     const fetchOptions = {
       method,
       ...options,
@@ -17670,9 +17284,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/hooks/${encodeURIComponent(args['hook_id'])}/deliveries?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/hooks/${encodeURIComponent(args['hook_id'])}/deliveries?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -17735,11 +17347,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/hooks/${encodeURIComponent(
-      args['hook_id']
-    )}/deliveries/${encodeURIComponent(args['delivery_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/hooks/${encodeURIComponent(args['hook_id'])}/deliveries/${encodeURIComponent(args['delivery_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -17802,11 +17410,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/hooks/${encodeURIComponent(
-      args['hook_id']
-    )}/deliveries/${encodeURIComponent(args['delivery_id'])}/attempts`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/hooks/${encodeURIComponent(args['hook_id'])}/deliveries/${encodeURIComponent(args['delivery_id'])}/attempts`;
     const fetchOptions = {
       method,
       ...options,
@@ -17863,9 +17467,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<404, BasicError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/hooks/${encodeURIComponent(args['hook_id'])}/pings`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/hooks/${encodeURIComponent(args['hook_id'])}/pings`;
     const fetchOptions = {
       method,
       ...options,
@@ -17914,9 +17516,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, Installation>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/installation`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/installation`;
     const fetchOptions = {
       method,
       ...options,
@@ -17976,9 +17576,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/installations?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/installations?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -18024,9 +17622,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, InteractionLimits | {}>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/interaction-limits`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/interaction-limits`;
     const fetchOptions = {
       method,
       ...options,
@@ -18072,9 +17668,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/interaction-limits`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/interaction-limits`;
     const fetchOptions = {
       method,
       ...options,
@@ -18128,9 +17722,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/interaction-limits`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/interaction-limits`;
     const fetchOptions = {
       method,
       ...options,
@@ -18185,9 +17777,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/invitations?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/invitations?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -18248,9 +17838,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/invitations`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/invitations`;
     const fetchOptions = {
       method,
       ...options,
@@ -18314,9 +17902,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/invitations/${encodeURIComponent(args['invitation_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/invitations/${encodeURIComponent(args['invitation_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -18384,9 +17970,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/invitations/${encodeURIComponent(args['invitation_id'])}/teams?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/invitations/${encodeURIComponent(args['invitation_id'])}/teams?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -18465,9 +18049,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/issues?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/issues?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -18532,9 +18114,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/members?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/members?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -18587,9 +18167,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, undefined>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/members/${encodeURIComponent(args['username'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/members/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -18646,9 +18224,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<403, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/members/${encodeURIComponent(args['username'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/members/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -18720,9 +18296,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/members/${encodeURIComponent(args['username'])}/codespaces?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/members/${encodeURIComponent(args['username'])}/codespaces?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -18809,11 +18383,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<500, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/members/${encodeURIComponent(
-      args['username']
-    )}/codespaces/${encodeURIComponent(args['codespace_name'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/members/${encodeURIComponent(args['username'])}/codespaces/${encodeURIComponent(args['codespace_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -18897,11 +18467,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<500, BasicError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/members/${encodeURIComponent(
-      args['username']
-    )}/codespaces/${encodeURIComponent(args['codespace_name'])}/stop`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/members/${encodeURIComponent(args['username'])}/codespaces/${encodeURIComponent(args['codespace_name'])}/stop`;
     const fetchOptions = {
       method,
       ...options,
@@ -18978,9 +18544,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/memberships/${encodeURIComponent(args['username'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/memberships/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -19043,9 +18607,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/memberships/${encodeURIComponent(args['username'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/memberships/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -19109,9 +18671,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/memberships/${encodeURIComponent(args['username'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/memberships/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -19177,9 +18737,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/migrations?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/migrations?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -19239,9 +18797,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/migrations`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/migrations`;
     const fetchOptions = {
       method,
       ...options,
@@ -19309,9 +18865,7 @@ export class GitHubV3RestApiClient {
     const query = qs.stringify({ ['exclude']: args['exclude'] });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/migrations/${encodeURIComponent(args['migration_id'])}?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/migrations/${encodeURIComponent(args['migration_id'])}?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -19362,9 +18916,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<302, undefined> | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/migrations/${encodeURIComponent(args['migration_id'])}/archive`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/migrations/${encodeURIComponent(args['migration_id'])}/archive`;
     const fetchOptions = {
       method,
       ...options,
@@ -19415,9 +18967,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/migrations/${encodeURIComponent(args['migration_id'])}/archive`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/migrations/${encodeURIComponent(args['migration_id'])}/archive`;
     const fetchOptions = {
       method,
       ...options,
@@ -19472,11 +19022,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/migrations/${encodeURIComponent(
-      args['migration_id']
-    )}/repos/${encodeURIComponent(args['repo_name'])}/lock`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/migrations/${encodeURIComponent(args['migration_id'])}/repos/${encodeURIComponent(args['repo_name'])}/lock`;
     const fetchOptions = {
       method,
       ...options,
@@ -19538,11 +19084,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/migrations/${encodeURIComponent(
-      args['migration_id']
-    )}/repositories?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/migrations/${encodeURIComponent(args['migration_id'])}/repositories?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -19602,9 +19144,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/outside_collaborators?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/outside_collaborators?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -19656,9 +19196,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/outside_collaborators/${encodeURIComponent(args['username'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/outside_collaborators/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -19730,9 +19268,7 @@ export class GitHubV3RestApiClient {
       >
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/outside_collaborators/${encodeURIComponent(args['username'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/outside_collaborators/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -19803,9 +19339,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/packages?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/packages?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -19870,11 +19404,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, Package>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/packages/${encodeURIComponent(
-      args['package_type']
-    )}/${encodeURIComponent(args['package_name'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/packages/${encodeURIComponent(args['package_type'])}/${encodeURIComponent(args['package_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -19932,11 +19462,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/packages/${encodeURIComponent(
-      args['package_type']
-    )}/${encodeURIComponent(args['package_name'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/packages/${encodeURIComponent(args['package_type'])}/${encodeURIComponent(args['package_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -20015,11 +19541,7 @@ export class GitHubV3RestApiClient {
     const query = qs.stringify({ ['token']: args['token'] });
 
     const method = 'POST';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/packages/${encodeURIComponent(
-      args['package_type']
-    )}/${encodeURIComponent(args['package_name'])}/restore?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/packages/${encodeURIComponent(args['package_type'])}/${encodeURIComponent(args['package_name'])}/restore?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -20104,11 +19626,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/packages/${encodeURIComponent(
-      args['package_type']
-    )}/${encodeURIComponent(args['package_name'])}/versions?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/packages/${encodeURIComponent(args['package_type'])}/${encodeURIComponent(args['package_name'])}/versions?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -20180,13 +19698,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, PackageVersion>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/packages/${encodeURIComponent(
-      args['package_type']
-    )}/${encodeURIComponent(
-      args['package_name']
-    )}/versions/${encodeURIComponent(args['package_version_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/packages/${encodeURIComponent(args['package_type'])}/${encodeURIComponent(args['package_name'])}/versions/${encodeURIComponent(args['package_version_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -20245,13 +19757,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/packages/${encodeURIComponent(
-      args['package_type']
-    )}/${encodeURIComponent(
-      args['package_name']
-    )}/versions/${encodeURIComponent(args['package_version_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/packages/${encodeURIComponent(args['package_type'])}/${encodeURIComponent(args['package_name'])}/versions/${encodeURIComponent(args['package_version_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -20328,13 +19834,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/packages/${encodeURIComponent(
-      args['package_type']
-    )}/${encodeURIComponent(
-      args['package_name']
-    )}/versions/${encodeURIComponent(args['package_version_id'])}/restore`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/packages/${encodeURIComponent(args['package_type'])}/${encodeURIComponent(args['package_name'])}/versions/${encodeURIComponent(args['package_version_id'])}/restore`;
     const fetchOptions = {
       method,
       ...options,
@@ -20409,9 +19909,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/projects?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/projects?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -20470,9 +19968,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationErrorSimple>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/projects`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/projects`;
     const fetchOptions = {
       method,
       ...options,
@@ -20559,9 +20055,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/public_members?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/public_members?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -20606,9 +20100,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<404, undefined>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/public_members/${encodeURIComponent(args['username'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/public_members/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -20659,9 +20151,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<403, BasicError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/public_members/${encodeURIComponent(args['username'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/public_members/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -20710,9 +20200,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/public_members/${encodeURIComponent(args['username'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/public_members/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -20777,9 +20265,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/repos?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/repos?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -20950,9 +20436,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/secret-scanning/alerts?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/secret-scanning/alerts?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -21011,9 +20495,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ReadonlyArray<TeamSimple>>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/security-managers`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/security-managers`;
     const fetchOptions = {
       method,
       ...options,
@@ -21058,9 +20540,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<409, undefined>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/security-managers/teams/${encodeURIComponent(args['team_slug'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/security-managers/teams/${encodeURIComponent(args['team_slug'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -21109,9 +20589,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/security-managers/teams/${encodeURIComponent(args['team_slug'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/security-managers/teams/${encodeURIComponent(args['team_slug'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -21154,9 +20632,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ActionsBillingUsage>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/settings/billing/actions`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/settings/billing/actions`;
     const fetchOptions = {
       method,
       ...options,
@@ -21211,9 +20687,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/settings/billing/advanced-security?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/settings/billing/advanced-security?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -21262,9 +20736,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, PackagesBillingUsage>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/settings/billing/packages`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/settings/billing/packages`;
     const fetchOptions = {
       method,
       ...options,
@@ -21307,9 +20779,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, CombinedBillingUsage>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/settings/billing/shared-storage`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/settings/billing/shared-storage`;
     const fetchOptions = {
       method,
       ...options,
@@ -21364,9 +20834,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -21492,9 +20960,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, FullTeam> | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(args['team_slug'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -21559,9 +21025,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(args['team_slug'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -21633,9 +21097,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(args['team_slug'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -21692,9 +21154,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(args['team_slug'])}/discussions?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/discussions?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -21745,9 +21205,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<201, TeamDiscussion>> {
     const method = 'POST';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(args['team_slug'])}/discussions`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/discussions`;
     const fetchOptions = {
       method,
       ...options,
@@ -21799,11 +21257,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, TeamDiscussion>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(
-      args['team_slug']
-    )}/discussions/${encodeURIComponent(args['discussion_number'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/discussions/${encodeURIComponent(args['discussion_number'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -21851,11 +21305,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, TeamDiscussion>> {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(
-      args['team_slug']
-    )}/discussions/${encodeURIComponent(args['discussion_number'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/discussions/${encodeURIComponent(args['discussion_number'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -21907,11 +21357,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(
-      args['team_slug']
-    )}/discussions/${encodeURIComponent(args['discussion_number'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/discussions/${encodeURIComponent(args['discussion_number'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -21967,13 +21413,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(
-      args['team_slug']
-    )}/discussions/${encodeURIComponent(
-      args['discussion_number']
-    )}/comments?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/discussions/${encodeURIComponent(args['discussion_number'])}/comments?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -22021,11 +21461,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<201, TeamDiscussionComment>> {
     const method = 'POST';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(
-      args['team_slug']
-    )}/discussions/${encodeURIComponent(args['discussion_number'])}/comments`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/discussions/${encodeURIComponent(args['discussion_number'])}/comments`;
     const fetchOptions = {
       method,
       ...options,
@@ -22078,13 +21514,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, TeamDiscussionComment>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(
-      args['team_slug']
-    )}/discussions/${encodeURIComponent(
-      args['discussion_number']
-    )}/comments/${encodeURIComponent(args['comment_number'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/discussions/${encodeURIComponent(args['discussion_number'])}/comments/${encodeURIComponent(args['comment_number'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -22133,13 +21563,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, TeamDiscussionComment>> {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(
-      args['team_slug']
-    )}/discussions/${encodeURIComponent(
-      args['discussion_number']
-    )}/comments/${encodeURIComponent(args['comment_number'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/discussions/${encodeURIComponent(args['discussion_number'])}/comments/${encodeURIComponent(args['comment_number'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -22192,13 +21616,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(
-      args['team_slug']
-    )}/discussions/${encodeURIComponent(
-      args['discussion_number']
-    )}/comments/${encodeURIComponent(args['comment_number'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/discussions/${encodeURIComponent(args['discussion_number'])}/comments/${encodeURIComponent(args['comment_number'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -22263,15 +21681,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(
-      args['team_slug']
-    )}/discussions/${encodeURIComponent(
-      args['discussion_number']
-    )}/comments/${encodeURIComponent(
-      args['comment_number']
-    )}/reactions?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/discussions/${encodeURIComponent(args['discussion_number'])}/comments/${encodeURIComponent(args['comment_number'])}/reactions?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -22332,13 +21742,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, Reaction> | ResponseWithData<201, Reaction>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(
-      args['team_slug']
-    )}/discussions/${encodeURIComponent(
-      args['discussion_number']
-    )}/comments/${encodeURIComponent(args['comment_number'])}/reactions`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/discussions/${encodeURIComponent(args['discussion_number'])}/comments/${encodeURIComponent(args['comment_number'])}/reactions`;
     const fetchOptions = {
       method,
       ...options,
@@ -22398,15 +21802,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(
-      args['team_slug']
-    )}/discussions/${encodeURIComponent(
-      args['discussion_number']
-    )}/comments/${encodeURIComponent(
-      args['comment_number']
-    )}/reactions/${encodeURIComponent(args['reaction_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/discussions/${encodeURIComponent(args['discussion_number'])}/comments/${encodeURIComponent(args['comment_number'])}/reactions/${encodeURIComponent(args['reaction_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -22470,13 +21866,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(
-      args['team_slug']
-    )}/discussions/${encodeURIComponent(
-      args['discussion_number']
-    )}/reactions?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/discussions/${encodeURIComponent(args['discussion_number'])}/reactions?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -22536,11 +21926,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, Reaction> | ResponseWithData<201, Reaction>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(
-      args['team_slug']
-    )}/discussions/${encodeURIComponent(args['discussion_number'])}/reactions`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/discussions/${encodeURIComponent(args['discussion_number'])}/reactions`;
     const fetchOptions = {
       method,
       ...options,
@@ -22599,13 +21985,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(
-      args['team_slug']
-    )}/discussions/${encodeURIComponent(
-      args['discussion_number']
-    )}/reactions/${encodeURIComponent(args['reaction_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/discussions/${encodeURIComponent(args['discussion_number'])}/reactions/${encodeURIComponent(args['reaction_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -22658,9 +22038,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(args['team_slug'])}/invitations?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/invitations?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -22715,9 +22093,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(args['team_slug'])}/members?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/members?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -22766,11 +22142,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, TeamMembership> | ResponseWithData<404, undefined>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(
-      args['team_slug']
-    )}/memberships/${encodeURIComponent(args['username'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/memberships/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -22828,11 +22200,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, undefined>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(
-      args['team_slug']
-    )}/memberships/${encodeURIComponent(args['username'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/memberships/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -22898,11 +22266,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<403, undefined>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(
-      args['team_slug']
-    )}/memberships/${encodeURIComponent(args['username'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/memberships/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -22961,9 +22325,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(args['team_slug'])}/projects?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/projects?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -23012,11 +22374,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, TeamProject> | ResponseWithData<404, undefined>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(
-      args['team_slug']
-    )}/projects/${encodeURIComponent(args['project_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/projects/${encodeURIComponent(args['project_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -23078,11 +22436,7 @@ export class GitHubV3RestApiClient {
       >
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(
-      args['team_slug']
-    )}/projects/${encodeURIComponent(args['project_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/projects/${encodeURIComponent(args['project_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -23143,11 +22497,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(
-      args['team_slug']
-    )}/projects/${encodeURIComponent(args['project_id'])}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/projects/${encodeURIComponent(args['project_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -23200,9 +22550,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(args['team_slug'])}/repos?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/repos?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -23254,13 +22602,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, undefined>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(
-      args['team_slug']
-    )}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(
-      args['repo']
-    )}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -23321,13 +22663,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'PUT';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(
-      args['team_slug']
-    )}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(
-      args['repo']
-    )}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -23380,13 +22716,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(
-      args['team_slug']
-    )}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(
-      args['repo']
-    )}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -23439,9 +22769,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/teams/${encodeURIComponent(args['team_slug'])}/teams?${query}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/teams/${encodeURIComponent(args['team_slug'])}/teams?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -23496,11 +22824,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<422, undefined>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/orgs/${encodeURIComponent(
-      args['org']
-    )}/${encodeURIComponent(args['security_product'])}/${encodeURIComponent(
-      args['enablement']
-    )}`;
+    const url = `${this.baseUrl}/orgs/${encodeURIComponent(args['org'])}/${encodeURIComponent(args['security_product'])}/${encodeURIComponent(args['enablement'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -23555,9 +22879,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/projects/columns/cards/${encodeURIComponent(
-      args['card_id']
-    )}`;
+    const url = `${this.baseUrl}/projects/columns/cards/${encodeURIComponent(args['card_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -23637,9 +22959,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationErrorSimple>
   > {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/projects/columns/cards/${encodeURIComponent(
-      args['card_id']
-    )}`;
+    const url = `${this.baseUrl}/projects/columns/cards/${encodeURIComponent(args['card_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -23730,9 +23050,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/projects/columns/cards/${encodeURIComponent(
-      args['card_id']
-    )}`;
+    const url = `${this.baseUrl}/projects/columns/cards/${encodeURIComponent(args['card_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -23836,9 +23154,7 @@ export class GitHubV3RestApiClient {
       >
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/projects/columns/cards/${encodeURIComponent(
-      args['card_id']
-    )}/moves`;
+    const url = `${this.baseUrl}/projects/columns/cards/${encodeURIComponent(args['card_id'])}/moves`;
     const fetchOptions = {
       method,
       ...options,
@@ -23939,9 +23255,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/projects/columns/${encodeURIComponent(
-      args['column_id']
-    )}`;
+    const url = `${this.baseUrl}/projects/columns/${encodeURIComponent(args['column_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -24016,9 +23330,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<403, BasicError>
   > {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/projects/columns/${encodeURIComponent(
-      args['column_id']
-    )}`;
+    const url = `${this.baseUrl}/projects/columns/${encodeURIComponent(args['column_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -24089,9 +23401,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<403, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/projects/columns/${encodeURIComponent(
-      args['column_id']
-    )}`;
+    const url = `${this.baseUrl}/projects/columns/${encodeURIComponent(args['column_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -24168,9 +23478,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/projects/columns/${encodeURIComponent(
-      args['column_id']
-    )}/cards?${query}`;
+    const url = `${this.baseUrl}/projects/columns/${encodeURIComponent(args['column_id'])}/cards?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -24254,9 +23562,7 @@ export class GitHubV3RestApiClient {
       >
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/projects/columns/${encodeURIComponent(
-      args['column_id']
-    )}/cards`;
+    const url = `${this.baseUrl}/projects/columns/${encodeURIComponent(args['column_id'])}/cards`;
     const fetchOptions = {
       method,
       ...options,
@@ -24353,9 +23659,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationErrorSimple>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/projects/columns/${encodeURIComponent(
-      args['column_id']
-    )}/moves`;
+    const url = `${this.baseUrl}/projects/columns/${encodeURIComponent(args['column_id'])}/moves`;
     const fetchOptions = {
       method,
       ...options,
@@ -24432,9 +23736,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<403, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/projects/${encodeURIComponent(
-      args['project_id']
-    )}`;
+    const url = `${this.baseUrl}/projects/${encodeURIComponent(args['project_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -24519,9 +23821,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationErrorSimple>
   > {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/projects/${encodeURIComponent(
-      args['project_id']
-    )}`;
+    const url = `${this.baseUrl}/projects/${encodeURIComponent(args['project_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -24623,9 +23923,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<410, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/projects/${encodeURIComponent(
-      args['project_id']
-    )}`;
+    const url = `${this.baseUrl}/projects/${encodeURIComponent(args['project_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -24720,9 +24018,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/projects/${encodeURIComponent(
-      args['project_id']
-    )}/collaborators?${query}`;
+    const url = `${this.baseUrl}/projects/${encodeURIComponent(args['project_id'])}/collaborators?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -24808,9 +24104,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/projects/${encodeURIComponent(
-      args['project_id']
-    )}/collaborators/${encodeURIComponent(args['username'])}`;
+    const url = `${this.baseUrl}/projects/${encodeURIComponent(args['project_id'])}/collaborators/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -24895,9 +24189,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/projects/${encodeURIComponent(
-      args['project_id']
-    )}/collaborators/${encodeURIComponent(args['username'])}`;
+    const url = `${this.baseUrl}/projects/${encodeURIComponent(args['project_id'])}/collaborators/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -24977,9 +24269,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/projects/${encodeURIComponent(
-      args['project_id']
-    )}/collaborators/${encodeURIComponent(args['username'])}/permission`;
+    const url = `${this.baseUrl}/projects/${encodeURIComponent(args['project_id'])}/collaborators/${encodeURIComponent(args['username'])}/permission`;
     const fetchOptions = {
       method,
       ...options,
@@ -25066,9 +24356,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/projects/${encodeURIComponent(
-      args['project_id']
-    )}/columns?${query}`;
+    const url = `${this.baseUrl}/projects/${encodeURIComponent(args['project_id'])}/columns?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -25138,9 +24426,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationErrorSimple>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/projects/${encodeURIComponent(
-      args['project_id']
-    )}/columns`;
+    const url = `${this.baseUrl}/projects/${encodeURIComponent(args['project_id'])}/columns`;
     const fetchOptions = {
       method,
       ...options,
@@ -25275,9 +24561,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -25383,9 +24667,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -25465,9 +24747,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -25551,9 +24831,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/artifacts?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/artifacts?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -25603,11 +24881,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, Artifact>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/actions/artifacts/${encodeURIComponent(args['artifact_id'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/artifacts/${encodeURIComponent(args['artifact_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -25654,11 +24928,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/actions/artifacts/${encodeURIComponent(args['artifact_id'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/artifacts/${encodeURIComponent(args['artifact_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -25708,13 +24978,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<302, undefined> | ResponseWithData<410, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/actions/artifacts/${encodeURIComponent(
-      args['artifact_id']
-    )}/${encodeURIComponent(args['archive_format'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/artifacts/${encodeURIComponent(args['artifact_id'])}/${encodeURIComponent(args['archive_format'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -25763,9 +25027,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ActionsCacheUsageByRepository>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/cache/usage`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/cache/usage`;
     const fetchOptions = {
       method,
       ...options,
@@ -25826,9 +25088,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/caches?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/caches?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -25878,9 +25138,7 @@ export class GitHubV3RestApiClient {
     const query = qs.stringify({ ['key']: args['key'], ['ref']: args['ref'] });
 
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/caches?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/caches?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -25927,11 +25185,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/caches/${encodeURIComponent(
-      args['cache_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/caches/${encodeURIComponent(args['cache_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -25978,11 +25232,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, Job>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/jobs/${encodeURIComponent(
-      args['job_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/jobs/${encodeURIComponent(args['job_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -26029,11 +25279,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<302, undefined>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/jobs/${encodeURIComponent(
-      args['job_id']
-    )}/logs`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/jobs/${encodeURIComponent(args['job_id'])}/logs`;
     const fetchOptions = {
       method,
       ...options,
@@ -26083,11 +25329,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<201, EmptyObject> | ResponseWithData<403, BasicError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/jobs/${encodeURIComponent(
-      args['job_id']
-    )}/rerun`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/jobs/${encodeURIComponent(args['job_id'])}/rerun`;
     const fetchOptions = {
       method,
       ...options,
@@ -26141,9 +25383,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ActionsRepositoryPermissions>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/permissions`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/permissions`;
     const fetchOptions = {
       method,
       ...options,
@@ -26193,9 +25433,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/permissions`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/permissions`;
     const fetchOptions = {
       method,
       ...options,
@@ -26243,9 +25481,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ActionsWorkflowAccessToRepository>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/permissions/access`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/permissions/access`;
     const fetchOptions = {
       method,
       ...options,
@@ -26292,9 +25528,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/permissions/access`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/permissions/access`;
     const fetchOptions = {
       method,
       ...options,
@@ -26342,11 +25576,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, SelectedActions>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/actions/permissions/selected-actions`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/permissions/selected-actions`;
     const fetchOptions = {
       method,
       ...options,
@@ -26393,11 +25623,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/actions/permissions/selected-actions`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/permissions/selected-actions`;
     const fetchOptions = {
       method,
       ...options,
@@ -26445,9 +25671,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ActionsGetDefaultWorkflowPermissions>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/permissions/workflow`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/permissions/workflow`;
     const fetchOptions = {
       method,
       ...options,
@@ -26496,9 +25720,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<409, undefined>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/permissions/workflow`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/permissions/workflow`;
     const fetchOptions = {
       method,
       ...options,
@@ -26570,9 +25792,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runners?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runners?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -26618,9 +25838,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ReadonlyArray<RunnerApplication>>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runners/downloads`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runners/downloads`;
     const fetchOptions = {
       method,
       ...options,
@@ -26663,9 +25881,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<201, AuthenticationToken>> {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runners/registration-token`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runners/registration-token`;
     const fetchOptions = {
       method,
       ...options,
@@ -26708,9 +25924,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<201, AuthenticationToken>> {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runners/remove-token`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runners/remove-token`;
     const fetchOptions = {
       method,
       ...options,
@@ -26757,11 +25971,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, SelfHostedRunners>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runners/${encodeURIComponent(
-      args['runner_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runners/${encodeURIComponent(args['runner_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -26808,11 +26018,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runners/${encodeURIComponent(
-      args['runner_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runners/${encodeURIComponent(args['runner_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -26868,11 +26074,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runners/${encodeURIComponent(
-      args['runner_id']
-    )}/labels`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runners/${encodeURIComponent(args['runner_id'])}/labels`;
     const fetchOptions = {
       method,
       ...options,
@@ -26939,11 +26141,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationErrorSimple>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runners/${encodeURIComponent(
-      args['runner_id']
-    )}/labels`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runners/${encodeURIComponent(args['runner_id'])}/labels`;
     const fetchOptions = {
       method,
       ...options,
@@ -27021,11 +26219,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationErrorSimple>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runners/${encodeURIComponent(
-      args['runner_id']
-    )}/labels`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runners/${encodeURIComponent(args['runner_id'])}/labels`;
     const fetchOptions = {
       method,
       ...options,
@@ -27101,11 +26295,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runners/${encodeURIComponent(
-      args['runner_id']
-    )}/labels`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runners/${encodeURIComponent(args['runner_id'])}/labels`;
     const fetchOptions = {
       method,
       ...options,
@@ -27172,11 +26362,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationErrorSimple>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runners/${encodeURIComponent(
-      args['runner_id']
-    )}/labels/${encodeURIComponent(args['name'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runners/${encodeURIComponent(args['runner_id'])}/labels/${encodeURIComponent(args['name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -27281,9 +26467,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runs?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runs?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -27338,11 +26522,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(
-      args['run_id']
-    )}?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(args['run_id'])}?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -27389,11 +26569,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(
-      args['run_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(args['run_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -27440,11 +26616,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ReadonlyArray<EnvironmentApproval>>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(
-      args['run_id']
-    )}/approvals`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(args['run_id'])}/approvals`;
     const fetchOptions = {
       method,
       ...options,
@@ -27495,11 +26667,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(
-      args['run_id']
-    )}/approve`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(args['run_id'])}/approve`;
     const fetchOptions = {
       method,
       ...options,
@@ -27573,11 +26741,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(
-      args['run_id']
-    )}/artifacts?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(args['run_id'])}/artifacts?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -27633,11 +26797,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(
-      args['run_id']
-    )}/attempts/${encodeURIComponent(args['attempt_number'])}?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(args['run_id'])}/attempts/${encodeURIComponent(args['attempt_number'])}?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -27698,11 +26858,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(
-      args['run_id']
-    )}/attempts/${encodeURIComponent(args['attempt_number'])}/jobs?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(args['run_id'])}/attempts/${encodeURIComponent(args['attempt_number'])}/jobs?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -27759,11 +26915,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<302, undefined>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(
-      args['run_id']
-    )}/attempts/${encodeURIComponent(args['attempt_number'])}/logs`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(args['run_id'])}/attempts/${encodeURIComponent(args['attempt_number'])}/logs`;
     const fetchOptions = {
       method,
       ...options,
@@ -27812,11 +26964,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<202, EmptyObject> | ResponseWithData<409, BasicError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(
-      args['run_id']
-    )}/cancel`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(args['run_id'])}/cancel`;
     const fetchOptions = {
       method,
       ...options,
@@ -27883,11 +27031,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(
-      args['run_id']
-    )}/jobs?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(args['run_id'])}/jobs?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -27937,11 +27081,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<302, undefined>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(
-      args['run_id']
-    )}/logs`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(args['run_id'])}/logs`;
     const fetchOptions = {
       method,
       ...options,
@@ -27992,11 +27132,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<500, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(
-      args['run_id']
-    )}/logs`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(args['run_id'])}/logs`;
     const fetchOptions = {
       method,
       ...options,
@@ -28055,11 +27191,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ReadonlyArray<PendingDeployment>>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(
-      args['run_id']
-    )}/pending_deployments`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(args['run_id'])}/pending_deployments`;
     const fetchOptions = {
       method,
       ...options,
@@ -28111,11 +27243,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ReadonlyArray<Deployment>>> {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(
-      args['run_id']
-    )}/pending_deployments`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(args['run_id'])}/pending_deployments`;
     const fetchOptions = {
       method,
       ...options,
@@ -28168,11 +27296,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<201, EmptyObject>> {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(
-      args['run_id']
-    )}/rerun`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(args['run_id'])}/rerun`;
     const fetchOptions = {
       method,
       ...options,
@@ -28225,11 +27349,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<201, EmptyObject>> {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(
-      args['run_id']
-    )}/rerun-failed-jobs`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(args['run_id'])}/rerun-failed-jobs`;
     const fetchOptions = {
       method,
       ...options,
@@ -28281,11 +27401,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, WorkflowRunUsage>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(
-      args['run_id']
-    )}/timing`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/runs/${encodeURIComponent(args['run_id'])}/timing`;
     const fetchOptions = {
       method,
       ...options,
@@ -28346,9 +27462,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/secrets?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/secrets?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -28394,9 +27508,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ActionsPublicKey>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/secrets/public-key`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/secrets/public-key`;
     const fetchOptions = {
       method,
       ...options,
@@ -28443,11 +27555,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ActionsSecret>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/secrets/${encodeURIComponent(
-      args['secret_name']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/secrets/${encodeURIComponent(args['secret_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -28500,11 +27608,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<201, EmptyObject> | ResponseWithData<204, undefined>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/secrets/${encodeURIComponent(
-      args['secret_name']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/secrets/${encodeURIComponent(args['secret_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -28562,11 +27666,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/secrets/${encodeURIComponent(
-      args['secret_name']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/secrets/${encodeURIComponent(args['secret_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -28627,9 +27727,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/actions/workflows?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/workflows?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -28679,11 +27777,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, Workflow>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/actions/workflows/${encodeURIComponent(args['workflow_id'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/workflows/${encodeURIComponent(args['workflow_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -28730,11 +27824,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/actions/workflows/${encodeURIComponent(args['workflow_id'])}/disable`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/workflows/${encodeURIComponent(args['workflow_id'])}/disable`;
     const fetchOptions = {
       method,
       ...options,
@@ -28782,11 +27872,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/actions/workflows/${encodeURIComponent(args['workflow_id'])}/dispatches`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/workflows/${encodeURIComponent(args['workflow_id'])}/dispatches`;
     const fetchOptions = {
       method,
       ...options,
@@ -28838,11 +27924,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/actions/workflows/${encodeURIComponent(args['workflow_id'])}/enable`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/workflows/${encodeURIComponent(args['workflow_id'])}/enable`;
     const fetchOptions = {
       method,
       ...options,
@@ -28933,13 +28015,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/actions/workflows/${encodeURIComponent(
-      args['workflow_id']
-    )}/runs?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/workflows/${encodeURIComponent(args['workflow_id'])}/runs?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -28989,11 +28065,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, WorkflowUsage>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/actions/workflows/${encodeURIComponent(args['workflow_id'])}/timing`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/actions/workflows/${encodeURIComponent(args['workflow_id'])}/timing`;
     const fetchOptions = {
       method,
       ...options,
@@ -29049,9 +28121,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/assignees?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/assignees?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -29106,11 +28176,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/assignees/${encodeURIComponent(
-      args['assignee']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/assignees/${encodeURIComponent(args['assignee'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -29165,9 +28231,7 @@ export class GitHubV3RestApiClient {
     const query = qs.stringify({ ['page']: args['page'] });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/autolinks?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/autolinks?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -29221,9 +28285,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/autolinks`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/autolinks`;
     const fetchOptions = {
       method,
       ...options,
@@ -29283,11 +28345,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, AutolinkReference> | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/autolinks/${encodeURIComponent(
-      args['autolink_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/autolinks/${encodeURIComponent(args['autolink_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -29342,11 +28400,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/autolinks/${encodeURIComponent(
-      args['autolink_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/autolinks/${encodeURIComponent(args['autolink_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -29395,9 +28449,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/automated-security-fixes`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/automated-security-fixes`;
     const fetchOptions = {
       method,
       ...options,
@@ -29440,9 +28492,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/automated-security-fixes`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/automated-security-fixes`;
     const fetchOptions = {
       method,
       ...options,
@@ -29500,9 +28550,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -29559,11 +28607,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -29624,11 +28668,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, BranchProtection> | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection`;
     const fetchOptions = {
       method,
       ...options,
@@ -29725,11 +28765,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationErrorSimple>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection`;
     const fetchOptions = {
       method,
       ...options,
@@ -29801,11 +28837,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<403, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection`;
     const fetchOptions = {
       method,
       ...options,
@@ -29858,11 +28890,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ProtectedBranchAdminEnforced>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/enforce_admins`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/enforce_admins`;
     const fetchOptions = {
       method,
       ...options,
@@ -29909,11 +28937,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ProtectedBranchAdminEnforced>> {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/enforce_admins`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/enforce_admins`;
     const fetchOptions = {
       method,
       ...options,
@@ -29962,11 +28986,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/enforce_admins`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/enforce_admins`;
     const fetchOptions = {
       method,
       ...options,
@@ -30019,11 +29039,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ProtectedBranchPullRequestReview>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/required_pull_request_reviews`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/required_pull_request_reviews`;
     const fetchOptions = {
       method,
       ...options,
@@ -30089,11 +29105,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/required_pull_request_reviews`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/required_pull_request_reviews`;
     const fetchOptions = {
       method,
       ...options,
@@ -30153,11 +29165,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/required_pull_request_reviews`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/required_pull_request_reviews`;
     const fetchOptions = {
       method,
       ...options,
@@ -30213,11 +29221,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/required_signatures`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/required_signatures`;
     const fetchOptions = {
       method,
       ...options,
@@ -30273,11 +29277,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/required_signatures`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/required_signatures`;
     const fetchOptions = {
       method,
       ...options,
@@ -30332,11 +29332,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/required_signatures`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/required_signatures`;
     const fetchOptions = {
       method,
       ...options,
@@ -30391,11 +29387,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, StatusCheckPolicy> | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/required_status_checks`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/required_status_checks`;
     const fetchOptions = {
       method,
       ...options,
@@ -30460,11 +29452,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/required_status_checks`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/required_status_checks`;
     const fetchOptions = {
       method,
       ...options,
@@ -30528,11 +29516,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/required_status_checks`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/required_status_checks`;
     const fetchOptions = {
       method,
       ...options,
@@ -30582,11 +29566,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/required_status_checks/contexts`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/required_status_checks/contexts`;
     const fetchOptions = {
       method,
       ...options,
@@ -30647,11 +29627,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/required_status_checks/contexts`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/required_status_checks/contexts`;
     const fetchOptions = {
       method,
       ...options,
@@ -30728,11 +29704,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/required_status_checks/contexts`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/required_status_checks/contexts`;
     const fetchOptions = {
       method,
       ...options,
@@ -30803,11 +29775,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/required_status_checks/contexts`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/required_status_checks/contexts`;
     const fetchOptions = {
       method,
       ...options,
@@ -30874,11 +29842,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/restrictions`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/restrictions`;
     const fetchOptions = {
       method,
       ...options,
@@ -30931,11 +29895,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/restrictions`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/restrictions`;
     const fetchOptions = {
       method,
       ...options,
@@ -30985,11 +29945,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/restrictions/apps`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/restrictions/apps`;
     const fetchOptions = {
       method,
       ...options,
@@ -31048,11 +30004,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/restrictions/apps`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/restrictions/apps`;
     const fetchOptions = {
       method,
       ...options,
@@ -31116,11 +30068,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/restrictions/apps`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/restrictions/apps`;
     const fetchOptions = {
       method,
       ...options,
@@ -31184,11 +30132,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/restrictions/apps`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/restrictions/apps`;
     const fetchOptions = {
       method,
       ...options,
@@ -31249,11 +30193,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/restrictions/teams`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/restrictions/teams`;
     const fetchOptions = {
       method,
       ...options,
@@ -31312,11 +30252,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/restrictions/teams`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/restrictions/teams`;
     const fetchOptions = {
       method,
       ...options,
@@ -31380,11 +30316,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/restrictions/teams`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/restrictions/teams`;
     const fetchOptions = {
       method,
       ...options,
@@ -31448,11 +30380,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/restrictions/teams`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/restrictions/teams`;
     const fetchOptions = {
       method,
       ...options,
@@ -31513,11 +30441,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/restrictions/users`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/restrictions/users`;
     const fetchOptions = {
       method,
       ...options,
@@ -31576,11 +30500,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/restrictions/users`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/restrictions/users`;
     const fetchOptions = {
       method,
       ...options,
@@ -31644,11 +30564,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/restrictions/users`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/restrictions/users`;
     const fetchOptions = {
       method,
       ...options,
@@ -31712,11 +30628,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/protection/restrictions/users`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/protection/restrictions/users`;
     const fetchOptions = {
       method,
       ...options,
@@ -31780,11 +30692,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(
-      args['branch']
-    )}/rename`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/branches/${encodeURIComponent(args['branch'])}/rename`;
     const fetchOptions = {
       method,
       ...options,
@@ -31900,9 +30808,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<201, CheckRun>> {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/check-runs`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/check-runs`;
     const fetchOptions = {
       method,
       ...options,
@@ -31954,11 +30860,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, CheckRun>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/check-runs/${encodeURIComponent(
-      args['check_run_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/check-runs/${encodeURIComponent(args['check_run_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -32051,11 +30953,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, CheckRun>> {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/check-runs/${encodeURIComponent(
-      args['check_run_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/check-runs/${encodeURIComponent(args['check_run_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -32114,11 +31012,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/check-runs/${encodeURIComponent(
-      args['check_run_id']
-    )}/annotations?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/check-runs/${encodeURIComponent(args['check_run_id'])}/annotations?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -32170,11 +31064,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, BasicError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/check-runs/${encodeURIComponent(
-      args['check_run_id']
-    )}/rerequest`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/check-runs/${encodeURIComponent(args['check_run_id'])}/rerequest`;
     const fetchOptions = {
       method,
       ...options,
@@ -32241,9 +31131,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, CheckSuite> | ResponseWithData<201, CheckSuite>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/check-suites`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/check-suites`;
     const fetchOptions = {
       method,
       ...options,
@@ -32306,9 +31194,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, CheckSuitePreference>> {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/check-suites/preferences`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/check-suites/preferences`;
     const fetchOptions = {
       method,
       ...options,
@@ -32360,11 +31246,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, CheckSuite>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/check-suites/${encodeURIComponent(
-      args['check_suite_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/check-suites/${encodeURIComponent(args['check_suite_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -32432,11 +31314,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/check-suites/${encodeURIComponent(
-      args['check_suite_id']
-    )}/check-runs?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/check-suites/${encodeURIComponent(args['check_suite_id'])}/check-runs?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -32486,11 +31364,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<201, EmptyObject>> {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/check-suites/${encodeURIComponent(
-      args['check_suite_id']
-    )}/rerequest`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/check-suites/${encodeURIComponent(args['check_suite_id'])}/rerequest`;
     const fetchOptions = {
       method,
       ...options,
@@ -32568,9 +31442,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/code-scanning/alerts?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/code-scanning/alerts?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -32658,11 +31530,7 @@ export class GitHubV3RestApiClient {
       >
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/code-scanning/alerts/${encodeURIComponent(args['alert_number'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/code-scanning/alerts/${encodeURIComponent(args['alert_number'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -32754,11 +31622,7 @@ export class GitHubV3RestApiClient {
       >
   > {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/code-scanning/alerts/${encodeURIComponent(args['alert_number'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/code-scanning/alerts/${encodeURIComponent(args['alert_number'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -32853,13 +31717,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/code-scanning/alerts/${encodeURIComponent(
-      args['alert_number']
-    )}/instances?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/code-scanning/alerts/${encodeURIComponent(args['alert_number'])}/instances?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -32958,9 +31816,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/code-scanning/analyses?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/code-scanning/analyses?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -33041,11 +31897,7 @@ export class GitHubV3RestApiClient {
       >
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/code-scanning/analyses/${encodeURIComponent(args['analysis_id'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/code-scanning/analyses/${encodeURIComponent(args['analysis_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -33130,13 +31982,7 @@ export class GitHubV3RestApiClient {
     const query = qs.stringify({ ['confirm_delete']: args['confirm_delete'] });
 
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/code-scanning/analyses/${encodeURIComponent(
-      args['analysis_id']
-    )}?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/code-scanning/analyses/${encodeURIComponent(args['analysis_id'])}?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -33219,9 +32065,7 @@ export class GitHubV3RestApiClient {
       >
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/code-scanning/codeql/databases`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/code-scanning/codeql/databases`;
     const fetchOptions = {
       method,
       ...options,
@@ -33303,11 +32147,7 @@ export class GitHubV3RestApiClient {
       >
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/code-scanning/codeql/databases/${encodeURIComponent(args['language'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/code-scanning/codeql/databases/${encodeURIComponent(args['language'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -33404,9 +32244,7 @@ export class GitHubV3RestApiClient {
       >
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/code-scanning/sarifs`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/code-scanning/sarifs`;
     const fetchOptions = {
       method,
       ...options,
@@ -33504,11 +32342,7 @@ export class GitHubV3RestApiClient {
       >
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/code-scanning/sarifs/${encodeURIComponent(args['sarif_id'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/code-scanning/sarifs/${encodeURIComponent(args['sarif_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -33581,9 +32415,7 @@ export class GitHubV3RestApiClient {
     const query = qs.stringify({ ['ref']: args['ref'] });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/codeowners/errors?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/codeowners/errors?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -33654,9 +32486,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/codespaces?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/codespaces?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -33756,9 +32586,7 @@ export class GitHubV3RestApiClient {
       >
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/codespaces`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/codespaces`;
     const fetchOptions = {
       method,
       ...options,
@@ -33872,9 +32700,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/codespaces/devcontainers?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/codespaces/devcontainers?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -33976,9 +32802,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/codespaces/machines?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/codespaces/machines?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -34078,9 +32902,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/codespaces/new?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/codespaces/new?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -34165,9 +32987,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/codespaces/secrets?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/codespaces/secrets?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -34213,9 +33033,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, CodespacesPublicKey>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/codespaces/secrets/public-key`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/codespaces/secrets/public-key`;
     const fetchOptions = {
       method,
       ...options,
@@ -34262,11 +33080,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, CodespacesSecret>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/codespaces/secrets/${encodeURIComponent(args['secret_name'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/codespaces/secrets/${encodeURIComponent(args['secret_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -34319,11 +33133,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<201, EmptyObject> | ResponseWithData<204, undefined>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/codespaces/secrets/${encodeURIComponent(args['secret_name'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/codespaces/secrets/${encodeURIComponent(args['secret_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -34381,11 +33191,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/codespaces/secrets/${encodeURIComponent(args['secret_name'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/codespaces/secrets/${encodeURIComponent(args['secret_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -34445,9 +33251,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/collaborators?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/collaborators?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -34502,11 +33306,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<404, undefined>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/collaborators/${encodeURIComponent(
-      args['username']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/collaborators/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -34565,11 +33365,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/collaborators/${encodeURIComponent(
-      args['username']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/collaborators/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -34639,11 +33435,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/collaborators/${encodeURIComponent(
-      args['username']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/collaborators/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -34693,11 +33485,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/collaborators/${encodeURIComponent(
-      args['username']
-    )}/permission`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/collaborators/${encodeURIComponent(args['username'])}/permission`;
     const fetchOptions = {
       method,
       ...options,
@@ -34756,9 +33544,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/comments?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/comments?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -34807,11 +33593,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, CommitComment> | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/comments/${encodeURIComponent(
-      args['comment_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/comments/${encodeURIComponent(args['comment_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -34867,11 +33649,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, CommitComment> | ResponseWithData<404, BasicError>
   > {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/comments/${encodeURIComponent(
-      args['comment_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/comments/${encodeURIComponent(args['comment_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -34931,11 +33709,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/comments/${encodeURIComponent(
-      args['comment_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/comments/${encodeURIComponent(args['comment_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -35008,11 +33782,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/comments/${encodeURIComponent(
-      args['comment_id']
-    )}/reactions?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/comments/${encodeURIComponent(args['comment_id'])}/reactions?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -35080,11 +33850,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/comments/${encodeURIComponent(
-      args['comment_id']
-    )}/reactions`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/comments/${encodeURIComponent(args['comment_id'])}/reactions`;
     const fetchOptions = {
       method,
       ...options,
@@ -35149,11 +33915,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/comments/${encodeURIComponent(
-      args['comment_id']
-    )}/reactions/${encodeURIComponent(args['reaction_id'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/comments/${encodeURIComponent(args['comment_id'])}/reactions/${encodeURIComponent(args['reaction_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -35222,9 +33984,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/commits?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/commits?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -35298,11 +34058,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/commits/${encodeURIComponent(
-      args['commit_sha']
-    )}/branches-where-head`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/commits/${encodeURIComponent(args['commit_sha'])}/branches-where-head`;
     const fetchOptions = {
       method,
       ...options,
@@ -35362,11 +34118,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/commits/${encodeURIComponent(
-      args['commit_sha']
-    )}/comments?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/commits/${encodeURIComponent(args['commit_sha'])}/comments?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -35423,11 +34175,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/commits/${encodeURIComponent(
-      args['commit_sha']
-    )}/comments`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/commits/${encodeURIComponent(args['commit_sha'])}/comments`;
     const fetchOptions = {
       method,
       ...options,
@@ -35498,11 +34246,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/commits/${encodeURIComponent(
-      args['commit_sha']
-    )}/pulls?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/commits/${encodeURIComponent(args['commit_sha'])}/pulls?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -35569,11 +34313,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/commits/${encodeURIComponent(
-      args['ref']
-    )}?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/commits/${encodeURIComponent(args['ref'])}?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -35671,11 +34411,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/commits/${encodeURIComponent(
-      args['ref']
-    )}/check-runs?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/commits/${encodeURIComponent(args['ref'])}/check-runs?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -35744,11 +34480,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/commits/${encodeURIComponent(
-      args['ref']
-    )}/check-suites?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/commits/${encodeURIComponent(args['ref'])}/check-suites?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -35808,11 +34540,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/commits/${encodeURIComponent(
-      args['ref']
-    )}/status?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/commits/${encodeURIComponent(args['ref'])}/status?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -35875,11 +34603,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/commits/${encodeURIComponent(
-      args['ref']
-    )}/statuses?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/commits/${encodeURIComponent(args['ref'])}/statuses?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -35928,9 +34652,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, CommunityProfile>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/community/profile`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/community/profile`;
     const fetchOptions = {
       method,
       ...options,
@@ -35996,11 +34718,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/compare/${encodeURIComponent(
-      args['basehead']
-    )}?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/compare/${encodeURIComponent(args['basehead'])}?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -36080,11 +34798,7 @@ export class GitHubV3RestApiClient {
     const query = qs.stringify({ ['ref']: args['ref'] });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/contents/${encodeURIComponent(
-      args['path']
-    )}?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/contents/${encodeURIComponent(args['path'])}?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -36175,11 +34889,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/contents/${encodeURIComponent(
-      args['path']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/contents/${encodeURIComponent(args['path'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -36278,11 +34988,7 @@ export class GitHubV3RestApiClient {
       >
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/contents/${encodeURIComponent(
-      args['path']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/contents/${encodeURIComponent(args['path'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -36375,9 +35081,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/contributors?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/contributors?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -36479,9 +35183,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/dependabot/alerts?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/dependabot/alerts?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -36563,11 +35265,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/dependabot/alerts/${encodeURIComponent(args['alert_number'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/dependabot/alerts/${encodeURIComponent(args['alert_number'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -36649,11 +35347,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationErrorSimple>
   > {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/dependabot/alerts/${encodeURIComponent(args['alert_number'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/dependabot/alerts/${encodeURIComponent(args['alert_number'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -36749,9 +35443,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/dependabot/secrets?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/dependabot/secrets?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -36797,9 +35489,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, DependabotPublicKey>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/dependabot/secrets/public-key`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/dependabot/secrets/public-key`;
     const fetchOptions = {
       method,
       ...options,
@@ -36846,11 +35536,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, DependabotSecret>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/dependabot/secrets/${encodeURIComponent(args['secret_name'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/dependabot/secrets/${encodeURIComponent(args['secret_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -36903,11 +35589,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<201, EmptyObject> | ResponseWithData<204, undefined>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/dependabot/secrets/${encodeURIComponent(args['secret_name'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/dependabot/secrets/${encodeURIComponent(args['secret_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -36965,11 +35647,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/dependabot/secrets/${encodeURIComponent(args['secret_name'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/dependabot/secrets/${encodeURIComponent(args['secret_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -37023,13 +35701,7 @@ export class GitHubV3RestApiClient {
     const query = qs.stringify({ ['name']: args['name'] });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/dependency-graph/compare/${encodeURIComponent(
-      args['basehead']
-    )}?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/dependency-graph/compare/${encodeURIComponent(args['basehead'])}?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -37098,9 +35770,7 @@ export class GitHubV3RestApiClient {
     >
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/dependency-graph/snapshots`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/dependency-graph/snapshots`;
     const fetchOptions = {
       method,
       ...options,
@@ -37171,9 +35841,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/deployments?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/deployments?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -37235,9 +35903,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/deployments`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/deployments`;
     const fetchOptions = {
       method,
       ...options,
@@ -37309,11 +35975,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, Deployment> | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/deployments/${encodeURIComponent(
-      args['deployment_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/deployments/${encodeURIComponent(args['deployment_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -37370,11 +36032,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationErrorSimple>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/deployments/${encodeURIComponent(
-      args['deployment_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/deployments/${encodeURIComponent(args['deployment_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -37443,11 +36101,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/deployments/${encodeURIComponent(
-      args['deployment_id']
-    )}/statuses?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/deployments/${encodeURIComponent(args['deployment_id'])}/statuses?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -37519,11 +36173,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/deployments/${encodeURIComponent(
-      args['deployment_id']
-    )}/statuses`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/deployments/${encodeURIComponent(args['deployment_id'])}/statuses`;
     const fetchOptions = {
       method,
       ...options,
@@ -37584,11 +36234,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, DeploymentStatus> | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/deployments/${encodeURIComponent(
-      args['deployment_id']
-    )}/statuses/${encodeURIComponent(args['status_id'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/deployments/${encodeURIComponent(args['deployment_id'])}/statuses/${encodeURIComponent(args['status_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -37646,9 +36292,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/dispatches`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/dispatches`;
     const fetchOptions = {
       method,
       ...options,
@@ -37720,9 +36364,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/environments?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/environments?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -37772,11 +36414,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, Environment>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/environments/${encodeURIComponent(
-      args['environment_name']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/environments/${encodeURIComponent(args['environment_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -37833,11 +36471,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, Environment> | ResponseWithData<422, BasicError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/environments/${encodeURIComponent(
-      args['environment_name']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/environments/${encodeURIComponent(args['environment_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -37895,11 +36529,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/environments/${encodeURIComponent(
-      args['environment_name']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/environments/${encodeURIComponent(args['environment_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -37961,11 +36591,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/environments/${encodeURIComponent(
-      args['environment_name']
-    )}/deployment-branch-policies?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/environments/${encodeURIComponent(args['environment_name'])}/deployment-branch-policies?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -38020,11 +36646,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, undefined>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/environments/${encodeURIComponent(
-      args['environment_name']
-    )}/deployment-branch-policies`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/environments/${encodeURIComponent(args['environment_name'])}/deployment-branch-policies`;
     const fetchOptions = {
       method,
       ...options,
@@ -38089,13 +36711,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, DeploymentBranchPolicy>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/environments/${encodeURIComponent(
-      args['environment_name']
-    )}/deployment-branch-policies/${encodeURIComponent(
-      args['branch_policy_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/environments/${encodeURIComponent(args['environment_name'])}/deployment-branch-policies/${encodeURIComponent(args['branch_policy_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -38144,13 +36760,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, DeploymentBranchPolicy>> {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/environments/${encodeURIComponent(
-      args['environment_name']
-    )}/deployment-branch-policies/${encodeURIComponent(
-      args['branch_policy_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/environments/${encodeURIComponent(args['environment_name'])}/deployment-branch-policies/${encodeURIComponent(args['branch_policy_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -38203,13 +36813,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/environments/${encodeURIComponent(
-      args['environment_name']
-    )}/deployment-branch-policies/${encodeURIComponent(
-      args['branch_policy_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/environments/${encodeURIComponent(args['environment_name'])}/deployment-branch-policies/${encodeURIComponent(args['branch_policy_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -38262,9 +36866,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/events?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/events?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -38322,9 +36924,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/forks?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/forks?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -38387,9 +36987,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/forks`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/forks`;
     const fetchOptions = {
       method,
       ...options,
@@ -38471,9 +37069,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/git/blobs`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/git/blobs`;
     const fetchOptions = {
       method,
       ...options,
@@ -38554,11 +37150,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/git/blobs/${encodeURIComponent(
-      args['file_sha']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/git/blobs/${encodeURIComponent(args['file_sha'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -38642,9 +37234,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/git/commits`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/git/commits`;
     const fetchOptions = {
       method,
       ...options,
@@ -38710,11 +37300,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, GitCommit> | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/git/commits/${encodeURIComponent(
-      args['commit_sha']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/git/commits/${encodeURIComponent(args['commit_sha'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -38767,11 +37353,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ReadonlyArray<GitReference>>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/git/matching-refs/${encodeURIComponent(args['ref'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/git/matching-refs/${encodeURIComponent(args['ref'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -38820,11 +37402,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, GitReference> | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/git/ref/${encodeURIComponent(
-      args['ref']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/git/ref/${encodeURIComponent(args['ref'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -38883,9 +37461,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<201, GitReference> | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/git/refs`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/git/refs`;
     const fetchOptions = {
       method,
       ...options,
@@ -38946,11 +37522,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, GitReference> | ResponseWithData<422, ValidationError>
   > {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/git/refs/${encodeURIComponent(
-      args['ref']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/git/refs/${encodeURIComponent(args['ref'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -39010,11 +37582,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<422, ValidationError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/git/refs/${encodeURIComponent(
-      args['ref']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/git/refs/${encodeURIComponent(args['ref'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -39079,9 +37647,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<201, GitTag> | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/git/tags`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/git/tags`;
     const fetchOptions = {
       method,
       ...options,
@@ -39141,11 +37707,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, GitTag> | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/git/tags/${encodeURIComponent(
-      args['tag_sha']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/git/tags/${encodeURIComponent(args['tag_sha'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -39212,9 +37774,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/git/trees`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/git/trees`;
     const fetchOptions = {
       method,
       ...options,
@@ -39291,11 +37851,7 @@ export class GitHubV3RestApiClient {
     const query = qs.stringify({ ['recursive']: args['recursive'] });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/git/trees/${encodeURIComponent(
-      args['tree_sha']
-    )}?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/git/trees/${encodeURIComponent(args['tree_sha'])}?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -39363,9 +37919,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/hooks?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/hooks?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -39435,9 +37989,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/hooks`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/hooks`;
     const fetchOptions = {
       method,
       ...options,
@@ -39509,11 +38061,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, Webhook> | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/hooks/${encodeURIComponent(
-      args['hook_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/hooks/${encodeURIComponent(args['hook_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -39584,11 +38132,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/hooks/${encodeURIComponent(
-      args['hook_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/hooks/${encodeURIComponent(args['hook_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -39654,11 +38198,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/hooks/${encodeURIComponent(
-      args['hook_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/hooks/${encodeURIComponent(args['hook_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -39711,11 +38251,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, WebhookConfiguration>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/hooks/${encodeURIComponent(
-      args['hook_id']
-    )}/config`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/hooks/${encodeURIComponent(args['hook_id'])}/config`;
     const fetchOptions = {
       method,
       ...options,
@@ -39768,11 +38304,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, WebhookConfiguration>> {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/hooks/${encodeURIComponent(
-      args['hook_id']
-    )}/config`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/hooks/${encodeURIComponent(args['hook_id'])}/config`;
     const fetchOptions = {
       method,
       ...options,
@@ -39835,11 +38367,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/hooks/${encodeURIComponent(
-      args['hook_id']
-    )}/deliveries?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/hooks/${encodeURIComponent(args['hook_id'])}/deliveries?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -39903,11 +38431,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/hooks/${encodeURIComponent(
-      args['hook_id']
-    )}/deliveries/${encodeURIComponent(args['delivery_id'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/hooks/${encodeURIComponent(args['hook_id'])}/deliveries/${encodeURIComponent(args['delivery_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -39971,11 +38495,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/hooks/${encodeURIComponent(
-      args['hook_id']
-    )}/deliveries/${encodeURIComponent(args['delivery_id'])}/attempts`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/hooks/${encodeURIComponent(args['hook_id'])}/deliveries/${encodeURIComponent(args['delivery_id'])}/attempts`;
     const fetchOptions = {
       method,
       ...options,
@@ -40036,11 +38556,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<404, BasicError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/hooks/${encodeURIComponent(
-      args['hook_id']
-    )}/pings`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/hooks/${encodeURIComponent(args['hook_id'])}/pings`;
     const fetchOptions = {
       method,
       ...options,
@@ -40095,11 +38611,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<404, BasicError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/hooks/${encodeURIComponent(
-      args['hook_id']
-    )}/tests`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/hooks/${encodeURIComponent(args['hook_id'])}/tests`;
     const fetchOptions = {
       method,
       ...options,
@@ -40150,9 +38662,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, Import> | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/import`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/import`;
     const fetchOptions = {
       method,
       ...options,
@@ -40215,9 +38725,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/import`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/import`;
     const fetchOptions = {
       method,
       ...options,
@@ -40286,9 +38794,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, Import>> {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/import`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/import`;
     const fetchOptions = {
       method,
       ...options,
@@ -40336,9 +38842,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/import`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/import`;
     const fetchOptions = {
       method,
       ...options,
@@ -40390,9 +38894,7 @@ export class GitHubV3RestApiClient {
     const query = qs.stringify({ ['since']: args['since'] });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/import/authors?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/import/authors?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -40450,11 +38952,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/import/authors/${encodeURIComponent(
-      args['author_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/import/authors/${encodeURIComponent(args['author_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -40514,9 +39012,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ReadonlyArray<PorterLargeFile>>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/import/large_files`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/import/large_files`;
     const fetchOptions = {
       method,
       ...options,
@@ -40565,9 +39061,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, Import> | ResponseWithData<422, ValidationError>
   > {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/import/lfs`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/import/lfs`;
     const fetchOptions = {
       method,
       ...options,
@@ -40625,9 +39119,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/installation`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/installation`;
     const fetchOptions = {
       method,
       ...options,
@@ -40682,9 +39174,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, InteractionLimits | {}>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/interaction-limits`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/interaction-limits`;
     const fetchOptions = {
       method,
       ...options,
@@ -40733,9 +39223,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, InteractionLimits> | ResponseWithData<409, undefined>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/interaction-limits`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/interaction-limits`;
     const fetchOptions = {
       method,
       ...options,
@@ -40791,9 +39279,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<409, undefined>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/interaction-limits`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/interaction-limits`;
     const fetchOptions = {
       method,
       ...options,
@@ -40852,9 +39338,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/invitations?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/invitations?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -40909,11 +39393,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, RepositoryInvitation>> {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/invitations/${encodeURIComponent(
-      args['invitation_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/invitations/${encodeURIComponent(args['invitation_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -40965,11 +39445,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/invitations/${encodeURIComponent(
-      args['invitation_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/invitations/${encodeURIComponent(args['invitation_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -41045,9 +39521,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -41141,9 +39615,7 @@ export class GitHubV3RestApiClient {
       >
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues`;
     const fetchOptions = {
       method,
       ...options,
@@ -41245,9 +39717,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues/comments?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues/comments?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -41308,11 +39778,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, IssueComment> | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues/comments/${encodeURIComponent(
-      args['comment_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues/comments/${encodeURIComponent(args['comment_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -41368,11 +39834,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, IssueComment> | ResponseWithData<422, ValidationError>
   > {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues/comments/${encodeURIComponent(
-      args['comment_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues/comments/${encodeURIComponent(args['comment_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -41430,11 +39892,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues/comments/${encodeURIComponent(
-      args['comment_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues/comments/${encodeURIComponent(args['comment_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -41501,11 +39959,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues/comments/${encodeURIComponent(
-      args['comment_id']
-    )}/reactions?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues/comments/${encodeURIComponent(args['comment_id'])}/reactions?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -41573,11 +40027,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues/comments/${encodeURIComponent(
-      args['comment_id']
-    )}/reactions`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues/comments/${encodeURIComponent(args['comment_id'])}/reactions`;
     const fetchOptions = {
       method,
       ...options,
@@ -41642,11 +40092,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues/comments/${encodeURIComponent(
-      args['comment_id']
-    )}/reactions/${encodeURIComponent(args['reaction_id'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues/comments/${encodeURIComponent(args['comment_id'])}/reactions/${encodeURIComponent(args['reaction_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -41702,9 +40148,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues/events?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues/events?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -41762,11 +40206,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<410, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues/events/${encodeURIComponent(
-      args['event_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues/events/${encodeURIComponent(args['event_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -41837,11 +40277,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<410, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(
-      args['issue_number']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(args['issue_number'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -41945,11 +40381,7 @@ export class GitHubV3RestApiClient {
       >
   > {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(
-      args['issue_number']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(args['issue_number'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -42042,11 +40474,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<201, Issue>> {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(
-      args['issue_number']
-    )}/assignees`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(args['issue_number'])}/assignees`;
     const fetchOptions = {
       method,
       ...options,
@@ -42099,11 +40527,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, Issue>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(
-      args['issue_number']
-    )}/assignees`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(args['issue_number'])}/assignees`;
     const fetchOptions = {
       method,
       ...options,
@@ -42168,11 +40592,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(
-      args['issue_number']
-    )}/comments?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(args['issue_number'])}/comments?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -42238,11 +40658,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(
-      args['issue_number']
-    )}/comments`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(args['issue_number'])}/comments`;
     const fetchOptions = {
       method,
       ...options,
@@ -42328,11 +40744,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(
-      args['issue_number']
-    )}/events?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(args['issue_number'])}/events?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -42397,11 +40809,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(
-      args['issue_number']
-    )}/labels?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(args['issue_number'])}/labels?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -42478,11 +40886,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(
-      args['issue_number']
-    )}/labels`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(args['issue_number'])}/labels`;
     const fetchOptions = {
       method,
       ...options,
@@ -42570,11 +40974,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(
-      args['issue_number']
-    )}/labels`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(args['issue_number'])}/labels`;
     const fetchOptions = {
       method,
       ...options,
@@ -42655,11 +41055,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<410, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(
-      args['issue_number']
-    )}/labels`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(args['issue_number'])}/labels`;
     const fetchOptions = {
       method,
       ...options,
@@ -42730,11 +41126,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<410, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(
-      args['issue_number']
-    )}/labels/${encodeURIComponent(args['name'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(args['issue_number'])}/labels/${encodeURIComponent(args['name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -42808,11 +41200,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(
-      args['issue_number']
-    )}/lock`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(args['issue_number'])}/lock`;
     const fetchOptions = {
       method,
       ...options,
@@ -42892,11 +41280,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(
-      args['issue_number']
-    )}/lock`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(args['issue_number'])}/lock`;
     const fetchOptions = {
       method,
       ...options,
@@ -42976,11 +41360,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(
-      args['issue_number']
-    )}/reactions?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(args['issue_number'])}/reactions?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -43054,11 +41434,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(
-      args['issue_number']
-    )}/reactions`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(args['issue_number'])}/reactions`;
     const fetchOptions = {
       method,
       ...options,
@@ -43123,11 +41499,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(
-      args['issue_number']
-    )}/reactions/${encodeURIComponent(args['reaction_id'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(args['issue_number'])}/reactions/${encodeURIComponent(args['reaction_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -43185,11 +41557,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(
-      args['issue_number']
-    )}/timeline?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/issues/${encodeURIComponent(args['issue_number'])}/timeline?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -43254,9 +41622,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/keys?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/keys?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -43309,9 +41675,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<201, DeployKey> | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/keys`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/keys`;
     const fetchOptions = {
       method,
       ...options,
@@ -43371,11 +41735,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, DeployKey> | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/keys/${encodeURIComponent(
-      args['key_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/keys/${encodeURIComponent(args['key_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -43428,11 +41788,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/keys/${encodeURIComponent(
-      args['key_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/keys/${encodeURIComponent(args['key_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -43488,9 +41844,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/labels?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/labels?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -43551,9 +41905,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/labels`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/labels`;
     const fetchOptions = {
       method,
       ...options,
@@ -43617,11 +41969,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, Label> | ResponseWithData<404, BasicError>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/labels/${encodeURIComponent(
-      args['name']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/labels/${encodeURIComponent(args['name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -43679,11 +42027,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, Label>> {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/labels/${encodeURIComponent(
-      args['name']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/labels/${encodeURIComponent(args['name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -43735,11 +42079,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/labels/${encodeURIComponent(
-      args['name']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/labels/${encodeURIComponent(args['name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -43782,9 +42122,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, Language>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/languages`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/languages`;
     const fetchOptions = {
       method,
       ...options,
@@ -43829,9 +42167,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<202, unknown> | ResponseWithData<403, undefined>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/lfs`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/lfs`;
     const fetchOptions = {
       method,
       ...options,
@@ -43880,9 +42216,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/lfs`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/lfs`;
     const fetchOptions = {
       method,
       ...options,
@@ -43925,9 +42259,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, LicenseContent>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/license`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/license`;
     const fetchOptions = {
       method,
       ...options,
@@ -43978,9 +42310,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, undefined>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/merge-upstream`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/merge-upstream`;
     const fetchOptions = {
       method,
       ...options,
@@ -44055,9 +42385,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/merges`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/merges`;
     const fetchOptions = {
       method,
       ...options,
@@ -44154,9 +42482,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/milestones?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/milestones?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -44218,9 +42544,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/milestones`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/milestones`;
     const fetchOptions = {
       method,
       ...options,
@@ -44286,11 +42610,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, Milestone> | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/milestones/${encodeURIComponent(
-      args['milestone_number']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/milestones/${encodeURIComponent(args['milestone_number'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -44349,11 +42669,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, Milestone>> {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/milestones/${encodeURIComponent(
-      args['milestone_number']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/milestones/${encodeURIComponent(args['milestone_number'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -44407,11 +42723,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/milestones/${encodeURIComponent(
-      args['milestone_number']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/milestones/${encodeURIComponent(args['milestone_number'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -44471,11 +42783,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/milestones/${encodeURIComponent(
-      args['milestone_number']
-    )}/labels?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/milestones/${encodeURIComponent(args['milestone_number'])}/labels?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -44536,9 +42844,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/notifications?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/notifications?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -44591,9 +42897,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<205, undefined>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/notifications`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/notifications`;
     const fetchOptions = {
       method,
       ...options,
@@ -44652,9 +42956,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, GitHubPages> | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pages`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pages`;
     const fetchOptions = {
       method,
       ...options,
@@ -44719,9 +43021,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pages`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pages`;
     const fetchOptions = {
       method,
       ...options,
@@ -44800,9 +43100,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pages`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pages`;
     const fetchOptions = {
       method,
       ...options,
@@ -44873,9 +43171,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pages`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pages`;
     const fetchOptions = {
       method,
       ...options,
@@ -44946,9 +43242,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pages/builds?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pages/builds?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -44991,9 +43285,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<201, PageBuildStatus>> {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pages/builds`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pages/builds`;
     const fetchOptions = {
       method,
       ...options,
@@ -45036,9 +43328,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, PageBuild>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pages/builds/latest`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pages/builds/latest`;
     const fetchOptions = {
       method,
       ...options,
@@ -45085,11 +43375,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, PageBuild>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pages/builds/${encodeURIComponent(
-      args['build_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pages/builds/${encodeURIComponent(args['build_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -45146,9 +43432,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pages/deployment`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pages/deployment`;
     const fetchOptions = {
       method,
       ...options,
@@ -45220,9 +43504,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, undefined>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pages/health`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pages/health`;
     const fetchOptions = {
       method,
       ...options,
@@ -45308,9 +43590,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/projects?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/projects?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -45394,9 +43674,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationErrorSimple>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/projects`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/projects`;
     const fetchOptions = {
       method,
       ...options,
@@ -45498,9 +43776,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -45571,9 +43847,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls`;
     const fetchOptions = {
       method,
       ...options,
@@ -45649,9 +43923,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/comments?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/comments?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -45701,11 +43973,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/comments/${encodeURIComponent(
-      args['comment_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/comments/${encodeURIComponent(args['comment_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -45759,11 +44027,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, PullRequestReviewComment>> {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/comments/${encodeURIComponent(
-      args['comment_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/comments/${encodeURIComponent(args['comment_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -45817,11 +44081,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/comments/${encodeURIComponent(
-      args['comment_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/comments/${encodeURIComponent(args['comment_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -45894,11 +44154,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/comments/${encodeURIComponent(
-      args['comment_id']
-    )}/reactions?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/comments/${encodeURIComponent(args['comment_id'])}/reactions?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -45966,11 +44222,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/comments/${encodeURIComponent(
-      args['comment_id']
-    )}/reactions`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/comments/${encodeURIComponent(args['comment_id'])}/reactions`;
     const fetchOptions = {
       method,
       ...options,
@@ -46035,11 +44287,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/comments/${encodeURIComponent(
-      args['comment_id']
-    )}/reactions/${encodeURIComponent(args['reaction_id'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/comments/${encodeURIComponent(args['comment_id'])}/reactions/${encodeURIComponent(args['reaction_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -46099,11 +44347,7 @@ export class GitHubV3RestApiClient {
       >
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(
-      args['pull_number']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(args['pull_number'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -46189,11 +44433,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(
-      args['pull_number']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(args['pull_number'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -46282,11 +44522,7 @@ export class GitHubV3RestApiClient {
       >
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(
-      args['pull_number']
-    )}/codespaces`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(args['pull_number'])}/codespaces`;
     const fetchOptions = {
       method,
       ...options,
@@ -46385,11 +44621,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(
-      args['pull_number']
-    )}/comments?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(args['pull_number'])}/comments?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -46451,11 +44683,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(
-      args['pull_number']
-    )}/comments`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(args['pull_number'])}/comments`;
     const fetchOptions = {
       method,
       ...options,
@@ -46524,11 +44752,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(
-      args['pull_number']
-    )}/comments/${encodeURIComponent(args['comment_id'])}/replies`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(args['pull_number'])}/comments/${encodeURIComponent(args['comment_id'])}/replies`;
     const fetchOptions = {
       method,
       ...options,
@@ -46593,11 +44817,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(
-      args['pull_number']
-    )}/commits?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(args['pull_number'])}/commits?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -46663,11 +44883,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(
-      args['pull_number']
-    )}/files?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(args['pull_number'])}/files?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -46738,11 +44954,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<404, undefined>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(
-      args['pull_number']
-    )}/merge`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(args['pull_number'])}/merge`;
     const fetchOptions = {
       method,
       ...options,
@@ -46814,11 +45026,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(
-      args['pull_number']
-    )}/merge`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(args['pull_number'])}/merge`;
     const fetchOptions = {
       method,
       ...options,
@@ -46906,11 +45114,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, PullRequestReviewRequest>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(
-      args['pull_number']
-    )}/requested_reviewers`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(args['pull_number'])}/requested_reviewers`;
     const fetchOptions = {
       method,
       ...options,
@@ -46965,11 +45169,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, undefined>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(
-      args['pull_number']
-    )}/requested_reviewers`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(args['pull_number'])}/requested_reviewers`;
     const fetchOptions = {
       method,
       ...options,
@@ -47040,11 +45240,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(
-      args['pull_number']
-    )}/requested_reviewers`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(args['pull_number'])}/requested_reviewers`;
     const fetchOptions = {
       method,
       ...options,
@@ -47109,11 +45305,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(
-      args['pull_number']
-    )}/reviews?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(args['pull_number'])}/reviews?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -47178,11 +45370,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationErrorSimple>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(
-      args['pull_number']
-    )}/reviews`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(args['pull_number'])}/reviews`;
     const fetchOptions = {
       method,
       ...options,
@@ -47249,11 +45437,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, PullRequestReview> | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(
-      args['pull_number']
-    )}/reviews/${encodeURIComponent(args['review_id'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(args['pull_number'])}/reviews/${encodeURIComponent(args['review_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -47311,11 +45495,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationErrorSimple>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(
-      args['pull_number']
-    )}/reviews/${encodeURIComponent(args['review_id'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(args['pull_number'])}/reviews/${encodeURIComponent(args['review_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -47378,11 +45558,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationErrorSimple>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(
-      args['pull_number']
-    )}/reviews/${encodeURIComponent(args['review_id'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(args['pull_number'])}/reviews/${encodeURIComponent(args['review_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -47452,11 +45628,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(
-      args['pull_number']
-    )}/reviews/${encodeURIComponent(args['review_id'])}/comments?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(args['pull_number'])}/reviews/${encodeURIComponent(args['review_id'])}/comments?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -47515,11 +45687,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationErrorSimple>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(
-      args['pull_number']
-    )}/reviews/${encodeURIComponent(args['review_id'])}/dismissals`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(args['pull_number'])}/reviews/${encodeURIComponent(args['review_id'])}/dismissals`;
     const fetchOptions = {
       method,
       ...options,
@@ -47593,11 +45761,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationErrorSimple>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(
-      args['pull_number']
-    )}/reviews/${encodeURIComponent(args['review_id'])}/events`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(args['pull_number'])}/reviews/${encodeURIComponent(args['review_id'])}/events`;
     const fetchOptions = {
       method,
       ...options,
@@ -47675,11 +45839,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(
-      args['pull_number']
-    )}/update-branch`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/pulls/${encodeURIComponent(args['pull_number'])}/update-branch`;
     const fetchOptions = {
       method,
       ...options,
@@ -47752,9 +45912,7 @@ export class GitHubV3RestApiClient {
     const query = qs.stringify({ ['ref']: args['ref'] });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/readme?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/readme?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -47820,11 +45978,7 @@ export class GitHubV3RestApiClient {
     const query = qs.stringify({ ['ref']: args['ref'] });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/readme/${encodeURIComponent(
-      args['dir']
-    )}?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/readme/${encodeURIComponent(args['dir'])}?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -47892,9 +46046,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/releases?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/releases?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -47960,9 +46112,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/releases`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/releases`;
     const fetchOptions = {
       method,
       ...options,
@@ -48030,11 +46180,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/releases/assets/${encodeURIComponent(
-      args['asset_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/releases/assets/${encodeURIComponent(args['asset_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -48098,11 +46244,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ReleaseAsset>> {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/releases/assets/${encodeURIComponent(
-      args['asset_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/releases/assets/${encodeURIComponent(args['asset_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -48154,11 +46296,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/releases/assets/${encodeURIComponent(
-      args['asset_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/releases/assets/${encodeURIComponent(args['asset_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -48213,9 +46351,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/releases/generate-notes`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/releases/generate-notes`;
     const fetchOptions = {
       method,
       ...options,
@@ -48269,9 +46405,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, Release>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/releases/latest`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/releases/latest`;
     const fetchOptions = {
       method,
       ...options,
@@ -48320,11 +46454,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, Release> | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/releases/tags/${encodeURIComponent(
-      args['tag']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/releases/tags/${encodeURIComponent(args['tag'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -48379,11 +46509,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, Release> | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/releases/${encodeURIComponent(
-      args['release_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/releases/${encodeURIComponent(args['release_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -48447,11 +46573,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, Release> | ResponseWithData<404, BasicError>
   > {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/releases/${encodeURIComponent(
-      args['release_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/releases/${encodeURIComponent(args['release_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -48509,11 +46631,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/releases/${encodeURIComponent(
-      args['release_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/releases/${encodeURIComponent(args['release_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -48567,11 +46685,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/releases/${encodeURIComponent(
-      args['release_id']
-    )}/assets?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/releases/${encodeURIComponent(args['release_id'])}/assets?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -48627,11 +46741,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/releases/${encodeURIComponent(
-      args['release_id']
-    )}/assets?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/releases/${encodeURIComponent(args['release_id'])}/assets?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -48702,11 +46812,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/releases/${encodeURIComponent(
-      args['release_id']
-    )}/reactions?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/releases/${encodeURIComponent(args['release_id'])}/reactions?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -48772,11 +46878,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/releases/${encodeURIComponent(
-      args['release_id']
-    )}/reactions`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/releases/${encodeURIComponent(args['release_id'])}/reactions`;
     const fetchOptions = {
       method,
       ...options,
@@ -48841,11 +46943,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/releases/${encodeURIComponent(
-      args['release_id']
-    )}/reactions/${encodeURIComponent(args['reaction_id'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/releases/${encodeURIComponent(args['release_id'])}/reactions/${encodeURIComponent(args['reaction_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -48923,9 +47021,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/secret-scanning/alerts?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/secret-scanning/alerts?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -49000,11 +47096,7 @@ export class GitHubV3RestApiClient {
       >
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/secret-scanning/alerts/${encodeURIComponent(args['alert_number'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/secret-scanning/alerts/${encodeURIComponent(args['alert_number'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -49091,11 +47183,7 @@ export class GitHubV3RestApiClient {
       >
   > {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/secret-scanning/alerts/${encodeURIComponent(args['alert_number'])}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/secret-scanning/alerts/${encodeURIComponent(args['alert_number'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -49193,13 +47281,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(
-      args['repo']
-    )}/secret-scanning/alerts/${encodeURIComponent(
-      args['alert_number']
-    )}/locations?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/secret-scanning/alerts/${encodeURIComponent(args['alert_number'])}/locations?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -49274,9 +47356,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/stargazers?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/stargazers?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -49331,9 +47411,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<204, undefined>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/stats/code_frequency`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/stats/code_frequency`;
     const fetchOptions = {
       method,
       ...options,
@@ -49392,9 +47470,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<204, undefined>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/stats/commit_activity`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/stats/commit_activity`;
     const fetchOptions = {
       method,
       ...options,
@@ -49453,9 +47529,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<204, undefined>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/stats/contributors`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/stats/contributors`;
     const fetchOptions = {
       method,
       ...options,
@@ -49513,9 +47587,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/stats/participation`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/stats/participation`;
     const fetchOptions = {
       method,
       ...options,
@@ -49567,9 +47639,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<204, undefined>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/stats/punch_card`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/stats/punch_card`;
     const fetchOptions = {
       method,
       ...options,
@@ -49628,11 +47698,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<201, Status>> {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/statuses/${encodeURIComponent(
-      args['sha']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/statuses/${encodeURIComponent(args['sha'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -49690,9 +47756,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/subscribers?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/subscribers?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -49739,9 +47803,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, undefined>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/subscription`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/subscription`;
     const fetchOptions = {
       method,
       ...options,
@@ -49803,9 +47865,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, RepositoryInvitation>> {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/subscription`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/subscription`;
     const fetchOptions = {
       method,
       ...options,
@@ -49853,9 +47913,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/subscription`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/subscription`;
     const fetchOptions = {
       method,
       ...options,
@@ -49908,9 +47966,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/tags?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/tags?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -49957,9 +48013,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/tags/protection`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/tags/protection`;
     const fetchOptions = {
       method,
       ...options,
@@ -50022,9 +48076,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/tags/protection`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/tags/protection`;
     const fetchOptions = {
       method,
       ...options,
@@ -50092,11 +48144,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/tags/protection/${encodeURIComponent(
-      args['tag_protection_id']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/tags/protection/${encodeURIComponent(args['tag_protection_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -50155,11 +48203,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<302, undefined>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/tarball/${encodeURIComponent(
-      args['ref']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/tarball/${encodeURIComponent(args['ref'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -50212,9 +48256,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/teams?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/teams?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -50267,9 +48309,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/topics?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/topics?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -50326,9 +48366,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationErrorSimple>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/topics`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/topics`;
     const fetchOptions = {
       method,
       ...options,
@@ -50396,9 +48434,7 @@ export class GitHubV3RestApiClient {
     const query = qs.stringify({ ['per']: args['per'] });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/traffic/clones?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/traffic/clones?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -50450,9 +48486,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<403, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/traffic/popular/paths`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/traffic/popular/paths`;
     const fetchOptions = {
       method,
       ...options,
@@ -50504,9 +48538,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<403, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/traffic/popular/referrers`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/traffic/popular/referrers`;
     const fetchOptions = {
       method,
       ...options,
@@ -50563,9 +48595,7 @@ export class GitHubV3RestApiClient {
     const query = qs.stringify({ ['per']: args['per'] });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/traffic/views?${query}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/traffic/views?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -50621,9 +48651,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<202, MinimalRepository>> {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/transfer`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/transfer`;
     const fetchOptions = {
       method,
       ...options,
@@ -50673,9 +48701,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<404, undefined>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/vulnerability-alerts`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/vulnerability-alerts`;
     const fetchOptions = {
       method,
       ...options,
@@ -50724,9 +48750,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/vulnerability-alerts`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/vulnerability-alerts`;
     const fetchOptions = {
       method,
       ...options,
@@ -50769,9 +48793,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/vulnerability-alerts`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/vulnerability-alerts`;
     const fetchOptions = {
       method,
       ...options,
@@ -50818,11 +48840,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<302, undefined>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}/zipball/${encodeURIComponent(
-      args['ref']
-    )}`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}/zipball/${encodeURIComponent(args['ref'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -50875,9 +48893,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<201, Repository>> {
     const method = 'POST';
-    const url = `${this.baseUrl}/repos/${encodeURIComponent(
-      args['template_owner']
-    )}/${encodeURIComponent(args['template_repo'])}/generate`;
+    const url = `${this.baseUrl}/repos/${encodeURIComponent(args['template_owner'])}/${encodeURIComponent(args['template_repo'])}/generate`;
     const fetchOptions = {
       method,
       ...options,
@@ -51004,11 +49020,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/repositories/${encodeURIComponent(
-      args['repository_id']
-    )}/environments/${encodeURIComponent(
-      args['environment_name']
-    )}/secrets?${query}`;
+    const url = `${this.baseUrl}/repositories/${encodeURIComponent(args['repository_id'])}/environments/${encodeURIComponent(args['environment_name'])}/secrets?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -51054,11 +49066,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ActionsPublicKey>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repositories/${encodeURIComponent(
-      args['repository_id']
-    )}/environments/${encodeURIComponent(
-      args['environment_name']
-    )}/secrets/public-key`;
+    const url = `${this.baseUrl}/repositories/${encodeURIComponent(args['repository_id'])}/environments/${encodeURIComponent(args['environment_name'])}/secrets/public-key`;
     const fetchOptions = {
       method,
       ...options,
@@ -51105,11 +49113,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ActionsSecret>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/repositories/${encodeURIComponent(
-      args['repository_id']
-    )}/environments/${encodeURIComponent(
-      args['environment_name']
-    )}/secrets/${encodeURIComponent(args['secret_name'])}`;
+    const url = `${this.baseUrl}/repositories/${encodeURIComponent(args['repository_id'])}/environments/${encodeURIComponent(args['environment_name'])}/secrets/${encodeURIComponent(args['secret_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -51162,11 +49166,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<201, EmptyObject> | ResponseWithData<204, undefined>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/repositories/${encodeURIComponent(
-      args['repository_id']
-    )}/environments/${encodeURIComponent(
-      args['environment_name']
-    )}/secrets/${encodeURIComponent(args['secret_name'])}`;
+    const url = `${this.baseUrl}/repositories/${encodeURIComponent(args['repository_id'])}/environments/${encodeURIComponent(args['environment_name'])}/secrets/${encodeURIComponent(args['secret_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -51224,11 +49224,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/repositories/${encodeURIComponent(
-      args['repository_id']
-    )}/environments/${encodeURIComponent(
-      args['environment_name']
-    )}/secrets/${encodeURIComponent(args['secret_name'])}`;
+    const url = `${this.baseUrl}/repositories/${encodeURIComponent(args['repository_id'])}/environments/${encodeURIComponent(args['environment_name'])}/secrets/${encodeURIComponent(args['secret_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -52162,9 +50158,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/discussions?${query}`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/discussions?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -52214,9 +50208,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<201, TeamDiscussion>> {
     const method = 'POST';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/discussions`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/discussions`;
     const fetchOptions = {
       method,
       ...options,
@@ -52264,9 +50256,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, TeamDiscussion>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/discussions/${encodeURIComponent(args['discussion_number'])}`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/discussions/${encodeURIComponent(args['discussion_number'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -52313,9 +50303,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, TeamDiscussion>> {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/discussions/${encodeURIComponent(args['discussion_number'])}`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/discussions/${encodeURIComponent(args['discussion_number'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -52363,9 +50351,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/discussions/${encodeURIComponent(args['discussion_number'])}`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/discussions/${encodeURIComponent(args['discussion_number'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -52420,11 +50406,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/discussions/${encodeURIComponent(
-      args['discussion_number']
-    )}/comments?${query}`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/discussions/${encodeURIComponent(args['discussion_number'])}/comments?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -52471,9 +50453,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<201, TeamDiscussionComment>> {
     const method = 'POST';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/discussions/${encodeURIComponent(args['discussion_number'])}/comments`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/discussions/${encodeURIComponent(args['discussion_number'])}/comments`;
     const fetchOptions = {
       method,
       ...options,
@@ -52525,11 +50505,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, TeamDiscussionComment>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/discussions/${encodeURIComponent(
-      args['discussion_number']
-    )}/comments/${encodeURIComponent(args['comment_number'])}`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/discussions/${encodeURIComponent(args['discussion_number'])}/comments/${encodeURIComponent(args['comment_number'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -52577,11 +50553,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, TeamDiscussionComment>> {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/discussions/${encodeURIComponent(
-      args['discussion_number']
-    )}/comments/${encodeURIComponent(args['comment_number'])}`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/discussions/${encodeURIComponent(args['discussion_number'])}/comments/${encodeURIComponent(args['comment_number'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -52633,11 +50605,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/discussions/${encodeURIComponent(
-      args['discussion_number']
-    )}/comments/${encodeURIComponent(args['comment_number'])}`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/discussions/${encodeURIComponent(args['discussion_number'])}/comments/${encodeURIComponent(args['comment_number'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -52701,13 +50669,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/discussions/${encodeURIComponent(
-      args['discussion_number']
-    )}/comments/${encodeURIComponent(
-      args['comment_number']
-    )}/reactions?${query}`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/discussions/${encodeURIComponent(args['discussion_number'])}/comments/${encodeURIComponent(args['comment_number'])}/reactions?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -52765,11 +50727,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<201, Reaction>> {
     const method = 'POST';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/discussions/${encodeURIComponent(
-      args['discussion_number']
-    )}/comments/${encodeURIComponent(args['comment_number'])}/reactions`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/discussions/${encodeURIComponent(args['discussion_number'])}/comments/${encodeURIComponent(args['comment_number'])}/reactions`;
     const fetchOptions = {
       method,
       ...options,
@@ -52837,11 +50795,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/discussions/${encodeURIComponent(
-      args['discussion_number']
-    )}/reactions?${query}`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/discussions/${encodeURIComponent(args['discussion_number'])}/reactions?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -52898,9 +50852,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<201, Reaction>> {
     const method = 'POST';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/discussions/${encodeURIComponent(args['discussion_number'])}/reactions`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/discussions/${encodeURIComponent(args['discussion_number'])}/reactions`;
     const fetchOptions = {
       method,
       ...options,
@@ -52957,9 +50909,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/invitations?${query}`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/invitations?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -53016,9 +50966,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/members?${query}`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/members?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -53069,9 +51017,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<404, undefined>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/members/${encodeURIComponent(args['username'])}`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/members/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -53125,9 +51071,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, undefined>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/members/${encodeURIComponent(args['username'])}`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/members/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -53190,9 +51134,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<404, undefined>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/members/${encodeURIComponent(args['username'])}`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/members/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -53243,9 +51185,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, TeamMembership> | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/memberships/${encodeURIComponent(args['username'])}`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/memberships/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -53303,9 +51243,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, undefined>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/memberships/${encodeURIComponent(args['username'])}`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/memberships/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -53373,9 +51311,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<403, undefined>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/memberships/${encodeURIComponent(args['username'])}`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/memberships/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -53436,9 +51372,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/projects?${query}`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/projects?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -53489,9 +51423,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<200, TeamProject> | ResponseWithData<404, undefined>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/projects/${encodeURIComponent(args['project_id'])}`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/projects/${encodeURIComponent(args['project_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -53552,9 +51484,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/projects/${encodeURIComponent(args['project_id'])}`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/projects/${encodeURIComponent(args['project_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -53627,9 +51557,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/projects/${encodeURIComponent(args['project_id'])}`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/projects/${encodeURIComponent(args['project_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -53696,9 +51624,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/repos?${query}`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/repos?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -53755,11 +51681,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, undefined>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(
-      args['repo']
-    )}`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -53823,11 +51745,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(
-      args['repo']
-    )}`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -53891,11 +51809,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(
-      args['repo']
-    )}`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/repos/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -53952,9 +51866,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/teams/${encodeURIComponent(
-      args['team_id']
-    )}/teams?${query}`;
+    const url = `${this.baseUrl}/teams/${encodeURIComponent(args['team_id'])}/teams?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -54260,9 +52172,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/user/blocks/${encodeURIComponent(
-      args['username']
-    )}`;
+    const url = `${this.baseUrl}/user/blocks/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -54336,9 +52246,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/user/blocks/${encodeURIComponent(
-      args['username']
-    )}`;
+    const url = `${this.baseUrl}/user/blocks/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -54417,9 +52325,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/user/blocks/${encodeURIComponent(
-      args['username']
-    )}`;
+    const url = `${this.baseUrl}/user/blocks/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -54808,9 +52714,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, CodespacesSecret>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/user/codespaces/secrets/${encodeURIComponent(
-      args['secret_name']
-    )}`;
+    const url = `${this.baseUrl}/user/codespaces/secrets/${encodeURIComponent(args['secret_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -54865,9 +52769,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/user/codespaces/secrets/${encodeURIComponent(
-      args['secret_name']
-    )}`;
+    const url = `${this.baseUrl}/user/codespaces/secrets/${encodeURIComponent(args['secret_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -54933,9 +52835,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<204, undefined>> {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/user/codespaces/secrets/${encodeURIComponent(
-      args['secret_name']
-    )}`;
+    const url = `${this.baseUrl}/user/codespaces/secrets/${encodeURIComponent(args['secret_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -54990,9 +52890,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<500, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/user/codespaces/secrets/${encodeURIComponent(
-      args['secret_name']
-    )}/repositories`;
+    const url = `${this.baseUrl}/user/codespaces/secrets/${encodeURIComponent(args['secret_name'])}/repositories`;
     const fetchOptions = {
       method,
       ...options,
@@ -55073,9 +52971,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<500, BasicError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/user/codespaces/secrets/${encodeURIComponent(
-      args['secret_name']
-    )}/repositories`;
+    const url = `${this.baseUrl}/user/codespaces/secrets/${encodeURIComponent(args['secret_name'])}/repositories`;
     const fetchOptions = {
       method,
       ...options,
@@ -55153,9 +53049,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<500, BasicError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/user/codespaces/secrets/${encodeURIComponent(
-      args['secret_name']
-    )}/repositories/${encodeURIComponent(args['repository_id'])}`;
+    const url = `${this.baseUrl}/user/codespaces/secrets/${encodeURIComponent(args['secret_name'])}/repositories/${encodeURIComponent(args['repository_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -55228,9 +53122,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<500, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/user/codespaces/secrets/${encodeURIComponent(
-      args['secret_name']
-    )}/repositories/${encodeURIComponent(args['repository_id'])}`;
+    const url = `${this.baseUrl}/user/codespaces/secrets/${encodeURIComponent(args['secret_name'])}/repositories/${encodeURIComponent(args['repository_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -55304,9 +53196,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<500, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/user/codespaces/${encodeURIComponent(
-      args['codespace_name']
-    )}`;
+    const url = `${this.baseUrl}/user/codespaces/${encodeURIComponent(args['codespace_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -55391,9 +53281,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/user/codespaces/${encodeURIComponent(
-      args['codespace_name']
-    )}`;
+    const url = `${this.baseUrl}/user/codespaces/${encodeURIComponent(args['codespace_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -55466,9 +53354,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<500, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/user/codespaces/${encodeURIComponent(
-      args['codespace_name']
-    )}`;
+    const url = `${this.baseUrl}/user/codespaces/${encodeURIComponent(args['codespace_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -55548,9 +53434,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<500, BasicError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/user/codespaces/${encodeURIComponent(
-      args['codespace_name']
-    )}/exports`;
+    const url = `${this.baseUrl}/user/codespaces/${encodeURIComponent(args['codespace_name'])}/exports`;
     const fetchOptions = {
       method,
       ...options,
@@ -55626,9 +53510,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/user/codespaces/${encodeURIComponent(
-      args['codespace_name']
-    )}/exports/${encodeURIComponent(args['export_id'])}`;
+    const url = `${this.baseUrl}/user/codespaces/${encodeURIComponent(args['codespace_name'])}/exports/${encodeURIComponent(args['export_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -55690,9 +53572,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<500, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/user/codespaces/${encodeURIComponent(
-      args['codespace_name']
-    )}/machines`;
+    const url = `${this.baseUrl}/user/codespaces/${encodeURIComponent(args['codespace_name'])}/machines`;
     const fetchOptions = {
       method,
       ...options,
@@ -55778,9 +53658,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<500, BasicError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/user/codespaces/${encodeURIComponent(
-      args['codespace_name']
-    )}/start`;
+    const url = `${this.baseUrl}/user/codespaces/${encodeURIComponent(args['codespace_name'])}/start`;
     const fetchOptions = {
       method,
       ...options,
@@ -55877,9 +53755,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<500, BasicError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/user/codespaces/${encodeURIComponent(
-      args['codespace_name']
-    )}/stop`;
+    const url = `${this.baseUrl}/user/codespaces/${encodeURIComponent(args['codespace_name'])}/stop`;
     const fetchOptions = {
       method,
       ...options,
@@ -56437,9 +54313,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/user/following/${encodeURIComponent(
-      args['username']
-    )}`;
+    const url = `${this.baseUrl}/user/following/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -56512,9 +54386,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/user/following/${encodeURIComponent(
-      args['username']
-    )}`;
+    const url = `${this.baseUrl}/user/following/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -56587,9 +54459,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/user/following/${encodeURIComponent(
-      args['username']
-    )}`;
+    const url = `${this.baseUrl}/user/following/${encodeURIComponent(args['username'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -56830,9 +54700,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/user/gpg_keys/${encodeURIComponent(
-      args['gpg_key_id']
-    )}`;
+    const url = `${this.baseUrl}/user/gpg_keys/${encodeURIComponent(args['gpg_key_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -56906,9 +54774,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/user/gpg_keys/${encodeURIComponent(
-      args['gpg_key_id']
-    )}`;
+    const url = `${this.baseUrl}/user/gpg_keys/${encodeURIComponent(args['gpg_key_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -57082,9 +54948,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/user/installations/${encodeURIComponent(
-      args['installation_id']
-    )}/repositories?${query}`;
+    const url = `${this.baseUrl}/user/installations/${encodeURIComponent(args['installation_id'])}/repositories?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -57154,9 +55018,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/user/installations/${encodeURIComponent(
-      args['installation_id']
-    )}/repositories/${encodeURIComponent(args['repository_id'])}`;
+    const url = `${this.baseUrl}/user/installations/${encodeURIComponent(args['installation_id'])}/repositories/${encodeURIComponent(args['repository_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -57222,9 +55084,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/user/installations/${encodeURIComponent(
-      args['installation_id']
-    )}/repositories/${encodeURIComponent(args['repository_id'])}`;
+    const url = `${this.baseUrl}/user/installations/${encodeURIComponent(args['installation_id'])}/repositories/${encodeURIComponent(args['repository_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -57689,9 +55549,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/user/keys/${encodeURIComponent(
-      args['key_id']
-    )}`;
+    const url = `${this.baseUrl}/user/keys/${encodeURIComponent(args['key_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -57764,9 +55622,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/user/keys/${encodeURIComponent(
-      args['key_id']
-    )}`;
+    const url = `${this.baseUrl}/user/keys/${encodeURIComponent(args['key_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -58055,9 +55911,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/user/memberships/orgs/${encodeURIComponent(
-      args['org']
-    )}`;
+    const url = `${this.baseUrl}/user/memberships/orgs/${encodeURIComponent(args['org'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -58117,9 +55971,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<422, ValidationError>
   > {
     const method = 'PATCH';
-    const url = `${this.baseUrl}/user/memberships/orgs/${encodeURIComponent(
-      args['org']
-    )}`;
+    const url = `${this.baseUrl}/user/memberships/orgs/${encodeURIComponent(args['org'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -58357,9 +56209,7 @@ export class GitHubV3RestApiClient {
     const query = qs.stringify({ ['exclude']: args['exclude'] });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/user/migrations/${encodeURIComponent(
-      args['migration_id']
-    )}?${query}`;
+    const url = `${this.baseUrl}/user/migrations/${encodeURIComponent(args['migration_id'])}?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -58431,9 +56281,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<403, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/user/migrations/${encodeURIComponent(
-      args['migration_id']
-    )}/archive`;
+    const url = `${this.baseUrl}/user/migrations/${encodeURIComponent(args['migration_id'])}/archive`;
     const fetchOptions = {
       method,
       ...options,
@@ -58500,9 +56348,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/user/migrations/${encodeURIComponent(
-      args['migration_id']
-    )}/archive`;
+    const url = `${this.baseUrl}/user/migrations/${encodeURIComponent(args['migration_id'])}/archive`;
     const fetchOptions = {
       method,
       ...options,
@@ -58575,9 +56421,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/user/migrations/${encodeURIComponent(
-      args['migration_id']
-    )}/repos/${encodeURIComponent(args['repo_name'])}/lock`;
+    const url = `${this.baseUrl}/user/migrations/${encodeURIComponent(args['migration_id'])}/repos/${encodeURIComponent(args['repo_name'])}/lock`;
     const fetchOptions = {
       method,
       ...options,
@@ -58656,9 +56500,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/user/migrations/${encodeURIComponent(
-      args['migration_id']
-    )}/repositories?${query}`;
+    const url = `${this.baseUrl}/user/migrations/${encodeURIComponent(args['migration_id'])}/repositories?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -58844,9 +56686,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, Package>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/user/packages/${encodeURIComponent(
-      args['package_type']
-    )}/${encodeURIComponent(args['package_name'])}`;
+    const url = `${this.baseUrl}/user/packages/${encodeURIComponent(args['package_type'])}/${encodeURIComponent(args['package_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -58903,9 +56743,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/user/packages/${encodeURIComponent(
-      args['package_type']
-    )}/${encodeURIComponent(args['package_name'])}`;
+    const url = `${this.baseUrl}/user/packages/${encodeURIComponent(args['package_type'])}/${encodeURIComponent(args['package_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -58983,9 +56821,7 @@ export class GitHubV3RestApiClient {
     const query = qs.stringify({ ['token']: args['token'] });
 
     const method = 'POST';
-    const url = `${this.baseUrl}/user/packages/${encodeURIComponent(
-      args['package_type']
-    )}/${encodeURIComponent(args['package_name'])}/restore?${query}`;
+    const url = `${this.baseUrl}/user/packages/${encodeURIComponent(args['package_type'])}/${encodeURIComponent(args['package_name'])}/restore?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -59069,9 +56905,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/user/packages/${encodeURIComponent(
-      args['package_type']
-    )}/${encodeURIComponent(args['package_name'])}/versions?${query}`;
+    const url = `${this.baseUrl}/user/packages/${encodeURIComponent(args['package_type'])}/${encodeURIComponent(args['package_name'])}/versions?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -59142,11 +56976,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, PackageVersion>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/user/packages/${encodeURIComponent(
-      args['package_type']
-    )}/${encodeURIComponent(
-      args['package_name']
-    )}/versions/${encodeURIComponent(args['package_version_id'])}`;
+    const url = `${this.baseUrl}/user/packages/${encodeURIComponent(args['package_type'])}/${encodeURIComponent(args['package_name'])}/versions/${encodeURIComponent(args['package_version_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -59204,11 +57034,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/user/packages/${encodeURIComponent(
-      args['package_type']
-    )}/${encodeURIComponent(
-      args['package_name']
-    )}/versions/${encodeURIComponent(args['package_version_id'])}`;
+    const url = `${this.baseUrl}/user/packages/${encodeURIComponent(args['package_type'])}/${encodeURIComponent(args['package_name'])}/versions/${encodeURIComponent(args['package_version_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -59284,11 +57110,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/user/packages/${encodeURIComponent(
-      args['package_type']
-    )}/${encodeURIComponent(
-      args['package_name']
-    )}/versions/${encodeURIComponent(args['package_version_id'])}/restore`;
+    const url = `${this.baseUrl}/user/packages/${encodeURIComponent(args['package_type'])}/${encodeURIComponent(args['package_name'])}/versions/${encodeURIComponent(args['package_version_id'])}/restore`;
     const fetchOptions = {
       method,
       ...options,
@@ -59806,9 +57628,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<409, BasicError>
   > {
     const method = 'PATCH';
-    const url = `${
-      this.baseUrl
-    }/user/repository_invitations/${encodeURIComponent(args['invitation_id'])}`;
+    const url = `${this.baseUrl}/user/repository_invitations/${encodeURIComponent(args['invitation_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -59881,9 +57701,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<409, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${
-      this.baseUrl
-    }/user/repository_invitations/${encodeURIComponent(args['invitation_id'])}`;
+    const url = `${this.baseUrl}/user/repository_invitations/${encodeURIComponent(args['invitation_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -60119,9 +57937,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/user/ssh_signing_keys/${encodeURIComponent(
-      args['ssh_signing_key_id']
-    )}`;
+    const url = `${this.baseUrl}/user/ssh_signing_keys/${encodeURIComponent(args['ssh_signing_key_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -60194,9 +58010,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/user/ssh_signing_keys/${encodeURIComponent(
-      args['ssh_signing_key_id']
-    )}`;
+    const url = `${this.baseUrl}/user/ssh_signing_keys/${encodeURIComponent(args['ssh_signing_key_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -60347,9 +58161,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/user/starred/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}`;
+    const url = `${this.baseUrl}/user/starred/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -60422,9 +58234,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'PUT';
-    const url = `${this.baseUrl}/user/starred/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}`;
+    const url = `${this.baseUrl}/user/starred/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -60497,9 +58307,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/user/starred/${encodeURIComponent(
-      args['owner']
-    )}/${encodeURIComponent(args['repo'])}`;
+    const url = `${this.baseUrl}/user/starred/${encodeURIComponent(args['owner'])}/${encodeURIComponent(args['repo'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -60826,9 +58634,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/events?${query}`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/events?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -60881,9 +58687,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/events/orgs/${encodeURIComponent(args['org'])}?${query}`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/events/orgs/${encodeURIComponent(args['org'])}?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -60935,9 +58739,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/events/public?${query}`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/events/public?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -60989,9 +58791,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/followers?${query}`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/followers?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -61043,9 +58843,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/following?${query}`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/following?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -61090,9 +58888,7 @@ export class GitHubV3RestApiClient {
     ResponseWithData<204, undefined> | ResponseWithData<404, undefined>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/following/${encodeURIComponent(args['target_user'])}`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/following/${encodeURIComponent(args['target_user'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -61155,9 +58951,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/gists?${query}`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/gists?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -61215,9 +59009,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/gpg_keys?${query}`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/gpg_keys?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -61277,9 +59069,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/hovercard?${query}`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/hovercard?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -61334,9 +59124,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, Installation>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/installation`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/installation`;
     const fetchOptions = {
       method,
       ...options,
@@ -61388,9 +59176,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/keys?${query}`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/keys?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -61442,9 +59228,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/orgs?${query}`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/orgs?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -61506,9 +59290,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/packages?${query}`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/packages?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -61573,11 +59355,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, Package>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/packages/${encodeURIComponent(
-      args['package_type']
-    )}/${encodeURIComponent(args['package_name'])}`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/packages/${encodeURIComponent(args['package_type'])}/${encodeURIComponent(args['package_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -61635,11 +59413,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/packages/${encodeURIComponent(
-      args['package_type']
-    )}/${encodeURIComponent(args['package_name'])}`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/packages/${encodeURIComponent(args['package_type'])}/${encodeURIComponent(args['package_name'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -61718,11 +59492,7 @@ export class GitHubV3RestApiClient {
     const query = qs.stringify({ ['token']: args['token'] });
 
     const method = 'POST';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/packages/${encodeURIComponent(
-      args['package_type']
-    )}/${encodeURIComponent(args['package_name'])}/restore?${query}`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/packages/${encodeURIComponent(args['package_type'])}/${encodeURIComponent(args['package_name'])}/restore?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -61798,11 +59568,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/packages/${encodeURIComponent(
-      args['package_type']
-    )}/${encodeURIComponent(args['package_name'])}/versions`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/packages/${encodeURIComponent(args['package_type'])}/${encodeURIComponent(args['package_name'])}/versions`;
     const fetchOptions = {
       method,
       ...options,
@@ -61874,13 +59640,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, PackageVersion>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/packages/${encodeURIComponent(
-      args['package_type']
-    )}/${encodeURIComponent(
-      args['package_name']
-    )}/versions/${encodeURIComponent(args['package_version_id'])}`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/packages/${encodeURIComponent(args['package_type'])}/${encodeURIComponent(args['package_name'])}/versions/${encodeURIComponent(args['package_version_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -61939,13 +59699,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/packages/${encodeURIComponent(
-      args['package_type']
-    )}/${encodeURIComponent(
-      args['package_name']
-    )}/versions/${encodeURIComponent(args['package_version_id'])}`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/packages/${encodeURIComponent(args['package_type'])}/${encodeURIComponent(args['package_name'])}/versions/${encodeURIComponent(args['package_version_id'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -62022,13 +59776,7 @@ export class GitHubV3RestApiClient {
     | ResponseWithData<404, BasicError>
   > {
     const method = 'POST';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/packages/${encodeURIComponent(
-      args['package_type']
-    )}/${encodeURIComponent(
-      args['package_name']
-    )}/versions/${encodeURIComponent(args['package_version_id'])}/restore`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/packages/${encodeURIComponent(args['package_type'])}/${encodeURIComponent(args['package_name'])}/versions/${encodeURIComponent(args['package_version_id'])}/restore`;
     const fetchOptions = {
       method,
       ...options,
@@ -62103,9 +59851,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/projects?${query}`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/projects?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -62163,9 +59909,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/received_events?${query}`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/received_events?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -62217,9 +59961,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/received_events/public?${query}`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/received_events/public?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -62277,9 +60019,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/repos?${query}`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/repos?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -62322,9 +60062,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, ActionsBillingUsage>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/settings/billing/actions`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/settings/billing/actions`;
     const fetchOptions = {
       method,
       ...options,
@@ -62367,9 +60105,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, PackagesBillingUsage>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/settings/billing/packages`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/settings/billing/packages`;
     const fetchOptions = {
       method,
       ...options,
@@ -62412,9 +60148,7 @@ export class GitHubV3RestApiClient {
     options?: RequestInit
   ): Promise<ResponseWithData<200, CombinedBillingUsage>> {
     const method = 'GET';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/settings/billing/shared-storage`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/settings/billing/shared-storage`;
     const fetchOptions = {
       method,
       ...options,
@@ -62466,9 +60200,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/ssh_signing_keys?${query}`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/ssh_signing_keys?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -62529,9 +60261,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/starred?${query}`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/starred?${query}`;
     const fetchOptions = {
       method,
       ...options,
@@ -62585,9 +60315,7 @@ export class GitHubV3RestApiClient {
     });
 
     const method = 'GET';
-    const url = `${this.baseUrl}/users/${encodeURIComponent(
-      args['username']
-    )}/subscriptions?${query}`;
+    const url = `${this.baseUrl}/users/${encodeURIComponent(args['username'])}/subscriptions?${query}`;
     const fetchOptions = {
       method,
       ...options,

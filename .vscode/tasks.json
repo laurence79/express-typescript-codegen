@@ -4,16 +4,8 @@
     {
       "label": "Lint",
       "type": "shell",
-      "command": "npm run lint:watch",
+      "command": "npm run lint",
       "problemMatcher": ["$eslint-stylish"],
-      "isBackground": true
     },
-    {
-      "label": "TSC",
-      "type": "shell",
-      "command": "npm run build:watch",
-      "problemMatcher": ["$tsc-watch"],
-      "isBackground": true
-    }
   ]
 }

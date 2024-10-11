@@ -1,6 +1,6 @@
 import { Logger } from '../lib/cli-logging';
 
-export type GenerateCodeOptions = {
+export interface GenerateCodeOptions {
   logger?: Logger;
   openApiDocumentFilenameOrUrl: string;
   output:
@@ -17,4 +17,4 @@ export type GenerateCodeOptions = {
   nonRequiredType: 'nullable' | 'optional' | 'both';
   readonlyDTOs: boolean;
   emptyType: 'never' | 'unknown' | '{}';
-};
+}

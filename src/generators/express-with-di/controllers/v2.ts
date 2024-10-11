@@ -97,7 +97,6 @@ export const fromV2 = (
         };
 
         params.forEach(v => {
-          // eslint-disable-next-line @typescript-eslint/naming-convention
           const { in: _, name, required, ...rest } = v;
 
           if (rest.type === 'file') {
@@ -143,7 +142,7 @@ export const fromV2 = (
 
       const expressPath = path.replace(
         /\{(?:.*?)\}/g,
-        x => `:${x.substr(1, x.length - 2)}`
+        x => `:${x.substring(1, x.length - 1)}`
       );
 
       log?.(progress(operationId));
@@ -156,8 +155,8 @@ export const fromV2 = (
         controllerTypeName,
         controllerMethodName,
         pathParamsType,
-        responseBodyType: responseBodyType || options.emptyType,
-        bodyParamType: bodyParamType || options.emptyType,
+        responseBodyType: responseBodyType ?? options.emptyType,
+        bodyParamType: bodyParamType ?? options.emptyType,
         queryParamsType,
         statusCodeType,
         bodySchema,

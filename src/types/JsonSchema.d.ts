@@ -21,18 +21,10 @@ export interface JsonSchema {
   minProperties?: number;
   required?: string[];
   additionalProperties?: boolean | JsonSchema;
-  definitions?: {
-    [name: string]: JsonSchema;
-  };
-  properties?: {
-    [name: string]: JsonSchema;
-  };
-  patternProperties?: {
-    [name: string]: JsonSchema;
-  };
-  dependencies?: {
-    [name: string]: JsonSchema | string[];
-  };
+  definitions?: Record<string, JsonSchema>;
+  properties?: Record<string, JsonSchema>;
+  patternProperties?: Record<string, JsonSchema>;
+  dependencies?: Record<string, JsonSchema | string[]>;
   enum?: any[];
   type?: string | string[];
   allOf?: JsonSchema[];

@@ -1,7 +1,7 @@
 export type LogFn = (message: string) => void;
 
-export type Logger = {
+export interface Logger {
   error: LogFn;
   log: LogFn;
   create: (message: string) => LogFn;
-};
+}

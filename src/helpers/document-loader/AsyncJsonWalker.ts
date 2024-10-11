@@ -4,7 +4,7 @@ import { pointerSub } from '../pointerSub';
 export class AsyncJsonWalker {
   private static async walkArray(
     obj: JsonArray,
-    itemCallback: (obj: JsonMap, ptr: string) => Promise<unknown> | unknown,
+    itemCallback: (obj: JsonMap, ptr: string) => unknown,
     ptr?: string
   ): Promise<void> {
     await obj.forEachAsync((item, index) =>
@@ -14,7 +14,7 @@ export class AsyncJsonWalker {
 
   private static async walkMap(
     obj: JsonMap,
-    itemCallback: (obj: JsonMap, ptr: string) => Promise<unknown> | unknown,
+    itemCallback: (obj: JsonMap, ptr: string) => unknown,
     ptr?: string
   ): Promise<void> {
     await Object.entries(obj).forEachAsync(async ([key, item]) =>
@@ -24,7 +24,7 @@ export class AsyncJsonWalker {
 
   public static async walk(
     obj: Json,
-    itemCallback: (obj: JsonMap, ptr: string) => Promise<unknown> | unknown,
+    itemCallback: (obj: JsonMap, ptr: string) => unknown,
     ptr?: string
   ): Promise<void> {
     if (typeof obj === 'object' && obj !== null) {

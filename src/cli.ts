@@ -80,9 +80,9 @@ const cmd = new commander.Command('generate')
         commander.help({ error: true });
       }
 
-      const output = (options.template
-        ? options.template
-        : 'client') as GenerateCodeOptions['output'];
+      const output = (
+        options.template ? options.template : 'client'
+      ) as GenerateCodeOptions['output'];
 
       try {
         await generateCode({

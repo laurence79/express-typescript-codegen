@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import type { Json, JsonMap } from '@laurence79/ts-json';
 import JsonPointer from 'json-pointer';
 import { JSONSchema7 } from 'json-schema';
@@ -6,12 +5,10 @@ import * as OpenApiV3 from '../../../types/OpenApiV3';
 import { JsonWalker } from '../../JsonWalker';
 import { isReferenceObject } from './isReferenceObject';
 
-const mapProperties = (properties: {
-  [name: string]: OpenApiV3.SchemaObject | OpenApiV3.ReferenceObject;
-}): {
-  [key: string]: JSONSchema7;
-} => {
-  const r: { [key: string]: JSONSchema7 } = {};
+const mapProperties = (
+  properties: Record<string, OpenApiV3.SchemaObject | OpenApiV3.ReferenceObject>
+): Record<string, JSONSchema7> => {
+  const r: Record<string, JSONSchema7> = {};
   Object.keys(properties).forEach(key => {
     const property = properties[key];
 
@@ -19,7 +16,6 @@ const mapProperties = (properties: {
       return;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     r[key] = mapSchema(properties[key]);
   });
   return r;
@@ -55,9 +51,7 @@ const mapSchema = (
             }
           : undefined),
 
-        ...('items' in schema && schema.items
-          ? { items: mapSchema(schema.items) }
-          : undefined)
+        ...('items' in schema ? { items: mapSchema(schema.items) } : undefined)
       } as JSONSchema7);
 };
 
@@ -76,6 +70,7 @@ const bundleReferences = (
 
     const docPointer = obj.$ref.split('#')[1];
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     const target = mapSchema(JsonPointer.get(document, docPointer));
 
     const convertedPointer = `/definitions/${docPointer.substring(
@@ -84,7 +79,6 @@ const bundleReferences = (
 
     JsonPointer.set(schema, convertedPointer, target);
 
-    // eslint-disable-next-line no-param-reassign
     obj.$ref = `#${convertedPointer}`;
 
     JsonWalker.walk(target as Json, walker, convertedPointer);

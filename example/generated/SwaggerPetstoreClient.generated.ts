@@ -522,9 +522,7 @@ export class SwaggerPetstoreClient {
     | ResponseWithData<404, undefined>
   > {
     const method = 'GET';
-    const url = `${this.baseUrl}/store/order/${encodeURIComponent(
-      args['orderId']
-    )}`;
+    const url = `${this.baseUrl}/store/order/${encodeURIComponent(args['orderId'])}`;
     const fetchOptions = {
       method,
       ...options,
@@ -581,9 +579,7 @@ export class SwaggerPetstoreClient {
     ResponseWithData<400, undefined> | ResponseWithData<404, undefined>
   > {
     const method = 'DELETE';
-    const url = `${this.baseUrl}/store/order/${encodeURIComponent(
-      args['orderId']
-    )}`;
+    const url = `${this.baseUrl}/store/order/${encodeURIComponent(args['orderId'])}`;
     const fetchOptions = {
       method,
       ...options,

@@ -752,11 +752,12 @@ export type AppsCreateInstallationAccessTokenResponseBody =
   | BasicError
   | ValidationError;
 
-export type AppsCreateInstallationAccessTokenResolver = msw.HttpResponseResolver<
-  AppsCreateInstallationAccessTokenRequestParams,
-  AppsCreateInstallationAccessTokenRequestBody,
-  AppsCreateInstallationAccessTokenResponseBody
->;
+export type AppsCreateInstallationAccessTokenResolver =
+  msw.HttpResponseResolver<
+    AppsCreateInstallationAccessTokenRequestParams,
+    AppsCreateInstallationAccessTokenRequestBody,
+    AppsCreateInstallationAccessTokenResponseBody
+  >;
 
 export type AppsSuspendInstallationRequestQuery = {};
 
@@ -977,11 +978,12 @@ export type CodesOfConductGetAllCodesOfConductResponseBody =
   | ReadonlyArray<CodeOfConduct>
   | never;
 
-export type CodesOfConductGetAllCodesOfConductResolver = msw.HttpResponseResolver<
-  CodesOfConductGetAllCodesOfConductRequestParams,
-  CodesOfConductGetAllCodesOfConductRequestBody,
-  CodesOfConductGetAllCodesOfConductResponseBody
->;
+export type CodesOfConductGetAllCodesOfConductResolver =
+  msw.HttpResponseResolver<
+    CodesOfConductGetAllCodesOfConductRequestParams,
+    CodesOfConductGetAllCodesOfConductRequestBody,
+    CodesOfConductGetAllCodesOfConductResponseBody
+  >;
 
 export type CodesOfConductGetConductCodeRequestQuery = {};
 
@@ -1108,13 +1110,15 @@ export type ServerStatisticsProxyEndpoint = ReadonlyArray<{
   };
 }>;
 
-export type EnterpriseAdminGetServerStatisticsResponseBody = ServerStatisticsProxyEndpoint;
+export type EnterpriseAdminGetServerStatisticsResponseBody =
+  ServerStatisticsProxyEndpoint;
 
-export type EnterpriseAdminGetServerStatisticsResolver = msw.HttpResponseResolver<
-  EnterpriseAdminGetServerStatisticsRequestParams,
-  EnterpriseAdminGetServerStatisticsRequestBody,
-  EnterpriseAdminGetServerStatisticsResponseBody
->;
+export type EnterpriseAdminGetServerStatisticsResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminGetServerStatisticsRequestParams,
+    EnterpriseAdminGetServerStatisticsRequestBody,
+    EnterpriseAdminGetServerStatisticsResponseBody
+  >;
 
 export type ActionsGetActionsCacheUsageForEnterpriseRequestQuery = {};
 
@@ -1133,25 +1137,30 @@ export type ActionsCacheUsageOrgEnterprise = {
   readonly total_active_caches_size_in_bytes: number;
 };
 
-export type ActionsGetActionsCacheUsageForEnterpriseResponseBody = ActionsCacheUsageOrgEnterprise;
+export type ActionsGetActionsCacheUsageForEnterpriseResponseBody =
+  ActionsCacheUsageOrgEnterprise;
 
-export type ActionsGetActionsCacheUsageForEnterpriseResolver = msw.HttpResponseResolver<
-  ActionsGetActionsCacheUsageForEnterpriseRequestParams,
-  ActionsGetActionsCacheUsageForEnterpriseRequestBody,
-  ActionsGetActionsCacheUsageForEnterpriseResponseBody
->;
+export type ActionsGetActionsCacheUsageForEnterpriseResolver =
+  msw.HttpResponseResolver<
+    ActionsGetActionsCacheUsageForEnterpriseRequestParams,
+    ActionsGetActionsCacheUsageForEnterpriseRequestBody,
+    ActionsGetActionsCacheUsageForEnterpriseResponseBody
+  >;
 
-export type EnterpriseAdminGetGithubActionsPermissionsEnterpriseRequestQuery = {};
+export type EnterpriseAdminGetGithubActionsPermissionsEnterpriseRequestQuery =
+  {};
 
-export type EnterpriseAdminGetGithubActionsPermissionsEnterpriseRequestHeaders = {};
+export type EnterpriseAdminGetGithubActionsPermissionsEnterpriseRequestHeaders =
+  {};
 
-export type EnterpriseAdminGetGithubActionsPermissionsEnterpriseRequestParams = {
-  readonly enterprise: string;
-};
+export type EnterpriseAdminGetGithubActionsPermissionsEnterpriseRequestParams =
+  { readonly enterprise: string };
 
-export type EnterpriseAdminGetGithubActionsPermissionsEnterpriseRequestBody = never;
+export type EnterpriseAdminGetGithubActionsPermissionsEnterpriseRequestBody =
+  never;
 
-export type EnterpriseAdminGetGithubActionsPermissionsEnterpriseResponseStatus = 200;
+export type EnterpriseAdminGetGithubActionsPermissionsEnterpriseResponseStatus =
+  200;
 
 export type EnabledOrganizations = 'all' | 'none' | 'selected';
 
@@ -1166,51 +1175,57 @@ export type ActionsEnterprisePermissions = {
   readonly selected_actions_url?: SelectedActionsUrl;
 };
 
-export type EnterpriseAdminGetGithubActionsPermissionsEnterpriseResponseBody = ActionsEnterprisePermissions;
+export type EnterpriseAdminGetGithubActionsPermissionsEnterpriseResponseBody =
+  ActionsEnterprisePermissions;
 
-export type EnterpriseAdminGetGithubActionsPermissionsEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminGetGithubActionsPermissionsEnterpriseRequestParams,
-  EnterpriseAdminGetGithubActionsPermissionsEnterpriseRequestBody,
-  EnterpriseAdminGetGithubActionsPermissionsEnterpriseResponseBody
->;
+export type EnterpriseAdminGetGithubActionsPermissionsEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminGetGithubActionsPermissionsEnterpriseRequestParams,
+    EnterpriseAdminGetGithubActionsPermissionsEnterpriseRequestBody,
+    EnterpriseAdminGetGithubActionsPermissionsEnterpriseResponseBody
+  >;
 
-export type EnterpriseAdminSetGithubActionsPermissionsEnterpriseRequestQuery = {};
+export type EnterpriseAdminSetGithubActionsPermissionsEnterpriseRequestQuery =
+  {};
 
-export type EnterpriseAdminSetGithubActionsPermissionsEnterpriseRequestHeaders = {};
+export type EnterpriseAdminSetGithubActionsPermissionsEnterpriseRequestHeaders =
+  {};
 
-export type EnterpriseAdminSetGithubActionsPermissionsEnterpriseRequestParams = {
-  readonly enterprise: string;
-};
+export type EnterpriseAdminSetGithubActionsPermissionsEnterpriseRequestParams =
+  { readonly enterprise: string };
 
 export type EnterpriseAdminSetGithubActionsPermissionsEnterpriseRequestBody = {
   readonly enabled_organizations: EnabledOrganizations;
   readonly allowed_actions?: AllowedActions;
 };
 
-export type EnterpriseAdminSetGithubActionsPermissionsEnterpriseResponseStatus = 204;
+export type EnterpriseAdminSetGithubActionsPermissionsEnterpriseResponseStatus =
+  204;
 
-export type EnterpriseAdminSetGithubActionsPermissionsEnterpriseResponseBody = never;
+export type EnterpriseAdminSetGithubActionsPermissionsEnterpriseResponseBody =
+  never;
 
-export type EnterpriseAdminSetGithubActionsPermissionsEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminSetGithubActionsPermissionsEnterpriseRequestParams,
-  EnterpriseAdminSetGithubActionsPermissionsEnterpriseRequestBody,
-  EnterpriseAdminSetGithubActionsPermissionsEnterpriseResponseBody
->;
+export type EnterpriseAdminSetGithubActionsPermissionsEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminSetGithubActionsPermissionsEnterpriseRequestParams,
+    EnterpriseAdminSetGithubActionsPermissionsEnterpriseRequestBody,
+    EnterpriseAdminSetGithubActionsPermissionsEnterpriseResponseBody
+  >;
 
-export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequestQuery = {
-  readonly per_page?: string;
-  readonly page?: string;
-};
+export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequestQuery =
+  { readonly per_page?: string; readonly page?: string };
 
-export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequestHeaders = {};
+export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequestHeaders =
+  {};
 
-export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequestParams = {
-  readonly enterprise: string;
-};
+export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequestParams =
+  { readonly enterprise: string };
 
-export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequestBody = never;
+export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequestBody =
+  never;
 
-export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponseStatus = 200;
+export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponseStatus =
+  200;
 
 export type OrganizationSimple = {
   readonly login: string;
@@ -1227,80 +1242,93 @@ export type OrganizationSimple = {
   readonly description: string | null;
 };
 
-export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponseBody = {
-  readonly total_count: number;
-  readonly organizations: ReadonlyArray<OrganizationSimple>;
-};
+export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponseBody =
+  {
+    readonly total_count: number;
+    readonly organizations: ReadonlyArray<OrganizationSimple>;
+  };
 
-export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequestParams,
-  EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequestBody,
-  EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponseBody
->;
+export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequestParams,
+    EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequestBody,
+    EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponseBody
+  >;
 
-export type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestQuery = {};
+export type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestQuery =
+  {};
 
-export type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestHeaders = {};
+export type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestHeaders =
+  {};
 
-export type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestParams = {
-  readonly enterprise: string;
-};
+export type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestParams =
+  { readonly enterprise: string };
 
-export type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestBody = {
-  readonly selected_organization_ids: ReadonlyArray<number>;
-};
+export type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestBody =
+  { readonly selected_organization_ids: ReadonlyArray<number> };
 
-export type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponseStatus = 204;
+export type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponseStatus =
+  204;
 
-export type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponseBody = never;
+export type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponseBody =
+  never;
 
-export type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestParams,
-  EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestBody,
-  EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponseBody
->;
+export type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestParams,
+    EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestBody,
+    EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponseBody
+  >;
 
-export type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequestQuery = {};
+export type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequestQuery =
+  {};
 
-export type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequestHeaders = {};
+export type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequestHeaders =
+  {};
 
-export type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequestParams = {
-  readonly enterprise: string;
-  readonly org_id: string;
-};
+export type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequestParams =
+  { readonly enterprise: string; readonly org_id: string };
 
-export type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequestBody = never;
+export type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequestBody =
+  never;
 
-export type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponseStatus = 204;
+export type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponseStatus =
+  204;
 
-export type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponseBody = never;
+export type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponseBody =
+  never;
 
-export type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequestParams,
-  EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequestBody,
-  EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponseBody
->;
+export type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequestParams,
+    EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequestBody,
+    EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponseBody
+  >;
 
-export type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequestQuery = {};
+export type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequestQuery =
+  {};
 
-export type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequestHeaders = {};
+export type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequestHeaders =
+  {};
 
-export type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequestParams = {
-  readonly enterprise: string;
-  readonly org_id: string;
-};
+export type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequestParams =
+  { readonly enterprise: string; readonly org_id: string };
 
-export type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequestBody = never;
+export type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequestBody =
+  never;
 
-export type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponseStatus = 204;
+export type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponseStatus =
+  204;
 
-export type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponseBody = never;
+export type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponseBody =
+  never;
 
-export type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequestParams,
-  EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequestBody,
-  EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponseBody
->;
+export type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequestParams,
+    EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequestBody,
+    EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponseBody
+  >;
 
 export type EnterpriseAdminGetAllowedActionsEnterpriseRequestQuery = {};
 
@@ -1320,13 +1348,15 @@ export type SelectedActions = {
   readonly patterns_allowed?: ReadonlyArray<string>;
 };
 
-export type EnterpriseAdminGetAllowedActionsEnterpriseResponseBody = SelectedActions;
+export type EnterpriseAdminGetAllowedActionsEnterpriseResponseBody =
+  SelectedActions;
 
-export type EnterpriseAdminGetAllowedActionsEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminGetAllowedActionsEnterpriseRequestParams,
-  EnterpriseAdminGetAllowedActionsEnterpriseRequestBody,
-  EnterpriseAdminGetAllowedActionsEnterpriseResponseBody
->;
+export type EnterpriseAdminGetAllowedActionsEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminGetAllowedActionsEnterpriseRequestParams,
+    EnterpriseAdminGetAllowedActionsEnterpriseRequestBody,
+    EnterpriseAdminGetAllowedActionsEnterpriseResponseBody
+  >;
 
 export type EnterpriseAdminSetAllowedActionsEnterpriseRequestQuery = {};
 
@@ -1336,29 +1366,34 @@ export type EnterpriseAdminSetAllowedActionsEnterpriseRequestParams = {
   readonly enterprise: string;
 };
 
-export type EnterpriseAdminSetAllowedActionsEnterpriseRequestBody = SelectedActions;
+export type EnterpriseAdminSetAllowedActionsEnterpriseRequestBody =
+  SelectedActions;
 
 export type EnterpriseAdminSetAllowedActionsEnterpriseResponseStatus = 204;
 
 export type EnterpriseAdminSetAllowedActionsEnterpriseResponseBody = never;
 
-export type EnterpriseAdminSetAllowedActionsEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminSetAllowedActionsEnterpriseRequestParams,
-  EnterpriseAdminSetAllowedActionsEnterpriseRequestBody,
-  EnterpriseAdminSetAllowedActionsEnterpriseResponseBody
->;
+export type EnterpriseAdminSetAllowedActionsEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminSetAllowedActionsEnterpriseRequestParams,
+    EnterpriseAdminSetAllowedActionsEnterpriseRequestBody,
+    EnterpriseAdminSetAllowedActionsEnterpriseResponseBody
+  >;
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestQuery = {};
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestQuery =
+  {};
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestHeaders = {};
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestHeaders =
+  {};
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestParams = {
-  readonly enterprise: string;
-};
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestParams =
+  { readonly enterprise: string };
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestBody = never;
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestBody =
+  never;
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseResponseStatus = 200;
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseResponseStatus =
+  200;
 
 export type ActionsDefaultWorkflowPermissions = 'read' | 'write';
 
@@ -1369,54 +1404,64 @@ export type ActionsGetDefaultWorkflowPermissions = {
   readonly can_approve_pull_request_reviews: ActionsCanApprovePullRequestReviews;
 };
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseResponseBody = ActionsGetDefaultWorkflowPermissions;
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseResponseBody =
+  ActionsGetDefaultWorkflowPermissions;
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseResolver = msw.HttpResponseResolver<
-  ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestParams,
-  ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestBody,
-  ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseResponseBody
->;
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseResolver =
+  msw.HttpResponseResolver<
+    ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestParams,
+    ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestBody,
+    ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseResponseBody
+  >;
 
 export type ActionsSetDefaultWorkflowPermissions = {
   readonly default_workflow_permissions?: ActionsDefaultWorkflowPermissions;
   readonly can_approve_pull_request_reviews?: ActionsCanApprovePullRequestReviews;
 };
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestQuery = {};
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestQuery =
+  {};
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestHeaders = {};
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestHeaders =
+  {};
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestParams = {
-  readonly enterprise: string;
-};
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestParams =
+  { readonly enterprise: string };
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestBody = ActionsSetDefaultWorkflowPermissions;
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestBody =
+  ActionsSetDefaultWorkflowPermissions;
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseResponseStatus = 204;
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseResponseStatus =
+  204;
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseResponseBody = never;
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseResponseBody =
+  never;
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseResolver = msw.HttpResponseResolver<
-  ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestParams,
-  ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestBody,
-  ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseResponseBody
->;
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseResolver =
+  msw.HttpResponseResolver<
+    ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestParams,
+    ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestBody,
+    ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseResponseBody
+  >;
 
-export type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequestQuery = {
-  readonly per_page?: string;
-  readonly page?: string;
-  readonly visible_to_organization?: string;
-};
+export type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequestQuery =
+  {
+    readonly per_page?: string;
+    readonly page?: string;
+    readonly visible_to_organization?: string;
+  };
 
-export type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequestHeaders = {};
+export type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequestHeaders =
+  {};
 
-export type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequestParams = {
-  readonly enterprise: string;
-};
+export type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequestParams =
+  { readonly enterprise: string };
 
-export type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequestBody = never;
+export type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequestBody =
+  never;
 
-export type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponseStatus = 200;
+export type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponseStatus =
+  200;
 
 export type RunnerGroupsEnterprise = {
   readonly id: number;
@@ -1431,225 +1476,260 @@ export type RunnerGroupsEnterprise = {
   readonly selected_workflows?: ReadonlyArray<string>;
 };
 
-export type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponseBody = {
-  readonly total_count: number;
-  readonly runner_groups: ReadonlyArray<RunnerGroupsEnterprise>;
-};
+export type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponseBody =
+  {
+    readonly total_count: number;
+    readonly runner_groups: ReadonlyArray<RunnerGroupsEnterprise>;
+  };
 
-export type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequestParams,
-  EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequestBody,
-  EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponseBody
->;
+export type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequestParams,
+    EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequestBody,
+    EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponseBody
+  >;
 
-export type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestQuery = {};
+export type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestQuery =
+  {};
 
-export type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestHeaders = {};
+export type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestHeaders =
+  {};
 
-export type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestParams = {
-  readonly enterprise: string;
-};
+export type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestParams =
+  { readonly enterprise: string };
 
-export type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestBody = {
-  readonly name: string;
-  readonly visibility?: 'selected' | 'all';
-  readonly selected_organization_ids?: ReadonlyArray<number>;
-  readonly runners?: ReadonlyArray<number>;
-  readonly allows_public_repositories?: boolean;
-  readonly restricted_to_workflows?: boolean;
-  readonly selected_workflows?: ReadonlyArray<string>;
-};
+export type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestBody =
+  {
+    readonly name: string;
+    readonly visibility?: 'selected' | 'all';
+    readonly selected_organization_ids?: ReadonlyArray<number>;
+    readonly runners?: ReadonlyArray<number>;
+    readonly allows_public_repositories?: boolean;
+    readonly restricted_to_workflows?: boolean;
+    readonly selected_workflows?: ReadonlyArray<string>;
+  };
 
-export type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponseStatus = 201;
+export type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponseStatus =
+  201;
 
-export type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponseBody = RunnerGroupsEnterprise;
+export type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponseBody =
+  RunnerGroupsEnterprise;
 
-export type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestParams,
-  EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestBody,
-  EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponseBody
->;
+export type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestParams,
+    EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestBody,
+    EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponseBody
+  >;
 
-export type EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequestQuery = {};
+export type EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequestQuery =
+  {};
 
-export type EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequestHeaders = {};
+export type EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequestHeaders =
+  {};
 
-export type EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequestParams = {
-  readonly enterprise: string;
-  readonly runner_group_id: string;
-};
+export type EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequestParams =
+  { readonly enterprise: string; readonly runner_group_id: string };
 
-export type EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequestBody = never;
+export type EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequestBody =
+  never;
 
-export type EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponseStatus = 200;
+export type EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponseStatus =
+  200;
 
-export type EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponseBody = RunnerGroupsEnterprise;
+export type EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponseBody =
+  RunnerGroupsEnterprise;
 
-export type EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequestParams,
-  EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequestBody,
-  EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponseBody
->;
+export type EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequestParams,
+    EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequestBody,
+    EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponseBody
+  >;
 
-export type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestQuery = {};
+export type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestQuery =
+  {};
 
-export type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestHeaders = {};
+export type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestHeaders =
+  {};
 
-export type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestParams = {
-  readonly enterprise: string;
-  readonly runner_group_id: string;
-};
+export type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestParams =
+  { readonly enterprise: string; readonly runner_group_id: string };
 
 export type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestBody =
-  | {
-      readonly name?: string;
-      readonly visibility?: 'selected' | 'all';
-      readonly allows_public_repositories?: boolean;
-      readonly restricted_to_workflows?: boolean;
-      readonly selected_workflows?: ReadonlyArray<string>;
-    }
-  | undefined;
 
-export type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponseStatus = 200;
+    | {
+        readonly name?: string;
+        readonly visibility?: 'selected' | 'all';
+        readonly allows_public_repositories?: boolean;
+        readonly restricted_to_workflows?: boolean;
+        readonly selected_workflows?: ReadonlyArray<string>;
+      }
+    | undefined;
 
-export type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponseBody = RunnerGroupsEnterprise;
+export type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponseStatus =
+  200;
 
-export type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestParams,
-  EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestBody,
-  EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponseBody
->;
+export type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponseBody =
+  RunnerGroupsEnterprise;
 
-export type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequestQuery = {};
+export type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestParams,
+    EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestBody,
+    EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponseBody
+  >;
 
-export type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequestHeaders = {};
+export type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequestQuery =
+  {};
 
-export type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequestParams = {
-  readonly enterprise: string;
-  readonly runner_group_id: string;
-};
+export type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequestHeaders =
+  {};
 
-export type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequestBody = never;
+export type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequestParams =
+  { readonly enterprise: string; readonly runner_group_id: string };
 
-export type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponseStatus = 204;
+export type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequestBody =
+  never;
 
-export type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponseBody = never;
+export type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponseStatus =
+  204;
 
-export type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequestParams,
-  EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequestBody,
-  EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponseBody
->;
+export type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponseBody =
+  never;
 
-export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestQuery = {
-  readonly per_page?: string;
-  readonly page?: string;
-};
+export type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequestParams,
+    EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequestBody,
+    EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponseBody
+  >;
 
-export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestHeaders = {};
+export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestQuery =
+  { readonly per_page?: string; readonly page?: string };
 
-export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestParams = {
-  readonly enterprise: string;
-  readonly runner_group_id: string;
-};
+export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestHeaders =
+  {};
 
-export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestBody = never;
+export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestParams =
+  { readonly enterprise: string; readonly runner_group_id: string };
 
-export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponseStatus = 200;
+export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestBody =
+  never;
 
-export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponseBody = {
-  readonly total_count: number;
-  readonly organizations: ReadonlyArray<OrganizationSimple>;
-};
+export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponseStatus =
+  200;
 
-export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestParams,
-  EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestBody,
-  EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponseBody
->;
+export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponseBody =
+  {
+    readonly total_count: number;
+    readonly organizations: ReadonlyArray<OrganizationSimple>;
+  };
 
-export type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestQuery = {};
+export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestParams,
+    EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestBody,
+    EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponseBody
+  >;
 
-export type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestHeaders = {};
+export type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestQuery =
+  {};
 
-export type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestParams = {
-  readonly enterprise: string;
-  readonly runner_group_id: string;
-};
+export type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestHeaders =
+  {};
 
-export type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestBody = {
-  readonly selected_organization_ids: ReadonlyArray<number>;
-};
+export type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestParams =
+  { readonly enterprise: string; readonly runner_group_id: string };
 
-export type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponseStatus = 204;
+export type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestBody =
+  { readonly selected_organization_ids: ReadonlyArray<number> };
 
-export type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponseBody = never;
+export type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponseStatus =
+  204;
 
-export type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestParams,
-  EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestBody,
-  EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponseBody
->;
+export type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponseBody =
+  never;
 
-export type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestQuery = {};
+export type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestParams,
+    EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestBody,
+    EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponseBody
+  >;
 
-export type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestHeaders = {};
+export type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestQuery =
+  {};
 
-export type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestParams = {
-  readonly enterprise: string;
-  readonly runner_group_id: string;
-  readonly org_id: string;
-};
+export type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestHeaders =
+  {};
 
-export type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestBody = never;
+export type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestParams =
+  {
+    readonly enterprise: string;
+    readonly runner_group_id: string;
+    readonly org_id: string;
+  };
 
-export type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponseStatus = 204;
+export type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestBody =
+  never;
 
-export type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponseBody = never;
+export type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponseStatus =
+  204;
 
-export type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestParams,
-  EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestBody,
-  EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponseBody
->;
+export type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponseBody =
+  never;
 
-export type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestQuery = {};
+export type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestParams,
+    EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestBody,
+    EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponseBody
+  >;
 
-export type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestHeaders = {};
+export type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestQuery =
+  {};
 
-export type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestParams = {
-  readonly enterprise: string;
-  readonly runner_group_id: string;
-  readonly org_id: string;
-};
+export type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestHeaders =
+  {};
 
-export type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestBody = never;
+export type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestParams =
+  {
+    readonly enterprise: string;
+    readonly runner_group_id: string;
+    readonly org_id: string;
+  };
 
-export type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponseStatus = 204;
+export type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestBody =
+  never;
 
-export type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponseBody = never;
+export type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponseStatus =
+  204;
 
-export type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestParams,
-  EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestBody,
-  EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponseBody
->;
+export type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponseBody =
+  never;
 
-export type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequestQuery = {
-  readonly per_page?: string;
-  readonly page?: string;
-};
+export type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestParams,
+    EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestBody,
+    EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponseBody
+  >;
 
-export type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequestHeaders = {};
+export type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequestQuery =
+  { readonly per_page?: string; readonly page?: string };
 
-export type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequestParams = {
-  readonly enterprise: string;
-  readonly runner_group_id: string;
-};
+export type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequestHeaders =
+  {};
 
-export type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequestBody = never;
+export type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequestParams =
+  { readonly enterprise: string; readonly runner_group_id: string };
 
-export type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponseStatus = 200;
+export type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequestBody =
+  never;
+
+export type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponseStatus =
+  200;
 
 export type SelfHostedRunnerLabel = {
   readonly id?: number;
@@ -1666,121 +1746,146 @@ export type SelfHostedRunners = {
   readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
 };
 
-export type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponseBody = {
-  readonly total_count: number;
-  readonly runners: ReadonlyArray<SelfHostedRunners>;
-};
+export type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponseBody =
+  {
+    readonly total_count: number;
+    readonly runners: ReadonlyArray<SelfHostedRunners>;
+  };
 
-export type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequestParams,
-  EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequestBody,
-  EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponseBody
->;
+export type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequestParams,
+    EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequestBody,
+    EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponseBody
+  >;
 
-export type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestQuery = {};
+export type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestQuery =
+  {};
 
-export type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestHeaders = {};
+export type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestHeaders =
+  {};
 
-export type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestParams = {
-  readonly enterprise: string;
-  readonly runner_group_id: string;
-};
+export type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestParams =
+  { readonly enterprise: string; readonly runner_group_id: string };
 
-export type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestBody = {
-  readonly runners: ReadonlyArray<number>;
-};
+export type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestBody =
+  { readonly runners: ReadonlyArray<number> };
 
-export type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponseStatus = 204;
+export type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponseStatus =
+  204;
 
-export type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponseBody = never;
+export type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponseBody =
+  never;
 
-export type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestParams,
-  EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestBody,
-  EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponseBody
->;
+export type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestParams,
+    EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestBody,
+    EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponseBody
+  >;
 
-export type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequestQuery = {};
+export type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequestQuery =
+  {};
 
-export type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequestHeaders = {};
+export type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequestHeaders =
+  {};
 
-export type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequestParams = {
-  readonly enterprise: string;
-  readonly runner_group_id: string;
-  readonly runner_id: string;
-};
+export type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequestParams =
+  {
+    readonly enterprise: string;
+    readonly runner_group_id: string;
+    readonly runner_id: string;
+  };
 
-export type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequestBody = never;
+export type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequestBody =
+  never;
 
-export type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponseStatus = 204;
+export type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponseStatus =
+  204;
 
-export type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponseBody = never;
+export type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponseBody =
+  never;
 
-export type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequestParams,
-  EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequestBody,
-  EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponseBody
->;
+export type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequestParams,
+    EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequestBody,
+    EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponseBody
+  >;
 
-export type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequestQuery = {};
+export type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequestQuery =
+  {};
 
-export type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequestHeaders = {};
+export type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequestHeaders =
+  {};
 
-export type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequestParams = {
-  readonly enterprise: string;
-  readonly runner_group_id: string;
-  readonly runner_id: string;
-};
+export type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequestParams =
+  {
+    readonly enterprise: string;
+    readonly runner_group_id: string;
+    readonly runner_id: string;
+  };
 
-export type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequestBody = never;
+export type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequestBody =
+  never;
 
-export type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponseStatus = 204;
+export type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponseStatus =
+  204;
 
-export type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponseBody = never;
+export type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponseBody =
+  never;
 
-export type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequestParams,
-  EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequestBody,
-  EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponseBody
->;
+export type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequestParams,
+    EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequestBody,
+    EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponseBody
+  >;
 
 export type EnterpriseAdminListSelfHostedRunnersForEnterpriseRequestQuery = {
   readonly per_page?: string;
   readonly page?: string;
 };
 
-export type EnterpriseAdminListSelfHostedRunnersForEnterpriseRequestHeaders = {};
+export type EnterpriseAdminListSelfHostedRunnersForEnterpriseRequestHeaders =
+  {};
 
 export type EnterpriseAdminListSelfHostedRunnersForEnterpriseRequestParams = {
   readonly enterprise: string;
 };
 
-export type EnterpriseAdminListSelfHostedRunnersForEnterpriseRequestBody = never;
+export type EnterpriseAdminListSelfHostedRunnersForEnterpriseRequestBody =
+  never;
 
-export type EnterpriseAdminListSelfHostedRunnersForEnterpriseResponseStatus = 200;
+export type EnterpriseAdminListSelfHostedRunnersForEnterpriseResponseStatus =
+  200;
 
 export type EnterpriseAdminListSelfHostedRunnersForEnterpriseResponseBody = {
   readonly total_count?: number;
   readonly runners?: ReadonlyArray<SelfHostedRunners>;
 };
 
-export type EnterpriseAdminListSelfHostedRunnersForEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminListSelfHostedRunnersForEnterpriseRequestParams,
-  EnterpriseAdminListSelfHostedRunnersForEnterpriseRequestBody,
-  EnterpriseAdminListSelfHostedRunnersForEnterpriseResponseBody
->;
+export type EnterpriseAdminListSelfHostedRunnersForEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminListSelfHostedRunnersForEnterpriseRequestParams,
+    EnterpriseAdminListSelfHostedRunnersForEnterpriseRequestBody,
+    EnterpriseAdminListSelfHostedRunnersForEnterpriseResponseBody
+  >;
 
 export type EnterpriseAdminListRunnerApplicationsForEnterpriseRequestQuery = {};
 
-export type EnterpriseAdminListRunnerApplicationsForEnterpriseRequestHeaders = {};
+export type EnterpriseAdminListRunnerApplicationsForEnterpriseRequestHeaders =
+  {};
 
 export type EnterpriseAdminListRunnerApplicationsForEnterpriseRequestParams = {
   readonly enterprise: string;
 };
 
-export type EnterpriseAdminListRunnerApplicationsForEnterpriseRequestBody = never;
+export type EnterpriseAdminListRunnerApplicationsForEnterpriseRequestBody =
+  never;
 
-export type EnterpriseAdminListRunnerApplicationsForEnterpriseResponseStatus = 200;
+export type EnterpriseAdminListRunnerApplicationsForEnterpriseResponseStatus =
+  200;
 
 export type RunnerApplication = {
   readonly os: string;
@@ -1791,25 +1896,31 @@ export type RunnerApplication = {
   readonly sha256_checksum?: string;
 };
 
-export type EnterpriseAdminListRunnerApplicationsForEnterpriseResponseBody = ReadonlyArray<RunnerApplication>;
+export type EnterpriseAdminListRunnerApplicationsForEnterpriseResponseBody =
+  ReadonlyArray<RunnerApplication>;
 
-export type EnterpriseAdminListRunnerApplicationsForEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminListRunnerApplicationsForEnterpriseRequestParams,
-  EnterpriseAdminListRunnerApplicationsForEnterpriseRequestBody,
-  EnterpriseAdminListRunnerApplicationsForEnterpriseResponseBody
->;
+export type EnterpriseAdminListRunnerApplicationsForEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminListRunnerApplicationsForEnterpriseRequestParams,
+    EnterpriseAdminListRunnerApplicationsForEnterpriseRequestBody,
+    EnterpriseAdminListRunnerApplicationsForEnterpriseResponseBody
+  >;
 
-export type EnterpriseAdminCreateRegistrationTokenForEnterpriseRequestQuery = {};
+export type EnterpriseAdminCreateRegistrationTokenForEnterpriseRequestQuery =
+  {};
 
-export type EnterpriseAdminCreateRegistrationTokenForEnterpriseRequestHeaders = {};
+export type EnterpriseAdminCreateRegistrationTokenForEnterpriseRequestHeaders =
+  {};
 
 export type EnterpriseAdminCreateRegistrationTokenForEnterpriseRequestParams = {
   readonly enterprise: string;
 };
 
-export type EnterpriseAdminCreateRegistrationTokenForEnterpriseRequestBody = never;
+export type EnterpriseAdminCreateRegistrationTokenForEnterpriseRequestBody =
+  never;
 
-export type EnterpriseAdminCreateRegistrationTokenForEnterpriseResponseStatus = 201;
+export type EnterpriseAdminCreateRegistrationTokenForEnterpriseResponseStatus =
+  201;
 
 export type AuthenticationToken = {
   readonly token: string;
@@ -1820,13 +1931,15 @@ export type AuthenticationToken = {
   readonly repository_selection?: 'all' | 'selected';
 };
 
-export type EnterpriseAdminCreateRegistrationTokenForEnterpriseResponseBody = AuthenticationToken;
+export type EnterpriseAdminCreateRegistrationTokenForEnterpriseResponseBody =
+  AuthenticationToken;
 
-export type EnterpriseAdminCreateRegistrationTokenForEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminCreateRegistrationTokenForEnterpriseRequestParams,
-  EnterpriseAdminCreateRegistrationTokenForEnterpriseRequestBody,
-  EnterpriseAdminCreateRegistrationTokenForEnterpriseResponseBody
->;
+export type EnterpriseAdminCreateRegistrationTokenForEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminCreateRegistrationTokenForEnterpriseRequestParams,
+    EnterpriseAdminCreateRegistrationTokenForEnterpriseRequestBody,
+    EnterpriseAdminCreateRegistrationTokenForEnterpriseResponseBody
+  >;
 
 export type EnterpriseAdminCreateRemoveTokenForEnterpriseRequestQuery = {};
 
@@ -1840,13 +1953,15 @@ export type EnterpriseAdminCreateRemoveTokenForEnterpriseRequestBody = never;
 
 export type EnterpriseAdminCreateRemoveTokenForEnterpriseResponseStatus = 201;
 
-export type EnterpriseAdminCreateRemoveTokenForEnterpriseResponseBody = AuthenticationToken;
+export type EnterpriseAdminCreateRemoveTokenForEnterpriseResponseBody =
+  AuthenticationToken;
 
-export type EnterpriseAdminCreateRemoveTokenForEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminCreateRemoveTokenForEnterpriseRequestParams,
-  EnterpriseAdminCreateRemoveTokenForEnterpriseRequestBody,
-  EnterpriseAdminCreateRemoveTokenForEnterpriseResponseBody
->;
+export type EnterpriseAdminCreateRemoveTokenForEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminCreateRemoveTokenForEnterpriseRequestParams,
+    EnterpriseAdminCreateRemoveTokenForEnterpriseRequestBody,
+    EnterpriseAdminCreateRemoveTokenForEnterpriseResponseBody
+  >;
 
 export type EnterpriseAdminGetSelfHostedRunnerForEnterpriseRequestQuery = {};
 
@@ -1861,187 +1976,200 @@ export type EnterpriseAdminGetSelfHostedRunnerForEnterpriseRequestBody = never;
 
 export type EnterpriseAdminGetSelfHostedRunnerForEnterpriseResponseStatus = 200;
 
-export type EnterpriseAdminGetSelfHostedRunnerForEnterpriseResponseBody = SelfHostedRunners;
+export type EnterpriseAdminGetSelfHostedRunnerForEnterpriseResponseBody =
+  SelfHostedRunners;
 
-export type EnterpriseAdminGetSelfHostedRunnerForEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminGetSelfHostedRunnerForEnterpriseRequestParams,
-  EnterpriseAdminGetSelfHostedRunnerForEnterpriseRequestBody,
-  EnterpriseAdminGetSelfHostedRunnerForEnterpriseResponseBody
->;
+export type EnterpriseAdminGetSelfHostedRunnerForEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminGetSelfHostedRunnerForEnterpriseRequestParams,
+    EnterpriseAdminGetSelfHostedRunnerForEnterpriseRequestBody,
+    EnterpriseAdminGetSelfHostedRunnerForEnterpriseResponseBody
+  >;
 
-export type EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequestQuery = {};
+export type EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequestQuery =
+  {};
 
-export type EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequestHeaders = {};
+export type EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequestHeaders =
+  {};
 
 export type EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequestParams = {
   readonly enterprise: string;
   readonly runner_id: string;
 };
 
-export type EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequestBody = never;
+export type EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequestBody =
+  never;
 
-export type EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponseStatus = 204;
+export type EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponseStatus =
+  204;
 
-export type EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponseBody = never;
+export type EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponseBody =
+  never;
 
-export type EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequestParams,
-  EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequestBody,
-  EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponseBody
->;
+export type EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequestParams,
+    EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequestBody,
+    EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponseBody
+  >;
 
-export type EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseRequestQuery = {};
+export type EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseRequestQuery =
+  {};
 
-export type EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseRequestHeaders = {};
+export type EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseRequestHeaders =
+  {};
 
-export type EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseRequestParams = {
-  readonly enterprise: string;
-  readonly runner_id: string;
-};
+export type EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseRequestParams =
+  { readonly enterprise: string; readonly runner_id: string };
 
-export type EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseRequestBody = never;
+export type EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseRequestBody =
+  never;
 
 export type EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseResponseStatus =
-  | 200
-  | 404;
+  200 | 404;
 
 export type EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseResponseBody =
-  | {
-      readonly total_count: number;
-      readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
-    }
-  | BasicError;
 
-export type EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseRequestParams,
-  EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseRequestBody,
-  EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseResponseBody
->;
+    | {
+        readonly total_count: number;
+        readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
+      }
+    | BasicError;
 
-export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequestQuery = {};
+export type EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseRequestParams,
+    EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseRequestBody,
+    EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseResponseBody
+  >;
 
-export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequestHeaders = {};
+export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequestQuery =
+  {};
 
-export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequestParams = {
-  readonly enterprise: string;
-  readonly runner_id: string;
-};
+export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequestHeaders =
+  {};
 
-export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequestBody = {
-  readonly labels: ReadonlyArray<string>;
-};
+export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequestParams =
+  { readonly enterprise: string; readonly runner_id: string };
+
+export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequestBody =
+  { readonly labels: ReadonlyArray<string> };
 
 export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseResponseStatus =
-  | 200
-  | 404
-  | 422;
+  200 | 404 | 422;
 
 export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseResponseBody =
-  | {
-      readonly total_count: number;
-      readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
-    }
-  | BasicError
-  | ValidationErrorSimple;
 
-export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequestParams,
-  EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequestBody,
-  EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseResponseBody
->;
+    | {
+        readonly total_count: number;
+        readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
+      }
+    | BasicError
+    | ValidationErrorSimple;
 
-export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequestQuery = {};
+export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequestParams,
+    EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequestBody,
+    EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseResponseBody
+  >;
 
-export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequestHeaders = {};
+export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequestQuery =
+  {};
 
-export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequestParams = {
-  readonly enterprise: string;
-  readonly runner_id: string;
-};
+export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequestHeaders =
+  {};
 
-export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequestBody = {
-  readonly labels: ReadonlyArray<string>;
-};
+export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequestParams =
+  { readonly enterprise: string; readonly runner_id: string };
+
+export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequestBody =
+  { readonly labels: ReadonlyArray<string> };
 
 export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseResponseStatus =
-  | 200
-  | 404
-  | 422;
+  200 | 404 | 422;
 
 export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseResponseBody =
-  | {
-      readonly total_count: number;
-      readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
-    }
-  | BasicError
-  | ValidationErrorSimple;
 
-export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequestParams,
-  EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequestBody,
-  EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseResponseBody
->;
+    | {
+        readonly total_count: number;
+        readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
+      }
+    | BasicError
+    | ValidationErrorSimple;
 
-export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseRequestQuery = {};
+export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequestParams,
+    EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequestBody,
+    EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseResponseBody
+  >;
 
-export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseRequestHeaders = {};
+export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseRequestQuery =
+  {};
 
-export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseRequestParams = {
-  readonly enterprise: string;
-  readonly runner_id: string;
-};
+export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseRequestHeaders =
+  {};
 
-export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseRequestBody = never;
+export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseRequestParams =
+  { readonly enterprise: string; readonly runner_id: string };
+
+export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseRequestBody =
+  never;
 
 export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseResponseStatus =
-  | 200
-  | 404
-  | 422;
+  200 | 404 | 422;
 
 export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseResponseBody =
-  | {
-      readonly total_count: number;
-      readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
-    }
-  | BasicError
-  | ValidationErrorSimple;
 
-export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseRequestParams,
-  EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseRequestBody,
-  EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseResponseBody
->;
+    | {
+        readonly total_count: number;
+        readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
+      }
+    | BasicError
+    | ValidationErrorSimple;
 
-export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseRequestQuery = {};
+export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseRequestParams,
+    EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseRequestBody,
+    EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseResponseBody
+  >;
 
-export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseRequestHeaders = {};
+export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseRequestQuery =
+  {};
 
-export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseRequestParams = {
-  readonly enterprise: string;
-  readonly runner_id: string;
-  readonly name: string;
-};
+export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseRequestHeaders =
+  {};
 
-export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseRequestBody = never;
+export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseRequestParams =
+  {
+    readonly enterprise: string;
+    readonly runner_id: string;
+    readonly name: string;
+  };
+
+export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseRequestBody =
+  never;
 
 export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseResponseStatus =
-  | 200
-  | 404
-  | 422;
+  200 | 404 | 422;
 
 export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseResponseBody =
-  | {
-      readonly total_count: number;
-      readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
-    }
-  | BasicError
-  | ValidationErrorSimple;
 
-export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseResolver = msw.HttpResponseResolver<
-  EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseRequestParams,
-  EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseRequestBody,
-  EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseResponseBody
->;
+    | {
+        readonly total_count: number;
+        readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
+      }
+    | BasicError
+    | ValidationErrorSimple;
+
+export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseResolver =
+  msw.HttpResponseResolver<
+    EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseRequestParams,
+    EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseRequestBody,
+    EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseResponseBody
+  >;
 
 export type CodeScanningListAlertsForEnterpriseRequestQuery = {
   readonly tool_name?: string;
@@ -2234,11 +2362,12 @@ export type CodeScanningListAlertsForEnterpriseResponseBody =
       readonly documentation_url?: string;
     };
 
-export type CodeScanningListAlertsForEnterpriseResolver = msw.HttpResponseResolver<
-  CodeScanningListAlertsForEnterpriseRequestParams,
-  CodeScanningListAlertsForEnterpriseRequestBody,
-  CodeScanningListAlertsForEnterpriseResponseBody
->;
+export type CodeScanningListAlertsForEnterpriseResolver =
+  msw.HttpResponseResolver<
+    CodeScanningListAlertsForEnterpriseRequestParams,
+    CodeScanningListAlertsForEnterpriseRequestBody,
+    CodeScanningListAlertsForEnterpriseResponseBody
+  >;
 
 export type SecretScanningListAlertsForEnterpriseRequestQuery = {
   readonly state?: string;
@@ -2306,11 +2435,12 @@ export type SecretScanningListAlertsForEnterpriseResponseBody =
       readonly documentation_url?: string;
     };
 
-export type SecretScanningListAlertsForEnterpriseResolver = msw.HttpResponseResolver<
-  SecretScanningListAlertsForEnterpriseRequestParams,
-  SecretScanningListAlertsForEnterpriseRequestBody,
-  SecretScanningListAlertsForEnterpriseResponseBody
->;
+export type SecretScanningListAlertsForEnterpriseResolver =
+  msw.HttpResponseResolver<
+    SecretScanningListAlertsForEnterpriseRequestParams,
+    SecretScanningListAlertsForEnterpriseRequestBody,
+    SecretScanningListAlertsForEnterpriseResponseBody
+  >;
 
 export type BillingGetGithubAdvancedSecurityBillingGheRequestQuery = {
   readonly per_page?: string;
@@ -2350,11 +2480,12 @@ export type BillingGetGithubAdvancedSecurityBillingGheResponseBody =
   | AdvancedSecurityActiveCommitters
   | BasicError;
 
-export type BillingGetGithubAdvancedSecurityBillingGheResolver = msw.HttpResponseResolver<
-  BillingGetGithubAdvancedSecurityBillingGheRequestParams,
-  BillingGetGithubAdvancedSecurityBillingGheRequestBody,
-  BillingGetGithubAdvancedSecurityBillingGheResponseBody
->;
+export type BillingGetGithubAdvancedSecurityBillingGheResolver =
+  msw.HttpResponseResolver<
+    BillingGetGithubAdvancedSecurityBillingGheRequestParams,
+    BillingGetGithubAdvancedSecurityBillingGheRequestBody,
+    BillingGetGithubAdvancedSecurityBillingGheResponseBody
+  >;
 
 export type ActivityListPublicEventsRequestQuery = {
   readonly per_page?: string;
@@ -3237,11 +3368,12 @@ export type AppsListReposAccessibleToInstallationResponseBody =
   | never
   | BasicError;
 
-export type AppsListReposAccessibleToInstallationResolver = msw.HttpResponseResolver<
-  AppsListReposAccessibleToInstallationRequestParams,
-  AppsListReposAccessibleToInstallationRequestBody,
-  AppsListReposAccessibleToInstallationResponseBody
->;
+export type AppsListReposAccessibleToInstallationResolver =
+  msw.HttpResponseResolver<
+    AppsListReposAccessibleToInstallationRequestParams,
+    AppsListReposAccessibleToInstallationRequestBody,
+    AppsListReposAccessibleToInstallationResponseBody
+  >;
 
 export type AppsRevokeInstallationAccessTokenRequestQuery = {};
 
@@ -3255,11 +3387,12 @@ export type AppsRevokeInstallationAccessTokenResponseStatus = 204;
 
 export type AppsRevokeInstallationAccessTokenResponseBody = never;
 
-export type AppsRevokeInstallationAccessTokenResolver = msw.HttpResponseResolver<
-  AppsRevokeInstallationAccessTokenRequestParams,
-  AppsRevokeInstallationAccessTokenRequestBody,
-  AppsRevokeInstallationAccessTokenResponseBody
->;
+export type AppsRevokeInstallationAccessTokenResolver =
+  msw.HttpResponseResolver<
+    AppsRevokeInstallationAccessTokenRequestParams,
+    AppsRevokeInstallationAccessTokenRequestBody,
+    AppsRevokeInstallationAccessTokenResponseBody
+  >;
 
 export type IssuesListRequestQuery = {
   readonly filter?: string;
@@ -3452,11 +3585,12 @@ export type AppsGetSubscriptionPlanForAccountResponseBody =
   | MarketplacePurchase
   | BasicError;
 
-export type AppsGetSubscriptionPlanForAccountResolver = msw.HttpResponseResolver<
-  AppsGetSubscriptionPlanForAccountRequestParams,
-  AppsGetSubscriptionPlanForAccountRequestBody,
-  AppsGetSubscriptionPlanForAccountResponseBody
->;
+export type AppsGetSubscriptionPlanForAccountResolver =
+  msw.HttpResponseResolver<
+    AppsGetSubscriptionPlanForAccountRequestParams,
+    AppsGetSubscriptionPlanForAccountRequestBody,
+    AppsGetSubscriptionPlanForAccountResponseBody
+  >;
 
 export type AppsListPlansRequestQuery = {
   readonly per_page?: string;
@@ -3527,11 +3661,12 @@ export type AppsGetSubscriptionPlanForAccountStubbedResponseBody =
   | BasicError
   | never;
 
-export type AppsGetSubscriptionPlanForAccountStubbedResolver = msw.HttpResponseResolver<
-  AppsGetSubscriptionPlanForAccountStubbedRequestParams,
-  AppsGetSubscriptionPlanForAccountStubbedRequestBody,
-  AppsGetSubscriptionPlanForAccountStubbedResponseBody
->;
+export type AppsGetSubscriptionPlanForAccountStubbedResolver =
+  msw.HttpResponseResolver<
+    AppsGetSubscriptionPlanForAccountStubbedRequestParams,
+    AppsGetSubscriptionPlanForAccountStubbedRequestBody,
+    AppsGetSubscriptionPlanForAccountStubbedResponseBody
+  >;
 
 export type AppsListPlansStubbedRequestQuery = {
   readonly per_page?: string;
@@ -3647,11 +3782,12 @@ export type ActivityListPublicEventsForRepoNetworkResponseBody =
   | BasicError
   | never;
 
-export type ActivityListPublicEventsForRepoNetworkResolver = msw.HttpResponseResolver<
-  ActivityListPublicEventsForRepoNetworkRequestParams,
-  ActivityListPublicEventsForRepoNetworkRequestBody,
-  ActivityListPublicEventsForRepoNetworkResponseBody
->;
+export type ActivityListPublicEventsForRepoNetworkResolver =
+  msw.HttpResponseResolver<
+    ActivityListPublicEventsForRepoNetworkRequestParams,
+    ActivityListPublicEventsForRepoNetworkRequestBody,
+    ActivityListPublicEventsForRepoNetworkResponseBody
+  >;
 
 export type ActivityListNotificationsForAuthenticatedUserRequestQuery = {
   readonly all?: string;
@@ -3798,11 +3934,12 @@ export type ActivityListNotificationsForAuthenticatedUserResponseBody =
   | BasicError
   | ValidationError;
 
-export type ActivityListNotificationsForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  ActivityListNotificationsForAuthenticatedUserRequestParams,
-  ActivityListNotificationsForAuthenticatedUserRequestBody,
-  ActivityListNotificationsForAuthenticatedUserResponseBody
->;
+export type ActivityListNotificationsForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    ActivityListNotificationsForAuthenticatedUserRequestParams,
+    ActivityListNotificationsForAuthenticatedUserRequestBody,
+    ActivityListNotificationsForAuthenticatedUserResponseBody
+  >;
 
 export type ActivityMarkNotificationsAsReadRequestQuery = {};
 
@@ -3872,13 +4009,15 @@ export type ActivityMarkThreadAsReadResolver = msw.HttpResponseResolver<
 
 export type ActivityGetThreadSubscriptionForAuthenticatedUserRequestQuery = {};
 
-export type ActivityGetThreadSubscriptionForAuthenticatedUserRequestHeaders = {};
+export type ActivityGetThreadSubscriptionForAuthenticatedUserRequestHeaders =
+  {};
 
 export type ActivityGetThreadSubscriptionForAuthenticatedUserRequestParams = {
   readonly thread_id: string;
 };
 
-export type ActivityGetThreadSubscriptionForAuthenticatedUserRequestBody = never;
+export type ActivityGetThreadSubscriptionForAuthenticatedUserRequestBody =
+  never;
 
 export type ActivityGetThreadSubscriptionForAuthenticatedUserResponseStatus =
   | 200
@@ -3901,11 +4040,12 @@ export type ActivityGetThreadSubscriptionForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type ActivityGetThreadSubscriptionForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  ActivityGetThreadSubscriptionForAuthenticatedUserRequestParams,
-  ActivityGetThreadSubscriptionForAuthenticatedUserRequestBody,
-  ActivityGetThreadSubscriptionForAuthenticatedUserResponseBody
->;
+export type ActivityGetThreadSubscriptionForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    ActivityGetThreadSubscriptionForAuthenticatedUserRequestParams,
+    ActivityGetThreadSubscriptionForAuthenticatedUserRequestBody,
+    ActivityGetThreadSubscriptionForAuthenticatedUserResponseBody
+  >;
 
 export type ActivitySetThreadSubscriptionRequestQuery = {};
 
@@ -4181,13 +4321,15 @@ export type ActionsGetActionsCacheUsageForOrgRequestBody = never;
 
 export type ActionsGetActionsCacheUsageForOrgResponseStatus = 200;
 
-export type ActionsGetActionsCacheUsageForOrgResponseBody = ActionsCacheUsageOrgEnterprise;
+export type ActionsGetActionsCacheUsageForOrgResponseBody =
+  ActionsCacheUsageOrgEnterprise;
 
-export type ActionsGetActionsCacheUsageForOrgResolver = msw.HttpResponseResolver<
-  ActionsGetActionsCacheUsageForOrgRequestParams,
-  ActionsGetActionsCacheUsageForOrgRequestBody,
-  ActionsGetActionsCacheUsageForOrgResponseBody
->;
+export type ActionsGetActionsCacheUsageForOrgResolver =
+  msw.HttpResponseResolver<
+    ActionsGetActionsCacheUsageForOrgRequestParams,
+    ActionsGetActionsCacheUsageForOrgRequestBody,
+    ActionsGetActionsCacheUsageForOrgResponseBody
+  >;
 
 export type ActionsGetActionsCacheUsageByRepoForOrgRequestQuery = {
   readonly per_page?: string;
@@ -4215,11 +4357,12 @@ export type ActionsGetActionsCacheUsageByRepoForOrgResponseBody = {
   readonly repository_cache_usages: ReadonlyArray<ActionsCacheUsageByRepository>;
 };
 
-export type ActionsGetActionsCacheUsageByRepoForOrgResolver = msw.HttpResponseResolver<
-  ActionsGetActionsCacheUsageByRepoForOrgRequestParams,
-  ActionsGetActionsCacheUsageByRepoForOrgRequestBody,
-  ActionsGetActionsCacheUsageByRepoForOrgResponseBody
->;
+export type ActionsGetActionsCacheUsageByRepoForOrgResolver =
+  msw.HttpResponseResolver<
+    ActionsGetActionsCacheUsageByRepoForOrgRequestParams,
+    ActionsGetActionsCacheUsageByRepoForOrgRequestBody,
+    ActionsGetActionsCacheUsageByRepoForOrgResponseBody
+  >;
 
 export type ActionsGetGithubActionsPermissionsOrganizationRequestQuery = {};
 
@@ -4242,13 +4385,15 @@ export type ActionsOrganizationPermissions = {
   readonly selected_actions_url?: SelectedActionsUrl;
 };
 
-export type ActionsGetGithubActionsPermissionsOrganizationResponseBody = ActionsOrganizationPermissions;
+export type ActionsGetGithubActionsPermissionsOrganizationResponseBody =
+  ActionsOrganizationPermissions;
 
-export type ActionsGetGithubActionsPermissionsOrganizationResolver = msw.HttpResponseResolver<
-  ActionsGetGithubActionsPermissionsOrganizationRequestParams,
-  ActionsGetGithubActionsPermissionsOrganizationRequestBody,
-  ActionsGetGithubActionsPermissionsOrganizationResponseBody
->;
+export type ActionsGetGithubActionsPermissionsOrganizationResolver =
+  msw.HttpResponseResolver<
+    ActionsGetGithubActionsPermissionsOrganizationRequestParams,
+    ActionsGetGithubActionsPermissionsOrganizationRequestBody,
+    ActionsGetGithubActionsPermissionsOrganizationResponseBody
+  >;
 
 export type ActionsSetGithubActionsPermissionsOrganizationRequestQuery = {};
 
@@ -4267,101 +4412,115 @@ export type ActionsSetGithubActionsPermissionsOrganizationResponseStatus = 204;
 
 export type ActionsSetGithubActionsPermissionsOrganizationResponseBody = never;
 
-export type ActionsSetGithubActionsPermissionsOrganizationResolver = msw.HttpResponseResolver<
-  ActionsSetGithubActionsPermissionsOrganizationRequestParams,
-  ActionsSetGithubActionsPermissionsOrganizationRequestBody,
-  ActionsSetGithubActionsPermissionsOrganizationResponseBody
->;
+export type ActionsSetGithubActionsPermissionsOrganizationResolver =
+  msw.HttpResponseResolver<
+    ActionsSetGithubActionsPermissionsOrganizationRequestParams,
+    ActionsSetGithubActionsPermissionsOrganizationRequestBody,
+    ActionsSetGithubActionsPermissionsOrganizationResponseBody
+  >;
 
-export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequestQuery = {
-  readonly per_page?: string;
-  readonly page?: string;
-};
+export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequestQuery =
+  { readonly per_page?: string; readonly page?: string };
 
-export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequestHeaders = {};
+export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequestHeaders =
+  {};
 
-export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequestParams = {
-  readonly org: string;
-};
+export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequestParams =
+  { readonly org: string };
 
-export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequestBody = never;
+export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequestBody =
+  never;
 
-export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponseStatus = 200;
+export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponseStatus =
+  200;
 
-export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponseBody = {
-  readonly total_count: number;
-  readonly repositories: ReadonlyArray<Repository>;
-};
+export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponseBody =
+  {
+    readonly total_count: number;
+    readonly repositories: ReadonlyArray<Repository>;
+  };
 
-export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResolver = msw.HttpResponseResolver<
-  ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequestParams,
-  ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequestBody,
-  ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponseBody
->;
+export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResolver =
+  msw.HttpResponseResolver<
+    ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequestParams,
+    ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequestBody,
+    ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponseBody
+  >;
 
-export type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestQuery = {};
+export type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestQuery =
+  {};
 
-export type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestHeaders = {};
+export type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestHeaders =
+  {};
 
-export type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestParams = {
-  readonly org: string;
-};
+export type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestParams =
+  { readonly org: string };
 
-export type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestBody = {
-  readonly selected_repository_ids: ReadonlyArray<number>;
-};
+export type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestBody =
+  { readonly selected_repository_ids: ReadonlyArray<number> };
 
-export type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponseStatus = 204;
+export type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponseStatus =
+  204;
 
-export type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponseBody = never;
+export type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponseBody =
+  never;
 
-export type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResolver = msw.HttpResponseResolver<
-  ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestParams,
-  ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestBody,
-  ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponseBody
->;
+export type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResolver =
+  msw.HttpResponseResolver<
+    ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestParams,
+    ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestBody,
+    ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponseBody
+  >;
 
-export type ActionsEnableSelectedRepositoryGithubActionsOrganizationRequestQuery = {};
+export type ActionsEnableSelectedRepositoryGithubActionsOrganizationRequestQuery =
+  {};
 
-export type ActionsEnableSelectedRepositoryGithubActionsOrganizationRequestHeaders = {};
+export type ActionsEnableSelectedRepositoryGithubActionsOrganizationRequestHeaders =
+  {};
 
-export type ActionsEnableSelectedRepositoryGithubActionsOrganizationRequestParams = {
-  readonly org: string;
-  readonly repository_id: string;
-};
+export type ActionsEnableSelectedRepositoryGithubActionsOrganizationRequestParams =
+  { readonly org: string; readonly repository_id: string };
 
-export type ActionsEnableSelectedRepositoryGithubActionsOrganizationRequestBody = never;
+export type ActionsEnableSelectedRepositoryGithubActionsOrganizationRequestBody =
+  never;
 
-export type ActionsEnableSelectedRepositoryGithubActionsOrganizationResponseStatus = 204;
+export type ActionsEnableSelectedRepositoryGithubActionsOrganizationResponseStatus =
+  204;
 
-export type ActionsEnableSelectedRepositoryGithubActionsOrganizationResponseBody = never;
+export type ActionsEnableSelectedRepositoryGithubActionsOrganizationResponseBody =
+  never;
 
-export type ActionsEnableSelectedRepositoryGithubActionsOrganizationResolver = msw.HttpResponseResolver<
-  ActionsEnableSelectedRepositoryGithubActionsOrganizationRequestParams,
-  ActionsEnableSelectedRepositoryGithubActionsOrganizationRequestBody,
-  ActionsEnableSelectedRepositoryGithubActionsOrganizationResponseBody
->;
+export type ActionsEnableSelectedRepositoryGithubActionsOrganizationResolver =
+  msw.HttpResponseResolver<
+    ActionsEnableSelectedRepositoryGithubActionsOrganizationRequestParams,
+    ActionsEnableSelectedRepositoryGithubActionsOrganizationRequestBody,
+    ActionsEnableSelectedRepositoryGithubActionsOrganizationResponseBody
+  >;
 
-export type ActionsDisableSelectedRepositoryGithubActionsOrganizationRequestQuery = {};
+export type ActionsDisableSelectedRepositoryGithubActionsOrganizationRequestQuery =
+  {};
 
-export type ActionsDisableSelectedRepositoryGithubActionsOrganizationRequestHeaders = {};
+export type ActionsDisableSelectedRepositoryGithubActionsOrganizationRequestHeaders =
+  {};
 
-export type ActionsDisableSelectedRepositoryGithubActionsOrganizationRequestParams = {
-  readonly org: string;
-  readonly repository_id: string;
-};
+export type ActionsDisableSelectedRepositoryGithubActionsOrganizationRequestParams =
+  { readonly org: string; readonly repository_id: string };
 
-export type ActionsDisableSelectedRepositoryGithubActionsOrganizationRequestBody = never;
+export type ActionsDisableSelectedRepositoryGithubActionsOrganizationRequestBody =
+  never;
 
-export type ActionsDisableSelectedRepositoryGithubActionsOrganizationResponseStatus = 204;
+export type ActionsDisableSelectedRepositoryGithubActionsOrganizationResponseStatus =
+  204;
 
-export type ActionsDisableSelectedRepositoryGithubActionsOrganizationResponseBody = never;
+export type ActionsDisableSelectedRepositoryGithubActionsOrganizationResponseBody =
+  never;
 
-export type ActionsDisableSelectedRepositoryGithubActionsOrganizationResolver = msw.HttpResponseResolver<
-  ActionsDisableSelectedRepositoryGithubActionsOrganizationRequestParams,
-  ActionsDisableSelectedRepositoryGithubActionsOrganizationRequestBody,
-  ActionsDisableSelectedRepositoryGithubActionsOrganizationResponseBody
->;
+export type ActionsDisableSelectedRepositoryGithubActionsOrganizationResolver =
+  msw.HttpResponseResolver<
+    ActionsDisableSelectedRepositoryGithubActionsOrganizationRequestParams,
+    ActionsDisableSelectedRepositoryGithubActionsOrganizationRequestBody,
+    ActionsDisableSelectedRepositoryGithubActionsOrganizationResponseBody
+  >;
 
 export type ActionsGetAllowedActionsOrganizationRequestQuery = {};
 
@@ -4377,11 +4536,12 @@ export type ActionsGetAllowedActionsOrganizationResponseStatus = 200;
 
 export type ActionsGetAllowedActionsOrganizationResponseBody = SelectedActions;
 
-export type ActionsGetAllowedActionsOrganizationResolver = msw.HttpResponseResolver<
-  ActionsGetAllowedActionsOrganizationRequestParams,
-  ActionsGetAllowedActionsOrganizationRequestBody,
-  ActionsGetAllowedActionsOrganizationResponseBody
->;
+export type ActionsGetAllowedActionsOrganizationResolver =
+  msw.HttpResponseResolver<
+    ActionsGetAllowedActionsOrganizationRequestParams,
+    ActionsGetAllowedActionsOrganizationRequestBody,
+    ActionsGetAllowedActionsOrganizationResponseBody
+  >;
 
 export type ActionsSetAllowedActionsOrganizationRequestQuery = {};
 
@@ -4399,55 +4559,62 @@ export type ActionsSetAllowedActionsOrganizationResponseStatus = 204;
 
 export type ActionsSetAllowedActionsOrganizationResponseBody = never;
 
-export type ActionsSetAllowedActionsOrganizationResolver = msw.HttpResponseResolver<
-  ActionsSetAllowedActionsOrganizationRequestParams,
-  ActionsSetAllowedActionsOrganizationRequestBody,
-  ActionsSetAllowedActionsOrganizationResponseBody
->;
+export type ActionsSetAllowedActionsOrganizationResolver =
+  msw.HttpResponseResolver<
+    ActionsSetAllowedActionsOrganizationRequestParams,
+    ActionsSetAllowedActionsOrganizationRequestBody,
+    ActionsSetAllowedActionsOrganizationResponseBody
+  >;
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationRequestQuery = {};
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationRequestQuery =
+  {};
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationRequestHeaders = {};
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationRequestHeaders =
+  {};
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationRequestParams = {
-  readonly org: string;
-};
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationRequestParams =
+  { readonly org: string };
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationRequestBody = never;
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationRequestBody =
+  never;
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationResponseStatus = 200;
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationResponseStatus =
+  200;
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationResponseBody = ActionsGetDefaultWorkflowPermissions;
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationResponseBody =
+  ActionsGetDefaultWorkflowPermissions;
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationResolver = msw.HttpResponseResolver<
-  ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationRequestParams,
-  ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationRequestBody,
-  ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationResponseBody
->;
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationResolver =
+  msw.HttpResponseResolver<
+    ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationRequestParams,
+    ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationRequestBody,
+    ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationResponseBody
+  >;
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequestQuery = {};
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequestQuery =
+  {};
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequestHeaders = {};
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequestHeaders =
+  {};
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequestParams = {
-  readonly org: string;
-};
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequestParams =
+  { readonly org: string };
 
 export type ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequestBody =
-  | ActionsSetDefaultWorkflowPermissions
-  | undefined;
+  ActionsSetDefaultWorkflowPermissions | undefined;
 
 export type ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationResponseStatus =
-  | 204
-  | 409;
+  204 | 409;
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationResponseBody = never;
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationResponseBody =
+  never;
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationResolver = msw.HttpResponseResolver<
-  ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequestParams,
-  ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequestBody,
-  ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationResponseBody
->;
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationResolver =
+  msw.HttpResponseResolver<
+    ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequestParams,
+    ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequestBody,
+    ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationResponseBody
+  >;
 
 export type ActionsListSelfHostedRunnerGroupsForOrgRequestQuery = {
   readonly per_page?: string;
@@ -4485,11 +4652,12 @@ export type ActionsListSelfHostedRunnerGroupsForOrgResponseBody = {
   readonly runner_groups: ReadonlyArray<RunnerGroupsOrg>;
 };
 
-export type ActionsListSelfHostedRunnerGroupsForOrgResolver = msw.HttpResponseResolver<
-  ActionsListSelfHostedRunnerGroupsForOrgRequestParams,
-  ActionsListSelfHostedRunnerGroupsForOrgRequestBody,
-  ActionsListSelfHostedRunnerGroupsForOrgResponseBody
->;
+export type ActionsListSelfHostedRunnerGroupsForOrgResolver =
+  msw.HttpResponseResolver<
+    ActionsListSelfHostedRunnerGroupsForOrgRequestParams,
+    ActionsListSelfHostedRunnerGroupsForOrgRequestBody,
+    ActionsListSelfHostedRunnerGroupsForOrgResponseBody
+  >;
 
 export type ActionsCreateSelfHostedRunnerGroupForOrgRequestQuery = {};
 
@@ -4511,13 +4679,15 @@ export type ActionsCreateSelfHostedRunnerGroupForOrgRequestBody = {
 
 export type ActionsCreateSelfHostedRunnerGroupForOrgResponseStatus = 201;
 
-export type ActionsCreateSelfHostedRunnerGroupForOrgResponseBody = RunnerGroupsOrg;
+export type ActionsCreateSelfHostedRunnerGroupForOrgResponseBody =
+  RunnerGroupsOrg;
 
-export type ActionsCreateSelfHostedRunnerGroupForOrgResolver = msw.HttpResponseResolver<
-  ActionsCreateSelfHostedRunnerGroupForOrgRequestParams,
-  ActionsCreateSelfHostedRunnerGroupForOrgRequestBody,
-  ActionsCreateSelfHostedRunnerGroupForOrgResponseBody
->;
+export type ActionsCreateSelfHostedRunnerGroupForOrgResolver =
+  msw.HttpResponseResolver<
+    ActionsCreateSelfHostedRunnerGroupForOrgRequestParams,
+    ActionsCreateSelfHostedRunnerGroupForOrgRequestBody,
+    ActionsCreateSelfHostedRunnerGroupForOrgResponseBody
+  >;
 
 export type ActionsGetSelfHostedRunnerGroupForOrgRequestQuery = {};
 
@@ -4534,11 +4704,12 @@ export type ActionsGetSelfHostedRunnerGroupForOrgResponseStatus = 200;
 
 export type ActionsGetSelfHostedRunnerGroupForOrgResponseBody = RunnerGroupsOrg;
 
-export type ActionsGetSelfHostedRunnerGroupForOrgResolver = msw.HttpResponseResolver<
-  ActionsGetSelfHostedRunnerGroupForOrgRequestParams,
-  ActionsGetSelfHostedRunnerGroupForOrgRequestBody,
-  ActionsGetSelfHostedRunnerGroupForOrgResponseBody
->;
+export type ActionsGetSelfHostedRunnerGroupForOrgResolver =
+  msw.HttpResponseResolver<
+    ActionsGetSelfHostedRunnerGroupForOrgRequestParams,
+    ActionsGetSelfHostedRunnerGroupForOrgRequestBody,
+    ActionsGetSelfHostedRunnerGroupForOrgResponseBody
+  >;
 
 export type ActionsUpdateSelfHostedRunnerGroupForOrgRequestQuery = {};
 
@@ -4559,13 +4730,15 @@ export type ActionsUpdateSelfHostedRunnerGroupForOrgRequestBody = {
 
 export type ActionsUpdateSelfHostedRunnerGroupForOrgResponseStatus = 200;
 
-export type ActionsUpdateSelfHostedRunnerGroupForOrgResponseBody = RunnerGroupsOrg;
+export type ActionsUpdateSelfHostedRunnerGroupForOrgResponseBody =
+  RunnerGroupsOrg;
 
-export type ActionsUpdateSelfHostedRunnerGroupForOrgResolver = msw.HttpResponseResolver<
-  ActionsUpdateSelfHostedRunnerGroupForOrgRequestParams,
-  ActionsUpdateSelfHostedRunnerGroupForOrgRequestBody,
-  ActionsUpdateSelfHostedRunnerGroupForOrgResponseBody
->;
+export type ActionsUpdateSelfHostedRunnerGroupForOrgResolver =
+  msw.HttpResponseResolver<
+    ActionsUpdateSelfHostedRunnerGroupForOrgRequestParams,
+    ActionsUpdateSelfHostedRunnerGroupForOrgRequestBody,
+    ActionsUpdateSelfHostedRunnerGroupForOrgResponseBody
+  >;
 
 export type ActionsDeleteSelfHostedRunnerGroupFromOrgRequestQuery = {};
 
@@ -4582,38 +4755,43 @@ export type ActionsDeleteSelfHostedRunnerGroupFromOrgResponseStatus = 204;
 
 export type ActionsDeleteSelfHostedRunnerGroupFromOrgResponseBody = never;
 
-export type ActionsDeleteSelfHostedRunnerGroupFromOrgResolver = msw.HttpResponseResolver<
-  ActionsDeleteSelfHostedRunnerGroupFromOrgRequestParams,
-  ActionsDeleteSelfHostedRunnerGroupFromOrgRequestBody,
-  ActionsDeleteSelfHostedRunnerGroupFromOrgResponseBody
->;
+export type ActionsDeleteSelfHostedRunnerGroupFromOrgResolver =
+  msw.HttpResponseResolver<
+    ActionsDeleteSelfHostedRunnerGroupFromOrgRequestParams,
+    ActionsDeleteSelfHostedRunnerGroupFromOrgRequestBody,
+    ActionsDeleteSelfHostedRunnerGroupFromOrgResponseBody
+  >;
 
 export type ActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequestQuery = {
   readonly page?: string;
   readonly per_page?: string;
 };
 
-export type ActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequestHeaders = {};
+export type ActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequestHeaders =
+  {};
 
 export type ActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequestParams = {
   readonly org: string;
   readonly runner_group_id: string;
 };
 
-export type ActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequestBody = never;
+export type ActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequestBody =
+  never;
 
-export type ActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponseStatus = 200;
+export type ActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponseStatus =
+  200;
 
 export type ActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponseBody = {
   readonly total_count: number;
   readonly repositories: ReadonlyArray<MinimalRepository>;
 };
 
-export type ActionsListRepoAccessToSelfHostedRunnerGroupInOrgResolver = msw.HttpResponseResolver<
-  ActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequestParams,
-  ActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequestBody,
-  ActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponseBody
->;
+export type ActionsListRepoAccessToSelfHostedRunnerGroupInOrgResolver =
+  msw.HttpResponseResolver<
+    ActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequestParams,
+    ActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequestBody,
+    ActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponseBody
+  >;
 
 export type ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequestQuery = {};
 
@@ -4628,19 +4806,24 @@ export type ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequestBody = {
   readonly selected_repository_ids: ReadonlyArray<number>;
 };
 
-export type ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponseStatus = 204;
+export type ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponseStatus =
+  204;
 
-export type ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponseBody = never;
+export type ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponseBody =
+  never;
 
-export type ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResolver = msw.HttpResponseResolver<
-  ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequestParams,
-  ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequestBody,
-  ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponseBody
->;
+export type ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResolver =
+  msw.HttpResponseResolver<
+    ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequestParams,
+    ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequestBody,
+    ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponseBody
+  >;
 
-export type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequestQuery = {};
+export type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequestQuery =
+  {};
 
-export type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequestHeaders = {};
+export type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequestHeaders =
+  {};
 
 export type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequestParams = {
   readonly org: string;
@@ -4648,17 +4831,21 @@ export type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequestParams = {
   readonly repository_id: string;
 };
 
-export type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequestBody = never;
+export type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequestBody =
+  never;
 
-export type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponseStatus = 204;
+export type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponseStatus =
+  204;
 
-export type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponseBody = never;
+export type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponseBody =
+  never;
 
-export type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResolver = msw.HttpResponseResolver<
-  ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequestParams,
-  ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequestBody,
-  ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponseBody
->;
+export type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResolver =
+  msw.HttpResponseResolver<
+    ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequestParams,
+    ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequestBody,
+    ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponseBody
+  >;
 
 export type ActionsListSelfHostedRunnersInGroupForOrgRequestQuery = {
   readonly per_page?: string;
@@ -4681,11 +4868,12 @@ export type ActionsListSelfHostedRunnersInGroupForOrgResponseBody = {
   readonly runners: ReadonlyArray<SelfHostedRunners>;
 };
 
-export type ActionsListSelfHostedRunnersInGroupForOrgResolver = msw.HttpResponseResolver<
-  ActionsListSelfHostedRunnersInGroupForOrgRequestParams,
-  ActionsListSelfHostedRunnersInGroupForOrgRequestBody,
-  ActionsListSelfHostedRunnersInGroupForOrgResponseBody
->;
+export type ActionsListSelfHostedRunnersInGroupForOrgResolver =
+  msw.HttpResponseResolver<
+    ActionsListSelfHostedRunnersInGroupForOrgRequestParams,
+    ActionsListSelfHostedRunnersInGroupForOrgRequestBody,
+    ActionsListSelfHostedRunnersInGroupForOrgResponseBody
+  >;
 
 export type ActionsSetSelfHostedRunnersInGroupForOrgRequestQuery = {};
 
@@ -4704,11 +4892,12 @@ export type ActionsSetSelfHostedRunnersInGroupForOrgResponseStatus = 204;
 
 export type ActionsSetSelfHostedRunnersInGroupForOrgResponseBody = never;
 
-export type ActionsSetSelfHostedRunnersInGroupForOrgResolver = msw.HttpResponseResolver<
-  ActionsSetSelfHostedRunnersInGroupForOrgRequestParams,
-  ActionsSetSelfHostedRunnersInGroupForOrgRequestBody,
-  ActionsSetSelfHostedRunnersInGroupForOrgResponseBody
->;
+export type ActionsSetSelfHostedRunnersInGroupForOrgResolver =
+  msw.HttpResponseResolver<
+    ActionsSetSelfHostedRunnersInGroupForOrgRequestParams,
+    ActionsSetSelfHostedRunnersInGroupForOrgRequestBody,
+    ActionsSetSelfHostedRunnersInGroupForOrgResponseBody
+  >;
 
 export type ActionsAddSelfHostedRunnerToGroupForOrgRequestQuery = {};
 
@@ -4726,11 +4915,12 @@ export type ActionsAddSelfHostedRunnerToGroupForOrgResponseStatus = 204;
 
 export type ActionsAddSelfHostedRunnerToGroupForOrgResponseBody = never;
 
-export type ActionsAddSelfHostedRunnerToGroupForOrgResolver = msw.HttpResponseResolver<
-  ActionsAddSelfHostedRunnerToGroupForOrgRequestParams,
-  ActionsAddSelfHostedRunnerToGroupForOrgRequestBody,
-  ActionsAddSelfHostedRunnerToGroupForOrgResponseBody
->;
+export type ActionsAddSelfHostedRunnerToGroupForOrgResolver =
+  msw.HttpResponseResolver<
+    ActionsAddSelfHostedRunnerToGroupForOrgRequestParams,
+    ActionsAddSelfHostedRunnerToGroupForOrgRequestBody,
+    ActionsAddSelfHostedRunnerToGroupForOrgResponseBody
+  >;
 
 export type ActionsRemoveSelfHostedRunnerFromGroupForOrgRequestQuery = {};
 
@@ -4748,11 +4938,12 @@ export type ActionsRemoveSelfHostedRunnerFromGroupForOrgResponseStatus = 204;
 
 export type ActionsRemoveSelfHostedRunnerFromGroupForOrgResponseBody = never;
 
-export type ActionsRemoveSelfHostedRunnerFromGroupForOrgResolver = msw.HttpResponseResolver<
-  ActionsRemoveSelfHostedRunnerFromGroupForOrgRequestParams,
-  ActionsRemoveSelfHostedRunnerFromGroupForOrgRequestBody,
-  ActionsRemoveSelfHostedRunnerFromGroupForOrgResponseBody
->;
+export type ActionsRemoveSelfHostedRunnerFromGroupForOrgResolver =
+  msw.HttpResponseResolver<
+    ActionsRemoveSelfHostedRunnerFromGroupForOrgRequestParams,
+    ActionsRemoveSelfHostedRunnerFromGroupForOrgRequestBody,
+    ActionsRemoveSelfHostedRunnerFromGroupForOrgResponseBody
+  >;
 
 export type ActionsListSelfHostedRunnersForOrgRequestQuery = {
   readonly per_page?: string;
@@ -4774,11 +4965,12 @@ export type ActionsListSelfHostedRunnersForOrgResponseBody = {
   readonly runners: ReadonlyArray<SelfHostedRunners>;
 };
 
-export type ActionsListSelfHostedRunnersForOrgResolver = msw.HttpResponseResolver<
-  ActionsListSelfHostedRunnersForOrgRequestParams,
-  ActionsListSelfHostedRunnersForOrgRequestBody,
-  ActionsListSelfHostedRunnersForOrgResponseBody
->;
+export type ActionsListSelfHostedRunnersForOrgResolver =
+  msw.HttpResponseResolver<
+    ActionsListSelfHostedRunnersForOrgRequestParams,
+    ActionsListSelfHostedRunnersForOrgRequestBody,
+    ActionsListSelfHostedRunnersForOrgResponseBody
+  >;
 
 export type ActionsListRunnerApplicationsForOrgRequestQuery = {};
 
@@ -4792,13 +4984,15 @@ export type ActionsListRunnerApplicationsForOrgRequestBody = never;
 
 export type ActionsListRunnerApplicationsForOrgResponseStatus = 200;
 
-export type ActionsListRunnerApplicationsForOrgResponseBody = ReadonlyArray<RunnerApplication>;
+export type ActionsListRunnerApplicationsForOrgResponseBody =
+  ReadonlyArray<RunnerApplication>;
 
-export type ActionsListRunnerApplicationsForOrgResolver = msw.HttpResponseResolver<
-  ActionsListRunnerApplicationsForOrgRequestParams,
-  ActionsListRunnerApplicationsForOrgRequestBody,
-  ActionsListRunnerApplicationsForOrgResponseBody
->;
+export type ActionsListRunnerApplicationsForOrgResolver =
+  msw.HttpResponseResolver<
+    ActionsListRunnerApplicationsForOrgRequestParams,
+    ActionsListRunnerApplicationsForOrgRequestBody,
+    ActionsListRunnerApplicationsForOrgResponseBody
+  >;
 
 export type ActionsCreateRegistrationTokenForOrgRequestQuery = {};
 
@@ -4812,13 +5006,15 @@ export type ActionsCreateRegistrationTokenForOrgRequestBody = never;
 
 export type ActionsCreateRegistrationTokenForOrgResponseStatus = 201;
 
-export type ActionsCreateRegistrationTokenForOrgResponseBody = AuthenticationToken;
+export type ActionsCreateRegistrationTokenForOrgResponseBody =
+  AuthenticationToken;
 
-export type ActionsCreateRegistrationTokenForOrgResolver = msw.HttpResponseResolver<
-  ActionsCreateRegistrationTokenForOrgRequestParams,
-  ActionsCreateRegistrationTokenForOrgRequestBody,
-  ActionsCreateRegistrationTokenForOrgResponseBody
->;
+export type ActionsCreateRegistrationTokenForOrgResolver =
+  msw.HttpResponseResolver<
+    ActionsCreateRegistrationTokenForOrgRequestParams,
+    ActionsCreateRegistrationTokenForOrgRequestBody,
+    ActionsCreateRegistrationTokenForOrgResponseBody
+  >;
 
 export type ActionsCreateRemoveTokenForOrgRequestQuery = {};
 
@@ -4876,11 +5072,12 @@ export type ActionsDeleteSelfHostedRunnerFromOrgResponseStatus = 204;
 
 export type ActionsDeleteSelfHostedRunnerFromOrgResponseBody = never;
 
-export type ActionsDeleteSelfHostedRunnerFromOrgResolver = msw.HttpResponseResolver<
-  ActionsDeleteSelfHostedRunnerFromOrgRequestParams,
-  ActionsDeleteSelfHostedRunnerFromOrgRequestBody,
-  ActionsDeleteSelfHostedRunnerFromOrgResponseBody
->;
+export type ActionsDeleteSelfHostedRunnerFromOrgResolver =
+  msw.HttpResponseResolver<
+    ActionsDeleteSelfHostedRunnerFromOrgRequestParams,
+    ActionsDeleteSelfHostedRunnerFromOrgRequestBody,
+    ActionsDeleteSelfHostedRunnerFromOrgResponseBody
+  >;
 
 export type ActionsListLabelsForSelfHostedRunnerForOrgRequestQuery = {};
 
@@ -4904,11 +5101,12 @@ export type ActionsListLabelsForSelfHostedRunnerForOrgResponseBody =
     }
   | BasicError;
 
-export type ActionsListLabelsForSelfHostedRunnerForOrgResolver = msw.HttpResponseResolver<
-  ActionsListLabelsForSelfHostedRunnerForOrgRequestParams,
-  ActionsListLabelsForSelfHostedRunnerForOrgRequestBody,
-  ActionsListLabelsForSelfHostedRunnerForOrgResponseBody
->;
+export type ActionsListLabelsForSelfHostedRunnerForOrgResolver =
+  msw.HttpResponseResolver<
+    ActionsListLabelsForSelfHostedRunnerForOrgRequestParams,
+    ActionsListLabelsForSelfHostedRunnerForOrgRequestBody,
+    ActionsListLabelsForSelfHostedRunnerForOrgResponseBody
+  >;
 
 export type ActionsAddCustomLabelsToSelfHostedRunnerForOrgRequestQuery = {};
 
@@ -4936,11 +5134,12 @@ export type ActionsAddCustomLabelsToSelfHostedRunnerForOrgResponseBody =
   | BasicError
   | ValidationErrorSimple;
 
-export type ActionsAddCustomLabelsToSelfHostedRunnerForOrgResolver = msw.HttpResponseResolver<
-  ActionsAddCustomLabelsToSelfHostedRunnerForOrgRequestParams,
-  ActionsAddCustomLabelsToSelfHostedRunnerForOrgRequestBody,
-  ActionsAddCustomLabelsToSelfHostedRunnerForOrgResponseBody
->;
+export type ActionsAddCustomLabelsToSelfHostedRunnerForOrgResolver =
+  msw.HttpResponseResolver<
+    ActionsAddCustomLabelsToSelfHostedRunnerForOrgRequestParams,
+    ActionsAddCustomLabelsToSelfHostedRunnerForOrgRequestBody,
+    ActionsAddCustomLabelsToSelfHostedRunnerForOrgResponseBody
+  >;
 
 export type ActionsSetCustomLabelsForSelfHostedRunnerForOrgRequestQuery = {};
 
@@ -4968,43 +5167,47 @@ export type ActionsSetCustomLabelsForSelfHostedRunnerForOrgResponseBody =
   | BasicError
   | ValidationErrorSimple;
 
-export type ActionsSetCustomLabelsForSelfHostedRunnerForOrgResolver = msw.HttpResponseResolver<
-  ActionsSetCustomLabelsForSelfHostedRunnerForOrgRequestParams,
-  ActionsSetCustomLabelsForSelfHostedRunnerForOrgRequestBody,
-  ActionsSetCustomLabelsForSelfHostedRunnerForOrgResponseBody
->;
+export type ActionsSetCustomLabelsForSelfHostedRunnerForOrgResolver =
+  msw.HttpResponseResolver<
+    ActionsSetCustomLabelsForSelfHostedRunnerForOrgRequestParams,
+    ActionsSetCustomLabelsForSelfHostedRunnerForOrgRequestBody,
+    ActionsSetCustomLabelsForSelfHostedRunnerForOrgResponseBody
+  >;
 
-export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequestQuery = {};
+export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequestQuery =
+  {};
 
-export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequestHeaders = {};
+export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequestHeaders =
+  {};
 
-export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequestParams = {
-  readonly org: string;
-  readonly runner_id: string;
-};
+export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequestParams =
+  { readonly org: string; readonly runner_id: string };
 
-export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequestBody = never;
+export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequestBody =
+  never;
 
 export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgResponseStatus =
-  | 200
-  | 404;
+  200 | 404;
 
 export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgResponseBody =
-  | {
-      readonly total_count: number;
-      readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
-    }
-  | BasicError;
 
-export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgResolver = msw.HttpResponseResolver<
-  ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequestParams,
-  ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequestBody,
-  ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgResponseBody
->;
+    | {
+        readonly total_count: number;
+        readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
+      }
+    | BasicError;
+
+export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgResolver =
+  msw.HttpResponseResolver<
+    ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequestParams,
+    ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequestBody,
+    ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgResponseBody
+  >;
 
 export type ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgRequestQuery = {};
 
-export type ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgRequestHeaders = {};
+export type ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgRequestHeaders =
+  {};
 
 export type ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgRequestParams = {
   readonly org: string;
@@ -5012,7 +5215,8 @@ export type ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgRequestParams = {
   readonly name: string;
 };
 
-export type ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgRequestBody = never;
+export type ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgRequestBody =
+  never;
 
 export type ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgResponseStatus =
   | 200
@@ -5027,11 +5231,12 @@ export type ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgResponseBody =
   | BasicError
   | ValidationErrorSimple;
 
-export type ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgResolver = msw.HttpResponseResolver<
-  ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgRequestParams,
-  ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgRequestBody,
-  ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgResponseBody
->;
+export type ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgResolver =
+  msw.HttpResponseResolver<
+    ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgRequestParams,
+    ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgRequestBody,
+    ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgResponseBody
+  >;
 
 export type ActionsListOrgSecretsRequestQuery = {
   readonly per_page?: string;
@@ -5183,11 +5388,12 @@ export type ActionsListSelectedReposForOrgSecretResponseBody = {
   readonly repositories: ReadonlyArray<MinimalRepository>;
 };
 
-export type ActionsListSelectedReposForOrgSecretResolver = msw.HttpResponseResolver<
-  ActionsListSelectedReposForOrgSecretRequestParams,
-  ActionsListSelectedReposForOrgSecretRequestBody,
-  ActionsListSelectedReposForOrgSecretResponseBody
->;
+export type ActionsListSelectedReposForOrgSecretResolver =
+  msw.HttpResponseResolver<
+    ActionsListSelectedReposForOrgSecretRequestParams,
+    ActionsListSelectedReposForOrgSecretRequestBody,
+    ActionsListSelectedReposForOrgSecretResponseBody
+  >;
 
 export type ActionsSetSelectedReposForOrgSecretRequestQuery = {};
 
@@ -5206,11 +5412,12 @@ export type ActionsSetSelectedReposForOrgSecretResponseStatus = 204;
 
 export type ActionsSetSelectedReposForOrgSecretResponseBody = never;
 
-export type ActionsSetSelectedReposForOrgSecretResolver = msw.HttpResponseResolver<
-  ActionsSetSelectedReposForOrgSecretRequestParams,
-  ActionsSetSelectedReposForOrgSecretRequestBody,
-  ActionsSetSelectedReposForOrgSecretResponseBody
->;
+export type ActionsSetSelectedReposForOrgSecretResolver =
+  msw.HttpResponseResolver<
+    ActionsSetSelectedReposForOrgSecretRequestParams,
+    ActionsSetSelectedReposForOrgSecretRequestBody,
+    ActionsSetSelectedReposForOrgSecretResponseBody
+  >;
 
 export type ActionsAddSelectedRepoToOrgSecretRequestQuery = {};
 
@@ -5228,11 +5435,12 @@ export type ActionsAddSelectedRepoToOrgSecretResponseStatus = 204 | 409;
 
 export type ActionsAddSelectedRepoToOrgSecretResponseBody = never;
 
-export type ActionsAddSelectedRepoToOrgSecretResolver = msw.HttpResponseResolver<
-  ActionsAddSelectedRepoToOrgSecretRequestParams,
-  ActionsAddSelectedRepoToOrgSecretRequestBody,
-  ActionsAddSelectedRepoToOrgSecretResponseBody
->;
+export type ActionsAddSelectedRepoToOrgSecretResolver =
+  msw.HttpResponseResolver<
+    ActionsAddSelectedRepoToOrgSecretRequestParams,
+    ActionsAddSelectedRepoToOrgSecretRequestBody,
+    ActionsAddSelectedRepoToOrgSecretResponseBody
+  >;
 
 export type ActionsRemoveSelectedRepoFromOrgSecretRequestQuery = {};
 
@@ -5250,11 +5458,12 @@ export type ActionsRemoveSelectedRepoFromOrgSecretResponseStatus = 204 | 409;
 
 export type ActionsRemoveSelectedRepoFromOrgSecretResponseBody = never;
 
-export type ActionsRemoveSelectedRepoFromOrgSecretResolver = msw.HttpResponseResolver<
-  ActionsRemoveSelectedRepoFromOrgSecretRequestParams,
-  ActionsRemoveSelectedRepoFromOrgSecretRequestBody,
-  ActionsRemoveSelectedRepoFromOrgSecretResponseBody
->;
+export type ActionsRemoveSelectedRepoFromOrgSecretResolver =
+  msw.HttpResponseResolver<
+    ActionsRemoveSelectedRepoFromOrgSecretRequestParams,
+    ActionsRemoveSelectedRepoFromOrgSecretRequestBody,
+    ActionsRemoveSelectedRepoFromOrgSecretResponseBody
+  >;
 
 export type OrgsListBlockedUsersRequestQuery = {
   readonly per_page?: string;
@@ -5625,11 +5834,12 @@ export type CodespacesCreateOrUpdateOrgSecretResponseBody =
   | BasicError
   | ValidationError;
 
-export type CodespacesCreateOrUpdateOrgSecretResolver = msw.HttpResponseResolver<
-  CodespacesCreateOrUpdateOrgSecretRequestParams,
-  CodespacesCreateOrUpdateOrgSecretRequestBody,
-  CodespacesCreateOrUpdateOrgSecretResponseBody
->;
+export type CodespacesCreateOrUpdateOrgSecretResolver =
+  msw.HttpResponseResolver<
+    CodespacesCreateOrUpdateOrgSecretRequestParams,
+    CodespacesCreateOrUpdateOrgSecretRequestBody,
+    CodespacesCreateOrUpdateOrgSecretResponseBody
+  >;
 
 export type CodespacesDeleteOrgSecretRequestQuery = {};
 
@@ -5675,11 +5885,12 @@ export type CodespacesListSelectedReposForOrgSecretResponseBody =
     }
   | BasicError;
 
-export type CodespacesListSelectedReposForOrgSecretResolver = msw.HttpResponseResolver<
-  CodespacesListSelectedReposForOrgSecretRequestParams,
-  CodespacesListSelectedReposForOrgSecretRequestBody,
-  CodespacesListSelectedReposForOrgSecretResponseBody
->;
+export type CodespacesListSelectedReposForOrgSecretResolver =
+  msw.HttpResponseResolver<
+    CodespacesListSelectedReposForOrgSecretRequestParams,
+    CodespacesListSelectedReposForOrgSecretRequestBody,
+    CodespacesListSelectedReposForOrgSecretResponseBody
+  >;
 
 export type CodespacesSetSelectedReposForOrgSecretRequestQuery = {};
 
@@ -5703,11 +5914,12 @@ export type CodespacesSetSelectedReposForOrgSecretResponseBody =
   | never
   | BasicError;
 
-export type CodespacesSetSelectedReposForOrgSecretResolver = msw.HttpResponseResolver<
-  CodespacesSetSelectedReposForOrgSecretRequestParams,
-  CodespacesSetSelectedReposForOrgSecretRequestBody,
-  CodespacesSetSelectedReposForOrgSecretResponseBody
->;
+export type CodespacesSetSelectedReposForOrgSecretResolver =
+  msw.HttpResponseResolver<
+    CodespacesSetSelectedReposForOrgSecretRequestParams,
+    CodespacesSetSelectedReposForOrgSecretRequestBody,
+    CodespacesSetSelectedReposForOrgSecretResponseBody
+  >;
 
 export type CodespacesAddSelectedRepoToOrgSecretRequestQuery = {};
 
@@ -5732,11 +5944,12 @@ export type CodespacesAddSelectedRepoToOrgSecretResponseBody =
   | BasicError
   | ValidationError;
 
-export type CodespacesAddSelectedRepoToOrgSecretResolver = msw.HttpResponseResolver<
-  CodespacesAddSelectedRepoToOrgSecretRequestParams,
-  CodespacesAddSelectedRepoToOrgSecretRequestBody,
-  CodespacesAddSelectedRepoToOrgSecretResponseBody
->;
+export type CodespacesAddSelectedRepoToOrgSecretResolver =
+  msw.HttpResponseResolver<
+    CodespacesAddSelectedRepoToOrgSecretRequestParams,
+    CodespacesAddSelectedRepoToOrgSecretRequestBody,
+    CodespacesAddSelectedRepoToOrgSecretResponseBody
+  >;
 
 export type CodespacesRemoveSelectedRepoFromOrgSecretRequestQuery = {};
 
@@ -5761,11 +5974,12 @@ export type CodespacesRemoveSelectedRepoFromOrgSecretResponseBody =
   | BasicError
   | ValidationError;
 
-export type CodespacesRemoveSelectedRepoFromOrgSecretResolver = msw.HttpResponseResolver<
-  CodespacesRemoveSelectedRepoFromOrgSecretRequestParams,
-  CodespacesRemoveSelectedRepoFromOrgSecretRequestBody,
-  CodespacesRemoveSelectedRepoFromOrgSecretResponseBody
->;
+export type CodespacesRemoveSelectedRepoFromOrgSecretResolver =
+  msw.HttpResponseResolver<
+    CodespacesRemoveSelectedRepoFromOrgSecretRequestParams,
+    CodespacesRemoveSelectedRepoFromOrgSecretRequestBody,
+    CodespacesRemoveSelectedRepoFromOrgSecretResponseBody
+  >;
 
 export type OrgsCreateCustomRoleRequestQuery = {};
 
@@ -6039,7 +6253,8 @@ export type DependabotGetOrgSecretRequestBody = never;
 
 export type DependabotGetOrgSecretResponseStatus = 200;
 
-export type DependabotGetOrgSecretResponseBody = DependabotSecretForAnOrganization;
+export type DependabotGetOrgSecretResponseBody =
+  DependabotSecretForAnOrganization;
 
 export type DependabotGetOrgSecretResolver = msw.HttpResponseResolver<
   DependabotGetOrgSecretRequestParams,
@@ -6067,11 +6282,12 @@ export type DependabotCreateOrUpdateOrgSecretResponseStatus = 201 | 204;
 
 export type DependabotCreateOrUpdateOrgSecretResponseBody = EmptyObject | never;
 
-export type DependabotCreateOrUpdateOrgSecretResolver = msw.HttpResponseResolver<
-  DependabotCreateOrUpdateOrgSecretRequestParams,
-  DependabotCreateOrUpdateOrgSecretRequestBody,
-  DependabotCreateOrUpdateOrgSecretResponseBody
->;
+export type DependabotCreateOrUpdateOrgSecretResolver =
+  msw.HttpResponseResolver<
+    DependabotCreateOrUpdateOrgSecretRequestParams,
+    DependabotCreateOrUpdateOrgSecretRequestBody,
+    DependabotCreateOrUpdateOrgSecretResponseBody
+  >;
 
 export type DependabotDeleteOrgSecretRequestQuery = {};
 
@@ -6115,11 +6331,12 @@ export type DependabotListSelectedReposForOrgSecretResponseBody = {
   readonly repositories: ReadonlyArray<MinimalRepository>;
 };
 
-export type DependabotListSelectedReposForOrgSecretResolver = msw.HttpResponseResolver<
-  DependabotListSelectedReposForOrgSecretRequestParams,
-  DependabotListSelectedReposForOrgSecretRequestBody,
-  DependabotListSelectedReposForOrgSecretResponseBody
->;
+export type DependabotListSelectedReposForOrgSecretResolver =
+  msw.HttpResponseResolver<
+    DependabotListSelectedReposForOrgSecretRequestParams,
+    DependabotListSelectedReposForOrgSecretRequestBody,
+    DependabotListSelectedReposForOrgSecretResponseBody
+  >;
 
 export type DependabotSetSelectedReposForOrgSecretRequestQuery = {};
 
@@ -6138,11 +6355,12 @@ export type DependabotSetSelectedReposForOrgSecretResponseStatus = 204;
 
 export type DependabotSetSelectedReposForOrgSecretResponseBody = never;
 
-export type DependabotSetSelectedReposForOrgSecretResolver = msw.HttpResponseResolver<
-  DependabotSetSelectedReposForOrgSecretRequestParams,
-  DependabotSetSelectedReposForOrgSecretRequestBody,
-  DependabotSetSelectedReposForOrgSecretResponseBody
->;
+export type DependabotSetSelectedReposForOrgSecretResolver =
+  msw.HttpResponseResolver<
+    DependabotSetSelectedReposForOrgSecretRequestParams,
+    DependabotSetSelectedReposForOrgSecretRequestBody,
+    DependabotSetSelectedReposForOrgSecretResponseBody
+  >;
 
 export type DependabotAddSelectedRepoToOrgSecretRequestQuery = {};
 
@@ -6160,11 +6378,12 @@ export type DependabotAddSelectedRepoToOrgSecretResponseStatus = 204 | 409;
 
 export type DependabotAddSelectedRepoToOrgSecretResponseBody = never;
 
-export type DependabotAddSelectedRepoToOrgSecretResolver = msw.HttpResponseResolver<
-  DependabotAddSelectedRepoToOrgSecretRequestParams,
-  DependabotAddSelectedRepoToOrgSecretRequestBody,
-  DependabotAddSelectedRepoToOrgSecretResponseBody
->;
+export type DependabotAddSelectedRepoToOrgSecretResolver =
+  msw.HttpResponseResolver<
+    DependabotAddSelectedRepoToOrgSecretRequestParams,
+    DependabotAddSelectedRepoToOrgSecretRequestBody,
+    DependabotAddSelectedRepoToOrgSecretResponseBody
+  >;
 
 export type DependabotRemoveSelectedRepoFromOrgSecretRequestQuery = {};
 
@@ -6182,11 +6401,12 @@ export type DependabotRemoveSelectedRepoFromOrgSecretResponseStatus = 204 | 409;
 
 export type DependabotRemoveSelectedRepoFromOrgSecretResponseBody = never;
 
-export type DependabotRemoveSelectedRepoFromOrgSecretResolver = msw.HttpResponseResolver<
-  DependabotRemoveSelectedRepoFromOrgSecretRequestParams,
-  DependabotRemoveSelectedRepoFromOrgSecretRequestBody,
-  DependabotRemoveSelectedRepoFromOrgSecretResponseBody
->;
+export type DependabotRemoveSelectedRepoFromOrgSecretResolver =
+  msw.HttpResponseResolver<
+    DependabotRemoveSelectedRepoFromOrgSecretRequestParams,
+    DependabotRemoveSelectedRepoFromOrgSecretRequestBody,
+    DependabotRemoveSelectedRepoFromOrgSecretResponseBody
+  >;
 
 export type ActivityListPublicOrgEventsRequestQuery = {
   readonly per_page?: string;
@@ -6263,7 +6483,8 @@ export type OrganizationFineGrainedPermission = {
   readonly description: string;
 };
 
-export type OrgsListFineGrainedPermissionsResponseBody = ReadonlyArray<OrganizationFineGrainedPermission>;
+export type OrgsListFineGrainedPermissionsResponseBody =
+  ReadonlyArray<OrganizationFineGrainedPermission>;
 
 export type OrgsListFineGrainedPermissionsResolver = msw.HttpResponseResolver<
   OrgsListFineGrainedPermissionsRequestParams,
@@ -6638,11 +6859,12 @@ export type InteractionsGetRestrictionsForOrgResponseBody =
   | InteractionLimits
   | {};
 
-export type InteractionsGetRestrictionsForOrgResolver = msw.HttpResponseResolver<
-  InteractionsGetRestrictionsForOrgRequestParams,
-  InteractionsGetRestrictionsForOrgRequestBody,
-  InteractionsGetRestrictionsForOrgResponseBody
->;
+export type InteractionsGetRestrictionsForOrgResolver =
+  msw.HttpResponseResolver<
+    InteractionsGetRestrictionsForOrgRequestParams,
+    InteractionsGetRestrictionsForOrgRequestBody,
+    InteractionsGetRestrictionsForOrgResponseBody
+  >;
 
 export type InteractionExpiry =
   | 'one_day'
@@ -6664,7 +6886,8 @@ export type InteractionsSetRestrictionsForOrgRequestParams = {
   readonly org: string;
 };
 
-export type InteractionsSetRestrictionsForOrgRequestBody = InteractionRestrictions;
+export type InteractionsSetRestrictionsForOrgRequestBody =
+  InteractionRestrictions;
 
 export type InteractionsSetRestrictionsForOrgResponseStatus = 200 | 422;
 
@@ -6672,11 +6895,12 @@ export type InteractionsSetRestrictionsForOrgResponseBody =
   | InteractionLimits
   | ValidationError;
 
-export type InteractionsSetRestrictionsForOrgResolver = msw.HttpResponseResolver<
-  InteractionsSetRestrictionsForOrgRequestParams,
-  InteractionsSetRestrictionsForOrgRequestBody,
-  InteractionsSetRestrictionsForOrgResponseBody
->;
+export type InteractionsSetRestrictionsForOrgResolver =
+  msw.HttpResponseResolver<
+    InteractionsSetRestrictionsForOrgRequestParams,
+    InteractionsSetRestrictionsForOrgRequestBody,
+    InteractionsSetRestrictionsForOrgResponseBody
+  >;
 
 export type InteractionsRemoveRestrictionsForOrgRequestQuery = {};
 
@@ -6692,11 +6916,12 @@ export type InteractionsRemoveRestrictionsForOrgResponseStatus = 204;
 
 export type InteractionsRemoveRestrictionsForOrgResponseBody = never;
 
-export type InteractionsRemoveRestrictionsForOrgResolver = msw.HttpResponseResolver<
-  InteractionsRemoveRestrictionsForOrgRequestParams,
-  InteractionsRemoveRestrictionsForOrgRequestBody,
-  InteractionsRemoveRestrictionsForOrgResponseBody
->;
+export type InteractionsRemoveRestrictionsForOrgResolver =
+  msw.HttpResponseResolver<
+    InteractionsRemoveRestrictionsForOrgRequestParams,
+    InteractionsRemoveRestrictionsForOrgRequestBody,
+    InteractionsRemoveRestrictionsForOrgResponseBody
+  >;
 
 export type OrgsListPendingInvitationsRequestQuery = {
   readonly per_page?: string;
@@ -6960,11 +7185,12 @@ export type CodespacesGetCodespacesForUserInOrgResponseBody =
   | never
   | BasicError;
 
-export type CodespacesGetCodespacesForUserInOrgResolver = msw.HttpResponseResolver<
-  CodespacesGetCodespacesForUserInOrgRequestParams,
-  CodespacesGetCodespacesForUserInOrgRequestBody,
-  CodespacesGetCodespacesForUserInOrgResponseBody
->;
+export type CodespacesGetCodespacesForUserInOrgResolver =
+  msw.HttpResponseResolver<
+    CodespacesGetCodespacesForUserInOrgRequestParams,
+    CodespacesGetCodespacesForUserInOrgRequestBody,
+    CodespacesGetCodespacesForUserInOrgResponseBody
+  >;
 
 export type CodespacesDeleteFromOrganizationRequestQuery = {};
 
@@ -7306,7 +7532,8 @@ export type OrgsListOutsideCollaboratorsRequestBody = never;
 
 export type OrgsListOutsideCollaboratorsResponseStatus = 200;
 
-export type OrgsListOutsideCollaboratorsResponseBody = ReadonlyArray<SimpleUser>;
+export type OrgsListOutsideCollaboratorsResponseBody =
+  ReadonlyArray<SimpleUser>;
 
 export type OrgsListOutsideCollaboratorsResolver = msw.HttpResponseResolver<
   OrgsListOutsideCollaboratorsRequestParams,
@@ -7338,11 +7565,12 @@ export type OrgsConvertMemberToOutsideCollaboratorResponseBody =
   | never
   | BasicError;
 
-export type OrgsConvertMemberToOutsideCollaboratorResolver = msw.HttpResponseResolver<
-  OrgsConvertMemberToOutsideCollaboratorRequestParams,
-  OrgsConvertMemberToOutsideCollaboratorRequestBody,
-  OrgsConvertMemberToOutsideCollaboratorResponseBody
->;
+export type OrgsConvertMemberToOutsideCollaboratorResolver =
+  msw.HttpResponseResolver<
+    OrgsConvertMemberToOutsideCollaboratorRequestParams,
+    OrgsConvertMemberToOutsideCollaboratorRequestBody,
+    OrgsConvertMemberToOutsideCollaboratorResponseBody
+  >;
 
 export type OrgsRemoveOutsideCollaboratorRequestQuery = {};
 
@@ -7406,11 +7634,12 @@ export type PackagesListPackagesForOrganizationResponseBody =
   | ReadonlyArray<Package>
   | BasicError;
 
-export type PackagesListPackagesForOrganizationResolver = msw.HttpResponseResolver<
-  PackagesListPackagesForOrganizationRequestParams,
-  PackagesListPackagesForOrganizationRequestBody,
-  PackagesListPackagesForOrganizationResponseBody
->;
+export type PackagesListPackagesForOrganizationResolver =
+  msw.HttpResponseResolver<
+    PackagesListPackagesForOrganizationRequestParams,
+    PackagesListPackagesForOrganizationRequestBody,
+    PackagesListPackagesForOrganizationResponseBody
+  >;
 
 export type PackagesGetPackageForOrganizationRequestQuery = {};
 
@@ -7428,11 +7657,12 @@ export type PackagesGetPackageForOrganizationResponseStatus = 200;
 
 export type PackagesGetPackageForOrganizationResponseBody = Package;
 
-export type PackagesGetPackageForOrganizationResolver = msw.HttpResponseResolver<
-  PackagesGetPackageForOrganizationRequestParams,
-  PackagesGetPackageForOrganizationRequestBody,
-  PackagesGetPackageForOrganizationResponseBody
->;
+export type PackagesGetPackageForOrganizationResolver =
+  msw.HttpResponseResolver<
+    PackagesGetPackageForOrganizationRequestParams,
+    PackagesGetPackageForOrganizationRequestBody,
+    PackagesGetPackageForOrganizationResponseBody
+  >;
 
 export type PackagesDeletePackageForOrgRequestQuery = {};
 
@@ -7486,7 +7716,8 @@ export type PackagesGetAllPackageVersionsForPackageOwnedByOrgRequestQuery = {
   readonly state?: string;
 };
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByOrgRequestHeaders = {};
+export type PackagesGetAllPackageVersionsForPackageOwnedByOrgRequestHeaders =
+  {};
 
 export type PackagesGetAllPackageVersionsForPackageOwnedByOrgRequestParams = {
   readonly package_type: string;
@@ -7494,7 +7725,8 @@ export type PackagesGetAllPackageVersionsForPackageOwnedByOrgRequestParams = {
   readonly org: string;
 };
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByOrgRequestBody = never;
+export type PackagesGetAllPackageVersionsForPackageOwnedByOrgRequestBody =
+  never;
 
 export type PackagesGetAllPackageVersionsForPackageOwnedByOrgResponseStatus =
   | 200
@@ -7536,11 +7768,12 @@ export type PackagesGetAllPackageVersionsForPackageOwnedByOrgResponseBody =
   | ReadonlyArray<PackageVersion>
   | BasicError;
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByOrgResolver = msw.HttpResponseResolver<
-  PackagesGetAllPackageVersionsForPackageOwnedByOrgRequestParams,
-  PackagesGetAllPackageVersionsForPackageOwnedByOrgRequestBody,
-  PackagesGetAllPackageVersionsForPackageOwnedByOrgResponseBody
->;
+export type PackagesGetAllPackageVersionsForPackageOwnedByOrgResolver =
+  msw.HttpResponseResolver<
+    PackagesGetAllPackageVersionsForPackageOwnedByOrgRequestParams,
+    PackagesGetAllPackageVersionsForPackageOwnedByOrgRequestBody,
+    PackagesGetAllPackageVersionsForPackageOwnedByOrgResponseBody
+  >;
 
 export type PackagesGetPackageVersionForOrganizationRequestQuery = {};
 
@@ -7557,13 +7790,15 @@ export type PackagesGetPackageVersionForOrganizationRequestBody = never;
 
 export type PackagesGetPackageVersionForOrganizationResponseStatus = 200;
 
-export type PackagesGetPackageVersionForOrganizationResponseBody = PackageVersion;
+export type PackagesGetPackageVersionForOrganizationResponseBody =
+  PackageVersion;
 
-export type PackagesGetPackageVersionForOrganizationResolver = msw.HttpResponseResolver<
-  PackagesGetPackageVersionForOrganizationRequestParams,
-  PackagesGetPackageVersionForOrganizationRequestBody,
-  PackagesGetPackageVersionForOrganizationResponseBody
->;
+export type PackagesGetPackageVersionForOrganizationResolver =
+  msw.HttpResponseResolver<
+    PackagesGetPackageVersionForOrganizationRequestParams,
+    PackagesGetPackageVersionForOrganizationRequestBody,
+    PackagesGetPackageVersionForOrganizationResponseBody
+  >;
 
 export type PackagesDeletePackageVersionForOrgRequestQuery = {};
 
@@ -7586,11 +7821,12 @@ export type PackagesDeletePackageVersionForOrgResponseStatus =
 
 export type PackagesDeletePackageVersionForOrgResponseBody = never | BasicError;
 
-export type PackagesDeletePackageVersionForOrgResolver = msw.HttpResponseResolver<
-  PackagesDeletePackageVersionForOrgRequestParams,
-  PackagesDeletePackageVersionForOrgRequestBody,
-  PackagesDeletePackageVersionForOrgResponseBody
->;
+export type PackagesDeletePackageVersionForOrgResolver =
+  msw.HttpResponseResolver<
+    PackagesDeletePackageVersionForOrgRequestParams,
+    PackagesDeletePackageVersionForOrgRequestBody,
+    PackagesDeletePackageVersionForOrgResponseBody
+  >;
 
 export type PackagesRestorePackageVersionForOrgRequestQuery = {};
 
@@ -7615,11 +7851,12 @@ export type PackagesRestorePackageVersionForOrgResponseBody =
   | never
   | BasicError;
 
-export type PackagesRestorePackageVersionForOrgResolver = msw.HttpResponseResolver<
-  PackagesRestorePackageVersionForOrgRequestParams,
-  PackagesRestorePackageVersionForOrgRequestBody,
-  PackagesRestorePackageVersionForOrgResponseBody
->;
+export type PackagesRestorePackageVersionForOrgResolver =
+  msw.HttpResponseResolver<
+    PackagesRestorePackageVersionForOrgRequestParams,
+    PackagesRestorePackageVersionForOrgRequestBody,
+    PackagesRestorePackageVersionForOrgResponseBody
+  >;
 
 export type ProjectsListForOrgRequestQuery = {
   readonly state?: string;
@@ -7754,11 +7991,12 @@ export type OrgsSetPublicMembershipForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type OrgsSetPublicMembershipForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  OrgsSetPublicMembershipForAuthenticatedUserRequestParams,
-  OrgsSetPublicMembershipForAuthenticatedUserRequestBody,
-  OrgsSetPublicMembershipForAuthenticatedUserResponseBody
->;
+export type OrgsSetPublicMembershipForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    OrgsSetPublicMembershipForAuthenticatedUserRequestParams,
+    OrgsSetPublicMembershipForAuthenticatedUserRequestBody,
+    OrgsSetPublicMembershipForAuthenticatedUserResponseBody
+  >;
 
 export type OrgsRemovePublicMembershipForAuthenticatedUserRequestQuery = {};
 
@@ -7775,11 +8013,12 @@ export type OrgsRemovePublicMembershipForAuthenticatedUserResponseStatus = 204;
 
 export type OrgsRemovePublicMembershipForAuthenticatedUserResponseBody = never;
 
-export type OrgsRemovePublicMembershipForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  OrgsRemovePublicMembershipForAuthenticatedUserRequestParams,
-  OrgsRemovePublicMembershipForAuthenticatedUserRequestBody,
-  OrgsRemovePublicMembershipForAuthenticatedUserResponseBody
->;
+export type OrgsRemovePublicMembershipForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    OrgsRemovePublicMembershipForAuthenticatedUserRequestParams,
+    OrgsRemovePublicMembershipForAuthenticatedUserRequestBody,
+    OrgsRemovePublicMembershipForAuthenticatedUserResponseBody
+  >;
 
 export type ReposListForOrgRequestQuery = {
   readonly type?: string;
@@ -7902,7 +8141,8 @@ export type OrgsListSecurityManagerTeamsRequestBody = never;
 
 export type OrgsListSecurityManagerTeamsResponseStatus = 200;
 
-export type OrgsListSecurityManagerTeamsResponseBody = ReadonlyArray<TeamSimple>;
+export type OrgsListSecurityManagerTeamsResponseBody =
+  ReadonlyArray<TeamSimple>;
 
 export type OrgsListSecurityManagerTeamsResolver = msw.HttpResponseResolver<
   OrgsListSecurityManagerTeamsRequestParams,
@@ -7988,11 +8228,12 @@ export type ActionsBillingUsage = {
 
 export type BillingGetGithubActionsBillingOrgResponseBody = ActionsBillingUsage;
 
-export type BillingGetGithubActionsBillingOrgResolver = msw.HttpResponseResolver<
-  BillingGetGithubActionsBillingOrgRequestParams,
-  BillingGetGithubActionsBillingOrgRequestBody,
-  BillingGetGithubActionsBillingOrgResponseBody
->;
+export type BillingGetGithubActionsBillingOrgResolver =
+  msw.HttpResponseResolver<
+    BillingGetGithubActionsBillingOrgRequestParams,
+    BillingGetGithubActionsBillingOrgRequestBody,
+    BillingGetGithubActionsBillingOrgResponseBody
+  >;
 
 export type BillingGetGithubAdvancedSecurityBillingOrgRequestQuery = {
   readonly per_page?: string;
@@ -8015,11 +8256,12 @@ export type BillingGetGithubAdvancedSecurityBillingOrgResponseBody =
   | AdvancedSecurityActiveCommitters
   | BasicError;
 
-export type BillingGetGithubAdvancedSecurityBillingOrgResolver = msw.HttpResponseResolver<
-  BillingGetGithubAdvancedSecurityBillingOrgRequestParams,
-  BillingGetGithubAdvancedSecurityBillingOrgRequestBody,
-  BillingGetGithubAdvancedSecurityBillingOrgResponseBody
->;
+export type BillingGetGithubAdvancedSecurityBillingOrgResolver =
+  msw.HttpResponseResolver<
+    BillingGetGithubAdvancedSecurityBillingOrgRequestParams,
+    BillingGetGithubAdvancedSecurityBillingOrgRequestBody,
+    BillingGetGithubAdvancedSecurityBillingOrgResponseBody
+  >;
 
 export type BillingGetGithubPackagesBillingOrgRequestQuery = {};
 
@@ -8039,13 +8281,15 @@ export type PackagesBillingUsage = {
   readonly included_gigabytes_bandwidth: number;
 };
 
-export type BillingGetGithubPackagesBillingOrgResponseBody = PackagesBillingUsage;
+export type BillingGetGithubPackagesBillingOrgResponseBody =
+  PackagesBillingUsage;
 
-export type BillingGetGithubPackagesBillingOrgResolver = msw.HttpResponseResolver<
-  BillingGetGithubPackagesBillingOrgRequestParams,
-  BillingGetGithubPackagesBillingOrgRequestBody,
-  BillingGetGithubPackagesBillingOrgResponseBody
->;
+export type BillingGetGithubPackagesBillingOrgResolver =
+  msw.HttpResponseResolver<
+    BillingGetGithubPackagesBillingOrgRequestParams,
+    BillingGetGithubPackagesBillingOrgRequestBody,
+    BillingGetGithubPackagesBillingOrgResponseBody
+  >;
 
 export type BillingGetSharedStorageBillingOrgRequestQuery = {};
 
@@ -8065,13 +8309,15 @@ export type CombinedBillingUsage = {
   readonly estimated_storage_for_month: number;
 };
 
-export type BillingGetSharedStorageBillingOrgResponseBody = CombinedBillingUsage;
+export type BillingGetSharedStorageBillingOrgResponseBody =
+  CombinedBillingUsage;
 
-export type BillingGetSharedStorageBillingOrgResolver = msw.HttpResponseResolver<
-  BillingGetSharedStorageBillingOrgRequestParams,
-  BillingGetSharedStorageBillingOrgRequestBody,
-  BillingGetSharedStorageBillingOrgResponseBody
->;
+export type BillingGetSharedStorageBillingOrgResolver =
+  msw.HttpResponseResolver<
+    BillingGetSharedStorageBillingOrgRequestParams,
+    BillingGetSharedStorageBillingOrgRequestBody,
+    BillingGetSharedStorageBillingOrgResponseBody
+  >;
 
 export type TeamsListRequestQuery = {
   readonly per_page?: string;
@@ -8311,7 +8557,8 @@ export type TeamDiscussion = {
   readonly reactions?: ReactionRollup;
 };
 
-export type TeamsListDiscussionsInOrgResponseBody = ReadonlyArray<TeamDiscussion>;
+export type TeamsListDiscussionsInOrgResponseBody =
+  ReadonlyArray<TeamDiscussion>;
 
 export type TeamsListDiscussionsInOrgResolver = msw.HttpResponseResolver<
   TeamsListDiscussionsInOrgRequestParams,
@@ -8446,7 +8693,8 @@ export type TeamDiscussionComment = {
   readonly reactions?: ReactionRollup;
 };
 
-export type TeamsListDiscussionCommentsInOrgResponseBody = ReadonlyArray<TeamDiscussionComment>;
+export type TeamsListDiscussionCommentsInOrgResponseBody =
+  ReadonlyArray<TeamDiscussionComment>;
 
 export type TeamsListDiscussionCommentsInOrgResolver = msw.HttpResponseResolver<
   TeamsListDiscussionCommentsInOrgRequestParams,
@@ -8470,13 +8718,15 @@ export type TeamsCreateDiscussionCommentInOrgRequestBody = {
 
 export type TeamsCreateDiscussionCommentInOrgResponseStatus = 201;
 
-export type TeamsCreateDiscussionCommentInOrgResponseBody = TeamDiscussionComment;
+export type TeamsCreateDiscussionCommentInOrgResponseBody =
+  TeamDiscussionComment;
 
-export type TeamsCreateDiscussionCommentInOrgResolver = msw.HttpResponseResolver<
-  TeamsCreateDiscussionCommentInOrgRequestParams,
-  TeamsCreateDiscussionCommentInOrgRequestBody,
-  TeamsCreateDiscussionCommentInOrgResponseBody
->;
+export type TeamsCreateDiscussionCommentInOrgResolver =
+  msw.HttpResponseResolver<
+    TeamsCreateDiscussionCommentInOrgRequestParams,
+    TeamsCreateDiscussionCommentInOrgRequestBody,
+    TeamsCreateDiscussionCommentInOrgResponseBody
+  >;
 
 export type TeamsGetDiscussionCommentInOrgRequestQuery = {};
 
@@ -8518,13 +8768,15 @@ export type TeamsUpdateDiscussionCommentInOrgRequestBody = {
 
 export type TeamsUpdateDiscussionCommentInOrgResponseStatus = 200;
 
-export type TeamsUpdateDiscussionCommentInOrgResponseBody = TeamDiscussionComment;
+export type TeamsUpdateDiscussionCommentInOrgResponseBody =
+  TeamDiscussionComment;
 
-export type TeamsUpdateDiscussionCommentInOrgResolver = msw.HttpResponseResolver<
-  TeamsUpdateDiscussionCommentInOrgRequestParams,
-  TeamsUpdateDiscussionCommentInOrgRequestBody,
-  TeamsUpdateDiscussionCommentInOrgResponseBody
->;
+export type TeamsUpdateDiscussionCommentInOrgResolver =
+  msw.HttpResponseResolver<
+    TeamsUpdateDiscussionCommentInOrgRequestParams,
+    TeamsUpdateDiscussionCommentInOrgRequestBody,
+    TeamsUpdateDiscussionCommentInOrgResponseBody
+  >;
 
 export type TeamsDeleteDiscussionCommentInOrgRequestQuery = {};
 
@@ -8543,11 +8795,12 @@ export type TeamsDeleteDiscussionCommentInOrgResponseStatus = 204;
 
 export type TeamsDeleteDiscussionCommentInOrgResponseBody = never;
 
-export type TeamsDeleteDiscussionCommentInOrgResolver = msw.HttpResponseResolver<
-  TeamsDeleteDiscussionCommentInOrgRequestParams,
-  TeamsDeleteDiscussionCommentInOrgRequestBody,
-  TeamsDeleteDiscussionCommentInOrgResponseBody
->;
+export type TeamsDeleteDiscussionCommentInOrgResolver =
+  msw.HttpResponseResolver<
+    TeamsDeleteDiscussionCommentInOrgRequestParams,
+    TeamsDeleteDiscussionCommentInOrgRequestBody,
+    TeamsDeleteDiscussionCommentInOrgResponseBody
+  >;
 
 export type ReactionsListForTeamDiscussionCommentInOrgRequestQuery = {
   readonly content?: string;
@@ -8584,13 +8837,15 @@ export type Reaction = {
   readonly created_at: string;
 };
 
-export type ReactionsListForTeamDiscussionCommentInOrgResponseBody = ReadonlyArray<Reaction>;
+export type ReactionsListForTeamDiscussionCommentInOrgResponseBody =
+  ReadonlyArray<Reaction>;
 
-export type ReactionsListForTeamDiscussionCommentInOrgResolver = msw.HttpResponseResolver<
-  ReactionsListForTeamDiscussionCommentInOrgRequestParams,
-  ReactionsListForTeamDiscussionCommentInOrgRequestBody,
-  ReactionsListForTeamDiscussionCommentInOrgResponseBody
->;
+export type ReactionsListForTeamDiscussionCommentInOrgResolver =
+  msw.HttpResponseResolver<
+    ReactionsListForTeamDiscussionCommentInOrgRequestParams,
+    ReactionsListForTeamDiscussionCommentInOrgRequestBody,
+    ReactionsListForTeamDiscussionCommentInOrgResponseBody
+  >;
 
 export type ReactionsCreateForTeamDiscussionCommentInOrgRequestQuery = {};
 
@@ -8621,11 +8876,12 @@ export type ReactionsCreateForTeamDiscussionCommentInOrgResponseStatus =
 
 export type ReactionsCreateForTeamDiscussionCommentInOrgResponseBody = Reaction;
 
-export type ReactionsCreateForTeamDiscussionCommentInOrgResolver = msw.HttpResponseResolver<
-  ReactionsCreateForTeamDiscussionCommentInOrgRequestParams,
-  ReactionsCreateForTeamDiscussionCommentInOrgRequestBody,
-  ReactionsCreateForTeamDiscussionCommentInOrgResponseBody
->;
+export type ReactionsCreateForTeamDiscussionCommentInOrgResolver =
+  msw.HttpResponseResolver<
+    ReactionsCreateForTeamDiscussionCommentInOrgRequestParams,
+    ReactionsCreateForTeamDiscussionCommentInOrgRequestBody,
+    ReactionsCreateForTeamDiscussionCommentInOrgResponseBody
+  >;
 
 export type ReactionsDeleteForTeamDiscussionCommentRequestQuery = {};
 
@@ -8645,11 +8901,12 @@ export type ReactionsDeleteForTeamDiscussionCommentResponseStatus = 204;
 
 export type ReactionsDeleteForTeamDiscussionCommentResponseBody = never;
 
-export type ReactionsDeleteForTeamDiscussionCommentResolver = msw.HttpResponseResolver<
-  ReactionsDeleteForTeamDiscussionCommentRequestParams,
-  ReactionsDeleteForTeamDiscussionCommentRequestBody,
-  ReactionsDeleteForTeamDiscussionCommentResponseBody
->;
+export type ReactionsDeleteForTeamDiscussionCommentResolver =
+  msw.HttpResponseResolver<
+    ReactionsDeleteForTeamDiscussionCommentRequestParams,
+    ReactionsDeleteForTeamDiscussionCommentRequestBody,
+    ReactionsDeleteForTeamDiscussionCommentResponseBody
+  >;
 
 export type ReactionsListForTeamDiscussionInOrgRequestQuery = {
   readonly content?: string;
@@ -8669,13 +8926,15 @@ export type ReactionsListForTeamDiscussionInOrgRequestBody = never;
 
 export type ReactionsListForTeamDiscussionInOrgResponseStatus = 200;
 
-export type ReactionsListForTeamDiscussionInOrgResponseBody = ReadonlyArray<Reaction>;
+export type ReactionsListForTeamDiscussionInOrgResponseBody =
+  ReadonlyArray<Reaction>;
 
-export type ReactionsListForTeamDiscussionInOrgResolver = msw.HttpResponseResolver<
-  ReactionsListForTeamDiscussionInOrgRequestParams,
-  ReactionsListForTeamDiscussionInOrgRequestBody,
-  ReactionsListForTeamDiscussionInOrgResponseBody
->;
+export type ReactionsListForTeamDiscussionInOrgResolver =
+  msw.HttpResponseResolver<
+    ReactionsListForTeamDiscussionInOrgRequestParams,
+    ReactionsListForTeamDiscussionInOrgRequestBody,
+    ReactionsListForTeamDiscussionInOrgResponseBody
+  >;
 
 export type ReactionsCreateForTeamDiscussionInOrgRequestQuery = {};
 
@@ -8703,11 +8962,12 @@ export type ReactionsCreateForTeamDiscussionInOrgResponseStatus = 200 | 201;
 
 export type ReactionsCreateForTeamDiscussionInOrgResponseBody = Reaction;
 
-export type ReactionsCreateForTeamDiscussionInOrgResolver = msw.HttpResponseResolver<
-  ReactionsCreateForTeamDiscussionInOrgRequestParams,
-  ReactionsCreateForTeamDiscussionInOrgRequestBody,
-  ReactionsCreateForTeamDiscussionInOrgResponseBody
->;
+export type ReactionsCreateForTeamDiscussionInOrgResolver =
+  msw.HttpResponseResolver<
+    ReactionsCreateForTeamDiscussionInOrgRequestParams,
+    ReactionsCreateForTeamDiscussionInOrgRequestBody,
+    ReactionsCreateForTeamDiscussionInOrgResponseBody
+  >;
 
 export type ReactionsDeleteForTeamDiscussionRequestQuery = {};
 
@@ -8748,7 +9008,8 @@ export type TeamsListPendingInvitationsInOrgRequestBody = never;
 
 export type TeamsListPendingInvitationsInOrgResponseStatus = 200;
 
-export type TeamsListPendingInvitationsInOrgResponseBody = ReadonlyArray<OrganizationInvitation>;
+export type TeamsListPendingInvitationsInOrgResponseBody =
+  ReadonlyArray<OrganizationInvitation>;
 
 export type TeamsListPendingInvitationsInOrgResolver = msw.HttpResponseResolver<
   TeamsListPendingInvitationsInOrgRequestParams,
@@ -8832,11 +9093,12 @@ export type TeamsAddOrUpdateMembershipForUserInOrgResponseBody =
   | TeamMembership
   | never;
 
-export type TeamsAddOrUpdateMembershipForUserInOrgResolver = msw.HttpResponseResolver<
-  TeamsAddOrUpdateMembershipForUserInOrgRequestParams,
-  TeamsAddOrUpdateMembershipForUserInOrgRequestBody,
-  TeamsAddOrUpdateMembershipForUserInOrgResponseBody
->;
+export type TeamsAddOrUpdateMembershipForUserInOrgResolver =
+  msw.HttpResponseResolver<
+    TeamsAddOrUpdateMembershipForUserInOrgRequestParams,
+    TeamsAddOrUpdateMembershipForUserInOrgRequestBody,
+    TeamsAddOrUpdateMembershipForUserInOrgResponseBody
+  >;
 
 export type TeamsRemoveMembershipForUserInOrgRequestQuery = {};
 
@@ -8854,11 +9116,12 @@ export type TeamsRemoveMembershipForUserInOrgResponseStatus = 204 | 403;
 
 export type TeamsRemoveMembershipForUserInOrgResponseBody = never;
 
-export type TeamsRemoveMembershipForUserInOrgResolver = msw.HttpResponseResolver<
-  TeamsRemoveMembershipForUserInOrgRequestParams,
-  TeamsRemoveMembershipForUserInOrgRequestBody,
-  TeamsRemoveMembershipForUserInOrgResponseBody
->;
+export type TeamsRemoveMembershipForUserInOrgResolver =
+  msw.HttpResponseResolver<
+    TeamsRemoveMembershipForUserInOrgRequestParams,
+    TeamsRemoveMembershipForUserInOrgRequestBody,
+    TeamsRemoveMembershipForUserInOrgResponseBody
+  >;
 
 export type TeamsListProjectsInOrgRequestQuery = {
   readonly per_page?: string;
@@ -8925,11 +9188,12 @@ export type TeamsCheckPermissionsForProjectInOrgResponseBody =
   | TeamProject
   | never;
 
-export type TeamsCheckPermissionsForProjectInOrgResolver = msw.HttpResponseResolver<
-  TeamsCheckPermissionsForProjectInOrgRequestParams,
-  TeamsCheckPermissionsForProjectInOrgRequestBody,
-  TeamsCheckPermissionsForProjectInOrgResponseBody
->;
+export type TeamsCheckPermissionsForProjectInOrgResolver =
+  msw.HttpResponseResolver<
+    TeamsCheckPermissionsForProjectInOrgRequestParams,
+    TeamsCheckPermissionsForProjectInOrgRequestBody,
+    TeamsCheckPermissionsForProjectInOrgResponseBody
+  >;
 
 export type TeamsAddOrUpdateProjectPermissionsInOrgRequestQuery = {};
 
@@ -8952,11 +9216,12 @@ export type TeamsAddOrUpdateProjectPermissionsInOrgResponseBody =
   | never
   | { readonly message?: string; readonly documentation_url?: string };
 
-export type TeamsAddOrUpdateProjectPermissionsInOrgResolver = msw.HttpResponseResolver<
-  TeamsAddOrUpdateProjectPermissionsInOrgRequestParams,
-  TeamsAddOrUpdateProjectPermissionsInOrgRequestBody,
-  TeamsAddOrUpdateProjectPermissionsInOrgResponseBody
->;
+export type TeamsAddOrUpdateProjectPermissionsInOrgResolver =
+  msw.HttpResponseResolver<
+    TeamsAddOrUpdateProjectPermissionsInOrgRequestParams,
+    TeamsAddOrUpdateProjectPermissionsInOrgRequestBody,
+    TeamsAddOrUpdateProjectPermissionsInOrgResponseBody
+  >;
 
 export type TeamsRemoveProjectInOrgRequestQuery = {};
 
@@ -9122,11 +9387,12 @@ export type TeamsCheckPermissionsForRepoInOrgResponseBody =
   | TeamRepository
   | never;
 
-export type TeamsCheckPermissionsForRepoInOrgResolver = msw.HttpResponseResolver<
-  TeamsCheckPermissionsForRepoInOrgRequestParams,
-  TeamsCheckPermissionsForRepoInOrgRequestBody,
-  TeamsCheckPermissionsForRepoInOrgResponseBody
->;
+export type TeamsCheckPermissionsForRepoInOrgResolver =
+  msw.HttpResponseResolver<
+    TeamsCheckPermissionsForRepoInOrgRequestParams,
+    TeamsCheckPermissionsForRepoInOrgRequestBody,
+    TeamsCheckPermissionsForRepoInOrgResponseBody
+  >;
 
 export type TeamsAddOrUpdateRepoPermissionsInOrgRequestQuery = {};
 
@@ -9147,11 +9413,12 @@ export type TeamsAddOrUpdateRepoPermissionsInOrgResponseStatus = 204;
 
 export type TeamsAddOrUpdateRepoPermissionsInOrgResponseBody = never;
 
-export type TeamsAddOrUpdateRepoPermissionsInOrgResolver = msw.HttpResponseResolver<
-  TeamsAddOrUpdateRepoPermissionsInOrgRequestParams,
-  TeamsAddOrUpdateRepoPermissionsInOrgRequestBody,
-  TeamsAddOrUpdateRepoPermissionsInOrgResponseBody
->;
+export type TeamsAddOrUpdateRepoPermissionsInOrgResolver =
+  msw.HttpResponseResolver<
+    TeamsAddOrUpdateRepoPermissionsInOrgRequestParams,
+    TeamsAddOrUpdateRepoPermissionsInOrgRequestBody,
+    TeamsAddOrUpdateRepoPermissionsInOrgResponseBody
+  >;
 
 export type TeamsRemoveRepoInOrgRequestQuery = {};
 
@@ -9218,11 +9485,12 @@ export type OrgsEnableOrDisableSecurityProductOnAllOrgReposResponseStatus =
 
 export type OrgsEnableOrDisableSecurityProductOnAllOrgReposResponseBody = never;
 
-export type OrgsEnableOrDisableSecurityProductOnAllOrgReposResolver = msw.HttpResponseResolver<
-  OrgsEnableOrDisableSecurityProductOnAllOrgReposRequestParams,
-  OrgsEnableOrDisableSecurityProductOnAllOrgReposRequestBody,
-  OrgsEnableOrDisableSecurityProductOnAllOrgReposResponseBody
->;
+export type OrgsEnableOrDisableSecurityProductOnAllOrgReposResolver =
+  msw.HttpResponseResolver<
+    OrgsEnableOrDisableSecurityProductOnAllOrgReposRequestParams,
+    OrgsEnableOrDisableSecurityProductOnAllOrgReposRequestBody,
+    OrgsEnableOrDisableSecurityProductOnAllOrgReposResponseBody
+  >;
 
 export type ProjectsGetCardRequestQuery = {};
 
@@ -10176,7 +10444,8 @@ export type ActionsGetActionsCacheUsageRequestBody = never;
 
 export type ActionsGetActionsCacheUsageResponseStatus = 200;
 
-export type ActionsGetActionsCacheUsageResponseBody = ActionsCacheUsageByRepository;
+export type ActionsGetActionsCacheUsageResponseBody =
+  ActionsCacheUsageByRepository;
 
 export type ActionsGetActionsCacheUsageResolver = msw.HttpResponseResolver<
   ActionsGetActionsCacheUsageRequestParams,
@@ -10241,7 +10510,8 @@ export type ActionsDeleteActionsCacheByKeyRequestBody = never;
 
 export type ActionsDeleteActionsCacheByKeyResponseStatus = 200;
 
-export type ActionsDeleteActionsCacheByKeyResponseBody = RepositoryActionsCaches;
+export type ActionsDeleteActionsCacheByKeyResponseBody =
+  RepositoryActionsCaches;
 
 export type ActionsDeleteActionsCacheByKeyResolver = msw.HttpResponseResolver<
   ActionsDeleteActionsCacheByKeyRequestParams,
@@ -10347,11 +10617,12 @@ export type ActionsDownloadJobLogsForWorkflowRunResponseStatus = 302;
 
 export type ActionsDownloadJobLogsForWorkflowRunResponseBody = never;
 
-export type ActionsDownloadJobLogsForWorkflowRunResolver = msw.HttpResponseResolver<
-  ActionsDownloadJobLogsForWorkflowRunRequestParams,
-  ActionsDownloadJobLogsForWorkflowRunRequestBody,
-  ActionsDownloadJobLogsForWorkflowRunResponseBody
->;
+export type ActionsDownloadJobLogsForWorkflowRunResolver =
+  msw.HttpResponseResolver<
+    ActionsDownloadJobLogsForWorkflowRunRequestParams,
+    ActionsDownloadJobLogsForWorkflowRunRequestBody,
+    ActionsDownloadJobLogsForWorkflowRunResponseBody
+  >;
 
 export type ActionsReRunJobForWorkflowRunRequestQuery = {};
 
@@ -10401,13 +10672,15 @@ export type ActionsRepositoryPermissions = {
   readonly selected_actions_url?: SelectedActionsUrl;
 };
 
-export type ActionsGetGithubActionsPermissionsRepositoryResponseBody = ActionsRepositoryPermissions;
+export type ActionsGetGithubActionsPermissionsRepositoryResponseBody =
+  ActionsRepositoryPermissions;
 
-export type ActionsGetGithubActionsPermissionsRepositoryResolver = msw.HttpResponseResolver<
-  ActionsGetGithubActionsPermissionsRepositoryRequestParams,
-  ActionsGetGithubActionsPermissionsRepositoryRequestBody,
-  ActionsGetGithubActionsPermissionsRepositoryResponseBody
->;
+export type ActionsGetGithubActionsPermissionsRepositoryResolver =
+  msw.HttpResponseResolver<
+    ActionsGetGithubActionsPermissionsRepositoryRequestParams,
+    ActionsGetGithubActionsPermissionsRepositoryRequestBody,
+    ActionsGetGithubActionsPermissionsRepositoryResponseBody
+  >;
 
 export type ActionsSetGithubActionsPermissionsRepositoryRequestQuery = {};
 
@@ -10427,11 +10700,12 @@ export type ActionsSetGithubActionsPermissionsRepositoryResponseStatus = 204;
 
 export type ActionsSetGithubActionsPermissionsRepositoryResponseBody = never;
 
-export type ActionsSetGithubActionsPermissionsRepositoryResolver = msw.HttpResponseResolver<
-  ActionsSetGithubActionsPermissionsRepositoryRequestParams,
-  ActionsSetGithubActionsPermissionsRepositoryRequestBody,
-  ActionsSetGithubActionsPermissionsRepositoryResponseBody
->;
+export type ActionsSetGithubActionsPermissionsRepositoryResolver =
+  msw.HttpResponseResolver<
+    ActionsSetGithubActionsPermissionsRepositoryRequestParams,
+    ActionsSetGithubActionsPermissionsRepositoryRequestBody,
+    ActionsSetGithubActionsPermissionsRepositoryResponseBody
+  >;
 
 export type ActionsGetWorkflowAccessToRepositoryRequestQuery = {};
 
@@ -10450,13 +10724,15 @@ export type ActionsWorkflowAccessToRepository = {
   readonly access_level: 'none' | 'organization' | 'enterprise';
 };
 
-export type ActionsGetWorkflowAccessToRepositoryResponseBody = ActionsWorkflowAccessToRepository;
+export type ActionsGetWorkflowAccessToRepositoryResponseBody =
+  ActionsWorkflowAccessToRepository;
 
-export type ActionsGetWorkflowAccessToRepositoryResolver = msw.HttpResponseResolver<
-  ActionsGetWorkflowAccessToRepositoryRequestParams,
-  ActionsGetWorkflowAccessToRepositoryRequestBody,
-  ActionsGetWorkflowAccessToRepositoryResponseBody
->;
+export type ActionsGetWorkflowAccessToRepositoryResolver =
+  msw.HttpResponseResolver<
+    ActionsGetWorkflowAccessToRepositoryRequestParams,
+    ActionsGetWorkflowAccessToRepositoryRequestBody,
+    ActionsGetWorkflowAccessToRepositoryResponseBody
+  >;
 
 export type ActionsSetWorkflowAccessToRepositoryRequestQuery = {};
 
@@ -10467,17 +10743,19 @@ export type ActionsSetWorkflowAccessToRepositoryRequestParams = {
   readonly repo: string;
 };
 
-export type ActionsSetWorkflowAccessToRepositoryRequestBody = ActionsWorkflowAccessToRepository;
+export type ActionsSetWorkflowAccessToRepositoryRequestBody =
+  ActionsWorkflowAccessToRepository;
 
 export type ActionsSetWorkflowAccessToRepositoryResponseStatus = 204;
 
 export type ActionsSetWorkflowAccessToRepositoryResponseBody = never;
 
-export type ActionsSetWorkflowAccessToRepositoryResolver = msw.HttpResponseResolver<
-  ActionsSetWorkflowAccessToRepositoryRequestParams,
-  ActionsSetWorkflowAccessToRepositoryRequestBody,
-  ActionsSetWorkflowAccessToRepositoryResponseBody
->;
+export type ActionsSetWorkflowAccessToRepositoryResolver =
+  msw.HttpResponseResolver<
+    ActionsSetWorkflowAccessToRepositoryRequestParams,
+    ActionsSetWorkflowAccessToRepositoryRequestBody,
+    ActionsSetWorkflowAccessToRepositoryResponseBody
+  >;
 
 export type ActionsGetAllowedActionsRepositoryRequestQuery = {};
 
@@ -10494,11 +10772,12 @@ export type ActionsGetAllowedActionsRepositoryResponseStatus = 200;
 
 export type ActionsGetAllowedActionsRepositoryResponseBody = SelectedActions;
 
-export type ActionsGetAllowedActionsRepositoryResolver = msw.HttpResponseResolver<
-  ActionsGetAllowedActionsRepositoryRequestParams,
-  ActionsGetAllowedActionsRepositoryRequestBody,
-  ActionsGetAllowedActionsRepositoryResponseBody
->;
+export type ActionsGetAllowedActionsRepositoryResolver =
+  msw.HttpResponseResolver<
+    ActionsGetAllowedActionsRepositoryRequestParams,
+    ActionsGetAllowedActionsRepositoryRequestBody,
+    ActionsGetAllowedActionsRepositoryResponseBody
+  >;
 
 export type ActionsSetAllowedActionsRepositoryRequestQuery = {};
 
@@ -10517,55 +10796,62 @@ export type ActionsSetAllowedActionsRepositoryResponseStatus = 204;
 
 export type ActionsSetAllowedActionsRepositoryResponseBody = never;
 
-export type ActionsSetAllowedActionsRepositoryResolver = msw.HttpResponseResolver<
-  ActionsSetAllowedActionsRepositoryRequestParams,
-  ActionsSetAllowedActionsRepositoryRequestBody,
-  ActionsSetAllowedActionsRepositoryResponseBody
->;
+export type ActionsSetAllowedActionsRepositoryResolver =
+  msw.HttpResponseResolver<
+    ActionsSetAllowedActionsRepositoryRequestParams,
+    ActionsSetAllowedActionsRepositoryRequestBody,
+    ActionsSetAllowedActionsRepositoryResponseBody
+  >;
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryRequestQuery = {};
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryRequestQuery =
+  {};
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryRequestHeaders = {};
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryRequestHeaders =
+  {};
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryRequestParams = {
-  readonly owner: string;
-  readonly repo: string;
-};
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryRequestParams =
+  { readonly owner: string; readonly repo: string };
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryRequestBody = never;
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryRequestBody =
+  never;
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryResponseStatus = 200;
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryResponseStatus =
+  200;
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryResponseBody = ActionsGetDefaultWorkflowPermissions;
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryResponseBody =
+  ActionsGetDefaultWorkflowPermissions;
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryResolver = msw.HttpResponseResolver<
-  ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryRequestParams,
-  ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryRequestBody,
-  ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryResponseBody
->;
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryResolver =
+  msw.HttpResponseResolver<
+    ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryRequestParams,
+    ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryRequestBody,
+    ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryResponseBody
+  >;
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequestQuery = {};
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequestQuery =
+  {};
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequestHeaders = {};
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequestHeaders =
+  {};
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequestParams = {
-  readonly owner: string;
-  readonly repo: string;
-};
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequestParams =
+  { readonly owner: string; readonly repo: string };
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequestBody = ActionsSetDefaultWorkflowPermissions;
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequestBody =
+  ActionsSetDefaultWorkflowPermissions;
 
 export type ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryResponseStatus =
-  | 204
-  | 409;
+  204 | 409;
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryResponseBody = never;
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryResponseBody =
+  never;
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryResolver = msw.HttpResponseResolver<
-  ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequestParams,
-  ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequestBody,
-  ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryResponseBody
->;
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryResolver =
+  msw.HttpResponseResolver<
+    ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequestParams,
+    ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequestBody,
+    ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryResponseBody
+  >;
 
 export type ActionsListSelfHostedRunnersForRepoRequestQuery = {
   readonly per_page?: string;
@@ -10588,11 +10874,12 @@ export type ActionsListSelfHostedRunnersForRepoResponseBody = {
   readonly runners: ReadonlyArray<SelfHostedRunners>;
 };
 
-export type ActionsListSelfHostedRunnersForRepoResolver = msw.HttpResponseResolver<
-  ActionsListSelfHostedRunnersForRepoRequestParams,
-  ActionsListSelfHostedRunnersForRepoRequestBody,
-  ActionsListSelfHostedRunnersForRepoResponseBody
->;
+export type ActionsListSelfHostedRunnersForRepoResolver =
+  msw.HttpResponseResolver<
+    ActionsListSelfHostedRunnersForRepoRequestParams,
+    ActionsListSelfHostedRunnersForRepoRequestBody,
+    ActionsListSelfHostedRunnersForRepoResponseBody
+  >;
 
 export type ActionsListRunnerApplicationsForRepoRequestQuery = {};
 
@@ -10607,13 +10894,15 @@ export type ActionsListRunnerApplicationsForRepoRequestBody = never;
 
 export type ActionsListRunnerApplicationsForRepoResponseStatus = 200;
 
-export type ActionsListRunnerApplicationsForRepoResponseBody = ReadonlyArray<RunnerApplication>;
+export type ActionsListRunnerApplicationsForRepoResponseBody =
+  ReadonlyArray<RunnerApplication>;
 
-export type ActionsListRunnerApplicationsForRepoResolver = msw.HttpResponseResolver<
-  ActionsListRunnerApplicationsForRepoRequestParams,
-  ActionsListRunnerApplicationsForRepoRequestBody,
-  ActionsListRunnerApplicationsForRepoResponseBody
->;
+export type ActionsListRunnerApplicationsForRepoResolver =
+  msw.HttpResponseResolver<
+    ActionsListRunnerApplicationsForRepoRequestParams,
+    ActionsListRunnerApplicationsForRepoRequestBody,
+    ActionsListRunnerApplicationsForRepoResponseBody
+  >;
 
 export type ActionsCreateRegistrationTokenForRepoRequestQuery = {};
 
@@ -10628,13 +10917,15 @@ export type ActionsCreateRegistrationTokenForRepoRequestBody = never;
 
 export type ActionsCreateRegistrationTokenForRepoResponseStatus = 201;
 
-export type ActionsCreateRegistrationTokenForRepoResponseBody = AuthenticationToken;
+export type ActionsCreateRegistrationTokenForRepoResponseBody =
+  AuthenticationToken;
 
-export type ActionsCreateRegistrationTokenForRepoResolver = msw.HttpResponseResolver<
-  ActionsCreateRegistrationTokenForRepoRequestParams,
-  ActionsCreateRegistrationTokenForRepoRequestBody,
-  ActionsCreateRegistrationTokenForRepoResponseBody
->;
+export type ActionsCreateRegistrationTokenForRepoResolver =
+  msw.HttpResponseResolver<
+    ActionsCreateRegistrationTokenForRepoRequestParams,
+    ActionsCreateRegistrationTokenForRepoRequestBody,
+    ActionsCreateRegistrationTokenForRepoResponseBody
+  >;
 
 export type ActionsCreateRemoveTokenForRepoRequestQuery = {};
 
@@ -10673,11 +10964,12 @@ export type ActionsGetSelfHostedRunnerForRepoResponseStatus = 200;
 
 export type ActionsGetSelfHostedRunnerForRepoResponseBody = SelfHostedRunners;
 
-export type ActionsGetSelfHostedRunnerForRepoResolver = msw.HttpResponseResolver<
-  ActionsGetSelfHostedRunnerForRepoRequestParams,
-  ActionsGetSelfHostedRunnerForRepoRequestBody,
-  ActionsGetSelfHostedRunnerForRepoResponseBody
->;
+export type ActionsGetSelfHostedRunnerForRepoResolver =
+  msw.HttpResponseResolver<
+    ActionsGetSelfHostedRunnerForRepoRequestParams,
+    ActionsGetSelfHostedRunnerForRepoRequestBody,
+    ActionsGetSelfHostedRunnerForRepoResponseBody
+  >;
 
 export type ActionsDeleteSelfHostedRunnerFromRepoRequestQuery = {};
 
@@ -10695,11 +10987,12 @@ export type ActionsDeleteSelfHostedRunnerFromRepoResponseStatus = 204;
 
 export type ActionsDeleteSelfHostedRunnerFromRepoResponseBody = never;
 
-export type ActionsDeleteSelfHostedRunnerFromRepoResolver = msw.HttpResponseResolver<
-  ActionsDeleteSelfHostedRunnerFromRepoRequestParams,
-  ActionsDeleteSelfHostedRunnerFromRepoRequestBody,
-  ActionsDeleteSelfHostedRunnerFromRepoResponseBody
->;
+export type ActionsDeleteSelfHostedRunnerFromRepoResolver =
+  msw.HttpResponseResolver<
+    ActionsDeleteSelfHostedRunnerFromRepoRequestParams,
+    ActionsDeleteSelfHostedRunnerFromRepoRequestBody,
+    ActionsDeleteSelfHostedRunnerFromRepoResponseBody
+  >;
 
 export type ActionsListLabelsForSelfHostedRunnerForRepoRequestQuery = {};
 
@@ -10724,11 +11017,12 @@ export type ActionsListLabelsForSelfHostedRunnerForRepoResponseBody =
     }
   | BasicError;
 
-export type ActionsListLabelsForSelfHostedRunnerForRepoResolver = msw.HttpResponseResolver<
-  ActionsListLabelsForSelfHostedRunnerForRepoRequestParams,
-  ActionsListLabelsForSelfHostedRunnerForRepoRequestBody,
-  ActionsListLabelsForSelfHostedRunnerForRepoResponseBody
->;
+export type ActionsListLabelsForSelfHostedRunnerForRepoResolver =
+  msw.HttpResponseResolver<
+    ActionsListLabelsForSelfHostedRunnerForRepoRequestParams,
+    ActionsListLabelsForSelfHostedRunnerForRepoRequestBody,
+    ActionsListLabelsForSelfHostedRunnerForRepoResponseBody
+  >;
 
 export type ActionsAddCustomLabelsToSelfHostedRunnerForRepoRequestQuery = {};
 
@@ -10757,11 +11051,12 @@ export type ActionsAddCustomLabelsToSelfHostedRunnerForRepoResponseBody =
   | BasicError
   | ValidationErrorSimple;
 
-export type ActionsAddCustomLabelsToSelfHostedRunnerForRepoResolver = msw.HttpResponseResolver<
-  ActionsAddCustomLabelsToSelfHostedRunnerForRepoRequestParams,
-  ActionsAddCustomLabelsToSelfHostedRunnerForRepoRequestBody,
-  ActionsAddCustomLabelsToSelfHostedRunnerForRepoResponseBody
->;
+export type ActionsAddCustomLabelsToSelfHostedRunnerForRepoResolver =
+  msw.HttpResponseResolver<
+    ActionsAddCustomLabelsToSelfHostedRunnerForRepoRequestParams,
+    ActionsAddCustomLabelsToSelfHostedRunnerForRepoRequestBody,
+    ActionsAddCustomLabelsToSelfHostedRunnerForRepoResponseBody
+  >;
 
 export type ActionsSetCustomLabelsForSelfHostedRunnerForRepoRequestQuery = {};
 
@@ -10790,44 +11085,48 @@ export type ActionsSetCustomLabelsForSelfHostedRunnerForRepoResponseBody =
   | BasicError
   | ValidationErrorSimple;
 
-export type ActionsSetCustomLabelsForSelfHostedRunnerForRepoResolver = msw.HttpResponseResolver<
-  ActionsSetCustomLabelsForSelfHostedRunnerForRepoRequestParams,
-  ActionsSetCustomLabelsForSelfHostedRunnerForRepoRequestBody,
-  ActionsSetCustomLabelsForSelfHostedRunnerForRepoResponseBody
->;
+export type ActionsSetCustomLabelsForSelfHostedRunnerForRepoResolver =
+  msw.HttpResponseResolver<
+    ActionsSetCustomLabelsForSelfHostedRunnerForRepoRequestParams,
+    ActionsSetCustomLabelsForSelfHostedRunnerForRepoRequestBody,
+    ActionsSetCustomLabelsForSelfHostedRunnerForRepoResponseBody
+  >;
 
-export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequestQuery = {};
+export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequestQuery =
+  {};
 
-export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequestHeaders = {};
+export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequestHeaders =
+  {};
 
-export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequestParams = {
-  readonly owner: string;
-  readonly repo: string;
-  readonly runner_id: string;
-};
+export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequestParams =
+  { readonly owner: string; readonly repo: string; readonly runner_id: string };
 
-export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequestBody = never;
+export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequestBody =
+  never;
 
 export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoResponseStatus =
-  | 200
-  | 404;
+  200 | 404;
 
 export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoResponseBody =
-  | {
-      readonly total_count: number;
-      readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
-    }
-  | BasicError;
 
-export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoResolver = msw.HttpResponseResolver<
-  ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequestParams,
-  ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequestBody,
-  ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoResponseBody
->;
+    | {
+        readonly total_count: number;
+        readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
+      }
+    | BasicError;
 
-export type ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoRequestQuery = {};
+export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoResolver =
+  msw.HttpResponseResolver<
+    ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequestParams,
+    ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequestBody,
+    ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoResponseBody
+  >;
 
-export type ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoRequestHeaders = {};
+export type ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoRequestQuery =
+  {};
+
+export type ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoRequestHeaders =
+  {};
 
 export type ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoRequestParams = {
   readonly owner: string;
@@ -10836,7 +11135,8 @@ export type ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoRequestParams = {
   readonly name: string;
 };
 
-export type ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoRequestBody = never;
+export type ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoRequestBody =
+  never;
 
 export type ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoResponseStatus =
   | 200
@@ -10851,11 +11151,12 @@ export type ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoResponseBody =
   | BasicError
   | ValidationErrorSimple;
 
-export type ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoResolver = msw.HttpResponseResolver<
-  ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoRequestParams,
-  ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoRequestBody,
-  ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoResponseBody
->;
+export type ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoResolver =
+  msw.HttpResponseResolver<
+    ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoRequestParams,
+    ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoRequestBody,
+    ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoResponseBody
+  >;
 
 export type ActionsListWorkflowRunsForRepoRequestQuery = {
   readonly actor?: string;
@@ -11045,7 +11346,8 @@ export type EnvironmentApproval = {
   readonly comment: string;
 };
 
-export type ActionsGetReviewsForRunResponseBody = ReadonlyArray<EnvironmentApproval>;
+export type ActionsGetReviewsForRunResponseBody =
+  ReadonlyArray<EnvironmentApproval>;
 
 export type ActionsGetReviewsForRunResolver = msw.HttpResponseResolver<
   ActionsGetReviewsForRunRequestParams,
@@ -11150,11 +11452,12 @@ export type ActionsListJobsForWorkflowRunAttemptResponseBody =
   | { readonly total_count: number; readonly jobs: ReadonlyArray<Job> }
   | BasicError;
 
-export type ActionsListJobsForWorkflowRunAttemptResolver = msw.HttpResponseResolver<
-  ActionsListJobsForWorkflowRunAttemptRequestParams,
-  ActionsListJobsForWorkflowRunAttemptRequestBody,
-  ActionsListJobsForWorkflowRunAttemptResponseBody
->;
+export type ActionsListJobsForWorkflowRunAttemptResolver =
+  msw.HttpResponseResolver<
+    ActionsListJobsForWorkflowRunAttemptRequestParams,
+    ActionsListJobsForWorkflowRunAttemptRequestBody,
+    ActionsListJobsForWorkflowRunAttemptResponseBody
+  >;
 
 export type ActionsDownloadWorkflowRunAttemptLogsRequestQuery = {};
 
@@ -11173,11 +11476,12 @@ export type ActionsDownloadWorkflowRunAttemptLogsResponseStatus = 302;
 
 export type ActionsDownloadWorkflowRunAttemptLogsResponseBody = never;
 
-export type ActionsDownloadWorkflowRunAttemptLogsResolver = msw.HttpResponseResolver<
-  ActionsDownloadWorkflowRunAttemptLogsRequestParams,
-  ActionsDownloadWorkflowRunAttemptLogsRequestBody,
-  ActionsDownloadWorkflowRunAttemptLogsResponseBody
->;
+export type ActionsDownloadWorkflowRunAttemptLogsResolver =
+  msw.HttpResponseResolver<
+    ActionsDownloadWorkflowRunAttemptLogsRequestParams,
+    ActionsDownloadWorkflowRunAttemptLogsRequestBody,
+    ActionsDownloadWorkflowRunAttemptLogsResponseBody
+  >;
 
 export type ActionsCancelWorkflowRunRequestQuery = {};
 
@@ -11307,13 +11611,15 @@ export type PendingDeployment = {
   }>;
 };
 
-export type ActionsGetPendingDeploymentsForRunResponseBody = ReadonlyArray<PendingDeployment>;
+export type ActionsGetPendingDeploymentsForRunResponseBody =
+  ReadonlyArray<PendingDeployment>;
 
-export type ActionsGetPendingDeploymentsForRunResolver = msw.HttpResponseResolver<
-  ActionsGetPendingDeploymentsForRunRequestParams,
-  ActionsGetPendingDeploymentsForRunRequestBody,
-  ActionsGetPendingDeploymentsForRunResponseBody
->;
+export type ActionsGetPendingDeploymentsForRunResolver =
+  msw.HttpResponseResolver<
+    ActionsGetPendingDeploymentsForRunRequestParams,
+    ActionsGetPendingDeploymentsForRunRequestBody,
+    ActionsGetPendingDeploymentsForRunResponseBody
+  >;
 
 export type ActionsReviewPendingDeploymentsForRunRequestQuery = {};
 
@@ -11354,13 +11660,15 @@ export type Deployment = {
   readonly performed_via_github_app?: GitHubApp;
 };
 
-export type ActionsReviewPendingDeploymentsForRunResponseBody = ReadonlyArray<Deployment>;
+export type ActionsReviewPendingDeploymentsForRunResponseBody =
+  ReadonlyArray<Deployment>;
 
-export type ActionsReviewPendingDeploymentsForRunResolver = msw.HttpResponseResolver<
-  ActionsReviewPendingDeploymentsForRunRequestParams,
-  ActionsReviewPendingDeploymentsForRunRequestBody,
-  ActionsReviewPendingDeploymentsForRunResponseBody
->;
+export type ActionsReviewPendingDeploymentsForRunResolver =
+  msw.HttpResponseResolver<
+    ActionsReviewPendingDeploymentsForRunRequestParams,
+    ActionsReviewPendingDeploymentsForRunRequestBody,
+    ActionsReviewPendingDeploymentsForRunResponseBody
+  >;
 
 export type ActionsReRunWorkflowRequestQuery = {};
 
@@ -11952,11 +12260,12 @@ export type ReposEnableAutomatedSecurityFixesResponseStatus = 204;
 
 export type ReposEnableAutomatedSecurityFixesResponseBody = never;
 
-export type ReposEnableAutomatedSecurityFixesResolver = msw.HttpResponseResolver<
-  ReposEnableAutomatedSecurityFixesRequestParams,
-  ReposEnableAutomatedSecurityFixesRequestBody,
-  ReposEnableAutomatedSecurityFixesResponseBody
->;
+export type ReposEnableAutomatedSecurityFixesResolver =
+  msw.HttpResponseResolver<
+    ReposEnableAutomatedSecurityFixesRequestParams,
+    ReposEnableAutomatedSecurityFixesRequestBody,
+    ReposEnableAutomatedSecurityFixesResponseBody
+  >;
 
 export type ReposDisableAutomatedSecurityFixesRequestQuery = {};
 
@@ -11973,11 +12282,12 @@ export type ReposDisableAutomatedSecurityFixesResponseStatus = 204;
 
 export type ReposDisableAutomatedSecurityFixesResponseBody = never;
 
-export type ReposDisableAutomatedSecurityFixesResolver = msw.HttpResponseResolver<
-  ReposDisableAutomatedSecurityFixesRequestParams,
-  ReposDisableAutomatedSecurityFixesRequestBody,
-  ReposDisableAutomatedSecurityFixesResponseBody
->;
+export type ReposDisableAutomatedSecurityFixesResolver =
+  msw.HttpResponseResolver<
+    ReposDisableAutomatedSecurityFixesRequestParams,
+    ReposDisableAutomatedSecurityFixesRequestBody,
+    ReposDisableAutomatedSecurityFixesResponseBody
+  >;
 
 export type ReposListBranchesRequestQuery = {
   readonly protected?: string;
@@ -12427,7 +12737,8 @@ export type ReposGetAdminBranchProtectionRequestBody = never;
 
 export type ReposGetAdminBranchProtectionResponseStatus = 200;
 
-export type ReposGetAdminBranchProtectionResponseBody = ProtectedBranchAdminEnforced;
+export type ReposGetAdminBranchProtectionResponseBody =
+  ProtectedBranchAdminEnforced;
 
 export type ReposGetAdminBranchProtectionResolver = msw.HttpResponseResolver<
   ReposGetAdminBranchProtectionRequestParams,
@@ -12449,7 +12760,8 @@ export type ReposSetAdminBranchProtectionRequestBody = never;
 
 export type ReposSetAdminBranchProtectionResponseStatus = 200;
 
-export type ReposSetAdminBranchProtectionResponseBody = ProtectedBranchAdminEnforced;
+export type ReposSetAdminBranchProtectionResponseBody =
+  ProtectedBranchAdminEnforced;
 
 export type ReposSetAdminBranchProtectionResolver = msw.HttpResponseResolver<
   ReposSetAdminBranchProtectionRequestParams,
@@ -12493,13 +12805,15 @@ export type ReposGetPullRequestReviewProtectionRequestBody = never;
 
 export type ReposGetPullRequestReviewProtectionResponseStatus = 200;
 
-export type ReposGetPullRequestReviewProtectionResponseBody = ProtectedBranchPullRequestReview;
+export type ReposGetPullRequestReviewProtectionResponseBody =
+  ProtectedBranchPullRequestReview;
 
-export type ReposGetPullRequestReviewProtectionResolver = msw.HttpResponseResolver<
-  ReposGetPullRequestReviewProtectionRequestParams,
-  ReposGetPullRequestReviewProtectionRequestBody,
-  ReposGetPullRequestReviewProtectionResponseBody
->;
+export type ReposGetPullRequestReviewProtectionResolver =
+  msw.HttpResponseResolver<
+    ReposGetPullRequestReviewProtectionRequestParams,
+    ReposGetPullRequestReviewProtectionRequestBody,
+    ReposGetPullRequestReviewProtectionResponseBody
+  >;
 
 export type ReposUpdatePullRequestReviewProtectionRequestQuery = {};
 
@@ -12536,11 +12850,12 @@ export type ReposUpdatePullRequestReviewProtectionResponseBody =
   | ProtectedBranchPullRequestReview
   | ValidationError;
 
-export type ReposUpdatePullRequestReviewProtectionResolver = msw.HttpResponseResolver<
-  ReposUpdatePullRequestReviewProtectionRequestParams,
-  ReposUpdatePullRequestReviewProtectionRequestBody,
-  ReposUpdatePullRequestReviewProtectionResponseBody
->;
+export type ReposUpdatePullRequestReviewProtectionResolver =
+  msw.HttpResponseResolver<
+    ReposUpdatePullRequestReviewProtectionRequestParams,
+    ReposUpdatePullRequestReviewProtectionRequestBody,
+    ReposUpdatePullRequestReviewProtectionResponseBody
+  >;
 
 export type ReposDeletePullRequestReviewProtectionRequestQuery = {};
 
@@ -12560,11 +12875,12 @@ export type ReposDeletePullRequestReviewProtectionResponseBody =
   | never
   | BasicError;
 
-export type ReposDeletePullRequestReviewProtectionResolver = msw.HttpResponseResolver<
-  ReposDeletePullRequestReviewProtectionRequestParams,
-  ReposDeletePullRequestReviewProtectionRequestBody,
-  ReposDeletePullRequestReviewProtectionResponseBody
->;
+export type ReposDeletePullRequestReviewProtectionResolver =
+  msw.HttpResponseResolver<
+    ReposDeletePullRequestReviewProtectionRequestParams,
+    ReposDeletePullRequestReviewProtectionRequestBody,
+    ReposDeletePullRequestReviewProtectionResponseBody
+  >;
 
 export type ReposGetCommitSignatureProtectionRequestQuery = {};
 
@@ -12584,11 +12900,12 @@ export type ReposGetCommitSignatureProtectionResponseBody =
   | ProtectedBranchAdminEnforced
   | BasicError;
 
-export type ReposGetCommitSignatureProtectionResolver = msw.HttpResponseResolver<
-  ReposGetCommitSignatureProtectionRequestParams,
-  ReposGetCommitSignatureProtectionRequestBody,
-  ReposGetCommitSignatureProtectionResponseBody
->;
+export type ReposGetCommitSignatureProtectionResolver =
+  msw.HttpResponseResolver<
+    ReposGetCommitSignatureProtectionRequestParams,
+    ReposGetCommitSignatureProtectionRequestBody,
+    ReposGetCommitSignatureProtectionResponseBody
+  >;
 
 export type ReposCreateCommitSignatureProtectionRequestQuery = {};
 
@@ -12608,11 +12925,12 @@ export type ReposCreateCommitSignatureProtectionResponseBody =
   | ProtectedBranchAdminEnforced
   | BasicError;
 
-export type ReposCreateCommitSignatureProtectionResolver = msw.HttpResponseResolver<
-  ReposCreateCommitSignatureProtectionRequestParams,
-  ReposCreateCommitSignatureProtectionRequestBody,
-  ReposCreateCommitSignatureProtectionResponseBody
->;
+export type ReposCreateCommitSignatureProtectionResolver =
+  msw.HttpResponseResolver<
+    ReposCreateCommitSignatureProtectionRequestParams,
+    ReposCreateCommitSignatureProtectionRequestBody,
+    ReposCreateCommitSignatureProtectionResponseBody
+  >;
 
 export type ReposDeleteCommitSignatureProtectionRequestQuery = {};
 
@@ -12632,11 +12950,12 @@ export type ReposDeleteCommitSignatureProtectionResponseBody =
   | never
   | BasicError;
 
-export type ReposDeleteCommitSignatureProtectionResolver = msw.HttpResponseResolver<
-  ReposDeleteCommitSignatureProtectionRequestParams,
-  ReposDeleteCommitSignatureProtectionRequestBody,
-  ReposDeleteCommitSignatureProtectionResponseBody
->;
+export type ReposDeleteCommitSignatureProtectionResolver =
+  msw.HttpResponseResolver<
+    ReposDeleteCommitSignatureProtectionRequestParams,
+    ReposDeleteCommitSignatureProtectionRequestBody,
+    ReposDeleteCommitSignatureProtectionResponseBody
+  >;
 
 export type ReposGetStatusChecksProtectionRequestQuery = {};
 
@@ -12890,11 +13209,12 @@ export type ReposGetAppsWithAccessToProtectedBranchResponseBody =
   | ReadonlyArray<GitHubApp>
   | BasicError;
 
-export type ReposGetAppsWithAccessToProtectedBranchResolver = msw.HttpResponseResolver<
-  ReposGetAppsWithAccessToProtectedBranchRequestParams,
-  ReposGetAppsWithAccessToProtectedBranchRequestBody,
-  ReposGetAppsWithAccessToProtectedBranchResponseBody
->;
+export type ReposGetAppsWithAccessToProtectedBranchResolver =
+  msw.HttpResponseResolver<
+    ReposGetAppsWithAccessToProtectedBranchRequestParams,
+    ReposGetAppsWithAccessToProtectedBranchRequestBody,
+    ReposGetAppsWithAccessToProtectedBranchResponseBody
+  >;
 
 export type ReposAddAppAccessRestrictionsRequestQuery = {};
 
@@ -12995,11 +13315,12 @@ export type ReposGetTeamsWithAccessToProtectedBranchResponseBody =
   | ReadonlyArray<Team>
   | BasicError;
 
-export type ReposGetTeamsWithAccessToProtectedBranchResolver = msw.HttpResponseResolver<
-  ReposGetTeamsWithAccessToProtectedBranchRequestParams,
-  ReposGetTeamsWithAccessToProtectedBranchRequestBody,
-  ReposGetTeamsWithAccessToProtectedBranchResponseBody
->;
+export type ReposGetTeamsWithAccessToProtectedBranchResolver =
+  msw.HttpResponseResolver<
+    ReposGetTeamsWithAccessToProtectedBranchRequestParams,
+    ReposGetTeamsWithAccessToProtectedBranchRequestBody,
+    ReposGetTeamsWithAccessToProtectedBranchResponseBody
+  >;
 
 export type ReposAddTeamAccessRestrictionsRequestQuery = {};
 
@@ -13076,11 +13397,12 @@ export type ReposRemoveTeamAccessRestrictionsResponseBody =
   | ReadonlyArray<Team>
   | ValidationError;
 
-export type ReposRemoveTeamAccessRestrictionsResolver = msw.HttpResponseResolver<
-  ReposRemoveTeamAccessRestrictionsRequestParams,
-  ReposRemoveTeamAccessRestrictionsRequestBody,
-  ReposRemoveTeamAccessRestrictionsResponseBody
->;
+export type ReposRemoveTeamAccessRestrictionsResolver =
+  msw.HttpResponseResolver<
+    ReposRemoveTeamAccessRestrictionsRequestParams,
+    ReposRemoveTeamAccessRestrictionsRequestBody,
+    ReposRemoveTeamAccessRestrictionsResponseBody
+  >;
 
 export type ReposGetUsersWithAccessToProtectedBranchRequestQuery = {};
 
@@ -13100,11 +13422,12 @@ export type ReposGetUsersWithAccessToProtectedBranchResponseBody =
   | ReadonlyArray<SimpleUser>
   | BasicError;
 
-export type ReposGetUsersWithAccessToProtectedBranchResolver = msw.HttpResponseResolver<
-  ReposGetUsersWithAccessToProtectedBranchRequestParams,
-  ReposGetUsersWithAccessToProtectedBranchRequestBody,
-  ReposGetUsersWithAccessToProtectedBranchResponseBody
->;
+export type ReposGetUsersWithAccessToProtectedBranchResolver =
+  msw.HttpResponseResolver<
+    ReposGetUsersWithAccessToProtectedBranchRequestParams,
+    ReposGetUsersWithAccessToProtectedBranchRequestBody,
+    ReposGetUsersWithAccessToProtectedBranchResponseBody
+  >;
 
 export type ReposAddUserAccessRestrictionsRequestQuery = {};
 
@@ -13181,11 +13504,12 @@ export type ReposRemoveUserAccessRestrictionsResponseBody =
   | ReadonlyArray<SimpleUser>
   | ValidationError;
 
-export type ReposRemoveUserAccessRestrictionsResolver = msw.HttpResponseResolver<
-  ReposRemoveUserAccessRestrictionsRequestParams,
-  ReposRemoveUserAccessRestrictionsRequestBody,
-  ReposRemoveUserAccessRestrictionsResponseBody
->;
+export type ReposRemoveUserAccessRestrictionsResolver =
+  msw.HttpResponseResolver<
+    ReposRemoveUserAccessRestrictionsRequestParams,
+    ReposRemoveUserAccessRestrictionsRequestBody,
+    ReposRemoveUserAccessRestrictionsResponseBody
+  >;
 
 export type ReposRenameBranchRequestQuery = {};
 
@@ -14178,11 +14502,12 @@ export type CodespacesListInRepositoryForAuthenticatedUserResponseBody =
     }
   | BasicError;
 
-export type CodespacesListInRepositoryForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  CodespacesListInRepositoryForAuthenticatedUserRequestParams,
-  CodespacesListInRepositoryForAuthenticatedUserRequestBody,
-  CodespacesListInRepositoryForAuthenticatedUserResponseBody
->;
+export type CodespacesListInRepositoryForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    CodespacesListInRepositoryForAuthenticatedUserRequestParams,
+    CodespacesListInRepositoryForAuthenticatedUserRequestBody,
+    CodespacesListInRepositoryForAuthenticatedUserResponseBody
+  >;
 
 export type CodespacesCreateWithRepoForAuthenticatedUserRequestQuery = {};
 
@@ -14224,49 +14549,45 @@ export type CodespacesCreateWithRepoForAuthenticatedUserResponseBody =
       readonly documentation_url?: string;
     };
 
-export type CodespacesCreateWithRepoForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  CodespacesCreateWithRepoForAuthenticatedUserRequestParams,
-  CodespacesCreateWithRepoForAuthenticatedUserRequestBody,
-  CodespacesCreateWithRepoForAuthenticatedUserResponseBody
->;
+export type CodespacesCreateWithRepoForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    CodespacesCreateWithRepoForAuthenticatedUserRequestParams,
+    CodespacesCreateWithRepoForAuthenticatedUserRequestBody,
+    CodespacesCreateWithRepoForAuthenticatedUserResponseBody
+  >;
 
-export type CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequestQuery = {
-  readonly per_page?: string;
-  readonly page?: string;
-};
+export type CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequestQuery =
+  { readonly per_page?: string; readonly page?: string };
 
-export type CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequestHeaders = {};
+export type CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequestHeaders =
+  {};
 
-export type CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequestParams = {
-  readonly owner: string;
-  readonly repo: string;
-};
+export type CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequestParams =
+  { readonly owner: string; readonly repo: string };
 
-export type CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequestBody = never;
+export type CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequestBody =
+  never;
 
 export type CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponseStatus =
-  | 200
-  | 400
-  | 401
-  | 403
-  | 404
-  | 500;
+  200 | 400 | 401 | 403 | 404 | 500;
 
 export type CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponseBody =
-  | {
-      readonly total_count: number;
-      readonly devcontainers: ReadonlyArray<{
-        readonly path: string;
-        readonly name?: string;
-      }>;
-    }
-  | BasicError;
 
-export type CodespacesListDevcontainersInRepositoryForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequestParams,
-  CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequestBody,
-  CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponseBody
->;
+    | {
+        readonly total_count: number;
+        readonly devcontainers: ReadonlyArray<{
+          readonly path: string;
+          readonly name?: string;
+        }>;
+      }
+    | BasicError;
+
+export type CodespacesListDevcontainersInRepositoryForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequestParams,
+    CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequestBody,
+    CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponseBody
+  >;
 
 export type CodespacesRepoMachinesForAuthenticatedUserRequestQuery = {
   readonly location?: string;
@@ -14298,11 +14619,12 @@ export type CodespacesRepoMachinesForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type CodespacesRepoMachinesForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  CodespacesRepoMachinesForAuthenticatedUserRequestParams,
-  CodespacesRepoMachinesForAuthenticatedUserRequestBody,
-  CodespacesRepoMachinesForAuthenticatedUserResponseBody
->;
+export type CodespacesRepoMachinesForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    CodespacesRepoMachinesForAuthenticatedUserRequestParams,
+    CodespacesRepoMachinesForAuthenticatedUserRequestBody,
+    CodespacesRepoMachinesForAuthenticatedUserResponseBody
+  >;
 
 export type CodespacesPreFlightWithRepoForAuthenticatedUserRequestQuery = {
   readonly ref?: string;
@@ -14334,11 +14656,12 @@ export type CodespacesPreFlightWithRepoForAuthenticatedUserResponseBody =
     }
   | BasicError;
 
-export type CodespacesPreFlightWithRepoForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  CodespacesPreFlightWithRepoForAuthenticatedUserRequestParams,
-  CodespacesPreFlightWithRepoForAuthenticatedUserRequestBody,
-  CodespacesPreFlightWithRepoForAuthenticatedUserResponseBody
->;
+export type CodespacesPreFlightWithRepoForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    CodespacesPreFlightWithRepoForAuthenticatedUserRequestParams,
+    CodespacesPreFlightWithRepoForAuthenticatedUserRequestBody,
+    CodespacesPreFlightWithRepoForAuthenticatedUserResponseBody
+  >;
 
 export type CodespacesListRepoSecretsRequestQuery = {
   readonly per_page?: string;
@@ -14431,11 +14754,12 @@ export type CodespacesCreateOrUpdateRepoSecretResponseBody =
   | EmptyObject
   | never;
 
-export type CodespacesCreateOrUpdateRepoSecretResolver = msw.HttpResponseResolver<
-  CodespacesCreateOrUpdateRepoSecretRequestParams,
-  CodespacesCreateOrUpdateRepoSecretRequestBody,
-  CodespacesCreateOrUpdateRepoSecretResponseBody
->;
+export type CodespacesCreateOrUpdateRepoSecretResolver =
+  msw.HttpResponseResolver<
+    CodespacesCreateOrUpdateRepoSecretRequestParams,
+    CodespacesCreateOrUpdateRepoSecretRequestBody,
+    CodespacesCreateOrUpdateRepoSecretResponseBody
+  >;
 
 export type CodespacesDeleteRepoSecretRequestQuery = {};
 
@@ -14627,11 +14951,12 @@ export type ReposGetCollaboratorPermissionLevelResponseBody =
   | RepositoryCollaboratorPermission
   | BasicError;
 
-export type ReposGetCollaboratorPermissionLevelResolver = msw.HttpResponseResolver<
-  ReposGetCollaboratorPermissionLevelRequestParams,
-  ReposGetCollaboratorPermissionLevelRequestBody,
-  ReposGetCollaboratorPermissionLevelResponseBody
->;
+export type ReposGetCollaboratorPermissionLevelResolver =
+  msw.HttpResponseResolver<
+    ReposGetCollaboratorPermissionLevelRequestParams,
+    ReposGetCollaboratorPermissionLevelRequestBody,
+    ReposGetCollaboratorPermissionLevelResponseBody
+  >;
 
 export type ReposListCommitCommentsForRepoRequestQuery = {
   readonly per_page?: string;
@@ -14666,7 +14991,8 @@ export type CommitComment = {
   readonly reactions?: ReactionRollup;
 };
 
-export type ReposListCommitCommentsForRepoResponseBody = ReadonlyArray<CommitComment>;
+export type ReposListCommitCommentsForRepoResponseBody =
+  ReadonlyArray<CommitComment>;
 
 export type ReposListCommitCommentsForRepoResolver = msw.HttpResponseResolver<
   ReposListCommitCommentsForRepoRequestParams,
@@ -14901,7 +15227,8 @@ export type ReposListCommentsForCommitRequestBody = never;
 
 export type ReposListCommentsForCommitResponseStatus = 200;
 
-export type ReposListCommentsForCommitResponseBody = ReadonlyArray<CommitComment>;
+export type ReposListCommentsForCommitResponseBody =
+  ReadonlyArray<CommitComment>;
 
 export type ReposListCommentsForCommitResolver = msw.HttpResponseResolver<
   ReposListCommentsForCommitRequestParams,
@@ -15033,13 +15360,15 @@ export type PullRequestSimple = {
   readonly draft?: boolean;
 };
 
-export type ReposListPullRequestsAssociatedWithCommitResponseBody = ReadonlyArray<PullRequestSimple>;
+export type ReposListPullRequestsAssociatedWithCommitResponseBody =
+  ReadonlyArray<PullRequestSimple>;
 
-export type ReposListPullRequestsAssociatedWithCommitResolver = msw.HttpResponseResolver<
-  ReposListPullRequestsAssociatedWithCommitRequestParams,
-  ReposListPullRequestsAssociatedWithCommitRequestBody,
-  ReposListPullRequestsAssociatedWithCommitResponseBody
->;
+export type ReposListPullRequestsAssociatedWithCommitResolver =
+  msw.HttpResponseResolver<
+    ReposListPullRequestsAssociatedWithCommitRequestParams,
+    ReposListPullRequestsAssociatedWithCommitRequestBody,
+    ReposListPullRequestsAssociatedWithCommitResponseBody
+  >;
 
 export type ReposGetCommitRequestQuery = {
   readonly page?: string;
@@ -15838,11 +16167,12 @@ export type DependabotCreateOrUpdateRepoSecretResponseBody =
   | EmptyObject
   | never;
 
-export type DependabotCreateOrUpdateRepoSecretResolver = msw.HttpResponseResolver<
-  DependabotCreateOrUpdateRepoSecretRequestParams,
-  DependabotCreateOrUpdateRepoSecretRequestBody,
-  DependabotCreateOrUpdateRepoSecretResponseBody
->;
+export type DependabotCreateOrUpdateRepoSecretResolver =
+  msw.HttpResponseResolver<
+    DependabotCreateOrUpdateRepoSecretRequestParams,
+    DependabotCreateOrUpdateRepoSecretRequestBody,
+    DependabotCreateOrUpdateRepoSecretResponseBody
+  >;
 
 export type DependabotDeleteRepoSecretRequestQuery = {};
 
@@ -15949,11 +16279,12 @@ export type DependencyGraphCreateRepositorySnapshotResponseBody = {
   readonly message: string;
 };
 
-export type DependencyGraphCreateRepositorySnapshotResolver = msw.HttpResponseResolver<
-  DependencyGraphCreateRepositorySnapshotRequestParams,
-  DependencyGraphCreateRepositorySnapshotRequestBody,
-  DependencyGraphCreateRepositorySnapshotResponseBody
->;
+export type DependencyGraphCreateRepositorySnapshotResolver =
+  msw.HttpResponseResolver<
+    DependencyGraphCreateRepositorySnapshotRequestParams,
+    DependencyGraphCreateRepositorySnapshotRequestBody,
+    DependencyGraphCreateRepositorySnapshotResponseBody
+  >;
 
 export type ReposListDeploymentsRequestQuery = {
   readonly sha?: string;
@@ -16374,11 +16705,12 @@ export type ReposListDeploymentBranchPoliciesResponseBody = {
   readonly branch_policies: ReadonlyArray<DeploymentBranchPolicy>;
 };
 
-export type ReposListDeploymentBranchPoliciesResolver = msw.HttpResponseResolver<
-  ReposListDeploymentBranchPoliciesRequestParams,
-  ReposListDeploymentBranchPoliciesRequestBody,
-  ReposListDeploymentBranchPoliciesResponseBody
->;
+export type ReposListDeploymentBranchPoliciesResolver =
+  msw.HttpResponseResolver<
+    ReposListDeploymentBranchPoliciesRequestParams,
+    ReposListDeploymentBranchPoliciesRequestBody,
+    ReposListDeploymentBranchPoliciesResponseBody
+  >;
 
 export type DeploymentBranchPolicyNamePattern = { readonly name: string };
 
@@ -16392,7 +16724,8 @@ export type ReposCreateDeploymentBranchPolicyRequestParams = {
   readonly environment_name: string;
 };
 
-export type ReposCreateDeploymentBranchPolicyRequestBody = DeploymentBranchPolicyNamePattern;
+export type ReposCreateDeploymentBranchPolicyRequestBody =
+  DeploymentBranchPolicyNamePattern;
 
 export type ReposCreateDeploymentBranchPolicyResponseStatus = 200 | 303 | 404;
 
@@ -16400,11 +16733,12 @@ export type ReposCreateDeploymentBranchPolicyResponseBody =
   | DeploymentBranchPolicy
   | never;
 
-export type ReposCreateDeploymentBranchPolicyResolver = msw.HttpResponseResolver<
-  ReposCreateDeploymentBranchPolicyRequestParams,
-  ReposCreateDeploymentBranchPolicyRequestBody,
-  ReposCreateDeploymentBranchPolicyResponseBody
->;
+export type ReposCreateDeploymentBranchPolicyResolver =
+  msw.HttpResponseResolver<
+    ReposCreateDeploymentBranchPolicyRequestParams,
+    ReposCreateDeploymentBranchPolicyRequestBody,
+    ReposCreateDeploymentBranchPolicyResponseBody
+  >;
 
 export type ReposGetDeploymentBranchPolicyRequestQuery = {};
 
@@ -16440,17 +16774,20 @@ export type ReposUpdateDeploymentBranchPolicyRequestParams = {
   readonly branch_policy_id: string;
 };
 
-export type ReposUpdateDeploymentBranchPolicyRequestBody = DeploymentBranchPolicyNamePattern;
+export type ReposUpdateDeploymentBranchPolicyRequestBody =
+  DeploymentBranchPolicyNamePattern;
 
 export type ReposUpdateDeploymentBranchPolicyResponseStatus = 200;
 
-export type ReposUpdateDeploymentBranchPolicyResponseBody = DeploymentBranchPolicy;
+export type ReposUpdateDeploymentBranchPolicyResponseBody =
+  DeploymentBranchPolicy;
 
-export type ReposUpdateDeploymentBranchPolicyResolver = msw.HttpResponseResolver<
-  ReposUpdateDeploymentBranchPolicyRequestParams,
-  ReposUpdateDeploymentBranchPolicyRequestBody,
-  ReposUpdateDeploymentBranchPolicyResponseBody
->;
+export type ReposUpdateDeploymentBranchPolicyResolver =
+  msw.HttpResponseResolver<
+    ReposUpdateDeploymentBranchPolicyRequestParams,
+    ReposUpdateDeploymentBranchPolicyRequestBody,
+    ReposUpdateDeploymentBranchPolicyResponseBody
+  >;
 
 export type ReposDeleteDeploymentBranchPolicyRequestQuery = {};
 
@@ -16469,11 +16806,12 @@ export type ReposDeleteDeploymentBranchPolicyResponseStatus = 204;
 
 export type ReposDeleteDeploymentBranchPolicyResponseBody = never;
 
-export type ReposDeleteDeploymentBranchPolicyResolver = msw.HttpResponseResolver<
-  ReposDeleteDeploymentBranchPolicyRequestParams,
-  ReposDeleteDeploymentBranchPolicyRequestBody,
-  ReposDeleteDeploymentBranchPolicyResponseBody
->;
+export type ReposDeleteDeploymentBranchPolicyResolver =
+  msw.HttpResponseResolver<
+    ReposDeleteDeploymentBranchPolicyRequestParams,
+    ReposDeleteDeploymentBranchPolicyRequestBody,
+    ReposDeleteDeploymentBranchPolicyResponseBody
+  >;
 
 export type ActivityListRepoEventsRequestQuery = {
   readonly per_page?: string;
@@ -17556,7 +17894,8 @@ export type PorterLargeFile = {
   readonly size: number;
 };
 
-export type MigrationsGetLargeFilesResponseBody = ReadonlyArray<PorterLargeFile>;
+export type MigrationsGetLargeFilesResponseBody =
+  ReadonlyArray<PorterLargeFile>;
 
 export type MigrationsGetLargeFilesResolver = msw.HttpResponseResolver<
   MigrationsGetLargeFilesRequestParams,
@@ -17625,11 +17964,12 @@ export type InteractionsGetRestrictionsForRepoResponseBody =
   | InteractionLimits
   | {};
 
-export type InteractionsGetRestrictionsForRepoResolver = msw.HttpResponseResolver<
-  InteractionsGetRestrictionsForRepoRequestParams,
-  InteractionsGetRestrictionsForRepoRequestBody,
-  InteractionsGetRestrictionsForRepoResponseBody
->;
+export type InteractionsGetRestrictionsForRepoResolver =
+  msw.HttpResponseResolver<
+    InteractionsGetRestrictionsForRepoRequestParams,
+    InteractionsGetRestrictionsForRepoRequestBody,
+    InteractionsGetRestrictionsForRepoResponseBody
+  >;
 
 export type InteractionsSetRestrictionsForRepoRequestQuery = {};
 
@@ -17640,7 +17980,8 @@ export type InteractionsSetRestrictionsForRepoRequestParams = {
   readonly repo: string;
 };
 
-export type InteractionsSetRestrictionsForRepoRequestBody = InteractionRestrictions;
+export type InteractionsSetRestrictionsForRepoRequestBody =
+  InteractionRestrictions;
 
 export type InteractionsSetRestrictionsForRepoResponseStatus = 200 | 409;
 
@@ -17648,11 +17989,12 @@ export type InteractionsSetRestrictionsForRepoResponseBody =
   | InteractionLimits
   | never;
 
-export type InteractionsSetRestrictionsForRepoResolver = msw.HttpResponseResolver<
-  InteractionsSetRestrictionsForRepoRequestParams,
-  InteractionsSetRestrictionsForRepoRequestBody,
-  InteractionsSetRestrictionsForRepoResponseBody
->;
+export type InteractionsSetRestrictionsForRepoResolver =
+  msw.HttpResponseResolver<
+    InteractionsSetRestrictionsForRepoRequestParams,
+    InteractionsSetRestrictionsForRepoRequestBody,
+    InteractionsSetRestrictionsForRepoResponseBody
+  >;
 
 export type InteractionsRemoveRestrictionsForRepoRequestQuery = {};
 
@@ -17669,11 +18011,12 @@ export type InteractionsRemoveRestrictionsForRepoResponseStatus = 204 | 409;
 
 export type InteractionsRemoveRestrictionsForRepoResponseBody = never;
 
-export type InteractionsRemoveRestrictionsForRepoResolver = msw.HttpResponseResolver<
-  InteractionsRemoveRestrictionsForRepoRequestParams,
-  InteractionsRemoveRestrictionsForRepoRequestBody,
-  InteractionsRemoveRestrictionsForRepoResponseBody
->;
+export type InteractionsRemoveRestrictionsForRepoResolver =
+  msw.HttpResponseResolver<
+    InteractionsRemoveRestrictionsForRepoRequestParams,
+    InteractionsRemoveRestrictionsForRepoRequestBody,
+    InteractionsRemoveRestrictionsForRepoResponseBody
+  >;
 
 export type ReposListInvitationsRequestQuery = {
   readonly per_page?: string;
@@ -17691,7 +18034,8 @@ export type ReposListInvitationsRequestBody = never;
 
 export type ReposListInvitationsResponseStatus = 200;
 
-export type ReposListInvitationsResponseBody = ReadonlyArray<RepositoryInvitation>;
+export type ReposListInvitationsResponseBody =
+  ReadonlyArray<RepositoryInvitation>;
 
 export type ReposListInvitationsResolver = msw.HttpResponseResolver<
   ReposListInvitationsRequestParams,
@@ -19613,24 +19957,29 @@ export type ActivityListRepoNotificationsForAuthenticatedUserRequestQuery = {
   readonly page?: string;
 };
 
-export type ActivityListRepoNotificationsForAuthenticatedUserRequestHeaders = {};
+export type ActivityListRepoNotificationsForAuthenticatedUserRequestHeaders =
+  {};
 
 export type ActivityListRepoNotificationsForAuthenticatedUserRequestParams = {
   readonly owner: string;
   readonly repo: string;
 };
 
-export type ActivityListRepoNotificationsForAuthenticatedUserRequestBody = never;
+export type ActivityListRepoNotificationsForAuthenticatedUserRequestBody =
+  never;
 
-export type ActivityListRepoNotificationsForAuthenticatedUserResponseStatus = 200;
+export type ActivityListRepoNotificationsForAuthenticatedUserResponseStatus =
+  200;
 
-export type ActivityListRepoNotificationsForAuthenticatedUserResponseBody = ReadonlyArray<Thread>;
+export type ActivityListRepoNotificationsForAuthenticatedUserResponseBody =
+  ReadonlyArray<Thread>;
 
-export type ActivityListRepoNotificationsForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  ActivityListRepoNotificationsForAuthenticatedUserRequestParams,
-  ActivityListRepoNotificationsForAuthenticatedUserRequestBody,
-  ActivityListRepoNotificationsForAuthenticatedUserResponseBody
->;
+export type ActivityListRepoNotificationsForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    ActivityListRepoNotificationsForAuthenticatedUserRequestParams,
+    ActivityListRepoNotificationsForAuthenticatedUserRequestBody,
+    ActivityListRepoNotificationsForAuthenticatedUserResponseBody
+  >;
 
 export type ActivityMarkRepoNotificationsAsReadRequestQuery = {};
 
@@ -19651,11 +20000,12 @@ export type ActivityMarkRepoNotificationsAsReadResponseBody =
   | { readonly message?: string; readonly url?: string }
   | never;
 
-export type ActivityMarkRepoNotificationsAsReadResolver = msw.HttpResponseResolver<
-  ActivityMarkRepoNotificationsAsReadRequestParams,
-  ActivityMarkRepoNotificationsAsReadRequestBody,
-  ActivityMarkRepoNotificationsAsReadResponseBody
->;
+export type ActivityMarkRepoNotificationsAsReadResolver =
+  msw.HttpResponseResolver<
+    ActivityMarkRepoNotificationsAsReadRequestParams,
+    ActivityMarkRepoNotificationsAsReadRequestBody,
+    ActivityMarkRepoNotificationsAsReadResponseBody
+  >;
 
 export type ReposGetPagesRequestQuery = {};
 
@@ -19785,11 +20135,12 @@ export type ReposUpdateInformationAboutPagesSiteResponseBody =
   | BasicError
   | ValidationError;
 
-export type ReposUpdateInformationAboutPagesSiteResolver = msw.HttpResponseResolver<
-  ReposUpdateInformationAboutPagesSiteRequestParams,
-  ReposUpdateInformationAboutPagesSiteRequestBody,
-  ReposUpdateInformationAboutPagesSiteResponseBody
->;
+export type ReposUpdateInformationAboutPagesSiteResolver =
+  msw.HttpResponseResolver<
+    ReposUpdateInformationAboutPagesSiteRequestParams,
+    ReposUpdateInformationAboutPagesSiteRequestBody,
+    ReposUpdateInformationAboutPagesSiteResponseBody
+  >;
 
 export type ReposDeletePagesSiteRequestQuery = {};
 
@@ -20532,7 +20883,8 @@ export type PullsListReviewCommentsForRepoRequestBody = never;
 
 export type PullsListReviewCommentsForRepoResponseStatus = 200;
 
-export type PullsListReviewCommentsForRepoResponseBody = ReadonlyArray<PullRequestReviewComment>;
+export type PullsListReviewCommentsForRepoResponseBody =
+  ReadonlyArray<PullRequestReviewComment>;
 
 export type PullsListReviewCommentsForRepoResolver = msw.HttpResponseResolver<
   PullsListReviewCommentsForRepoRequestParams,
@@ -20630,11 +20982,12 @@ export type ReactionsListForPullRequestReviewCommentResponseBody =
   | ReadonlyArray<Reaction>
   | BasicError;
 
-export type ReactionsListForPullRequestReviewCommentResolver = msw.HttpResponseResolver<
-  ReactionsListForPullRequestReviewCommentRequestParams,
-  ReactionsListForPullRequestReviewCommentRequestBody,
-  ReactionsListForPullRequestReviewCommentResponseBody
->;
+export type ReactionsListForPullRequestReviewCommentResolver =
+  msw.HttpResponseResolver<
+    ReactionsListForPullRequestReviewCommentRequestParams,
+    ReactionsListForPullRequestReviewCommentRequestBody,
+    ReactionsListForPullRequestReviewCommentResponseBody
+  >;
 
 export type ReactionsCreateForPullRequestReviewCommentRequestQuery = {};
 
@@ -20667,11 +21020,12 @@ export type ReactionsCreateForPullRequestReviewCommentResponseBody =
   | Reaction
   | ValidationError;
 
-export type ReactionsCreateForPullRequestReviewCommentResolver = msw.HttpResponseResolver<
-  ReactionsCreateForPullRequestReviewCommentRequestParams,
-  ReactionsCreateForPullRequestReviewCommentRequestBody,
-  ReactionsCreateForPullRequestReviewCommentResponseBody
->;
+export type ReactionsCreateForPullRequestReviewCommentResolver =
+  msw.HttpResponseResolver<
+    ReactionsCreateForPullRequestReviewCommentRequestParams,
+    ReactionsCreateForPullRequestReviewCommentRequestBody,
+    ReactionsCreateForPullRequestReviewCommentResponseBody
+  >;
 
 export type ReactionsDeleteForPullRequestCommentRequestQuery = {};
 
@@ -20690,11 +21044,12 @@ export type ReactionsDeleteForPullRequestCommentResponseStatus = 204;
 
 export type ReactionsDeleteForPullRequestCommentResponseBody = never;
 
-export type ReactionsDeleteForPullRequestCommentResolver = msw.HttpResponseResolver<
-  ReactionsDeleteForPullRequestCommentRequestParams,
-  ReactionsDeleteForPullRequestCommentRequestBody,
-  ReactionsDeleteForPullRequestCommentResponseBody
->;
+export type ReactionsDeleteForPullRequestCommentResolver =
+  msw.HttpResponseResolver<
+    ReactionsDeleteForPullRequestCommentRequestParams,
+    ReactionsDeleteForPullRequestCommentRequestBody,
+    ReactionsDeleteForPullRequestCommentResponseBody
+  >;
 
 export type PullsGetRequestQuery = {};
 
@@ -20798,11 +21153,12 @@ export type CodespacesCreateWithPrForAuthenticatedUserResponseBody =
       readonly documentation_url?: string;
     };
 
-export type CodespacesCreateWithPrForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  CodespacesCreateWithPrForAuthenticatedUserRequestParams,
-  CodespacesCreateWithPrForAuthenticatedUserRequestBody,
-  CodespacesCreateWithPrForAuthenticatedUserResponseBody
->;
+export type CodespacesCreateWithPrForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    CodespacesCreateWithPrForAuthenticatedUserRequestParams,
+    CodespacesCreateWithPrForAuthenticatedUserRequestBody,
+    CodespacesCreateWithPrForAuthenticatedUserResponseBody
+  >;
 
 export type PullsListReviewCommentsRequestQuery = {
   readonly sort?: string;
@@ -20824,7 +21180,8 @@ export type PullsListReviewCommentsRequestBody = never;
 
 export type PullsListReviewCommentsResponseStatus = 200;
 
-export type PullsListReviewCommentsResponseBody = ReadonlyArray<PullRequestReviewComment>;
+export type PullsListReviewCommentsResponseBody =
+  ReadonlyArray<PullRequestReviewComment>;
 
 export type PullsListReviewCommentsResolver = msw.HttpResponseResolver<
   PullsListReviewCommentsRequestParams,
@@ -22071,11 +22428,12 @@ export type SecretScanningListLocationsForAlertResponseBody =
       readonly documentation_url?: string;
     };
 
-export type SecretScanningListLocationsForAlertResolver = msw.HttpResponseResolver<
-  SecretScanningListLocationsForAlertRequestParams,
-  SecretScanningListLocationsForAlertRequestBody,
-  SecretScanningListLocationsForAlertResponseBody
->;
+export type SecretScanningListLocationsForAlertResolver =
+  msw.HttpResponseResolver<
+    SecretScanningListLocationsForAlertRequestParams,
+    SecretScanningListLocationsForAlertRequestBody,
+    SecretScanningListLocationsForAlertResponseBody
+  >;
 
 export type ActivityListStargazersForRepoRequestQuery = {
   readonly per_page?: string;
@@ -22938,11 +23296,12 @@ export type ActionsCreateOrUpdateEnvironmentSecretResponseBody =
   | EmptyObject
   | never;
 
-export type ActionsCreateOrUpdateEnvironmentSecretResolver = msw.HttpResponseResolver<
-  ActionsCreateOrUpdateEnvironmentSecretRequestParams,
-  ActionsCreateOrUpdateEnvironmentSecretRequestBody,
-  ActionsCreateOrUpdateEnvironmentSecretResponseBody
->;
+export type ActionsCreateOrUpdateEnvironmentSecretResolver =
+  msw.HttpResponseResolver<
+    ActionsCreateOrUpdateEnvironmentSecretRequestParams,
+    ActionsCreateOrUpdateEnvironmentSecretRequestBody,
+    ActionsCreateOrUpdateEnvironmentSecretResponseBody
+  >;
 
 export type ActionsDeleteEnvironmentSecretRequestQuery = {};
 
@@ -23579,7 +23938,8 @@ export type TeamsListDiscussionsLegacyRequestBody = never;
 
 export type TeamsListDiscussionsLegacyResponseStatus = 200;
 
-export type TeamsListDiscussionsLegacyResponseBody = ReadonlyArray<TeamDiscussion>;
+export type TeamsListDiscussionsLegacyResponseBody =
+  ReadonlyArray<TeamDiscussion>;
 
 export type TeamsListDiscussionsLegacyResolver = msw.HttpResponseResolver<
   TeamsListDiscussionsLegacyRequestParams,
@@ -23693,13 +24053,15 @@ export type TeamsListDiscussionCommentsLegacyRequestBody = never;
 
 export type TeamsListDiscussionCommentsLegacyResponseStatus = 200;
 
-export type TeamsListDiscussionCommentsLegacyResponseBody = ReadonlyArray<TeamDiscussionComment>;
+export type TeamsListDiscussionCommentsLegacyResponseBody =
+  ReadonlyArray<TeamDiscussionComment>;
 
-export type TeamsListDiscussionCommentsLegacyResolver = msw.HttpResponseResolver<
-  TeamsListDiscussionCommentsLegacyRequestParams,
-  TeamsListDiscussionCommentsLegacyRequestBody,
-  TeamsListDiscussionCommentsLegacyResponseBody
->;
+export type TeamsListDiscussionCommentsLegacyResolver =
+  msw.HttpResponseResolver<
+    TeamsListDiscussionCommentsLegacyRequestParams,
+    TeamsListDiscussionCommentsLegacyRequestBody,
+    TeamsListDiscussionCommentsLegacyResponseBody
+  >;
 
 export type TeamsCreateDiscussionCommentLegacyRequestQuery = {};
 
@@ -23716,13 +24078,15 @@ export type TeamsCreateDiscussionCommentLegacyRequestBody = {
 
 export type TeamsCreateDiscussionCommentLegacyResponseStatus = 201;
 
-export type TeamsCreateDiscussionCommentLegacyResponseBody = TeamDiscussionComment;
+export type TeamsCreateDiscussionCommentLegacyResponseBody =
+  TeamDiscussionComment;
 
-export type TeamsCreateDiscussionCommentLegacyResolver = msw.HttpResponseResolver<
-  TeamsCreateDiscussionCommentLegacyRequestParams,
-  TeamsCreateDiscussionCommentLegacyRequestBody,
-  TeamsCreateDiscussionCommentLegacyResponseBody
->;
+export type TeamsCreateDiscussionCommentLegacyResolver =
+  msw.HttpResponseResolver<
+    TeamsCreateDiscussionCommentLegacyRequestParams,
+    TeamsCreateDiscussionCommentLegacyRequestBody,
+    TeamsCreateDiscussionCommentLegacyResponseBody
+  >;
 
 export type TeamsGetDiscussionCommentLegacyRequestQuery = {};
 
@@ -23762,13 +24126,15 @@ export type TeamsUpdateDiscussionCommentLegacyRequestBody = {
 
 export type TeamsUpdateDiscussionCommentLegacyResponseStatus = 200;
 
-export type TeamsUpdateDiscussionCommentLegacyResponseBody = TeamDiscussionComment;
+export type TeamsUpdateDiscussionCommentLegacyResponseBody =
+  TeamDiscussionComment;
 
-export type TeamsUpdateDiscussionCommentLegacyResolver = msw.HttpResponseResolver<
-  TeamsUpdateDiscussionCommentLegacyRequestParams,
-  TeamsUpdateDiscussionCommentLegacyRequestBody,
-  TeamsUpdateDiscussionCommentLegacyResponseBody
->;
+export type TeamsUpdateDiscussionCommentLegacyResolver =
+  msw.HttpResponseResolver<
+    TeamsUpdateDiscussionCommentLegacyRequestParams,
+    TeamsUpdateDiscussionCommentLegacyRequestBody,
+    TeamsUpdateDiscussionCommentLegacyResponseBody
+  >;
 
 export type TeamsDeleteDiscussionCommentLegacyRequestQuery = {};
 
@@ -23786,11 +24152,12 @@ export type TeamsDeleteDiscussionCommentLegacyResponseStatus = 204;
 
 export type TeamsDeleteDiscussionCommentLegacyResponseBody = never;
 
-export type TeamsDeleteDiscussionCommentLegacyResolver = msw.HttpResponseResolver<
-  TeamsDeleteDiscussionCommentLegacyRequestParams,
-  TeamsDeleteDiscussionCommentLegacyRequestBody,
-  TeamsDeleteDiscussionCommentLegacyResponseBody
->;
+export type TeamsDeleteDiscussionCommentLegacyResolver =
+  msw.HttpResponseResolver<
+    TeamsDeleteDiscussionCommentLegacyRequestParams,
+    TeamsDeleteDiscussionCommentLegacyRequestBody,
+    TeamsDeleteDiscussionCommentLegacyResponseBody
+  >;
 
 export type ReactionsListForTeamDiscussionCommentLegacyRequestQuery = {
   readonly content?: string;
@@ -23810,13 +24177,15 @@ export type ReactionsListForTeamDiscussionCommentLegacyRequestBody = never;
 
 export type ReactionsListForTeamDiscussionCommentLegacyResponseStatus = 200;
 
-export type ReactionsListForTeamDiscussionCommentLegacyResponseBody = ReadonlyArray<Reaction>;
+export type ReactionsListForTeamDiscussionCommentLegacyResponseBody =
+  ReadonlyArray<Reaction>;
 
-export type ReactionsListForTeamDiscussionCommentLegacyResolver = msw.HttpResponseResolver<
-  ReactionsListForTeamDiscussionCommentLegacyRequestParams,
-  ReactionsListForTeamDiscussionCommentLegacyRequestBody,
-  ReactionsListForTeamDiscussionCommentLegacyResponseBody
->;
+export type ReactionsListForTeamDiscussionCommentLegacyResolver =
+  msw.HttpResponseResolver<
+    ReactionsListForTeamDiscussionCommentLegacyRequestParams,
+    ReactionsListForTeamDiscussionCommentLegacyRequestBody,
+    ReactionsListForTeamDiscussionCommentLegacyResponseBody
+  >;
 
 export type ReactionsCreateForTeamDiscussionCommentLegacyRequestQuery = {};
 
@@ -23842,13 +24211,15 @@ export type ReactionsCreateForTeamDiscussionCommentLegacyRequestBody = {
 
 export type ReactionsCreateForTeamDiscussionCommentLegacyResponseStatus = 201;
 
-export type ReactionsCreateForTeamDiscussionCommentLegacyResponseBody = Reaction;
+export type ReactionsCreateForTeamDiscussionCommentLegacyResponseBody =
+  Reaction;
 
-export type ReactionsCreateForTeamDiscussionCommentLegacyResolver = msw.HttpResponseResolver<
-  ReactionsCreateForTeamDiscussionCommentLegacyRequestParams,
-  ReactionsCreateForTeamDiscussionCommentLegacyRequestBody,
-  ReactionsCreateForTeamDiscussionCommentLegacyResponseBody
->;
+export type ReactionsCreateForTeamDiscussionCommentLegacyResolver =
+  msw.HttpResponseResolver<
+    ReactionsCreateForTeamDiscussionCommentLegacyRequestParams,
+    ReactionsCreateForTeamDiscussionCommentLegacyRequestBody,
+    ReactionsCreateForTeamDiscussionCommentLegacyResponseBody
+  >;
 
 export type ReactionsListForTeamDiscussionLegacyRequestQuery = {
   readonly content?: string;
@@ -23867,13 +24238,15 @@ export type ReactionsListForTeamDiscussionLegacyRequestBody = never;
 
 export type ReactionsListForTeamDiscussionLegacyResponseStatus = 200;
 
-export type ReactionsListForTeamDiscussionLegacyResponseBody = ReadonlyArray<Reaction>;
+export type ReactionsListForTeamDiscussionLegacyResponseBody =
+  ReadonlyArray<Reaction>;
 
-export type ReactionsListForTeamDiscussionLegacyResolver = msw.HttpResponseResolver<
-  ReactionsListForTeamDiscussionLegacyRequestParams,
-  ReactionsListForTeamDiscussionLegacyRequestBody,
-  ReactionsListForTeamDiscussionLegacyResponseBody
->;
+export type ReactionsListForTeamDiscussionLegacyResolver =
+  msw.HttpResponseResolver<
+    ReactionsListForTeamDiscussionLegacyRequestParams,
+    ReactionsListForTeamDiscussionLegacyRequestBody,
+    ReactionsListForTeamDiscussionLegacyResponseBody
+  >;
 
 export type ReactionsCreateForTeamDiscussionLegacyRequestQuery = {};
 
@@ -23900,11 +24273,12 @@ export type ReactionsCreateForTeamDiscussionLegacyResponseStatus = 201;
 
 export type ReactionsCreateForTeamDiscussionLegacyResponseBody = Reaction;
 
-export type ReactionsCreateForTeamDiscussionLegacyResolver = msw.HttpResponseResolver<
-  ReactionsCreateForTeamDiscussionLegacyRequestParams,
-  ReactionsCreateForTeamDiscussionLegacyRequestBody,
-  ReactionsCreateForTeamDiscussionLegacyResponseBody
->;
+export type ReactionsCreateForTeamDiscussionLegacyResolver =
+  msw.HttpResponseResolver<
+    ReactionsCreateForTeamDiscussionLegacyRequestParams,
+    ReactionsCreateForTeamDiscussionLegacyRequestBody,
+    ReactionsCreateForTeamDiscussionLegacyResponseBody
+  >;
 
 export type TeamsListPendingInvitationsLegacyRequestQuery = {
   readonly per_page?: string;
@@ -23921,13 +24295,15 @@ export type TeamsListPendingInvitationsLegacyRequestBody = never;
 
 export type TeamsListPendingInvitationsLegacyResponseStatus = 200;
 
-export type TeamsListPendingInvitationsLegacyResponseBody = ReadonlyArray<OrganizationInvitation>;
+export type TeamsListPendingInvitationsLegacyResponseBody =
+  ReadonlyArray<OrganizationInvitation>;
 
-export type TeamsListPendingInvitationsLegacyResolver = msw.HttpResponseResolver<
-  TeamsListPendingInvitationsLegacyRequestParams,
-  TeamsListPendingInvitationsLegacyRequestBody,
-  TeamsListPendingInvitationsLegacyResponseBody
->;
+export type TeamsListPendingInvitationsLegacyResolver =
+  msw.HttpResponseResolver<
+    TeamsListPendingInvitationsLegacyRequestParams,
+    TeamsListPendingInvitationsLegacyRequestBody,
+    TeamsListPendingInvitationsLegacyResponseBody
+  >;
 
 export type TeamsListMembersLegacyRequestQuery = {
   readonly role?: string;
@@ -24063,11 +24439,12 @@ export type TeamsAddOrUpdateMembershipForUserLegacyResponseBody =
   | never
   | BasicError;
 
-export type TeamsAddOrUpdateMembershipForUserLegacyResolver = msw.HttpResponseResolver<
-  TeamsAddOrUpdateMembershipForUserLegacyRequestParams,
-  TeamsAddOrUpdateMembershipForUserLegacyRequestBody,
-  TeamsAddOrUpdateMembershipForUserLegacyResponseBody
->;
+export type TeamsAddOrUpdateMembershipForUserLegacyResolver =
+  msw.HttpResponseResolver<
+    TeamsAddOrUpdateMembershipForUserLegacyRequestParams,
+    TeamsAddOrUpdateMembershipForUserLegacyRequestBody,
+    TeamsAddOrUpdateMembershipForUserLegacyResponseBody
+  >;
 
 export type TeamsRemoveMembershipForUserLegacyRequestQuery = {};
 
@@ -24084,11 +24461,12 @@ export type TeamsRemoveMembershipForUserLegacyResponseStatus = 204 | 403;
 
 export type TeamsRemoveMembershipForUserLegacyResponseBody = never;
 
-export type TeamsRemoveMembershipForUserLegacyResolver = msw.HttpResponseResolver<
-  TeamsRemoveMembershipForUserLegacyRequestParams,
-  TeamsRemoveMembershipForUserLegacyRequestBody,
-  TeamsRemoveMembershipForUserLegacyResponseBody
->;
+export type TeamsRemoveMembershipForUserLegacyResolver =
+  msw.HttpResponseResolver<
+    TeamsRemoveMembershipForUserLegacyRequestParams,
+    TeamsRemoveMembershipForUserLegacyRequestBody,
+    TeamsRemoveMembershipForUserLegacyResponseBody
+  >;
 
 export type TeamsListProjectsLegacyRequestQuery = {
   readonly per_page?: string;
@@ -24130,11 +24508,12 @@ export type TeamsCheckPermissionsForProjectLegacyResponseBody =
   | TeamProject
   | never;
 
-export type TeamsCheckPermissionsForProjectLegacyResolver = msw.HttpResponseResolver<
-  TeamsCheckPermissionsForProjectLegacyRequestParams,
-  TeamsCheckPermissionsForProjectLegacyRequestBody,
-  TeamsCheckPermissionsForProjectLegacyResponseBody
->;
+export type TeamsCheckPermissionsForProjectLegacyResolver =
+  msw.HttpResponseResolver<
+    TeamsCheckPermissionsForProjectLegacyRequestParams,
+    TeamsCheckPermissionsForProjectLegacyRequestBody,
+    TeamsCheckPermissionsForProjectLegacyResponseBody
+  >;
 
 export type TeamsAddOrUpdateProjectPermissionsLegacyRequestQuery = {};
 
@@ -24161,11 +24540,12 @@ export type TeamsAddOrUpdateProjectPermissionsLegacyResponseBody =
   | BasicError
   | ValidationError;
 
-export type TeamsAddOrUpdateProjectPermissionsLegacyResolver = msw.HttpResponseResolver<
-  TeamsAddOrUpdateProjectPermissionsLegacyRequestParams,
-  TeamsAddOrUpdateProjectPermissionsLegacyRequestBody,
-  TeamsAddOrUpdateProjectPermissionsLegacyResponseBody
->;
+export type TeamsAddOrUpdateProjectPermissionsLegacyResolver =
+  msw.HttpResponseResolver<
+    TeamsAddOrUpdateProjectPermissionsLegacyRequestParams,
+    TeamsAddOrUpdateProjectPermissionsLegacyRequestBody,
+    TeamsAddOrUpdateProjectPermissionsLegacyResponseBody
+  >;
 
 export type TeamsRemoveProjectLegacyRequestQuery = {};
 
@@ -24232,11 +24612,12 @@ export type TeamsCheckPermissionsForRepoLegacyResponseBody =
   | TeamRepository
   | never;
 
-export type TeamsCheckPermissionsForRepoLegacyResolver = msw.HttpResponseResolver<
-  TeamsCheckPermissionsForRepoLegacyRequestParams,
-  TeamsCheckPermissionsForRepoLegacyRequestBody,
-  TeamsCheckPermissionsForRepoLegacyResponseBody
->;
+export type TeamsCheckPermissionsForRepoLegacyResolver =
+  msw.HttpResponseResolver<
+    TeamsCheckPermissionsForRepoLegacyRequestParams,
+    TeamsCheckPermissionsForRepoLegacyRequestBody,
+    TeamsCheckPermissionsForRepoLegacyResponseBody
+  >;
 
 export type TeamsAddOrUpdateRepoPermissionsLegacyRequestQuery = {};
 
@@ -24262,11 +24643,12 @@ export type TeamsAddOrUpdateRepoPermissionsLegacyResponseBody =
   | BasicError
   | ValidationError;
 
-export type TeamsAddOrUpdateRepoPermissionsLegacyResolver = msw.HttpResponseResolver<
-  TeamsAddOrUpdateRepoPermissionsLegacyRequestParams,
-  TeamsAddOrUpdateRepoPermissionsLegacyRequestBody,
-  TeamsAddOrUpdateRepoPermissionsLegacyResponseBody
->;
+export type TeamsAddOrUpdateRepoPermissionsLegacyResolver =
+  msw.HttpResponseResolver<
+    TeamsAddOrUpdateRepoPermissionsLegacyRequestParams,
+    TeamsAddOrUpdateRepoPermissionsLegacyRequestBody,
+    TeamsAddOrUpdateRepoPermissionsLegacyResponseBody
+  >;
 
 export type TeamsRemoveRepoLegacyRequestQuery = {};
 
@@ -24448,11 +24830,12 @@ export type UsersListBlockedByAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type UsersListBlockedByAuthenticatedUserResolver = msw.HttpResponseResolver<
-  UsersListBlockedByAuthenticatedUserRequestParams,
-  UsersListBlockedByAuthenticatedUserRequestBody,
-  UsersListBlockedByAuthenticatedUserResponseBody
->;
+export type UsersListBlockedByAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    UsersListBlockedByAuthenticatedUserRequestParams,
+    UsersListBlockedByAuthenticatedUserRequestBody,
+    UsersListBlockedByAuthenticatedUserResponseBody
+  >;
 
 export type UsersCheckBlockedRequestQuery = {};
 
@@ -24536,11 +24919,12 @@ export type CodespacesListForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type CodespacesListForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  CodespacesListForAuthenticatedUserRequestParams,
-  CodespacesListForAuthenticatedUserRequestBody,
-  CodespacesListForAuthenticatedUserResponseBody
->;
+export type CodespacesListForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    CodespacesListForAuthenticatedUserRequestParams,
+    CodespacesListForAuthenticatedUserRequestBody,
+    CodespacesListForAuthenticatedUserResponseBody
+  >;
 
 export type CodespacesCreateForAuthenticatedUserRequestQuery = {};
 
@@ -24591,11 +24975,12 @@ export type CodespacesCreateForAuthenticatedUserResponseBody =
       readonly documentation_url?: string;
     };
 
-export type CodespacesCreateForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  CodespacesCreateForAuthenticatedUserRequestParams,
-  CodespacesCreateForAuthenticatedUserRequestBody,
-  CodespacesCreateForAuthenticatedUserResponseBody
->;
+export type CodespacesCreateForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    CodespacesCreateForAuthenticatedUserRequestParams,
+    CodespacesCreateForAuthenticatedUserRequestBody,
+    CodespacesCreateForAuthenticatedUserResponseBody
+  >;
 
 export type CodespacesListSecretsForAuthenticatedUserRequestQuery = {
   readonly per_page?: string;
@@ -24615,11 +25000,12 @@ export type CodespacesListSecretsForAuthenticatedUserResponseBody = {
   readonly secrets: ReadonlyArray<CodespacesSecret>;
 };
 
-export type CodespacesListSecretsForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  CodespacesListSecretsForAuthenticatedUserRequestParams,
-  CodespacesListSecretsForAuthenticatedUserRequestBody,
-  CodespacesListSecretsForAuthenticatedUserResponseBody
->;
+export type CodespacesListSecretsForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    CodespacesListSecretsForAuthenticatedUserRequestParams,
+    CodespacesListSecretsForAuthenticatedUserRequestBody,
+    CodespacesListSecretsForAuthenticatedUserResponseBody
+  >;
 
 export type CodespacesGetPublicKeyForAuthenticatedUserRequestQuery = {};
 
@@ -24636,13 +25022,15 @@ export type CodespacesUserPublicKey = {
   readonly key: string;
 };
 
-export type CodespacesGetPublicKeyForAuthenticatedUserResponseBody = CodespacesUserPublicKey;
+export type CodespacesGetPublicKeyForAuthenticatedUserResponseBody =
+  CodespacesUserPublicKey;
 
-export type CodespacesGetPublicKeyForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  CodespacesGetPublicKeyForAuthenticatedUserRequestParams,
-  CodespacesGetPublicKeyForAuthenticatedUserRequestBody,
-  CodespacesGetPublicKeyForAuthenticatedUserResponseBody
->;
+export type CodespacesGetPublicKeyForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    CodespacesGetPublicKeyForAuthenticatedUserRequestParams,
+    CodespacesGetPublicKeyForAuthenticatedUserRequestBody,
+    CodespacesGetPublicKeyForAuthenticatedUserResponseBody
+  >;
 
 export type CodespacesGetSecretForAuthenticatedUserRequestQuery = {};
 
@@ -24656,17 +25044,20 @@ export type CodespacesGetSecretForAuthenticatedUserRequestBody = never;
 
 export type CodespacesGetSecretForAuthenticatedUserResponseStatus = 200;
 
-export type CodespacesGetSecretForAuthenticatedUserResponseBody = CodespacesSecret;
+export type CodespacesGetSecretForAuthenticatedUserResponseBody =
+  CodespacesSecret;
 
-export type CodespacesGetSecretForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  CodespacesGetSecretForAuthenticatedUserRequestParams,
-  CodespacesGetSecretForAuthenticatedUserRequestBody,
-  CodespacesGetSecretForAuthenticatedUserResponseBody
->;
+export type CodespacesGetSecretForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    CodespacesGetSecretForAuthenticatedUserRequestParams,
+    CodespacesGetSecretForAuthenticatedUserRequestBody,
+    CodespacesGetSecretForAuthenticatedUserResponseBody
+  >;
 
 export type CodespacesCreateOrUpdateSecretForAuthenticatedUserRequestQuery = {};
 
-export type CodespacesCreateOrUpdateSecretForAuthenticatedUserRequestHeaders = {};
+export type CodespacesCreateOrUpdateSecretForAuthenticatedUserRequestHeaders =
+  {};
 
 export type CodespacesCreateOrUpdateSecretForAuthenticatedUserRequestParams = {
   readonly secret_name: string;
@@ -24690,11 +25081,12 @@ export type CodespacesCreateOrUpdateSecretForAuthenticatedUserResponseBody =
   | BasicError
   | ValidationError;
 
-export type CodespacesCreateOrUpdateSecretForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  CodespacesCreateOrUpdateSecretForAuthenticatedUserRequestParams,
-  CodespacesCreateOrUpdateSecretForAuthenticatedUserRequestBody,
-  CodespacesCreateOrUpdateSecretForAuthenticatedUserResponseBody
->;
+export type CodespacesCreateOrUpdateSecretForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    CodespacesCreateOrUpdateSecretForAuthenticatedUserRequestParams,
+    CodespacesCreateOrUpdateSecretForAuthenticatedUserRequestBody,
+    CodespacesCreateOrUpdateSecretForAuthenticatedUserResponseBody
+  >;
 
 export type CodespacesDeleteSecretForAuthenticatedUserRequestQuery = {};
 
@@ -24710,126 +25102,118 @@ export type CodespacesDeleteSecretForAuthenticatedUserResponseStatus = 204;
 
 export type CodespacesDeleteSecretForAuthenticatedUserResponseBody = never;
 
-export type CodespacesDeleteSecretForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  CodespacesDeleteSecretForAuthenticatedUserRequestParams,
-  CodespacesDeleteSecretForAuthenticatedUserRequestBody,
-  CodespacesDeleteSecretForAuthenticatedUserResponseBody
->;
+export type CodespacesDeleteSecretForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    CodespacesDeleteSecretForAuthenticatedUserRequestParams,
+    CodespacesDeleteSecretForAuthenticatedUserRequestBody,
+    CodespacesDeleteSecretForAuthenticatedUserResponseBody
+  >;
 
-export type CodespacesListRepositoriesForSecretForAuthenticatedUserRequestQuery = {};
+export type CodespacesListRepositoriesForSecretForAuthenticatedUserRequestQuery =
+  {};
 
-export type CodespacesListRepositoriesForSecretForAuthenticatedUserRequestHeaders = {};
+export type CodespacesListRepositoriesForSecretForAuthenticatedUserRequestHeaders =
+  {};
 
-export type CodespacesListRepositoriesForSecretForAuthenticatedUserRequestParams = {
-  readonly secret_name: string;
-};
+export type CodespacesListRepositoriesForSecretForAuthenticatedUserRequestParams =
+  { readonly secret_name: string };
 
-export type CodespacesListRepositoriesForSecretForAuthenticatedUserRequestBody = never;
+export type CodespacesListRepositoriesForSecretForAuthenticatedUserRequestBody =
+  never;
 
 export type CodespacesListRepositoriesForSecretForAuthenticatedUserResponseStatus =
-  | 200
-  | 401
-  | 403
-  | 404
-  | 500;
+  200 | 401 | 403 | 404 | 500;
 
 export type CodespacesListRepositoriesForSecretForAuthenticatedUserResponseBody =
-  | {
-      readonly total_count: number;
-      readonly repositories: ReadonlyArray<MinimalRepository>;
-    }
-  | BasicError;
 
-export type CodespacesListRepositoriesForSecretForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  CodespacesListRepositoriesForSecretForAuthenticatedUserRequestParams,
-  CodespacesListRepositoriesForSecretForAuthenticatedUserRequestBody,
-  CodespacesListRepositoriesForSecretForAuthenticatedUserResponseBody
->;
+    | {
+        readonly total_count: number;
+        readonly repositories: ReadonlyArray<MinimalRepository>;
+      }
+    | BasicError;
 
-export type CodespacesSetRepositoriesForSecretForAuthenticatedUserRequestQuery = {};
+export type CodespacesListRepositoriesForSecretForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    CodespacesListRepositoriesForSecretForAuthenticatedUserRequestParams,
+    CodespacesListRepositoriesForSecretForAuthenticatedUserRequestBody,
+    CodespacesListRepositoriesForSecretForAuthenticatedUserResponseBody
+  >;
 
-export type CodespacesSetRepositoriesForSecretForAuthenticatedUserRequestHeaders = {};
+export type CodespacesSetRepositoriesForSecretForAuthenticatedUserRequestQuery =
+  {};
 
-export type CodespacesSetRepositoriesForSecretForAuthenticatedUserRequestParams = {
-  readonly secret_name: string;
-};
+export type CodespacesSetRepositoriesForSecretForAuthenticatedUserRequestHeaders =
+  {};
 
-export type CodespacesSetRepositoriesForSecretForAuthenticatedUserRequestBody = {
-  readonly selected_repository_ids: ReadonlyArray<number>;
-};
+export type CodespacesSetRepositoriesForSecretForAuthenticatedUserRequestParams =
+  { readonly secret_name: string };
+
+export type CodespacesSetRepositoriesForSecretForAuthenticatedUserRequestBody =
+  { readonly selected_repository_ids: ReadonlyArray<number> };
 
 export type CodespacesSetRepositoriesForSecretForAuthenticatedUserResponseStatus =
-  | 204
-  | 401
-  | 403
-  | 404
-  | 500;
+  204 | 401 | 403 | 404 | 500;
 
 export type CodespacesSetRepositoriesForSecretForAuthenticatedUserResponseBody =
-  | never
-  | BasicError;
+  never | BasicError;
 
-export type CodespacesSetRepositoriesForSecretForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  CodespacesSetRepositoriesForSecretForAuthenticatedUserRequestParams,
-  CodespacesSetRepositoriesForSecretForAuthenticatedUserRequestBody,
-  CodespacesSetRepositoriesForSecretForAuthenticatedUserResponseBody
->;
+export type CodespacesSetRepositoriesForSecretForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    CodespacesSetRepositoriesForSecretForAuthenticatedUserRequestParams,
+    CodespacesSetRepositoriesForSecretForAuthenticatedUserRequestBody,
+    CodespacesSetRepositoriesForSecretForAuthenticatedUserResponseBody
+  >;
 
-export type CodespacesAddRepositoryForSecretForAuthenticatedUserRequestQuery = {};
+export type CodespacesAddRepositoryForSecretForAuthenticatedUserRequestQuery =
+  {};
 
-export type CodespacesAddRepositoryForSecretForAuthenticatedUserRequestHeaders = {};
+export type CodespacesAddRepositoryForSecretForAuthenticatedUserRequestHeaders =
+  {};
 
-export type CodespacesAddRepositoryForSecretForAuthenticatedUserRequestParams = {
-  readonly secret_name: string;
-  readonly repository_id: string;
-};
+export type CodespacesAddRepositoryForSecretForAuthenticatedUserRequestParams =
+  { readonly secret_name: string; readonly repository_id: string };
 
-export type CodespacesAddRepositoryForSecretForAuthenticatedUserRequestBody = never;
+export type CodespacesAddRepositoryForSecretForAuthenticatedUserRequestBody =
+  never;
 
 export type CodespacesAddRepositoryForSecretForAuthenticatedUserResponseStatus =
-  | 204
-  | 401
-  | 403
-  | 404
-  | 500;
+  204 | 401 | 403 | 404 | 500;
 
 export type CodespacesAddRepositoryForSecretForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type CodespacesAddRepositoryForSecretForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  CodespacesAddRepositoryForSecretForAuthenticatedUserRequestParams,
-  CodespacesAddRepositoryForSecretForAuthenticatedUserRequestBody,
-  CodespacesAddRepositoryForSecretForAuthenticatedUserResponseBody
->;
+export type CodespacesAddRepositoryForSecretForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    CodespacesAddRepositoryForSecretForAuthenticatedUserRequestParams,
+    CodespacesAddRepositoryForSecretForAuthenticatedUserRequestBody,
+    CodespacesAddRepositoryForSecretForAuthenticatedUserResponseBody
+  >;
 
-export type CodespacesRemoveRepositoryForSecretForAuthenticatedUserRequestQuery = {};
+export type CodespacesRemoveRepositoryForSecretForAuthenticatedUserRequestQuery =
+  {};
 
-export type CodespacesRemoveRepositoryForSecretForAuthenticatedUserRequestHeaders = {};
+export type CodespacesRemoveRepositoryForSecretForAuthenticatedUserRequestHeaders =
+  {};
 
-export type CodespacesRemoveRepositoryForSecretForAuthenticatedUserRequestParams = {
-  readonly secret_name: string;
-  readonly repository_id: string;
-};
+export type CodespacesRemoveRepositoryForSecretForAuthenticatedUserRequestParams =
+  { readonly secret_name: string; readonly repository_id: string };
 
-export type CodespacesRemoveRepositoryForSecretForAuthenticatedUserRequestBody = never;
+export type CodespacesRemoveRepositoryForSecretForAuthenticatedUserRequestBody =
+  never;
 
 export type CodespacesRemoveRepositoryForSecretForAuthenticatedUserResponseStatus =
-  | 204
-  | 401
-  | 403
-  | 404
-  | 500;
+  204 | 401 | 403 | 404 | 500;
 
 export type CodespacesRemoveRepositoryForSecretForAuthenticatedUserResponseBody =
-  | never
-  | BasicError;
+  never | BasicError;
 
-export type CodespacesRemoveRepositoryForSecretForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  CodespacesRemoveRepositoryForSecretForAuthenticatedUserRequestParams,
-  CodespacesRemoveRepositoryForSecretForAuthenticatedUserRequestBody,
-  CodespacesRemoveRepositoryForSecretForAuthenticatedUserResponseBody
->;
+export type CodespacesRemoveRepositoryForSecretForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    CodespacesRemoveRepositoryForSecretForAuthenticatedUserRequestParams,
+    CodespacesRemoveRepositoryForSecretForAuthenticatedUserRequestBody,
+    CodespacesRemoveRepositoryForSecretForAuthenticatedUserResponseBody
+  >;
 
 export type CodespacesGetForAuthenticatedUserRequestQuery = {};
 
@@ -24854,11 +25238,12 @@ export type CodespacesGetForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type CodespacesGetForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  CodespacesGetForAuthenticatedUserRequestParams,
-  CodespacesGetForAuthenticatedUserRequestBody,
-  CodespacesGetForAuthenticatedUserResponseBody
->;
+export type CodespacesGetForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    CodespacesGetForAuthenticatedUserRequestParams,
+    CodespacesGetForAuthenticatedUserRequestBody,
+    CodespacesGetForAuthenticatedUserResponseBody
+  >;
 
 export type CodespacesUpdateForAuthenticatedUserRequestQuery = {};
 
@@ -24886,11 +25271,12 @@ export type CodespacesUpdateForAuthenticatedUserResponseBody =
   | Codespace
   | BasicError;
 
-export type CodespacesUpdateForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  CodespacesUpdateForAuthenticatedUserRequestParams,
-  CodespacesUpdateForAuthenticatedUserRequestBody,
-  CodespacesUpdateForAuthenticatedUserResponseBody
->;
+export type CodespacesUpdateForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    CodespacesUpdateForAuthenticatedUserRequestParams,
+    CodespacesUpdateForAuthenticatedUserRequestBody,
+    CodespacesUpdateForAuthenticatedUserResponseBody
+  >;
 
 export type CodespacesDeleteForAuthenticatedUserRequestQuery = {};
 
@@ -24914,11 +25300,12 @@ export type CodespacesDeleteForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type CodespacesDeleteForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  CodespacesDeleteForAuthenticatedUserRequestParams,
-  CodespacesDeleteForAuthenticatedUserRequestBody,
-  CodespacesDeleteForAuthenticatedUserResponseBody
->;
+export type CodespacesDeleteForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    CodespacesDeleteForAuthenticatedUserRequestParams,
+    CodespacesDeleteForAuthenticatedUserRequestBody,
+    CodespacesDeleteForAuthenticatedUserResponseBody
+  >;
 
 export type CodespacesExportForAuthenticatedUserRequestQuery = {};
 
@@ -24953,11 +25340,12 @@ export type CodespacesExportForAuthenticatedUserResponseBody =
   | BasicError
   | ValidationError;
 
-export type CodespacesExportForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  CodespacesExportForAuthenticatedUserRequestParams,
-  CodespacesExportForAuthenticatedUserRequestBody,
-  CodespacesExportForAuthenticatedUserResponseBody
->;
+export type CodespacesExportForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    CodespacesExportForAuthenticatedUserRequestParams,
+    CodespacesExportForAuthenticatedUserRequestBody,
+    CodespacesExportForAuthenticatedUserResponseBody
+  >;
 
 export type CodespacesGetExportDetailsForAuthenticatedUserRequestQuery = {};
 
@@ -24978,11 +25366,12 @@ export type CodespacesGetExportDetailsForAuthenticatedUserResponseBody =
   | FetchesInformationAboutAnExportOfACodespace
   | BasicError;
 
-export type CodespacesGetExportDetailsForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  CodespacesGetExportDetailsForAuthenticatedUserRequestParams,
-  CodespacesGetExportDetailsForAuthenticatedUserRequestBody,
-  CodespacesGetExportDetailsForAuthenticatedUserResponseBody
->;
+export type CodespacesGetExportDetailsForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    CodespacesGetExportDetailsForAuthenticatedUserRequestParams,
+    CodespacesGetExportDetailsForAuthenticatedUserRequestBody,
+    CodespacesGetExportDetailsForAuthenticatedUserResponseBody
+  >;
 
 export type CodespacesCodespaceMachinesForAuthenticatedUserRequestQuery = {};
 
@@ -25010,11 +25399,12 @@ export type CodespacesCodespaceMachinesForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type CodespacesCodespaceMachinesForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  CodespacesCodespaceMachinesForAuthenticatedUserRequestParams,
-  CodespacesCodespaceMachinesForAuthenticatedUserRequestBody,
-  CodespacesCodespaceMachinesForAuthenticatedUserResponseBody
->;
+export type CodespacesCodespaceMachinesForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    CodespacesCodespaceMachinesForAuthenticatedUserRequestParams,
+    CodespacesCodespaceMachinesForAuthenticatedUserRequestBody,
+    CodespacesCodespaceMachinesForAuthenticatedUserResponseBody
+  >;
 
 export type CodespacesStartForAuthenticatedUserRequestQuery = {};
 
@@ -25042,11 +25432,12 @@ export type CodespacesStartForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type CodespacesStartForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  CodespacesStartForAuthenticatedUserRequestParams,
-  CodespacesStartForAuthenticatedUserRequestBody,
-  CodespacesStartForAuthenticatedUserResponseBody
->;
+export type CodespacesStartForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    CodespacesStartForAuthenticatedUserRequestParams,
+    CodespacesStartForAuthenticatedUserRequestBody,
+    CodespacesStartForAuthenticatedUserResponseBody
+  >;
 
 export type CodespacesStopForAuthenticatedUserRequestQuery = {};
 
@@ -25069,17 +25460,20 @@ export type CodespacesStopForAuthenticatedUserResponseBody =
   | Codespace
   | BasicError;
 
-export type CodespacesStopForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  CodespacesStopForAuthenticatedUserRequestParams,
-  CodespacesStopForAuthenticatedUserRequestBody,
-  CodespacesStopForAuthenticatedUserResponseBody
->;
+export type CodespacesStopForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    CodespacesStopForAuthenticatedUserRequestParams,
+    CodespacesStopForAuthenticatedUserRequestBody,
+    CodespacesStopForAuthenticatedUserResponseBody
+  >;
 
 export type UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequestQuery = {};
 
-export type UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequestHeaders = {};
+export type UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequestHeaders =
+  {};
 
-export type UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequestParams = {};
+export type UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequestParams =
+  {};
 
 export type UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequestBody = {
   readonly visibility: 'public' | 'private';
@@ -25106,11 +25500,12 @@ export type UsersSetPrimaryEmailVisibilityForAuthenticatedUserResponseBody =
   | BasicError
   | ValidationError;
 
-export type UsersSetPrimaryEmailVisibilityForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequestParams,
-  UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequestBody,
-  UsersSetPrimaryEmailVisibilityForAuthenticatedUserResponseBody
->;
+export type UsersSetPrimaryEmailVisibilityForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequestParams,
+    UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequestBody,
+    UsersSetPrimaryEmailVisibilityForAuthenticatedUserResponseBody
+  >;
 
 export type UsersListEmailsForAuthenticatedUserRequestQuery = {
   readonly per_page?: string;
@@ -25135,11 +25530,12 @@ export type UsersListEmailsForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type UsersListEmailsForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  UsersListEmailsForAuthenticatedUserRequestParams,
-  UsersListEmailsForAuthenticatedUserRequestBody,
-  UsersListEmailsForAuthenticatedUserResponseBody
->;
+export type UsersListEmailsForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    UsersListEmailsForAuthenticatedUserRequestParams,
+    UsersListEmailsForAuthenticatedUserRequestBody,
+    UsersListEmailsForAuthenticatedUserResponseBody
+  >;
 
 export type UsersAddEmailForAuthenticatedUserRequestQuery = {};
 
@@ -25167,11 +25563,12 @@ export type UsersAddEmailForAuthenticatedUserResponseBody =
   | BasicError
   | ValidationError;
 
-export type UsersAddEmailForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  UsersAddEmailForAuthenticatedUserRequestParams,
-  UsersAddEmailForAuthenticatedUserRequestBody,
-  UsersAddEmailForAuthenticatedUserResponseBody
->;
+export type UsersAddEmailForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    UsersAddEmailForAuthenticatedUserRequestParams,
+    UsersAddEmailForAuthenticatedUserRequestBody,
+    UsersAddEmailForAuthenticatedUserResponseBody
+  >;
 
 export type UsersDeleteEmailForAuthenticatedUserRequestQuery = {};
 
@@ -25198,11 +25595,12 @@ export type UsersDeleteEmailForAuthenticatedUserResponseBody =
   | BasicError
   | ValidationError;
 
-export type UsersDeleteEmailForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  UsersDeleteEmailForAuthenticatedUserRequestParams,
-  UsersDeleteEmailForAuthenticatedUserRequestBody,
-  UsersDeleteEmailForAuthenticatedUserResponseBody
->;
+export type UsersDeleteEmailForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    UsersDeleteEmailForAuthenticatedUserRequestParams,
+    UsersDeleteEmailForAuthenticatedUserRequestBody,
+    UsersDeleteEmailForAuthenticatedUserResponseBody
+  >;
 
 export type UsersListFollowersForAuthenticatedUserRequestQuery = {
   readonly per_page?: string;
@@ -25226,11 +25624,12 @@ export type UsersListFollowersForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type UsersListFollowersForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  UsersListFollowersForAuthenticatedUserRequestParams,
-  UsersListFollowersForAuthenticatedUserRequestBody,
-  UsersListFollowersForAuthenticatedUserResponseBody
->;
+export type UsersListFollowersForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    UsersListFollowersForAuthenticatedUserRequestParams,
+    UsersListFollowersForAuthenticatedUserRequestBody,
+    UsersListFollowersForAuthenticatedUserResponseBody
+  >;
 
 export type UsersListFollowedByAuthenticatedUserRequestQuery = {
   readonly per_page?: string;
@@ -25254,11 +25653,12 @@ export type UsersListFollowedByAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type UsersListFollowedByAuthenticatedUserResolver = msw.HttpResponseResolver<
-  UsersListFollowedByAuthenticatedUserRequestParams,
-  UsersListFollowedByAuthenticatedUserRequestBody,
-  UsersListFollowedByAuthenticatedUserResponseBody
->;
+export type UsersListFollowedByAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    UsersListFollowedByAuthenticatedUserRequestParams,
+    UsersListFollowedByAuthenticatedUserRequestBody,
+    UsersListFollowedByAuthenticatedUserResponseBody
+  >;
 
 export type UsersCheckPersonIsFollowedByAuthenticatedRequestQuery = {};
 
@@ -25281,11 +25681,12 @@ export type UsersCheckPersonIsFollowedByAuthenticatedResponseBody =
   | never
   | BasicError;
 
-export type UsersCheckPersonIsFollowedByAuthenticatedResolver = msw.HttpResponseResolver<
-  UsersCheckPersonIsFollowedByAuthenticatedRequestParams,
-  UsersCheckPersonIsFollowedByAuthenticatedRequestBody,
-  UsersCheckPersonIsFollowedByAuthenticatedResponseBody
->;
+export type UsersCheckPersonIsFollowedByAuthenticatedResolver =
+  msw.HttpResponseResolver<
+    UsersCheckPersonIsFollowedByAuthenticatedRequestParams,
+    UsersCheckPersonIsFollowedByAuthenticatedRequestBody,
+    UsersCheckPersonIsFollowedByAuthenticatedResponseBody
+  >;
 
 export type UsersFollowRequestQuery = {};
 
@@ -25382,11 +25783,12 @@ export type UsersListGpgKeysForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type UsersListGpgKeysForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  UsersListGpgKeysForAuthenticatedUserRequestParams,
-  UsersListGpgKeysForAuthenticatedUserRequestBody,
-  UsersListGpgKeysForAuthenticatedUserResponseBody
->;
+export type UsersListGpgKeysForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    UsersListGpgKeysForAuthenticatedUserRequestParams,
+    UsersListGpgKeysForAuthenticatedUserRequestBody,
+    UsersListGpgKeysForAuthenticatedUserResponseBody
+  >;
 
 export type UsersCreateGpgKeyForAuthenticatedUserRequestQuery = {};
 
@@ -25413,11 +25815,12 @@ export type UsersCreateGpgKeyForAuthenticatedUserResponseBody =
   | BasicError
   | ValidationError;
 
-export type UsersCreateGpgKeyForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  UsersCreateGpgKeyForAuthenticatedUserRequestParams,
-  UsersCreateGpgKeyForAuthenticatedUserRequestBody,
-  UsersCreateGpgKeyForAuthenticatedUserResponseBody
->;
+export type UsersCreateGpgKeyForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    UsersCreateGpgKeyForAuthenticatedUserRequestParams,
+    UsersCreateGpgKeyForAuthenticatedUserRequestBody,
+    UsersCreateGpgKeyForAuthenticatedUserResponseBody
+  >;
 
 export type UsersGetGpgKeyForAuthenticatedUserRequestQuery = {};
 
@@ -25441,11 +25844,12 @@ export type UsersGetGpgKeyForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type UsersGetGpgKeyForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  UsersGetGpgKeyForAuthenticatedUserRequestParams,
-  UsersGetGpgKeyForAuthenticatedUserRequestBody,
-  UsersGetGpgKeyForAuthenticatedUserResponseBody
->;
+export type UsersGetGpgKeyForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    UsersGetGpgKeyForAuthenticatedUserRequestParams,
+    UsersGetGpgKeyForAuthenticatedUserRequestBody,
+    UsersGetGpgKeyForAuthenticatedUserResponseBody
+  >;
 
 export type UsersDeleteGpgKeyForAuthenticatedUserRequestQuery = {};
 
@@ -25470,11 +25874,12 @@ export type UsersDeleteGpgKeyForAuthenticatedUserResponseBody =
   | BasicError
   | ValidationError;
 
-export type UsersDeleteGpgKeyForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  UsersDeleteGpgKeyForAuthenticatedUserRequestParams,
-  UsersDeleteGpgKeyForAuthenticatedUserRequestBody,
-  UsersDeleteGpgKeyForAuthenticatedUserResponseBody
->;
+export type UsersDeleteGpgKeyForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    UsersDeleteGpgKeyForAuthenticatedUserRequestParams,
+    UsersDeleteGpgKeyForAuthenticatedUserRequestBody,
+    UsersDeleteGpgKeyForAuthenticatedUserResponseBody
+  >;
 
 export type AppsListInstallationsForAuthenticatedUserRequestQuery = {
   readonly per_page?: string;
@@ -25501,11 +25906,12 @@ export type AppsListInstallationsForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type AppsListInstallationsForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  AppsListInstallationsForAuthenticatedUserRequestParams,
-  AppsListInstallationsForAuthenticatedUserRequestBody,
-  AppsListInstallationsForAuthenticatedUserResponseBody
->;
+export type AppsListInstallationsForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    AppsListInstallationsForAuthenticatedUserRequestParams,
+    AppsListInstallationsForAuthenticatedUserRequestBody,
+    AppsListInstallationsForAuthenticatedUserResponseBody
+  >;
 
 export type AppsListInstallationReposForAuthenticatedUserRequestQuery = {
   readonly per_page?: string;
@@ -25535,11 +25941,12 @@ export type AppsListInstallationReposForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type AppsListInstallationReposForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  AppsListInstallationReposForAuthenticatedUserRequestParams,
-  AppsListInstallationReposForAuthenticatedUserRequestBody,
-  AppsListInstallationReposForAuthenticatedUserResponseBody
->;
+export type AppsListInstallationReposForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    AppsListInstallationReposForAuthenticatedUserRequestParams,
+    AppsListInstallationReposForAuthenticatedUserRequestBody,
+    AppsListInstallationReposForAuthenticatedUserResponseBody
+  >;
 
 export type AppsAddRepoToInstallationForAuthenticatedUserRequestQuery = {};
 
@@ -25562,22 +25969,25 @@ export type AppsAddRepoToInstallationForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type AppsAddRepoToInstallationForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  AppsAddRepoToInstallationForAuthenticatedUserRequestParams,
-  AppsAddRepoToInstallationForAuthenticatedUserRequestBody,
-  AppsAddRepoToInstallationForAuthenticatedUserResponseBody
->;
+export type AppsAddRepoToInstallationForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    AppsAddRepoToInstallationForAuthenticatedUserRequestParams,
+    AppsAddRepoToInstallationForAuthenticatedUserRequestBody,
+    AppsAddRepoToInstallationForAuthenticatedUserResponseBody
+  >;
 
 export type AppsRemoveRepoFromInstallationForAuthenticatedUserRequestQuery = {};
 
-export type AppsRemoveRepoFromInstallationForAuthenticatedUserRequestHeaders = {};
+export type AppsRemoveRepoFromInstallationForAuthenticatedUserRequestHeaders =
+  {};
 
 export type AppsRemoveRepoFromInstallationForAuthenticatedUserRequestParams = {
   readonly installation_id: string;
   readonly repository_id: string;
 };
 
-export type AppsRemoveRepoFromInstallationForAuthenticatedUserRequestBody = never;
+export type AppsRemoveRepoFromInstallationForAuthenticatedUserRequestBody =
+  never;
 
 export type AppsRemoveRepoFromInstallationForAuthenticatedUserResponseStatus =
   | 204
@@ -25589,11 +25999,12 @@ export type AppsRemoveRepoFromInstallationForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type AppsRemoveRepoFromInstallationForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  AppsRemoveRepoFromInstallationForAuthenticatedUserRequestParams,
-  AppsRemoveRepoFromInstallationForAuthenticatedUserRequestBody,
-  AppsRemoveRepoFromInstallationForAuthenticatedUserResponseBody
->;
+export type AppsRemoveRepoFromInstallationForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    AppsRemoveRepoFromInstallationForAuthenticatedUserRequestParams,
+    AppsRemoveRepoFromInstallationForAuthenticatedUserRequestBody,
+    AppsRemoveRepoFromInstallationForAuthenticatedUserResponseBody
+  >;
 
 export type InteractionsGetRestrictionsForAuthenticatedUserRequestQuery = {};
 
@@ -25612,11 +26023,12 @@ export type InteractionsGetRestrictionsForAuthenticatedUserResponseBody =
   | {}
   | never;
 
-export type InteractionsGetRestrictionsForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  InteractionsGetRestrictionsForAuthenticatedUserRequestParams,
-  InteractionsGetRestrictionsForAuthenticatedUserRequestBody,
-  InteractionsGetRestrictionsForAuthenticatedUserResponseBody
->;
+export type InteractionsGetRestrictionsForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    InteractionsGetRestrictionsForAuthenticatedUserRequestParams,
+    InteractionsGetRestrictionsForAuthenticatedUserRequestBody,
+    InteractionsGetRestrictionsForAuthenticatedUserResponseBody
+  >;
 
 export type InteractionsSetRestrictionsForAuthenticatedUserRequestQuery = {};
 
@@ -25624,7 +26036,8 @@ export type InteractionsSetRestrictionsForAuthenticatedUserRequestHeaders = {};
 
 export type InteractionsSetRestrictionsForAuthenticatedUserRequestParams = {};
 
-export type InteractionsSetRestrictionsForAuthenticatedUserRequestBody = InteractionRestrictions;
+export type InteractionsSetRestrictionsForAuthenticatedUserRequestBody =
+  InteractionRestrictions;
 
 export type InteractionsSetRestrictionsForAuthenticatedUserResponseStatus =
   | 200
@@ -25634,29 +26047,36 @@ export type InteractionsSetRestrictionsForAuthenticatedUserResponseBody =
   | InteractionLimits
   | ValidationError;
 
-export type InteractionsSetRestrictionsForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  InteractionsSetRestrictionsForAuthenticatedUserRequestParams,
-  InteractionsSetRestrictionsForAuthenticatedUserRequestBody,
-  InteractionsSetRestrictionsForAuthenticatedUserResponseBody
->;
+export type InteractionsSetRestrictionsForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    InteractionsSetRestrictionsForAuthenticatedUserRequestParams,
+    InteractionsSetRestrictionsForAuthenticatedUserRequestBody,
+    InteractionsSetRestrictionsForAuthenticatedUserResponseBody
+  >;
 
 export type InteractionsRemoveRestrictionsForAuthenticatedUserRequestQuery = {};
 
-export type InteractionsRemoveRestrictionsForAuthenticatedUserRequestHeaders = {};
+export type InteractionsRemoveRestrictionsForAuthenticatedUserRequestHeaders =
+  {};
 
-export type InteractionsRemoveRestrictionsForAuthenticatedUserRequestParams = {};
+export type InteractionsRemoveRestrictionsForAuthenticatedUserRequestParams =
+  {};
 
-export type InteractionsRemoveRestrictionsForAuthenticatedUserRequestBody = never;
+export type InteractionsRemoveRestrictionsForAuthenticatedUserRequestBody =
+  never;
 
-export type InteractionsRemoveRestrictionsForAuthenticatedUserResponseStatus = 204;
+export type InteractionsRemoveRestrictionsForAuthenticatedUserResponseStatus =
+  204;
 
-export type InteractionsRemoveRestrictionsForAuthenticatedUserResponseBody = never;
+export type InteractionsRemoveRestrictionsForAuthenticatedUserResponseBody =
+  never;
 
-export type InteractionsRemoveRestrictionsForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  InteractionsRemoveRestrictionsForAuthenticatedUserRequestParams,
-  InteractionsRemoveRestrictionsForAuthenticatedUserRequestBody,
-  InteractionsRemoveRestrictionsForAuthenticatedUserResponseBody
->;
+export type InteractionsRemoveRestrictionsForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    InteractionsRemoveRestrictionsForAuthenticatedUserRequestParams,
+    InteractionsRemoveRestrictionsForAuthenticatedUserRequestBody,
+    InteractionsRemoveRestrictionsForAuthenticatedUserResponseBody
+  >;
 
 export type IssuesListForAuthenticatedUserRequestQuery = {
   readonly filter?: string;
@@ -25721,11 +26141,12 @@ export type UsersListPublicSshKeysForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type UsersListPublicSshKeysForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  UsersListPublicSshKeysForAuthenticatedUserRequestParams,
-  UsersListPublicSshKeysForAuthenticatedUserRequestBody,
-  UsersListPublicSshKeysForAuthenticatedUserResponseBody
->;
+export type UsersListPublicSshKeysForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    UsersListPublicSshKeysForAuthenticatedUserRequestParams,
+    UsersListPublicSshKeysForAuthenticatedUserRequestBody,
+    UsersListPublicSshKeysForAuthenticatedUserResponseBody
+  >;
 
 export type UsersCreatePublicSshKeyForAuthenticatedUserRequestQuery = {};
 
@@ -25752,11 +26173,12 @@ export type UsersCreatePublicSshKeyForAuthenticatedUserResponseBody =
   | BasicError
   | ValidationError;
 
-export type UsersCreatePublicSshKeyForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  UsersCreatePublicSshKeyForAuthenticatedUserRequestParams,
-  UsersCreatePublicSshKeyForAuthenticatedUserRequestBody,
-  UsersCreatePublicSshKeyForAuthenticatedUserResponseBody
->;
+export type UsersCreatePublicSshKeyForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    UsersCreatePublicSshKeyForAuthenticatedUserRequestParams,
+    UsersCreatePublicSshKeyForAuthenticatedUserRequestBody,
+    UsersCreatePublicSshKeyForAuthenticatedUserResponseBody
+  >;
 
 export type UsersGetPublicSshKeyForAuthenticatedUserRequestQuery = {};
 
@@ -25780,11 +26202,12 @@ export type UsersGetPublicSshKeyForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type UsersGetPublicSshKeyForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  UsersGetPublicSshKeyForAuthenticatedUserRequestParams,
-  UsersGetPublicSshKeyForAuthenticatedUserRequestBody,
-  UsersGetPublicSshKeyForAuthenticatedUserResponseBody
->;
+export type UsersGetPublicSshKeyForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    UsersGetPublicSshKeyForAuthenticatedUserRequestParams,
+    UsersGetPublicSshKeyForAuthenticatedUserRequestBody,
+    UsersGetPublicSshKeyForAuthenticatedUserResponseBody
+  >;
 
 export type UsersDeletePublicSshKeyForAuthenticatedUserRequestQuery = {};
 
@@ -25807,11 +26230,12 @@ export type UsersDeletePublicSshKeyForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type UsersDeletePublicSshKeyForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  UsersDeletePublicSshKeyForAuthenticatedUserRequestParams,
-  UsersDeletePublicSshKeyForAuthenticatedUserRequestBody,
-  UsersDeletePublicSshKeyForAuthenticatedUserResponseBody
->;
+export type UsersDeletePublicSshKeyForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    UsersDeletePublicSshKeyForAuthenticatedUserRequestParams,
+    UsersDeletePublicSshKeyForAuthenticatedUserRequestBody,
+    UsersDeletePublicSshKeyForAuthenticatedUserResponseBody
+  >;
 
 export type AppsListSubscriptionsForAuthenticatedUserRequestQuery = {
   readonly per_page?: string;
@@ -25856,11 +26280,12 @@ export type AppsListSubscriptionsForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type AppsListSubscriptionsForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  AppsListSubscriptionsForAuthenticatedUserRequestParams,
-  AppsListSubscriptionsForAuthenticatedUserRequestBody,
-  AppsListSubscriptionsForAuthenticatedUserResponseBody
->;
+export type AppsListSubscriptionsForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    AppsListSubscriptionsForAuthenticatedUserRequestParams,
+    AppsListSubscriptionsForAuthenticatedUserRequestBody,
+    AppsListSubscriptionsForAuthenticatedUserResponseBody
+  >;
 
 export type AppsListSubscriptionsForAuthenticatedUserStubbedRequestQuery = {
   readonly per_page?: string;
@@ -25883,11 +26308,12 @@ export type AppsListSubscriptionsForAuthenticatedUserStubbedResponseBody =
   | never
   | BasicError;
 
-export type AppsListSubscriptionsForAuthenticatedUserStubbedResolver = msw.HttpResponseResolver<
-  AppsListSubscriptionsForAuthenticatedUserStubbedRequestParams,
-  AppsListSubscriptionsForAuthenticatedUserStubbedRequestBody,
-  AppsListSubscriptionsForAuthenticatedUserStubbedResponseBody
->;
+export type AppsListSubscriptionsForAuthenticatedUserStubbedResolver =
+  msw.HttpResponseResolver<
+    AppsListSubscriptionsForAuthenticatedUserStubbedRequestParams,
+    AppsListSubscriptionsForAuthenticatedUserStubbedRequestBody,
+    AppsListSubscriptionsForAuthenticatedUserStubbedResponseBody
+  >;
 
 export type OrgsListMembershipsForAuthenticatedUserRequestQuery = {
   readonly state?: string;
@@ -25914,11 +26340,12 @@ export type OrgsListMembershipsForAuthenticatedUserResponseBody =
   | BasicError
   | ValidationError;
 
-export type OrgsListMembershipsForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  OrgsListMembershipsForAuthenticatedUserRequestParams,
-  OrgsListMembershipsForAuthenticatedUserRequestBody,
-  OrgsListMembershipsForAuthenticatedUserResponseBody
->;
+export type OrgsListMembershipsForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    OrgsListMembershipsForAuthenticatedUserRequestParams,
+    OrgsListMembershipsForAuthenticatedUserRequestBody,
+    OrgsListMembershipsForAuthenticatedUserResponseBody
+  >;
 
 export type OrgsGetMembershipForAuthenticatedUserRequestQuery = {};
 
@@ -25939,11 +26366,12 @@ export type OrgsGetMembershipForAuthenticatedUserResponseBody =
   | OrgMembership
   | BasicError;
 
-export type OrgsGetMembershipForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  OrgsGetMembershipForAuthenticatedUserRequestParams,
-  OrgsGetMembershipForAuthenticatedUserRequestBody,
-  OrgsGetMembershipForAuthenticatedUserResponseBody
->;
+export type OrgsGetMembershipForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    OrgsGetMembershipForAuthenticatedUserRequestParams,
+    OrgsGetMembershipForAuthenticatedUserRequestBody,
+    OrgsGetMembershipForAuthenticatedUserResponseBody
+  >;
 
 export type OrgsUpdateMembershipForAuthenticatedUserRequestQuery = {};
 
@@ -25968,11 +26396,12 @@ export type OrgsUpdateMembershipForAuthenticatedUserResponseBody =
   | BasicError
   | ValidationError;
 
-export type OrgsUpdateMembershipForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  OrgsUpdateMembershipForAuthenticatedUserRequestParams,
-  OrgsUpdateMembershipForAuthenticatedUserRequestBody,
-  OrgsUpdateMembershipForAuthenticatedUserResponseBody
->;
+export type OrgsUpdateMembershipForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    OrgsUpdateMembershipForAuthenticatedUserRequestParams,
+    OrgsUpdateMembershipForAuthenticatedUserRequestBody,
+    OrgsUpdateMembershipForAuthenticatedUserResponseBody
+  >;
 
 export type MigrationsListForAuthenticatedUserRequestQuery = {
   readonly per_page?: string;
@@ -25996,11 +26425,12 @@ export type MigrationsListForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type MigrationsListForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  MigrationsListForAuthenticatedUserRequestParams,
-  MigrationsListForAuthenticatedUserRequestBody,
-  MigrationsListForAuthenticatedUserResponseBody
->;
+export type MigrationsListForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    MigrationsListForAuthenticatedUserRequestParams,
+    MigrationsListForAuthenticatedUserRequestBody,
+    MigrationsListForAuthenticatedUserResponseBody
+  >;
 
 export type MigrationsStartForAuthenticatedUserRequestQuery = {};
 
@@ -26033,11 +26463,12 @@ export type MigrationsStartForAuthenticatedUserResponseBody =
   | BasicError
   | ValidationError;
 
-export type MigrationsStartForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  MigrationsStartForAuthenticatedUserRequestParams,
-  MigrationsStartForAuthenticatedUserRequestBody,
-  MigrationsStartForAuthenticatedUserResponseBody
->;
+export type MigrationsStartForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    MigrationsStartForAuthenticatedUserRequestParams,
+    MigrationsStartForAuthenticatedUserRequestBody,
+    MigrationsStartForAuthenticatedUserResponseBody
+  >;
 
 export type MigrationsGetStatusForAuthenticatedUserRequestQuery = {
   readonly exclude?: ReadonlyArray<string>;
@@ -26063,11 +26494,12 @@ export type MigrationsGetStatusForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type MigrationsGetStatusForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  MigrationsGetStatusForAuthenticatedUserRequestParams,
-  MigrationsGetStatusForAuthenticatedUserRequestBody,
-  MigrationsGetStatusForAuthenticatedUserResponseBody
->;
+export type MigrationsGetStatusForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    MigrationsGetStatusForAuthenticatedUserRequestParams,
+    MigrationsGetStatusForAuthenticatedUserRequestBody,
+    MigrationsGetStatusForAuthenticatedUserResponseBody
+  >;
 
 export type MigrationsGetArchiveForAuthenticatedUserRequestQuery = {};
 
@@ -26089,11 +26521,12 @@ export type MigrationsGetArchiveForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type MigrationsGetArchiveForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  MigrationsGetArchiveForAuthenticatedUserRequestParams,
-  MigrationsGetArchiveForAuthenticatedUserRequestBody,
-  MigrationsGetArchiveForAuthenticatedUserResponseBody
->;
+export type MigrationsGetArchiveForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    MigrationsGetArchiveForAuthenticatedUserRequestParams,
+    MigrationsGetArchiveForAuthenticatedUserRequestBody,
+    MigrationsGetArchiveForAuthenticatedUserResponseBody
+  >;
 
 export type MigrationsDeleteArchiveForAuthenticatedUserRequestQuery = {};
 
@@ -26116,11 +26549,12 @@ export type MigrationsDeleteArchiveForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type MigrationsDeleteArchiveForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  MigrationsDeleteArchiveForAuthenticatedUserRequestParams,
-  MigrationsDeleteArchiveForAuthenticatedUserRequestBody,
-  MigrationsDeleteArchiveForAuthenticatedUserResponseBody
->;
+export type MigrationsDeleteArchiveForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    MigrationsDeleteArchiveForAuthenticatedUserRequestParams,
+    MigrationsDeleteArchiveForAuthenticatedUserRequestBody,
+    MigrationsDeleteArchiveForAuthenticatedUserResponseBody
+  >;
 
 export type MigrationsUnlockRepoForAuthenticatedUserRequestQuery = {};
 
@@ -26144,11 +26578,12 @@ export type MigrationsUnlockRepoForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type MigrationsUnlockRepoForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  MigrationsUnlockRepoForAuthenticatedUserRequestParams,
-  MigrationsUnlockRepoForAuthenticatedUserRequestBody,
-  MigrationsUnlockRepoForAuthenticatedUserResponseBody
->;
+export type MigrationsUnlockRepoForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    MigrationsUnlockRepoForAuthenticatedUserRequestParams,
+    MigrationsUnlockRepoForAuthenticatedUserRequestBody,
+    MigrationsUnlockRepoForAuthenticatedUserResponseBody
+  >;
 
 export type MigrationsListReposForAuthenticatedUserRequestQuery = {
   readonly per_page?: string;
@@ -26169,11 +26604,12 @@ export type MigrationsListReposForAuthenticatedUserResponseBody =
   | ReadonlyArray<MinimalRepository>
   | BasicError;
 
-export type MigrationsListReposForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  MigrationsListReposForAuthenticatedUserRequestParams,
-  MigrationsListReposForAuthenticatedUserRequestBody,
-  MigrationsListReposForAuthenticatedUserResponseBody
->;
+export type MigrationsListReposForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    MigrationsListReposForAuthenticatedUserRequestParams,
+    MigrationsListReposForAuthenticatedUserRequestBody,
+    MigrationsListReposForAuthenticatedUserResponseBody
+  >;
 
 export type OrgsListForAuthenticatedUserRequestQuery = {
   readonly per_page?: string;
@@ -26212,13 +26648,15 @@ export type PackagesListPackagesForAuthenticatedUserRequestBody = never;
 
 export type PackagesListPackagesForAuthenticatedUserResponseStatus = 200;
 
-export type PackagesListPackagesForAuthenticatedUserResponseBody = ReadonlyArray<Package>;
+export type PackagesListPackagesForAuthenticatedUserResponseBody =
+  ReadonlyArray<Package>;
 
-export type PackagesListPackagesForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  PackagesListPackagesForAuthenticatedUserRequestParams,
-  PackagesListPackagesForAuthenticatedUserRequestBody,
-  PackagesListPackagesForAuthenticatedUserResponseBody
->;
+export type PackagesListPackagesForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    PackagesListPackagesForAuthenticatedUserRequestParams,
+    PackagesListPackagesForAuthenticatedUserRequestBody,
+    PackagesListPackagesForAuthenticatedUserResponseBody
+  >;
 
 export type PackagesGetPackageForAuthenticatedUserRequestQuery = {};
 
@@ -26235,11 +26673,12 @@ export type PackagesGetPackageForAuthenticatedUserResponseStatus = 200;
 
 export type PackagesGetPackageForAuthenticatedUserResponseBody = Package;
 
-export type PackagesGetPackageForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  PackagesGetPackageForAuthenticatedUserRequestParams,
-  PackagesGetPackageForAuthenticatedUserRequestBody,
-  PackagesGetPackageForAuthenticatedUserResponseBody
->;
+export type PackagesGetPackageForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    PackagesGetPackageForAuthenticatedUserRequestParams,
+    PackagesGetPackageForAuthenticatedUserRequestBody,
+    PackagesGetPackageForAuthenticatedUserResponseBody
+  >;
 
 export type PackagesDeletePackageForAuthenticatedUserRequestQuery = {};
 
@@ -26262,11 +26701,12 @@ export type PackagesDeletePackageForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type PackagesDeletePackageForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  PackagesDeletePackageForAuthenticatedUserRequestParams,
-  PackagesDeletePackageForAuthenticatedUserRequestBody,
-  PackagesDeletePackageForAuthenticatedUserResponseBody
->;
+export type PackagesDeletePackageForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    PackagesDeletePackageForAuthenticatedUserRequestParams,
+    PackagesDeletePackageForAuthenticatedUserRequestBody,
+    PackagesDeletePackageForAuthenticatedUserResponseBody
+  >;
 
 export type PackagesRestorePackageForAuthenticatedUserRequestQuery = {
   readonly token?: string;
@@ -26291,42 +26731,41 @@ export type PackagesRestorePackageForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type PackagesRestorePackageForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  PackagesRestorePackageForAuthenticatedUserRequestParams,
-  PackagesRestorePackageForAuthenticatedUserRequestBody,
-  PackagesRestorePackageForAuthenticatedUserResponseBody
->;
+export type PackagesRestorePackageForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    PackagesRestorePackageForAuthenticatedUserRequestParams,
+    PackagesRestorePackageForAuthenticatedUserRequestBody,
+    PackagesRestorePackageForAuthenticatedUserResponseBody
+  >;
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestQuery = {
-  readonly page?: string;
-  readonly per_page?: string;
-  readonly state?: string;
-};
+export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestQuery =
+  {
+    readonly page?: string;
+    readonly per_page?: string;
+    readonly state?: string;
+  };
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestHeaders = {};
+export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestHeaders =
+  {};
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestParams = {
-  readonly package_type: string;
-  readonly package_name: string;
-};
+export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestParams =
+  { readonly package_type: string; readonly package_name: string };
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestBody = never;
+export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestBody =
+  never;
 
 export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponseStatus =
-  | 200
-  | 401
-  | 403
-  | 404;
+  200 | 401 | 403 | 404;
 
 export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponseBody =
-  | ReadonlyArray<PackageVersion>
-  | BasicError;
+  ReadonlyArray<PackageVersion> | BasicError;
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResolver = msw.HttpResponseResolver<
-  PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestParams,
-  PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestBody,
-  PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponseBody
->;
+export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestParams,
+    PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestBody,
+    PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponseBody
+  >;
 
 export type PackagesGetPackageVersionForAuthenticatedUserRequestQuery = {};
 
@@ -26342,13 +26781,15 @@ export type PackagesGetPackageVersionForAuthenticatedUserRequestBody = never;
 
 export type PackagesGetPackageVersionForAuthenticatedUserResponseStatus = 200;
 
-export type PackagesGetPackageVersionForAuthenticatedUserResponseBody = PackageVersion;
+export type PackagesGetPackageVersionForAuthenticatedUserResponseBody =
+  PackageVersion;
 
-export type PackagesGetPackageVersionForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  PackagesGetPackageVersionForAuthenticatedUserRequestParams,
-  PackagesGetPackageVersionForAuthenticatedUserRequestBody,
-  PackagesGetPackageVersionForAuthenticatedUserResponseBody
->;
+export type PackagesGetPackageVersionForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    PackagesGetPackageVersionForAuthenticatedUserRequestParams,
+    PackagesGetPackageVersionForAuthenticatedUserRequestBody,
+    PackagesGetPackageVersionForAuthenticatedUserResponseBody
+  >;
 
 export type PackagesDeletePackageVersionForAuthenticatedUserRequestQuery = {};
 
@@ -26372,15 +26813,17 @@ export type PackagesDeletePackageVersionForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type PackagesDeletePackageVersionForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  PackagesDeletePackageVersionForAuthenticatedUserRequestParams,
-  PackagesDeletePackageVersionForAuthenticatedUserRequestBody,
-  PackagesDeletePackageVersionForAuthenticatedUserResponseBody
->;
+export type PackagesDeletePackageVersionForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    PackagesDeletePackageVersionForAuthenticatedUserRequestParams,
+    PackagesDeletePackageVersionForAuthenticatedUserRequestBody,
+    PackagesDeletePackageVersionForAuthenticatedUserResponseBody
+  >;
 
 export type PackagesRestorePackageVersionForAuthenticatedUserRequestQuery = {};
 
-export type PackagesRestorePackageVersionForAuthenticatedUserRequestHeaders = {};
+export type PackagesRestorePackageVersionForAuthenticatedUserRequestHeaders =
+  {};
 
 export type PackagesRestorePackageVersionForAuthenticatedUserRequestParams = {
   readonly package_type: string;
@@ -26388,7 +26831,8 @@ export type PackagesRestorePackageVersionForAuthenticatedUserRequestParams = {
   readonly package_version_id: string;
 };
 
-export type PackagesRestorePackageVersionForAuthenticatedUserRequestBody = never;
+export type PackagesRestorePackageVersionForAuthenticatedUserRequestBody =
+  never;
 
 export type PackagesRestorePackageVersionForAuthenticatedUserResponseStatus =
   | 204
@@ -26400,11 +26844,12 @@ export type PackagesRestorePackageVersionForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type PackagesRestorePackageVersionForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  PackagesRestorePackageVersionForAuthenticatedUserRequestParams,
-  PackagesRestorePackageVersionForAuthenticatedUserRequestBody,
-  PackagesRestorePackageVersionForAuthenticatedUserResponseBody
->;
+export type PackagesRestorePackageVersionForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    PackagesRestorePackageVersionForAuthenticatedUserRequestParams,
+    PackagesRestorePackageVersionForAuthenticatedUserRequestBody,
+    PackagesRestorePackageVersionForAuthenticatedUserResponseBody
+  >;
 
 export type ProjectsCreateForAuthenticatedUserRequestQuery = {};
 
@@ -26430,11 +26875,12 @@ export type ProjectsCreateForAuthenticatedUserResponseBody =
   | BasicError
   | ValidationErrorSimple;
 
-export type ProjectsCreateForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  ProjectsCreateForAuthenticatedUserRequestParams,
-  ProjectsCreateForAuthenticatedUserRequestBody,
-  ProjectsCreateForAuthenticatedUserResponseBody
->;
+export type ProjectsCreateForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    ProjectsCreateForAuthenticatedUserRequestParams,
+    ProjectsCreateForAuthenticatedUserRequestBody,
+    ProjectsCreateForAuthenticatedUserResponseBody
+  >;
 
 export type UsersListPublicEmailsForAuthenticatedUserRequestQuery = {
   readonly per_page?: string;
@@ -26459,11 +26905,12 @@ export type UsersListPublicEmailsForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type UsersListPublicEmailsForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  UsersListPublicEmailsForAuthenticatedUserRequestParams,
-  UsersListPublicEmailsForAuthenticatedUserRequestBody,
-  UsersListPublicEmailsForAuthenticatedUserResponseBody
->;
+export type UsersListPublicEmailsForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    UsersListPublicEmailsForAuthenticatedUserRequestParams,
+    UsersListPublicEmailsForAuthenticatedUserRequestBody,
+    UsersListPublicEmailsForAuthenticatedUserResponseBody
+  >;
 
 export type ReposListForAuthenticatedUserRequestQuery = {
   readonly visibility?: string;
@@ -26580,11 +27027,12 @@ export type ReposListInvitationsForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type ReposListInvitationsForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  ReposListInvitationsForAuthenticatedUserRequestParams,
-  ReposListInvitationsForAuthenticatedUserRequestBody,
-  ReposListInvitationsForAuthenticatedUserResponseBody
->;
+export type ReposListInvitationsForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    ReposListInvitationsForAuthenticatedUserRequestParams,
+    ReposListInvitationsForAuthenticatedUserRequestBody,
+    ReposListInvitationsForAuthenticatedUserResponseBody
+  >;
 
 export type ReposAcceptInvitationForAuthenticatedUserRequestQuery = {};
 
@@ -26607,11 +27055,12 @@ export type ReposAcceptInvitationForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type ReposAcceptInvitationForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  ReposAcceptInvitationForAuthenticatedUserRequestParams,
-  ReposAcceptInvitationForAuthenticatedUserRequestBody,
-  ReposAcceptInvitationForAuthenticatedUserResponseBody
->;
+export type ReposAcceptInvitationForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    ReposAcceptInvitationForAuthenticatedUserRequestParams,
+    ReposAcceptInvitationForAuthenticatedUserRequestBody,
+    ReposAcceptInvitationForAuthenticatedUserResponseBody
+  >;
 
 export type ReposDeclineInvitationForAuthenticatedUserRequestQuery = {};
 
@@ -26634,11 +27083,12 @@ export type ReposDeclineInvitationForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type ReposDeclineInvitationForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  ReposDeclineInvitationForAuthenticatedUserRequestParams,
-  ReposDeclineInvitationForAuthenticatedUserRequestBody,
-  ReposDeclineInvitationForAuthenticatedUserResponseBody
->;
+export type ReposDeclineInvitationForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    ReposDeclineInvitationForAuthenticatedUserRequestParams,
+    ReposDeclineInvitationForAuthenticatedUserRequestBody,
+    ReposDeclineInvitationForAuthenticatedUserResponseBody
+  >;
 
 export type UsersListSshSigningKeysForAuthenticatedUserRequestQuery = {
   readonly per_page?: string;
@@ -26670,11 +27120,12 @@ export type UsersListSshSigningKeysForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type UsersListSshSigningKeysForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  UsersListSshSigningKeysForAuthenticatedUserRequestParams,
-  UsersListSshSigningKeysForAuthenticatedUserRequestBody,
-  UsersListSshSigningKeysForAuthenticatedUserResponseBody
->;
+export type UsersListSshSigningKeysForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    UsersListSshSigningKeysForAuthenticatedUserRequestParams,
+    UsersListSshSigningKeysForAuthenticatedUserRequestBody,
+    UsersListSshSigningKeysForAuthenticatedUserResponseBody
+  >;
 
 export type UsersCreateSshSigningKeyForAuthenticatedUserRequestQuery = {};
 
@@ -26701,11 +27152,12 @@ export type UsersCreateSshSigningKeyForAuthenticatedUserResponseBody =
   | BasicError
   | ValidationError;
 
-export type UsersCreateSshSigningKeyForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  UsersCreateSshSigningKeyForAuthenticatedUserRequestParams,
-  UsersCreateSshSigningKeyForAuthenticatedUserRequestBody,
-  UsersCreateSshSigningKeyForAuthenticatedUserResponseBody
->;
+export type UsersCreateSshSigningKeyForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    UsersCreateSshSigningKeyForAuthenticatedUserRequestParams,
+    UsersCreateSshSigningKeyForAuthenticatedUserRequestBody,
+    UsersCreateSshSigningKeyForAuthenticatedUserResponseBody
+  >;
 
 export type UsersGetSshSigningKeyForAuthenticatedUserRequestQuery = {};
 
@@ -26729,11 +27181,12 @@ export type UsersGetSshSigningKeyForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type UsersGetSshSigningKeyForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  UsersGetSshSigningKeyForAuthenticatedUserRequestParams,
-  UsersGetSshSigningKeyForAuthenticatedUserRequestBody,
-  UsersGetSshSigningKeyForAuthenticatedUserResponseBody
->;
+export type UsersGetSshSigningKeyForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    UsersGetSshSigningKeyForAuthenticatedUserRequestParams,
+    UsersGetSshSigningKeyForAuthenticatedUserRequestBody,
+    UsersGetSshSigningKeyForAuthenticatedUserResponseBody
+  >;
 
 export type UsersDeleteSshSigningKeyForAuthenticatedUserRequestQuery = {};
 
@@ -26756,11 +27209,12 @@ export type UsersDeleteSshSigningKeyForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type UsersDeleteSshSigningKeyForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  UsersDeleteSshSigningKeyForAuthenticatedUserRequestParams,
-  UsersDeleteSshSigningKeyForAuthenticatedUserRequestBody,
-  UsersDeleteSshSigningKeyForAuthenticatedUserResponseBody
->;
+export type UsersDeleteSshSigningKeyForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    UsersDeleteSshSigningKeyForAuthenticatedUserRequestParams,
+    UsersDeleteSshSigningKeyForAuthenticatedUserRequestBody,
+    UsersDeleteSshSigningKeyForAuthenticatedUserResponseBody
+  >;
 
 export type ActivityListReposStarredByAuthenticatedUserRequestQuery = {
   readonly sort?: string;
@@ -26786,11 +27240,12 @@ export type ActivityListReposStarredByAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type ActivityListReposStarredByAuthenticatedUserResolver = msw.HttpResponseResolver<
-  ActivityListReposStarredByAuthenticatedUserRequestParams,
-  ActivityListReposStarredByAuthenticatedUserRequestBody,
-  ActivityListReposStarredByAuthenticatedUserResponseBody
->;
+export type ActivityListReposStarredByAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    ActivityListReposStarredByAuthenticatedUserRequestParams,
+    ActivityListReposStarredByAuthenticatedUserRequestBody,
+    ActivityListReposStarredByAuthenticatedUserResponseBody
+  >;
 
 export type ActivityCheckRepoIsStarredByAuthenticatedUserRequestQuery = {};
 
@@ -26814,11 +27269,12 @@ export type ActivityCheckRepoIsStarredByAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type ActivityCheckRepoIsStarredByAuthenticatedUserResolver = msw.HttpResponseResolver<
-  ActivityCheckRepoIsStarredByAuthenticatedUserRequestParams,
-  ActivityCheckRepoIsStarredByAuthenticatedUserRequestBody,
-  ActivityCheckRepoIsStarredByAuthenticatedUserResponseBody
->;
+export type ActivityCheckRepoIsStarredByAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    ActivityCheckRepoIsStarredByAuthenticatedUserRequestParams,
+    ActivityCheckRepoIsStarredByAuthenticatedUserRequestBody,
+    ActivityCheckRepoIsStarredByAuthenticatedUserResponseBody
+  >;
 
 export type ActivityStarRepoForAuthenticatedUserRequestQuery = {};
 
@@ -26842,11 +27298,12 @@ export type ActivityStarRepoForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type ActivityStarRepoForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  ActivityStarRepoForAuthenticatedUserRequestParams,
-  ActivityStarRepoForAuthenticatedUserRequestBody,
-  ActivityStarRepoForAuthenticatedUserResponseBody
->;
+export type ActivityStarRepoForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    ActivityStarRepoForAuthenticatedUserRequestParams,
+    ActivityStarRepoForAuthenticatedUserRequestBody,
+    ActivityStarRepoForAuthenticatedUserResponseBody
+  >;
 
 export type ActivityUnstarRepoForAuthenticatedUserRequestQuery = {};
 
@@ -26870,11 +27327,12 @@ export type ActivityUnstarRepoForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type ActivityUnstarRepoForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  ActivityUnstarRepoForAuthenticatedUserRequestParams,
-  ActivityUnstarRepoForAuthenticatedUserRequestBody,
-  ActivityUnstarRepoForAuthenticatedUserResponseBody
->;
+export type ActivityUnstarRepoForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    ActivityUnstarRepoForAuthenticatedUserRequestParams,
+    ActivityUnstarRepoForAuthenticatedUserRequestBody,
+    ActivityUnstarRepoForAuthenticatedUserResponseBody
+  >;
 
 export type ActivityListWatchedReposForAuthenticatedUserRequestQuery = {
   readonly per_page?: string;
@@ -26898,11 +27356,12 @@ export type ActivityListWatchedReposForAuthenticatedUserResponseBody =
   | never
   | BasicError;
 
-export type ActivityListWatchedReposForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  ActivityListWatchedReposForAuthenticatedUserRequestParams,
-  ActivityListWatchedReposForAuthenticatedUserRequestBody,
-  ActivityListWatchedReposForAuthenticatedUserResponseBody
->;
+export type ActivityListWatchedReposForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    ActivityListWatchedReposForAuthenticatedUserRequestParams,
+    ActivityListWatchedReposForAuthenticatedUserRequestBody,
+    ActivityListWatchedReposForAuthenticatedUserResponseBody
+  >;
 
 export type TeamsListForAuthenticatedUserRequestQuery = {
   readonly per_page?: string;
@@ -26985,13 +27444,15 @@ export type ActivityListEventsForAuthenticatedUserRequestBody = never;
 
 export type ActivityListEventsForAuthenticatedUserResponseStatus = 200;
 
-export type ActivityListEventsForAuthenticatedUserResponseBody = ReadonlyArray<Event>;
+export type ActivityListEventsForAuthenticatedUserResponseBody =
+  ReadonlyArray<Event>;
 
-export type ActivityListEventsForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  ActivityListEventsForAuthenticatedUserRequestParams,
-  ActivityListEventsForAuthenticatedUserRequestBody,
-  ActivityListEventsForAuthenticatedUserResponseBody
->;
+export type ActivityListEventsForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    ActivityListEventsForAuthenticatedUserRequestParams,
+    ActivityListEventsForAuthenticatedUserRequestBody,
+    ActivityListEventsForAuthenticatedUserResponseBody
+  >;
 
 export type ActivityListOrgEventsForAuthenticatedUserRequestQuery = {
   readonly per_page?: string;
@@ -27009,13 +27470,15 @@ export type ActivityListOrgEventsForAuthenticatedUserRequestBody = never;
 
 export type ActivityListOrgEventsForAuthenticatedUserResponseStatus = 200;
 
-export type ActivityListOrgEventsForAuthenticatedUserResponseBody = ReadonlyArray<Event>;
+export type ActivityListOrgEventsForAuthenticatedUserResponseBody =
+  ReadonlyArray<Event>;
 
-export type ActivityListOrgEventsForAuthenticatedUserResolver = msw.HttpResponseResolver<
-  ActivityListOrgEventsForAuthenticatedUserRequestParams,
-  ActivityListOrgEventsForAuthenticatedUserRequestBody,
-  ActivityListOrgEventsForAuthenticatedUserResponseBody
->;
+export type ActivityListOrgEventsForAuthenticatedUserResolver =
+  msw.HttpResponseResolver<
+    ActivityListOrgEventsForAuthenticatedUserRequestParams,
+    ActivityListOrgEventsForAuthenticatedUserRequestBody,
+    ActivityListOrgEventsForAuthenticatedUserResponseBody
+  >;
 
 export type ActivityListPublicEventsForUserRequestQuery = {
   readonly per_page?: string;
@@ -27346,7 +27809,8 @@ export type PackagesRestorePackageForUserResolver = msw.HttpResponseResolver<
 
 export type PackagesGetAllPackageVersionsForPackageOwnedByUserRequestQuery = {};
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByUserRequestHeaders = {};
+export type PackagesGetAllPackageVersionsForPackageOwnedByUserRequestHeaders =
+  {};
 
 export type PackagesGetAllPackageVersionsForPackageOwnedByUserRequestParams = {
   readonly package_type: string;
@@ -27354,7 +27818,8 @@ export type PackagesGetAllPackageVersionsForPackageOwnedByUserRequestParams = {
   readonly username: string;
 };
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByUserRequestBody = never;
+export type PackagesGetAllPackageVersionsForPackageOwnedByUserRequestBody =
+  never;
 
 export type PackagesGetAllPackageVersionsForPackageOwnedByUserResponseStatus =
   | 200
@@ -27366,11 +27831,12 @@ export type PackagesGetAllPackageVersionsForPackageOwnedByUserResponseBody =
   | ReadonlyArray<PackageVersion>
   | BasicError;
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByUserResolver = msw.HttpResponseResolver<
-  PackagesGetAllPackageVersionsForPackageOwnedByUserRequestParams,
-  PackagesGetAllPackageVersionsForPackageOwnedByUserRequestBody,
-  PackagesGetAllPackageVersionsForPackageOwnedByUserResponseBody
->;
+export type PackagesGetAllPackageVersionsForPackageOwnedByUserResolver =
+  msw.HttpResponseResolver<
+    PackagesGetAllPackageVersionsForPackageOwnedByUserRequestParams,
+    PackagesGetAllPackageVersionsForPackageOwnedByUserRequestBody,
+    PackagesGetAllPackageVersionsForPackageOwnedByUserResponseBody
+  >;
 
 export type PackagesGetPackageVersionForUserRequestQuery = {};
 
@@ -27418,11 +27884,12 @@ export type PackagesDeletePackageVersionForUserResponseBody =
   | never
   | BasicError;
 
-export type PackagesDeletePackageVersionForUserResolver = msw.HttpResponseResolver<
-  PackagesDeletePackageVersionForUserRequestParams,
-  PackagesDeletePackageVersionForUserRequestBody,
-  PackagesDeletePackageVersionForUserResponseBody
->;
+export type PackagesDeletePackageVersionForUserResolver =
+  msw.HttpResponseResolver<
+    PackagesDeletePackageVersionForUserRequestParams,
+    PackagesDeletePackageVersionForUserRequestBody,
+    PackagesDeletePackageVersionForUserResponseBody
+  >;
 
 export type PackagesRestorePackageVersionForUserRequestQuery = {};
 
@@ -27447,11 +27914,12 @@ export type PackagesRestorePackageVersionForUserResponseBody =
   | never
   | BasicError;
 
-export type PackagesRestorePackageVersionForUserResolver = msw.HttpResponseResolver<
-  PackagesRestorePackageVersionForUserRequestParams,
-  PackagesRestorePackageVersionForUserRequestBody,
-  PackagesRestorePackageVersionForUserResponseBody
->;
+export type PackagesRestorePackageVersionForUserResolver =
+  msw.HttpResponseResolver<
+    PackagesRestorePackageVersionForUserRequestParams,
+    PackagesRestorePackageVersionForUserRequestBody,
+    PackagesRestorePackageVersionForUserResponseBody
+  >;
 
 export type ProjectsListForUserRequestQuery = {
   readonly state?: string;
@@ -27492,13 +27960,15 @@ export type ActivityListReceivedEventsForUserRequestBody = never;
 
 export type ActivityListReceivedEventsForUserResponseStatus = 200;
 
-export type ActivityListReceivedEventsForUserResponseBody = ReadonlyArray<Event>;
+export type ActivityListReceivedEventsForUserResponseBody =
+  ReadonlyArray<Event>;
 
-export type ActivityListReceivedEventsForUserResolver = msw.HttpResponseResolver<
-  ActivityListReceivedEventsForUserRequestParams,
-  ActivityListReceivedEventsForUserRequestBody,
-  ActivityListReceivedEventsForUserResponseBody
->;
+export type ActivityListReceivedEventsForUserResolver =
+  msw.HttpResponseResolver<
+    ActivityListReceivedEventsForUserRequestParams,
+    ActivityListReceivedEventsForUserRequestBody,
+    ActivityListReceivedEventsForUserResponseBody
+  >;
 
 export type ActivityListReceivedPublicEventsForUserRequestQuery = {
   readonly per_page?: string;
@@ -27515,13 +27985,15 @@ export type ActivityListReceivedPublicEventsForUserRequestBody = never;
 
 export type ActivityListReceivedPublicEventsForUserResponseStatus = 200;
 
-export type ActivityListReceivedPublicEventsForUserResponseBody = ReadonlyArray<Event>;
+export type ActivityListReceivedPublicEventsForUserResponseBody =
+  ReadonlyArray<Event>;
 
-export type ActivityListReceivedPublicEventsForUserResolver = msw.HttpResponseResolver<
-  ActivityListReceivedPublicEventsForUserRequestParams,
-  ActivityListReceivedPublicEventsForUserRequestBody,
-  ActivityListReceivedPublicEventsForUserResponseBody
->;
+export type ActivityListReceivedPublicEventsForUserResolver =
+  msw.HttpResponseResolver<
+    ActivityListReceivedPublicEventsForUserRequestParams,
+    ActivityListReceivedPublicEventsForUserRequestBody,
+    ActivityListReceivedPublicEventsForUserResponseBody
+  >;
 
 export type ReposListForUserRequestQuery = {
   readonly type?: string;
@@ -27559,13 +28031,15 @@ export type BillingGetGithubActionsBillingUserRequestBody = never;
 
 export type BillingGetGithubActionsBillingUserResponseStatus = 200;
 
-export type BillingGetGithubActionsBillingUserResponseBody = ActionsBillingUsage;
+export type BillingGetGithubActionsBillingUserResponseBody =
+  ActionsBillingUsage;
 
-export type BillingGetGithubActionsBillingUserResolver = msw.HttpResponseResolver<
-  BillingGetGithubActionsBillingUserRequestParams,
-  BillingGetGithubActionsBillingUserRequestBody,
-  BillingGetGithubActionsBillingUserResponseBody
->;
+export type BillingGetGithubActionsBillingUserResolver =
+  msw.HttpResponseResolver<
+    BillingGetGithubActionsBillingUserRequestParams,
+    BillingGetGithubActionsBillingUserRequestBody,
+    BillingGetGithubActionsBillingUserResponseBody
+  >;
 
 export type BillingGetGithubPackagesBillingUserRequestQuery = {};
 
@@ -27579,13 +28053,15 @@ export type BillingGetGithubPackagesBillingUserRequestBody = never;
 
 export type BillingGetGithubPackagesBillingUserResponseStatus = 200;
 
-export type BillingGetGithubPackagesBillingUserResponseBody = PackagesBillingUsage;
+export type BillingGetGithubPackagesBillingUserResponseBody =
+  PackagesBillingUsage;
 
-export type BillingGetGithubPackagesBillingUserResolver = msw.HttpResponseResolver<
-  BillingGetGithubPackagesBillingUserRequestParams,
-  BillingGetGithubPackagesBillingUserRequestBody,
-  BillingGetGithubPackagesBillingUserResponseBody
->;
+export type BillingGetGithubPackagesBillingUserResolver =
+  msw.HttpResponseResolver<
+    BillingGetGithubPackagesBillingUserRequestParams,
+    BillingGetGithubPackagesBillingUserRequestBody,
+    BillingGetGithubPackagesBillingUserResponseBody
+  >;
 
 export type BillingGetSharedStorageBillingUserRequestQuery = {};
 
@@ -27599,13 +28075,15 @@ export type BillingGetSharedStorageBillingUserRequestBody = never;
 
 export type BillingGetSharedStorageBillingUserResponseStatus = 200;
 
-export type BillingGetSharedStorageBillingUserResponseBody = CombinedBillingUsage;
+export type BillingGetSharedStorageBillingUserResponseBody =
+  CombinedBillingUsage;
 
-export type BillingGetSharedStorageBillingUserResolver = msw.HttpResponseResolver<
-  BillingGetSharedStorageBillingUserRequestParams,
-  BillingGetSharedStorageBillingUserRequestBody,
-  BillingGetSharedStorageBillingUserResponseBody
->;
+export type BillingGetSharedStorageBillingUserResolver =
+  msw.HttpResponseResolver<
+    BillingGetSharedStorageBillingUserRequestParams,
+    BillingGetSharedStorageBillingUserRequestBody,
+    BillingGetSharedStorageBillingUserResponseBody
+  >;
 
 export type UsersListSshSigningKeysForUserRequestQuery = {
   readonly per_page?: string;
@@ -27622,7 +28100,8 @@ export type UsersListSshSigningKeysForUserRequestBody = never;
 
 export type UsersListSshSigningKeysForUserResponseStatus = 200;
 
-export type UsersListSshSigningKeysForUserResponseBody = ReadonlyArray<SshSigningKey>;
+export type UsersListSshSigningKeysForUserResponseBody =
+  ReadonlyArray<SshSigningKey>;
 
 export type UsersListSshSigningKeysForUserResolver = msw.HttpResponseResolver<
   UsersListSshSigningKeysForUserRequestParams,
@@ -27677,7 +28156,8 @@ export type ActivityListReposWatchedByUserRequestBody = never;
 
 export type ActivityListReposWatchedByUserResponseStatus = 200;
 
-export type ActivityListReposWatchedByUserResponseBody = ReadonlyArray<MinimalRepository>;
+export type ActivityListReposWatchedByUserResponseBody =
+  ReadonlyArray<MinimalRepository>;
 
 export type ActivityListReposWatchedByUserResolver = msw.HttpResponseResolver<
   ActivityListReposWatchedByUserRequestParams,

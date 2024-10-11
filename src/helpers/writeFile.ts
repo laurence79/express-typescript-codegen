@@ -11,7 +11,7 @@ const prettierStyle = {
   printWidth: 80
 } as const;
 
-export const writeFile = ({
+export const writeFile = async ({
   content,
   logger,
   filename
@@ -19,7 +19,7 @@ export const writeFile = ({
   content: string;
   logger?: Logger;
   filename: string;
-}): void => {
+}): Promise<void> => {
   const log = logger?.create('Writing file');
 
   log?.(progress('Creating output directory'));
@@ -41,9 +41,9 @@ export const writeFile = ({
     }
   })();
 
-  const formattedContent = (() => {
+  const formattedContent = await (async () => {
     try {
-      return prettier.format(content, {
+      return await prettier.format(content, {
         ...prettierStyle,
         parser
       });

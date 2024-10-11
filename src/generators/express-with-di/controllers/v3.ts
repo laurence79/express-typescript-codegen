@@ -14,7 +14,7 @@ import { makeIdentifier } from '../../../templates/makeIdentifier';
 const convertFormDataToSchemaObject = (
   formData?: OpenApiV3.MediaTypeObject
 ): OpenApiV3.ReferenceObject | OpenApiV3.SchemaObject | undefined => {
-  if (!formData || !formData.schema) return undefined;
+  if (!formData?.schema) return undefined;
 
   return {
     type: 'object',
@@ -117,7 +117,6 @@ export const fromV3 = (
         };
 
         params.forEach(v => {
-          // eslint-disable-next-line @typescript-eslint/naming-convention
           const { in: _, name, required, ...rest } = v;
 
           const propertyType = (() => {
@@ -168,7 +167,7 @@ export const fromV3 = (
 
       const expressPath = path.replace(
         /\{(?:.*?)\}/g,
-        x => `:${x.substr(1, x.length - 2)}`
+        x => `:${x.substring(1, x.length - 1)}`
       );
 
       log?.(progress(operationId));
@@ -183,8 +182,8 @@ export const fromV3 = (
         operationId,
         pathParamsType,
         pathSchema,
-        responseBodyType: responseBodyType || options.emptyType,
-        bodyParamType: bodyParamType || options.emptyType,
+        responseBodyType: responseBodyType ?? options.emptyType,
+        bodyParamType: bodyParamType ?? options.emptyType,
         bodySchema,
         queryParamsType,
         querySchema,

@@ -1,9 +1,0 @@
-uses:
-  repo: git@github.com:rivr-systems/oap-repo-templates.git
-  path: public-cli
-
-parameters:
-  projectName: "express-typescript-codegen"
-  projectTitle: "Express Typescript Code Generator"
-  projectDescription: "Generate typed request handlers from an OpenApi spec."
-  repoName: "express-typescript-codegen"

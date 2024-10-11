@@ -24,7 +24,7 @@ export const fromV2 = (
       const jsonBody = (): ClientMethodTemplateArgs['body'] => {
         const bodyArg = parameters.filter(p => p.in === 'body').first();
 
-        if (!bodyArg || bodyArg.in !== 'body') return null;
+        if (!bodyArg) return null;
 
         const { schema, required = false } = bodyArg;
 
@@ -84,6 +84,7 @@ export const fromV2 = (
               required: p.required ?? false,
               type: p.schema
                 ? HelpersV2.typeDefForSchema(
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                     p.schema,
                     document,
                     options,
@@ -98,6 +99,7 @@ export const fromV2 = (
               required: p.required ?? false,
               type: p.schema
                 ? HelpersV2.typeDefForSchema(
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                     p.schema,
                     document,
                     options,
@@ -120,6 +122,7 @@ export const fromV2 = (
               return {
                 statusCode,
                 type: 'json',
+                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                 jsonType: schema
                   ? HelpersV2.typeDefForSchema(
                       schema,

@@ -1,5 +1,3 @@
-/* eslint-disable prefer-template */
-/* eslint-disable no-template-curly-in-string */
 import * as OpenApi from '../../types/OpenApi';
 import 'ts-array-extensions';
 import { Logger, success } from '../../lib/cli-logging';

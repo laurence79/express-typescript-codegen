@@ -7,9 +7,9 @@ export class JsonWalker {
     itemCallback: (obj: JsonMap, ptr: string) => void,
     ptr?: string
   ): void {
-    obj.forEach((item, index) =>
-      JsonWalker.walk(item, itemCallback, pointerSub(ptr ?? '', index))
-    );
+    obj.forEach((item, index) => {
+      JsonWalker.walk(item, itemCallback, pointerSub(ptr ?? '', index));
+    });
   }
 
   private static walkMap(
@@ -17,9 +17,9 @@ export class JsonWalker {
     itemCallback: (obj: JsonMap, ptr: string) => void,
     ptr?: string
   ): void {
-    Object.entries(obj).forEach(([key, item]) =>
-      JsonWalker.walk(item, itemCallback, pointerSub(ptr ?? '', key))
-    );
+    Object.entries(obj).forEach(([key, item]) => {
+      JsonWalker.walk(item, itemCallback, pointerSub(ptr ?? '', key));
+    });
   }
 
   public static walk(

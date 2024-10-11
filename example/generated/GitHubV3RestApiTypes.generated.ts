@@ -960,12 +960,13 @@ export type EnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse = {
   body: unknown;
 };
 
-export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest = {
-  body: unknown;
-  path: { readonly enterprise: string };
-  query: { readonly per_page?: number; readonly page?: number };
-  header: {};
-};
+export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest =
+  {
+    body: unknown;
+    path: { readonly enterprise: string };
+    query: { readonly per_page?: number; readonly page?: number };
+    header: {};
+  };
 
 export type OrganizationSimple = {
   readonly login: string;
@@ -982,49 +983,47 @@ export type OrganizationSimple = {
   readonly description: string | null;
 };
 
-export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse = {
-  status: 200;
-  body: {
-    readonly total_count: number;
-    readonly organizations: ReadonlyArray<OrganizationSimple>;
+export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse =
+  {
+    status: 200;
+    body: {
+      readonly total_count: number;
+      readonly organizations: ReadonlyArray<OrganizationSimple>;
+    };
   };
-};
 
-export type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest = {
-  body: { readonly selected_organization_ids: ReadonlyArray<number> };
-  path: { readonly enterprise: string };
-  query: {};
-  header: {};
-};
+export type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest =
+  {
+    body: { readonly selected_organization_ids: ReadonlyArray<number> };
+    path: { readonly enterprise: string };
+    query: {};
+    header: {};
+  };
 
-export type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse = {
-  status: 204;
-  body: unknown;
-};
+export type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse =
+  { status: 204; body: unknown };
 
-export type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest = {
-  body: unknown;
-  path: { readonly enterprise: string; readonly org_id: number };
-  query: {};
-  header: {};
-};
+export type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest =
+  {
+    body: unknown;
+    path: { readonly enterprise: string; readonly org_id: number };
+    query: {};
+    header: {};
+  };
 
-export type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse = {
-  status: 204;
-  body: unknown;
-};
+export type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse =
+  { status: 204; body: unknown };
 
-export type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest = {
-  body: unknown;
-  path: { readonly enterprise: string; readonly org_id: number };
-  query: {};
-  header: {};
-};
+export type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest =
+  {
+    body: unknown;
+    path: { readonly enterprise: string; readonly org_id: number };
+    query: {};
+    header: {};
+  };
 
-export type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse = {
-  status: 204;
-  body: unknown;
-};
+export type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse =
+  { status: 204; body: unknown };
 
 export type EnterpriseAdminGetAllowedActionsEnterpriseRequest = {
   body: unknown;
@@ -1056,12 +1055,13 @@ export type EnterpriseAdminSetAllowedActionsEnterpriseResponse = {
   body: unknown;
 };
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseRequest = {
-  body: unknown;
-  path: { readonly enterprise: string };
-  query: {};
-  header: {};
-};
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseRequest =
+  {
+    body: unknown;
+    path: { readonly enterprise: string };
+    query: {};
+    header: {};
+  };
 
 export type ActionsDefaultWorkflowPermissions = 'read' | 'write';
 
@@ -1072,27 +1072,24 @@ export type ActionsGetDefaultWorkflowPermissions = {
   readonly can_approve_pull_request_reviews: ActionsCanApprovePullRequestReviews;
 };
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseResponse = {
-  status: 200;
-  body: ActionsGetDefaultWorkflowPermissions;
-};
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseResponse =
+  { status: 200; body: ActionsGetDefaultWorkflowPermissions };
 
 export type ActionsSetDefaultWorkflowPermissions = {
   readonly default_workflow_permissions?: ActionsDefaultWorkflowPermissions;
   readonly can_approve_pull_request_reviews?: ActionsCanApprovePullRequestReviews;
 };
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequest = {
-  body: ActionsSetDefaultWorkflowPermissions;
-  path: { readonly enterprise: string };
-  query: {};
-  header: {};
-};
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequest =
+  {
+    body: ActionsSetDefaultWorkflowPermissions;
+    path: { readonly enterprise: string };
+    query: {};
+    header: {};
+  };
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseResponse = {
-  status: 204;
-  body: unknown;
-};
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseResponse =
+  { status: 204; body: unknown };
 
 export type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest = {
   body: unknown;
@@ -1190,64 +1187,63 @@ export type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse = {
   body: unknown;
 };
 
-export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest = {
-  body: unknown;
-  path: { readonly enterprise: string; readonly runner_group_id: number };
-  query: { readonly per_page?: number; readonly page?: number };
-  header: {};
-};
-
-export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse = {
-  status: 200;
-  body: {
-    readonly total_count: number;
-    readonly organizations: ReadonlyArray<OrganizationSimple>;
+export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest =
+  {
+    body: unknown;
+    path: { readonly enterprise: string; readonly runner_group_id: number };
+    query: { readonly per_page?: number; readonly page?: number };
+    header: {};
   };
-};
 
-export type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest = {
-  body: { readonly selected_organization_ids: ReadonlyArray<number> };
-  path: { readonly enterprise: string; readonly runner_group_id: number };
-  query: {};
-  header: {};
-};
-
-export type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse = {
-  status: 204;
-  body: unknown;
-};
-
-export type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest = {
-  body: unknown;
-  path: {
-    readonly enterprise: string;
-    readonly runner_group_id: number;
-    readonly org_id: number;
+export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse =
+  {
+    status: 200;
+    body: {
+      readonly total_count: number;
+      readonly organizations: ReadonlyArray<OrganizationSimple>;
+    };
   };
-  query: {};
-  header: {};
-};
 
-export type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse = {
-  status: 204;
-  body: unknown;
-};
-
-export type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest = {
-  body: unknown;
-  path: {
-    readonly enterprise: string;
-    readonly runner_group_id: number;
-    readonly org_id: number;
+export type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest =
+  {
+    body: { readonly selected_organization_ids: ReadonlyArray<number> };
+    path: { readonly enterprise: string; readonly runner_group_id: number };
+    query: {};
+    header: {};
   };
-  query: {};
-  header: {};
-};
 
-export type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse = {
-  status: 204;
-  body: unknown;
-};
+export type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse =
+  { status: 204; body: unknown };
+
+export type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest =
+  {
+    body: unknown;
+    path: {
+      readonly enterprise: string;
+      readonly runner_group_id: number;
+      readonly org_id: number;
+    };
+    query: {};
+    header: {};
+  };
+
+export type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse =
+  { status: 204; body: unknown };
+
+export type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest =
+  {
+    body: unknown;
+    path: {
+      readonly enterprise: string;
+      readonly runner_group_id: number;
+      readonly org_id: number;
+    };
+    query: {};
+    header: {};
+  };
+
+export type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse =
+  { status: 204; body: unknown };
 
 export type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest = {
   body: unknown;
@@ -1307,21 +1303,20 @@ export type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse = {
   body: unknown;
 };
 
-export type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest = {
-  body: unknown;
-  path: {
-    readonly enterprise: string;
-    readonly runner_group_id: number;
-    readonly runner_id: number;
+export type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest =
+  {
+    body: unknown;
+    path: {
+      readonly enterprise: string;
+      readonly runner_group_id: number;
+      readonly runner_id: number;
+    };
+    query: {};
+    header: {};
   };
-  query: {};
-  header: {};
-};
 
-export type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse = {
-  status: 204;
-  body: unknown;
-};
+export type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse =
+  { status: 204; body: unknown };
 
 export type EnterpriseAdminListSelfHostedRunnersForEnterpriseRequest = {
   body: unknown;
@@ -1433,81 +1428,89 @@ export type EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseResponse =
     }
   | { status: 404; body: BasicError };
 
-export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequest = {
-  body: { readonly labels: ReadonlyArray<string> };
-  path: { readonly enterprise: string; readonly runner_id: number };
-  query: {};
-  header: {};
-};
+export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequest =
+  {
+    body: { readonly labels: ReadonlyArray<string> };
+    path: { readonly enterprise: string; readonly runner_id: number };
+    query: {};
+    header: {};
+  };
 
 export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseResponse =
-  | {
-      status: 200;
-      body: {
-        readonly total_count: number;
-        readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
-      };
-    }
-  | { status: 404; body: BasicError }
-  | { status: 422; body: ValidationErrorSimple };
 
-export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequest = {
-  body: { readonly labels: ReadonlyArray<string> };
-  path: { readonly enterprise: string; readonly runner_id: number };
-  query: {};
-  header: {};
-};
+    | {
+        status: 200;
+        body: {
+          readonly total_count: number;
+          readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
+        };
+      }
+    | { status: 404; body: BasicError }
+    | { status: 422; body: ValidationErrorSimple };
+
+export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequest =
+  {
+    body: { readonly labels: ReadonlyArray<string> };
+    path: { readonly enterprise: string; readonly runner_id: number };
+    query: {};
+    header: {};
+  };
 
 export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseResponse =
-  | {
-      status: 200;
-      body: {
-        readonly total_count: number;
-        readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
-      };
-    }
-  | { status: 404; body: BasicError }
-  | { status: 422; body: ValidationErrorSimple };
 
-export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseRequest = {
-  body: unknown;
-  path: { readonly enterprise: string; readonly runner_id: number };
-  query: {};
-  header: {};
-};
+    | {
+        status: 200;
+        body: {
+          readonly total_count: number;
+          readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
+        };
+      }
+    | { status: 404; body: BasicError }
+    | { status: 422; body: ValidationErrorSimple };
+
+export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseRequest =
+  {
+    body: unknown;
+    path: { readonly enterprise: string; readonly runner_id: number };
+    query: {};
+    header: {};
+  };
 
 export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseResponse =
-  | {
-      status: 200;
-      body: {
-        readonly total_count: number;
-        readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
-      };
-    }
-  | { status: 404; body: BasicError }
-  | { status: 422; body: ValidationErrorSimple };
 
-export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseRequest = {
-  body: unknown;
-  path: {
-    readonly enterprise: string;
-    readonly runner_id: number;
-    readonly name: string;
+    | {
+        status: 200;
+        body: {
+          readonly total_count: number;
+          readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
+        };
+      }
+    | { status: 404; body: BasicError }
+    | { status: 422; body: ValidationErrorSimple };
+
+export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseRequest =
+  {
+    body: unknown;
+    path: {
+      readonly enterprise: string;
+      readonly runner_id: number;
+      readonly name: string;
+    };
+    query: {};
+    header: {};
   };
-  query: {};
-  header: {};
-};
 
 export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseResponse =
-  | {
-      status: 200;
-      body: {
-        readonly total_count: number;
-        readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
-      };
-    }
-  | { status: 404; body: BasicError }
-  | { status: 422; body: ValidationErrorSimple };
+
+    | {
+        status: 200;
+        body: {
+          readonly total_count: number;
+          readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
+        };
+      }
+    | { status: 404; body: BasicError }
+    | { status: 422; body: ValidationErrorSimple };
 
 export type CodeScanningAnalysisToolName = string;
 
@@ -3219,32 +3222,33 @@ export type ActionsSetGithubActionsPermissionsOrganizationResponse = {
   body: unknown;
 };
 
-export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest = {
-  body: unknown;
-  path: { readonly org: string };
-  query: { readonly per_page?: number; readonly page?: number };
-  header: {};
-};
-
-export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse = {
-  status: 200;
-  body: {
-    readonly total_count: number;
-    readonly repositories: ReadonlyArray<Repository>;
+export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest =
+  {
+    body: unknown;
+    path: { readonly org: string };
+    query: { readonly per_page?: number; readonly page?: number };
+    header: {};
   };
-};
 
-export type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest = {
-  body: { readonly selected_repository_ids: ReadonlyArray<number> };
-  path: { readonly org: string };
-  query: {};
-  header: {};
-};
+export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse =
+  {
+    status: 200;
+    body: {
+      readonly total_count: number;
+      readonly repositories: ReadonlyArray<Repository>;
+    };
+  };
 
-export type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse = {
-  status: 204;
-  body: unknown;
-};
+export type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest =
+  {
+    body: { readonly selected_repository_ids: ReadonlyArray<number> };
+    path: { readonly org: string };
+    query: {};
+    header: {};
+  };
+
+export type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse =
+  { status: 204; body: unknown };
 
 export type ActionsEnableSelectedRepositoryGithubActionsOrganizationRequest = {
   body: unknown;
@@ -3265,10 +3269,8 @@ export type ActionsDisableSelectedRepositoryGithubActionsOrganizationRequest = {
   header: {};
 };
 
-export type ActionsDisableSelectedRepositoryGithubActionsOrganizationResponse = {
-  status: 204;
-  body: unknown;
-};
+export type ActionsDisableSelectedRepositoryGithubActionsOrganizationResponse =
+  { status: 204; body: unknown };
 
 export type ActionsGetAllowedActionsOrganizationRequest = {
   body: unknown;
@@ -3294,28 +3296,22 @@ export type ActionsSetAllowedActionsOrganizationResponse = {
   body: unknown;
 };
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationRequest = {
-  body: unknown;
-  path: { readonly org: string };
-  query: {};
-  header: {};
-};
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationRequest =
+  { body: unknown; path: { readonly org: string }; query: {}; header: {} };
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationResponse = {
-  status: 200;
-  body: ActionsGetDefaultWorkflowPermissions;
-};
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationResponse =
+  { status: 200; body: ActionsGetDefaultWorkflowPermissions };
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequest = {
-  body: ActionsSetDefaultWorkflowPermissions | undefined;
-  path: { readonly org: string };
-  query: {};
-  header: {};
-};
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequest =
+  {
+    body: ActionsSetDefaultWorkflowPermissions | undefined;
+    path: { readonly org: string };
+    query: {};
+    header: {};
+  };
 
 export type ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationResponse =
-  | { status: 204; body: unknown }
-  | { status: 409; body: unknown };
+  { status: 204; body: unknown } | { status: 409; body: unknown };
 
 export type ActionsListSelfHostedRunnerGroupsForOrgRequest = {
   body: unknown;
@@ -7527,28 +7523,27 @@ export type ActionsSetAllowedActionsRepositoryResponse = {
   body: unknown;
 };
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryRequest = {
-  body: unknown;
-  path: { readonly owner: string; readonly repo: string };
-  query: {};
-  header: {};
-};
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryRequest =
+  {
+    body: unknown;
+    path: { readonly owner: string; readonly repo: string };
+    query: {};
+    header: {};
+  };
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryResponse = {
-  status: 200;
-  body: ActionsGetDefaultWorkflowPermissions;
-};
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryResponse =
+  { status: 200; body: ActionsGetDefaultWorkflowPermissions };
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequest = {
-  body: ActionsSetDefaultWorkflowPermissions;
-  path: { readonly owner: string; readonly repo: string };
-  query: {};
-  header: {};
-};
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequest =
+  {
+    body: ActionsSetDefaultWorkflowPermissions;
+    path: { readonly owner: string; readonly repo: string };
+    query: {};
+    header: {};
+  };
 
 export type ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryResponse =
-  | { status: 204; body: unknown }
-  | { status: 409; body: unknown };
+  { status: 204; body: unknown } | { status: 409; body: unknown };
 
 export type ActionsListSelfHostedRunnersForRepoRequest = {
   body: unknown;
@@ -10291,29 +10286,31 @@ export type CodespacesCreateWithRepoForAuthenticatedUserResponse =
       };
     };
 
-export type CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequest = {
-  body: unknown;
-  path: { readonly owner: string; readonly repo: string };
-  query: { readonly per_page?: number; readonly page?: number };
-  header: {};
-};
+export type CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequest =
+  {
+    body: unknown;
+    path: { readonly owner: string; readonly repo: string };
+    query: { readonly per_page?: number; readonly page?: number };
+    header: {};
+  };
 
 export type CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponse =
-  | {
-      status: 200;
-      body: {
-        readonly total_count: number;
-        readonly devcontainers: ReadonlyArray<{
-          readonly path: string;
-          readonly name?: string;
-        }>;
-      };
-    }
-  | { status: 400; body: BasicError }
-  | { status: 401; body: BasicError }
-  | { status: 403; body: BasicError }
-  | { status: 404; body: BasicError }
-  | { status: 500; body: BasicError };
+
+    | {
+        status: 200;
+        body: {
+          readonly total_count: number;
+          readonly devcontainers: ReadonlyArray<{
+            readonly path: string;
+            readonly name?: string;
+          }>;
+        };
+      }
+    | { status: 400; body: BasicError }
+    | { status: 401; body: BasicError }
+    | { status: 403; body: BasicError }
+    | { status: 404; body: BasicError }
+    | { status: 500; body: BasicError };
 
 export type CodespacesRepoMachinesForAuthenticatedUserRequest = {
   body: unknown;
@@ -18782,31 +18779,33 @@ export type PackagesRestorePackageForAuthenticatedUserResponse =
   | { status: 403; body: BasicError }
   | { status: 404; body: BasicError };
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest = {
-  body: unknown;
-  path: {
-    readonly package_type:
-      | 'npm'
-      | 'maven'
-      | 'rubygems'
-      | 'docker'
-      | 'nuget'
-      | 'container';
-    readonly package_name: string;
+export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest =
+  {
+    body: unknown;
+    path: {
+      readonly package_type:
+        | 'npm'
+        | 'maven'
+        | 'rubygems'
+        | 'docker'
+        | 'nuget'
+        | 'container';
+      readonly package_name: string;
+    };
+    query: {
+      readonly page?: number;
+      readonly per_page?: number;
+      readonly state?: 'active' | 'deleted';
+    };
+    header: {};
   };
-  query: {
-    readonly page?: number;
-    readonly per_page?: number;
-    readonly state?: 'active' | 'deleted';
-  };
-  header: {};
-};
 
 export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse =
-  | { status: 200; body: ReadonlyArray<PackageVersion> }
-  | { status: 401; body: BasicError }
-  | { status: 403; body: BasicError }
-  | { status: 404; body: BasicError };
+
+    | { status: 200; body: ReadonlyArray<PackageVersion> }
+    | { status: 401; body: BasicError }
+    | { status: 403; body: BasicError }
+    | { status: 404; body: BasicError };
 
 export type PackagesGetPackageVersionForAuthenticatedUserRequest = {
   body: unknown;

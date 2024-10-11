@@ -575,7 +575,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, AddPetController);
 
           await controller.addPet(
-            (req as unknown) as AddPetRequest,
+            req as unknown as AddPetRequest,
             res as AddPetResponse,
             next
           );
@@ -647,7 +647,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, UpdatePetController);
 
           await controller.updatePet(
-            (req as unknown) as UpdatePetRequest,
+            req as unknown as UpdatePetRequest,
             res as UpdatePetResponse,
             next
           );
@@ -696,7 +696,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, FindPetsByStatusController);
 
           await controller.findPetsByStatus(
-            (req as unknown) as FindPetsByStatusRequest,
+            req as unknown as FindPetsByStatusRequest,
             res as FindPetsByStatusResponse,
             next
           );
@@ -736,7 +736,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, FindPetsByTagsController);
 
           await controller.findPetsByTags(
-            (req as unknown) as FindPetsByTagsRequest,
+            req as unknown as FindPetsByTagsRequest,
             res as FindPetsByTagsResponse,
             next
           );
@@ -770,7 +770,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GetPetByIdController);
 
           await controller.getPetById(
-            (req as unknown) as GetPetByIdRequest,
+            req as unknown as GetPetByIdRequest,
             res as GetPetByIdResponse,
             next
           );
@@ -804,7 +804,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, UpdatePetWithFormController);
 
           await controller.updatePetWithForm(
-            (req as unknown) as UpdatePetWithFormRequest,
+            req as unknown as UpdatePetWithFormRequest,
             res as UpdatePetWithFormResponse,
             next
           );
@@ -838,7 +838,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, DeletePetController);
 
           await controller.deletePet(
-            (req as unknown) as DeletePetRequest,
+            req as unknown as DeletePetRequest,
             res as DeletePetResponse,
             next
           );
@@ -883,7 +883,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, PlaceOrderController);
 
           await controller.placeOrder(
-            (req as unknown) as PlaceOrderRequest,
+            req as unknown as PlaceOrderRequest,
             res as PlaceOrderResponse,
             next
           );
@@ -919,7 +919,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GetOrderByIdController);
 
           await controller.getOrderById(
-            (req as unknown) as GetOrderByIdRequest,
+            req as unknown as GetOrderByIdRequest,
             res as GetOrderByIdResponse,
             next
           );
@@ -954,7 +954,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, DeleteOrderController);
 
           await controller.deleteOrder(
-            (req as unknown) as DeleteOrderRequest,
+            req as unknown as DeleteOrderRequest,
             res as DeleteOrderResponse,
             next
           );
@@ -974,7 +974,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GetInventoryController);
 
           await controller.getInventory(
-            (req as unknown) as GetInventoryRequest,
+            req as unknown as GetInventoryRequest,
             res as GetInventoryResponse,
             next
           );
@@ -1025,7 +1025,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.createUsersWithArrayInput(
-            (req as unknown) as CreateUsersWithArrayInputRequest,
+            req as unknown as CreateUsersWithArrayInputRequest,
             res as CreateUsersWithArrayInputResponse,
             next
           );
@@ -1076,7 +1076,7 @@ export abstract class ControllerMiddleware {
           );
 
           await controller.createUsersWithListInput(
-            (req as unknown) as CreateUsersWithListInputRequest,
+            req as unknown as CreateUsersWithListInputRequest,
             res as CreateUsersWithListInputResponse,
             next
           );
@@ -1110,7 +1110,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, GetUserByNameController);
 
           await controller.getUserByName(
-            (req as unknown) as GetUserByNameRequest,
+            req as unknown as GetUserByNameRequest,
             res as GetUserByNameResponse,
             next
           );
@@ -1168,7 +1168,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, UpdateUserController);
 
           await controller.updateUser(
-            (req as unknown) as UpdateUserRequest,
+            req as unknown as UpdateUserRequest,
             res as UpdateUserResponse,
             next
           );
@@ -1201,7 +1201,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, DeleteUserController);
 
           await controller.deleteUser(
-            (req as unknown) as DeleteUserRequest,
+            req as unknown as DeleteUserRequest,
             res as DeleteUserResponse,
             next
           );
@@ -1238,7 +1238,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, LoginUserController);
 
           await controller.loginUser(
-            (req as unknown) as LoginUserRequest,
+            req as unknown as LoginUserRequest,
             res as LoginUserResponse,
             next
           );
@@ -1258,7 +1258,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, LogoutUserController);
 
           await controller.logoutUser(
-            (req as unknown) as LogoutUserRequest,
+            req as unknown as LogoutUserRequest,
             res as LogoutUserResponse,
             next
           );
@@ -1305,7 +1305,7 @@ export abstract class ControllerMiddleware {
           const controller = this.resolver(req, CreateUserController);
 
           await controller.createUser(
-            (req as unknown) as CreateUserRequest,
+            req as unknown as CreateUserRequest,
             res as CreateUserResponse,
             next
           );

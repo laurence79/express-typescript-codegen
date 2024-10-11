@@ -5,7 +5,7 @@ import { inferOperationId } from '../../inferOperationId';
 import { isReferenceObject } from './isReferenceObject';
 import { methodsOfPathItemObject } from './methodsOfPathItemObject';
 
-type MappedOperation = {
+interface MappedOperation {
   path: string;
   method: string;
   operationId: string;
@@ -15,7 +15,7 @@ type MappedOperation = {
     statusCode: string;
     response: OpenApiV2.ResponseObject;
   }[];
-};
+}
 
 export const mapOperations = (
   document: OpenApiV2.Document
@@ -61,7 +61,7 @@ export const mapOperations = (
           method,
           operationId,
           operation: operationObject,
-          parameters: inlinedParameters ?? [],
+          parameters: inlinedParameters,
           responses: inlinedResponses
         };
       }

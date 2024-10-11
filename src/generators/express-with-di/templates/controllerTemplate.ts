@@ -1,6 +1,6 @@
 import { JSONSchema7 } from 'json-schema';
 
-export type ControllerTemplateArgs = {
+export interface ControllerTemplateArgs {
   httpMethod: string;
   expressPath: string;
   requestTypeName: string;
@@ -15,7 +15,7 @@ export type ControllerTemplateArgs = {
   querySchema?: JSONSchema7;
   bodySchema?: JSONSchema7;
   pathSchema?: JSONSchema7;
-};
+}
 export const controllerTemplate = ({
   requestTypeName,
   responseTypeName,

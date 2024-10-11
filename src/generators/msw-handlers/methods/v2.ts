@@ -27,27 +27,23 @@ export const fromV2 = (
         'body'
       ];
 
-      const [
-        headerType,
-        pathType,
-        queryType,
-        requestBodyType
-      ] = parameterTypes.map(paramType => {
-        const paramsOfType = parameters.filter(p => p.in === paramType);
+      const [headerType, pathType, queryType, requestBodyType] =
+        parameterTypes.map(paramType => {
+          const paramsOfType = parameters.filter(p => p.in === paramType);
 
-        return HelpersV2.typeDefForSchema(
-          {
-            type: 'object',
-            properties: Object.fromEntries(
-              paramsOfType.map(p => [p.name, p.schema ?? { type: 'string' }])
-            ),
-            required: paramsOfType.filter(p => p.required).map(p => p.name)
-          },
-          document,
-          options,
-          context
-        );
-      });
+          return HelpersV2.typeDefForSchema(
+            {
+              type: 'object',
+              properties: Object.fromEntries(
+                paramsOfType.map(p => [p.name, p.schema ?? { type: 'string' }])
+              ),
+              required: paramsOfType.filter(p => p.required).map(p => p.name)
+            },
+            document,
+            options,
+            context
+          );
+        });
 
       context.emitType(`${operationTypePrefix}RequestQuery`, queryType);
 
@@ -100,7 +96,7 @@ export const fromV2 = (
 
       const expressPath = path.replace(
         /\{(?:.*?)\}/g,
-        x => `:${x.substr(1, x.length - 2)}`
+        x => `:${x.substring(1, x.length - 1)}`
       );
 
       return `

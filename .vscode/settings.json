@@ -23,6 +23,8 @@
     "apidevtools",
     "openapi",
     "rivr",
-    "ttsc"
+    "tseslint",
+    "ttsc",
+    "wireit"
   ]
 }

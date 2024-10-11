@@ -24,10 +24,10 @@ export const generateCode = async (
     ...inputOptions
   };
 
-  const openApiDocument = ((await load(
+  const openApiDocument = (await load(
     options.openApiDocumentFilenameOrUrl,
     options.logger
-  )) as unknown) as OpenApi.Document;
+  )) as unknown as OpenApi.Document;
 
   const serviceName =
     inputOptions.serviceName ?? makeIdentifier(openApiDocument.info.title);
@@ -77,7 +77,7 @@ export const generateCode = async (
     }
   })();
 
-  writeFile({
+  await writeFile({
     ...renderDeps,
     content: method(renderDeps)
   });

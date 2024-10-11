@@ -1,6 +1,6 @@
 import { JSONSchema7 } from 'json-schema';
 
-export type HandlerTemplateArgs = {
+export interface HandlerTemplateArgs {
   httpMethod: string;
   expressPath: string;
   requestTypeName: string;
@@ -15,7 +15,7 @@ export type HandlerTemplateArgs = {
   querySchema?: JSONSchema7;
   bodySchema?: JSONSchema7;
   pathSchema?: JSONSchema7;
-};
+}
 export const handlerTemplate = ({
   requestTypeName,
   responseTypeName,

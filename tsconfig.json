@@ -1,5 +1,5 @@
 {
-  "extends": "./tsconfig.node14.json",
+  "extends": "@tsconfig/node20/tsconfig.json",
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
@@ -7,25 +7,21 @@
     "allowUnusedLabels": false,
     "alwaysStrict": true,
     "baseUrl": ".",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
-    "noEmit": true,
+    "declaration": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
-    "noImplicitThis": true,
     "noImplicitReturns": true,
+    "noImplicitThis": true,
     "noUnusedParameters": true,
+    "outDir": "dist",
     "pretty": true,
     "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
     "strictBindCallApply": true,
     "strictFunctionTypes": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
-    "types": ["node", "jest"]
+    "types": ["node", "jest"],
   },
-  "exclude": ["node_modules"],
-  "include": ["src", ".eslintrc.js", "jest.config.js", "rollup.config.js", "example"]
+  "include": ["src"],
+  "ts-node": { "swc": true }
 }

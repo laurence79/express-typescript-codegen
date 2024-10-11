@@ -166,7 +166,8 @@ export type SimpleWebhookDelivery = {
   readonly repository_id: number | null;
 };
 
-export type AppsListWebhookDeliveries200ResponseBody = ReadonlyArray<SimpleWebhookDelivery>;
+export type AppsListWebhookDeliveries200ResponseBody =
+  ReadonlyArray<SimpleWebhookDelivery>;
 
 export type AppsListWebhookDeliveries400ResponseBody = BasicError;
 
@@ -580,7 +581,8 @@ export type InstallationToken = {
   readonly single_file_paths?: ReadonlyArray<string>;
 };
 
-export type AppsCreateInstallationAccessToken201ResponseBody = InstallationToken;
+export type AppsCreateInstallationAccessToken201ResponseBody =
+  InstallationToken;
 
 export type AppsCreateInstallationAccessToken401ResponseBody = BasicError;
 
@@ -713,7 +715,8 @@ export type CodeOfConduct = {
   readonly html_url: string | null;
 };
 
-export type CodesOfConductGetAllCodesOfConduct200ResponseBody = ReadonlyArray<CodeOfConduct>;
+export type CodesOfConductGetAllCodesOfConduct200ResponseBody =
+  ReadonlyArray<CodeOfConduct>;
 
 export type CodesOfConductGetConductCode200ResponseBody = CodeOfConduct;
 
@@ -792,7 +795,8 @@ export type ServerStatisticsProxyEndpoint = ReadonlyArray<{
   };
 }>;
 
-export type EnterpriseAdminGetServerStatistics200ResponseBody = ServerStatisticsProxyEndpoint;
+export type EnterpriseAdminGetServerStatistics200ResponseBody =
+  ServerStatisticsProxyEndpoint;
 
 export type EnterpriseAdminGetServerStatisticsRequestQuery = {
   readonly date_start?: string;
@@ -808,7 +812,8 @@ export type ActionsCacheUsageOrgEnterprise = {
   readonly total_active_caches_size_in_bytes: number;
 };
 
-export type ActionsGetActionsCacheUsageForEnterprise200ResponseBody = ActionsCacheUsageOrgEnterprise;
+export type ActionsGetActionsCacheUsageForEnterprise200ResponseBody =
+  ActionsCacheUsageOrgEnterprise;
 
 export type ActionsGetActionsCacheUsageForEnterpriseRequestPath = {
   readonly enterprise: string;
@@ -827,7 +832,8 @@ export type ActionsEnterprisePermissions = {
   readonly selected_actions_url?: SelectedActionsUrl;
 };
 
-export type EnterpriseAdminGetGithubActionsPermissionsEnterprise200ResponseBody = ActionsEnterprisePermissions;
+export type EnterpriseAdminGetGithubActionsPermissionsEnterprise200ResponseBody =
+  ActionsEnterprisePermissions;
 
 export type EnterpriseAdminGetGithubActionsPermissionsEnterpriseRequestPath = {
   readonly enterprise: string;
@@ -857,37 +863,29 @@ export type OrganizationSimple = {
   readonly description: string | null;
 };
 
-export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise200ResponseBody = {
-  readonly total_count: number;
-  readonly organizations: ReadonlyArray<OrganizationSimple>;
-};
+export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise200ResponseBody =
+  {
+    readonly total_count: number;
+    readonly organizations: ReadonlyArray<OrganizationSimple>;
+  };
 
-export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequestQuery = {
-  readonly per_page?: number;
-  readonly page?: number;
-};
+export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequestQuery =
+  { readonly per_page?: number; readonly page?: number };
 
-export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequestPath = {
-  readonly enterprise: string;
-};
+export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequestPath =
+  { readonly enterprise: string };
 
-export type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestBody = {
-  readonly selected_organization_ids: ReadonlyArray<number>;
-};
+export type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestBody =
+  { readonly selected_organization_ids: ReadonlyArray<number> };
 
-export type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestPath = {
-  readonly enterprise: string;
-};
+export type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestPath =
+  { readonly enterprise: string };
 
-export type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequestPath = {
-  readonly enterprise: string;
-  readonly org_id: number;
-};
+export type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequestPath =
+  { readonly enterprise: string; readonly org_id: number };
 
-export type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequestPath = {
-  readonly enterprise: string;
-  readonly org_id: number;
-};
+export type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequestPath =
+  { readonly enterprise: string; readonly org_id: number };
 
 export type SelectedActions = {
   readonly github_owned_allowed?: boolean;
@@ -895,13 +893,15 @@ export type SelectedActions = {
   readonly patterns_allowed?: ReadonlyArray<string>;
 };
 
-export type EnterpriseAdminGetAllowedActionsEnterprise200ResponseBody = SelectedActions;
+export type EnterpriseAdminGetAllowedActionsEnterprise200ResponseBody =
+  SelectedActions;
 
 export type EnterpriseAdminGetAllowedActionsEnterpriseRequestPath = {
   readonly enterprise: string;
 };
 
-export type EnterpriseAdminSetAllowedActionsEnterpriseRequestBody = SelectedActions;
+export type EnterpriseAdminSetAllowedActionsEnterpriseRequestBody =
+  SelectedActions;
 
 export type EnterpriseAdminSetAllowedActionsEnterpriseRequestPath = {
   readonly enterprise: string;
@@ -916,22 +916,22 @@ export type ActionsGetDefaultWorkflowPermissions = {
   readonly can_approve_pull_request_reviews: ActionsCanApprovePullRequestReviews;
 };
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterprise200ResponseBody = ActionsGetDefaultWorkflowPermissions;
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterprise200ResponseBody =
+  ActionsGetDefaultWorkflowPermissions;
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestPath = {
-  readonly enterprise: string;
-};
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestPath =
+  { readonly enterprise: string };
 
 export type ActionsSetDefaultWorkflowPermissions = {
   readonly default_workflow_permissions?: ActionsDefaultWorkflowPermissions;
   readonly can_approve_pull_request_reviews?: ActionsCanApprovePullRequestReviews;
 };
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestBody = ActionsSetDefaultWorkflowPermissions;
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestBody =
+  ActionsSetDefaultWorkflowPermissions;
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestPath = {
-  readonly enterprise: string;
-};
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestPath =
+  { readonly enterprise: string };
 
 export type RunnerGroupsEnterprise = {
   readonly id: number;
@@ -946,99 +946,96 @@ export type RunnerGroupsEnterprise = {
   readonly selected_workflows?: ReadonlyArray<string>;
 };
 
-export type EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise200ResponseBody = {
-  readonly total_count: number;
-  readonly runner_groups: ReadonlyArray<RunnerGroupsEnterprise>;
-};
+export type EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise200ResponseBody =
+  {
+    readonly total_count: number;
+    readonly runner_groups: ReadonlyArray<RunnerGroupsEnterprise>;
+  };
 
-export type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequestQuery = {
-  readonly per_page?: number;
-  readonly page?: number;
-  readonly visible_to_organization?: string;
-};
+export type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequestQuery =
+  {
+    readonly per_page?: number;
+    readonly page?: number;
+    readonly visible_to_organization?: string;
+  };
 
-export type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequestPath = {
-  readonly enterprise: string;
-};
+export type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequestPath =
+  { readonly enterprise: string };
 
-export type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise201ResponseBody = RunnerGroupsEnterprise;
+export type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise201ResponseBody =
+  RunnerGroupsEnterprise;
 
-export type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestBody = {
-  readonly name: string;
-  readonly visibility?: 'selected' | 'all';
-  readonly selected_organization_ids?: ReadonlyArray<number>;
-  readonly runners?: ReadonlyArray<number>;
-  readonly allows_public_repositories?: boolean;
-  readonly restricted_to_workflows?: boolean;
-  readonly selected_workflows?: ReadonlyArray<string>;
-};
+export type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestBody =
+  {
+    readonly name: string;
+    readonly visibility?: 'selected' | 'all';
+    readonly selected_organization_ids?: ReadonlyArray<number>;
+    readonly runners?: ReadonlyArray<number>;
+    readonly allows_public_repositories?: boolean;
+    readonly restricted_to_workflows?: boolean;
+    readonly selected_workflows?: ReadonlyArray<string>;
+  };
 
-export type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestPath = {
-  readonly enterprise: string;
-};
+export type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestPath =
+  { readonly enterprise: string };
 
-export type EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise200ResponseBody = RunnerGroupsEnterprise;
+export type EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise200ResponseBody =
+  RunnerGroupsEnterprise;
 
 export type EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequestPath = {
   readonly enterprise: string;
   readonly runner_group_id: number;
 };
 
-export type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise200ResponseBody = RunnerGroupsEnterprise;
+export type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise200ResponseBody =
+  RunnerGroupsEnterprise;
 
-export type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestBody = {
-  readonly name?: string;
-  readonly visibility?: 'selected' | 'all';
-  readonly allows_public_repositories?: boolean;
-  readonly restricted_to_workflows?: boolean;
-  readonly selected_workflows?: ReadonlyArray<string>;
-};
+export type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestBody =
+  {
+    readonly name?: string;
+    readonly visibility?: 'selected' | 'all';
+    readonly allows_public_repositories?: boolean;
+    readonly restricted_to_workflows?: boolean;
+    readonly selected_workflows?: ReadonlyArray<string>;
+  };
 
-export type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestPath = {
-  readonly enterprise: string;
-  readonly runner_group_id: number;
-};
+export type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestPath =
+  { readonly enterprise: string; readonly runner_group_id: number };
 
-export type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequestPath = {
-  readonly enterprise: string;
-  readonly runner_group_id: number;
-};
+export type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequestPath =
+  { readonly enterprise: string; readonly runner_group_id: number };
 
-export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise200ResponseBody = {
-  readonly total_count: number;
-  readonly organizations: ReadonlyArray<OrganizationSimple>;
-};
+export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise200ResponseBody =
+  {
+    readonly total_count: number;
+    readonly organizations: ReadonlyArray<OrganizationSimple>;
+  };
 
-export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestQuery = {
-  readonly per_page?: number;
-  readonly page?: number;
-};
+export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestQuery =
+  { readonly per_page?: number; readonly page?: number };
 
-export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestPath = {
-  readonly enterprise: string;
-  readonly runner_group_id: number;
-};
+export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestPath =
+  { readonly enterprise: string; readonly runner_group_id: number };
 
-export type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestBody = {
-  readonly selected_organization_ids: ReadonlyArray<number>;
-};
+export type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestBody =
+  { readonly selected_organization_ids: ReadonlyArray<number> };
 
-export type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestPath = {
-  readonly enterprise: string;
-  readonly runner_group_id: number;
-};
+export type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestPath =
+  { readonly enterprise: string; readonly runner_group_id: number };
 
-export type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestPath = {
-  readonly enterprise: string;
-  readonly runner_group_id: number;
-  readonly org_id: number;
-};
+export type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestPath =
+  {
+    readonly enterprise: string;
+    readonly runner_group_id: number;
+    readonly org_id: number;
+  };
 
-export type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestPath = {
-  readonly enterprise: string;
-  readonly runner_group_id: number;
-  readonly org_id: number;
-};
+export type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestPath =
+  {
+    readonly enterprise: string;
+    readonly runner_group_id: number;
+    readonly org_id: number;
+  };
 
 export type SelfHostedRunnerLabel = {
   readonly id?: number;
@@ -1055,41 +1052,37 @@ export type SelfHostedRunners = {
   readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
 };
 
-export type EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise200ResponseBody = {
-  readonly total_count: number;
-  readonly runners: ReadonlyArray<SelfHostedRunners>;
-};
+export type EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise200ResponseBody =
+  {
+    readonly total_count: number;
+    readonly runners: ReadonlyArray<SelfHostedRunners>;
+  };
 
-export type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequestQuery = {
-  readonly per_page?: number;
-  readonly page?: number;
-};
+export type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequestQuery =
+  { readonly per_page?: number; readonly page?: number };
 
-export type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequestPath = {
-  readonly enterprise: string;
-  readonly runner_group_id: number;
-};
+export type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequestPath =
+  { readonly enterprise: string; readonly runner_group_id: number };
 
-export type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestBody = {
-  readonly runners: ReadonlyArray<number>;
-};
+export type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestBody =
+  { readonly runners: ReadonlyArray<number> };
 
-export type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestPath = {
-  readonly enterprise: string;
-  readonly runner_group_id: number;
-};
+export type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestPath =
+  { readonly enterprise: string; readonly runner_group_id: number };
 
-export type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequestPath = {
-  readonly enterprise: string;
-  readonly runner_group_id: number;
-  readonly runner_id: number;
-};
+export type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequestPath =
+  {
+    readonly enterprise: string;
+    readonly runner_group_id: number;
+    readonly runner_id: number;
+  };
 
-export type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequestPath = {
-  readonly enterprise: string;
-  readonly runner_group_id: number;
-  readonly runner_id: number;
-};
+export type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequestPath =
+  {
+    readonly enterprise: string;
+    readonly runner_group_id: number;
+    readonly runner_id: number;
+  };
 
 export type EnterpriseAdminListSelfHostedRunnersForEnterprise200ResponseBody = {
   readonly total_count?: number;
@@ -1114,7 +1107,8 @@ export type RunnerApplication = {
   readonly sha256_checksum?: string;
 };
 
-export type EnterpriseAdminListRunnerApplicationsForEnterprise200ResponseBody = ReadonlyArray<RunnerApplication>;
+export type EnterpriseAdminListRunnerApplicationsForEnterprise200ResponseBody =
+  ReadonlyArray<RunnerApplication>;
 
 export type EnterpriseAdminListRunnerApplicationsForEnterpriseRequestPath = {
   readonly enterprise: string;
@@ -1129,19 +1123,22 @@ export type AuthenticationToken = {
   readonly repository_selection?: 'all' | 'selected';
 };
 
-export type EnterpriseAdminCreateRegistrationTokenForEnterprise201ResponseBody = AuthenticationToken;
+export type EnterpriseAdminCreateRegistrationTokenForEnterprise201ResponseBody =
+  AuthenticationToken;
 
 export type EnterpriseAdminCreateRegistrationTokenForEnterpriseRequestPath = {
   readonly enterprise: string;
 };
 
-export type EnterpriseAdminCreateRemoveTokenForEnterprise201ResponseBody = AuthenticationToken;
+export type EnterpriseAdminCreateRemoveTokenForEnterprise201ResponseBody =
+  AuthenticationToken;
 
 export type EnterpriseAdminCreateRemoveTokenForEnterpriseRequestPath = {
   readonly enterprise: string;
 };
 
-export type EnterpriseAdminGetSelfHostedRunnerForEnterprise200ResponseBody = SelfHostedRunners;
+export type EnterpriseAdminGetSelfHostedRunnerForEnterprise200ResponseBody =
+  SelfHostedRunners;
 
 export type EnterpriseAdminGetSelfHostedRunnerForEnterpriseRequestPath = {
   readonly enterprise: string;
@@ -1153,82 +1150,87 @@ export type EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequestPath = {
   readonly runner_id: number;
 };
 
-export type EnterpriseAdminListLabelsForSelfHostedRunnerForEnterprise200ResponseBody = {
-  readonly total_count: number;
-  readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
-};
+export type EnterpriseAdminListLabelsForSelfHostedRunnerForEnterprise200ResponseBody =
+  {
+    readonly total_count: number;
+    readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
+  };
 
-export type EnterpriseAdminListLabelsForSelfHostedRunnerForEnterprise404ResponseBody = BasicError;
+export type EnterpriseAdminListLabelsForSelfHostedRunnerForEnterprise404ResponseBody =
+  BasicError;
 
-export type EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseRequestPath = {
-  readonly enterprise: string;
-  readonly runner_id: number;
-};
+export type EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseRequestPath =
+  { readonly enterprise: string; readonly runner_id: number };
 
-export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterprise200ResponseBody = {
-  readonly total_count: number;
-  readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
-};
+export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterprise200ResponseBody =
+  {
+    readonly total_count: number;
+    readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
+  };
 
-export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterprise404ResponseBody = BasicError;
+export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterprise404ResponseBody =
+  BasicError;
 
-export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterprise422ResponseBody = ValidationErrorSimple;
+export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterprise422ResponseBody =
+  ValidationErrorSimple;
 
-export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequestBody = {
-  readonly labels: ReadonlyArray<string>;
-};
+export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequestBody =
+  { readonly labels: ReadonlyArray<string> };
 
-export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequestPath = {
-  readonly enterprise: string;
-  readonly runner_id: number;
-};
+export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequestPath =
+  { readonly enterprise: string; readonly runner_id: number };
 
-export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterprise200ResponseBody = {
-  readonly total_count: number;
-  readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
-};
+export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterprise200ResponseBody =
+  {
+    readonly total_count: number;
+    readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
+  };
 
-export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterprise404ResponseBody = BasicError;
+export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterprise404ResponseBody =
+  BasicError;
 
-export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterprise422ResponseBody = ValidationErrorSimple;
+export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterprise422ResponseBody =
+  ValidationErrorSimple;
 
-export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequestBody = {
-  readonly labels: ReadonlyArray<string>;
-};
+export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequestBody =
+  { readonly labels: ReadonlyArray<string> };
 
-export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequestPath = {
-  readonly enterprise: string;
-  readonly runner_id: number;
-};
+export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequestPath =
+  { readonly enterprise: string; readonly runner_id: number };
 
-export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterprise200ResponseBody = {
-  readonly total_count: number;
-  readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
-};
+export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterprise200ResponseBody =
+  {
+    readonly total_count: number;
+    readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
+  };
 
-export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterprise404ResponseBody = BasicError;
+export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterprise404ResponseBody =
+  BasicError;
 
-export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterprise422ResponseBody = ValidationErrorSimple;
+export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterprise422ResponseBody =
+  ValidationErrorSimple;
 
-export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseRequestPath = {
-  readonly enterprise: string;
-  readonly runner_id: number;
-};
+export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseRequestPath =
+  { readonly enterprise: string; readonly runner_id: number };
 
-export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterprise200ResponseBody = {
-  readonly total_count: number;
-  readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
-};
+export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterprise200ResponseBody =
+  {
+    readonly total_count: number;
+    readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
+  };
 
-export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterprise404ResponseBody = BasicError;
+export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterprise404ResponseBody =
+  BasicError;
 
-export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterprise422ResponseBody = ValidationErrorSimple;
+export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterprise422ResponseBody =
+  ValidationErrorSimple;
 
-export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseRequestPath = {
-  readonly enterprise: string;
-  readonly runner_id: number;
-  readonly name: string;
-};
+export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseRequestPath =
+  {
+    readonly enterprise: string;
+    readonly runner_id: number;
+    readonly name: string;
+  };
 
 export type AlertNumber = number;
 
@@ -1390,7 +1392,8 @@ export type CodeScanningOrganizationAlertItems = {
   readonly repository: SimpleRepository;
 };
 
-export type CodeScanningListAlertsForEnterprise200ResponseBody = ReadonlyArray<CodeScanningOrganizationAlertItems>;
+export type CodeScanningListAlertsForEnterprise200ResponseBody =
+  ReadonlyArray<CodeScanningOrganizationAlertItems>;
 
 export type CodeScanningListAlertsForEnterprise404ResponseBody = BasicError;
 
@@ -1449,7 +1452,8 @@ export type OrganizationSecretScanningAlert = {
   readonly resolution_comment?: string | null;
 };
 
-export type SecretScanningListAlertsForEnterprise200ResponseBody = ReadonlyArray<OrganizationSecretScanningAlert>;
+export type SecretScanningListAlertsForEnterprise200ResponseBody =
+  ReadonlyArray<OrganizationSecretScanningAlert>;
 
 export type SecretScanningListAlertsForEnterprise404ResponseBody = BasicError;
 
@@ -1491,9 +1495,11 @@ export type AdvancedSecurityActiveCommitters = {
   readonly repositories: ReadonlyArray<AdvancedSecurityActiveCommittersRepository>;
 };
 
-export type BillingGetGithubAdvancedSecurityBillingGhe200ResponseBody = AdvancedSecurityActiveCommitters;
+export type BillingGetGithubAdvancedSecurityBillingGhe200ResponseBody =
+  AdvancedSecurityActiveCommitters;
 
-export type BillingGetGithubAdvancedSecurityBillingGhe403ResponseBody = BasicError;
+export type BillingGetGithubAdvancedSecurityBillingGhe403ResponseBody =
+  BasicError;
 
 export type BillingGetGithubAdvancedSecurityBillingGheRequestQuery = {
   readonly per_page?: number;
@@ -2115,7 +2121,8 @@ export type IssuesListRequestQuery = {
   readonly page?: number;
 };
 
-export type LicensesGetAllCommonlyUsed200ResponseBody = ReadonlyArray<LicenseSimple>;
+export type LicensesGetAllCommonlyUsed200ResponseBody =
+  ReadonlyArray<LicenseSimple>;
 
 export type LicensesGetAllCommonlyUsedRequestQuery = {
   readonly featured?: boolean;
@@ -2195,7 +2202,8 @@ export type MarketplacePurchase = {
   };
 };
 
-export type AppsGetSubscriptionPlanForAccount200ResponseBody = MarketplacePurchase;
+export type AppsGetSubscriptionPlanForAccount200ResponseBody =
+  MarketplacePurchase;
 
 export type AppsGetSubscriptionPlanForAccount401ResponseBody = BasicError;
 
@@ -2205,7 +2213,8 @@ export type AppsGetSubscriptionPlanForAccountRequestPath = {
   readonly account_id: number;
 };
 
-export type AppsListPlans200ResponseBody = ReadonlyArray<MarketplaceListingPlan>;
+export type AppsListPlans200ResponseBody =
+  ReadonlyArray<MarketplaceListingPlan>;
 
 export type AppsListPlans401ResponseBody = BasicError;
 
@@ -2216,7 +2225,8 @@ export type AppsListPlansRequestQuery = {
   readonly page?: number;
 };
 
-export type AppsListAccountsForPlan200ResponseBody = ReadonlyArray<MarketplacePurchase>;
+export type AppsListAccountsForPlan200ResponseBody =
+  ReadonlyArray<MarketplacePurchase>;
 
 export type AppsListAccountsForPlan401ResponseBody = BasicError;
 
@@ -2233,15 +2243,18 @@ export type AppsListAccountsForPlanRequestQuery = {
 
 export type AppsListAccountsForPlanRequestPath = { readonly plan_id: number };
 
-export type AppsGetSubscriptionPlanForAccountStubbed200ResponseBody = MarketplacePurchase;
+export type AppsGetSubscriptionPlanForAccountStubbed200ResponseBody =
+  MarketplacePurchase;
 
-export type AppsGetSubscriptionPlanForAccountStubbed401ResponseBody = BasicError;
+export type AppsGetSubscriptionPlanForAccountStubbed401ResponseBody =
+  BasicError;
 
 export type AppsGetSubscriptionPlanForAccountStubbedRequestPath = {
   readonly account_id: number;
 };
 
-export type AppsListPlansStubbed200ResponseBody = ReadonlyArray<MarketplaceListingPlan>;
+export type AppsListPlansStubbed200ResponseBody =
+  ReadonlyArray<MarketplaceListingPlan>;
 
 export type AppsListPlansStubbed401ResponseBody = BasicError;
 
@@ -2250,7 +2263,8 @@ export type AppsListPlansStubbedRequestQuery = {
   readonly page?: number;
 };
 
-export type AppsListAccountsForPlanStubbed200ResponseBody = ReadonlyArray<MarketplacePurchase>;
+export type AppsListAccountsForPlanStubbed200ResponseBody =
+  ReadonlyArray<MarketplacePurchase>;
 
 export type AppsListAccountsForPlanStubbed401ResponseBody = BasicError;
 
@@ -2287,7 +2301,8 @@ export type ApiOverview = {
 
 export type MetaGet200ResponseBody = ApiOverview;
 
-export type ActivityListPublicEventsForRepoNetwork200ResponseBody = ReadonlyArray<Event>;
+export type ActivityListPublicEventsForRepoNetwork200ResponseBody =
+  ReadonlyArray<Event>;
 
 export type ActivityListPublicEventsForRepoNetwork301ResponseBody = BasicError;
 
@@ -2422,13 +2437,17 @@ export type Thread = {
   readonly subscription_url: string;
 };
 
-export type ActivityListNotificationsForAuthenticatedUser200ResponseBody = ReadonlyArray<Thread>;
+export type ActivityListNotificationsForAuthenticatedUser200ResponseBody =
+  ReadonlyArray<Thread>;
 
-export type ActivityListNotificationsForAuthenticatedUser401ResponseBody = BasicError;
+export type ActivityListNotificationsForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type ActivityListNotificationsForAuthenticatedUser403ResponseBody = BasicError;
+export type ActivityListNotificationsForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type ActivityListNotificationsForAuthenticatedUser422ResponseBody = ValidationError;
+export type ActivityListNotificationsForAuthenticatedUser422ResponseBody =
+  ValidationError;
 
 export type ActivityListNotificationsForAuthenticatedUserRequestQuery = {
   readonly all?: boolean;
@@ -2476,11 +2495,14 @@ export type ThreadSubscription = {
   readonly repository_url?: string;
 };
 
-export type ActivityGetThreadSubscriptionForAuthenticatedUser200ResponseBody = ThreadSubscription;
+export type ActivityGetThreadSubscriptionForAuthenticatedUser200ResponseBody =
+  ThreadSubscription;
 
-export type ActivityGetThreadSubscriptionForAuthenticatedUser401ResponseBody = BasicError;
+export type ActivityGetThreadSubscriptionForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type ActivityGetThreadSubscriptionForAuthenticatedUser403ResponseBody = BasicError;
+export type ActivityGetThreadSubscriptionForAuthenticatedUser403ResponseBody =
+  BasicError;
 
 export type ActivityGetThreadSubscriptionForAuthenticatedUserRequestPath = {
   readonly thread_id: number;
@@ -2647,7 +2669,8 @@ export type OrgsUpdateRequestBody = {
 
 export type OrgsUpdateRequestPath = { readonly org: string };
 
-export type ActionsGetActionsCacheUsageForOrg200ResponseBody = ActionsCacheUsageOrgEnterprise;
+export type ActionsGetActionsCacheUsageForOrg200ResponseBody =
+  ActionsCacheUsageOrgEnterprise;
 
 export type ActionsGetActionsCacheUsageForOrgRequestPath = {
   readonly org: string;
@@ -2682,7 +2705,8 @@ export type ActionsOrganizationPermissions = {
   readonly selected_actions_url?: SelectedActionsUrl;
 };
 
-export type ActionsGetGithubActionsPermissionsOrganization200ResponseBody = ActionsOrganizationPermissions;
+export type ActionsGetGithubActionsPermissionsOrganization200ResponseBody =
+  ActionsOrganizationPermissions;
 
 export type ActionsGetGithubActionsPermissionsOrganizationRequestPath = {
   readonly org: string;
@@ -2697,39 +2721,32 @@ export type ActionsSetGithubActionsPermissionsOrganizationRequestPath = {
   readonly org: string;
 };
 
-export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganization200ResponseBody = {
-  readonly total_count: number;
-  readonly repositories: ReadonlyArray<Repository>;
-};
+export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganization200ResponseBody =
+  {
+    readonly total_count: number;
+    readonly repositories: ReadonlyArray<Repository>;
+  };
 
-export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequestQuery = {
-  readonly per_page?: number;
-  readonly page?: number;
-};
+export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequestQuery =
+  { readonly per_page?: number; readonly page?: number };
 
-export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequestPath = {
-  readonly org: string;
-};
+export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequestPath =
+  { readonly org: string };
 
-export type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestBody = {
-  readonly selected_repository_ids: ReadonlyArray<number>;
-};
+export type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestBody =
+  { readonly selected_repository_ids: ReadonlyArray<number> };
 
-export type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestPath = {
-  readonly org: string;
-};
+export type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestPath =
+  { readonly org: string };
 
-export type ActionsEnableSelectedRepositoryGithubActionsOrganizationRequestPath = {
-  readonly org: string;
-  readonly repository_id: number;
-};
+export type ActionsEnableSelectedRepositoryGithubActionsOrganizationRequestPath =
+  { readonly org: string; readonly repository_id: number };
 
-export type ActionsDisableSelectedRepositoryGithubActionsOrganizationRequestPath = {
-  readonly org: string;
-  readonly repository_id: number;
-};
+export type ActionsDisableSelectedRepositoryGithubActionsOrganizationRequestPath =
+  { readonly org: string; readonly repository_id: number };
 
-export type ActionsGetAllowedActionsOrganization200ResponseBody = SelectedActions;
+export type ActionsGetAllowedActionsOrganization200ResponseBody =
+  SelectedActions;
 
 export type ActionsGetAllowedActionsOrganizationRequestPath = {
   readonly org: string;
@@ -2741,17 +2758,17 @@ export type ActionsSetAllowedActionsOrganizationRequestPath = {
   readonly org: string;
 };
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsOrganization200ResponseBody = ActionsGetDefaultWorkflowPermissions;
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsOrganization200ResponseBody =
+  ActionsGetDefaultWorkflowPermissions;
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationRequestPath = {
-  readonly org: string;
-};
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationRequestPath =
+  { readonly org: string };
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequestBody = ActionsSetDefaultWorkflowPermissions;
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequestBody =
+  ActionsSetDefaultWorkflowPermissions;
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequestPath = {
-  readonly org: string;
-};
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequestPath =
+  { readonly org: string };
 
 export type RunnerGroupsOrg = {
   readonly id: number;
@@ -2783,7 +2800,8 @@ export type ActionsListSelfHostedRunnerGroupsForOrgRequestPath = {
   readonly org: string;
 };
 
-export type ActionsCreateSelfHostedRunnerGroupForOrg201ResponseBody = RunnerGroupsOrg;
+export type ActionsCreateSelfHostedRunnerGroupForOrg201ResponseBody =
+  RunnerGroupsOrg;
 
 export type ActionsCreateSelfHostedRunnerGroupForOrgRequestBody = {
   readonly name: string;
@@ -2799,14 +2817,16 @@ export type ActionsCreateSelfHostedRunnerGroupForOrgRequestPath = {
   readonly org: string;
 };
 
-export type ActionsGetSelfHostedRunnerGroupForOrg200ResponseBody = RunnerGroupsOrg;
+export type ActionsGetSelfHostedRunnerGroupForOrg200ResponseBody =
+  RunnerGroupsOrg;
 
 export type ActionsGetSelfHostedRunnerGroupForOrgRequestPath = {
   readonly org: string;
   readonly runner_group_id: number;
 };
 
-export type ActionsUpdateSelfHostedRunnerGroupForOrg200ResponseBody = RunnerGroupsOrg;
+export type ActionsUpdateSelfHostedRunnerGroupForOrg200ResponseBody =
+  RunnerGroupsOrg;
 
 export type ActionsUpdateSelfHostedRunnerGroupForOrgRequestBody = {
   readonly name: string;
@@ -2906,13 +2926,15 @@ export type ActionsListSelfHostedRunnersForOrgRequestPath = {
   readonly org: string;
 };
 
-export type ActionsListRunnerApplicationsForOrg200ResponseBody = ReadonlyArray<RunnerApplication>;
+export type ActionsListRunnerApplicationsForOrg200ResponseBody =
+  ReadonlyArray<RunnerApplication>;
 
 export type ActionsListRunnerApplicationsForOrgRequestPath = {
   readonly org: string;
 };
 
-export type ActionsCreateRegistrationTokenForOrg201ResponseBody = AuthenticationToken;
+export type ActionsCreateRegistrationTokenForOrg201ResponseBody =
+  AuthenticationToken;
 
 export type ActionsCreateRegistrationTokenForOrgRequestPath = {
   readonly org: string;
@@ -2941,7 +2963,8 @@ export type ActionsListLabelsForSelfHostedRunnerForOrg200ResponseBody = {
   readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
 };
 
-export type ActionsListLabelsForSelfHostedRunnerForOrg404ResponseBody = BasicError;
+export type ActionsListLabelsForSelfHostedRunnerForOrg404ResponseBody =
+  BasicError;
 
 export type ActionsListLabelsForSelfHostedRunnerForOrgRequestPath = {
   readonly org: string;
@@ -2953,9 +2976,11 @@ export type ActionsAddCustomLabelsToSelfHostedRunnerForOrg200ResponseBody = {
   readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
 };
 
-export type ActionsAddCustomLabelsToSelfHostedRunnerForOrg404ResponseBody = BasicError;
+export type ActionsAddCustomLabelsToSelfHostedRunnerForOrg404ResponseBody =
+  BasicError;
 
-export type ActionsAddCustomLabelsToSelfHostedRunnerForOrg422ResponseBody = ValidationErrorSimple;
+export type ActionsAddCustomLabelsToSelfHostedRunnerForOrg422ResponseBody =
+  ValidationErrorSimple;
 
 export type ActionsAddCustomLabelsToSelfHostedRunnerForOrgRequestBody = {
   readonly labels: ReadonlyArray<string>;
@@ -2971,9 +2996,11 @@ export type ActionsSetCustomLabelsForSelfHostedRunnerForOrg200ResponseBody = {
   readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
 };
 
-export type ActionsSetCustomLabelsForSelfHostedRunnerForOrg404ResponseBody = BasicError;
+export type ActionsSetCustomLabelsForSelfHostedRunnerForOrg404ResponseBody =
+  BasicError;
 
-export type ActionsSetCustomLabelsForSelfHostedRunnerForOrg422ResponseBody = ValidationErrorSimple;
+export type ActionsSetCustomLabelsForSelfHostedRunnerForOrg422ResponseBody =
+  ValidationErrorSimple;
 
 export type ActionsSetCustomLabelsForSelfHostedRunnerForOrgRequestBody = {
   readonly labels: ReadonlyArray<string>;
@@ -2984,26 +3011,29 @@ export type ActionsSetCustomLabelsForSelfHostedRunnerForOrgRequestPath = {
   readonly runner_id: number;
 };
 
-export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrg200ResponseBody = {
-  readonly total_count: number;
-  readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
-};
+export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrg200ResponseBody =
+  {
+    readonly total_count: number;
+    readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
+  };
 
-export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrg404ResponseBody = BasicError;
+export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrg404ResponseBody =
+  BasicError;
 
-export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequestPath = {
-  readonly org: string;
-  readonly runner_id: number;
-};
+export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequestPath =
+  { readonly org: string; readonly runner_id: number };
 
-export type ActionsRemoveCustomLabelFromSelfHostedRunnerForOrg200ResponseBody = {
-  readonly total_count: number;
-  readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
-};
+export type ActionsRemoveCustomLabelFromSelfHostedRunnerForOrg200ResponseBody =
+  {
+    readonly total_count: number;
+    readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
+  };
 
-export type ActionsRemoveCustomLabelFromSelfHostedRunnerForOrg404ResponseBody = BasicError;
+export type ActionsRemoveCustomLabelFromSelfHostedRunnerForOrg404ResponseBody =
+  BasicError;
 
-export type ActionsRemoveCustomLabelFromSelfHostedRunnerForOrg422ResponseBody = ValidationErrorSimple;
+export type ActionsRemoveCustomLabelFromSelfHostedRunnerForOrg422ResponseBody =
+  ValidationErrorSimple;
 
 export type ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgRequestPath = {
   readonly org: string;
@@ -3136,7 +3166,8 @@ export type OrgsUnblockUserRequestPath = {
   readonly username: string;
 };
 
-export type CodeScanningListAlertsForOrg200ResponseBody = ReadonlyArray<CodeScanningOrganizationAlertItems>;
+export type CodeScanningListAlertsForOrg200ResponseBody =
+  ReadonlyArray<CodeScanningOrganizationAlertItems>;
 
 export type CodeScanningListAlertsForOrg404ResponseBody = BasicError;
 
@@ -3363,7 +3394,8 @@ export type CodespacesSetSelectedReposForOrgSecretRequestPath = {
 
 export type CodespacesAddSelectedRepoToOrgSecret404ResponseBody = BasicError;
 
-export type CodespacesAddSelectedRepoToOrgSecret422ResponseBody = ValidationError;
+export type CodespacesAddSelectedRepoToOrgSecret422ResponseBody =
+  ValidationError;
 
 export type CodespacesAddSelectedRepoToOrgSecretRequestPath = {
   readonly org: string;
@@ -3371,9 +3403,11 @@ export type CodespacesAddSelectedRepoToOrgSecretRequestPath = {
   readonly repository_id: number;
 };
 
-export type CodespacesRemoveSelectedRepoFromOrgSecret404ResponseBody = BasicError;
+export type CodespacesRemoveSelectedRepoFromOrgSecret404ResponseBody =
+  BasicError;
 
-export type CodespacesRemoveSelectedRepoFromOrgSecret422ResponseBody = ValidationError;
+export type CodespacesRemoveSelectedRepoFromOrgSecret422ResponseBody =
+  ValidationError;
 
 export type CodespacesRemoveSelectedRepoFromOrgSecretRequestPath = {
   readonly org: string;
@@ -3381,7 +3415,8 @@ export type CodespacesRemoveSelectedRepoFromOrgSecretRequestPath = {
   readonly repository_id: number;
 };
 
-export type OrgsCreateCustomRole201ResponseBody = OrganizationCustomRepositoryRole;
+export type OrgsCreateCustomRole201ResponseBody =
+  OrganizationCustomRepositoryRole;
 
 export type OrgsCreateCustomRole404ResponseBody = BasicError;
 
@@ -3405,7 +3440,8 @@ export type OrgsGetCustomRoleRequestPath = {
   readonly role_id: number;
 };
 
-export type OrgsUpdateCustomRole200ResponseBody = OrganizationCustomRepositoryRole;
+export type OrgsUpdateCustomRole200ResponseBody =
+  OrganizationCustomRepositoryRole;
 
 export type OrgsUpdateCustomRole404ResponseBody = BasicError;
 
@@ -3493,7 +3529,8 @@ export type DependabotAlertWithRepository = {
   readonly repository: SimpleRepository;
 };
 
-export type DependabotListAlertsForOrg200ResponseBody = ReadonlyArray<DependabotAlertWithRepository>;
+export type DependabotListAlertsForOrg200ResponseBody =
+  ReadonlyArray<DependabotAlertWithRepository>;
 
 export type DependabotListAlertsForOrg400ResponseBody = BasicError;
 
@@ -3548,7 +3585,8 @@ export type DependabotGetOrgPublicKey200ResponseBody = DependabotPublicKey;
 
 export type DependabotGetOrgPublicKeyRequestPath = { readonly org: string };
 
-export type DependabotGetOrgSecret200ResponseBody = DependabotSecretForAnOrganization;
+export type DependabotGetOrgSecret200ResponseBody =
+  DependabotSecretForAnOrganization;
 
 export type DependabotGetOrgSecretRequestPath = {
   readonly org: string;
@@ -3633,7 +3671,8 @@ export type OrganizationInvitation = {
   readonly invitation_teams_url: string;
 };
 
-export type OrgsListFailedInvitations200ResponseBody = ReadonlyArray<OrganizationInvitation>;
+export type OrgsListFailedInvitations200ResponseBody =
+  ReadonlyArray<OrganizationInvitation>;
 
 export type OrgsListFailedInvitations404ResponseBody = BasicError;
 
@@ -3649,7 +3688,8 @@ export type OrganizationFineGrainedPermission = {
   readonly description: string;
 };
 
-export type OrgsListFineGrainedPermissions200ResponseBody = ReadonlyArray<OrganizationFineGrainedPermission>;
+export type OrgsListFineGrainedPermissions200ResponseBody =
+  ReadonlyArray<OrganizationFineGrainedPermission>;
 
 export type OrgsListFineGrainedPermissionsRequestPath = {
   readonly org: string;
@@ -3767,7 +3807,8 @@ export type OrgsUpdateWebhookConfigForOrgRequestPath = {
   readonly hook_id: number;
 };
 
-export type OrgsListWebhookDeliveries200ResponseBody = ReadonlyArray<SimpleWebhookDelivery>;
+export type OrgsListWebhookDeliveries200ResponseBody =
+  ReadonlyArray<SimpleWebhookDelivery>;
 
 export type OrgsListWebhookDeliveries400ResponseBody = BasicError;
 
@@ -3849,7 +3890,8 @@ export type InteractionsGetRestrictionsForOrgRequestPath = {
   readonly org: string;
 };
 
-export type InteractionsSetRestrictionsForOrg200ResponseBody = InteractionLimits;
+export type InteractionsSetRestrictionsForOrg200ResponseBody =
+  InteractionLimits;
 
 export type InteractionsSetRestrictionsForOrg422ResponseBody = ValidationError;
 
@@ -3865,7 +3907,8 @@ export type InteractionRestrictions = {
   readonly expiry?: InteractionExpiry;
 };
 
-export type InteractionsSetRestrictionsForOrgRequestBody = InteractionRestrictions;
+export type InteractionsSetRestrictionsForOrgRequestBody =
+  InteractionRestrictions;
 
 export type InteractionsSetRestrictionsForOrgRequestPath = {
   readonly org: string;
@@ -3875,7 +3918,8 @@ export type InteractionsRemoveRestrictionsForOrgRequestPath = {
   readonly org: string;
 };
 
-export type OrgsListPendingInvitations200ResponseBody = ReadonlyArray<OrganizationInvitation>;
+export type OrgsListPendingInvitations200ResponseBody =
+  ReadonlyArray<OrganizationInvitation>;
 
 export type OrgsListPendingInvitations404ResponseBody = BasicError;
 
@@ -4195,7 +4239,8 @@ export type MigrationsUnlockRepoForOrgRequestPath = {
   readonly repo_name: string;
 };
 
-export type MigrationsListReposForOrg200ResponseBody = ReadonlyArray<MinimalRepository>;
+export type MigrationsListReposForOrg200ResponseBody =
+  ReadonlyArray<MinimalRepository>;
 
 export type MigrationsListReposForOrg404ResponseBody = BasicError;
 
@@ -4209,7 +4254,8 @@ export type MigrationsListReposForOrgRequestPath = {
   readonly migration_id: number;
 };
 
-export type OrgsListOutsideCollaborators200ResponseBody = ReadonlyArray<SimpleUser>;
+export type OrgsListOutsideCollaborators200ResponseBody =
+  ReadonlyArray<SimpleUser>;
 
 export type OrgsListOutsideCollaboratorsRequestQuery = {
   readonly filter?: '2fa_disabled' | 'all';
@@ -4262,7 +4308,8 @@ export type Package = {
   readonly updated_at: string;
 };
 
-export type PackagesListPackagesForOrganization200ResponseBody = ReadonlyArray<Package>;
+export type PackagesListPackagesForOrganization200ResponseBody =
+  ReadonlyArray<Package>;
 
 export type PackagesListPackagesForOrganization401ResponseBody = BasicError;
 
@@ -4367,13 +4414,17 @@ export type PackageVersion = {
   readonly metadata?: PackageVersionMetadata;
 };
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByOrg200ResponseBody = ReadonlyArray<PackageVersion>;
+export type PackagesGetAllPackageVersionsForPackageOwnedByOrg200ResponseBody =
+  ReadonlyArray<PackageVersion>;
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByOrg401ResponseBody = BasicError;
+export type PackagesGetAllPackageVersionsForPackageOwnedByOrg401ResponseBody =
+  BasicError;
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByOrg403ResponseBody = BasicError;
+export type PackagesGetAllPackageVersionsForPackageOwnedByOrg403ResponseBody =
+  BasicError;
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByOrg404ResponseBody = BasicError;
+export type PackagesGetAllPackageVersionsForPackageOwnedByOrg404ResponseBody =
+  BasicError;
 
 export type PackagesGetAllPackageVersionsForPackageOwnedByOrgRequestQuery = {
   readonly page?: number;
@@ -4393,7 +4444,8 @@ export type PackagesGetAllPackageVersionsForPackageOwnedByOrgRequestPath = {
   readonly org: string;
 };
 
-export type PackagesGetPackageVersionForOrganization200ResponseBody = PackageVersion;
+export type PackagesGetPackageVersionForOrganization200ResponseBody =
+  PackageVersion;
 
 export type PackagesGetPackageVersionForOrganizationRequestPath = {
   readonly package_type:
@@ -4509,7 +4561,8 @@ export type OrgsCheckPublicMembershipForUserRequestPath = {
   readonly username: string;
 };
 
-export type OrgsSetPublicMembershipForAuthenticatedUser403ResponseBody = BasicError;
+export type OrgsSetPublicMembershipForAuthenticatedUser403ResponseBody =
+  BasicError;
 
 export type OrgsSetPublicMembershipForAuthenticatedUserRequestPath = {
   readonly org: string;
@@ -4577,7 +4630,8 @@ export type ReposCreateInOrgRequestBody = {
 
 export type ReposCreateInOrgRequestPath = { readonly org: string };
 
-export type SecretScanningListAlertsForOrg200ResponseBody = ReadonlyArray<OrganizationSecretScanningAlert>;
+export type SecretScanningListAlertsForOrg200ResponseBody =
+  ReadonlyArray<OrganizationSecretScanningAlert>;
 
 export type SecretScanningListAlertsForOrg404ResponseBody = BasicError;
 
@@ -4603,7 +4657,8 @@ export type SecretScanningListAlertsForOrgRequestPath = {
   readonly org: string;
 };
 
-export type OrgsListSecurityManagerTeams200ResponseBody = ReadonlyArray<TeamSimple>;
+export type OrgsListSecurityManagerTeams200ResponseBody =
+  ReadonlyArray<TeamSimple>;
 
 export type OrgsListSecurityManagerTeamsRequestPath = { readonly org: string };
 
@@ -4639,15 +4694,18 @@ export type ActionsBillingUsage = {
   };
 };
 
-export type BillingGetGithubActionsBillingOrg200ResponseBody = ActionsBillingUsage;
+export type BillingGetGithubActionsBillingOrg200ResponseBody =
+  ActionsBillingUsage;
 
 export type BillingGetGithubActionsBillingOrgRequestPath = {
   readonly org: string;
 };
 
-export type BillingGetGithubAdvancedSecurityBillingOrg200ResponseBody = AdvancedSecurityActiveCommitters;
+export type BillingGetGithubAdvancedSecurityBillingOrg200ResponseBody =
+  AdvancedSecurityActiveCommitters;
 
-export type BillingGetGithubAdvancedSecurityBillingOrg403ResponseBody = BasicError;
+export type BillingGetGithubAdvancedSecurityBillingOrg403ResponseBody =
+  BasicError;
 
 export type BillingGetGithubAdvancedSecurityBillingOrgRequestQuery = {
   readonly per_page?: number;
@@ -4664,7 +4722,8 @@ export type PackagesBillingUsage = {
   readonly included_gigabytes_bandwidth: number;
 };
 
-export type BillingGetGithubPackagesBillingOrg200ResponseBody = PackagesBillingUsage;
+export type BillingGetGithubPackagesBillingOrg200ResponseBody =
+  PackagesBillingUsage;
 
 export type BillingGetGithubPackagesBillingOrgRequestPath = {
   readonly org: string;
@@ -4676,7 +4735,8 @@ export type CombinedBillingUsage = {
   readonly estimated_storage_for_month: number;
 };
 
-export type BillingGetSharedStorageBillingOrg200ResponseBody = CombinedBillingUsage;
+export type BillingGetSharedStorageBillingOrg200ResponseBody =
+  CombinedBillingUsage;
 
 export type BillingGetSharedStorageBillingOrgRequestPath = {
   readonly org: string;
@@ -4847,7 +4907,8 @@ export type TeamDiscussion = {
   readonly reactions?: ReactionRollup;
 };
 
-export type TeamsListDiscussionsInOrg200ResponseBody = ReadonlyArray<TeamDiscussion>;
+export type TeamsListDiscussionsInOrg200ResponseBody =
+  ReadonlyArray<TeamDiscussion>;
 
 export type TeamsListDiscussionsInOrgRequestQuery = {
   readonly direction?: 'asc' | 'desc';
@@ -4917,7 +4978,8 @@ export type TeamDiscussionComment = {
   readonly reactions?: ReactionRollup;
 };
 
-export type TeamsListDiscussionCommentsInOrg200ResponseBody = ReadonlyArray<TeamDiscussionComment>;
+export type TeamsListDiscussionCommentsInOrg200ResponseBody =
+  ReadonlyArray<TeamDiscussionComment>;
 
 export type TeamsListDiscussionCommentsInOrgRequestQuery = {
   readonly direction?: 'asc' | 'desc';
@@ -4931,7 +4993,8 @@ export type TeamsListDiscussionCommentsInOrgRequestPath = {
   readonly discussion_number: number;
 };
 
-export type TeamsCreateDiscussionCommentInOrg201ResponseBody = TeamDiscussionComment;
+export type TeamsCreateDiscussionCommentInOrg201ResponseBody =
+  TeamDiscussionComment;
 
 export type TeamsCreateDiscussionCommentInOrgRequestBody = {
   readonly body: string;
@@ -4943,7 +5006,8 @@ export type TeamsCreateDiscussionCommentInOrgRequestPath = {
   readonly discussion_number: number;
 };
 
-export type TeamsGetDiscussionCommentInOrg200ResponseBody = TeamDiscussionComment;
+export type TeamsGetDiscussionCommentInOrg200ResponseBody =
+  TeamDiscussionComment;
 
 export type TeamsGetDiscussionCommentInOrgRequestPath = {
   readonly org: string;
@@ -4952,7 +5016,8 @@ export type TeamsGetDiscussionCommentInOrgRequestPath = {
   readonly comment_number: number;
 };
 
-export type TeamsUpdateDiscussionCommentInOrg200ResponseBody = TeamDiscussionComment;
+export type TeamsUpdateDiscussionCommentInOrg200ResponseBody =
+  TeamDiscussionComment;
 
 export type TeamsUpdateDiscussionCommentInOrgRequestBody = {
   readonly body: string;
@@ -4988,7 +5053,8 @@ export type Reaction = {
   readonly created_at: string;
 };
 
-export type ReactionsListForTeamDiscussionCommentInOrg200ResponseBody = ReadonlyArray<Reaction>;
+export type ReactionsListForTeamDiscussionCommentInOrg200ResponseBody =
+  ReadonlyArray<Reaction>;
 
 export type ReactionsListForTeamDiscussionCommentInOrgRequestQuery = {
   readonly content?:
@@ -5011,9 +5077,11 @@ export type ReactionsListForTeamDiscussionCommentInOrgRequestPath = {
   readonly comment_number: number;
 };
 
-export type ReactionsCreateForTeamDiscussionCommentInOrg200ResponseBody = Reaction;
+export type ReactionsCreateForTeamDiscussionCommentInOrg200ResponseBody =
+  Reaction;
 
-export type ReactionsCreateForTeamDiscussionCommentInOrg201ResponseBody = Reaction;
+export type ReactionsCreateForTeamDiscussionCommentInOrg201ResponseBody =
+  Reaction;
 
 export type ReactionsCreateForTeamDiscussionCommentInOrgRequestBody = {
   readonly content:
@@ -5042,7 +5110,8 @@ export type ReactionsDeleteForTeamDiscussionCommentRequestPath = {
   readonly reaction_id: number;
 };
 
-export type ReactionsListForTeamDiscussionInOrg200ResponseBody = ReadonlyArray<Reaction>;
+export type ReactionsListForTeamDiscussionInOrg200ResponseBody =
+  ReadonlyArray<Reaction>;
 
 export type ReactionsListForTeamDiscussionInOrgRequestQuery = {
   readonly content?:
@@ -5093,7 +5162,8 @@ export type ReactionsDeleteForTeamDiscussionRequestPath = {
   readonly reaction_id: number;
 };
 
-export type TeamsListPendingInvitationsInOrg200ResponseBody = ReadonlyArray<OrganizationInvitation>;
+export type TeamsListPendingInvitationsInOrg200ResponseBody =
+  ReadonlyArray<OrganizationInvitation>;
 
 export type TeamsListPendingInvitationsInOrgRequestQuery = {
   readonly per_page?: number;
@@ -5132,7 +5202,8 @@ export type TeamsGetMembershipForUserInOrgRequestPath = {
   readonly username: string;
 };
 
-export type TeamsAddOrUpdateMembershipForUserInOrg200ResponseBody = TeamMembership;
+export type TeamsAddOrUpdateMembershipForUserInOrg200ResponseBody =
+  TeamMembership;
 
 export type TeamsAddOrUpdateMembershipForUserInOrgRequestBody = {
   readonly role?: 'member' | 'maintainer';
@@ -5214,7 +5285,8 @@ export type TeamsRemoveProjectInOrgRequestPath = {
   readonly project_id: number;
 };
 
-export type TeamsListReposInOrg200ResponseBody = ReadonlyArray<MinimalRepository>;
+export type TeamsListReposInOrg200ResponseBody =
+  ReadonlyArray<MinimalRepository>;
 
 export type TeamsListReposInOrgRequestQuery = {
   readonly per_page?: number;
@@ -5600,7 +5672,8 @@ export type ProjectsDelete410ResponseBody = BasicError;
 
 export type ProjectsDeleteRequestPath = { readonly project_id: number };
 
-export type ProjectsListCollaborators200ResponseBody = ReadonlyArray<SimpleUser>;
+export type ProjectsListCollaborators200ResponseBody =
+  ReadonlyArray<SimpleUser>;
 
 export type ProjectsListCollaborators401ResponseBody = BasicError;
 
@@ -5655,7 +5728,8 @@ export type ProjectCollaboratorPermission = {
   readonly user: SimpleUser;
 };
 
-export type ProjectsGetPermissionForUser200ResponseBody = ProjectCollaboratorPermission;
+export type ProjectsGetPermissionForUser200ResponseBody =
+  ProjectCollaboratorPermission;
 
 export type ProjectsGetPermissionForUser401ResponseBody = BasicError;
 
@@ -5985,7 +6059,8 @@ export type ActionsDownloadArtifactRequestPath = {
   readonly archive_format: string;
 };
 
-export type ActionsGetActionsCacheUsage200ResponseBody = ActionsCacheUsageByRepository;
+export type ActionsGetActionsCacheUsage200ResponseBody =
+  ActionsCacheUsageByRepository;
 
 export type ActionsGetActionsCacheUsageRequestPath = {
   readonly owner: string;
@@ -6021,7 +6096,8 @@ export type ActionsGetActionsCacheListRequestPath = {
   readonly repo: string;
 };
 
-export type ActionsDeleteActionsCacheByKey200ResponseBody = RepositoryActionsCaches;
+export type ActionsDeleteActionsCacheByKey200ResponseBody =
+  RepositoryActionsCaches;
 
 export type ActionsDeleteActionsCacheByKeyRequestQuery = {
   readonly key: string;
@@ -6113,7 +6189,8 @@ export type ActionsRepositoryPermissions = {
   readonly selected_actions_url?: SelectedActionsUrl;
 };
 
-export type ActionsGetGithubActionsPermissionsRepository200ResponseBody = ActionsRepositoryPermissions;
+export type ActionsGetGithubActionsPermissionsRepository200ResponseBody =
+  ActionsRepositoryPermissions;
 
 export type ActionsGetGithubActionsPermissionsRepositoryRequestPath = {
   readonly owner: string;
@@ -6134,14 +6211,16 @@ export type ActionsWorkflowAccessToRepository = {
   readonly access_level: 'none' | 'organization' | 'enterprise';
 };
 
-export type ActionsGetWorkflowAccessToRepository200ResponseBody = ActionsWorkflowAccessToRepository;
+export type ActionsGetWorkflowAccessToRepository200ResponseBody =
+  ActionsWorkflowAccessToRepository;
 
 export type ActionsGetWorkflowAccessToRepositoryRequestPath = {
   readonly owner: string;
   readonly repo: string;
 };
 
-export type ActionsSetWorkflowAccessToRepositoryRequestBody = ActionsWorkflowAccessToRepository;
+export type ActionsSetWorkflowAccessToRepositoryRequestBody =
+  ActionsWorkflowAccessToRepository;
 
 export type ActionsSetWorkflowAccessToRepositoryRequestPath = {
   readonly owner: string;
@@ -6162,19 +6241,17 @@ export type ActionsSetAllowedActionsRepositoryRequestPath = {
   readonly repo: string;
 };
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsRepository200ResponseBody = ActionsGetDefaultWorkflowPermissions;
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsRepository200ResponseBody =
+  ActionsGetDefaultWorkflowPermissions;
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryRequestPath = {
-  readonly owner: string;
-  readonly repo: string;
-};
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryRequestPath =
+  { readonly owner: string; readonly repo: string };
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequestBody = ActionsSetDefaultWorkflowPermissions;
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequestBody =
+  ActionsSetDefaultWorkflowPermissions;
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequestPath = {
-  readonly owner: string;
-  readonly repo: string;
-};
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequestPath =
+  { readonly owner: string; readonly repo: string };
 
 export type ActionsListSelfHostedRunnersForRepo200ResponseBody = {
   readonly total_count: number;
@@ -6191,28 +6268,32 @@ export type ActionsListSelfHostedRunnersForRepoRequestPath = {
   readonly repo: string;
 };
 
-export type ActionsListRunnerApplicationsForRepo200ResponseBody = ReadonlyArray<RunnerApplication>;
+export type ActionsListRunnerApplicationsForRepo200ResponseBody =
+  ReadonlyArray<RunnerApplication>;
 
 export type ActionsListRunnerApplicationsForRepoRequestPath = {
   readonly owner: string;
   readonly repo: string;
 };
 
-export type ActionsCreateRegistrationTokenForRepo201ResponseBody = AuthenticationToken;
+export type ActionsCreateRegistrationTokenForRepo201ResponseBody =
+  AuthenticationToken;
 
 export type ActionsCreateRegistrationTokenForRepoRequestPath = {
   readonly owner: string;
   readonly repo: string;
 };
 
-export type ActionsCreateRemoveTokenForRepo201ResponseBody = AuthenticationToken;
+export type ActionsCreateRemoveTokenForRepo201ResponseBody =
+  AuthenticationToken;
 
 export type ActionsCreateRemoveTokenForRepoRequestPath = {
   readonly owner: string;
   readonly repo: string;
 };
 
-export type ActionsGetSelfHostedRunnerForRepo200ResponseBody = SelfHostedRunners;
+export type ActionsGetSelfHostedRunnerForRepo200ResponseBody =
+  SelfHostedRunners;
 
 export type ActionsGetSelfHostedRunnerForRepoRequestPath = {
   readonly owner: string;
@@ -6231,7 +6312,8 @@ export type ActionsListLabelsForSelfHostedRunnerForRepo200ResponseBody = {
   readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
 };
 
-export type ActionsListLabelsForSelfHostedRunnerForRepo404ResponseBody = BasicError;
+export type ActionsListLabelsForSelfHostedRunnerForRepo404ResponseBody =
+  BasicError;
 
 export type ActionsListLabelsForSelfHostedRunnerForRepoRequestPath = {
   readonly owner: string;
@@ -6244,9 +6326,11 @@ export type ActionsAddCustomLabelsToSelfHostedRunnerForRepo200ResponseBody = {
   readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
 };
 
-export type ActionsAddCustomLabelsToSelfHostedRunnerForRepo404ResponseBody = BasicError;
+export type ActionsAddCustomLabelsToSelfHostedRunnerForRepo404ResponseBody =
+  BasicError;
 
-export type ActionsAddCustomLabelsToSelfHostedRunnerForRepo422ResponseBody = ValidationErrorSimple;
+export type ActionsAddCustomLabelsToSelfHostedRunnerForRepo422ResponseBody =
+  ValidationErrorSimple;
 
 export type ActionsAddCustomLabelsToSelfHostedRunnerForRepoRequestBody = {
   readonly labels: ReadonlyArray<string>;
@@ -6263,9 +6347,11 @@ export type ActionsSetCustomLabelsForSelfHostedRunnerForRepo200ResponseBody = {
   readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
 };
 
-export type ActionsSetCustomLabelsForSelfHostedRunnerForRepo404ResponseBody = BasicError;
+export type ActionsSetCustomLabelsForSelfHostedRunnerForRepo404ResponseBody =
+  BasicError;
 
-export type ActionsSetCustomLabelsForSelfHostedRunnerForRepo422ResponseBody = ValidationErrorSimple;
+export type ActionsSetCustomLabelsForSelfHostedRunnerForRepo422ResponseBody =
+  ValidationErrorSimple;
 
 export type ActionsSetCustomLabelsForSelfHostedRunnerForRepoRequestBody = {
   readonly labels: ReadonlyArray<string>;
@@ -6277,27 +6363,29 @@ export type ActionsSetCustomLabelsForSelfHostedRunnerForRepoRequestPath = {
   readonly runner_id: number;
 };
 
-export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepo200ResponseBody = {
-  readonly total_count: number;
-  readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
-};
+export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepo200ResponseBody =
+  {
+    readonly total_count: number;
+    readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
+  };
 
-export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepo404ResponseBody = BasicError;
+export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepo404ResponseBody =
+  BasicError;
 
-export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequestPath = {
-  readonly owner: string;
-  readonly repo: string;
-  readonly runner_id: number;
-};
+export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequestPath =
+  { readonly owner: string; readonly repo: string; readonly runner_id: number };
 
-export type ActionsRemoveCustomLabelFromSelfHostedRunnerForRepo200ResponseBody = {
-  readonly total_count: number;
-  readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
-};
+export type ActionsRemoveCustomLabelFromSelfHostedRunnerForRepo200ResponseBody =
+  {
+    readonly total_count: number;
+    readonly labels: ReadonlyArray<SelfHostedRunnerLabel>;
+  };
 
-export type ActionsRemoveCustomLabelFromSelfHostedRunnerForRepo404ResponseBody = BasicError;
+export type ActionsRemoveCustomLabelFromSelfHostedRunnerForRepo404ResponseBody =
+  BasicError;
 
-export type ActionsRemoveCustomLabelFromSelfHostedRunnerForRepo422ResponseBody = ValidationErrorSimple;
+export type ActionsRemoveCustomLabelFromSelfHostedRunnerForRepo422ResponseBody =
+  ValidationErrorSimple;
 
 export type ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoRequestPath = {
   readonly owner: string;
@@ -6453,7 +6541,8 @@ export type EnvironmentApproval = {
   readonly comment: string;
 };
 
-export type ActionsGetReviewsForRun200ResponseBody = ReadonlyArray<EnvironmentApproval>;
+export type ActionsGetReviewsForRun200ResponseBody =
+  ReadonlyArray<EnvironmentApproval>;
 
 export type ActionsGetReviewsForRunRequestPath = {
   readonly owner: string;
@@ -6590,7 +6679,8 @@ export type PendingDeployment = {
   }>;
 };
 
-export type ActionsGetPendingDeploymentsForRun200ResponseBody = ReadonlyArray<PendingDeployment>;
+export type ActionsGetPendingDeploymentsForRun200ResponseBody =
+  ReadonlyArray<PendingDeployment>;
 
 export type ActionsGetPendingDeploymentsForRunRequestPath = {
   readonly owner: string;
@@ -6619,7 +6709,8 @@ export type Deployment = {
   readonly performed_via_github_app?: GitHubApp;
 };
 
-export type ActionsReviewPendingDeploymentsForRun200ResponseBody = ReadonlyArray<Deployment>;
+export type ActionsReviewPendingDeploymentsForRun200ResponseBody =
+  ReadonlyArray<Deployment>;
 
 export type ActionsReviewPendingDeploymentsForRunRequestBody = {
   readonly environment_ids: ReadonlyArray<number>;
@@ -6897,7 +6988,8 @@ export type AutolinkReference = {
   readonly is_alphanumeric: boolean;
 };
 
-export type ReposListAutolinks200ResponseBody = ReadonlyArray<AutolinkReference>;
+export type ReposListAutolinks200ResponseBody =
+  ReadonlyArray<AutolinkReference>;
 
 export type ReposListAutolinksRequestQuery = { readonly page?: number };
 
@@ -7324,7 +7416,8 @@ export type ReposDeleteBranchProtectionRequestPath = {
   readonly branch: string;
 };
 
-export type ReposGetAdminBranchProtection200ResponseBody = ProtectedBranchAdminEnforced;
+export type ReposGetAdminBranchProtection200ResponseBody =
+  ProtectedBranchAdminEnforced;
 
 export type ReposGetAdminBranchProtectionRequestPath = {
   readonly owner: string;
@@ -7332,7 +7425,8 @@ export type ReposGetAdminBranchProtectionRequestPath = {
   readonly branch: string;
 };
 
-export type ReposSetAdminBranchProtection200ResponseBody = ProtectedBranchAdminEnforced;
+export type ReposSetAdminBranchProtection200ResponseBody =
+  ProtectedBranchAdminEnforced;
 
 export type ReposSetAdminBranchProtectionRequestPath = {
   readonly owner: string;
@@ -7348,7 +7442,8 @@ export type ReposDeleteAdminBranchProtectionRequestPath = {
   readonly branch: string;
 };
 
-export type ReposGetPullRequestReviewProtection200ResponseBody = ProtectedBranchPullRequestReview;
+export type ReposGetPullRequestReviewProtection200ResponseBody =
+  ProtectedBranchPullRequestReview;
 
 export type ReposGetPullRequestReviewProtectionRequestPath = {
   readonly owner: string;
@@ -7356,9 +7451,11 @@ export type ReposGetPullRequestReviewProtectionRequestPath = {
   readonly branch: string;
 };
 
-export type ReposUpdatePullRequestReviewProtection200ResponseBody = ProtectedBranchPullRequestReview;
+export type ReposUpdatePullRequestReviewProtection200ResponseBody =
+  ProtectedBranchPullRequestReview;
 
-export type ReposUpdatePullRequestReviewProtection422ResponseBody = ValidationError;
+export type ReposUpdatePullRequestReviewProtection422ResponseBody =
+  ValidationError;
 
 export type ReposUpdatePullRequestReviewProtectionRequestBody = {
   readonly dismissal_restrictions?: {
@@ -7391,7 +7488,8 @@ export type ReposDeletePullRequestReviewProtectionRequestPath = {
   readonly branch: string;
 };
 
-export type ReposGetCommitSignatureProtection200ResponseBody = ProtectedBranchAdminEnforced;
+export type ReposGetCommitSignatureProtection200ResponseBody =
+  ProtectedBranchAdminEnforced;
 
 export type ReposGetCommitSignatureProtection404ResponseBody = BasicError;
 
@@ -7401,7 +7499,8 @@ export type ReposGetCommitSignatureProtectionRequestPath = {
   readonly branch: string;
 };
 
-export type ReposCreateCommitSignatureProtection200ResponseBody = ProtectedBranchAdminEnforced;
+export type ReposCreateCommitSignatureProtection200ResponseBody =
+  ProtectedBranchAdminEnforced;
 
 export type ReposCreateCommitSignatureProtection404ResponseBody = BasicError;
 
@@ -7456,7 +7555,8 @@ export type ReposRemoveStatusCheckProtectionRequestPath = {
   readonly branch: string;
 };
 
-export type ReposGetAllStatusCheckContexts200ResponseBody = ReadonlyArray<string>;
+export type ReposGetAllStatusCheckContexts200ResponseBody =
+  ReadonlyArray<string>;
 
 export type ReposGetAllStatusCheckContexts404ResponseBody = BasicError;
 
@@ -7500,7 +7600,8 @@ export type ReposSetStatusCheckContextsRequestPath = {
   readonly branch: string;
 };
 
-export type ReposRemoveStatusCheckContexts200ResponseBody = ReadonlyArray<string>;
+export type ReposRemoveStatusCheckContexts200ResponseBody =
+  ReadonlyArray<string>;
 
 export type ReposRemoveStatusCheckContexts404ResponseBody = BasicError;
 
@@ -7532,7 +7633,8 @@ export type ReposDeleteAccessRestrictionsRequestPath = {
   readonly branch: string;
 };
 
-export type ReposGetAppsWithAccessToProtectedBranch200ResponseBody = ReadonlyArray<GitHubApp>;
+export type ReposGetAppsWithAccessToProtectedBranch200ResponseBody =
+  ReadonlyArray<GitHubApp>;
 
 export type ReposGetAppsWithAccessToProtectedBranch404ResponseBody = BasicError;
 
@@ -7542,7 +7644,8 @@ export type ReposGetAppsWithAccessToProtectedBranchRequestPath = {
   readonly branch: string;
 };
 
-export type ReposAddAppAccessRestrictions200ResponseBody = ReadonlyArray<GitHubApp>;
+export type ReposAddAppAccessRestrictions200ResponseBody =
+  ReadonlyArray<GitHubApp>;
 
 export type ReposAddAppAccessRestrictions422ResponseBody = ValidationError;
 
@@ -7556,7 +7659,8 @@ export type ReposAddAppAccessRestrictionsRequestPath = {
   readonly branch: string;
 };
 
-export type ReposSetAppAccessRestrictions200ResponseBody = ReadonlyArray<GitHubApp>;
+export type ReposSetAppAccessRestrictions200ResponseBody =
+  ReadonlyArray<GitHubApp>;
 
 export type ReposSetAppAccessRestrictions422ResponseBody = ValidationError;
 
@@ -7570,7 +7674,8 @@ export type ReposSetAppAccessRestrictionsRequestPath = {
   readonly branch: string;
 };
 
-export type ReposRemoveAppAccessRestrictions200ResponseBody = ReadonlyArray<GitHubApp>;
+export type ReposRemoveAppAccessRestrictions200ResponseBody =
+  ReadonlyArray<GitHubApp>;
 
 export type ReposRemoveAppAccessRestrictions422ResponseBody = ValidationError;
 
@@ -7584,9 +7689,11 @@ export type ReposRemoveAppAccessRestrictionsRequestPath = {
   readonly branch: string;
 };
 
-export type ReposGetTeamsWithAccessToProtectedBranch200ResponseBody = ReadonlyArray<Team>;
+export type ReposGetTeamsWithAccessToProtectedBranch200ResponseBody =
+  ReadonlyArray<Team>;
 
-export type ReposGetTeamsWithAccessToProtectedBranch404ResponseBody = BasicError;
+export type ReposGetTeamsWithAccessToProtectedBranch404ResponseBody =
+  BasicError;
 
 export type ReposGetTeamsWithAccessToProtectedBranchRequestPath = {
   readonly owner: string;
@@ -7622,7 +7729,8 @@ export type ReposSetTeamAccessRestrictionsRequestPath = {
   readonly branch: string;
 };
 
-export type ReposRemoveTeamAccessRestrictions200ResponseBody = ReadonlyArray<Team>;
+export type ReposRemoveTeamAccessRestrictions200ResponseBody =
+  ReadonlyArray<Team>;
 
 export type ReposRemoveTeamAccessRestrictions422ResponseBody = ValidationError;
 
@@ -7636,9 +7744,11 @@ export type ReposRemoveTeamAccessRestrictionsRequestPath = {
   readonly branch: string;
 };
 
-export type ReposGetUsersWithAccessToProtectedBranch200ResponseBody = ReadonlyArray<SimpleUser>;
+export type ReposGetUsersWithAccessToProtectedBranch200ResponseBody =
+  ReadonlyArray<SimpleUser>;
 
-export type ReposGetUsersWithAccessToProtectedBranch404ResponseBody = BasicError;
+export type ReposGetUsersWithAccessToProtectedBranch404ResponseBody =
+  BasicError;
 
 export type ReposGetUsersWithAccessToProtectedBranchRequestPath = {
   readonly owner: string;
@@ -7646,7 +7756,8 @@ export type ReposGetUsersWithAccessToProtectedBranchRequestPath = {
   readonly branch: string;
 };
 
-export type ReposAddUserAccessRestrictions200ResponseBody = ReadonlyArray<SimpleUser>;
+export type ReposAddUserAccessRestrictions200ResponseBody =
+  ReadonlyArray<SimpleUser>;
 
 export type ReposAddUserAccessRestrictions422ResponseBody = ValidationError;
 
@@ -7660,7 +7771,8 @@ export type ReposAddUserAccessRestrictionsRequestPath = {
   readonly branch: string;
 };
 
-export type ReposSetUserAccessRestrictions200ResponseBody = ReadonlyArray<SimpleUser>;
+export type ReposSetUserAccessRestrictions200ResponseBody =
+  ReadonlyArray<SimpleUser>;
 
 export type ReposSetUserAccessRestrictions422ResponseBody = ValidationError;
 
@@ -7674,7 +7786,8 @@ export type ReposSetUserAccessRestrictionsRequestPath = {
   readonly branch: string;
 };
 
-export type ReposRemoveUserAccessRestrictions200ResponseBody = ReadonlyArray<SimpleUser>;
+export type ReposRemoveUserAccessRestrictions200ResponseBody =
+  ReadonlyArray<SimpleUser>;
 
 export type ReposRemoveUserAccessRestrictions422ResponseBody = ValidationError;
 
@@ -7869,7 +7982,8 @@ export type CheckAnnotation = {
   readonly blob_href: string;
 };
 
-export type ChecksListAnnotations200ResponseBody = ReadonlyArray<CheckAnnotation>;
+export type ChecksListAnnotations200ResponseBody =
+  ReadonlyArray<CheckAnnotation>;
 
 export type ChecksListAnnotationsRequestQuery = {
   readonly per_page?: number;
@@ -8022,7 +8136,8 @@ export type CodeScanningAlertItems = {
   readonly most_recent_instance: CodeScanningAlertInstance;
 };
 
-export type CodeScanningListAlertsForRepo200ResponseBody = ReadonlyArray<CodeScanningAlertItems>;
+export type CodeScanningListAlertsForRepo200ResponseBody =
+  ReadonlyArray<CodeScanningAlertItems>;
 
 export type CodeScanningListAlertsForRepo403ResponseBody = BasicError;
 
@@ -8112,7 +8227,8 @@ export type CodeScanningUpdateAlertRequestPath = {
   readonly alert_number: AlertNumber;
 };
 
-export type CodeScanningListAlertInstances200ResponseBody = ReadonlyArray<CodeScanningAlertInstance>;
+export type CodeScanningListAlertInstances200ResponseBody =
+  ReadonlyArray<CodeScanningAlertInstance>;
 
 export type CodeScanningListAlertInstances403ResponseBody = BasicError;
 
@@ -8164,7 +8280,8 @@ export type CodeScanningAnalysis = {
   readonly warning: string;
 };
 
-export type CodeScanningListRecentAnalyses200ResponseBody = ReadonlyArray<CodeScanningAnalysis>;
+export type CodeScanningListRecentAnalyses200ResponseBody =
+  ReadonlyArray<CodeScanningAnalysis>;
 
 export type CodeScanningListRecentAnalyses403ResponseBody = BasicError;
 
@@ -8251,7 +8368,8 @@ export type CodeQlDatabase = {
   readonly url: string;
 };
 
-export type CodeScanningListCodeqlDatabases200ResponseBody = ReadonlyArray<CodeQlDatabase>;
+export type CodeScanningListCodeqlDatabases200ResponseBody =
+  ReadonlyArray<CodeQlDatabase>;
 
 export type CodeScanningListCodeqlDatabases403ResponseBody = BasicError;
 
@@ -8368,13 +8486,17 @@ export type CodespacesListInRepositoryForAuthenticatedUser200ResponseBody = {
   readonly codespaces: ReadonlyArray<Codespace>;
 };
 
-export type CodespacesListInRepositoryForAuthenticatedUser401ResponseBody = BasicError;
+export type CodespacesListInRepositoryForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type CodespacesListInRepositoryForAuthenticatedUser403ResponseBody = BasicError;
+export type CodespacesListInRepositoryForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type CodespacesListInRepositoryForAuthenticatedUser404ResponseBody = BasicError;
+export type CodespacesListInRepositoryForAuthenticatedUser404ResponseBody =
+  BasicError;
 
-export type CodespacesListInRepositoryForAuthenticatedUser500ResponseBody = BasicError;
+export type CodespacesListInRepositoryForAuthenticatedUser500ResponseBody =
+  BasicError;
 
 export type CodespacesListInRepositoryForAuthenticatedUserRequestQuery = {
   readonly per_page?: number;
@@ -8386,17 +8508,23 @@ export type CodespacesListInRepositoryForAuthenticatedUserRequestPath = {
   readonly repo: string;
 };
 
-export type CodespacesCreateWithRepoForAuthenticatedUser201ResponseBody = Codespace;
+export type CodespacesCreateWithRepoForAuthenticatedUser201ResponseBody =
+  Codespace;
 
-export type CodespacesCreateWithRepoForAuthenticatedUser202ResponseBody = Codespace;
+export type CodespacesCreateWithRepoForAuthenticatedUser202ResponseBody =
+  Codespace;
 
-export type CodespacesCreateWithRepoForAuthenticatedUser400ResponseBody = BasicError;
+export type CodespacesCreateWithRepoForAuthenticatedUser400ResponseBody =
+  BasicError;
 
-export type CodespacesCreateWithRepoForAuthenticatedUser401ResponseBody = BasicError;
+export type CodespacesCreateWithRepoForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type CodespacesCreateWithRepoForAuthenticatedUser403ResponseBody = BasicError;
+export type CodespacesCreateWithRepoForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type CodespacesCreateWithRepoForAuthenticatedUser404ResponseBody = BasicError;
+export type CodespacesCreateWithRepoForAuthenticatedUser404ResponseBody =
+  BasicError;
 
 export type CodespacesCreateWithRepoForAuthenticatedUser503ResponseBody = {
   readonly code?: string;
@@ -8422,46 +8550,52 @@ export type CodespacesCreateWithRepoForAuthenticatedUserRequestPath = {
   readonly repo: string;
 };
 
-export type CodespacesListDevcontainersInRepositoryForAuthenticatedUser200ResponseBody = {
-  readonly total_count: number;
-  readonly devcontainers: ReadonlyArray<{
-    readonly path: string;
-    readonly name?: string;
-  }>;
-};
+export type CodespacesListDevcontainersInRepositoryForAuthenticatedUser200ResponseBody =
+  {
+    readonly total_count: number;
+    readonly devcontainers: ReadonlyArray<{
+      readonly path: string;
+      readonly name?: string;
+    }>;
+  };
 
-export type CodespacesListDevcontainersInRepositoryForAuthenticatedUser400ResponseBody = BasicError;
+export type CodespacesListDevcontainersInRepositoryForAuthenticatedUser400ResponseBody =
+  BasicError;
 
-export type CodespacesListDevcontainersInRepositoryForAuthenticatedUser401ResponseBody = BasicError;
+export type CodespacesListDevcontainersInRepositoryForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type CodespacesListDevcontainersInRepositoryForAuthenticatedUser403ResponseBody = BasicError;
+export type CodespacesListDevcontainersInRepositoryForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type CodespacesListDevcontainersInRepositoryForAuthenticatedUser404ResponseBody = BasicError;
+export type CodespacesListDevcontainersInRepositoryForAuthenticatedUser404ResponseBody =
+  BasicError;
 
-export type CodespacesListDevcontainersInRepositoryForAuthenticatedUser500ResponseBody = BasicError;
+export type CodespacesListDevcontainersInRepositoryForAuthenticatedUser500ResponseBody =
+  BasicError;
 
-export type CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequestQuery = {
-  readonly per_page?: number;
-  readonly page?: number;
-};
+export type CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequestQuery =
+  { readonly per_page?: number; readonly page?: number };
 
-export type CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequestPath = {
-  readonly owner: string;
-  readonly repo: string;
-};
+export type CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequestPath =
+  { readonly owner: string; readonly repo: string };
 
 export type CodespacesRepoMachinesForAuthenticatedUser200ResponseBody = {
   readonly total_count: number;
   readonly machines: ReadonlyArray<CodespaceMachine>;
 };
 
-export type CodespacesRepoMachinesForAuthenticatedUser401ResponseBody = BasicError;
+export type CodespacesRepoMachinesForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type CodespacesRepoMachinesForAuthenticatedUser403ResponseBody = BasicError;
+export type CodespacesRepoMachinesForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type CodespacesRepoMachinesForAuthenticatedUser404ResponseBody = BasicError;
+export type CodespacesRepoMachinesForAuthenticatedUser404ResponseBody =
+  BasicError;
 
-export type CodespacesRepoMachinesForAuthenticatedUser500ResponseBody = BasicError;
+export type CodespacesRepoMachinesForAuthenticatedUser500ResponseBody =
+  BasicError;
 
 export type CodespacesRepoMachinesForAuthenticatedUserRequestQuery = {
   readonly location?: string;
@@ -8481,11 +8615,14 @@ export type CodespacesPreFlightWithRepoForAuthenticatedUser200ResponseBody = {
   };
 };
 
-export type CodespacesPreFlightWithRepoForAuthenticatedUser401ResponseBody = BasicError;
+export type CodespacesPreFlightWithRepoForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type CodespacesPreFlightWithRepoForAuthenticatedUser403ResponseBody = BasicError;
+export type CodespacesPreFlightWithRepoForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type CodespacesPreFlightWithRepoForAuthenticatedUser404ResponseBody = BasicError;
+export type CodespacesPreFlightWithRepoForAuthenticatedUser404ResponseBody =
+  BasicError;
 
 export type CodespacesPreFlightWithRepoForAuthenticatedUserRequestQuery = {
   readonly ref?: string;
@@ -8638,7 +8775,8 @@ export type RepositoryCollaboratorPermission = {
   readonly user: Collaborator;
 };
 
-export type ReposGetCollaboratorPermissionLevel200ResponseBody = RepositoryCollaboratorPermission;
+export type ReposGetCollaboratorPermissionLevel200ResponseBody =
+  RepositoryCollaboratorPermission;
 
 export type ReposGetCollaboratorPermissionLevel404ResponseBody = BasicError;
 
@@ -8665,7 +8803,8 @@ export type CommitComment = {
   readonly reactions?: ReactionRollup;
 };
 
-export type ReposListCommitCommentsForRepo200ResponseBody = ReadonlyArray<CommitComment>;
+export type ReposListCommitCommentsForRepo200ResponseBody =
+  ReadonlyArray<CommitComment>;
 
 export type ReposListCommitCommentsForRepoRequestQuery = {
   readonly per_page?: number;
@@ -8707,7 +8846,8 @@ export type ReposDeleteCommitCommentRequestPath = {
   readonly comment_id: number;
 };
 
-export type ReactionsListForCommitComment200ResponseBody = ReadonlyArray<Reaction>;
+export type ReactionsListForCommitComment200ResponseBody =
+  ReadonlyArray<Reaction>;
 
 export type ReactionsListForCommitComment404ResponseBody = BasicError;
 
@@ -8793,7 +8933,8 @@ export type BranchShort = {
   readonly protected: boolean;
 };
 
-export type ReposListBranchesForHeadCommit200ResponseBody = ReadonlyArray<BranchShort>;
+export type ReposListBranchesForHeadCommit200ResponseBody =
+  ReadonlyArray<BranchShort>;
 
 export type ReposListBranchesForHeadCommit422ResponseBody = ValidationError;
 
@@ -8803,7 +8944,8 @@ export type ReposListBranchesForHeadCommitRequestPath = {
   readonly commit_sha: string;
 };
 
-export type ReposListCommentsForCommit200ResponseBody = ReadonlyArray<CommitComment>;
+export type ReposListCommentsForCommit200ResponseBody =
+  ReadonlyArray<CommitComment>;
 
 export type ReposListCommentsForCommitRequestQuery = {
   readonly per_page?: number;
@@ -8912,7 +9054,8 @@ export type PullRequestSimple = {
   readonly draft?: boolean;
 };
 
-export type ReposListPullRequestsAssociatedWithCommit200ResponseBody = ReadonlyArray<PullRequestSimple>;
+export type ReposListPullRequestsAssociatedWithCommit200ResponseBody =
+  ReadonlyArray<PullRequestSimple>;
 
 export type ReposListPullRequestsAssociatedWithCommitRequestQuery = {
   readonly per_page?: number;
@@ -9041,7 +9184,8 @@ export type Status = {
   readonly creator: SimpleUser;
 };
 
-export type ReposListCommitStatusesForRef200ResponseBody = ReadonlyArray<Status>;
+export type ReposListCommitStatusesForRef200ResponseBody =
+  ReadonlyArray<Status>;
 
 export type ReposListCommitStatusesForRef301ResponseBody = BasicError;
 
@@ -9394,7 +9538,8 @@ export type DependabotAlert = {
   readonly fixed_at: AlertFixedAt;
 };
 
-export type DependabotListAlertsForRepo200ResponseBody = ReadonlyArray<DependabotAlert>;
+export type DependabotListAlertsForRepo200ResponseBody =
+  ReadonlyArray<DependabotAlert>;
 
 export type DependabotListAlertsForRepo400ResponseBody = BasicError;
 
@@ -9675,7 +9820,8 @@ export type DeploymentStatus = {
   readonly performed_via_github_app?: GitHubApp;
 };
 
-export type ReposListDeploymentStatuses200ResponseBody = ReadonlyArray<DeploymentStatus>;
+export type ReposListDeploymentStatuses200ResponseBody =
+  ReadonlyArray<DeploymentStatus>;
 
 export type ReposListDeploymentStatuses404ResponseBody = BasicError;
 
@@ -9846,11 +9992,13 @@ export type ReposListDeploymentBranchPoliciesRequestPath = {
   readonly environment_name: string;
 };
 
-export type ReposCreateDeploymentBranchPolicy200ResponseBody = DeploymentBranchPolicy;
+export type ReposCreateDeploymentBranchPolicy200ResponseBody =
+  DeploymentBranchPolicy;
 
 export type DeploymentBranchPolicyNamePattern = { readonly name: string };
 
-export type ReposCreateDeploymentBranchPolicyRequestBody = DeploymentBranchPolicyNamePattern;
+export type ReposCreateDeploymentBranchPolicyRequestBody =
+  DeploymentBranchPolicyNamePattern;
 
 export type ReposCreateDeploymentBranchPolicyRequestPath = {
   readonly owner: string;
@@ -9858,7 +10006,8 @@ export type ReposCreateDeploymentBranchPolicyRequestPath = {
   readonly environment_name: string;
 };
 
-export type ReposGetDeploymentBranchPolicy200ResponseBody = DeploymentBranchPolicy;
+export type ReposGetDeploymentBranchPolicy200ResponseBody =
+  DeploymentBranchPolicy;
 
 export type ReposGetDeploymentBranchPolicyRequestPath = {
   readonly owner: string;
@@ -9867,9 +10016,11 @@ export type ReposGetDeploymentBranchPolicyRequestPath = {
   readonly branch_policy_id: number;
 };
 
-export type ReposUpdateDeploymentBranchPolicy200ResponseBody = DeploymentBranchPolicy;
+export type ReposUpdateDeploymentBranchPolicy200ResponseBody =
+  DeploymentBranchPolicy;
 
-export type ReposUpdateDeploymentBranchPolicyRequestBody = DeploymentBranchPolicyNamePattern;
+export type ReposUpdateDeploymentBranchPolicyRequestBody =
+  DeploymentBranchPolicyNamePattern;
 
 export type ReposUpdateDeploymentBranchPolicyRequestPath = {
   readonly owner: string;
@@ -10343,7 +10494,8 @@ export type ReposGetWebhookConfigForRepoRequestPath = {
   readonly hook_id: number;
 };
 
-export type ReposUpdateWebhookConfigForRepo200ResponseBody = WebhookConfiguration;
+export type ReposUpdateWebhookConfigForRepo200ResponseBody =
+  WebhookConfiguration;
 
 export type ReposUpdateWebhookConfigForRepoRequestBody = {
   readonly url?: WebhookConfigUrl;
@@ -10358,7 +10510,8 @@ export type ReposUpdateWebhookConfigForRepoRequestPath = {
   readonly hook_id: number;
 };
 
-export type ReposListWebhookDeliveries200ResponseBody = ReadonlyArray<SimpleWebhookDelivery>;
+export type ReposListWebhookDeliveries200ResponseBody =
+  ReadonlyArray<SimpleWebhookDelivery>;
 
 export type ReposListWebhookDeliveries400ResponseBody = BasicError;
 
@@ -10520,7 +10673,8 @@ export type PorterAuthor = {
   readonly import_url: string;
 };
 
-export type MigrationsGetCommitAuthors200ResponseBody = ReadonlyArray<PorterAuthor>;
+export type MigrationsGetCommitAuthors200ResponseBody =
+  ReadonlyArray<PorterAuthor>;
 
 export type MigrationsGetCommitAuthors404ResponseBody = BasicError;
 
@@ -10557,7 +10711,8 @@ export type PorterLargeFile = {
   readonly size: number;
 };
 
-export type MigrationsGetLargeFiles200ResponseBody = ReadonlyArray<PorterLargeFile>;
+export type MigrationsGetLargeFiles200ResponseBody =
+  ReadonlyArray<PorterLargeFile>;
 
 export type MigrationsGetLargeFilesRequestPath = {
   readonly owner: string;
@@ -10597,9 +10752,11 @@ export type InteractionsGetRestrictionsForRepoRequestPath = {
   readonly repo: string;
 };
 
-export type InteractionsSetRestrictionsForRepo200ResponseBody = InteractionLimits;
+export type InteractionsSetRestrictionsForRepo200ResponseBody =
+  InteractionLimits;
 
-export type InteractionsSetRestrictionsForRepoRequestBody = InteractionRestrictions;
+export type InteractionsSetRestrictionsForRepoRequestBody =
+  InteractionRestrictions;
 
 export type InteractionsSetRestrictionsForRepoRequestPath = {
   readonly owner: string;
@@ -10611,7 +10768,8 @@ export type InteractionsRemoveRestrictionsForRepoRequestPath = {
   readonly repo: string;
 };
 
-export type ReposListInvitations200ResponseBody = ReadonlyArray<RepositoryInvitation>;
+export type ReposListInvitations200ResponseBody =
+  ReadonlyArray<RepositoryInvitation>;
 
 export type ReposListInvitationsRequestQuery = {
   readonly per_page?: number;
@@ -10706,7 +10864,8 @@ export type IssuesCreateRequestPath = {
   readonly repo: string;
 };
 
-export type IssuesListCommentsForRepo200ResponseBody = ReadonlyArray<IssueComment>;
+export type IssuesListCommentsForRepo200ResponseBody =
+  ReadonlyArray<IssueComment>;
 
 export type IssuesListCommentsForRepo404ResponseBody = BasicError;
 
@@ -10753,7 +10912,8 @@ export type IssuesDeleteCommentRequestPath = {
   readonly comment_id: number;
 };
 
-export type ReactionsListForIssueComment200ResponseBody = ReadonlyArray<Reaction>;
+export type ReactionsListForIssueComment200ResponseBody =
+  ReadonlyArray<Reaction>;
 
 export type ReactionsListForIssueComment404ResponseBody = BasicError;
 
@@ -11647,7 +11807,8 @@ export type TimelineEvent = unknown &
     | StateChangeIssueEvent
   );
 
-export type IssuesListEventsForTimeline200ResponseBody = ReadonlyArray<TimelineEvent>;
+export type IssuesListEventsForTimeline200ResponseBody =
+  ReadonlyArray<TimelineEvent>;
 
 export type IssuesListEventsForTimeline404ResponseBody = BasicError;
 
@@ -11941,7 +12102,8 @@ export type IssuesListLabelsForMilestoneRequestPath = {
   readonly milestone_number: number;
 };
 
-export type ActivityListRepoNotificationsForAuthenticatedUser200ResponseBody = ReadonlyArray<Thread>;
+export type ActivityListRepoNotificationsForAuthenticatedUser200ResponseBody =
+  ReadonlyArray<Thread>;
 
 export type ActivityListRepoNotificationsForAuthenticatedUserRequestQuery = {
   readonly all?: boolean;
@@ -12048,7 +12210,8 @@ export type ReposUpdateInformationAboutPagesSite400ResponseBody = BasicError;
 
 export type ReposUpdateInformationAboutPagesSite409ResponseBody = BasicError;
 
-export type ReposUpdateInformationAboutPagesSite422ResponseBody = ValidationError;
+export type ReposUpdateInformationAboutPagesSite422ResponseBody =
+  ValidationError;
 
 export type ReposUpdateInformationAboutPagesSiteRequestBody = {
   readonly cname?: string | null;
@@ -12648,7 +12811,8 @@ export type PullsCreateRequestPath = {
   readonly repo: string;
 };
 
-export type PullsListReviewCommentsForRepo200ResponseBody = ReadonlyArray<PullRequestReviewComment>;
+export type PullsListReviewCommentsForRepo200ResponseBody =
+  ReadonlyArray<PullRequestReviewComment>;
 
 export type PullsListReviewCommentsForRepoRequestQuery = {
   readonly sort?: 'created' | 'updated' | 'created_at';
@@ -12691,9 +12855,11 @@ export type PullsDeleteReviewCommentRequestPath = {
   readonly comment_id: number;
 };
 
-export type ReactionsListForPullRequestReviewComment200ResponseBody = ReadonlyArray<Reaction>;
+export type ReactionsListForPullRequestReviewComment200ResponseBody =
+  ReadonlyArray<Reaction>;
 
-export type ReactionsListForPullRequestReviewComment404ResponseBody = BasicError;
+export type ReactionsListForPullRequestReviewComment404ResponseBody =
+  BasicError;
 
 export type ReactionsListForPullRequestReviewCommentRequestQuery = {
   readonly content?:
@@ -12715,11 +12881,14 @@ export type ReactionsListForPullRequestReviewCommentRequestPath = {
   readonly comment_id: number;
 };
 
-export type ReactionsCreateForPullRequestReviewComment200ResponseBody = Reaction;
+export type ReactionsCreateForPullRequestReviewComment200ResponseBody =
+  Reaction;
 
-export type ReactionsCreateForPullRequestReviewComment201ResponseBody = Reaction;
+export type ReactionsCreateForPullRequestReviewComment201ResponseBody =
+  Reaction;
 
-export type ReactionsCreateForPullRequestReviewComment422ResponseBody = ValidationError;
+export type ReactionsCreateForPullRequestReviewComment422ResponseBody =
+  ValidationError;
 
 export type ReactionsCreateForPullRequestReviewCommentRequestBody = {
   readonly content:
@@ -12784,15 +12953,20 @@ export type PullsUpdateRequestPath = {
   readonly pull_number: number;
 };
 
-export type CodespacesCreateWithPrForAuthenticatedUser201ResponseBody = Codespace;
+export type CodespacesCreateWithPrForAuthenticatedUser201ResponseBody =
+  Codespace;
 
-export type CodespacesCreateWithPrForAuthenticatedUser202ResponseBody = Codespace;
+export type CodespacesCreateWithPrForAuthenticatedUser202ResponseBody =
+  Codespace;
 
-export type CodespacesCreateWithPrForAuthenticatedUser401ResponseBody = BasicError;
+export type CodespacesCreateWithPrForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type CodespacesCreateWithPrForAuthenticatedUser403ResponseBody = BasicError;
+export type CodespacesCreateWithPrForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type CodespacesCreateWithPrForAuthenticatedUser404ResponseBody = BasicError;
+export type CodespacesCreateWithPrForAuthenticatedUser404ResponseBody =
+  BasicError;
 
 export type CodespacesCreateWithPrForAuthenticatedUser503ResponseBody = {
   readonly code?: string;
@@ -12818,7 +12992,8 @@ export type CodespacesCreateWithPrForAuthenticatedUserRequestPath = {
   readonly pull_number: number;
 };
 
-export type PullsListReviewComments200ResponseBody = ReadonlyArray<PullRequestReviewComment>;
+export type PullsListReviewComments200ResponseBody =
+  ReadonlyArray<PullRequestReviewComment>;
 
 export type PullsListReviewCommentsRequestQuery = {
   readonly sort?: 'created' | 'updated';
@@ -12858,7 +13033,8 @@ export type PullsCreateReviewCommentRequestPath = {
   readonly pull_number: number;
 };
 
-export type PullsCreateReplyForReviewComment201ResponseBody = PullRequestReviewComment;
+export type PullsCreateReplyForReviewComment201ResponseBody =
+  PullRequestReviewComment;
 
 export type PullsCreateReplyForReviewComment404ResponseBody = BasicError;
 
@@ -12957,7 +13133,8 @@ export type PullRequestReviewRequest = {
   readonly teams: ReadonlyArray<Team>;
 };
 
-export type PullsListRequestedReviewers200ResponseBody = PullRequestReviewRequest;
+export type PullsListRequestedReviewers200ResponseBody =
+  PullRequestReviewRequest;
 
 export type PullsListRequestedReviewersRequestPath = {
   readonly owner: string;
@@ -13126,7 +13303,8 @@ export type LegacyReviewComment = {
   readonly original_start_line?: number | null;
 };
 
-export type PullsListCommentsForReview200ResponseBody = ReadonlyArray<LegacyReviewComment>;
+export type PullsListCommentsForReview200ResponseBody =
+  ReadonlyArray<LegacyReviewComment>;
 
 export type PullsListCommentsForReview404ResponseBody = BasicError;
 
@@ -13339,7 +13517,8 @@ export type GeneratedReleaseNotesContent = {
   readonly body: string;
 };
 
-export type ReposGenerateReleaseNotes200ResponseBody = GeneratedReleaseNotesContent;
+export type ReposGenerateReleaseNotes200ResponseBody =
+  GeneratedReleaseNotesContent;
 
 export type ReposGenerateReleaseNotes404ResponseBody = BasicError;
 
@@ -13493,7 +13672,8 @@ export type SecretScanningAlert = {
   readonly push_protection_bypassed_at?: string | null;
 };
 
-export type SecretScanningListAlertsForRepo200ResponseBody = ReadonlyArray<SecretScanningAlert>;
+export type SecretScanningListAlertsForRepo200ResponseBody =
+  ReadonlyArray<SecretScanningAlert>;
 
 export type SecretScanningListAlertsForRepo503ResponseBody = {
   readonly code?: string;
@@ -13571,7 +13751,8 @@ export type SecretScanningLocation = {
   readonly details: SecretScanningLocationCommit;
 };
 
-export type SecretScanningListLocationsForAlert200ResponseBody = ReadonlyArray<SecretScanningLocation>;
+export type SecretScanningListLocationsForAlert200ResponseBody =
+  ReadonlyArray<SecretScanningLocation>;
 
 export type SecretScanningListLocationsForAlert503ResponseBody = {
   readonly code?: string;
@@ -13613,7 +13794,8 @@ export type ActivityListStargazersForRepoRequestPath = {
 
 export type CodeFrequencyStat = ReadonlyArray<number>;
 
-export type ReposGetCodeFrequencyStats200ResponseBody = ReadonlyArray<CodeFrequencyStat>;
+export type ReposGetCodeFrequencyStats200ResponseBody =
+  ReadonlyArray<CodeFrequencyStat>;
 
 export type ReposGetCodeFrequencyStats202ResponseBody = unknown;
 
@@ -13628,7 +13810,8 @@ export type CommitActivity = {
   readonly week: number;
 };
 
-export type ReposGetCommitActivityStats200ResponseBody = ReadonlyArray<CommitActivity>;
+export type ReposGetCommitActivityStats200ResponseBody =
+  ReadonlyArray<CommitActivity>;
 
 export type ReposGetCommitActivityStats202ResponseBody = unknown;
 
@@ -13648,7 +13831,8 @@ export type ContributorActivity = {
   }>;
 };
 
-export type ReposGetContributorsStats200ResponseBody = ReadonlyArray<ContributorActivity>;
+export type ReposGetContributorsStats200ResponseBody =
+  ReadonlyArray<ContributorActivity>;
 
 export type ReposGetContributorsStats202ResponseBody = unknown;
 
@@ -13671,7 +13855,8 @@ export type ReposGetParticipationStatsRequestPath = {
   readonly repo: string;
 };
 
-export type ReposGetPunchCardStats200ResponseBody = ReadonlyArray<CodeFrequencyStat>;
+export type ReposGetPunchCardStats200ResponseBody =
+  ReadonlyArray<CodeFrequencyStat>;
 
 export type ReposGetPunchCardStatsRequestPath = {
   readonly owner: string;
@@ -13693,7 +13878,8 @@ export type ReposCreateCommitStatusRequestPath = {
   readonly sha: string;
 };
 
-export type ActivityListWatchersForRepo200ResponseBody = ReadonlyArray<SimpleUser>;
+export type ActivityListWatchersForRepo200ResponseBody =
+  ReadonlyArray<SimpleUser>;
 
 export type ActivityListWatchersForRepoRequestQuery = {
   readonly per_page?: number;
@@ -13759,7 +13945,8 @@ export type TagProtection = {
   readonly pattern: string;
 };
 
-export type ReposListTagProtection200ResponseBody = ReadonlyArray<TagProtection>;
+export type ReposListTagProtection200ResponseBody =
+  ReadonlyArray<TagProtection>;
 
 export type ReposListTagProtection403ResponseBody = BasicError;
 
@@ -13887,7 +14074,8 @@ export type ReferrerTraffic = {
   readonly uniques: number;
 };
 
-export type ReposGetTopReferrers200ResponseBody = ReadonlyArray<ReferrerTraffic>;
+export type ReposGetTopReferrers200ResponseBody =
+  ReadonlyArray<ReferrerTraffic>;
 
 export type ReposGetTopReferrers403ResponseBody = BasicError;
 
@@ -14487,7 +14675,8 @@ export type TeamsDeleteLegacy422ResponseBody = ValidationError;
 
 export type TeamsDeleteLegacyRequestPath = { readonly team_id: number };
 
-export type TeamsListDiscussionsLegacy200ResponseBody = ReadonlyArray<TeamDiscussion>;
+export type TeamsListDiscussionsLegacy200ResponseBody =
+  ReadonlyArray<TeamDiscussion>;
 
 export type TeamsListDiscussionsLegacyRequestQuery = {
   readonly direction?: 'asc' | 'desc';
@@ -14535,7 +14724,8 @@ export type TeamsDeleteDiscussionLegacyRequestPath = {
   readonly discussion_number: number;
 };
 
-export type TeamsListDiscussionCommentsLegacy200ResponseBody = ReadonlyArray<TeamDiscussionComment>;
+export type TeamsListDiscussionCommentsLegacy200ResponseBody =
+  ReadonlyArray<TeamDiscussionComment>;
 
 export type TeamsListDiscussionCommentsLegacyRequestQuery = {
   readonly direction?: 'asc' | 'desc';
@@ -14548,7 +14738,8 @@ export type TeamsListDiscussionCommentsLegacyRequestPath = {
   readonly discussion_number: number;
 };
 
-export type TeamsCreateDiscussionCommentLegacy201ResponseBody = TeamDiscussionComment;
+export type TeamsCreateDiscussionCommentLegacy201ResponseBody =
+  TeamDiscussionComment;
 
 export type TeamsCreateDiscussionCommentLegacyRequestBody = {
   readonly body: string;
@@ -14559,7 +14750,8 @@ export type TeamsCreateDiscussionCommentLegacyRequestPath = {
   readonly discussion_number: number;
 };
 
-export type TeamsGetDiscussionCommentLegacy200ResponseBody = TeamDiscussionComment;
+export type TeamsGetDiscussionCommentLegacy200ResponseBody =
+  TeamDiscussionComment;
 
 export type TeamsGetDiscussionCommentLegacyRequestPath = {
   readonly team_id: number;
@@ -14567,7 +14759,8 @@ export type TeamsGetDiscussionCommentLegacyRequestPath = {
   readonly comment_number: number;
 };
 
-export type TeamsUpdateDiscussionCommentLegacy200ResponseBody = TeamDiscussionComment;
+export type TeamsUpdateDiscussionCommentLegacy200ResponseBody =
+  TeamDiscussionComment;
 
 export type TeamsUpdateDiscussionCommentLegacyRequestBody = {
   readonly body: string;
@@ -14585,7 +14778,8 @@ export type TeamsDeleteDiscussionCommentLegacyRequestPath = {
   readonly comment_number: number;
 };
 
-export type ReactionsListForTeamDiscussionCommentLegacy200ResponseBody = ReadonlyArray<Reaction>;
+export type ReactionsListForTeamDiscussionCommentLegacy200ResponseBody =
+  ReadonlyArray<Reaction>;
 
 export type ReactionsListForTeamDiscussionCommentLegacyRequestQuery = {
   readonly content?:
@@ -14607,7 +14801,8 @@ export type ReactionsListForTeamDiscussionCommentLegacyRequestPath = {
   readonly comment_number: number;
 };
 
-export type ReactionsCreateForTeamDiscussionCommentLegacy201ResponseBody = Reaction;
+export type ReactionsCreateForTeamDiscussionCommentLegacy201ResponseBody =
+  Reaction;
 
 export type ReactionsCreateForTeamDiscussionCommentLegacyRequestBody = {
   readonly content:
@@ -14627,7 +14822,8 @@ export type ReactionsCreateForTeamDiscussionCommentLegacyRequestPath = {
   readonly comment_number: number;
 };
 
-export type ReactionsListForTeamDiscussionLegacy200ResponseBody = ReadonlyArray<Reaction>;
+export type ReactionsListForTeamDiscussionLegacy200ResponseBody =
+  ReadonlyArray<Reaction>;
 
 export type ReactionsListForTeamDiscussionLegacyRequestQuery = {
   readonly content?:
@@ -14667,7 +14863,8 @@ export type ReactionsCreateForTeamDiscussionLegacyRequestPath = {
   readonly discussion_number: number;
 };
 
-export type TeamsListPendingInvitationsLegacy200ResponseBody = ReadonlyArray<OrganizationInvitation>;
+export type TeamsListPendingInvitationsLegacy200ResponseBody =
+  ReadonlyArray<OrganizationInvitation>;
 
 export type TeamsListPendingInvitationsLegacyRequestQuery = {
   readonly per_page?: number;
@@ -14716,7 +14913,8 @@ export type TeamsGetMembershipForUserLegacyRequestPath = {
   readonly username: string;
 };
 
-export type TeamsAddOrUpdateMembershipForUserLegacy200ResponseBody = TeamMembership;
+export type TeamsAddOrUpdateMembershipForUserLegacy200ResponseBody =
+  TeamMembership;
 
 export type TeamsAddOrUpdateMembershipForUserLegacy404ResponseBody = BasicError;
 
@@ -14757,9 +14955,11 @@ export type TeamsAddOrUpdateProjectPermissionsLegacy403ResponseBody = {
   readonly documentation_url?: string;
 };
 
-export type TeamsAddOrUpdateProjectPermissionsLegacy404ResponseBody = BasicError;
+export type TeamsAddOrUpdateProjectPermissionsLegacy404ResponseBody =
+  BasicError;
 
-export type TeamsAddOrUpdateProjectPermissionsLegacy422ResponseBody = ValidationError;
+export type TeamsAddOrUpdateProjectPermissionsLegacy422ResponseBody =
+  ValidationError;
 
 export type TeamsAddOrUpdateProjectPermissionsLegacyRequestBody = {
   readonly permission?: 'read' | 'write' | 'admin';
@@ -14779,7 +14979,8 @@ export type TeamsRemoveProjectLegacyRequestPath = {
   readonly project_id: number;
 };
 
-export type TeamsListReposLegacy200ResponseBody = ReadonlyArray<MinimalRepository>;
+export type TeamsListReposLegacy200ResponseBody =
+  ReadonlyArray<MinimalRepository>;
 
 export type TeamsListReposLegacy404ResponseBody = BasicError;
 
@@ -14800,7 +15001,8 @@ export type TeamsCheckPermissionsForRepoLegacyRequestPath = {
 
 export type TeamsAddOrUpdateRepoPermissionsLegacy403ResponseBody = BasicError;
 
-export type TeamsAddOrUpdateRepoPermissionsLegacy422ResponseBody = ValidationError;
+export type TeamsAddOrUpdateRepoPermissionsLegacy422ResponseBody =
+  ValidationError;
 
 export type TeamsAddOrUpdateRepoPermissionsLegacyRequestBody = {
   readonly permission?: 'pull' | 'push' | 'admin';
@@ -14910,7 +15112,8 @@ export type UsersUpdateAuthenticatedRequestBody = {
   readonly bio?: string;
 };
 
-export type UsersListBlockedByAuthenticatedUser200ResponseBody = ReadonlyArray<SimpleUser>;
+export type UsersListBlockedByAuthenticatedUser200ResponseBody =
+  ReadonlyArray<SimpleUser>;
 
 export type UsersListBlockedByAuthenticatedUser401ResponseBody = BasicError;
 
@@ -15025,19 +15228,24 @@ export type CodespacesUserPublicKey = {
   readonly key: string;
 };
 
-export type CodespacesGetPublicKeyForAuthenticatedUser200ResponseBody = CodespacesUserPublicKey;
+export type CodespacesGetPublicKeyForAuthenticatedUser200ResponseBody =
+  CodespacesUserPublicKey;
 
-export type CodespacesGetSecretForAuthenticatedUser200ResponseBody = CodespacesSecret;
+export type CodespacesGetSecretForAuthenticatedUser200ResponseBody =
+  CodespacesSecret;
 
 export type CodespacesGetSecretForAuthenticatedUserRequestPath = {
   readonly secret_name: string;
 };
 
-export type CodespacesCreateOrUpdateSecretForAuthenticatedUser201ResponseBody = EmptyObject;
+export type CodespacesCreateOrUpdateSecretForAuthenticatedUser201ResponseBody =
+  EmptyObject;
 
-export type CodespacesCreateOrUpdateSecretForAuthenticatedUser404ResponseBody = BasicError;
+export type CodespacesCreateOrUpdateSecretForAuthenticatedUser404ResponseBody =
+  BasicError;
 
-export type CodespacesCreateOrUpdateSecretForAuthenticatedUser422ResponseBody = ValidationError;
+export type CodespacesCreateOrUpdateSecretForAuthenticatedUser422ResponseBody =
+  ValidationError;
 
 export type CodespacesCreateOrUpdateSecretForAuthenticatedUserRequestBody = {
   readonly encrypted_value?: string;
@@ -15053,64 +15261,76 @@ export type CodespacesDeleteSecretForAuthenticatedUserRequestPath = {
   readonly secret_name: string;
 };
 
-export type CodespacesListRepositoriesForSecretForAuthenticatedUser200ResponseBody = {
-  readonly total_count: number;
-  readonly repositories: ReadonlyArray<MinimalRepository>;
-};
+export type CodespacesListRepositoriesForSecretForAuthenticatedUser200ResponseBody =
+  {
+    readonly total_count: number;
+    readonly repositories: ReadonlyArray<MinimalRepository>;
+  };
 
-export type CodespacesListRepositoriesForSecretForAuthenticatedUser401ResponseBody = BasicError;
+export type CodespacesListRepositoriesForSecretForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type CodespacesListRepositoriesForSecretForAuthenticatedUser403ResponseBody = BasicError;
+export type CodespacesListRepositoriesForSecretForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type CodespacesListRepositoriesForSecretForAuthenticatedUser404ResponseBody = BasicError;
+export type CodespacesListRepositoriesForSecretForAuthenticatedUser404ResponseBody =
+  BasicError;
 
-export type CodespacesListRepositoriesForSecretForAuthenticatedUser500ResponseBody = BasicError;
+export type CodespacesListRepositoriesForSecretForAuthenticatedUser500ResponseBody =
+  BasicError;
 
-export type CodespacesListRepositoriesForSecretForAuthenticatedUserRequestPath = {
-  readonly secret_name: string;
-};
+export type CodespacesListRepositoriesForSecretForAuthenticatedUserRequestPath =
+  { readonly secret_name: string };
 
-export type CodespacesSetRepositoriesForSecretForAuthenticatedUser401ResponseBody = BasicError;
+export type CodespacesSetRepositoriesForSecretForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type CodespacesSetRepositoriesForSecretForAuthenticatedUser403ResponseBody = BasicError;
+export type CodespacesSetRepositoriesForSecretForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type CodespacesSetRepositoriesForSecretForAuthenticatedUser404ResponseBody = BasicError;
+export type CodespacesSetRepositoriesForSecretForAuthenticatedUser404ResponseBody =
+  BasicError;
 
-export type CodespacesSetRepositoriesForSecretForAuthenticatedUser500ResponseBody = BasicError;
+export type CodespacesSetRepositoriesForSecretForAuthenticatedUser500ResponseBody =
+  BasicError;
 
-export type CodespacesSetRepositoriesForSecretForAuthenticatedUserRequestBody = {
-  readonly selected_repository_ids: ReadonlyArray<number>;
-};
+export type CodespacesSetRepositoriesForSecretForAuthenticatedUserRequestBody =
+  { readonly selected_repository_ids: ReadonlyArray<number> };
 
-export type CodespacesSetRepositoriesForSecretForAuthenticatedUserRequestPath = {
-  readonly secret_name: string;
-};
+export type CodespacesSetRepositoriesForSecretForAuthenticatedUserRequestPath =
+  { readonly secret_name: string };
 
-export type CodespacesAddRepositoryForSecretForAuthenticatedUser401ResponseBody = BasicError;
+export type CodespacesAddRepositoryForSecretForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type CodespacesAddRepositoryForSecretForAuthenticatedUser403ResponseBody = BasicError;
+export type CodespacesAddRepositoryForSecretForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type CodespacesAddRepositoryForSecretForAuthenticatedUser404ResponseBody = BasicError;
+export type CodespacesAddRepositoryForSecretForAuthenticatedUser404ResponseBody =
+  BasicError;
 
-export type CodespacesAddRepositoryForSecretForAuthenticatedUser500ResponseBody = BasicError;
+export type CodespacesAddRepositoryForSecretForAuthenticatedUser500ResponseBody =
+  BasicError;
 
 export type CodespacesAddRepositoryForSecretForAuthenticatedUserRequestPath = {
   readonly secret_name: string;
   readonly repository_id: number;
 };
 
-export type CodespacesRemoveRepositoryForSecretForAuthenticatedUser401ResponseBody = BasicError;
+export type CodespacesRemoveRepositoryForSecretForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type CodespacesRemoveRepositoryForSecretForAuthenticatedUser403ResponseBody = BasicError;
+export type CodespacesRemoveRepositoryForSecretForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type CodespacesRemoveRepositoryForSecretForAuthenticatedUser404ResponseBody = BasicError;
+export type CodespacesRemoveRepositoryForSecretForAuthenticatedUser404ResponseBody =
+  BasicError;
 
-export type CodespacesRemoveRepositoryForSecretForAuthenticatedUser500ResponseBody = BasicError;
+export type CodespacesRemoveRepositoryForSecretForAuthenticatedUser500ResponseBody =
+  BasicError;
 
-export type CodespacesRemoveRepositoryForSecretForAuthenticatedUserRequestPath = {
-  readonly secret_name: string;
-  readonly repository_id: number;
-};
+export type CodespacesRemoveRepositoryForSecretForAuthenticatedUserRequestPath =
+  { readonly secret_name: string; readonly repository_id: number };
 
 export type CodespacesGetForAuthenticatedUser200ResponseBody = Codespace;
 
@@ -15168,7 +15388,8 @@ export type FetchesInformationAboutAnExportOfACodespace = {
   readonly html_url?: string | null;
 };
 
-export type CodespacesExportForAuthenticatedUser202ResponseBody = FetchesInformationAboutAnExportOfACodespace;
+export type CodespacesExportForAuthenticatedUser202ResponseBody =
+  FetchesInformationAboutAnExportOfACodespace;
 
 export type CodespacesExportForAuthenticatedUser401ResponseBody = BasicError;
 
@@ -15176,7 +15397,8 @@ export type CodespacesExportForAuthenticatedUser403ResponseBody = BasicError;
 
 export type CodespacesExportForAuthenticatedUser404ResponseBody = BasicError;
 
-export type CodespacesExportForAuthenticatedUser422ResponseBody = ValidationError;
+export type CodespacesExportForAuthenticatedUser422ResponseBody =
+  ValidationError;
 
 export type CodespacesExportForAuthenticatedUser500ResponseBody = BasicError;
 
@@ -15184,9 +15406,11 @@ export type CodespacesExportForAuthenticatedUserRequestPath = {
   readonly codespace_name: string;
 };
 
-export type CodespacesGetExportDetailsForAuthenticatedUser200ResponseBody = FetchesInformationAboutAnExportOfACodespace;
+export type CodespacesGetExportDetailsForAuthenticatedUser200ResponseBody =
+  FetchesInformationAboutAnExportOfACodespace;
 
-export type CodespacesGetExportDetailsForAuthenticatedUser404ResponseBody = BasicError;
+export type CodespacesGetExportDetailsForAuthenticatedUser404ResponseBody =
+  BasicError;
 
 export type CodespacesGetExportDetailsForAuthenticatedUserRequestPath = {
   readonly codespace_name: string;
@@ -15198,13 +15422,17 @@ export type CodespacesCodespaceMachinesForAuthenticatedUser200ResponseBody = {
   readonly machines: ReadonlyArray<CodespaceMachine>;
 };
 
-export type CodespacesCodespaceMachinesForAuthenticatedUser401ResponseBody = BasicError;
+export type CodespacesCodespaceMachinesForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type CodespacesCodespaceMachinesForAuthenticatedUser403ResponseBody = BasicError;
+export type CodespacesCodespaceMachinesForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type CodespacesCodespaceMachinesForAuthenticatedUser404ResponseBody = BasicError;
+export type CodespacesCodespaceMachinesForAuthenticatedUser404ResponseBody =
+  BasicError;
 
-export type CodespacesCodespaceMachinesForAuthenticatedUser500ResponseBody = BasicError;
+export type CodespacesCodespaceMachinesForAuthenticatedUser500ResponseBody =
+  BasicError;
 
 export type CodespacesCodespaceMachinesForAuthenticatedUserRequestPath = {
   readonly codespace_name: string;
@@ -15251,21 +15479,27 @@ export type Email = {
   readonly visibility: string | null;
 };
 
-export type UsersSetPrimaryEmailVisibilityForAuthenticatedUser200ResponseBody = ReadonlyArray<Email>;
+export type UsersSetPrimaryEmailVisibilityForAuthenticatedUser200ResponseBody =
+  ReadonlyArray<Email>;
 
-export type UsersSetPrimaryEmailVisibilityForAuthenticatedUser401ResponseBody = BasicError;
+export type UsersSetPrimaryEmailVisibilityForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type UsersSetPrimaryEmailVisibilityForAuthenticatedUser403ResponseBody = BasicError;
+export type UsersSetPrimaryEmailVisibilityForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type UsersSetPrimaryEmailVisibilityForAuthenticatedUser404ResponseBody = BasicError;
+export type UsersSetPrimaryEmailVisibilityForAuthenticatedUser404ResponseBody =
+  BasicError;
 
-export type UsersSetPrimaryEmailVisibilityForAuthenticatedUser422ResponseBody = ValidationError;
+export type UsersSetPrimaryEmailVisibilityForAuthenticatedUser422ResponseBody =
+  ValidationError;
 
 export type UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequestBody = {
   readonly visibility: 'public' | 'private';
 };
 
-export type UsersListEmailsForAuthenticatedUser200ResponseBody = ReadonlyArray<Email>;
+export type UsersListEmailsForAuthenticatedUser200ResponseBody =
+  ReadonlyArray<Email>;
 
 export type UsersListEmailsForAuthenticatedUser401ResponseBody = BasicError;
 
@@ -15278,7 +15512,8 @@ export type UsersListEmailsForAuthenticatedUserRequestQuery = {
   readonly page?: number;
 };
 
-export type UsersAddEmailForAuthenticatedUser201ResponseBody = ReadonlyArray<Email>;
+export type UsersAddEmailForAuthenticatedUser201ResponseBody =
+  ReadonlyArray<Email>;
 
 export type UsersAddEmailForAuthenticatedUser401ResponseBody = BasicError;
 
@@ -15299,14 +15534,16 @@ export type UsersDeleteEmailForAuthenticatedUser403ResponseBody = BasicError;
 
 export type UsersDeleteEmailForAuthenticatedUser404ResponseBody = BasicError;
 
-export type UsersDeleteEmailForAuthenticatedUser422ResponseBody = ValidationError;
+export type UsersDeleteEmailForAuthenticatedUser422ResponseBody =
+  ValidationError;
 
 export type UsersDeleteEmailForAuthenticatedUserRequestBody =
   | { readonly emails: ReadonlyArray<string> }
   | ReadonlyArray<string>
   | string;
 
-export type UsersListFollowersForAuthenticatedUser200ResponseBody = ReadonlyArray<SimpleUser>;
+export type UsersListFollowersForAuthenticatedUser200ResponseBody =
+  ReadonlyArray<SimpleUser>;
 
 export type UsersListFollowersForAuthenticatedUser401ResponseBody = BasicError;
 
@@ -15317,7 +15554,8 @@ export type UsersListFollowersForAuthenticatedUserRequestQuery = {
   readonly page?: number;
 };
 
-export type UsersListFollowedByAuthenticatedUser200ResponseBody = ReadonlyArray<SimpleUser>;
+export type UsersListFollowedByAuthenticatedUser200ResponseBody =
+  ReadonlyArray<SimpleUser>;
 
 export type UsersListFollowedByAuthenticatedUser401ResponseBody = BasicError;
 
@@ -15328,11 +15566,14 @@ export type UsersListFollowedByAuthenticatedUserRequestQuery = {
   readonly page?: number;
 };
 
-export type UsersCheckPersonIsFollowedByAuthenticated401ResponseBody = BasicError;
+export type UsersCheckPersonIsFollowedByAuthenticated401ResponseBody =
+  BasicError;
 
-export type UsersCheckPersonIsFollowedByAuthenticated403ResponseBody = BasicError;
+export type UsersCheckPersonIsFollowedByAuthenticated403ResponseBody =
+  BasicError;
 
-export type UsersCheckPersonIsFollowedByAuthenticated404ResponseBody = BasicError;
+export type UsersCheckPersonIsFollowedByAuthenticated404ResponseBody =
+  BasicError;
 
 export type UsersCheckPersonIsFollowedByAuthenticatedRequestPath = {
   readonly username: string;
@@ -15390,7 +15631,8 @@ export type GpgKey = {
   readonly raw_key: string | null;
 };
 
-export type UsersListGpgKeysForAuthenticatedUser200ResponseBody = ReadonlyArray<GpgKey>;
+export type UsersListGpgKeysForAuthenticatedUser200ResponseBody =
+  ReadonlyArray<GpgKey>;
 
 export type UsersListGpgKeysForAuthenticatedUser401ResponseBody = BasicError;
 
@@ -15411,7 +15653,8 @@ export type UsersCreateGpgKeyForAuthenticatedUser403ResponseBody = BasicError;
 
 export type UsersCreateGpgKeyForAuthenticatedUser404ResponseBody = BasicError;
 
-export type UsersCreateGpgKeyForAuthenticatedUser422ResponseBody = ValidationError;
+export type UsersCreateGpgKeyForAuthenticatedUser422ResponseBody =
+  ValidationError;
 
 export type UsersCreateGpgKeyForAuthenticatedUserRequestBody = {
   readonly name?: string;
@@ -15436,7 +15679,8 @@ export type UsersDeleteGpgKeyForAuthenticatedUser403ResponseBody = BasicError;
 
 export type UsersDeleteGpgKeyForAuthenticatedUser404ResponseBody = BasicError;
 
-export type UsersDeleteGpgKeyForAuthenticatedUser422ResponseBody = ValidationError;
+export type UsersDeleteGpgKeyForAuthenticatedUser422ResponseBody =
+  ValidationError;
 
 export type UsersDeleteGpgKeyForAuthenticatedUserRequestPath = {
   readonly gpg_key_id: number;
@@ -15447,9 +15691,11 @@ export type AppsListInstallationsForAuthenticatedUser200ResponseBody = {
   readonly installations: ReadonlyArray<Installation>;
 };
 
-export type AppsListInstallationsForAuthenticatedUser401ResponseBody = BasicError;
+export type AppsListInstallationsForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type AppsListInstallationsForAuthenticatedUser403ResponseBody = BasicError;
+export type AppsListInstallationsForAuthenticatedUser403ResponseBody =
+  BasicError;
 
 export type AppsListInstallationsForAuthenticatedUserRequestQuery = {
   readonly per_page?: number;
@@ -15462,9 +15708,11 @@ export type AppsListInstallationReposForAuthenticatedUser200ResponseBody = {
   readonly repositories: ReadonlyArray<Repository>;
 };
 
-export type AppsListInstallationReposForAuthenticatedUser403ResponseBody = BasicError;
+export type AppsListInstallationReposForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type AppsListInstallationReposForAuthenticatedUser404ResponseBody = BasicError;
+export type AppsListInstallationReposForAuthenticatedUser404ResponseBody =
+  BasicError;
 
 export type AppsListInstallationReposForAuthenticatedUserRequestQuery = {
   readonly per_page?: number;
@@ -15475,18 +15723,22 @@ export type AppsListInstallationReposForAuthenticatedUserRequestPath = {
   readonly installation_id: number;
 };
 
-export type AppsAddRepoToInstallationForAuthenticatedUser403ResponseBody = BasicError;
+export type AppsAddRepoToInstallationForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type AppsAddRepoToInstallationForAuthenticatedUser404ResponseBody = BasicError;
+export type AppsAddRepoToInstallationForAuthenticatedUser404ResponseBody =
+  BasicError;
 
 export type AppsAddRepoToInstallationForAuthenticatedUserRequestPath = {
   readonly installation_id: number;
   readonly repository_id: number;
 };
 
-export type AppsRemoveRepoFromInstallationForAuthenticatedUser403ResponseBody = BasicError;
+export type AppsRemoveRepoFromInstallationForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type AppsRemoveRepoFromInstallationForAuthenticatedUser404ResponseBody = BasicError;
+export type AppsRemoveRepoFromInstallationForAuthenticatedUser404ResponseBody =
+  BasicError;
 
 export type AppsRemoveRepoFromInstallationForAuthenticatedUserRequestPath = {
   readonly installation_id: number;
@@ -15497,13 +15749,17 @@ export type InteractionsGetRestrictionsForAuthenticatedUser200ResponseBody =
   | InteractionLimits
   | {};
 
-export type InteractionsSetRestrictionsForAuthenticatedUser200ResponseBody = InteractionLimits;
+export type InteractionsSetRestrictionsForAuthenticatedUser200ResponseBody =
+  InteractionLimits;
 
-export type InteractionsSetRestrictionsForAuthenticatedUser422ResponseBody = ValidationError;
+export type InteractionsSetRestrictionsForAuthenticatedUser422ResponseBody =
+  ValidationError;
 
-export type InteractionsSetRestrictionsForAuthenticatedUserRequestBody = InteractionRestrictions;
+export type InteractionsSetRestrictionsForAuthenticatedUserRequestBody =
+  InteractionRestrictions;
 
-export type IssuesListForAuthenticatedUser200ResponseBody = ReadonlyArray<Issue>;
+export type IssuesListForAuthenticatedUser200ResponseBody =
+  ReadonlyArray<Issue>;
 
 export type IssuesListForAuthenticatedUser404ResponseBody = BasicError;
 
@@ -15534,13 +15790,17 @@ export type Key = {
   readonly read_only: boolean;
 };
 
-export type UsersListPublicSshKeysForAuthenticatedUser200ResponseBody = ReadonlyArray<Key>;
+export type UsersListPublicSshKeysForAuthenticatedUser200ResponseBody =
+  ReadonlyArray<Key>;
 
-export type UsersListPublicSshKeysForAuthenticatedUser401ResponseBody = BasicError;
+export type UsersListPublicSshKeysForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type UsersListPublicSshKeysForAuthenticatedUser403ResponseBody = BasicError;
+export type UsersListPublicSshKeysForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type UsersListPublicSshKeysForAuthenticatedUser404ResponseBody = BasicError;
+export type UsersListPublicSshKeysForAuthenticatedUser404ResponseBody =
+  BasicError;
 
 export type UsersListPublicSshKeysForAuthenticatedUserRequestQuery = {
   readonly per_page?: number;
@@ -15549,13 +15809,17 @@ export type UsersListPublicSshKeysForAuthenticatedUserRequestQuery = {
 
 export type UsersCreatePublicSshKeyForAuthenticatedUser201ResponseBody = Key;
 
-export type UsersCreatePublicSshKeyForAuthenticatedUser401ResponseBody = BasicError;
+export type UsersCreatePublicSshKeyForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type UsersCreatePublicSshKeyForAuthenticatedUser403ResponseBody = BasicError;
+export type UsersCreatePublicSshKeyForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type UsersCreatePublicSshKeyForAuthenticatedUser404ResponseBody = BasicError;
+export type UsersCreatePublicSshKeyForAuthenticatedUser404ResponseBody =
+  BasicError;
 
-export type UsersCreatePublicSshKeyForAuthenticatedUser422ResponseBody = ValidationError;
+export type UsersCreatePublicSshKeyForAuthenticatedUser422ResponseBody =
+  ValidationError;
 
 export type UsersCreatePublicSshKeyForAuthenticatedUserRequestBody = {
   readonly title?: string;
@@ -15564,21 +15828,27 @@ export type UsersCreatePublicSshKeyForAuthenticatedUserRequestBody = {
 
 export type UsersGetPublicSshKeyForAuthenticatedUser200ResponseBody = Key;
 
-export type UsersGetPublicSshKeyForAuthenticatedUser401ResponseBody = BasicError;
+export type UsersGetPublicSshKeyForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type UsersGetPublicSshKeyForAuthenticatedUser403ResponseBody = BasicError;
+export type UsersGetPublicSshKeyForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type UsersGetPublicSshKeyForAuthenticatedUser404ResponseBody = BasicError;
+export type UsersGetPublicSshKeyForAuthenticatedUser404ResponseBody =
+  BasicError;
 
 export type UsersGetPublicSshKeyForAuthenticatedUserRequestPath = {
   readonly key_id: number;
 };
 
-export type UsersDeletePublicSshKeyForAuthenticatedUser401ResponseBody = BasicError;
+export type UsersDeletePublicSshKeyForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type UsersDeletePublicSshKeyForAuthenticatedUser403ResponseBody = BasicError;
+export type UsersDeletePublicSshKeyForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type UsersDeletePublicSshKeyForAuthenticatedUser404ResponseBody = BasicError;
+export type UsersDeletePublicSshKeyForAuthenticatedUser404ResponseBody =
+  BasicError;
 
 export type UsersDeletePublicSshKeyForAuthenticatedUserRequestPath = {
   readonly key_id: number;
@@ -15605,33 +15875,40 @@ export type UserMarketplacePurchase = {
   readonly plan: MarketplaceListingPlan;
 };
 
-export type AppsListSubscriptionsForAuthenticatedUser200ResponseBody = ReadonlyArray<UserMarketplacePurchase>;
+export type AppsListSubscriptionsForAuthenticatedUser200ResponseBody =
+  ReadonlyArray<UserMarketplacePurchase>;
 
-export type AppsListSubscriptionsForAuthenticatedUser401ResponseBody = BasicError;
+export type AppsListSubscriptionsForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type AppsListSubscriptionsForAuthenticatedUser404ResponseBody = BasicError;
+export type AppsListSubscriptionsForAuthenticatedUser404ResponseBody =
+  BasicError;
 
 export type AppsListSubscriptionsForAuthenticatedUserRequestQuery = {
   readonly per_page?: number;
   readonly page?: number;
 };
 
-export type AppsListSubscriptionsForAuthenticatedUserStubbed200ResponseBody = ReadonlyArray<UserMarketplacePurchase>;
+export type AppsListSubscriptionsForAuthenticatedUserStubbed200ResponseBody =
+  ReadonlyArray<UserMarketplacePurchase>;
 
-export type AppsListSubscriptionsForAuthenticatedUserStubbed401ResponseBody = BasicError;
+export type AppsListSubscriptionsForAuthenticatedUserStubbed401ResponseBody =
+  BasicError;
 
 export type AppsListSubscriptionsForAuthenticatedUserStubbedRequestQuery = {
   readonly per_page?: number;
   readonly page?: number;
 };
 
-export type OrgsListMembershipsForAuthenticatedUser200ResponseBody = ReadonlyArray<OrgMembership>;
+export type OrgsListMembershipsForAuthenticatedUser200ResponseBody =
+  ReadonlyArray<OrgMembership>;
 
 export type OrgsListMembershipsForAuthenticatedUser401ResponseBody = BasicError;
 
 export type OrgsListMembershipsForAuthenticatedUser403ResponseBody = BasicError;
 
-export type OrgsListMembershipsForAuthenticatedUser422ResponseBody = ValidationError;
+export type OrgsListMembershipsForAuthenticatedUser422ResponseBody =
+  ValidationError;
 
 export type OrgsListMembershipsForAuthenticatedUserRequestQuery = {
   readonly state?: 'active' | 'pending';
@@ -15639,7 +15916,8 @@ export type OrgsListMembershipsForAuthenticatedUserRequestQuery = {
   readonly page?: number;
 };
 
-export type OrgsGetMembershipForAuthenticatedUser200ResponseBody = OrgMembership;
+export type OrgsGetMembershipForAuthenticatedUser200ResponseBody =
+  OrgMembership;
 
 export type OrgsGetMembershipForAuthenticatedUser403ResponseBody = BasicError;
 
@@ -15649,13 +15927,17 @@ export type OrgsGetMembershipForAuthenticatedUserRequestPath = {
   readonly org: string;
 };
 
-export type OrgsUpdateMembershipForAuthenticatedUser200ResponseBody = OrgMembership;
+export type OrgsUpdateMembershipForAuthenticatedUser200ResponseBody =
+  OrgMembership;
 
-export type OrgsUpdateMembershipForAuthenticatedUser403ResponseBody = BasicError;
+export type OrgsUpdateMembershipForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type OrgsUpdateMembershipForAuthenticatedUser404ResponseBody = BasicError;
+export type OrgsUpdateMembershipForAuthenticatedUser404ResponseBody =
+  BasicError;
 
-export type OrgsUpdateMembershipForAuthenticatedUser422ResponseBody = ValidationError;
+export type OrgsUpdateMembershipForAuthenticatedUser422ResponseBody =
+  ValidationError;
 
 export type OrgsUpdateMembershipForAuthenticatedUserRequestBody = {
   readonly state: 'active';
@@ -15665,7 +15947,8 @@ export type OrgsUpdateMembershipForAuthenticatedUserRequestPath = {
   readonly org: string;
 };
 
-export type MigrationsListForAuthenticatedUser200ResponseBody = ReadonlyArray<Migration>;
+export type MigrationsListForAuthenticatedUser200ResponseBody =
+  ReadonlyArray<Migration>;
 
 export type MigrationsListForAuthenticatedUser401ResponseBody = BasicError;
 
@@ -15682,7 +15965,8 @@ export type MigrationsStartForAuthenticatedUser401ResponseBody = BasicError;
 
 export type MigrationsStartForAuthenticatedUser403ResponseBody = BasicError;
 
-export type MigrationsStartForAuthenticatedUser422ResponseBody = ValidationError;
+export type MigrationsStartForAuthenticatedUser422ResponseBody =
+  ValidationError;
 
 export type MigrationsStartForAuthenticatedUserRequestBody = {
   readonly lock_repositories?: boolean;
@@ -15712,36 +15996,45 @@ export type MigrationsGetStatusForAuthenticatedUserRequestPath = {
   readonly migration_id: number;
 };
 
-export type MigrationsGetArchiveForAuthenticatedUser401ResponseBody = BasicError;
+export type MigrationsGetArchiveForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type MigrationsGetArchiveForAuthenticatedUser403ResponseBody = BasicError;
+export type MigrationsGetArchiveForAuthenticatedUser403ResponseBody =
+  BasicError;
 
 export type MigrationsGetArchiveForAuthenticatedUserRequestPath = {
   readonly migration_id: number;
 };
 
-export type MigrationsDeleteArchiveForAuthenticatedUser401ResponseBody = BasicError;
+export type MigrationsDeleteArchiveForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type MigrationsDeleteArchiveForAuthenticatedUser403ResponseBody = BasicError;
+export type MigrationsDeleteArchiveForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type MigrationsDeleteArchiveForAuthenticatedUser404ResponseBody = BasicError;
+export type MigrationsDeleteArchiveForAuthenticatedUser404ResponseBody =
+  BasicError;
 
 export type MigrationsDeleteArchiveForAuthenticatedUserRequestPath = {
   readonly migration_id: number;
 };
 
-export type MigrationsUnlockRepoForAuthenticatedUser401ResponseBody = BasicError;
+export type MigrationsUnlockRepoForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type MigrationsUnlockRepoForAuthenticatedUser403ResponseBody = BasicError;
+export type MigrationsUnlockRepoForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type MigrationsUnlockRepoForAuthenticatedUser404ResponseBody = BasicError;
+export type MigrationsUnlockRepoForAuthenticatedUser404ResponseBody =
+  BasicError;
 
 export type MigrationsUnlockRepoForAuthenticatedUserRequestPath = {
   readonly migration_id: number;
   readonly repo_name: string;
 };
 
-export type MigrationsListReposForAuthenticatedUser200ResponseBody = ReadonlyArray<MinimalRepository>;
+export type MigrationsListReposForAuthenticatedUser200ResponseBody =
+  ReadonlyArray<MinimalRepository>;
 
 export type MigrationsListReposForAuthenticatedUser404ResponseBody = BasicError;
 
@@ -15754,7 +16047,8 @@ export type MigrationsListReposForAuthenticatedUserRequestPath = {
   readonly migration_id: number;
 };
 
-export type OrgsListForAuthenticatedUser200ResponseBody = ReadonlyArray<OrganizationSimple>;
+export type OrgsListForAuthenticatedUser200ResponseBody =
+  ReadonlyArray<OrganizationSimple>;
 
 export type OrgsListForAuthenticatedUser401ResponseBody = BasicError;
 
@@ -15765,7 +16059,8 @@ export type OrgsListForAuthenticatedUserRequestQuery = {
   readonly page?: number;
 };
 
-export type PackagesListPackagesForAuthenticatedUser200ResponseBody = ReadonlyArray<Package>;
+export type PackagesListPackagesForAuthenticatedUser200ResponseBody =
+  ReadonlyArray<Package>;
 
 export type PackagesListPackagesForAuthenticatedUserRequestQuery = {
   readonly package_type:
@@ -15791,11 +16086,14 @@ export type PackagesGetPackageForAuthenticatedUserRequestPath = {
   readonly package_name: string;
 };
 
-export type PackagesDeletePackageForAuthenticatedUser401ResponseBody = BasicError;
+export type PackagesDeletePackageForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type PackagesDeletePackageForAuthenticatedUser403ResponseBody = BasicError;
+export type PackagesDeletePackageForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type PackagesDeletePackageForAuthenticatedUser404ResponseBody = BasicError;
+export type PackagesDeletePackageForAuthenticatedUser404ResponseBody =
+  BasicError;
 
 export type PackagesDeletePackageForAuthenticatedUserRequestPath = {
   readonly package_type:
@@ -15808,11 +16106,14 @@ export type PackagesDeletePackageForAuthenticatedUserRequestPath = {
   readonly package_name: string;
 };
 
-export type PackagesRestorePackageForAuthenticatedUser401ResponseBody = BasicError;
+export type PackagesRestorePackageForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type PackagesRestorePackageForAuthenticatedUser403ResponseBody = BasicError;
+export type PackagesRestorePackageForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type PackagesRestorePackageForAuthenticatedUser404ResponseBody = BasicError;
+export type PackagesRestorePackageForAuthenticatedUser404ResponseBody =
+  BasicError;
 
 export type PackagesRestorePackageForAuthenticatedUserRequestQuery = {
   readonly token?: string;
@@ -15829,32 +16130,39 @@ export type PackagesRestorePackageForAuthenticatedUserRequestPath = {
   readonly package_name: string;
 };
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser200ResponseBody = ReadonlyArray<PackageVersion>;
+export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser200ResponseBody =
+  ReadonlyArray<PackageVersion>;
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser401ResponseBody = BasicError;
+export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser403ResponseBody = BasicError;
+export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser404ResponseBody = BasicError;
+export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser404ResponseBody =
+  BasicError;
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestQuery = {
-  readonly page?: number;
-  readonly per_page?: number;
-  readonly state?: 'active' | 'deleted';
-};
+export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestQuery =
+  {
+    readonly page?: number;
+    readonly per_page?: number;
+    readonly state?: 'active' | 'deleted';
+  };
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestPath = {
-  readonly package_type:
-    | 'npm'
-    | 'maven'
-    | 'rubygems'
-    | 'docker'
-    | 'nuget'
-    | 'container';
-  readonly package_name: string;
-};
+export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestPath =
+  {
+    readonly package_type:
+      | 'npm'
+      | 'maven'
+      | 'rubygems'
+      | 'docker'
+      | 'nuget'
+      | 'container';
+    readonly package_name: string;
+  };
 
-export type PackagesGetPackageVersionForAuthenticatedUser200ResponseBody = PackageVersion;
+export type PackagesGetPackageVersionForAuthenticatedUser200ResponseBody =
+  PackageVersion;
 
 export type PackagesGetPackageVersionForAuthenticatedUserRequestPath = {
   readonly package_type:
@@ -15868,11 +16176,14 @@ export type PackagesGetPackageVersionForAuthenticatedUserRequestPath = {
   readonly package_version_id: number;
 };
 
-export type PackagesDeletePackageVersionForAuthenticatedUser401ResponseBody = BasicError;
+export type PackagesDeletePackageVersionForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type PackagesDeletePackageVersionForAuthenticatedUser403ResponseBody = BasicError;
+export type PackagesDeletePackageVersionForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type PackagesDeletePackageVersionForAuthenticatedUser404ResponseBody = BasicError;
+export type PackagesDeletePackageVersionForAuthenticatedUser404ResponseBody =
+  BasicError;
 
 export type PackagesDeletePackageVersionForAuthenticatedUserRequestPath = {
   readonly package_type:
@@ -15886,11 +16197,14 @@ export type PackagesDeletePackageVersionForAuthenticatedUserRequestPath = {
   readonly package_version_id: number;
 };
 
-export type PackagesRestorePackageVersionForAuthenticatedUser401ResponseBody = BasicError;
+export type PackagesRestorePackageVersionForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type PackagesRestorePackageVersionForAuthenticatedUser403ResponseBody = BasicError;
+export type PackagesRestorePackageVersionForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type PackagesRestorePackageVersionForAuthenticatedUser404ResponseBody = BasicError;
+export type PackagesRestorePackageVersionForAuthenticatedUser404ResponseBody =
+  BasicError;
 
 export type PackagesRestorePackageVersionForAuthenticatedUserRequestPath = {
   readonly package_type:
@@ -15910,27 +16224,33 @@ export type ProjectsCreateForAuthenticatedUser401ResponseBody = BasicError;
 
 export type ProjectsCreateForAuthenticatedUser403ResponseBody = BasicError;
 
-export type ProjectsCreateForAuthenticatedUser422ResponseBody = ValidationErrorSimple;
+export type ProjectsCreateForAuthenticatedUser422ResponseBody =
+  ValidationErrorSimple;
 
 export type ProjectsCreateForAuthenticatedUserRequestBody = {
   readonly name: string;
   readonly body?: string | null;
 };
 
-export type UsersListPublicEmailsForAuthenticatedUser200ResponseBody = ReadonlyArray<Email>;
+export type UsersListPublicEmailsForAuthenticatedUser200ResponseBody =
+  ReadonlyArray<Email>;
 
-export type UsersListPublicEmailsForAuthenticatedUser401ResponseBody = BasicError;
+export type UsersListPublicEmailsForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type UsersListPublicEmailsForAuthenticatedUser403ResponseBody = BasicError;
+export type UsersListPublicEmailsForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type UsersListPublicEmailsForAuthenticatedUser404ResponseBody = BasicError;
+export type UsersListPublicEmailsForAuthenticatedUser404ResponseBody =
+  BasicError;
 
 export type UsersListPublicEmailsForAuthenticatedUserRequestQuery = {
   readonly per_page?: number;
   readonly page?: number;
 };
 
-export type ReposListForAuthenticatedUser200ResponseBody = ReadonlyArray<Repository>;
+export type ReposListForAuthenticatedUser200ResponseBody =
+  ReadonlyArray<Repository>;
 
 export type ReposListForAuthenticatedUser401ResponseBody = BasicError;
 
@@ -15990,34 +16310,44 @@ export type ReposCreateForAuthenticatedUserRequestBody = {
   readonly is_template?: boolean;
 };
 
-export type ReposListInvitationsForAuthenticatedUser200ResponseBody = ReadonlyArray<RepositoryInvitation>;
+export type ReposListInvitationsForAuthenticatedUser200ResponseBody =
+  ReadonlyArray<RepositoryInvitation>;
 
-export type ReposListInvitationsForAuthenticatedUser401ResponseBody = BasicError;
+export type ReposListInvitationsForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type ReposListInvitationsForAuthenticatedUser403ResponseBody = BasicError;
+export type ReposListInvitationsForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type ReposListInvitationsForAuthenticatedUser404ResponseBody = BasicError;
+export type ReposListInvitationsForAuthenticatedUser404ResponseBody =
+  BasicError;
 
 export type ReposListInvitationsForAuthenticatedUserRequestQuery = {
   readonly per_page?: number;
   readonly page?: number;
 };
 
-export type ReposAcceptInvitationForAuthenticatedUser403ResponseBody = BasicError;
+export type ReposAcceptInvitationForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type ReposAcceptInvitationForAuthenticatedUser404ResponseBody = BasicError;
+export type ReposAcceptInvitationForAuthenticatedUser404ResponseBody =
+  BasicError;
 
-export type ReposAcceptInvitationForAuthenticatedUser409ResponseBody = BasicError;
+export type ReposAcceptInvitationForAuthenticatedUser409ResponseBody =
+  BasicError;
 
 export type ReposAcceptInvitationForAuthenticatedUserRequestPath = {
   readonly invitation_id: number;
 };
 
-export type ReposDeclineInvitationForAuthenticatedUser403ResponseBody = BasicError;
+export type ReposDeclineInvitationForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type ReposDeclineInvitationForAuthenticatedUser404ResponseBody = BasicError;
+export type ReposDeclineInvitationForAuthenticatedUser404ResponseBody =
+  BasicError;
 
-export type ReposDeclineInvitationForAuthenticatedUser409ResponseBody = BasicError;
+export type ReposDeclineInvitationForAuthenticatedUser409ResponseBody =
+  BasicError;
 
 export type ReposDeclineInvitationForAuthenticatedUserRequestPath = {
   readonly invitation_id: number;
@@ -16030,61 +16360,80 @@ export type SshSigningKey = {
   readonly created_at: string;
 };
 
-export type UsersListSshSigningKeysForAuthenticatedUser200ResponseBody = ReadonlyArray<SshSigningKey>;
+export type UsersListSshSigningKeysForAuthenticatedUser200ResponseBody =
+  ReadonlyArray<SshSigningKey>;
 
-export type UsersListSshSigningKeysForAuthenticatedUser401ResponseBody = BasicError;
+export type UsersListSshSigningKeysForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type UsersListSshSigningKeysForAuthenticatedUser403ResponseBody = BasicError;
+export type UsersListSshSigningKeysForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type UsersListSshSigningKeysForAuthenticatedUser404ResponseBody = BasicError;
+export type UsersListSshSigningKeysForAuthenticatedUser404ResponseBody =
+  BasicError;
 
 export type UsersListSshSigningKeysForAuthenticatedUserRequestQuery = {
   readonly per_page?: number;
   readonly page?: number;
 };
 
-export type UsersCreateSshSigningKeyForAuthenticatedUser201ResponseBody = SshSigningKey;
+export type UsersCreateSshSigningKeyForAuthenticatedUser201ResponseBody =
+  SshSigningKey;
 
-export type UsersCreateSshSigningKeyForAuthenticatedUser401ResponseBody = BasicError;
+export type UsersCreateSshSigningKeyForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type UsersCreateSshSigningKeyForAuthenticatedUser403ResponseBody = BasicError;
+export type UsersCreateSshSigningKeyForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type UsersCreateSshSigningKeyForAuthenticatedUser404ResponseBody = BasicError;
+export type UsersCreateSshSigningKeyForAuthenticatedUser404ResponseBody =
+  BasicError;
 
-export type UsersCreateSshSigningKeyForAuthenticatedUser422ResponseBody = ValidationError;
+export type UsersCreateSshSigningKeyForAuthenticatedUser422ResponseBody =
+  ValidationError;
 
 export type UsersCreateSshSigningKeyForAuthenticatedUserRequestBody = {
   readonly title?: string;
   readonly key: string;
 };
 
-export type UsersGetSshSigningKeyForAuthenticatedUser200ResponseBody = SshSigningKey;
+export type UsersGetSshSigningKeyForAuthenticatedUser200ResponseBody =
+  SshSigningKey;
 
-export type UsersGetSshSigningKeyForAuthenticatedUser401ResponseBody = BasicError;
+export type UsersGetSshSigningKeyForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type UsersGetSshSigningKeyForAuthenticatedUser403ResponseBody = BasicError;
+export type UsersGetSshSigningKeyForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type UsersGetSshSigningKeyForAuthenticatedUser404ResponseBody = BasicError;
+export type UsersGetSshSigningKeyForAuthenticatedUser404ResponseBody =
+  BasicError;
 
 export type UsersGetSshSigningKeyForAuthenticatedUserRequestPath = {
   readonly ssh_signing_key_id: number;
 };
 
-export type UsersDeleteSshSigningKeyForAuthenticatedUser401ResponseBody = BasicError;
+export type UsersDeleteSshSigningKeyForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type UsersDeleteSshSigningKeyForAuthenticatedUser403ResponseBody = BasicError;
+export type UsersDeleteSshSigningKeyForAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type UsersDeleteSshSigningKeyForAuthenticatedUser404ResponseBody = BasicError;
+export type UsersDeleteSshSigningKeyForAuthenticatedUser404ResponseBody =
+  BasicError;
 
 export type UsersDeleteSshSigningKeyForAuthenticatedUserRequestPath = {
   readonly ssh_signing_key_id: number;
 };
 
-export type ActivityListReposStarredByAuthenticatedUser200ResponseBody = ReadonlyArray<Repository>;
+export type ActivityListReposStarredByAuthenticatedUser200ResponseBody =
+  ReadonlyArray<Repository>;
 
-export type ActivityListReposStarredByAuthenticatedUser401ResponseBody = BasicError;
+export type ActivityListReposStarredByAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type ActivityListReposStarredByAuthenticatedUser403ResponseBody = BasicError;
+export type ActivityListReposStarredByAuthenticatedUser403ResponseBody =
+  BasicError;
 
 export type ActivityListReposStarredByAuthenticatedUserRequestQuery = {
   readonly sort?: 'created' | 'updated';
@@ -16093,11 +16442,14 @@ export type ActivityListReposStarredByAuthenticatedUserRequestQuery = {
   readonly page?: number;
 };
 
-export type ActivityCheckRepoIsStarredByAuthenticatedUser401ResponseBody = BasicError;
+export type ActivityCheckRepoIsStarredByAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type ActivityCheckRepoIsStarredByAuthenticatedUser403ResponseBody = BasicError;
+export type ActivityCheckRepoIsStarredByAuthenticatedUser403ResponseBody =
+  BasicError;
 
-export type ActivityCheckRepoIsStarredByAuthenticatedUser404ResponseBody = BasicError;
+export type ActivityCheckRepoIsStarredByAuthenticatedUser404ResponseBody =
+  BasicError;
 
 export type ActivityCheckRepoIsStarredByAuthenticatedUserRequestPath = {
   readonly owner: string;
@@ -16126,18 +16478,22 @@ export type ActivityUnstarRepoForAuthenticatedUserRequestPath = {
   readonly repo: string;
 };
 
-export type ActivityListWatchedReposForAuthenticatedUser200ResponseBody = ReadonlyArray<MinimalRepository>;
+export type ActivityListWatchedReposForAuthenticatedUser200ResponseBody =
+  ReadonlyArray<MinimalRepository>;
 
-export type ActivityListWatchedReposForAuthenticatedUser401ResponseBody = BasicError;
+export type ActivityListWatchedReposForAuthenticatedUser401ResponseBody =
+  BasicError;
 
-export type ActivityListWatchedReposForAuthenticatedUser403ResponseBody = BasicError;
+export type ActivityListWatchedReposForAuthenticatedUser403ResponseBody =
+  BasicError;
 
 export type ActivityListWatchedReposForAuthenticatedUserRequestQuery = {
   readonly per_page?: number;
   readonly page?: number;
 };
 
-export type TeamsListForAuthenticatedUser200ResponseBody = ReadonlyArray<FullTeam>;
+export type TeamsListForAuthenticatedUser200ResponseBody =
+  ReadonlyArray<FullTeam>;
 
 export type TeamsListForAuthenticatedUser403ResponseBody = BasicError;
 
@@ -16161,7 +16517,8 @@ export type UsersGetByUsername404ResponseBody = BasicError;
 
 export type UsersGetByUsernameRequestPath = { readonly username: string };
 
-export type ActivityListEventsForAuthenticatedUser200ResponseBody = ReadonlyArray<Event>;
+export type ActivityListEventsForAuthenticatedUser200ResponseBody =
+  ReadonlyArray<Event>;
 
 export type ActivityListEventsForAuthenticatedUserRequestQuery = {
   readonly per_page?: number;
@@ -16172,7 +16529,8 @@ export type ActivityListEventsForAuthenticatedUserRequestPath = {
   readonly username: string;
 };
 
-export type ActivityListOrgEventsForAuthenticatedUser200ResponseBody = ReadonlyArray<Event>;
+export type ActivityListOrgEventsForAuthenticatedUser200ResponseBody =
+  ReadonlyArray<Event>;
 
 export type ActivityListOrgEventsForAuthenticatedUserRequestQuery = {
   readonly per_page?: number;
@@ -16184,7 +16542,8 @@ export type ActivityListOrgEventsForAuthenticatedUserRequestPath = {
   readonly org: string;
 };
 
-export type ActivityListPublicEventsForUser200ResponseBody = ReadonlyArray<Event>;
+export type ActivityListPublicEventsForUser200ResponseBody =
+  ReadonlyArray<Event>;
 
 export type ActivityListPublicEventsForUserRequestQuery = {
   readonly per_page?: number;
@@ -16195,7 +16554,8 @@ export type ActivityListPublicEventsForUserRequestPath = {
   readonly username: string;
 };
 
-export type UsersListFollowersForUser200ResponseBody = ReadonlyArray<SimpleUser>;
+export type UsersListFollowersForUser200ResponseBody =
+  ReadonlyArray<SimpleUser>;
 
 export type UsersListFollowersForUserRequestQuery = {
   readonly per_page?: number;
@@ -16206,7 +16566,8 @@ export type UsersListFollowersForUserRequestPath = {
   readonly username: string;
 };
 
-export type UsersListFollowingForUser200ResponseBody = ReadonlyArray<SimpleUser>;
+export type UsersListFollowingForUser200ResponseBody =
+  ReadonlyArray<SimpleUser>;
 
 export type UsersListFollowingForUserRequestQuery = {
   readonly per_page?: number;
@@ -16273,7 +16634,8 @@ export type AppsGetUserInstallationRequestPath = { readonly username: string };
 
 export type KeySimple = { readonly id: number; readonly key: string };
 
-export type UsersListPublicKeysForUser200ResponseBody = ReadonlyArray<KeySimple>;
+export type UsersListPublicKeysForUser200ResponseBody =
+  ReadonlyArray<KeySimple>;
 
 export type UsersListPublicKeysForUserRequestQuery = {
   readonly per_page?: number;
@@ -16368,13 +16730,17 @@ export type PackagesRestorePackageForUserRequestPath = {
   readonly username: string;
 };
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByUser200ResponseBody = ReadonlyArray<PackageVersion>;
+export type PackagesGetAllPackageVersionsForPackageOwnedByUser200ResponseBody =
+  ReadonlyArray<PackageVersion>;
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByUser401ResponseBody = BasicError;
+export type PackagesGetAllPackageVersionsForPackageOwnedByUser401ResponseBody =
+  BasicError;
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByUser403ResponseBody = BasicError;
+export type PackagesGetAllPackageVersionsForPackageOwnedByUser403ResponseBody =
+  BasicError;
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByUser404ResponseBody = BasicError;
+export type PackagesGetAllPackageVersionsForPackageOwnedByUser404ResponseBody =
+  BasicError;
 
 export type PackagesGetAllPackageVersionsForPackageOwnedByUserRequestPath = {
   readonly package_type:
@@ -16453,7 +16819,8 @@ export type ProjectsListForUserRequestQuery = {
 
 export type ProjectsListForUserRequestPath = { readonly username: string };
 
-export type ActivityListReceivedEventsForUser200ResponseBody = ReadonlyArray<Event>;
+export type ActivityListReceivedEventsForUser200ResponseBody =
+  ReadonlyArray<Event>;
 
 export type ActivityListReceivedEventsForUserRequestQuery = {
   readonly per_page?: number;
@@ -16464,7 +16831,8 @@ export type ActivityListReceivedEventsForUserRequestPath = {
   readonly username: string;
 };
 
-export type ActivityListReceivedPublicEventsForUser200ResponseBody = ReadonlyArray<Event>;
+export type ActivityListReceivedPublicEventsForUser200ResponseBody =
+  ReadonlyArray<Event>;
 
 export type ActivityListReceivedPublicEventsForUserRequestQuery = {
   readonly per_page?: number;
@@ -16487,25 +16855,29 @@ export type ReposListForUserRequestQuery = {
 
 export type ReposListForUserRequestPath = { readonly username: string };
 
-export type BillingGetGithubActionsBillingUser200ResponseBody = ActionsBillingUsage;
+export type BillingGetGithubActionsBillingUser200ResponseBody =
+  ActionsBillingUsage;
 
 export type BillingGetGithubActionsBillingUserRequestPath = {
   readonly username: string;
 };
 
-export type BillingGetGithubPackagesBillingUser200ResponseBody = PackagesBillingUsage;
+export type BillingGetGithubPackagesBillingUser200ResponseBody =
+  PackagesBillingUsage;
 
 export type BillingGetGithubPackagesBillingUserRequestPath = {
   readonly username: string;
 };
 
-export type BillingGetSharedStorageBillingUser200ResponseBody = CombinedBillingUsage;
+export type BillingGetSharedStorageBillingUser200ResponseBody =
+  CombinedBillingUsage;
 
 export type BillingGetSharedStorageBillingUserRequestPath = {
   readonly username: string;
 };
 
-export type UsersListSshSigningKeysForUser200ResponseBody = ReadonlyArray<SshSigningKey>;
+export type UsersListSshSigningKeysForUser200ResponseBody =
+  ReadonlyArray<SshSigningKey>;
 
 export type UsersListSshSigningKeysForUserRequestQuery = {
   readonly per_page?: number;
@@ -16536,7 +16908,8 @@ export type ActivityListReposStarredByUserRequestPath = {
   readonly username: string;
 };
 
-export type ActivityListReposWatchedByUser200ResponseBody = ReadonlyArray<MinimalRepository>;
+export type ActivityListReposWatchedByUser200ResponseBody =
+  ReadonlyArray<MinimalRepository>;
 
 export type ActivityListReposWatchedByUserRequestQuery = {
   readonly per_page?: number;
@@ -17089,19 +17462,21 @@ export type ActionsGetActionsCacheUsageForEnterpriseHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type EnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest = Request<
-  EnterpriseAdminGetGithubActionsPermissionsEnterpriseRequestPath,
-  EnterpriseAdminGetGithubActionsPermissionsEnterprise200ResponseBody,
-  unknown,
-  ParsedQs,
-  Record<string, any>
->;
+export type EnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest =
+  Request<
+    EnterpriseAdminGetGithubActionsPermissionsEnterpriseRequestPath,
+    EnterpriseAdminGetGithubActionsPermissionsEnterprise200ResponseBody,
+    unknown,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type EnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse = Response<
-  EnterpriseAdminGetGithubActionsPermissionsEnterprise200ResponseBody,
-  Record<string, any>,
-  200
->;
+export type EnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse =
+  Response<
+    EnterpriseAdminGetGithubActionsPermissionsEnterprise200ResponseBody,
+    Record<string, any>,
+    200
+  >;
 
 export type EnterpriseAdminGetGithubActionsPermissionsEnterpriseHandler = (
   req: EnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest,
@@ -17109,19 +17484,17 @@ export type EnterpriseAdminGetGithubActionsPermissionsEnterpriseHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type EnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest = Request<
-  EnterpriseAdminSetGithubActionsPermissionsEnterpriseRequestPath,
-  unknown,
-  EnterpriseAdminSetGithubActionsPermissionsEnterpriseRequestBody,
-  ParsedQs,
-  Record<string, any>
->;
+export type EnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest =
+  Request<
+    EnterpriseAdminSetGithubActionsPermissionsEnterpriseRequestPath,
+    unknown,
+    EnterpriseAdminSetGithubActionsPermissionsEnterpriseRequestBody,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type EnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse = Response<
-  unknown,
-  Record<string, any>,
-  204
->;
+export type EnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse =
+  Response<unknown, Record<string, any>, 204>;
 
 export type EnterpriseAdminSetGithubActionsPermissionsEnterpriseHandler = (
   req: EnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest,
@@ -17129,85 +17502,85 @@ export type EnterpriseAdminSetGithubActionsPermissionsEnterpriseHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest = Request<
-  EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequestPath,
-  EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise200ResponseBody,
-  unknown,
-  EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequestQuery,
-  Record<string, any>
->;
+export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest =
+  Request<
+    EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequestPath,
+    EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise200ResponseBody,
+    unknown,
+    EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequestQuery,
+    Record<string, any>
+  >;
 
-export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse = Response<
-  EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise200ResponseBody,
-  Record<string, any>,
-  200
->;
+export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse =
+  Response<
+    EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise200ResponseBody,
+    Record<string, any>,
+    200
+  >;
 
-export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseHandler = (
-  req: EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest,
-  res: EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse,
-  next: NextFunction
-) => Promise<void> | void;
+export type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseHandler =
+  (
+    req: EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest,
+    res: EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse,
+    next: NextFunction
+  ) => Promise<void> | void;
 
-export type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest = Request<
-  EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestPath,
-  unknown,
-  EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestBody,
-  ParsedQs,
-  Record<string, any>
->;
+export type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest =
+  Request<
+    EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestPath,
+    unknown,
+    EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestBody,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse = Response<
-  unknown,
-  Record<string, any>,
-  204
->;
+export type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse =
+  Response<unknown, Record<string, any>, 204>;
 
-export type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseHandler = (
-  req: EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest,
-  res: EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse,
-  next: NextFunction
-) => Promise<void> | void;
+export type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseHandler =
+  (
+    req: EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest,
+    res: EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse,
+    next: NextFunction
+  ) => Promise<void> | void;
 
-export type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest = Request<
-  EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequestPath,
-  unknown,
-  unknown,
-  ParsedQs,
-  Record<string, any>
->;
+export type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest =
+  Request<
+    EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequestPath,
+    unknown,
+    unknown,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse = Response<
-  unknown,
-  Record<string, any>,
-  204
->;
+export type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse =
+  Response<unknown, Record<string, any>, 204>;
 
-export type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseHandler = (
-  req: EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest,
-  res: EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse,
-  next: NextFunction
-) => Promise<void> | void;
+export type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseHandler =
+  (
+    req: EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest,
+    res: EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse,
+    next: NextFunction
+  ) => Promise<void> | void;
 
-export type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest = Request<
-  EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequestPath,
-  unknown,
-  unknown,
-  ParsedQs,
-  Record<string, any>
->;
+export type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest =
+  Request<
+    EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequestPath,
+    unknown,
+    unknown,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse = Response<
-  unknown,
-  Record<string, any>,
-  204
->;
+export type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse =
+  Response<unknown, Record<string, any>, 204>;
 
-export type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseHandler = (
-  req: EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest,
-  res: EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse,
-  next: NextFunction
-) => Promise<void> | void;
+export type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseHandler =
+  (
+    req: EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest,
+    res: EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse,
+    next: NextFunction
+  ) => Promise<void> | void;
 
 export type EnterpriseAdminGetAllowedActionsEnterpriseRequest = Request<
   EnterpriseAdminGetAllowedActionsEnterpriseRequestPath,
@@ -17249,59 +17622,63 @@ export type EnterpriseAdminSetAllowedActionsEnterpriseHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseRequest = Request<
-  ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestPath,
-  ActionsGetGithubActionsDefaultWorkflowPermissionsEnterprise200ResponseBody,
-  unknown,
-  ParsedQs,
-  Record<string, any>
->;
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseRequest =
+  Request<
+    ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestPath,
+    ActionsGetGithubActionsDefaultWorkflowPermissionsEnterprise200ResponseBody,
+    unknown,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseResponse = Response<
-  ActionsGetGithubActionsDefaultWorkflowPermissionsEnterprise200ResponseBody,
-  Record<string, any>,
-  200
->;
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseResponse =
+  Response<
+    ActionsGetGithubActionsDefaultWorkflowPermissionsEnterprise200ResponseBody,
+    Record<string, any>,
+    200
+  >;
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseHandler = (
-  req: ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseRequest,
-  res: ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseResponse,
-  next: NextFunction
-) => Promise<void> | void;
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseHandler =
+  (
+    req: ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseRequest,
+    res: ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseResponse,
+    next: NextFunction
+  ) => Promise<void> | void;
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequest = Request<
-  ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestPath,
-  unknown,
-  ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestBody,
-  ParsedQs,
-  Record<string, any>
->;
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequest =
+  Request<
+    ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestPath,
+    unknown,
+    ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestBody,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseResponse = Response<
-  unknown,
-  Record<string, any>,
-  204
->;
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseResponse =
+  Response<unknown, Record<string, any>, 204>;
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseHandler = (
-  req: ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequest,
-  res: ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseResponse,
-  next: NextFunction
-) => Promise<void> | void;
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseHandler =
+  (
+    req: ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequest,
+    res: ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseResponse,
+    next: NextFunction
+  ) => Promise<void> | void;
 
-export type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest = Request<
-  EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequestPath,
-  EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise200ResponseBody,
-  unknown,
-  EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequestQuery,
-  Record<string, any>
->;
+export type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest =
+  Request<
+    EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequestPath,
+    EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise200ResponseBody,
+    unknown,
+    EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequestQuery,
+    Record<string, any>
+  >;
 
-export type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse = Response<
-  EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise200ResponseBody,
-  Record<string, any>,
-  200
->;
+export type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse =
+  Response<
+    EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise200ResponseBody,
+    Record<string, any>,
+    200
+  >;
 
 export type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseHandler = (
   req: EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest,
@@ -17309,19 +17686,21 @@ export type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest = Request<
-  EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestPath,
-  EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise201ResponseBody,
-  EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestBody,
-  ParsedQs,
-  Record<string, any>
->;
+export type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest =
+  Request<
+    EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestPath,
+    EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise201ResponseBody,
+    EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestBody,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse = Response<
-  EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise201ResponseBody,
-  Record<string, any>,
-  201
->;
+export type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse =
+  Response<
+    EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise201ResponseBody,
+    Record<string, any>,
+    201
+  >;
 
 export type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseHandler = (
   req: EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest,
@@ -17329,19 +17708,21 @@ export type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest = Request<
-  EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequestPath,
-  EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise200ResponseBody,
-  unknown,
-  ParsedQs,
-  Record<string, any>
->;
+export type EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest =
+  Request<
+    EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequestPath,
+    EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise200ResponseBody,
+    unknown,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse = Response<
-  EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise200ResponseBody,
-  Record<string, any>,
-  200
->;
+export type EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse =
+  Response<
+    EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise200ResponseBody,
+    Record<string, any>,
+    200
+  >;
 
 export type EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseHandler = (
   req: EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest,
@@ -17349,19 +17730,21 @@ export type EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest = Request<
-  EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestPath,
-  EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise200ResponseBody,
-  EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestBody,
-  ParsedQs,
-  Record<string, any>
->;
+export type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest =
+  Request<
+    EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestPath,
+    EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise200ResponseBody,
+    EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestBody,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse = Response<
-  EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise200ResponseBody,
-  Record<string, any>,
-  200
->;
+export type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse =
+  Response<
+    EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise200ResponseBody,
+    Record<string, any>,
+    200
+  >;
 
 export type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseHandler = (
   req: EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest,
@@ -17369,19 +17752,17 @@ export type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest = Request<
-  EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequestPath,
-  unknown,
-  unknown,
-  ParsedQs,
-  Record<string, any>
->;
+export type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest =
+  Request<
+    EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequestPath,
+    unknown,
+    unknown,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse = Response<
-  unknown,
-  Record<string, any>,
-  204
->;
+export type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse =
+  Response<unknown, Record<string, any>, 204>;
 
 export type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseHandler = (
   req: EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest,
@@ -17389,99 +17770,101 @@ export type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest = Request<
-  EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestPath,
-  EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise200ResponseBody,
-  unknown,
-  EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestQuery,
-  Record<string, any>
->;
+export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest =
+  Request<
+    EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestPath,
+    EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise200ResponseBody,
+    unknown,
+    EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestQuery,
+    Record<string, any>
+  >;
 
-export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse = Response<
-  EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise200ResponseBody,
-  Record<string, any>,
-  200
->;
+export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse =
+  Response<
+    EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise200ResponseBody,
+    Record<string, any>,
+    200
+  >;
 
-export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseHandler = (
-  req: EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest,
-  res: EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse,
-  next: NextFunction
-) => Promise<void> | void;
+export type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseHandler =
+  (
+    req: EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest,
+    res: EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse,
+    next: NextFunction
+  ) => Promise<void> | void;
 
-export type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest = Request<
-  EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestPath,
-  unknown,
-  EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestBody,
-  ParsedQs,
-  Record<string, any>
->;
+export type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest =
+  Request<
+    EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestPath,
+    unknown,
+    EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestBody,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse = Response<
-  unknown,
-  Record<string, any>,
-  204
->;
+export type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse =
+  Response<unknown, Record<string, any>, 204>;
 
-export type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseHandler = (
-  req: EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest,
-  res: EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse,
-  next: NextFunction
-) => Promise<void> | void;
+export type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseHandler =
+  (
+    req: EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest,
+    res: EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse,
+    next: NextFunction
+  ) => Promise<void> | void;
 
-export type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest = Request<
-  EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestPath,
-  unknown,
-  unknown,
-  ParsedQs,
-  Record<string, any>
->;
+export type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest =
+  Request<
+    EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestPath,
+    unknown,
+    unknown,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse = Response<
-  unknown,
-  Record<string, any>,
-  204
->;
+export type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse =
+  Response<unknown, Record<string, any>, 204>;
 
-export type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseHandler = (
-  req: EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest,
-  res: EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse,
-  next: NextFunction
-) => Promise<void> | void;
+export type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseHandler =
+  (
+    req: EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest,
+    res: EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse,
+    next: NextFunction
+  ) => Promise<void> | void;
 
-export type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest = Request<
-  EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestPath,
-  unknown,
-  unknown,
-  ParsedQs,
-  Record<string, any>
->;
+export type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest =
+  Request<
+    EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestPath,
+    unknown,
+    unknown,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse = Response<
-  unknown,
-  Record<string, any>,
-  204
->;
+export type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse =
+  Response<unknown, Record<string, any>, 204>;
 
-export type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseHandler = (
-  req: EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest,
-  res: EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse,
-  next: NextFunction
-) => Promise<void> | void;
+export type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseHandler =
+  (
+    req: EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest,
+    res: EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse,
+    next: NextFunction
+  ) => Promise<void> | void;
 
-export type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest = Request<
-  EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequestPath,
-  EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise200ResponseBody,
-  unknown,
-  EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequestQuery,
-  Record<string, any>
->;
+export type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest =
+  Request<
+    EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequestPath,
+    EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise200ResponseBody,
+    unknown,
+    EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequestQuery,
+    Record<string, any>
+  >;
 
-export type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse = Response<
-  EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise200ResponseBody,
-  Record<string, any>,
-  200
->;
+export type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse =
+  Response<
+    EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise200ResponseBody,
+    Record<string, any>,
+    200
+  >;
 
 export type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseHandler = (
   req: EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest,
@@ -17489,19 +17872,17 @@ export type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest = Request<
-  EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestPath,
-  unknown,
-  EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestBody,
-  ParsedQs,
-  Record<string, any>
->;
+export type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest =
+  Request<
+    EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestPath,
+    unknown,
+    EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestBody,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse = Response<
-  unknown,
-  Record<string, any>,
-  204
->;
+export type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse =
+  Response<unknown, Record<string, any>, 204>;
 
 export type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseHandler = (
   req: EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest,
@@ -17509,19 +17890,17 @@ export type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest = Request<
-  EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequestPath,
-  unknown,
-  unknown,
-  ParsedQs,
-  Record<string, any>
->;
+export type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest =
+  Request<
+    EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequestPath,
+    unknown,
+    unknown,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse = Response<
-  unknown,
-  Record<string, any>,
-  204
->;
+export type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse =
+  Response<unknown, Record<string, any>, 204>;
 
 export type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseHandler = (
   req: EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest,
@@ -17529,25 +17908,24 @@ export type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest = Request<
-  EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequestPath,
-  unknown,
-  unknown,
-  ParsedQs,
-  Record<string, any>
->;
+export type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest =
+  Request<
+    EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequestPath,
+    unknown,
+    unknown,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse = Response<
-  unknown,
-  Record<string, any>,
-  204
->;
+export type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse =
+  Response<unknown, Record<string, any>, 204>;
 
-export type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseHandler = (
-  req: EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest,
-  res: EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse,
-  next: NextFunction
-) => Promise<void> | void;
+export type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseHandler =
+  (
+    req: EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest,
+    res: EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse,
+    next: NextFunction
+  ) => Promise<void> | void;
 
 export type EnterpriseAdminListSelfHostedRunnersForEnterpriseRequest = Request<
   EnterpriseAdminListSelfHostedRunnersForEnterpriseRequestPath,
@@ -17557,11 +17935,12 @@ export type EnterpriseAdminListSelfHostedRunnersForEnterpriseRequest = Request<
   Record<string, any>
 >;
 
-export type EnterpriseAdminListSelfHostedRunnersForEnterpriseResponse = Response<
-  EnterpriseAdminListSelfHostedRunnersForEnterprise200ResponseBody,
-  Record<string, any>,
-  200
->;
+export type EnterpriseAdminListSelfHostedRunnersForEnterpriseResponse =
+  Response<
+    EnterpriseAdminListSelfHostedRunnersForEnterprise200ResponseBody,
+    Record<string, any>,
+    200
+  >;
 
 export type EnterpriseAdminListSelfHostedRunnersForEnterpriseHandler = (
   req: EnterpriseAdminListSelfHostedRunnersForEnterpriseRequest,
@@ -17577,11 +17956,12 @@ export type EnterpriseAdminListRunnerApplicationsForEnterpriseRequest = Request<
   Record<string, any>
 >;
 
-export type EnterpriseAdminListRunnerApplicationsForEnterpriseResponse = Response<
-  EnterpriseAdminListRunnerApplicationsForEnterprise200ResponseBody,
-  Record<string, any>,
-  200
->;
+export type EnterpriseAdminListRunnerApplicationsForEnterpriseResponse =
+  Response<
+    EnterpriseAdminListRunnerApplicationsForEnterprise200ResponseBody,
+    Record<string, any>,
+    200
+  >;
 
 export type EnterpriseAdminListRunnerApplicationsForEnterpriseHandler = (
   req: EnterpriseAdminListRunnerApplicationsForEnterpriseRequest,
@@ -17589,19 +17969,21 @@ export type EnterpriseAdminListRunnerApplicationsForEnterpriseHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type EnterpriseAdminCreateRegistrationTokenForEnterpriseRequest = Request<
-  EnterpriseAdminCreateRegistrationTokenForEnterpriseRequestPath,
-  EnterpriseAdminCreateRegistrationTokenForEnterprise201ResponseBody,
-  unknown,
-  ParsedQs,
-  Record<string, any>
->;
+export type EnterpriseAdminCreateRegistrationTokenForEnterpriseRequest =
+  Request<
+    EnterpriseAdminCreateRegistrationTokenForEnterpriseRequestPath,
+    EnterpriseAdminCreateRegistrationTokenForEnterprise201ResponseBody,
+    unknown,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type EnterpriseAdminCreateRegistrationTokenForEnterpriseResponse = Response<
-  EnterpriseAdminCreateRegistrationTokenForEnterprise201ResponseBody,
-  Record<string, any>,
-  201
->;
+export type EnterpriseAdminCreateRegistrationTokenForEnterpriseResponse =
+  Response<
+    EnterpriseAdminCreateRegistrationTokenForEnterprise201ResponseBody,
+    Record<string, any>,
+    201
+  >;
 
 export type EnterpriseAdminCreateRegistrationTokenForEnterpriseHandler = (
   req: EnterpriseAdminCreateRegistrationTokenForEnterpriseRequest,
@@ -17649,19 +18031,17 @@ export type EnterpriseAdminGetSelfHostedRunnerForEnterpriseHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest = Request<
-  EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequestPath,
-  unknown,
-  unknown,
-  ParsedQs,
-  Record<string, any>
->;
+export type EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest =
+  Request<
+    EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequestPath,
+    unknown,
+    unknown,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse = Response<
-  unknown,
-  Record<string, any>,
-  204
->;
+export type EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse =
+  Response<unknown, Record<string, any>, 204>;
 
 export type EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseHandler = (
   req: EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest,
@@ -17669,21 +18049,23 @@ export type EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseRequest = Request<
-  EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseRequestPath,
-  | EnterpriseAdminListLabelsForSelfHostedRunnerForEnterprise200ResponseBody
-  | EnterpriseAdminListLabelsForSelfHostedRunnerForEnterprise404ResponseBody,
-  unknown,
-  ParsedQs,
-  Record<string, any>
->;
+export type EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseRequest =
+  Request<
+    EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseRequestPath,
+    | EnterpriseAdminListLabelsForSelfHostedRunnerForEnterprise200ResponseBody
+    | EnterpriseAdminListLabelsForSelfHostedRunnerForEnterprise404ResponseBody,
+    unknown,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseResponse = Response<
-  | EnterpriseAdminListLabelsForSelfHostedRunnerForEnterprise200ResponseBody
-  | EnterpriseAdminListLabelsForSelfHostedRunnerForEnterprise404ResponseBody,
-  Record<string, any>,
-  200 | 404
->;
+export type EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseResponse =
+  Response<
+    | EnterpriseAdminListLabelsForSelfHostedRunnerForEnterprise200ResponseBody
+    | EnterpriseAdminListLabelsForSelfHostedRunnerForEnterprise404ResponseBody,
+    Record<string, any>,
+    200 | 404
+  >;
 
 export type EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseHandler = (
   req: EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseRequest,
@@ -17691,101 +18073,113 @@ export type EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequest = Request<
-  EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequestPath,
-  | EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterprise200ResponseBody
-  | EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterprise404ResponseBody
-  | EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterprise422ResponseBody,
-  EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequestBody,
-  ParsedQs,
-  Record<string, any>
->;
+export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequest =
+  Request<
+    EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequestPath,
+    | EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterprise200ResponseBody
+    | EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterprise404ResponseBody
+    | EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterprise422ResponseBody,
+    EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequestBody,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseResponse = Response<
-  | EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterprise200ResponseBody
-  | EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterprise404ResponseBody
-  | EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterprise422ResponseBody,
-  Record<string, any>,
-  200 | 404 | 422
->;
+export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseResponse =
+  Response<
+    | EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterprise200ResponseBody
+    | EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterprise404ResponseBody
+    | EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterprise422ResponseBody,
+    Record<string, any>,
+    200 | 404 | 422
+  >;
 
-export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseHandler = (
-  req: EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequest,
-  res: EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseResponse,
-  next: NextFunction
-) => Promise<void> | void;
+export type EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseHandler =
+  (
+    req: EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequest,
+    res: EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseResponse,
+    next: NextFunction
+  ) => Promise<void> | void;
 
-export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequest = Request<
-  EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequestPath,
-  | EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterprise200ResponseBody
-  | EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterprise404ResponseBody
-  | EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterprise422ResponseBody,
-  EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequestBody,
-  ParsedQs,
-  Record<string, any>
->;
+export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequest =
+  Request<
+    EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequestPath,
+    | EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterprise200ResponseBody
+    | EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterprise404ResponseBody
+    | EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterprise422ResponseBody,
+    EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequestBody,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseResponse = Response<
-  | EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterprise200ResponseBody
-  | EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterprise404ResponseBody
-  | EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterprise422ResponseBody,
-  Record<string, any>,
-  200 | 404 | 422
->;
+export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseResponse =
+  Response<
+    | EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterprise200ResponseBody
+    | EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterprise404ResponseBody
+    | EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterprise422ResponseBody,
+    Record<string, any>,
+    200 | 404 | 422
+  >;
 
-export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseHandler = (
-  req: EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequest,
-  res: EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseResponse,
-  next: NextFunction
-) => Promise<void> | void;
+export type EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseHandler =
+  (
+    req: EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequest,
+    res: EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseResponse,
+    next: NextFunction
+  ) => Promise<void> | void;
 
-export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseRequest = Request<
-  EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseRequestPath,
-  | EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterprise200ResponseBody
-  | EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterprise404ResponseBody
-  | EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterprise422ResponseBody,
-  unknown,
-  ParsedQs,
-  Record<string, any>
->;
+export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseRequest =
+  Request<
+    EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseRequestPath,
+    | EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterprise200ResponseBody
+    | EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterprise404ResponseBody
+    | EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterprise422ResponseBody,
+    unknown,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseResponse = Response<
-  | EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterprise200ResponseBody
-  | EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterprise404ResponseBody
-  | EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterprise422ResponseBody,
-  Record<string, any>,
-  200 | 404 | 422
->;
+export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseResponse =
+  Response<
+    | EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterprise200ResponseBody
+    | EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterprise404ResponseBody
+    | EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterprise422ResponseBody,
+    Record<string, any>,
+    200 | 404 | 422
+  >;
 
-export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseHandler = (
-  req: EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseRequest,
-  res: EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseResponse,
-  next: NextFunction
-) => Promise<void> | void;
+export type EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseHandler =
+  (
+    req: EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseRequest,
+    res: EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseResponse,
+    next: NextFunction
+  ) => Promise<void> | void;
 
-export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseRequest = Request<
-  EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseRequestPath,
-  | EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterprise200ResponseBody
-  | EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterprise404ResponseBody
-  | EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterprise422ResponseBody,
-  unknown,
-  ParsedQs,
-  Record<string, any>
->;
+export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseRequest =
+  Request<
+    EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseRequestPath,
+    | EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterprise200ResponseBody
+    | EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterprise404ResponseBody
+    | EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterprise422ResponseBody,
+    unknown,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseResponse = Response<
-  | EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterprise200ResponseBody
-  | EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterprise404ResponseBody
-  | EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterprise422ResponseBody,
-  Record<string, any>,
-  200 | 404 | 422
->;
+export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseResponse =
+  Response<
+    | EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterprise200ResponseBody
+    | EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterprise404ResponseBody
+    | EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterprise422ResponseBody,
+    Record<string, any>,
+    200 | 404 | 422
+  >;
 
-export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseHandler = (
-  req: EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseRequest,
-  res: EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseResponse,
-  next: NextFunction
-) => Promise<void> | void;
+export type EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseHandler =
+  (
+    req: EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseRequest,
+    res: EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseResponse,
+    next: NextFunction
+  ) => Promise<void> | void;
 
 export type CodeScanningListAlertsForEnterpriseRequest = Request<
   CodeScanningListAlertsForEnterpriseRequestPath,
@@ -18811,13 +19205,14 @@ export type ActivityGetThreadSubscriptionForAuthenticatedUserRequest = Request<
   Record<string, any>
 >;
 
-export type ActivityGetThreadSubscriptionForAuthenticatedUserResponse = Response<
-  | ActivityGetThreadSubscriptionForAuthenticatedUser200ResponseBody
-  | ActivityGetThreadSubscriptionForAuthenticatedUser401ResponseBody
-  | ActivityGetThreadSubscriptionForAuthenticatedUser403ResponseBody,
-  Record<string, any>,
-  200 | 304 | 401 | 403
->;
+export type ActivityGetThreadSubscriptionForAuthenticatedUserResponse =
+  Response<
+    | ActivityGetThreadSubscriptionForAuthenticatedUser200ResponseBody
+    | ActivityGetThreadSubscriptionForAuthenticatedUser401ResponseBody
+    | ActivityGetThreadSubscriptionForAuthenticatedUser403ResponseBody,
+    Record<string, any>,
+    200 | 304 | 401 | 403
+  >;
 
 export type ActivityGetThreadSubscriptionForAuthenticatedUserHandler = (
   req: ActivityGetThreadSubscriptionForAuthenticatedUserRequest,
@@ -19055,59 +19450,59 @@ export type ActionsSetGithubActionsPermissionsOrganizationHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest = Request<
-  ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequestPath,
-  ActionsListSelectedRepositoriesEnabledGithubActionsOrganization200ResponseBody,
-  unknown,
-  ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequestQuery,
-  Record<string, any>
->;
+export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest =
+  Request<
+    ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequestPath,
+    ActionsListSelectedRepositoriesEnabledGithubActionsOrganization200ResponseBody,
+    unknown,
+    ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequestQuery,
+    Record<string, any>
+  >;
 
-export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse = Response<
-  ActionsListSelectedRepositoriesEnabledGithubActionsOrganization200ResponseBody,
-  Record<string, any>,
-  200
->;
+export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse =
+  Response<
+    ActionsListSelectedRepositoriesEnabledGithubActionsOrganization200ResponseBody,
+    Record<string, any>,
+    200
+  >;
 
-export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationHandler = (
-  req: ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest,
-  res: ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse,
-  next: NextFunction
-) => Promise<void> | void;
+export type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationHandler =
+  (
+    req: ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest,
+    res: ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse,
+    next: NextFunction
+  ) => Promise<void> | void;
 
-export type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest = Request<
-  ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestPath,
-  unknown,
-  ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestBody,
-  ParsedQs,
-  Record<string, any>
->;
+export type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest =
+  Request<
+    ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestPath,
+    unknown,
+    ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestBody,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse = Response<
-  unknown,
-  Record<string, any>,
-  204
->;
+export type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse =
+  Response<unknown, Record<string, any>, 204>;
 
-export type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationHandler = (
-  req: ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest,
-  res: ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse,
-  next: NextFunction
-) => Promise<void> | void;
+export type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationHandler =
+  (
+    req: ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest,
+    res: ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse,
+    next: NextFunction
+  ) => Promise<void> | void;
 
-export type ActionsEnableSelectedRepositoryGithubActionsOrganizationRequest = Request<
-  ActionsEnableSelectedRepositoryGithubActionsOrganizationRequestPath,
-  unknown,
-  unknown,
-  ParsedQs,
-  Record<string, any>
->;
+export type ActionsEnableSelectedRepositoryGithubActionsOrganizationRequest =
+  Request<
+    ActionsEnableSelectedRepositoryGithubActionsOrganizationRequestPath,
+    unknown,
+    unknown,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type ActionsEnableSelectedRepositoryGithubActionsOrganizationResponse = Response<
-  unknown,
-  Record<string, any>,
-  204
->;
+export type ActionsEnableSelectedRepositoryGithubActionsOrganizationResponse =
+  Response<unknown, Record<string, any>, 204>;
 
 export type ActionsEnableSelectedRepositoryGithubActionsOrganizationHandler = (
   req: ActionsEnableSelectedRepositoryGithubActionsOrganizationRequest,
@@ -19115,19 +19510,17 @@ export type ActionsEnableSelectedRepositoryGithubActionsOrganizationHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type ActionsDisableSelectedRepositoryGithubActionsOrganizationRequest = Request<
-  ActionsDisableSelectedRepositoryGithubActionsOrganizationRequestPath,
-  unknown,
-  unknown,
-  ParsedQs,
-  Record<string, any>
->;
+export type ActionsDisableSelectedRepositoryGithubActionsOrganizationRequest =
+  Request<
+    ActionsDisableSelectedRepositoryGithubActionsOrganizationRequestPath,
+    unknown,
+    unknown,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type ActionsDisableSelectedRepositoryGithubActionsOrganizationResponse = Response<
-  unknown,
-  Record<string, any>,
-  204
->;
+export type ActionsDisableSelectedRepositoryGithubActionsOrganizationResponse =
+  Response<unknown, Record<string, any>, 204>;
 
 export type ActionsDisableSelectedRepositoryGithubActionsOrganizationHandler = (
   req: ActionsDisableSelectedRepositoryGithubActionsOrganizationRequest,
@@ -19175,45 +19568,47 @@ export type ActionsSetAllowedActionsOrganizationHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationRequest = Request<
-  ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationRequestPath,
-  ActionsGetGithubActionsDefaultWorkflowPermissionsOrganization200ResponseBody,
-  unknown,
-  ParsedQs,
-  Record<string, any>
->;
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationRequest =
+  Request<
+    ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationRequestPath,
+    ActionsGetGithubActionsDefaultWorkflowPermissionsOrganization200ResponseBody,
+    unknown,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationResponse = Response<
-  ActionsGetGithubActionsDefaultWorkflowPermissionsOrganization200ResponseBody,
-  Record<string, any>,
-  200
->;
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationResponse =
+  Response<
+    ActionsGetGithubActionsDefaultWorkflowPermissionsOrganization200ResponseBody,
+    Record<string, any>,
+    200
+  >;
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationHandler = (
-  req: ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationRequest,
-  res: ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationResponse,
-  next: NextFunction
-) => Promise<void> | void;
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationHandler =
+  (
+    req: ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationRequest,
+    res: ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationResponse,
+    next: NextFunction
+  ) => Promise<void> | void;
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequest = Request<
-  ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequestPath,
-  unknown,
-  ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequestBody,
-  ParsedQs,
-  Record<string, any>
->;
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequest =
+  Request<
+    ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequestPath,
+    unknown,
+    ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequestBody,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationResponse = Response<
-  unknown,
-  Record<string, any>,
-  204 | 409
->;
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationResponse =
+  Response<unknown, Record<string, any>, 204 | 409>;
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationHandler = (
-  req: ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequest,
-  res: ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationResponse,
-  next: NextFunction
-) => Promise<void> | void;
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationHandler =
+  (
+    req: ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequest,
+    res: ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationResponse,
+    next: NextFunction
+  ) => Promise<void> | void;
 
 export type ActionsListSelfHostedRunnerGroupsForOrgRequest = Request<
   ActionsListSelfHostedRunnerGroupsForOrgRequestPath,
@@ -19323,11 +19718,12 @@ export type ActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest = Request<
   Record<string, any>
 >;
 
-export type ActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse = Response<
-  ActionsListRepoAccessToSelfHostedRunnerGroupInOrg200ResponseBody,
-  Record<string, any>,
-  200
->;
+export type ActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse =
+  Response<
+    ActionsListRepoAccessToSelfHostedRunnerGroupInOrg200ResponseBody,
+    Record<string, any>,
+    200
+  >;
 
 export type ActionsListRepoAccessToSelfHostedRunnerGroupInOrgHandler = (
   req: ActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest,
@@ -19355,19 +19751,17 @@ export type ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest = Request<
-  ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequestPath,
-  unknown,
-  unknown,
-  ParsedQs,
-  Record<string, any>
->;
+export type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest =
+  Request<
+    ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequestPath,
+    unknown,
+    unknown,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse = Response<
-  unknown,
-  Record<string, any>,
-  204
->;
+export type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse =
+  Response<unknown, Record<string, any>, 204>;
 
 export type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgHandler = (
   req: ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest,
@@ -19645,21 +20039,23 @@ export type ActionsSetCustomLabelsForSelfHostedRunnerForOrgHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequest = Request<
-  ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequestPath,
-  | ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrg200ResponseBody
-  | ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrg404ResponseBody,
-  unknown,
-  ParsedQs,
-  Record<string, any>
->;
+export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequest =
+  Request<
+    ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequestPath,
+    | ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrg200ResponseBody
+    | ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrg404ResponseBody,
+    unknown,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgResponse = Response<
-  | ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrg200ResponseBody
-  | ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrg404ResponseBody,
-  Record<string, any>,
-  200 | 404
->;
+export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgResponse =
+  Response<
+    | ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrg200ResponseBody
+    | ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrg404ResponseBody,
+    Record<string, any>,
+    200 | 404
+  >;
 
 export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgHandler = (
   req: ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequest,
@@ -19677,13 +20073,14 @@ export type ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgRequest = Request<
   Record<string, any>
 >;
 
-export type ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgResponse = Response<
-  | ActionsRemoveCustomLabelFromSelfHostedRunnerForOrg200ResponseBody
-  | ActionsRemoveCustomLabelFromSelfHostedRunnerForOrg404ResponseBody
-  | ActionsRemoveCustomLabelFromSelfHostedRunnerForOrg422ResponseBody,
-  Record<string, any>,
-  200 | 404 | 422
->;
+export type ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgResponse =
+  Response<
+    | ActionsRemoveCustomLabelFromSelfHostedRunnerForOrg200ResponseBody
+    | ActionsRemoveCustomLabelFromSelfHostedRunnerForOrg404ResponseBody
+    | ActionsRemoveCustomLabelFromSelfHostedRunnerForOrg422ResponseBody,
+    Record<string, any>,
+    200 | 404 | 422
+  >;
 
 export type ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgHandler = (
   req: ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgRequest,
@@ -21552,14 +21949,15 @@ export type PackagesGetAllPackageVersionsForPackageOwnedByOrgRequest = Request<
   Record<string, any>
 >;
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByOrgResponse = Response<
-  | PackagesGetAllPackageVersionsForPackageOwnedByOrg200ResponseBody
-  | PackagesGetAllPackageVersionsForPackageOwnedByOrg401ResponseBody
-  | PackagesGetAllPackageVersionsForPackageOwnedByOrg403ResponseBody
-  | PackagesGetAllPackageVersionsForPackageOwnedByOrg404ResponseBody,
-  Record<string, any>,
-  200 | 401 | 403 | 404
->;
+export type PackagesGetAllPackageVersionsForPackageOwnedByOrgResponse =
+  Response<
+    | PackagesGetAllPackageVersionsForPackageOwnedByOrg200ResponseBody
+    | PackagesGetAllPackageVersionsForPackageOwnedByOrg401ResponseBody
+    | PackagesGetAllPackageVersionsForPackageOwnedByOrg403ResponseBody
+    | PackagesGetAllPackageVersionsForPackageOwnedByOrg404ResponseBody,
+    Record<string, any>,
+    200 | 401 | 403 | 404
+  >;
 
 export type PackagesGetAllPackageVersionsForPackageOwnedByOrgHandler = (
   req: PackagesGetAllPackageVersionsForPackageOwnedByOrgRequest,
@@ -23641,45 +24039,47 @@ export type ActionsSetAllowedActionsRepositoryHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryRequest = Request<
-  ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryRequestPath,
-  ActionsGetGithubActionsDefaultWorkflowPermissionsRepository200ResponseBody,
-  unknown,
-  ParsedQs,
-  Record<string, any>
->;
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryRequest =
+  Request<
+    ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryRequestPath,
+    ActionsGetGithubActionsDefaultWorkflowPermissionsRepository200ResponseBody,
+    unknown,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryResponse = Response<
-  ActionsGetGithubActionsDefaultWorkflowPermissionsRepository200ResponseBody,
-  Record<string, any>,
-  200
->;
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryResponse =
+  Response<
+    ActionsGetGithubActionsDefaultWorkflowPermissionsRepository200ResponseBody,
+    Record<string, any>,
+    200
+  >;
 
-export type ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryHandler = (
-  req: ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryRequest,
-  res: ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryResponse,
-  next: NextFunction
-) => Promise<void> | void;
+export type ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryHandler =
+  (
+    req: ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryRequest,
+    res: ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryResponse,
+    next: NextFunction
+  ) => Promise<void> | void;
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequest = Request<
-  ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequestPath,
-  unknown,
-  ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequestBody,
-  ParsedQs,
-  Record<string, any>
->;
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequest =
+  Request<
+    ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequestPath,
+    unknown,
+    ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequestBody,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryResponse = Response<
-  unknown,
-  Record<string, any>,
-  204 | 409
->;
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryResponse =
+  Response<unknown, Record<string, any>, 204 | 409>;
 
-export type ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryHandler = (
-  req: ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequest,
-  res: ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryResponse,
-  next: NextFunction
-) => Promise<void> | void;
+export type ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryHandler =
+  (
+    req: ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequest,
+    res: ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryResponse,
+    next: NextFunction
+  ) => Promise<void> | void;
 
 export type ActionsListSelfHostedRunnersForRepoRequest = Request<
   ActionsListSelfHostedRunnersForRepoRequestPath,
@@ -23871,21 +24271,23 @@ export type ActionsSetCustomLabelsForSelfHostedRunnerForRepoHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequest = Request<
-  ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequestPath,
-  | ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepo200ResponseBody
-  | ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepo404ResponseBody,
-  unknown,
-  ParsedQs,
-  Record<string, any>
->;
+export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequest =
+  Request<
+    ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequestPath,
+    | ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepo200ResponseBody
+    | ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepo404ResponseBody,
+    unknown,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoResponse = Response<
-  | ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepo200ResponseBody
-  | ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepo404ResponseBody,
-  Record<string, any>,
-  200 | 404
->;
+export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoResponse =
+  Response<
+    | ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepo200ResponseBody
+    | ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepo404ResponseBody,
+    Record<string, any>,
+    200 | 404
+  >;
 
 export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoHandler = (
   req: ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequest,
@@ -23893,23 +24295,25 @@ export type ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoRequest = Request<
-  ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoRequestPath,
-  | ActionsRemoveCustomLabelFromSelfHostedRunnerForRepo200ResponseBody
-  | ActionsRemoveCustomLabelFromSelfHostedRunnerForRepo404ResponseBody
-  | ActionsRemoveCustomLabelFromSelfHostedRunnerForRepo422ResponseBody,
-  unknown,
-  ParsedQs,
-  Record<string, any>
->;
+export type ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoRequest =
+  Request<
+    ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoRequestPath,
+    | ActionsRemoveCustomLabelFromSelfHostedRunnerForRepo200ResponseBody
+    | ActionsRemoveCustomLabelFromSelfHostedRunnerForRepo404ResponseBody
+    | ActionsRemoveCustomLabelFromSelfHostedRunnerForRepo422ResponseBody,
+    unknown,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoResponse = Response<
-  | ActionsRemoveCustomLabelFromSelfHostedRunnerForRepo200ResponseBody
-  | ActionsRemoveCustomLabelFromSelfHostedRunnerForRepo404ResponseBody
-  | ActionsRemoveCustomLabelFromSelfHostedRunnerForRepo422ResponseBody,
-  Record<string, any>,
-  200 | 404 | 422
->;
+export type ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoResponse =
+  Response<
+    | ActionsRemoveCustomLabelFromSelfHostedRunnerForRepo200ResponseBody
+    | ActionsRemoveCustomLabelFromSelfHostedRunnerForRepo404ResponseBody
+    | ActionsRemoveCustomLabelFromSelfHostedRunnerForRepo422ResponseBody,
+    Record<string, any>,
+    200 | 404 | 422
+  >;
 
 export type ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoHandler = (
   req: ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoRequest,
@@ -26051,35 +26455,38 @@ export type CodespacesCreateWithRepoForAuthenticatedUserHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequest = Request<
-  CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequestPath,
-  | CodespacesListDevcontainersInRepositoryForAuthenticatedUser200ResponseBody
-  | CodespacesListDevcontainersInRepositoryForAuthenticatedUser400ResponseBody
-  | CodespacesListDevcontainersInRepositoryForAuthenticatedUser401ResponseBody
-  | CodespacesListDevcontainersInRepositoryForAuthenticatedUser403ResponseBody
-  | CodespacesListDevcontainersInRepositoryForAuthenticatedUser404ResponseBody
-  | CodespacesListDevcontainersInRepositoryForAuthenticatedUser500ResponseBody,
-  unknown,
-  CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequestQuery,
-  Record<string, any>
->;
+export type CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequest =
+  Request<
+    CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequestPath,
+    | CodespacesListDevcontainersInRepositoryForAuthenticatedUser200ResponseBody
+    | CodespacesListDevcontainersInRepositoryForAuthenticatedUser400ResponseBody
+    | CodespacesListDevcontainersInRepositoryForAuthenticatedUser401ResponseBody
+    | CodespacesListDevcontainersInRepositoryForAuthenticatedUser403ResponseBody
+    | CodespacesListDevcontainersInRepositoryForAuthenticatedUser404ResponseBody
+    | CodespacesListDevcontainersInRepositoryForAuthenticatedUser500ResponseBody,
+    unknown,
+    CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequestQuery,
+    Record<string, any>
+  >;
 
-export type CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponse = Response<
-  | CodespacesListDevcontainersInRepositoryForAuthenticatedUser200ResponseBody
-  | CodespacesListDevcontainersInRepositoryForAuthenticatedUser400ResponseBody
-  | CodespacesListDevcontainersInRepositoryForAuthenticatedUser401ResponseBody
-  | CodespacesListDevcontainersInRepositoryForAuthenticatedUser403ResponseBody
-  | CodespacesListDevcontainersInRepositoryForAuthenticatedUser404ResponseBody
-  | CodespacesListDevcontainersInRepositoryForAuthenticatedUser500ResponseBody,
-  Record<string, any>,
-  200 | 400 | 401 | 403 | 404 | 500
->;
+export type CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponse =
+  Response<
+    | CodespacesListDevcontainersInRepositoryForAuthenticatedUser200ResponseBody
+    | CodespacesListDevcontainersInRepositoryForAuthenticatedUser400ResponseBody
+    | CodespacesListDevcontainersInRepositoryForAuthenticatedUser401ResponseBody
+    | CodespacesListDevcontainersInRepositoryForAuthenticatedUser403ResponseBody
+    | CodespacesListDevcontainersInRepositoryForAuthenticatedUser404ResponseBody
+    | CodespacesListDevcontainersInRepositoryForAuthenticatedUser500ResponseBody,
+    Record<string, any>,
+    200 | 400 | 401 | 403 | 404 | 500
+  >;
 
-export type CodespacesListDevcontainersInRepositoryForAuthenticatedUserHandler = (
-  req: CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequest,
-  res: CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponse,
-  next: NextFunction
-) => Promise<void> | void;
+export type CodespacesListDevcontainersInRepositoryForAuthenticatedUserHandler =
+  (
+    req: CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequest,
+    res: CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponse,
+    next: NextFunction
+  ) => Promise<void> | void;
 
 export type CodespacesRepoMachinesForAuthenticatedUserRequest = Request<
   CodespacesRepoMachinesForAuthenticatedUserRequestPath,
@@ -29515,11 +29922,12 @@ export type ActivityListRepoNotificationsForAuthenticatedUserRequest = Request<
   Record<string, any>
 >;
 
-export type ActivityListRepoNotificationsForAuthenticatedUserResponse = Response<
-  ActivityListRepoNotificationsForAuthenticatedUser200ResponseBody,
-  Record<string, any>,
-  200
->;
+export type ActivityListRepoNotificationsForAuthenticatedUserResponse =
+  Response<
+    ActivityListRepoNotificationsForAuthenticatedUser200ResponseBody,
+    Record<string, any>,
+    200
+  >;
 
 export type ActivityListRepoNotificationsForAuthenticatedUserHandler = (
   req: ActivityListRepoNotificationsForAuthenticatedUserRequest,
@@ -32873,13 +33281,14 @@ export type CodespacesCreateOrUpdateSecretForAuthenticatedUserRequest = Request<
   Record<string, any>
 >;
 
-export type CodespacesCreateOrUpdateSecretForAuthenticatedUserResponse = Response<
-  | CodespacesCreateOrUpdateSecretForAuthenticatedUser201ResponseBody
-  | CodespacesCreateOrUpdateSecretForAuthenticatedUser404ResponseBody
-  | CodespacesCreateOrUpdateSecretForAuthenticatedUser422ResponseBody,
-  Record<string, any>,
-  201 | 204 | 404 | 422
->;
+export type CodespacesCreateOrUpdateSecretForAuthenticatedUserResponse =
+  Response<
+    | CodespacesCreateOrUpdateSecretForAuthenticatedUser201ResponseBody
+    | CodespacesCreateOrUpdateSecretForAuthenticatedUser404ResponseBody
+    | CodespacesCreateOrUpdateSecretForAuthenticatedUser422ResponseBody,
+    Record<string, any>,
+    201 | 204 | 404 | 422
+  >;
 
 export type CodespacesCreateOrUpdateSecretForAuthenticatedUserHandler = (
   req: CodespacesCreateOrUpdateSecretForAuthenticatedUserRequest,
@@ -32907,27 +33316,29 @@ export type CodespacesDeleteSecretForAuthenticatedUserHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type CodespacesListRepositoriesForSecretForAuthenticatedUserRequest = Request<
-  CodespacesListRepositoriesForSecretForAuthenticatedUserRequestPath,
-  | CodespacesListRepositoriesForSecretForAuthenticatedUser200ResponseBody
-  | CodespacesListRepositoriesForSecretForAuthenticatedUser401ResponseBody
-  | CodespacesListRepositoriesForSecretForAuthenticatedUser403ResponseBody
-  | CodespacesListRepositoriesForSecretForAuthenticatedUser404ResponseBody
-  | CodespacesListRepositoriesForSecretForAuthenticatedUser500ResponseBody,
-  unknown,
-  ParsedQs,
-  Record<string, any>
->;
+export type CodespacesListRepositoriesForSecretForAuthenticatedUserRequest =
+  Request<
+    CodespacesListRepositoriesForSecretForAuthenticatedUserRequestPath,
+    | CodespacesListRepositoriesForSecretForAuthenticatedUser200ResponseBody
+    | CodespacesListRepositoriesForSecretForAuthenticatedUser401ResponseBody
+    | CodespacesListRepositoriesForSecretForAuthenticatedUser403ResponseBody
+    | CodespacesListRepositoriesForSecretForAuthenticatedUser404ResponseBody
+    | CodespacesListRepositoriesForSecretForAuthenticatedUser500ResponseBody,
+    unknown,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type CodespacesListRepositoriesForSecretForAuthenticatedUserResponse = Response<
-  | CodespacesListRepositoriesForSecretForAuthenticatedUser200ResponseBody
-  | CodespacesListRepositoriesForSecretForAuthenticatedUser401ResponseBody
-  | CodespacesListRepositoriesForSecretForAuthenticatedUser403ResponseBody
-  | CodespacesListRepositoriesForSecretForAuthenticatedUser404ResponseBody
-  | CodespacesListRepositoriesForSecretForAuthenticatedUser500ResponseBody,
-  Record<string, any>,
-  200 | 401 | 403 | 404 | 500
->;
+export type CodespacesListRepositoriesForSecretForAuthenticatedUserResponse =
+  Response<
+    | CodespacesListRepositoriesForSecretForAuthenticatedUser200ResponseBody
+    | CodespacesListRepositoriesForSecretForAuthenticatedUser401ResponseBody
+    | CodespacesListRepositoriesForSecretForAuthenticatedUser403ResponseBody
+    | CodespacesListRepositoriesForSecretForAuthenticatedUser404ResponseBody
+    | CodespacesListRepositoriesForSecretForAuthenticatedUser500ResponseBody,
+    Record<string, any>,
+    200 | 401 | 403 | 404 | 500
+  >;
 
 export type CodespacesListRepositoriesForSecretForAuthenticatedUserHandler = (
   req: CodespacesListRepositoriesForSecretForAuthenticatedUserRequest,
@@ -32935,25 +33346,27 @@ export type CodespacesListRepositoriesForSecretForAuthenticatedUserHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type CodespacesSetRepositoriesForSecretForAuthenticatedUserRequest = Request<
-  CodespacesSetRepositoriesForSecretForAuthenticatedUserRequestPath,
-  | CodespacesSetRepositoriesForSecretForAuthenticatedUser401ResponseBody
-  | CodespacesSetRepositoriesForSecretForAuthenticatedUser403ResponseBody
-  | CodespacesSetRepositoriesForSecretForAuthenticatedUser404ResponseBody
-  | CodespacesSetRepositoriesForSecretForAuthenticatedUser500ResponseBody,
-  CodespacesSetRepositoriesForSecretForAuthenticatedUserRequestBody,
-  ParsedQs,
-  Record<string, any>
->;
+export type CodespacesSetRepositoriesForSecretForAuthenticatedUserRequest =
+  Request<
+    CodespacesSetRepositoriesForSecretForAuthenticatedUserRequestPath,
+    | CodespacesSetRepositoriesForSecretForAuthenticatedUser401ResponseBody
+    | CodespacesSetRepositoriesForSecretForAuthenticatedUser403ResponseBody
+    | CodespacesSetRepositoriesForSecretForAuthenticatedUser404ResponseBody
+    | CodespacesSetRepositoriesForSecretForAuthenticatedUser500ResponseBody,
+    CodespacesSetRepositoriesForSecretForAuthenticatedUserRequestBody,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type CodespacesSetRepositoriesForSecretForAuthenticatedUserResponse = Response<
-  | CodespacesSetRepositoriesForSecretForAuthenticatedUser401ResponseBody
-  | CodespacesSetRepositoriesForSecretForAuthenticatedUser403ResponseBody
-  | CodespacesSetRepositoriesForSecretForAuthenticatedUser404ResponseBody
-  | CodespacesSetRepositoriesForSecretForAuthenticatedUser500ResponseBody,
-  Record<string, any>,
-  204 | 401 | 403 | 404 | 500
->;
+export type CodespacesSetRepositoriesForSecretForAuthenticatedUserResponse =
+  Response<
+    | CodespacesSetRepositoriesForSecretForAuthenticatedUser401ResponseBody
+    | CodespacesSetRepositoriesForSecretForAuthenticatedUser403ResponseBody
+    | CodespacesSetRepositoriesForSecretForAuthenticatedUser404ResponseBody
+    | CodespacesSetRepositoriesForSecretForAuthenticatedUser500ResponseBody,
+    Record<string, any>,
+    204 | 401 | 403 | 404 | 500
+  >;
 
 export type CodespacesSetRepositoriesForSecretForAuthenticatedUserHandler = (
   req: CodespacesSetRepositoriesForSecretForAuthenticatedUserRequest,
@@ -32961,25 +33374,27 @@ export type CodespacesSetRepositoriesForSecretForAuthenticatedUserHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type CodespacesAddRepositoryForSecretForAuthenticatedUserRequest = Request<
-  CodespacesAddRepositoryForSecretForAuthenticatedUserRequestPath,
-  | CodespacesAddRepositoryForSecretForAuthenticatedUser401ResponseBody
-  | CodespacesAddRepositoryForSecretForAuthenticatedUser403ResponseBody
-  | CodespacesAddRepositoryForSecretForAuthenticatedUser404ResponseBody
-  | CodespacesAddRepositoryForSecretForAuthenticatedUser500ResponseBody,
-  unknown,
-  ParsedQs,
-  Record<string, any>
->;
+export type CodespacesAddRepositoryForSecretForAuthenticatedUserRequest =
+  Request<
+    CodespacesAddRepositoryForSecretForAuthenticatedUserRequestPath,
+    | CodespacesAddRepositoryForSecretForAuthenticatedUser401ResponseBody
+    | CodespacesAddRepositoryForSecretForAuthenticatedUser403ResponseBody
+    | CodespacesAddRepositoryForSecretForAuthenticatedUser404ResponseBody
+    | CodespacesAddRepositoryForSecretForAuthenticatedUser500ResponseBody,
+    unknown,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type CodespacesAddRepositoryForSecretForAuthenticatedUserResponse = Response<
-  | CodespacesAddRepositoryForSecretForAuthenticatedUser401ResponseBody
-  | CodespacesAddRepositoryForSecretForAuthenticatedUser403ResponseBody
-  | CodespacesAddRepositoryForSecretForAuthenticatedUser404ResponseBody
-  | CodespacesAddRepositoryForSecretForAuthenticatedUser500ResponseBody,
-  Record<string, any>,
-  204 | 401 | 403 | 404 | 500
->;
+export type CodespacesAddRepositoryForSecretForAuthenticatedUserResponse =
+  Response<
+    | CodespacesAddRepositoryForSecretForAuthenticatedUser401ResponseBody
+    | CodespacesAddRepositoryForSecretForAuthenticatedUser403ResponseBody
+    | CodespacesAddRepositoryForSecretForAuthenticatedUser404ResponseBody
+    | CodespacesAddRepositoryForSecretForAuthenticatedUser500ResponseBody,
+    Record<string, any>,
+    204 | 401 | 403 | 404 | 500
+  >;
 
 export type CodespacesAddRepositoryForSecretForAuthenticatedUserHandler = (
   req: CodespacesAddRepositoryForSecretForAuthenticatedUserRequest,
@@ -32987,25 +33402,27 @@ export type CodespacesAddRepositoryForSecretForAuthenticatedUserHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type CodespacesRemoveRepositoryForSecretForAuthenticatedUserRequest = Request<
-  CodespacesRemoveRepositoryForSecretForAuthenticatedUserRequestPath,
-  | CodespacesRemoveRepositoryForSecretForAuthenticatedUser401ResponseBody
-  | CodespacesRemoveRepositoryForSecretForAuthenticatedUser403ResponseBody
-  | CodespacesRemoveRepositoryForSecretForAuthenticatedUser404ResponseBody
-  | CodespacesRemoveRepositoryForSecretForAuthenticatedUser500ResponseBody,
-  unknown,
-  ParsedQs,
-  Record<string, any>
->;
+export type CodespacesRemoveRepositoryForSecretForAuthenticatedUserRequest =
+  Request<
+    CodespacesRemoveRepositoryForSecretForAuthenticatedUserRequestPath,
+    | CodespacesRemoveRepositoryForSecretForAuthenticatedUser401ResponseBody
+    | CodespacesRemoveRepositoryForSecretForAuthenticatedUser403ResponseBody
+    | CodespacesRemoveRepositoryForSecretForAuthenticatedUser404ResponseBody
+    | CodespacesRemoveRepositoryForSecretForAuthenticatedUser500ResponseBody,
+    unknown,
+    ParsedQs,
+    Record<string, any>
+  >;
 
-export type CodespacesRemoveRepositoryForSecretForAuthenticatedUserResponse = Response<
-  | CodespacesRemoveRepositoryForSecretForAuthenticatedUser401ResponseBody
-  | CodespacesRemoveRepositoryForSecretForAuthenticatedUser403ResponseBody
-  | CodespacesRemoveRepositoryForSecretForAuthenticatedUser404ResponseBody
-  | CodespacesRemoveRepositoryForSecretForAuthenticatedUser500ResponseBody,
-  Record<string, any>,
-  204 | 401 | 403 | 404 | 500
->;
+export type CodespacesRemoveRepositoryForSecretForAuthenticatedUserResponse =
+  Response<
+    | CodespacesRemoveRepositoryForSecretForAuthenticatedUser401ResponseBody
+    | CodespacesRemoveRepositoryForSecretForAuthenticatedUser403ResponseBody
+    | CodespacesRemoveRepositoryForSecretForAuthenticatedUser404ResponseBody
+    | CodespacesRemoveRepositoryForSecretForAuthenticatedUser500ResponseBody,
+    Record<string, any>,
+    204 | 401 | 403 | 404 | 500
+  >;
 
 export type CodespacesRemoveRepositoryForSecretForAuthenticatedUserHandler = (
   req: CodespacesRemoveRepositoryForSecretForAuthenticatedUserRequest,
@@ -33249,15 +33666,16 @@ export type UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequest = Request<
   Record<string, any>
 >;
 
-export type UsersSetPrimaryEmailVisibilityForAuthenticatedUserResponse = Response<
-  | UsersSetPrimaryEmailVisibilityForAuthenticatedUser200ResponseBody
-  | UsersSetPrimaryEmailVisibilityForAuthenticatedUser401ResponseBody
-  | UsersSetPrimaryEmailVisibilityForAuthenticatedUser403ResponseBody
-  | UsersSetPrimaryEmailVisibilityForAuthenticatedUser404ResponseBody
-  | UsersSetPrimaryEmailVisibilityForAuthenticatedUser422ResponseBody,
-  Record<string, any>,
-  200 | 304 | 401 | 403 | 404 | 422
->;
+export type UsersSetPrimaryEmailVisibilityForAuthenticatedUserResponse =
+  Response<
+    | UsersSetPrimaryEmailVisibilityForAuthenticatedUser200ResponseBody
+    | UsersSetPrimaryEmailVisibilityForAuthenticatedUser401ResponseBody
+    | UsersSetPrimaryEmailVisibilityForAuthenticatedUser403ResponseBody
+    | UsersSetPrimaryEmailVisibilityForAuthenticatedUser404ResponseBody
+    | UsersSetPrimaryEmailVisibilityForAuthenticatedUser422ResponseBody,
+    Record<string, any>,
+    200 | 304 | 401 | 403 | 404 | 422
+  >;
 
 export type UsersSetPrimaryEmailVisibilityForAuthenticatedUserHandler = (
   req: UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequest,
@@ -33650,12 +34068,13 @@ export type AppsRemoveRepoFromInstallationForAuthenticatedUserRequest = Request<
   Record<string, any>
 >;
 
-export type AppsRemoveRepoFromInstallationForAuthenticatedUserResponse = Response<
-  | AppsRemoveRepoFromInstallationForAuthenticatedUser403ResponseBody
-  | AppsRemoveRepoFromInstallationForAuthenticatedUser404ResponseBody,
-  Record<string, any>,
-  204 | 304 | 403 | 404
->;
+export type AppsRemoveRepoFromInstallationForAuthenticatedUserResponse =
+  Response<
+    | AppsRemoveRepoFromInstallationForAuthenticatedUser403ResponseBody
+    | AppsRemoveRepoFromInstallationForAuthenticatedUser404ResponseBody,
+    Record<string, any>,
+    204 | 304 | 403 | 404
+  >;
 
 export type AppsRemoveRepoFromInstallationForAuthenticatedUserHandler = (
   req: AppsRemoveRepoFromInstallationForAuthenticatedUserRequest,
@@ -33713,11 +34132,8 @@ export type InteractionsRemoveRestrictionsForAuthenticatedUserRequest = Request<
   Record<string, any>
 >;
 
-export type InteractionsRemoveRestrictionsForAuthenticatedUserResponse = Response<
-  unknown,
-  Record<string, any>,
-  204
->;
+export type InteractionsRemoveRestrictionsForAuthenticatedUserResponse =
+  Response<unknown, Record<string, any>, 204>;
 
 export type InteractionsRemoveRestrictionsForAuthenticatedUserHandler = (
   req: InteractionsRemoveRestrictionsForAuthenticatedUserRequest,
@@ -34253,31 +34669,34 @@ export type PackagesRestorePackageForAuthenticatedUserHandler = (
   next: NextFunction
 ) => Promise<void> | void;
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest = Request<
-  PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestPath,
-  | PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser200ResponseBody
-  | PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser401ResponseBody
-  | PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser403ResponseBody
-  | PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser404ResponseBody,
-  unknown,
-  PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestQuery,
-  Record<string, any>
->;
+export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest =
+  Request<
+    PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestPath,
+    | PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser200ResponseBody
+    | PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser401ResponseBody
+    | PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser403ResponseBody
+    | PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser404ResponseBody,
+    unknown,
+    PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestQuery,
+    Record<string, any>
+  >;
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse = Response<
-  | PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser200ResponseBody
-  | PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser401ResponseBody
-  | PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser403ResponseBody
-  | PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser404ResponseBody,
-  Record<string, any>,
-  200 | 401 | 403 | 404
->;
+export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse =
+  Response<
+    | PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser200ResponseBody
+    | PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser401ResponseBody
+    | PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser403ResponseBody
+    | PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser404ResponseBody,
+    Record<string, any>,
+    200 | 401 | 403 | 404
+  >;
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserHandler = (
-  req: PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest,
-  res: PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse,
-  next: NextFunction
-) => Promise<void> | void;
+export type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserHandler =
+  (
+    req: PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest,
+    res: PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse,
+    next: NextFunction
+  ) => Promise<void> | void;
 
 export type PackagesGetPackageVersionForAuthenticatedUserRequest = Request<
   PackagesGetPackageVersionForAuthenticatedUserRequestPath,
@@ -34333,13 +34752,14 @@ export type PackagesRestorePackageVersionForAuthenticatedUserRequest = Request<
   Record<string, any>
 >;
 
-export type PackagesRestorePackageVersionForAuthenticatedUserResponse = Response<
-  | PackagesRestorePackageVersionForAuthenticatedUser401ResponseBody
-  | PackagesRestorePackageVersionForAuthenticatedUser403ResponseBody
-  | PackagesRestorePackageVersionForAuthenticatedUser404ResponseBody,
-  Record<string, any>,
-  204 | 401 | 403 | 404
->;
+export type PackagesRestorePackageVersionForAuthenticatedUserResponse =
+  Response<
+    | PackagesRestorePackageVersionForAuthenticatedUser401ResponseBody
+    | PackagesRestorePackageVersionForAuthenticatedUser403ResponseBody
+    | PackagesRestorePackageVersionForAuthenticatedUser404ResponseBody,
+    Record<string, any>,
+    204 | 401 | 403 | 404
+  >;
 
 export type PackagesRestorePackageVersionForAuthenticatedUserHandler = (
   req: PackagesRestorePackageVersionForAuthenticatedUserRequest,
@@ -35164,14 +35584,15 @@ export type PackagesGetAllPackageVersionsForPackageOwnedByUserRequest = Request<
   Record<string, any>
 >;
 
-export type PackagesGetAllPackageVersionsForPackageOwnedByUserResponse = Response<
-  | PackagesGetAllPackageVersionsForPackageOwnedByUser200ResponseBody
-  | PackagesGetAllPackageVersionsForPackageOwnedByUser401ResponseBody
-  | PackagesGetAllPackageVersionsForPackageOwnedByUser403ResponseBody
-  | PackagesGetAllPackageVersionsForPackageOwnedByUser404ResponseBody,
-  Record<string, any>,
-  200 | 401 | 403 | 404
->;
+export type PackagesGetAllPackageVersionsForPackageOwnedByUserResponse =
+  Response<
+    | PackagesGetAllPackageVersionsForPackageOwnedByUser200ResponseBody
+    | PackagesGetAllPackageVersionsForPackageOwnedByUser401ResponseBody
+    | PackagesGetAllPackageVersionsForPackageOwnedByUser403ResponseBody
+    | PackagesGetAllPackageVersionsForPackageOwnedByUser404ResponseBody,
+    Record<string, any>,
+    200 | 401 | 403 | 404
+  >;
 
 export type PackagesGetAllPackageVersionsForPackageOwnedByUserHandler = (
   req: PackagesGetAllPackageVersionsForPackageOwnedByUserRequest,
@@ -36346,7 +36767,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as MetaRootRequest,
+          req as unknown as MetaRootRequest,
           res as MetaRootResponse,
           next
         );
@@ -36368,7 +36789,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsGetAuthenticatedRequest,
+          req as unknown as AppsGetAuthenticatedRequest,
           res as AppsGetAuthenticatedResponse,
           next
         );
@@ -36398,7 +36819,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsCreateFromManifestRequest,
+          req as unknown as AppsCreateFromManifestRequest,
           res as AppsCreateFromManifestResponse,
           next
         );
@@ -36420,7 +36841,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsGetWebhookConfigForAppRequest,
+          req as unknown as AppsGetWebhookConfigForAppRequest,
           res as AppsGetWebhookConfigForAppResponse,
           next
         );
@@ -36489,7 +36910,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsUpdateWebhookConfigForAppRequest,
+          req as unknown as AppsUpdateWebhookConfigForAppRequest,
           res as AppsUpdateWebhookConfigForAppResponse,
           next
         );
@@ -36522,7 +36943,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsListWebhookDeliveriesRequest,
+          req as unknown as AppsListWebhookDeliveriesRequest,
           res as AppsListWebhookDeliveriesResponse,
           next
         );
@@ -36552,7 +36973,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsGetWebhookDeliveryRequest,
+          req as unknown as AppsGetWebhookDeliveryRequest,
           res as AppsGetWebhookDeliveryResponse,
           next
         );
@@ -36584,7 +37005,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsRedeliverWebhookDeliveryRequest,
+          req as unknown as AppsRedeliverWebhookDeliveryRequest,
           res as AppsRedeliverWebhookDeliveryResponse,
           next
         );
@@ -36619,7 +37040,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsListInstallationsRequest,
+          req as unknown as AppsListInstallationsRequest,
           res as AppsListInstallationsResponse,
           next
         );
@@ -36651,7 +37072,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsGetInstallationRequest,
+          req as unknown as AppsGetInstallationRequest,
           res as AppsGetInstallationResponse,
           next
         );
@@ -36683,7 +37104,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsDeleteInstallationRequest,
+          req as unknown as AppsDeleteInstallationRequest,
           res as AppsDeleteInstallationResponse,
           next
         );
@@ -36951,7 +37372,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsCreateInstallationAccessTokenRequest,
+          req as unknown as AppsCreateInstallationAccessTokenRequest,
           res as AppsCreateInstallationAccessTokenResponse,
           next
         );
@@ -36983,7 +37404,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsSuspendInstallationRequest,
+          req as unknown as AppsSuspendInstallationRequest,
           res as AppsSuspendInstallationResponse,
           next
         );
@@ -37015,7 +37436,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsUnsuspendInstallationRequest,
+          req as unknown as AppsUnsuspendInstallationRequest,
           res as AppsUnsuspendInstallationResponse,
           next
         );
@@ -37057,7 +37478,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsDeleteAuthorizationRequest,
+          req as unknown as AppsDeleteAuthorizationRequest,
           res as AppsDeleteAuthorizationResponse,
           next
         );
@@ -37098,7 +37519,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsCheckTokenRequest,
+          req as unknown as AppsCheckTokenRequest,
           res as AppsCheckTokenResponse,
           next
         );
@@ -37139,7 +37560,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsResetTokenRequest,
+          req as unknown as AppsResetTokenRequest,
           res as AppsResetTokenResponse,
           next
         );
@@ -37181,7 +37602,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsDeleteTokenRequest,
+          req as unknown as AppsDeleteTokenRequest,
           res as AppsDeleteTokenResponse,
           next
         );
@@ -37466,7 +37887,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsScopeTokenRequest,
+          req as unknown as AppsScopeTokenRequest,
           res as AppsScopeTokenResponse,
           next
         );
@@ -37496,7 +37917,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsGetBySlugRequest,
+          req as unknown as AppsGetBySlugRequest,
           res as AppsGetBySlugResponse,
           next
         );
@@ -37518,7 +37939,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodesOfConductGetAllCodesOfConductRequest,
+          req as unknown as CodesOfConductGetAllCodesOfConductRequest,
           res as CodesOfConductGetAllCodesOfConductResponse,
           next
         );
@@ -37548,7 +37969,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodesOfConductGetConductCodeRequest,
+          req as unknown as CodesOfConductGetConductCodeRequest,
           res as CodesOfConductGetConductCodeResponse,
           next
         );
@@ -37570,7 +37991,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EmojisGetRequest,
+          req as unknown as EmojisGetRequest,
           res as EmojisGetResponse,
           next
         );
@@ -37612,7 +38033,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminGetServerStatisticsRequest,
+          req as unknown as EnterpriseAdminGetServerStatisticsRequest,
           res as EnterpriseAdminGetServerStatisticsResponse,
           next
         );
@@ -37644,7 +38065,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetActionsCacheUsageForEnterpriseRequest,
+          req as unknown as ActionsGetActionsCacheUsageForEnterpriseRequest,
           res as ActionsGetActionsCacheUsageForEnterpriseResponse,
           next
         );
@@ -37677,7 +38098,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest,
+          req as unknown as EnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest,
           res as EnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse,
           next
         );
@@ -37737,7 +38158,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest,
+          req as unknown as EnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest,
           res as EnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse,
           next
         );
@@ -37782,7 +38203,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest,
+          req as unknown as EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest,
           res as EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse,
           next
         );
@@ -37835,7 +38256,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest,
+          req as unknown as EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest,
           res as EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse,
           next
         );
@@ -37875,7 +38296,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest,
+          req as unknown as EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest,
           res as EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse,
           next
         );
@@ -37915,7 +38336,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest,
+          req as unknown as EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest,
           res as EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse,
           next
         );
@@ -37949,7 +38370,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminGetAllowedActionsEnterpriseRequest,
+          req as unknown as EnterpriseAdminGetAllowedActionsEnterpriseRequest,
           res as EnterpriseAdminGetAllowedActionsEnterpriseResponse,
           next
         );
@@ -38011,7 +38432,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminSetAllowedActionsEnterpriseRequest,
+          req as unknown as EnterpriseAdminSetAllowedActionsEnterpriseRequest,
           res as EnterpriseAdminSetAllowedActionsEnterpriseResponse,
           next
         );
@@ -38046,7 +38467,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseRequest,
+          req as unknown as ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseRequest,
           res as ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseResponse,
           next
         );
@@ -38112,7 +38533,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequest,
+          req as unknown as ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseRequest,
           res as ActionsSetGithubActionsDefaultWorkflowPermissionsEnterpriseResponse,
           next
         );
@@ -38156,7 +38577,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest,
+          req as unknown as EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest,
           res as EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse,
           next
         );
@@ -38245,7 +38666,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest,
+          req as unknown as EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest,
           res as EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse,
           next
         );
@@ -38283,7 +38704,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest,
+          req as unknown as EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest,
           res as EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse,
           next
         );
@@ -38358,7 +38779,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest,
+          req as unknown as EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest,
           res as EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse,
           next
         );
@@ -38396,7 +38817,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest,
+          req as unknown as EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest,
           res as EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse,
           next
         );
@@ -38444,7 +38865,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest,
+          req as unknown as EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest,
           res as EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse,
           next
         );
@@ -38500,7 +38921,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest,
+          req as unknown as EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest,
           res as EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse,
           next
         );
@@ -38541,7 +38962,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest,
+          req as unknown as EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest,
           res as EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse,
           next
         );
@@ -38582,7 +39003,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest,
+          req as unknown as EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest,
           res as EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse,
           next
         );
@@ -38628,7 +39049,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest,
+          req as unknown as EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest,
           res as EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse,
           next
         );
@@ -38681,7 +39102,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest,
+          req as unknown as EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest,
           res as EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse,
           next
         );
@@ -38720,7 +39141,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest,
+          req as unknown as EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest,
           res as EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse,
           next
         );
@@ -38759,7 +39180,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest,
+          req as unknown as EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest,
           res as EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse,
           next
         );
@@ -38800,7 +39221,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminListSelfHostedRunnersForEnterpriseRequest,
+          req as unknown as EnterpriseAdminListSelfHostedRunnersForEnterpriseRequest,
           res as EnterpriseAdminListSelfHostedRunnersForEnterpriseResponse,
           next
         );
@@ -38835,7 +39256,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminListRunnerApplicationsForEnterpriseRequest,
+          req as unknown as EnterpriseAdminListRunnerApplicationsForEnterpriseRequest,
           res as EnterpriseAdminListRunnerApplicationsForEnterpriseResponse,
           next
         );
@@ -38870,7 +39291,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminCreateRegistrationTokenForEnterpriseRequest,
+          req as unknown as EnterpriseAdminCreateRegistrationTokenForEnterpriseRequest,
           res as EnterpriseAdminCreateRegistrationTokenForEnterpriseResponse,
           next
         );
@@ -38904,7 +39325,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminCreateRemoveTokenForEnterpriseRequest,
+          req as unknown as EnterpriseAdminCreateRemoveTokenForEnterpriseRequest,
           res as EnterpriseAdminCreateRemoveTokenForEnterpriseResponse,
           next
         );
@@ -38942,7 +39363,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest,
+          req as unknown as EnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest,
           res as EnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse,
           next
         );
@@ -38980,7 +39401,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest,
+          req as unknown as EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest,
           res as EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse,
           next
         );
@@ -39018,7 +39439,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseRequest,
+          req as unknown as EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseRequest,
           res as EnterpriseAdminListLabelsForSelfHostedRunnerForEnterpriseResponse,
           next
         );
@@ -39072,7 +39493,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequest,
+          req as unknown as EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseRequest,
           res as EnterpriseAdminAddCustomLabelsToSelfHostedRunnerForEnterpriseResponse,
           next
         );
@@ -39127,7 +39548,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequest,
+          req as unknown as EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseRequest,
           res as EnterpriseAdminSetCustomLabelsForSelfHostedRunnerForEnterpriseResponse,
           next
         );
@@ -39167,7 +39588,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseRequest,
+          req as unknown as EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseRequest,
           res as EnterpriseAdminRemoveAllCustomLabelsFromSelfHostedRunnerForEnterpriseResponse,
           next
         );
@@ -39208,7 +39629,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseRequest,
+          req as unknown as EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseRequest,
           res as EnterpriseAdminRemoveCustomLabelFromSelfHostedRunnerForEnterpriseResponse,
           next
         );
@@ -39280,7 +39701,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodeScanningListAlertsForEnterpriseRequest,
+          req as unknown as CodeScanningListAlertsForEnterpriseRequest,
           res as CodeScanningListAlertsForEnterpriseResponse,
           next
         );
@@ -39332,7 +39753,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as SecretScanningListAlertsForEnterpriseRequest,
+          req as unknown as SecretScanningListAlertsForEnterpriseRequest,
           res as SecretScanningListAlertsForEnterpriseResponse,
           next
         );
@@ -39374,7 +39795,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as BillingGetGithubAdvancedSecurityBillingGheRequest,
+          req as unknown as BillingGetGithubAdvancedSecurityBillingGheRequest,
           res as BillingGetGithubAdvancedSecurityBillingGheResponse,
           next
         );
@@ -39407,7 +39828,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityListPublicEventsRequest,
+          req as unknown as ActivityListPublicEventsRequest,
           res as ActivityListPublicEventsResponse,
           next
         );
@@ -39429,7 +39850,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityGetFeedsRequest,
+          req as unknown as ActivityGetFeedsRequest,
           res as ActivityGetFeedsResponse,
           next
         );
@@ -39463,7 +39884,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GistsListRequest,
+          req as unknown as GistsListRequest,
           res as GistsListResponse,
           next
         );
@@ -39532,7 +39953,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GistsCreateRequest,
+          req as unknown as GistsCreateRequest,
           res as GistsCreateResponse,
           next
         );
@@ -39566,7 +39987,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GistsListPublicRequest,
+          req as unknown as GistsListPublicRequest,
           res as GistsListPublicResponse,
           next
         );
@@ -39600,7 +40021,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GistsListStarredRequest,
+          req as unknown as GistsListStarredRequest,
           res as GistsListStarredResponse,
           next
         );
@@ -39630,7 +40051,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GistsGetRequest,
+          req as unknown as GistsGetRequest,
           res as GistsGetResponse,
           next
         );
@@ -39701,7 +40122,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GistsUpdateRequest,
+          req as unknown as GistsUpdateRequest,
           res as GistsUpdateResponse,
           next
         );
@@ -39731,7 +40152,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GistsDeleteRequest,
+          req as unknown as GistsDeleteRequest,
           res as GistsDeleteResponse,
           next
         );
@@ -39769,7 +40190,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GistsListCommentsRequest,
+          req as unknown as GistsListCommentsRequest,
           res as GistsListCommentsResponse,
           next
         );
@@ -39812,7 +40233,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GistsCreateCommentRequest,
+          req as unknown as GistsCreateCommentRequest,
           res as GistsCreateCommentResponse,
           next
         );
@@ -39847,7 +40268,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GistsGetCommentRequest,
+          req as unknown as GistsGetCommentRequest,
           res as GistsGetCommentResponse,
           next
         );
@@ -39895,7 +40316,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GistsUpdateCommentRequest,
+          req as unknown as GistsUpdateCommentRequest,
           res as GistsUpdateCommentResponse,
           next
         );
@@ -39930,7 +40351,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GistsDeleteCommentRequest,
+          req as unknown as GistsDeleteCommentRequest,
           res as GistsDeleteCommentResponse,
           next
         );
@@ -39968,7 +40389,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GistsListCommitsRequest,
+          req as unknown as GistsListCommitsRequest,
           res as GistsListCommitsResponse,
           next
         );
@@ -40006,7 +40427,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GistsListForksRequest,
+          req as unknown as GistsListForksRequest,
           res as GistsListForksResponse,
           next
         );
@@ -40036,7 +40457,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GistsForkRequest,
+          req as unknown as GistsForkRequest,
           res as GistsForkResponse,
           next
         );
@@ -40066,7 +40487,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GistsCheckIsStarredRequest,
+          req as unknown as GistsCheckIsStarredRequest,
           res as GistsCheckIsStarredResponse,
           next
         );
@@ -40096,7 +40517,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GistsStarRequest,
+          req as unknown as GistsStarRequest,
           res as GistsStarResponse,
           next
         );
@@ -40126,7 +40547,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GistsUnstarRequest,
+          req as unknown as GistsUnstarRequest,
           res as GistsUnstarResponse,
           next
         );
@@ -40156,7 +40577,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GistsGetRevisionRequest,
+          req as unknown as GistsGetRevisionRequest,
           res as GistsGetRevisionResponse,
           next
         );
@@ -40178,7 +40599,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GitignoreGetAllTemplatesRequest,
+          req as unknown as GitignoreGetAllTemplatesRequest,
           res as GitignoreGetAllTemplatesResponse,
           next
         );
@@ -40208,7 +40629,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GitignoreGetTemplateRequest,
+          req as unknown as GitignoreGetTemplateRequest,
           res as GitignoreGetTemplateResponse,
           next
         );
@@ -40241,7 +40662,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsListReposAccessibleToInstallationRequest,
+          req as unknown as AppsListReposAccessibleToInstallationRequest,
           res as AppsListReposAccessibleToInstallationResponse,
           next
         );
@@ -40263,7 +40684,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsRevokeInstallationAccessTokenRequest,
+          req as unknown as AppsRevokeInstallationAccessTokenRequest,
           res as AppsRevokeInstallationAccessTokenResponse,
           next
         );
@@ -40325,7 +40746,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesListRequest,
+          req as unknown as IssuesListRequest,
           res as IssuesListResponse,
           next
         );
@@ -40359,7 +40780,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as LicensesGetAllCommonlyUsedRequest,
+          req as unknown as LicensesGetAllCommonlyUsedRequest,
           res as LicensesGetAllCommonlyUsedResponse,
           next
         );
@@ -40389,7 +40810,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as LicensesGetRequest,
+          req as unknown as LicensesGetRequest,
           res as LicensesGetResponse,
           next
         );
@@ -40436,7 +40857,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as MarkdownRenderRequest,
+          req as unknown as MarkdownRenderRequest,
           res as MarkdownRenderResponse,
           next
         );
@@ -40458,7 +40879,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as MarkdownRenderRawRequest,
+          req as unknown as MarkdownRenderRawRequest,
           res as MarkdownRenderRawResponse,
           next
         );
@@ -40490,7 +40911,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsGetSubscriptionPlanForAccountRequest,
+          req as unknown as AppsGetSubscriptionPlanForAccountRequest,
           res as AppsGetSubscriptionPlanForAccountResponse,
           next
         );
@@ -40523,7 +40944,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsListPlansRequest,
+          req as unknown as AppsListPlansRequest,
           res as AppsListPlansResponse,
           next
         );
@@ -40569,7 +40990,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsListAccountsForPlanRequest,
+          req as unknown as AppsListAccountsForPlanRequest,
           res as AppsListAccountsForPlanResponse,
           next
         );
@@ -40603,7 +41024,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsGetSubscriptionPlanForAccountStubbedRequest,
+          req as unknown as AppsGetSubscriptionPlanForAccountStubbedRequest,
           res as AppsGetSubscriptionPlanForAccountStubbedResponse,
           next
         );
@@ -40638,7 +41059,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsListPlansStubbedRequest,
+          req as unknown as AppsListPlansStubbedRequest,
           res as AppsListPlansStubbedResponse,
           next
         );
@@ -40686,7 +41107,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsListAccountsForPlanStubbedRequest,
+          req as unknown as AppsListAccountsForPlanStubbedRequest,
           res as AppsListAccountsForPlanStubbedResponse,
           next
         );
@@ -40708,7 +41129,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as MetaGetRequest,
+          req as unknown as MetaGetRequest,
           res as MetaGetResponse,
           next
         );
@@ -40746,7 +41167,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityListPublicEventsForRepoNetworkRequest,
+          req as unknown as ActivityListPublicEventsForRepoNetworkRequest,
           res as ActivityListPublicEventsForRepoNetworkResponse,
           next
         );
@@ -40783,7 +41204,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityListNotificationsForAuthenticatedUserRequest,
+          req as unknown as ActivityListNotificationsForAuthenticatedUserRequest,
           res as ActivityListNotificationsForAuthenticatedUserResponse,
           next
         );
@@ -40823,7 +41244,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityMarkNotificationsAsReadRequest,
+          req as unknown as ActivityMarkNotificationsAsReadRequest,
           res as ActivityMarkNotificationsAsReadResponse,
           next
         );
@@ -40853,7 +41274,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityGetThreadRequest,
+          req as unknown as ActivityGetThreadRequest,
           res as ActivityGetThreadResponse,
           next
         );
@@ -40883,7 +41304,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityMarkThreadAsReadRequest,
+          req as unknown as ActivityMarkThreadAsReadRequest,
           res as ActivityMarkThreadAsReadResponse,
           next
         );
@@ -40918,7 +41339,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityGetThreadSubscriptionForAuthenticatedUserRequest,
+          req as unknown as ActivityGetThreadSubscriptionForAuthenticatedUserRequest,
           res as ActivityGetThreadSubscriptionForAuthenticatedUserResponse,
           next
         );
@@ -40963,7 +41384,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivitySetThreadSubscriptionRequest,
+          req as unknown as ActivitySetThreadSubscriptionRequest,
           res as ActivitySetThreadSubscriptionResponse,
           next
         );
@@ -40997,7 +41418,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityDeleteThreadSubscriptionRequest,
+          req as unknown as ActivityDeleteThreadSubscriptionRequest,
           res as ActivityDeleteThreadSubscriptionResponse,
           next
         );
@@ -41027,7 +41448,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as MetaGetOctocatRequest,
+          req as unknown as MetaGetOctocatRequest,
           res as MetaGetOctocatResponse,
           next
         );
@@ -41060,7 +41481,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsListRequest,
+          req as unknown as OrgsListRequest,
           res as OrgsListResponse,
           next
         );
@@ -41092,7 +41513,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsListCustomRolesRequest,
+          req as unknown as OrgsListCustomRolesRequest,
           res as OrgsListCustomRolesResponse,
           next
         );
@@ -41122,7 +41543,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsGetRequest,
+          req as unknown as OrgsGetRequest,
           res as OrgsGetResponse,
           next
         );
@@ -41286,7 +41707,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsUpdateRequest,
+          req as unknown as OrgsUpdateRequest,
           res as OrgsUpdateResponse,
           next
         );
@@ -41316,7 +41737,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetActionsCacheUsageForOrgRequest,
+          req as unknown as ActionsGetActionsCacheUsageForOrgRequest,
           res as ActionsGetActionsCacheUsageForOrgResponse,
           next
         );
@@ -41356,7 +41777,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetActionsCacheUsageByRepoForOrgRequest,
+          req as unknown as ActionsGetActionsCacheUsageByRepoForOrgRequest,
           res as ActionsGetActionsCacheUsageByRepoForOrgResponse,
           next
         );
@@ -41387,7 +41808,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetGithubActionsPermissionsOrganizationRequest,
+          req as unknown as ActionsGetGithubActionsPermissionsOrganizationRequest,
           res as ActionsGetGithubActionsPermissionsOrganizationResponse,
           next
         );
@@ -41443,7 +41864,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsSetGithubActionsPermissionsOrganizationRequest,
+          req as unknown as ActionsSetGithubActionsPermissionsOrganizationRequest,
           res as ActionsSetGithubActionsPermissionsOrganizationResponse,
           next
         );
@@ -41486,7 +41907,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest,
+          req as unknown as ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest,
           res as ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse,
           next
         );
@@ -41536,7 +41957,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest,
+          req as unknown as ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest,
           res as ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse,
           next
         );
@@ -41574,7 +41995,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsEnableSelectedRepositoryGithubActionsOrganizationRequest,
+          req as unknown as ActionsEnableSelectedRepositoryGithubActionsOrganizationRequest,
           res as ActionsEnableSelectedRepositoryGithubActionsOrganizationResponse,
           next
         );
@@ -41612,7 +42033,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsDisableSelectedRepositoryGithubActionsOrganizationRequest,
+          req as unknown as ActionsDisableSelectedRepositoryGithubActionsOrganizationRequest,
           res as ActionsDisableSelectedRepositoryGithubActionsOrganizationResponse,
           next
         );
@@ -41646,7 +42067,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetAllowedActionsOrganizationRequest,
+          req as unknown as ActionsGetAllowedActionsOrganizationRequest,
           res as ActionsGetAllowedActionsOrganizationResponse,
           next
         );
@@ -41708,7 +42129,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsSetAllowedActionsOrganizationRequest,
+          req as unknown as ActionsSetAllowedActionsOrganizationRequest,
           res as ActionsSetAllowedActionsOrganizationResponse,
           next
         );
@@ -41743,7 +42164,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationRequest,
+          req as unknown as ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationRequest,
           res as ActionsGetGithubActionsDefaultWorkflowPermissionsOrganizationResponse,
           next
         );
@@ -41809,7 +42230,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequest,
+          req as unknown as ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationRequest,
           res as ActionsSetGithubActionsDefaultWorkflowPermissionsOrganizationResponse,
           next
         );
@@ -41848,7 +42269,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsListSelfHostedRunnerGroupsForOrgRequest,
+          req as unknown as ActionsListSelfHostedRunnerGroupsForOrgRequest,
           res as ActionsListSelfHostedRunnerGroupsForOrgResponse,
           next
         );
@@ -41933,7 +42354,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsCreateSelfHostedRunnerGroupForOrgRequest,
+          req as unknown as ActionsCreateSelfHostedRunnerGroupForOrgRequest,
           res as ActionsCreateSelfHostedRunnerGroupForOrgResponse,
           next
         );
@@ -41970,7 +42391,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetSelfHostedRunnerGroupForOrgRequest,
+          req as unknown as ActionsGetSelfHostedRunnerGroupForOrgRequest,
           res as ActionsGetSelfHostedRunnerGroupForOrgResponse,
           next
         );
@@ -42044,7 +42465,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsUpdateSelfHostedRunnerGroupForOrgRequest,
+          req as unknown as ActionsUpdateSelfHostedRunnerGroupForOrgRequest,
           res as ActionsUpdateSelfHostedRunnerGroupForOrgResponse,
           next
         );
@@ -42081,7 +42502,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsDeleteSelfHostedRunnerGroupFromOrgRequest,
+          req as unknown as ActionsDeleteSelfHostedRunnerGroupFromOrgRequest,
           res as ActionsDeleteSelfHostedRunnerGroupFromOrgResponse,
           next
         );
@@ -42127,7 +42548,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest,
+          req as unknown as ActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest,
           res as ActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse,
           next
         );
@@ -42181,7 +42602,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest,
+          req as unknown as ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest,
           res as ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse,
           next
         );
@@ -42220,7 +42641,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest,
+          req as unknown as ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest,
           res as ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse,
           next
         );
@@ -42265,7 +42686,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsListSelfHostedRunnersInGroupForOrgRequest,
+          req as unknown as ActionsListSelfHostedRunnersInGroupForOrgRequest,
           res as ActionsListSelfHostedRunnersInGroupForOrgResponse,
           next
         );
@@ -42317,7 +42738,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsSetSelfHostedRunnersInGroupForOrgRequest,
+          req as unknown as ActionsSetSelfHostedRunnersInGroupForOrgRequest,
           res as ActionsSetSelfHostedRunnersInGroupForOrgResponse,
           next
         );
@@ -42355,7 +42776,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsAddSelfHostedRunnerToGroupForOrgRequest,
+          req as unknown as ActionsAddSelfHostedRunnerToGroupForOrgRequest,
           res as ActionsAddSelfHostedRunnerToGroupForOrgResponse,
           next
         );
@@ -42393,7 +42814,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsRemoveSelfHostedRunnerFromGroupForOrgRequest,
+          req as unknown as ActionsRemoveSelfHostedRunnerFromGroupForOrgRequest,
           res as ActionsRemoveSelfHostedRunnerFromGroupForOrgResponse,
           next
         );
@@ -42431,7 +42852,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsListSelfHostedRunnersForOrgRequest,
+          req as unknown as ActionsListSelfHostedRunnersForOrgRequest,
           res as ActionsListSelfHostedRunnersForOrgResponse,
           next
         );
@@ -42463,7 +42884,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsListRunnerApplicationsForOrgRequest,
+          req as unknown as ActionsListRunnerApplicationsForOrgRequest,
           res as ActionsListRunnerApplicationsForOrgResponse,
           next
         );
@@ -42495,7 +42916,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsCreateRegistrationTokenForOrgRequest,
+          req as unknown as ActionsCreateRegistrationTokenForOrgRequest,
           res as ActionsCreateRegistrationTokenForOrgResponse,
           next
         );
@@ -42527,7 +42948,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsCreateRemoveTokenForOrgRequest,
+          req as unknown as ActionsCreateRemoveTokenForOrgRequest,
           res as ActionsCreateRemoveTokenForOrgResponse,
           next
         );
@@ -42559,7 +42980,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetSelfHostedRunnerForOrgRequest,
+          req as unknown as ActionsGetSelfHostedRunnerForOrgRequest,
           res as ActionsGetSelfHostedRunnerForOrgResponse,
           next
         );
@@ -42591,7 +43012,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsDeleteSelfHostedRunnerFromOrgRequest,
+          req as unknown as ActionsDeleteSelfHostedRunnerFromOrgRequest,
           res as ActionsDeleteSelfHostedRunnerFromOrgResponse,
           next
         );
@@ -42623,7 +43044,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsListLabelsForSelfHostedRunnerForOrgRequest,
+          req as unknown as ActionsListLabelsForSelfHostedRunnerForOrgRequest,
           res as ActionsListLabelsForSelfHostedRunnerForOrgResponse,
           next
         );
@@ -42670,7 +43091,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsAddCustomLabelsToSelfHostedRunnerForOrgRequest,
+          req as unknown as ActionsAddCustomLabelsToSelfHostedRunnerForOrgRequest,
           res as ActionsAddCustomLabelsToSelfHostedRunnerForOrgResponse,
           next
         );
@@ -42718,7 +43139,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsSetCustomLabelsForSelfHostedRunnerForOrgRequest,
+          req as unknown as ActionsSetCustomLabelsForSelfHostedRunnerForOrgRequest,
           res as ActionsSetCustomLabelsForSelfHostedRunnerForOrgResponse,
           next
         );
@@ -42751,7 +43172,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequest,
+          req as unknown as ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequest,
           res as ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForOrgResponse,
           next
         );
@@ -42790,7 +43211,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgRequest,
+          req as unknown as ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgRequest,
           res as ActionsRemoveCustomLabelFromSelfHostedRunnerForOrgResponse,
           next
         );
@@ -42828,7 +43249,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsListOrgSecretsRequest,
+          req as unknown as ActionsListOrgSecretsRequest,
           res as ActionsListOrgSecretsResponse,
           next
         );
@@ -42860,7 +43281,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetOrgPublicKeyRequest,
+          req as unknown as ActionsGetOrgPublicKeyRequest,
           res as ActionsGetOrgPublicKeyResponse,
           next
         );
@@ -42895,7 +43316,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetOrgSecretRequest,
+          req as unknown as ActionsGetOrgSecretRequest,
           res as ActionsGetOrgSecretResponse,
           next
         );
@@ -42960,7 +43381,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsCreateOrUpdateOrgSecretRequest,
+          req as unknown as ActionsCreateOrUpdateOrgSecretRequest,
           res as ActionsCreateOrUpdateOrgSecretResponse,
           next
         );
@@ -42995,7 +43416,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsDeleteOrgSecretRequest,
+          req as unknown as ActionsDeleteOrgSecretRequest,
           res as ActionsDeleteOrgSecretResponse,
           next
         );
@@ -43040,7 +43461,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsListSelectedReposForOrgSecretRequest,
+          req as unknown as ActionsListSelectedReposForOrgSecretRequest,
           res as ActionsListSelectedReposForOrgSecretResponse,
           next
         );
@@ -43090,7 +43511,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsSetSelectedReposForOrgSecretRequest,
+          req as unknown as ActionsSetSelectedReposForOrgSecretRequest,
           res as ActionsSetSelectedReposForOrgSecretResponse,
           next
         );
@@ -43128,7 +43549,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsAddSelectedRepoToOrgSecretRequest,
+          req as unknown as ActionsAddSelectedRepoToOrgSecretRequest,
           res as ActionsAddSelectedRepoToOrgSecretResponse,
           next
         );
@@ -43166,7 +43587,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsRemoveSelectedRepoFromOrgSecretRequest,
+          req as unknown as ActionsRemoveSelectedRepoFromOrgSecretRequest,
           res as ActionsRemoveSelectedRepoFromOrgSecretResponse,
           next
         );
@@ -43204,7 +43625,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsListBlockedUsersRequest,
+          req as unknown as OrgsListBlockedUsersRequest,
           res as OrgsListBlockedUsersResponse,
           next
         );
@@ -43234,7 +43655,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsCheckBlockedUserRequest,
+          req as unknown as OrgsCheckBlockedUserRequest,
           res as OrgsCheckBlockedUserResponse,
           next
         );
@@ -43264,7 +43685,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsBlockUserRequest,
+          req as unknown as OrgsBlockUserRequest,
           res as OrgsBlockUserResponse,
           next
         );
@@ -43294,7 +43715,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsUnblockUserRequest,
+          req as unknown as OrgsUnblockUserRequest,
           res as OrgsUnblockUserResponse,
           next
         );
@@ -43364,7 +43785,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodeScanningListAlertsForOrgRequest,
+          req as unknown as CodeScanningListAlertsForOrgRequest,
           res as CodeScanningListAlertsForOrgResponse,
           next
         );
@@ -43402,7 +43823,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesListInOrganizationRequest,
+          req as unknown as CodespacesListInOrganizationRequest,
           res as CodespacesListInOrganizationResponse,
           next
         );
@@ -43456,7 +43877,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesSetCodespacesBillingRequest,
+          req as unknown as CodespacesSetCodespacesBillingRequest,
           res as CodespacesSetCodespacesBillingResponse,
           next
         );
@@ -43494,7 +43915,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesListOrgSecretsRequest,
+          req as unknown as CodespacesListOrgSecretsRequest,
           res as CodespacesListOrgSecretsResponse,
           next
         );
@@ -43526,7 +43947,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesGetOrgPublicKeyRequest,
+          req as unknown as CodespacesGetOrgPublicKeyRequest,
           res as CodespacesGetOrgPublicKeyResponse,
           next
         );
@@ -43561,7 +43982,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesGetOrgSecretRequest,
+          req as unknown as CodespacesGetOrgSecretRequest,
           res as CodespacesGetOrgSecretResponse,
           next
         );
@@ -43626,7 +44047,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesCreateOrUpdateOrgSecretRequest,
+          req as unknown as CodespacesCreateOrUpdateOrgSecretRequest,
           res as CodespacesCreateOrUpdateOrgSecretResponse,
           next
         );
@@ -43661,7 +44082,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesDeleteOrgSecretRequest,
+          req as unknown as CodespacesDeleteOrgSecretRequest,
           res as CodespacesDeleteOrgSecretResponse,
           next
         );
@@ -43706,7 +44127,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesListSelectedReposForOrgSecretRequest,
+          req as unknown as CodespacesListSelectedReposForOrgSecretRequest,
           res as CodespacesListSelectedReposForOrgSecretResponse,
           next
         );
@@ -43756,7 +44177,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesSetSelectedReposForOrgSecretRequest,
+          req as unknown as CodespacesSetSelectedReposForOrgSecretRequest,
           res as CodespacesSetSelectedReposForOrgSecretResponse,
           next
         );
@@ -43794,7 +44215,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesAddSelectedRepoToOrgSecretRequest,
+          req as unknown as CodespacesAddSelectedRepoToOrgSecretRequest,
           res as CodespacesAddSelectedRepoToOrgSecretResponse,
           next
         );
@@ -43832,7 +44253,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesRemoveSelectedRepoFromOrgSecretRequest,
+          req as unknown as CodespacesRemoveSelectedRepoFromOrgSecretRequest,
           res as CodespacesRemoveSelectedRepoFromOrgSecretResponse,
           next
         );
@@ -43887,7 +44308,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsCreateCustomRoleRequest,
+          req as unknown as OrgsCreateCustomRoleRequest,
           res as OrgsCreateCustomRoleResponse,
           next
         );
@@ -43917,7 +44338,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsGetCustomRoleRequest,
+          req as unknown as OrgsGetCustomRoleRequest,
           res as OrgsGetCustomRoleResponse,
           next
         );
@@ -43971,7 +44392,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsUpdateCustomRoleRequest,
+          req as unknown as OrgsUpdateCustomRoleRequest,
           res as OrgsUpdateCustomRoleResponse,
           next
         );
@@ -44001,7 +44422,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsDeleteCustomRoleRequest,
+          req as unknown as OrgsDeleteCustomRoleRequest,
           res as OrgsDeleteCustomRoleResponse,
           next
         );
@@ -44052,7 +44473,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as DependabotListAlertsForOrgRequest,
+          req as unknown as DependabotListAlertsForOrgRequest,
           res as DependabotListAlertsForOrgResponse,
           next
         );
@@ -44090,7 +44511,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as DependabotListOrgSecretsRequest,
+          req as unknown as DependabotListOrgSecretsRequest,
           res as DependabotListOrgSecretsResponse,
           next
         );
@@ -44122,7 +44543,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as DependabotGetOrgPublicKeyRequest,
+          req as unknown as DependabotGetOrgPublicKeyRequest,
           res as DependabotGetOrgPublicKeyResponse,
           next
         );
@@ -44157,7 +44578,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as DependabotGetOrgSecretRequest,
+          req as unknown as DependabotGetOrgSecretRequest,
           res as DependabotGetOrgSecretResponse,
           next
         );
@@ -44222,7 +44643,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as DependabotCreateOrUpdateOrgSecretRequest,
+          req as unknown as DependabotCreateOrUpdateOrgSecretRequest,
           res as DependabotCreateOrUpdateOrgSecretResponse,
           next
         );
@@ -44257,7 +44678,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as DependabotDeleteOrgSecretRequest,
+          req as unknown as DependabotDeleteOrgSecretRequest,
           res as DependabotDeleteOrgSecretResponse,
           next
         );
@@ -44302,7 +44723,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as DependabotListSelectedReposForOrgSecretRequest,
+          req as unknown as DependabotListSelectedReposForOrgSecretRequest,
           res as DependabotListSelectedReposForOrgSecretResponse,
           next
         );
@@ -44352,7 +44773,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as DependabotSetSelectedReposForOrgSecretRequest,
+          req as unknown as DependabotSetSelectedReposForOrgSecretRequest,
           res as DependabotSetSelectedReposForOrgSecretResponse,
           next
         );
@@ -44390,7 +44811,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as DependabotAddSelectedRepoToOrgSecretRequest,
+          req as unknown as DependabotAddSelectedRepoToOrgSecretRequest,
           res as DependabotAddSelectedRepoToOrgSecretResponse,
           next
         );
@@ -44428,7 +44849,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as DependabotRemoveSelectedRepoFromOrgSecretRequest,
+          req as unknown as DependabotRemoveSelectedRepoFromOrgSecretRequest,
           res as DependabotRemoveSelectedRepoFromOrgSecretResponse,
           next
         );
@@ -44466,7 +44887,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityListPublicOrgEventsRequest,
+          req as unknown as ActivityListPublicOrgEventsRequest,
           res as ActivityListPublicOrgEventsResponse,
           next
         );
@@ -44504,7 +44925,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsListFailedInvitationsRequest,
+          req as unknown as OrgsListFailedInvitationsRequest,
           res as OrgsListFailedInvitationsResponse,
           next
         );
@@ -44536,7 +44957,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsListFineGrainedPermissionsRequest,
+          req as unknown as OrgsListFineGrainedPermissionsRequest,
           res as OrgsListFineGrainedPermissionsResponse,
           next
         );
@@ -44574,7 +44995,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsListWebhooksRequest,
+          req as unknown as OrgsListWebhooksRequest,
           res as OrgsListWebhooksResponse,
           next
         );
@@ -44678,7 +45099,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsCreateWebhookRequest,
+          req as unknown as OrgsCreateWebhookRequest,
           res as OrgsCreateWebhookResponse,
           next
         );
@@ -44708,7 +45129,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsGetWebhookRequest,
+          req as unknown as OrgsGetWebhookRequest,
           res as OrgsGetWebhookResponse,
           next
         );
@@ -44809,7 +45230,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsUpdateWebhookRequest,
+          req as unknown as OrgsUpdateWebhookRequest,
           res as OrgsUpdateWebhookResponse,
           next
         );
@@ -44839,7 +45260,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsDeleteWebhookRequest,
+          req as unknown as OrgsDeleteWebhookRequest,
           res as OrgsDeleteWebhookResponse,
           next
         );
@@ -44869,7 +45290,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsGetWebhookConfigForOrgRequest,
+          req as unknown as OrgsGetWebhookConfigForOrgRequest,
           res as OrgsGetWebhookConfigForOrgResponse,
           next
         );
@@ -44944,7 +45365,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsUpdateWebhookConfigForOrgRequest,
+          req as unknown as OrgsUpdateWebhookConfigForOrgRequest,
           res as OrgsUpdateWebhookConfigForOrgResponse,
           next
         );
@@ -44984,7 +45405,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsListWebhookDeliveriesRequest,
+          req as unknown as OrgsListWebhookDeliveriesRequest,
           res as OrgsListWebhookDeliveriesResponse,
           next
         );
@@ -45022,7 +45443,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsGetWebhookDeliveryRequest,
+          req as unknown as OrgsGetWebhookDeliveryRequest,
           res as OrgsGetWebhookDeliveryResponse,
           next
         );
@@ -45060,7 +45481,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsRedeliverWebhookDeliveryRequest,
+          req as unknown as OrgsRedeliverWebhookDeliveryRequest,
           res as OrgsRedeliverWebhookDeliveryResponse,
           next
         );
@@ -45090,7 +45511,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsPingWebhookRequest,
+          req as unknown as OrgsPingWebhookRequest,
           res as OrgsPingWebhookResponse,
           next
         );
@@ -45120,7 +45541,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsGetOrgInstallationRequest,
+          req as unknown as AppsGetOrgInstallationRequest,
           res as AppsGetOrgInstallationResponse,
           next
         );
@@ -45158,7 +45579,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsListAppInstallationsRequest,
+          req as unknown as OrgsListAppInstallationsRequest,
           res as OrgsListAppInstallationsResponse,
           next
         );
@@ -45188,7 +45609,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as InteractionsGetRestrictionsForOrgRequest,
+          req as unknown as InteractionsGetRestrictionsForOrgRequest,
           res as InteractionsGetRestrictionsForOrgResponse,
           next
         );
@@ -45257,7 +45678,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as InteractionsSetRestrictionsForOrgRequest,
+          req as unknown as InteractionsSetRestrictionsForOrgRequest,
           res as InteractionsSetRestrictionsForOrgResponse,
           next
         );
@@ -45287,7 +45708,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as InteractionsRemoveRestrictionsForOrgRequest,
+          req as unknown as InteractionsRemoveRestrictionsForOrgRequest,
           res as InteractionsRemoveRestrictionsForOrgResponse,
           next
         );
@@ -45325,7 +45746,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsListPendingInvitationsRequest,
+          req as unknown as OrgsListPendingInvitationsRequest,
           res as OrgsListPendingInvitationsResponse,
           next
         );
@@ -45384,7 +45805,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsCreateInvitationRequest,
+          req as unknown as OrgsCreateInvitationRequest,
           res as OrgsCreateInvitationResponse,
           next
         );
@@ -45419,7 +45840,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsCancelInvitationRequest,
+          req as unknown as OrgsCancelInvitationRequest,
           res as OrgsCancelInvitationResponse,
           next
         );
@@ -45462,7 +45883,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsListInvitationTeamsRequest,
+          req as unknown as OrgsListInvitationTeamsRequest,
           res as OrgsListInvitationTeamsResponse,
           next
         );
@@ -45525,7 +45946,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesListForOrgRequest,
+          req as unknown as IssuesListForOrgRequest,
           res as IssuesListForOrgResponse,
           next
         );
@@ -45573,7 +45994,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsListMembersRequest,
+          req as unknown as OrgsListMembersRequest,
           res as OrgsListMembersResponse,
           next
         );
@@ -45603,7 +46024,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsCheckMembershipForUserRequest,
+          req as unknown as OrgsCheckMembershipForUserRequest,
           res as OrgsCheckMembershipForUserResponse,
           next
         );
@@ -45633,7 +46054,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsRemoveMemberRequest,
+          req as unknown as OrgsRemoveMemberRequest,
           res as OrgsRemoveMemberResponse,
           next
         );
@@ -45673,7 +46094,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesGetCodespacesForUserInOrgRequest,
+          req as unknown as CodespacesGetCodespacesForUserInOrgRequest,
           res as CodespacesGetCodespacesForUserInOrgResponse,
           next
         );
@@ -45711,7 +46132,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesDeleteFromOrganizationRequest,
+          req as unknown as CodespacesDeleteFromOrganizationRequest,
           res as CodespacesDeleteFromOrganizationResponse,
           next
         );
@@ -45749,7 +46170,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesStopInOrganizationRequest,
+          req as unknown as CodespacesStopInOrganizationRequest,
           res as CodespacesStopInOrganizationResponse,
           next
         );
@@ -45779,7 +46200,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsGetMembershipForUserRequest,
+          req as unknown as OrgsGetMembershipForUserRequest,
           res as OrgsGetMembershipForUserResponse,
           next
         );
@@ -45822,7 +46243,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsSetMembershipForUserRequest,
+          req as unknown as OrgsSetMembershipForUserRequest,
           res as OrgsSetMembershipForUserResponse,
           next
         );
@@ -45852,7 +46273,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsRemoveMembershipForUserRequest,
+          req as unknown as OrgsRemoveMembershipForUserRequest,
           res as OrgsRemoveMembershipForUserResponse,
           next
         );
@@ -45911,7 +46332,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as MigrationsListForOrgRequest,
+          req as unknown as MigrationsListForOrgRequest,
           res as MigrationsListForOrgResponse,
           next
         );
@@ -46007,7 +46428,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as MigrationsStartForOrgRequest,
+          req as unknown as MigrationsStartForOrgRequest,
           res as MigrationsStartForOrgResponse,
           next
         );
@@ -46069,7 +46490,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as MigrationsGetStatusForOrgRequest,
+          req as unknown as MigrationsGetStatusForOrgRequest,
           res as MigrationsGetStatusForOrgResponse,
           next
         );
@@ -46104,7 +46525,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as MigrationsDownloadArchiveForOrgRequest,
+          req as unknown as MigrationsDownloadArchiveForOrgRequest,
           res as MigrationsDownloadArchiveForOrgResponse,
           next
         );
@@ -46139,7 +46560,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as MigrationsDeleteArchiveForOrgRequest,
+          req as unknown as MigrationsDeleteArchiveForOrgRequest,
           res as MigrationsDeleteArchiveForOrgResponse,
           next
         );
@@ -46177,7 +46598,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as MigrationsUnlockRepoForOrgRequest,
+          req as unknown as MigrationsUnlockRepoForOrgRequest,
           res as MigrationsUnlockRepoForOrgResponse,
           next
         );
@@ -46222,7 +46643,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as MigrationsListReposForOrgRequest,
+          req as unknown as MigrationsListReposForOrgRequest,
           res as MigrationsListReposForOrgResponse,
           next
         );
@@ -46265,7 +46686,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsListOutsideCollaboratorsRequest,
+          req as unknown as OrgsListOutsideCollaboratorsRequest,
           res as OrgsListOutsideCollaboratorsResponse,
           next
         );
@@ -46309,7 +46730,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsConvertMemberToOutsideCollaboratorRequest,
+          req as unknown as OrgsConvertMemberToOutsideCollaboratorRequest,
           res as OrgsConvertMemberToOutsideCollaboratorResponse,
           next
         );
@@ -46341,7 +46762,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsRemoveOutsideCollaboratorRequest,
+          req as unknown as OrgsRemoveOutsideCollaboratorRequest,
           res as OrgsRemoveOutsideCollaboratorResponse,
           next
         );
@@ -46385,7 +46806,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PackagesListPackagesForOrganizationRequest,
+          req as unknown as PackagesListPackagesForOrganizationRequest,
           res as PackagesListPackagesForOrganizationResponse,
           next
         );
@@ -46426,7 +46847,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PackagesGetPackageForOrganizationRequest,
+          req as unknown as PackagesGetPackageForOrganizationRequest,
           res as PackagesGetPackageForOrganizationResponse,
           next
         );
@@ -46467,7 +46888,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PackagesDeletePackageForOrgRequest,
+          req as unknown as PackagesDeletePackageForOrgRequest,
           res as PackagesDeletePackageForOrgResponse,
           next
         );
@@ -46513,7 +46934,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PackagesRestorePackageForOrgRequest,
+          req as unknown as PackagesRestorePackageForOrgRequest,
           res as PackagesRestorePackageForOrgResponse,
           next
         );
@@ -46568,7 +46989,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PackagesGetAllPackageVersionsForPackageOwnedByOrgRequest,
+          req as unknown as PackagesGetAllPackageVersionsForPackageOwnedByOrgRequest,
           res as PackagesGetAllPackageVersionsForPackageOwnedByOrgResponse,
           next
         );
@@ -46610,7 +47031,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PackagesGetPackageVersionForOrganizationRequest,
+          req as unknown as PackagesGetPackageVersionForOrganizationRequest,
           res as PackagesGetPackageVersionForOrganizationResponse,
           next
         );
@@ -46652,7 +47073,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PackagesDeletePackageVersionForOrgRequest,
+          req as unknown as PackagesDeletePackageVersionForOrgRequest,
           res as PackagesDeletePackageVersionForOrgResponse,
           next
         );
@@ -46694,7 +47115,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PackagesRestorePackageVersionForOrgRequest,
+          req as unknown as PackagesRestorePackageVersionForOrgRequest,
           res as PackagesRestorePackageVersionForOrgResponse,
           next
         );
@@ -46737,7 +47158,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ProjectsListForOrgRequest,
+          req as unknown as ProjectsListForOrgRequest,
           res as ProjectsListForOrgResponse,
           next
         );
@@ -46779,7 +47200,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ProjectsCreateForOrgRequest,
+          req as unknown as ProjectsCreateForOrgRequest,
           res as ProjectsCreateForOrgResponse,
           next
         );
@@ -46817,7 +47238,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsListPublicMembersRequest,
+          req as unknown as OrgsListPublicMembersRequest,
           res as OrgsListPublicMembersResponse,
           next
         );
@@ -46849,7 +47270,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsCheckPublicMembershipForUserRequest,
+          req as unknown as OrgsCheckPublicMembershipForUserRequest,
           res as OrgsCheckPublicMembershipForUserResponse,
           next
         );
@@ -46881,7 +47302,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsSetPublicMembershipForAuthenticatedUserRequest,
+          req as unknown as OrgsSetPublicMembershipForAuthenticatedUserRequest,
           res as OrgsSetPublicMembershipForAuthenticatedUserResponse,
           next
         );
@@ -46914,7 +47335,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsRemovePublicMembershipForAuthenticatedUserRequest,
+          req as unknown as OrgsRemovePublicMembershipForAuthenticatedUserRequest,
           res as OrgsRemovePublicMembershipForAuthenticatedUserResponse,
           next
         );
@@ -46970,7 +47391,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListForOrgRequest,
+          req as unknown as ReposListForOrgRequest,
           res as ReposListForOrgResponse,
           next
         );
@@ -47133,7 +47554,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposCreateInOrgRequest,
+          req as unknown as ReposCreateInOrgRequest,
           res as ReposCreateInOrgResponse,
           next
         );
@@ -47182,7 +47603,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as SecretScanningListAlertsForOrgRequest,
+          req as unknown as SecretScanningListAlertsForOrgRequest,
           res as SecretScanningListAlertsForOrgResponse,
           next
         );
@@ -47212,7 +47633,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsListSecurityManagerTeamsRequest,
+          req as unknown as OrgsListSecurityManagerTeamsRequest,
           res as OrgsListSecurityManagerTeamsResponse,
           next
         );
@@ -47244,7 +47665,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsAddSecurityManagerTeamRequest,
+          req as unknown as OrgsAddSecurityManagerTeamRequest,
           res as OrgsAddSecurityManagerTeamResponse,
           next
         );
@@ -47276,7 +47697,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsRemoveSecurityManagerTeamRequest,
+          req as unknown as OrgsRemoveSecurityManagerTeamRequest,
           res as OrgsRemoveSecurityManagerTeamResponse,
           next
         );
@@ -47308,7 +47729,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as BillingGetGithubActionsBillingOrgRequest,
+          req as unknown as BillingGetGithubActionsBillingOrgRequest,
           res as BillingGetGithubActionsBillingOrgResponse,
           next
         );
@@ -47348,7 +47769,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as BillingGetGithubAdvancedSecurityBillingOrgRequest,
+          req as unknown as BillingGetGithubAdvancedSecurityBillingOrgRequest,
           res as BillingGetGithubAdvancedSecurityBillingOrgResponse,
           next
         );
@@ -47380,7 +47801,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as BillingGetGithubPackagesBillingOrgRequest,
+          req as unknown as BillingGetGithubPackagesBillingOrgRequest,
           res as BillingGetGithubPackagesBillingOrgResponse,
           next
         );
@@ -47412,7 +47833,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as BillingGetSharedStorageBillingOrgRequest,
+          req as unknown as BillingGetSharedStorageBillingOrgRequest,
           res as BillingGetSharedStorageBillingOrgResponse,
           next
         );
@@ -47450,7 +47871,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsListRequest,
+          req as unknown as TeamsListRequest,
           res as TeamsListResponse,
           next
         );
@@ -47521,7 +47942,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsCreateRequest,
+          req as unknown as TeamsCreateRequest,
           res as TeamsCreateResponse,
           next
         );
@@ -47551,7 +47972,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsGetByNameRequest,
+          req as unknown as TeamsGetByNameRequest,
           res as TeamsGetByNameResponse,
           next
         );
@@ -47610,7 +48031,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsUpdateInOrgRequest,
+          req as unknown as TeamsUpdateInOrgRequest,
           res as TeamsUpdateInOrgResponse,
           next
         );
@@ -47640,7 +48061,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsDeleteInOrgRequest,
+          req as unknown as TeamsDeleteInOrgRequest,
           res as TeamsDeleteInOrgResponse,
           next
         );
@@ -47682,7 +48103,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsListDiscussionsInOrgRequest,
+          req as unknown as TeamsListDiscussionsInOrgRequest,
           res as TeamsListDiscussionsInOrgResponse,
           next
         );
@@ -47735,7 +48156,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsCreateDiscussionInOrgRequest,
+          req as unknown as TeamsCreateDiscussionInOrgRequest,
           res as TeamsCreateDiscussionInOrgResponse,
           next
         );
@@ -47773,7 +48194,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsGetDiscussionInOrgRequest,
+          req as unknown as TeamsGetDiscussionInOrgRequest,
           res as TeamsGetDiscussionInOrgResponse,
           next
         );
@@ -47825,7 +48246,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsUpdateDiscussionInOrgRequest,
+          req as unknown as TeamsUpdateDiscussionInOrgRequest,
           res as TeamsUpdateDiscussionInOrgResponse,
           next
         );
@@ -47863,7 +48284,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsDeleteDiscussionInOrgRequest,
+          req as unknown as TeamsDeleteDiscussionInOrgRequest,
           res as TeamsDeleteDiscussionInOrgResponse,
           next
         );
@@ -47910,7 +48331,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsListDiscussionCommentsInOrgRequest,
+          req as unknown as TeamsListDiscussionCommentsInOrgRequest,
           res as TeamsListDiscussionCommentsInOrgResponse,
           next
         );
@@ -47959,7 +48380,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsCreateDiscussionCommentInOrgRequest,
+          req as unknown as TeamsCreateDiscussionCommentInOrgRequest,
           res as TeamsCreateDiscussionCommentInOrgResponse,
           next
         );
@@ -47998,7 +48419,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsGetDiscussionCommentInOrgRequest,
+          req as unknown as TeamsGetDiscussionCommentInOrgRequest,
           res as TeamsGetDiscussionCommentInOrgResponse,
           next
         );
@@ -48048,7 +48469,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsUpdateDiscussionCommentInOrgRequest,
+          req as unknown as TeamsUpdateDiscussionCommentInOrgRequest,
           res as TeamsUpdateDiscussionCommentInOrgResponse,
           next
         );
@@ -48087,7 +48508,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsDeleteDiscussionCommentInOrgRequest,
+          req as unknown as TeamsDeleteDiscussionCommentInOrgRequest,
           res as TeamsDeleteDiscussionCommentInOrgResponse,
           next
         );
@@ -48147,7 +48568,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReactionsListForTeamDiscussionCommentInOrgRequest,
+          req as unknown as ReactionsListForTeamDiscussionCommentInOrgRequest,
           res as ReactionsListForTeamDiscussionCommentInOrgResponse,
           next
         );
@@ -48208,7 +48629,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReactionsCreateForTeamDiscussionCommentInOrgRequest,
+          req as unknown as ReactionsCreateForTeamDiscussionCommentInOrgRequest,
           res as ReactionsCreateForTeamDiscussionCommentInOrgResponse,
           next
         );
@@ -48254,7 +48675,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReactionsDeleteForTeamDiscussionCommentRequest,
+          req as unknown as ReactionsDeleteForTeamDiscussionCommentRequest,
           res as ReactionsDeleteForTeamDiscussionCommentResponse,
           next
         );
@@ -48313,7 +48734,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReactionsListForTeamDiscussionInOrgRequest,
+          req as unknown as ReactionsListForTeamDiscussionInOrgRequest,
           res as ReactionsListForTeamDiscussionInOrgResponse,
           next
         );
@@ -48373,7 +48794,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReactionsCreateForTeamDiscussionInOrgRequest,
+          req as unknown as ReactionsCreateForTeamDiscussionInOrgRequest,
           res as ReactionsCreateForTeamDiscussionInOrgResponse,
           next
         );
@@ -48412,7 +48833,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReactionsDeleteForTeamDiscussionRequest,
+          req as unknown as ReactionsDeleteForTeamDiscussionRequest,
           res as ReactionsDeleteForTeamDiscussionResponse,
           next
         );
@@ -48452,7 +48873,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsListPendingInvitationsInOrgRequest,
+          req as unknown as TeamsListPendingInvitationsInOrgRequest,
           res as TeamsListPendingInvitationsInOrgResponse,
           next
         );
@@ -48497,7 +48918,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsListMembersInOrgRequest,
+          req as unknown as TeamsListMembersInOrgRequest,
           res as TeamsListMembersInOrgResponse,
           next
         );
@@ -48535,7 +48956,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsGetMembershipForUserInOrgRequest,
+          req as unknown as TeamsGetMembershipForUserInOrgRequest,
           res as TeamsGetMembershipForUserInOrgResponse,
           next
         );
@@ -48585,7 +49006,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsAddOrUpdateMembershipForUserInOrgRequest,
+          req as unknown as TeamsAddOrUpdateMembershipForUserInOrgRequest,
           res as TeamsAddOrUpdateMembershipForUserInOrgResponse,
           next
         );
@@ -48623,7 +49044,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsRemoveMembershipForUserInOrgRequest,
+          req as unknown as TeamsRemoveMembershipForUserInOrgRequest,
           res as TeamsRemoveMembershipForUserInOrgResponse,
           next
         );
@@ -48663,7 +49084,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsListProjectsInOrgRequest,
+          req as unknown as TeamsListProjectsInOrgRequest,
           res as TeamsListProjectsInOrgResponse,
           next
         );
@@ -48701,7 +49122,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsCheckPermissionsForProjectInOrgRequest,
+          req as unknown as TeamsCheckPermissionsForProjectInOrgRequest,
           res as TeamsCheckPermissionsForProjectInOrgResponse,
           next
         );
@@ -48752,7 +49173,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsAddOrUpdateProjectPermissionsInOrgRequest,
+          req as unknown as TeamsAddOrUpdateProjectPermissionsInOrgRequest,
           res as TeamsAddOrUpdateProjectPermissionsInOrgResponse,
           next
         );
@@ -48790,7 +49211,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsRemoveProjectInOrgRequest,
+          req as unknown as TeamsRemoveProjectInOrgRequest,
           res as TeamsRemoveProjectInOrgResponse,
           next
         );
@@ -48828,7 +49249,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsListReposInOrgRequest,
+          req as unknown as TeamsListReposInOrgRequest,
           res as TeamsListReposInOrgResponse,
           next
         );
@@ -48867,7 +49288,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsCheckPermissionsForRepoInOrgRequest,
+          req as unknown as TeamsCheckPermissionsForRepoInOrgRequest,
           res as TeamsCheckPermissionsForRepoInOrgResponse,
           next
         );
@@ -48918,7 +49339,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsAddOrUpdateRepoPermissionsInOrgRequest,
+          req as unknown as TeamsAddOrUpdateRepoPermissionsInOrgRequest,
           res as TeamsAddOrUpdateRepoPermissionsInOrgResponse,
           next
         );
@@ -48957,7 +49378,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsRemoveRepoInOrgRequest,
+          req as unknown as TeamsRemoveRepoInOrgRequest,
           res as TeamsRemoveRepoInOrgResponse,
           next
         );
@@ -48995,7 +49416,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsListChildInOrgRequest,
+          req as unknown as TeamsListChildInOrgRequest,
           res as TeamsListChildInOrgResponse,
           next
         );
@@ -49042,7 +49463,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsEnableOrDisableSecurityProductOnAllOrgReposRequest,
+          req as unknown as OrgsEnableOrDisableSecurityProductOnAllOrgReposRequest,
           res as OrgsEnableOrDisableSecurityProductOnAllOrgReposResponse,
           next
         );
@@ -49072,7 +49493,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ProjectsGetCardRequest,
+          req as unknown as ProjectsGetCardRequest,
           res as ProjectsGetCardResponse,
           next
         );
@@ -49119,7 +49540,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ProjectsUpdateCardRequest,
+          req as unknown as ProjectsUpdateCardRequest,
           res as ProjectsUpdateCardResponse,
           next
         );
@@ -49149,7 +49570,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ProjectsDeleteCardRequest,
+          req as unknown as ProjectsDeleteCardRequest,
           res as ProjectsDeleteCardResponse,
           next
         );
@@ -49201,7 +49622,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ProjectsMoveCardRequest,
+          req as unknown as ProjectsMoveCardRequest,
           res as ProjectsMoveCardResponse,
           next
         );
@@ -49231,7 +49652,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ProjectsGetColumnRequest,
+          req as unknown as ProjectsGetColumnRequest,
           res as ProjectsGetColumnResponse,
           next
         );
@@ -49273,7 +49694,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ProjectsUpdateColumnRequest,
+          req as unknown as ProjectsUpdateColumnRequest,
           res as ProjectsUpdateColumnResponse,
           next
         );
@@ -49303,7 +49724,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ProjectsDeleteColumnRequest,
+          req as unknown as ProjectsDeleteColumnRequest,
           res as ProjectsDeleteColumnResponse,
           next
         );
@@ -49348,7 +49769,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ProjectsListCardsRequest,
+          req as unknown as ProjectsListCardsRequest,
           res as ProjectsListCardsResponse,
           next
         );
@@ -49414,7 +49835,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ProjectsCreateCardRequest,
+          req as unknown as ProjectsCreateCardRequest,
           res as ProjectsCreateCardResponse,
           next
         );
@@ -49460,7 +49881,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ProjectsMoveColumnRequest,
+          req as unknown as ProjectsMoveColumnRequest,
           res as ProjectsMoveColumnResponse,
           next
         );
@@ -49490,7 +49911,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ProjectsGetRequest,
+          req as unknown as ProjectsGetRequest,
           res as ProjectsGetResponse,
           next
         );
@@ -49553,7 +49974,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ProjectsUpdateRequest,
+          req as unknown as ProjectsUpdateRequest,
           res as ProjectsUpdateResponse,
           next
         );
@@ -49583,7 +50004,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ProjectsDeleteRequest,
+          req as unknown as ProjectsDeleteRequest,
           res as ProjectsDeleteResponse,
           next
         );
@@ -49628,7 +50049,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ProjectsListCollaboratorsRequest,
+          req as unknown as ProjectsListCollaboratorsRequest,
           res as ProjectsListCollaboratorsResponse,
           next
         );
@@ -49677,7 +50098,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ProjectsAddCollaboratorRequest,
+          req as unknown as ProjectsAddCollaboratorRequest,
           res as ProjectsAddCollaboratorResponse,
           next
         );
@@ -49712,7 +50133,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ProjectsRemoveCollaboratorRequest,
+          req as unknown as ProjectsRemoveCollaboratorRequest,
           res as ProjectsRemoveCollaboratorResponse,
           next
         );
@@ -49749,7 +50170,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ProjectsGetPermissionForUserRequest,
+          req as unknown as ProjectsGetPermissionForUserRequest,
           res as ProjectsGetPermissionForUserResponse,
           next
         );
@@ -49787,7 +50208,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ProjectsListColumnsRequest,
+          req as unknown as ProjectsListColumnsRequest,
           res as ProjectsListColumnsResponse,
           next
         );
@@ -49829,7 +50250,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ProjectsCreateColumnRequest,
+          req as unknown as ProjectsCreateColumnRequest,
           res as ProjectsCreateColumnResponse,
           next
         );
@@ -49851,7 +50272,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as RateLimitGetRequest,
+          req as unknown as RateLimitGetRequest,
           res as RateLimitGetResponse,
           next
         );
@@ -49881,7 +50302,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetRequest,
+          req as unknown as ReposGetRequest,
           res as ReposGetResponse,
           next
         );
@@ -50092,7 +50513,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposUpdateRequest,
+          req as unknown as ReposUpdateRequest,
           res as ReposUpdateResponse,
           next
         );
@@ -50122,7 +50543,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposDeleteRequest,
+          req as unknown as ReposDeleteRequest,
           res as ReposDeleteResponse,
           next
         );
@@ -50163,7 +50584,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsListArtifactsForRepoRequest,
+          req as unknown as ActionsListArtifactsForRepoRequest,
           res as ActionsListArtifactsForRepoResponse,
           next
         );
@@ -50201,7 +50622,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetArtifactRequest,
+          req as unknown as ActionsGetArtifactRequest,
           res as ActionsGetArtifactResponse,
           next
         );
@@ -50239,7 +50660,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsDeleteArtifactRequest,
+          req as unknown as ActionsDeleteArtifactRequest,
           res as ActionsDeleteArtifactResponse,
           next
         );
@@ -50278,7 +50699,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsDownloadArtifactRequest,
+          req as unknown as ActionsDownloadArtifactRequest,
           res as ActionsDownloadArtifactResponse,
           next
         );
@@ -50310,7 +50731,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetActionsCacheUsageRequest,
+          req as unknown as ActionsGetActionsCacheUsageRequest,
           res as ActionsGetActionsCacheUsageResponse,
           next
         );
@@ -50366,7 +50787,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetActionsCacheListRequest,
+          req as unknown as ActionsGetActionsCacheListRequest,
           res as ActionsGetActionsCacheListResponse,
           next
         );
@@ -50414,7 +50835,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsDeleteActionsCacheByKeyRequest,
+          req as unknown as ActionsDeleteActionsCacheByKeyRequest,
           res as ActionsDeleteActionsCacheByKeyResponse,
           next
         );
@@ -50450,7 +50871,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsDeleteActionsCacheByIdRequest,
+          req as unknown as ActionsDeleteActionsCacheByIdRequest,
           res as ActionsDeleteActionsCacheByIdResponse,
           next
         );
@@ -50486,7 +50907,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetJobForWorkflowRunRequest,
+          req as unknown as ActionsGetJobForWorkflowRunRequest,
           res as ActionsGetJobForWorkflowRunResponse,
           next
         );
@@ -50522,7 +50943,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsDownloadJobLogsForWorkflowRunRequest,
+          req as unknown as ActionsDownloadJobLogsForWorkflowRunRequest,
           res as ActionsDownloadJobLogsForWorkflowRunResponse,
           next
         );
@@ -50572,7 +50993,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsReRunJobForWorkflowRunRequest,
+          req as unknown as ActionsReRunJobForWorkflowRunRequest,
           res as ActionsReRunJobForWorkflowRunResponse,
           next
         );
@@ -50604,7 +51025,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetGithubActionsPermissionsRepositoryRequest,
+          req as unknown as ActionsGetGithubActionsPermissionsRepositoryRequest,
           res as ActionsGetGithubActionsPermissionsRepositoryResponse,
           next
         );
@@ -50659,7 +51080,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsSetGithubActionsPermissionsRepositoryRequest,
+          req as unknown as ActionsSetGithubActionsPermissionsRepositoryRequest,
           res as ActionsSetGithubActionsPermissionsRepositoryResponse,
           next
         );
@@ -50693,7 +51114,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetWorkflowAccessToRepositoryRequest,
+          req as unknown as ActionsGetWorkflowAccessToRepositoryRequest,
           res as ActionsGetWorkflowAccessToRepositoryResponse,
           next
         );
@@ -50746,7 +51167,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsSetWorkflowAccessToRepositoryRequest,
+          req as unknown as ActionsSetWorkflowAccessToRepositoryRequest,
           res as ActionsSetWorkflowAccessToRepositoryResponse,
           next
         );
@@ -50780,7 +51201,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetAllowedActionsRepositoryRequest,
+          req as unknown as ActionsGetAllowedActionsRepositoryRequest,
           res as ActionsGetAllowedActionsRepositoryResponse,
           next
         );
@@ -50842,7 +51263,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsSetAllowedActionsRepositoryRequest,
+          req as unknown as ActionsSetAllowedActionsRepositoryRequest,
           res as ActionsSetAllowedActionsRepositoryResponse,
           next
         );
@@ -50877,7 +51298,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryRequest,
+          req as unknown as ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryRequest,
           res as ActionsGetGithubActionsDefaultWorkflowPermissionsRepositoryResponse,
           next
         );
@@ -50943,7 +51364,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequest,
+          req as unknown as ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryRequest,
           res as ActionsSetGithubActionsDefaultWorkflowPermissionsRepositoryResponse,
           next
         );
@@ -50983,7 +51404,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsListSelfHostedRunnersForRepoRequest,
+          req as unknown as ActionsListSelfHostedRunnersForRepoRequest,
           res as ActionsListSelfHostedRunnersForRepoResponse,
           next
         );
@@ -51015,7 +51436,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsListRunnerApplicationsForRepoRequest,
+          req as unknown as ActionsListRunnerApplicationsForRepoRequest,
           res as ActionsListRunnerApplicationsForRepoResponse,
           next
         );
@@ -51049,7 +51470,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsCreateRegistrationTokenForRepoRequest,
+          req as unknown as ActionsCreateRegistrationTokenForRepoRequest,
           res as ActionsCreateRegistrationTokenForRepoResponse,
           next
         );
@@ -51083,7 +51504,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsCreateRemoveTokenForRepoRequest,
+          req as unknown as ActionsCreateRemoveTokenForRepoRequest,
           res as ActionsCreateRemoveTokenForRepoResponse,
           next
         );
@@ -51121,7 +51542,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetSelfHostedRunnerForRepoRequest,
+          req as unknown as ActionsGetSelfHostedRunnerForRepoRequest,
           res as ActionsGetSelfHostedRunnerForRepoResponse,
           next
         );
@@ -51159,7 +51580,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsDeleteSelfHostedRunnerFromRepoRequest,
+          req as unknown as ActionsDeleteSelfHostedRunnerFromRepoRequest,
           res as ActionsDeleteSelfHostedRunnerFromRepoResponse,
           next
         );
@@ -51197,7 +51618,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsListLabelsForSelfHostedRunnerForRepoRequest,
+          req as unknown as ActionsListLabelsForSelfHostedRunnerForRepoRequest,
           res as ActionsListLabelsForSelfHostedRunnerForRepoResponse,
           next
         );
@@ -51250,7 +51671,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsAddCustomLabelsToSelfHostedRunnerForRepoRequest,
+          req as unknown as ActionsAddCustomLabelsToSelfHostedRunnerForRepoRequest,
           res as ActionsAddCustomLabelsToSelfHostedRunnerForRepoResponse,
           next
         );
@@ -51304,7 +51725,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsSetCustomLabelsForSelfHostedRunnerForRepoRequest,
+          req as unknown as ActionsSetCustomLabelsForSelfHostedRunnerForRepoRequest,
           res as ActionsSetCustomLabelsForSelfHostedRunnerForRepoResponse,
           next
         );
@@ -51343,7 +51764,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequest,
+          req as unknown as ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequest,
           res as ActionsRemoveAllCustomLabelsFromSelfHostedRunnerForRepoResponse,
           next
         );
@@ -51383,7 +51804,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoRequest,
+          req as unknown as ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoRequest,
           res as ActionsRemoveCustomLabelFromSelfHostedRunnerForRepoResponse,
           next
         );
@@ -51446,7 +51867,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsListWorkflowRunsForRepoRequest,
+          req as unknown as ActionsListWorkflowRunsForRepoRequest,
           res as ActionsListWorkflowRunsForRepoResponse,
           next
         );
@@ -51489,7 +51910,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetWorkflowRunRequest,
+          req as unknown as ActionsGetWorkflowRunRequest,
           res as ActionsGetWorkflowRunResponse,
           next
         );
@@ -51525,7 +51946,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsDeleteWorkflowRunRequest,
+          req as unknown as ActionsDeleteWorkflowRunRequest,
           res as ActionsDeleteWorkflowRunResponse,
           next
         );
@@ -51563,7 +51984,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetReviewsForRunRequest,
+          req as unknown as ActionsGetReviewsForRunRequest,
           res as ActionsGetReviewsForRunResponse,
           next
         );
@@ -51601,7 +52022,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsApproveWorkflowRunRequest,
+          req as unknown as ActionsApproveWorkflowRunRequest,
           res as ActionsApproveWorkflowRunResponse,
           next
         );
@@ -51647,7 +52068,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsListWorkflowRunArtifactsRequest,
+          req as unknown as ActionsListWorkflowRunArtifactsRequest,
           res as ActionsListWorkflowRunArtifactsResponse,
           next
         );
@@ -51693,7 +52114,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetWorkflowRunAttemptRequest,
+          req as unknown as ActionsGetWorkflowRunAttemptRequest,
           res as ActionsGetWorkflowRunAttemptResponse,
           next
         );
@@ -51740,7 +52161,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsListJobsForWorkflowRunAttemptRequest,
+          req as unknown as ActionsListJobsForWorkflowRunAttemptRequest,
           res as ActionsListJobsForWorkflowRunAttemptResponse,
           next
         );
@@ -51779,7 +52200,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsDownloadWorkflowRunAttemptLogsRequest,
+          req as unknown as ActionsDownloadWorkflowRunAttemptLogsRequest,
           res as ActionsDownloadWorkflowRunAttemptLogsResponse,
           next
         );
@@ -51817,7 +52238,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsCancelWorkflowRunRequest,
+          req as unknown as ActionsCancelWorkflowRunRequest,
           res as ActionsCancelWorkflowRunResponse,
           next
         );
@@ -51866,7 +52287,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsListJobsForWorkflowRunRequest,
+          req as unknown as ActionsListJobsForWorkflowRunRequest,
           res as ActionsListJobsForWorkflowRunResponse,
           next
         );
@@ -51902,7 +52323,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsDownloadWorkflowRunLogsRequest,
+          req as unknown as ActionsDownloadWorkflowRunLogsRequest,
           res as ActionsDownloadWorkflowRunLogsResponse,
           next
         );
@@ -51938,7 +52359,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsDeleteWorkflowRunLogsRequest,
+          req as unknown as ActionsDeleteWorkflowRunLogsRequest,
           res as ActionsDeleteWorkflowRunLogsResponse,
           next
         );
@@ -51976,7 +52397,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetPendingDeploymentsForRunRequest,
+          req as unknown as ActionsGetPendingDeploymentsForRunRequest,
           res as ActionsGetPendingDeploymentsForRunResponse,
           next
         );
@@ -52039,7 +52460,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsReviewPendingDeploymentsForRunRequest,
+          req as unknown as ActionsReviewPendingDeploymentsForRunRequest,
           res as ActionsReviewPendingDeploymentsForRunResponse,
           next
         );
@@ -52089,7 +52510,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsReRunWorkflowRequest,
+          req as unknown as ActionsReRunWorkflowRequest,
           res as ActionsReRunWorkflowResponse,
           next
         );
@@ -52139,7 +52560,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsReRunWorkflowFailedJobsRequest,
+          req as unknown as ActionsReRunWorkflowFailedJobsRequest,
           res as ActionsReRunWorkflowFailedJobsResponse,
           next
         );
@@ -52177,7 +52598,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetWorkflowRunUsageRequest,
+          req as unknown as ActionsGetWorkflowRunUsageRequest,
           res as ActionsGetWorkflowRunUsageResponse,
           next
         );
@@ -52217,7 +52638,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsListRepoSecretsRequest,
+          req as unknown as ActionsListRepoSecretsRequest,
           res as ActionsListRepoSecretsResponse,
           next
         );
@@ -52251,7 +52672,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetRepoPublicKeyRequest,
+          req as unknown as ActionsGetRepoPublicKeyRequest,
           res as ActionsGetRepoPublicKeyResponse,
           next
         );
@@ -52289,7 +52710,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetRepoSecretRequest,
+          req as unknown as ActionsGetRepoSecretRequest,
           res as ActionsGetRepoSecretResponse,
           next
         );
@@ -52344,7 +52765,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsCreateOrUpdateRepoSecretRequest,
+          req as unknown as ActionsCreateOrUpdateRepoSecretRequest,
           res as ActionsCreateOrUpdateRepoSecretResponse,
           next
         );
@@ -52382,7 +52803,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsDeleteRepoSecretRequest,
+          req as unknown as ActionsDeleteRepoSecretRequest,
           res as ActionsDeleteRepoSecretResponse,
           next
         );
@@ -52422,7 +52843,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsListRepoWorkflowsRequest,
+          req as unknown as ActionsListRepoWorkflowsRequest,
           res as ActionsListRepoWorkflowsResponse,
           next
         );
@@ -52460,7 +52881,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetWorkflowRequest,
+          req as unknown as ActionsGetWorkflowRequest,
           res as ActionsGetWorkflowResponse,
           next
         );
@@ -52498,7 +52919,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsDisableWorkflowRequest,
+          req as unknown as ActionsDisableWorkflowRequest,
           res as ActionsDisableWorkflowResponse,
           next
         );
@@ -52555,7 +52976,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsCreateWorkflowDispatchRequest,
+          req as unknown as ActionsCreateWorkflowDispatchRequest,
           res as ActionsCreateWorkflowDispatchResponse,
           next
         );
@@ -52593,7 +53014,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsEnableWorkflowRequest,
+          req as unknown as ActionsEnableWorkflowRequest,
           res as ActionsEnableWorkflowResponse,
           next
         );
@@ -52664,7 +53085,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsListWorkflowRunsRequest,
+          req as unknown as ActionsListWorkflowRunsRequest,
           res as ActionsListWorkflowRunsResponse,
           next
         );
@@ -52702,7 +53123,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetWorkflowUsageRequest,
+          req as unknown as ActionsGetWorkflowUsageRequest,
           res as ActionsGetWorkflowUsageResponse,
           next
         );
@@ -52740,7 +53161,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesListAssigneesRequest,
+          req as unknown as IssuesListAssigneesRequest,
           res as IssuesListAssigneesResponse,
           next
         );
@@ -52776,7 +53197,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesCheckUserCanBeAssignedRequest,
+          req as unknown as IssuesCheckUserCanBeAssignedRequest,
           res as IssuesCheckUserCanBeAssignedResponse,
           next
         );
@@ -52811,7 +53232,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListAutolinksRequest,
+          req as unknown as ReposListAutolinksRequest,
           res as ReposListAutolinksResponse,
           next
         );
@@ -52864,7 +53285,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposCreateAutolinkRequest,
+          req as unknown as ReposCreateAutolinkRequest,
           res as ReposCreateAutolinkResponse,
           next
         );
@@ -52900,7 +53321,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetAutolinkRequest,
+          req as unknown as ReposGetAutolinkRequest,
           res as ReposGetAutolinkResponse,
           next
         );
@@ -52936,7 +53357,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposDeleteAutolinkRequest,
+          req as unknown as ReposDeleteAutolinkRequest,
           res as ReposDeleteAutolinkResponse,
           next
         );
@@ -52968,7 +53389,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposEnableAutomatedSecurityFixesRequest,
+          req as unknown as ReposEnableAutomatedSecurityFixesRequest,
           res as ReposEnableAutomatedSecurityFixesResponse,
           next
         );
@@ -53000,7 +53421,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposDisableAutomatedSecurityFixesRequest,
+          req as unknown as ReposDisableAutomatedSecurityFixesRequest,
           res as ReposDisableAutomatedSecurityFixesResponse,
           next
         );
@@ -53039,7 +53460,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListBranchesRequest,
+          req as unknown as ReposListBranchesRequest,
           res as ReposListBranchesResponse,
           next
         );
@@ -53075,7 +53496,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetBranchRequest,
+          req as unknown as ReposGetBranchRequest,
           res as ReposGetBranchResponse,
           next
         );
@@ -53113,7 +53534,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetBranchProtectionRequest,
+          req as unknown as ReposGetBranchProtectionRequest,
           res as ReposGetBranchProtectionResponse,
           next
         );
@@ -53350,7 +53771,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposUpdateBranchProtectionRequest,
+          req as unknown as ReposUpdateBranchProtectionRequest,
           res as ReposUpdateBranchProtectionResponse,
           next
         );
@@ -53388,7 +53809,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposDeleteBranchProtectionRequest,
+          req as unknown as ReposDeleteBranchProtectionRequest,
           res as ReposDeleteBranchProtectionResponse,
           next
         );
@@ -53426,7 +53847,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetAdminBranchProtectionRequest,
+          req as unknown as ReposGetAdminBranchProtectionRequest,
           res as ReposGetAdminBranchProtectionResponse,
           next
         );
@@ -53464,7 +53885,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposSetAdminBranchProtectionRequest,
+          req as unknown as ReposSetAdminBranchProtectionRequest,
           res as ReposSetAdminBranchProtectionResponse,
           next
         );
@@ -53502,7 +53923,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposDeleteAdminBranchProtectionRequest,
+          req as unknown as ReposDeleteAdminBranchProtectionRequest,
           res as ReposDeleteAdminBranchProtectionResponse,
           next
         );
@@ -53540,7 +53961,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetPullRequestReviewProtectionRequest,
+          req as unknown as ReposGetPullRequestReviewProtectionRequest,
           res as ReposGetPullRequestReviewProtectionResponse,
           next
         );
@@ -53652,7 +54073,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposUpdatePullRequestReviewProtectionRequest,
+          req as unknown as ReposUpdatePullRequestReviewProtectionRequest,
           res as ReposUpdatePullRequestReviewProtectionResponse,
           next
         );
@@ -53690,7 +54111,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposDeletePullRequestReviewProtectionRequest,
+          req as unknown as ReposDeletePullRequestReviewProtectionRequest,
           res as ReposDeletePullRequestReviewProtectionResponse,
           next
         );
@@ -53728,7 +54149,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetCommitSignatureProtectionRequest,
+          req as unknown as ReposGetCommitSignatureProtectionRequest,
           res as ReposGetCommitSignatureProtectionResponse,
           next
         );
@@ -53766,7 +54187,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposCreateCommitSignatureProtectionRequest,
+          req as unknown as ReposCreateCommitSignatureProtectionRequest,
           res as ReposCreateCommitSignatureProtectionResponse,
           next
         );
@@ -53804,7 +54225,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposDeleteCommitSignatureProtectionRequest,
+          req as unknown as ReposDeleteCommitSignatureProtectionRequest,
           res as ReposDeleteCommitSignatureProtectionResponse,
           next
         );
@@ -53842,7 +54263,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetStatusChecksProtectionRequest,
+          req as unknown as ReposGetStatusChecksProtectionRequest,
           res as ReposGetStatusChecksProtectionResponse,
           next
         );
@@ -53917,7 +54338,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposUpdateStatusCheckProtectionRequest,
+          req as unknown as ReposUpdateStatusCheckProtectionRequest,
           res as ReposUpdateStatusCheckProtectionResponse,
           next
         );
@@ -53955,7 +54376,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposRemoveStatusCheckProtectionRequest,
+          req as unknown as ReposRemoveStatusCheckProtectionRequest,
           res as ReposRemoveStatusCheckProtectionResponse,
           next
         );
@@ -53993,7 +54414,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetAllStatusCheckContextsRequest,
+          req as unknown as ReposGetAllStatusCheckContextsRequest,
           res as ReposGetAllStatusCheckContextsResponse,
           next
         );
@@ -54053,7 +54474,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposAddStatusCheckContextsRequest,
+          req as unknown as ReposAddStatusCheckContextsRequest,
           res as ReposAddStatusCheckContextsResponse,
           next
         );
@@ -54113,7 +54534,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposSetStatusCheckContextsRequest,
+          req as unknown as ReposSetStatusCheckContextsRequest,
           res as ReposSetStatusCheckContextsResponse,
           next
         );
@@ -54173,7 +54594,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposRemoveStatusCheckContextsRequest,
+          req as unknown as ReposRemoveStatusCheckContextsRequest,
           res as ReposRemoveStatusCheckContextsResponse,
           next
         );
@@ -54211,7 +54632,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetAccessRestrictionsRequest,
+          req as unknown as ReposGetAccessRestrictionsRequest,
           res as ReposGetAccessRestrictionsResponse,
           next
         );
@@ -54249,7 +54670,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposDeleteAccessRestrictionsRequest,
+          req as unknown as ReposDeleteAccessRestrictionsRequest,
           res as ReposDeleteAccessRestrictionsResponse,
           next
         );
@@ -54287,7 +54708,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetAppsWithAccessToProtectedBranchRequest,
+          req as unknown as ReposGetAppsWithAccessToProtectedBranchRequest,
           res as ReposGetAppsWithAccessToProtectedBranchResponse,
           next
         );
@@ -54343,7 +54764,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposAddAppAccessRestrictionsRequest,
+          req as unknown as ReposAddAppAccessRestrictionsRequest,
           res as ReposAddAppAccessRestrictionsResponse,
           next
         );
@@ -54399,7 +54820,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposSetAppAccessRestrictionsRequest,
+          req as unknown as ReposSetAppAccessRestrictionsRequest,
           res as ReposSetAppAccessRestrictionsResponse,
           next
         );
@@ -54455,7 +54876,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposRemoveAppAccessRestrictionsRequest,
+          req as unknown as ReposRemoveAppAccessRestrictionsRequest,
           res as ReposRemoveAppAccessRestrictionsResponse,
           next
         );
@@ -54493,7 +54914,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetTeamsWithAccessToProtectedBranchRequest,
+          req as unknown as ReposGetTeamsWithAccessToProtectedBranchRequest,
           res as ReposGetTeamsWithAccessToProtectedBranchResponse,
           next
         );
@@ -54553,7 +54974,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposAddTeamAccessRestrictionsRequest,
+          req as unknown as ReposAddTeamAccessRestrictionsRequest,
           res as ReposAddTeamAccessRestrictionsResponse,
           next
         );
@@ -54613,7 +55034,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposSetTeamAccessRestrictionsRequest,
+          req as unknown as ReposSetTeamAccessRestrictionsRequest,
           res as ReposSetTeamAccessRestrictionsResponse,
           next
         );
@@ -54673,7 +55094,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposRemoveTeamAccessRestrictionsRequest,
+          req as unknown as ReposRemoveTeamAccessRestrictionsRequest,
           res as ReposRemoveTeamAccessRestrictionsResponse,
           next
         );
@@ -54711,7 +55132,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetUsersWithAccessToProtectedBranchRequest,
+          req as unknown as ReposGetUsersWithAccessToProtectedBranchRequest,
           res as ReposGetUsersWithAccessToProtectedBranchResponse,
           next
         );
@@ -54767,7 +55188,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposAddUserAccessRestrictionsRequest,
+          req as unknown as ReposAddUserAccessRestrictionsRequest,
           res as ReposAddUserAccessRestrictionsResponse,
           next
         );
@@ -54823,7 +55244,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposSetUserAccessRestrictionsRequest,
+          req as unknown as ReposSetUserAccessRestrictionsRequest,
           res as ReposSetUserAccessRestrictionsResponse,
           next
         );
@@ -54879,7 +55300,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposRemoveUserAccessRestrictionsRequest,
+          req as unknown as ReposRemoveUserAccessRestrictionsRequest,
           res as ReposRemoveUserAccessRestrictionsResponse,
           next
         );
@@ -54926,7 +55347,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposRenameBranchRequest,
+          req as unknown as ReposRenameBranchRequest,
           res as ReposRenameBranchResponse,
           next
         );
@@ -55160,7 +55581,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ChecksCreateRequest,
+          req as unknown as ChecksCreateRequest,
           res as ChecksCreateResponse,
           next
         );
@@ -55196,7 +55617,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ChecksGetRequest,
+          req as unknown as ChecksGetRequest,
           res as ChecksGetResponse,
           next
         );
@@ -55428,7 +55849,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ChecksUpdateRequest,
+          req as unknown as ChecksUpdateRequest,
           res as ChecksUpdateResponse,
           next
         );
@@ -55474,7 +55895,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ChecksListAnnotationsRequest,
+          req as unknown as ChecksListAnnotationsRequest,
           res as ChecksListAnnotationsResponse,
           next
         );
@@ -55512,7 +55933,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ChecksRerequestRunRequest,
+          req as unknown as ChecksRerequestRunRequest,
           res as ChecksRerequestRunResponse,
           next
         );
@@ -55553,7 +55974,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ChecksCreateSuiteRequest,
+          req as unknown as ChecksCreateSuiteRequest,
           res as ChecksCreateSuiteResponse,
           next
         );
@@ -55612,7 +56033,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ChecksSetSuitesPreferencesRequest,
+          req as unknown as ChecksSetSuitesPreferencesRequest,
           res as ChecksSetSuitesPreferencesResponse,
           next
         );
@@ -55650,7 +56071,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ChecksGetSuiteRequest,
+          req as unknown as ChecksGetSuiteRequest,
           res as ChecksGetSuiteResponse,
           next
         );
@@ -55706,7 +56127,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ChecksListForSuiteRequest,
+          req as unknown as ChecksListForSuiteRequest,
           res as ChecksListForSuiteResponse,
           next
         );
@@ -55744,7 +56165,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ChecksRerequestSuiteRequest,
+          req as unknown as ChecksRerequestSuiteRequest,
           res as ChecksRerequestSuiteResponse,
           next
         );
@@ -55821,7 +56242,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodeScanningListAlertsForRepoRequest,
+          req as unknown as CodeScanningListAlertsForRepoRequest,
           res as CodeScanningListAlertsForRepoResponse,
           next
         );
@@ -55867,7 +56288,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodeScanningGetAlertRequest,
+          req as unknown as CodeScanningGetAlertRequest,
           res as CodeScanningGetAlertResponse,
           next
         );
@@ -55952,7 +56373,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodeScanningUpdateAlertRequest,
+          req as unknown as CodeScanningUpdateAlertRequest,
           res as CodeScanningUpdateAlertResponse,
           next
         );
@@ -56015,7 +56436,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodeScanningListAlertInstancesRequest,
+          req as unknown as CodeScanningListAlertInstancesRequest,
           res as CodeScanningListAlertInstancesResponse,
           next
         );
@@ -56088,7 +56509,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodeScanningListRecentAnalysesRequest,
+          req as unknown as CodeScanningListRecentAnalysesRequest,
           res as CodeScanningListRecentAnalysesResponse,
           next
         );
@@ -56126,7 +56547,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodeScanningGetAnalysisRequest,
+          req as unknown as CodeScanningGetAnalysisRequest,
           res as CodeScanningGetAnalysisResponse,
           next
         );
@@ -56169,7 +56590,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodeScanningDeleteAnalysisRequest,
+          req as unknown as CodeScanningDeleteAnalysisRequest,
           res as CodeScanningDeleteAnalysisResponse,
           next
         );
@@ -56203,7 +56624,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodeScanningListCodeqlDatabasesRequest,
+          req as unknown as CodeScanningListCodeqlDatabasesRequest,
           res as CodeScanningListCodeqlDatabasesResponse,
           next
         );
@@ -56241,7 +56662,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodeScanningGetCodeqlDatabaseRequest,
+          req as unknown as CodeScanningGetCodeqlDatabaseRequest,
           res as CodeScanningGetCodeqlDatabaseResponse,
           next
         );
@@ -56331,7 +56752,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodeScanningUploadSarifRequest,
+          req as unknown as CodeScanningUploadSarifRequest,
           res as CodeScanningUploadSarifResponse,
           next
         );
@@ -56369,7 +56790,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodeScanningGetSarifRequest,
+          req as unknown as CodeScanningGetSarifRequest,
           res as CodeScanningGetSarifResponse,
           next
         );
@@ -56406,7 +56827,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposCodeownersErrorsRequest,
+          req as unknown as ReposCodeownersErrorsRequest,
           res as ReposCodeownersErrorsResponse,
           next
         );
@@ -56445,7 +56866,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesListInRepositoryForAuthenticatedUserRequest,
+          req as unknown as CodespacesListInRepositoryForAuthenticatedUserRequest,
           res as CodespacesListInRepositoryForAuthenticatedUserResponse,
           next
         );
@@ -56528,7 +56949,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesCreateWithRepoForAuthenticatedUserRequest,
+          req as unknown as CodespacesCreateWithRepoForAuthenticatedUserRequest,
           res as CodespacesCreateWithRepoForAuthenticatedUserResponse,
           next
         );
@@ -56569,7 +56990,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequest,
+          req as unknown as CodespacesListDevcontainersInRepositoryForAuthenticatedUserRequest,
           res as CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponse,
           next
         );
@@ -56609,7 +57030,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesRepoMachinesForAuthenticatedUserRequest,
+          req as unknown as CodespacesRepoMachinesForAuthenticatedUserRequest,
           res as CodespacesRepoMachinesForAuthenticatedUserResponse,
           next
         );
@@ -56650,7 +57071,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesPreFlightWithRepoForAuthenticatedUserRequest,
+          req as unknown as CodespacesPreFlightWithRepoForAuthenticatedUserRequest,
           res as CodespacesPreFlightWithRepoForAuthenticatedUserResponse,
           next
         );
@@ -56690,7 +57111,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesListRepoSecretsRequest,
+          req as unknown as CodespacesListRepoSecretsRequest,
           res as CodespacesListRepoSecretsResponse,
           next
         );
@@ -56724,7 +57145,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesGetRepoPublicKeyRequest,
+          req as unknown as CodespacesGetRepoPublicKeyRequest,
           res as CodespacesGetRepoPublicKeyResponse,
           next
         );
@@ -56762,7 +57183,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesGetRepoSecretRequest,
+          req as unknown as CodespacesGetRepoSecretRequest,
           res as CodespacesGetRepoSecretResponse,
           next
         );
@@ -56817,7 +57238,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesCreateOrUpdateRepoSecretRequest,
+          req as unknown as CodespacesCreateOrUpdateRepoSecretRequest,
           res as CodespacesCreateOrUpdateRepoSecretResponse,
           next
         );
@@ -56855,7 +57276,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesDeleteRepoSecretRequest,
+          req as unknown as CodespacesDeleteRepoSecretRequest,
           res as CodespacesDeleteRepoSecretResponse,
           next
         );
@@ -56902,7 +57323,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListCollaboratorsRequest,
+          req as unknown as ReposListCollaboratorsRequest,
           res as ReposListCollaboratorsResponse,
           next
         );
@@ -56938,7 +57359,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposCheckCollaboratorRequest,
+          req as unknown as ReposCheckCollaboratorRequest,
           res as ReposCheckCollaboratorResponse,
           next
         );
@@ -56986,7 +57407,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposAddCollaboratorRequest,
+          req as unknown as ReposAddCollaboratorRequest,
           res as ReposAddCollaboratorResponse,
           next
         );
@@ -57022,7 +57443,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposRemoveCollaboratorRequest,
+          req as unknown as ReposRemoveCollaboratorRequest,
           res as ReposRemoveCollaboratorResponse,
           next
         );
@@ -57060,7 +57481,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetCollaboratorPermissionLevelRequest,
+          req as unknown as ReposGetCollaboratorPermissionLevelRequest,
           res as ReposGetCollaboratorPermissionLevelResponse,
           next
         );
@@ -57098,7 +57519,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListCommitCommentsForRepoRequest,
+          req as unknown as ReposListCommitCommentsForRepoRequest,
           res as ReposListCommitCommentsForRepoResponse,
           next
         );
@@ -57134,7 +57555,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetCommitCommentRequest,
+          req as unknown as ReposGetCommitCommentRequest,
           res as ReposGetCommitCommentResponse,
           next
         );
@@ -57178,7 +57599,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposUpdateCommitCommentRequest,
+          req as unknown as ReposUpdateCommitCommentRequest,
           res as ReposUpdateCommitCommentResponse,
           next
         );
@@ -57214,7 +57635,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposDeleteCommitCommentRequest,
+          req as unknown as ReposDeleteCommitCommentRequest,
           res as ReposDeleteCommitCommentResponse,
           next
         );
@@ -57273,7 +57694,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReactionsListForCommitCommentRequest,
+          req as unknown as ReactionsListForCommitCommentRequest,
           res as ReactionsListForCommitCommentResponse,
           next
         );
@@ -57333,7 +57754,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReactionsCreateForCommitCommentRequest,
+          req as unknown as ReactionsCreateForCommitCommentRequest,
           res as ReactionsCreateForCommitCommentResponse,
           next
         );
@@ -57372,7 +57793,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReactionsDeleteForCommitCommentRequest,
+          req as unknown as ReactionsDeleteForCommitCommentRequest,
           res as ReactionsDeleteForCommitCommentResponse,
           next
         );
@@ -57415,7 +57836,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListCommitsRequest,
+          req as unknown as ReposListCommitsRequest,
           res as ReposListCommitsResponse,
           next
         );
@@ -57453,7 +57874,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListBranchesForHeadCommitRequest,
+          req as unknown as ReposListBranchesForHeadCommitRequest,
           res as ReposListBranchesForHeadCommitResponse,
           next
         );
@@ -57499,7 +57920,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListCommentsForCommitRequest,
+          req as unknown as ReposListCommentsForCommitRequest,
           res as ReposListCommentsForCommitResponse,
           next
         );
@@ -57558,7 +57979,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposCreateCommitCommentRequest,
+          req as unknown as ReposCreateCommitCommentRequest,
           res as ReposCreateCommitCommentResponse,
           next
         );
@@ -57602,7 +58023,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListPullRequestsAssociatedWithCommitRequest,
+          req as unknown as ReposListPullRequestsAssociatedWithCommitRequest,
           res as ReposListPullRequestsAssociatedWithCommitResponse,
           next
         );
@@ -57644,7 +58065,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetCommitRequest,
+          req as unknown as ReposGetCommitRequest,
           res as ReposGetCommitResponse,
           next
         );
@@ -57699,7 +58120,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ChecksListForRefRequest,
+          req as unknown as ChecksListForRefRequest,
           res as ChecksListForRefResponse,
           next
         );
@@ -57745,7 +58166,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ChecksListSuitesForRefRequest,
+          req as unknown as ChecksListSuitesForRefRequest,
           res as ChecksListSuitesForRefResponse,
           next
         );
@@ -57789,7 +58210,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetCombinedStatusForRefRequest,
+          req as unknown as ReposGetCombinedStatusForRefRequest,
           res as ReposGetCombinedStatusForRefResponse,
           next
         );
@@ -57833,7 +58254,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListCommitStatusesForRefRequest,
+          req as unknown as ReposListCommitStatusesForRefRequest,
           res as ReposListCommitStatusesForRefResponse,
           next
         );
@@ -57865,7 +58286,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetCommunityProfileMetricsRequest,
+          req as unknown as ReposGetCommunityProfileMetricsRequest,
           res as ReposGetCommunityProfileMetricsResponse,
           next
         );
@@ -57909,7 +58330,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposCompareCommitsRequest,
+          req as unknown as ReposCompareCommitsRequest,
           res as ReposCompareCommitsResponse,
           next
         );
@@ -57950,7 +58371,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetContentRequest,
+          req as unknown as ReposGetContentRequest,
           res as ReposGetContentResponse,
           next
         );
@@ -58046,7 +58467,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposCreateOrUpdateFileContentsRequest,
+          req as unknown as ReposCreateOrUpdateFileContentsRequest,
           res as ReposCreateOrUpdateFileContentsResponse,
           next
         );
@@ -58131,7 +58552,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposDeleteFileRequest,
+          req as unknown as ReposDeleteFileRequest,
           res as ReposDeleteFileResponse,
           next
         );
@@ -58170,7 +58591,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListContributorsRequest,
+          req as unknown as ReposListContributorsRequest,
           res as ReposListContributorsResponse,
           next
         );
@@ -58226,7 +58647,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as DependabotListAlertsForRepoRequest,
+          req as unknown as DependabotListAlertsForRepoRequest,
           res as DependabotListAlertsForRepoResponse,
           next
         );
@@ -58272,7 +58693,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as DependabotGetAlertRequest,
+          req as unknown as DependabotGetAlertRequest,
           res as DependabotGetAlertResponse,
           next
         );
@@ -58350,7 +58771,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as DependabotUpdateAlertRequest,
+          req as unknown as DependabotUpdateAlertRequest,
           res as DependabotUpdateAlertResponse,
           next
         );
@@ -58390,7 +58811,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as DependabotListRepoSecretsRequest,
+          req as unknown as DependabotListRepoSecretsRequest,
           res as DependabotListRepoSecretsResponse,
           next
         );
@@ -58424,7 +58845,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as DependabotGetRepoPublicKeyRequest,
+          req as unknown as DependabotGetRepoPublicKeyRequest,
           res as DependabotGetRepoPublicKeyResponse,
           next
         );
@@ -58462,7 +58883,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as DependabotGetRepoSecretRequest,
+          req as unknown as DependabotGetRepoSecretRequest,
           res as DependabotGetRepoSecretResponse,
           next
         );
@@ -58517,7 +58938,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as DependabotCreateOrUpdateRepoSecretRequest,
+          req as unknown as DependabotCreateOrUpdateRepoSecretRequest,
           res as DependabotCreateOrUpdateRepoSecretResponse,
           next
         );
@@ -58555,7 +58976,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as DependabotDeleteRepoSecretRequest,
+          req as unknown as DependabotDeleteRepoSecretRequest,
           res as DependabotDeleteRepoSecretResponse,
           next
         );
@@ -58598,7 +59019,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as DependencyGraphDiffRangeRequest,
+          req as unknown as DependencyGraphDiffRangeRequest,
           res as DependencyGraphDiffRangeResponse,
           next
         );
@@ -58808,7 +59229,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as DependencyGraphCreateRepositorySnapshotRequest,
+          req as unknown as DependencyGraphCreateRepositorySnapshotRequest,
           res as DependencyGraphCreateRepositorySnapshotResponse,
           next
         );
@@ -58850,7 +59271,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListDeploymentsRequest,
+          req as unknown as ReposListDeploymentsRequest,
           res as ReposListDeploymentsResponse,
           next
         );
@@ -58943,7 +59364,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposCreateDeploymentRequest,
+          req as unknown as ReposCreateDeploymentRequest,
           res as ReposCreateDeploymentResponse,
           next
         );
@@ -58981,7 +59402,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetDeploymentRequest,
+          req as unknown as ReposGetDeploymentRequest,
           res as ReposGetDeploymentResponse,
           next
         );
@@ -59019,7 +59440,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposDeleteDeploymentRequest,
+          req as unknown as ReposDeleteDeploymentRequest,
           res as ReposDeleteDeploymentResponse,
           next
         );
@@ -59065,7 +59486,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListDeploymentStatusesRequest,
+          req as unknown as ReposListDeploymentStatusesRequest,
           res as ReposListDeploymentStatusesResponse,
           next
         );
@@ -59159,7 +59580,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposCreateDeploymentStatusRequest,
+          req as unknown as ReposCreateDeploymentStatusRequest,
           res as ReposCreateDeploymentStatusResponse,
           next
         );
@@ -59198,7 +59619,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetDeploymentStatusRequest,
+          req as unknown as ReposGetDeploymentStatusRequest,
           res as ReposGetDeploymentStatusResponse,
           next
         );
@@ -59249,7 +59670,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposCreateDispatchEventRequest,
+          req as unknown as ReposCreateDispatchEventRequest,
           res as ReposCreateDispatchEventResponse,
           next
         );
@@ -59287,7 +59708,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetAllEnvironmentsRequest,
+          req as unknown as ReposGetAllEnvironmentsRequest,
           res as ReposGetAllEnvironmentsResponse,
           next
         );
@@ -59325,7 +59746,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetEnvironmentRequest,
+          req as unknown as ReposGetEnvironmentRequest,
           res as ReposGetEnvironmentResponse,
           next
         );
@@ -59429,7 +59850,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposCreateOrUpdateEnvironmentRequest,
+          req as unknown as ReposCreateOrUpdateEnvironmentRequest,
           res as ReposCreateOrUpdateEnvironmentResponse,
           next
         );
@@ -59467,7 +59888,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposDeleteAnEnvironmentRequest,
+          req as unknown as ReposDeleteAnEnvironmentRequest,
           res as ReposDeleteAnEnvironmentResponse,
           next
         );
@@ -59513,7 +59934,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListDeploymentBranchPoliciesRequest,
+          req as unknown as ReposListDeploymentBranchPoliciesRequest,
           res as ReposListDeploymentBranchPoliciesResponse,
           next
         );
@@ -59570,7 +59991,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposCreateDeploymentBranchPolicyRequest,
+          req as unknown as ReposCreateDeploymentBranchPolicyRequest,
           res as ReposCreateDeploymentBranchPolicyResponse,
           next
         );
@@ -59609,7 +60030,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetDeploymentBranchPolicyRequest,
+          req as unknown as ReposGetDeploymentBranchPolicyRequest,
           res as ReposGetDeploymentBranchPolicyResponse,
           next
         );
@@ -59667,7 +60088,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposUpdateDeploymentBranchPolicyRequest,
+          req as unknown as ReposUpdateDeploymentBranchPolicyRequest,
           res as ReposUpdateDeploymentBranchPolicyResponse,
           next
         );
@@ -59706,7 +60127,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposDeleteDeploymentBranchPolicyRequest,
+          req as unknown as ReposDeleteDeploymentBranchPolicyRequest,
           res as ReposDeleteDeploymentBranchPolicyResponse,
           next
         );
@@ -59744,7 +60165,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityListRepoEventsRequest,
+          req as unknown as ActivityListRepoEventsRequest,
           res as ActivityListRepoEventsResponse,
           next
         );
@@ -59787,7 +60208,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListForksRequest,
+          req as unknown as ReposListForksRequest,
           res as ReposListForksResponse,
           next
         );
@@ -59839,7 +60260,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposCreateForkRequest,
+          req as unknown as ReposCreateForkRequest,
           res as ReposCreateForkResponse,
           next
         );
@@ -59883,7 +60304,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GitCreateBlobRequest,
+          req as unknown as GitCreateBlobRequest,
           res as GitCreateBlobResponse,
           next
         );
@@ -59919,7 +60340,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GitGetBlobRequest,
+          req as unknown as GitGetBlobRequest,
           res as GitGetBlobResponse,
           next
         );
@@ -60019,7 +60440,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GitCreateCommitRequest,
+          req as unknown as GitCreateCommitRequest,
           res as GitCreateCommitResponse,
           next
         );
@@ -60055,7 +60476,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GitGetCommitRequest,
+          req as unknown as GitGetCommitRequest,
           res as GitGetCommitResponse,
           next
         );
@@ -60091,7 +60512,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GitListMatchingRefsRequest,
+          req as unknown as GitListMatchingRefsRequest,
           res as GitListMatchingRefsResponse,
           next
         );
@@ -60125,7 +60546,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GitGetRefRequest,
+          req as unknown as GitGetRefRequest,
           res as GitGetRefResponse,
           next
         );
@@ -60172,7 +60593,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GitCreateRefRequest,
+          req as unknown as GitCreateRefRequest,
           res as GitCreateRefResponse,
           next
         );
@@ -60223,7 +60644,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GitUpdateRefRequest,
+          req as unknown as GitUpdateRefRequest,
           res as GitUpdateRefResponse,
           next
         );
@@ -60257,7 +60678,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GitDeleteRefRequest,
+          req as unknown as GitDeleteRefRequest,
           res as GitDeleteRefResponse,
           next
         );
@@ -60332,7 +60753,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GitCreateTagRequest,
+          req as unknown as GitCreateTagRequest,
           res as GitCreateTagResponse,
           next
         );
@@ -60368,7 +60789,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GitGetTagRequest,
+          req as unknown as GitGetTagRequest,
           res as GitGetTagResponse,
           next
         );
@@ -60446,7 +60867,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GitCreateTreeRequest,
+          req as unknown as GitCreateTreeRequest,
           res as GitCreateTreeResponse,
           next
         );
@@ -60487,7 +60908,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GitGetTreeRequest,
+          req as unknown as GitGetTreeRequest,
           res as GitGetTreeResponse,
           next
         );
@@ -60525,7 +60946,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListWebhooksRequest,
+          req as unknown as ReposListWebhooksRequest,
           res as ReposListWebhooksResponse,
           next
         );
@@ -60633,7 +61054,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposCreateWebhookRequest,
+          req as unknown as ReposCreateWebhookRequest,
           res as ReposCreateWebhookResponse,
           next
         );
@@ -60669,7 +61090,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetWebhookRequest,
+          req as unknown as ReposGetWebhookRequest,
           res as ReposGetWebhookResponse,
           next
         );
@@ -60789,7 +61210,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposUpdateWebhookRequest,
+          req as unknown as ReposUpdateWebhookRequest,
           res as ReposUpdateWebhookResponse,
           next
         );
@@ -60825,7 +61246,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposDeleteWebhookRequest,
+          req as unknown as ReposDeleteWebhookRequest,
           res as ReposDeleteWebhookResponse,
           next
         );
@@ -60861,7 +61282,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetWebhookConfigForRepoRequest,
+          req as unknown as ReposGetWebhookConfigForRepoRequest,
           res as ReposGetWebhookConfigForRepoResponse,
           next
         );
@@ -60943,7 +61364,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposUpdateWebhookConfigForRepoRequest,
+          req as unknown as ReposUpdateWebhookConfigForRepoRequest,
           res as ReposUpdateWebhookConfigForRepoResponse,
           next
         );
@@ -60987,7 +61408,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListWebhookDeliveriesRequest,
+          req as unknown as ReposListWebhookDeliveriesRequest,
           res as ReposListWebhookDeliveriesResponse,
           next
         );
@@ -61026,7 +61447,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetWebhookDeliveryRequest,
+          req as unknown as ReposGetWebhookDeliveryRequest,
           res as ReposGetWebhookDeliveryResponse,
           next
         );
@@ -61065,7 +61486,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposRedeliverWebhookDeliveryRequest,
+          req as unknown as ReposRedeliverWebhookDeliveryRequest,
           res as ReposRedeliverWebhookDeliveryResponse,
           next
         );
@@ -61101,7 +61522,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposPingWebhookRequest,
+          req as unknown as ReposPingWebhookRequest,
           res as ReposPingWebhookResponse,
           next
         );
@@ -61137,7 +61558,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposTestPushWebhookRequest,
+          req as unknown as ReposTestPushWebhookRequest,
           res as ReposTestPushWebhookResponse,
           next
         );
@@ -61167,7 +61588,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as MigrationsGetImportStatusRequest,
+          req as unknown as MigrationsGetImportStatusRequest,
           res as MigrationsGetImportStatusResponse,
           next
         );
@@ -61229,7 +61650,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as MigrationsStartImportRequest,
+          req as unknown as MigrationsStartImportRequest,
           res as MigrationsStartImportResponse,
           next
         );
@@ -61289,7 +61710,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as MigrationsUpdateImportRequest,
+          req as unknown as MigrationsUpdateImportRequest,
           res as MigrationsUpdateImportResponse,
           next
         );
@@ -61319,7 +61740,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as MigrationsCancelImportRequest,
+          req as unknown as MigrationsCancelImportRequest,
           res as MigrationsCancelImportResponse,
           next
         );
@@ -61356,7 +61777,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as MigrationsGetCommitAuthorsRequest,
+          req as unknown as MigrationsGetCommitAuthorsRequest,
           res as MigrationsGetCommitAuthorsResponse,
           next
         );
@@ -61401,7 +61822,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as MigrationsMapCommitAuthorRequest,
+          req as unknown as MigrationsMapCommitAuthorRequest,
           res as MigrationsMapCommitAuthorResponse,
           next
         );
@@ -61433,7 +61854,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as MigrationsGetLargeFilesRequest,
+          req as unknown as MigrationsGetLargeFilesRequest,
           res as MigrationsGetLargeFilesResponse,
           next
         );
@@ -61476,7 +61897,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as MigrationsSetLfsPreferenceRequest,
+          req as unknown as MigrationsSetLfsPreferenceRequest,
           res as MigrationsSetLfsPreferenceResponse,
           next
         );
@@ -61506,7 +61927,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsGetRepoInstallationRequest,
+          req as unknown as AppsGetRepoInstallationRequest,
           res as AppsGetRepoInstallationResponse,
           next
         );
@@ -61538,7 +61959,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as InteractionsGetRestrictionsForRepoRequest,
+          req as unknown as InteractionsGetRestrictionsForRepoRequest,
           res as InteractionsGetRestrictionsForRepoResponse,
           next
         );
@@ -61609,7 +62030,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as InteractionsSetRestrictionsForRepoRequest,
+          req as unknown as InteractionsSetRestrictionsForRepoRequest,
           res as InteractionsSetRestrictionsForRepoResponse,
           next
         );
@@ -61641,7 +62062,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as InteractionsRemoveRestrictionsForRepoRequest,
+          req as unknown as InteractionsRemoveRestrictionsForRepoRequest,
           res as InteractionsRemoveRestrictionsForRepoResponse,
           next
         );
@@ -61679,7 +62100,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListInvitationsRequest,
+          req as unknown as ReposListInvitationsRequest,
           res as ReposListInvitationsResponse,
           next
         );
@@ -61729,7 +62150,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposUpdateInvitationRequest,
+          req as unknown as ReposUpdateInvitationRequest,
           res as ReposUpdateInvitationResponse,
           next
         );
@@ -61767,7 +62188,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposDeleteInvitationRequest,
+          req as unknown as ReposDeleteInvitationRequest,
           res as ReposDeleteInvitationResponse,
           next
         );
@@ -61822,7 +62243,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesListForRepoRequest,
+          req as unknown as IssuesListForRepoRequest,
           res as IssuesListForRepoResponse,
           next
         );
@@ -61906,7 +62327,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesCreateRequest,
+          req as unknown as IssuesCreateRequest,
           res as IssuesCreateResponse,
           next
         );
@@ -61953,7 +62374,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesListCommentsForRepoRequest,
+          req as unknown as IssuesListCommentsForRepoRequest,
           res as IssuesListCommentsForRepoResponse,
           next
         );
@@ -61991,7 +62412,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesGetCommentRequest,
+          req as unknown as IssuesGetCommentRequest,
           res as IssuesGetCommentResponse,
           next
         );
@@ -62037,7 +62458,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesUpdateCommentRequest,
+          req as unknown as IssuesUpdateCommentRequest,
           res as IssuesUpdateCommentResponse,
           next
         );
@@ -62075,7 +62496,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesDeleteCommentRequest,
+          req as unknown as IssuesDeleteCommentRequest,
           res as IssuesDeleteCommentResponse,
           next
         );
@@ -62134,7 +62555,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReactionsListForIssueCommentRequest,
+          req as unknown as ReactionsListForIssueCommentRequest,
           res as ReactionsListForIssueCommentResponse,
           next
         );
@@ -62194,7 +62615,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReactionsCreateForIssueCommentRequest,
+          req as unknown as ReactionsCreateForIssueCommentRequest,
           res as ReactionsCreateForIssueCommentResponse,
           next
         );
@@ -62233,7 +62654,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReactionsDeleteForIssueCommentRequest,
+          req as unknown as ReactionsDeleteForIssueCommentRequest,
           res as ReactionsDeleteForIssueCommentResponse,
           next
         );
@@ -62271,7 +62692,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesListEventsForRepoRequest,
+          req as unknown as IssuesListEventsForRepoRequest,
           res as IssuesListEventsForRepoResponse,
           next
         );
@@ -62307,7 +62728,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesGetEventRequest,
+          req as unknown as IssuesGetEventRequest,
           res as IssuesGetEventResponse,
           next
         );
@@ -62343,7 +62764,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesGetRequest,
+          req as unknown as IssuesGetRequest,
           res as IssuesGetResponse,
           next
         );
@@ -62449,7 +62870,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesUpdateRequest,
+          req as unknown as IssuesUpdateRequest,
           res as IssuesUpdateResponse,
           next
         );
@@ -62499,7 +62920,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesAddAssigneesRequest,
+          req as unknown as IssuesAddAssigneesRequest,
           res as IssuesAddAssigneesResponse,
           next
         );
@@ -62549,7 +62970,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesRemoveAssigneesRequest,
+          req as unknown as IssuesRemoveAssigneesRequest,
           res as IssuesRemoveAssigneesResponse,
           next
         );
@@ -62596,7 +63017,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesListCommentsRequest,
+          req as unknown as IssuesListCommentsRequest,
           res as IssuesListCommentsResponse,
           next
         );
@@ -62642,7 +63063,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesCreateCommentRequest,
+          req as unknown as IssuesCreateCommentRequest,
           res as IssuesCreateCommentResponse,
           next
         );
@@ -62688,7 +63109,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesListEventsRequest,
+          req as unknown as IssuesListEventsRequest,
           res as IssuesListEventsResponse,
           next
         );
@@ -62734,7 +63155,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesListLabelsOnIssueRequest,
+          req as unknown as IssuesListLabelsOnIssueRequest,
           res as IssuesListLabelsOnIssueResponse,
           next
         );
@@ -62814,7 +63235,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesAddLabelsRequest,
+          req as unknown as IssuesAddLabelsRequest,
           res as IssuesAddLabelsResponse,
           next
         );
@@ -62894,7 +63315,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesSetLabelsRequest,
+          req as unknown as IssuesSetLabelsRequest,
           res as IssuesSetLabelsResponse,
           next
         );
@@ -62932,7 +63353,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesRemoveAllLabelsRequest,
+          req as unknown as IssuesRemoveAllLabelsRequest,
           res as IssuesRemoveAllLabelsResponse,
           next
         );
@@ -62971,7 +63392,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesRemoveLabelRequest,
+          req as unknown as IssuesRemoveLabelRequest,
           res as IssuesRemoveLabelResponse,
           next
         );
@@ -63020,7 +63441,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesLockRequest,
+          req as unknown as IssuesLockRequest,
           res as IssuesLockResponse,
           next
         );
@@ -63056,7 +63477,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesUnlockRequest,
+          req as unknown as IssuesUnlockRequest,
           res as IssuesUnlockResponse,
           next
         );
@@ -63115,7 +63536,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReactionsListForIssueRequest,
+          req as unknown as ReactionsListForIssueRequest,
           res as ReactionsListForIssueResponse,
           next
         );
@@ -63175,7 +63596,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReactionsCreateForIssueRequest,
+          req as unknown as ReactionsCreateForIssueRequest,
           res as ReactionsCreateForIssueResponse,
           next
         );
@@ -63214,7 +63635,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReactionsDeleteForIssueRequest,
+          req as unknown as ReactionsDeleteForIssueRequest,
           res as ReactionsDeleteForIssueResponse,
           next
         );
@@ -63260,7 +63681,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesListEventsForTimelineRequest,
+          req as unknown as IssuesListEventsForTimelineRequest,
           res as IssuesListEventsForTimelineResponse,
           next
         );
@@ -63298,7 +63719,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListDeployKeysRequest,
+          req as unknown as ReposListDeployKeysRequest,
           res as ReposListDeployKeysResponse,
           next
         );
@@ -63342,7 +63763,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposCreateDeployKeyRequest,
+          req as unknown as ReposCreateDeployKeyRequest,
           res as ReposCreateDeployKeyResponse,
           next
         );
@@ -63376,7 +63797,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetDeployKeyRequest,
+          req as unknown as ReposGetDeployKeyRequest,
           res as ReposGetDeployKeyResponse,
           next
         );
@@ -63410,7 +63831,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposDeleteDeployKeyRequest,
+          req as unknown as ReposDeleteDeployKeyRequest,
           res as ReposDeleteDeployKeyResponse,
           next
         );
@@ -63448,7 +63869,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesListLabelsForRepoRequest,
+          req as unknown as IssuesListLabelsForRepoRequest,
           res as IssuesListLabelsForRepoResponse,
           next
         );
@@ -63500,7 +63921,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesCreateLabelRequest,
+          req as unknown as IssuesCreateLabelRequest,
           res as IssuesCreateLabelResponse,
           next
         );
@@ -63534,7 +63955,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesGetLabelRequest,
+          req as unknown as IssuesGetLabelRequest,
           res as IssuesGetLabelResponse,
           next
         );
@@ -63589,7 +64010,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesUpdateLabelRequest,
+          req as unknown as IssuesUpdateLabelRequest,
           res as IssuesUpdateLabelResponse,
           next
         );
@@ -63623,7 +64044,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesDeleteLabelRequest,
+          req as unknown as IssuesDeleteLabelRequest,
           res as IssuesDeleteLabelResponse,
           next
         );
@@ -63653,7 +64074,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListLanguagesRequest,
+          req as unknown as ReposListLanguagesRequest,
           res as ReposListLanguagesResponse,
           next
         );
@@ -63683,7 +64104,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposEnableLfsForRepoRequest,
+          req as unknown as ReposEnableLfsForRepoRequest,
           res as ReposEnableLfsForRepoResponse,
           next
         );
@@ -63713,7 +64134,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposDisableLfsForRepoRequest,
+          req as unknown as ReposDisableLfsForRepoRequest,
           res as ReposDisableLfsForRepoResponse,
           next
         );
@@ -63743,7 +64164,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as LicensesGetForRepoRequest,
+          req as unknown as LicensesGetForRepoRequest,
           res as LicensesGetForRepoResponse,
           next
         );
@@ -63787,7 +64208,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposMergeUpstreamRequest,
+          req as unknown as ReposMergeUpstreamRequest,
           res as ReposMergeUpstreamResponse,
           next
         );
@@ -63839,7 +64260,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposMergeRequest,
+          req as unknown as ReposMergeRequest,
           res as ReposMergeResponse,
           next
         );
@@ -63888,7 +64309,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesListMilestonesRequest,
+          req as unknown as IssuesListMilestonesRequest,
           res as IssuesListMilestonesResponse,
           next
         );
@@ -63943,7 +64364,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesCreateMilestoneRequest,
+          req as unknown as IssuesCreateMilestoneRequest,
           res as IssuesCreateMilestoneResponse,
           next
         );
@@ -63981,7 +64402,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesGetMilestoneRequest,
+          req as unknown as IssuesGetMilestoneRequest,
           res as IssuesGetMilestoneResponse,
           next
         );
@@ -64043,7 +64464,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesUpdateMilestoneRequest,
+          req as unknown as IssuesUpdateMilestoneRequest,
           res as IssuesUpdateMilestoneResponse,
           next
         );
@@ -64081,7 +64502,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesDeleteMilestoneRequest,
+          req as unknown as IssuesDeleteMilestoneRequest,
           res as IssuesDeleteMilestoneResponse,
           next
         );
@@ -64127,7 +64548,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesListLabelsForMilestoneRequest,
+          req as unknown as IssuesListLabelsForMilestoneRequest,
           res as IssuesListLabelsForMilestoneResponse,
           next
         );
@@ -64170,7 +64591,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityListRepoNotificationsForAuthenticatedUserRequest,
+          req as unknown as ActivityListRepoNotificationsForAuthenticatedUserRequest,
           res as ActivityListRepoNotificationsForAuthenticatedUserResponse,
           next
         );
@@ -64212,7 +64633,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityMarkRepoNotificationsAsReadRequest,
+          req as unknown as ActivityMarkRepoNotificationsAsReadRequest,
           res as ActivityMarkRepoNotificationsAsReadResponse,
           next
         );
@@ -64242,7 +64663,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetPagesRequest,
+          req as unknown as ReposGetPagesRequest,
           res as ReposGetPagesResponse,
           next
         );
@@ -64308,7 +64729,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposCreatePagesSiteRequest,
+          req as unknown as ReposCreatePagesSiteRequest,
           res as ReposCreatePagesSiteResponse,
           next
         );
@@ -64402,7 +64823,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposUpdateInformationAboutPagesSiteRequest,
+          req as unknown as ReposUpdateInformationAboutPagesSiteRequest,
           res as ReposUpdateInformationAboutPagesSiteResponse,
           next
         );
@@ -64432,7 +64853,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposDeletePagesSiteRequest,
+          req as unknown as ReposDeletePagesSiteRequest,
           res as ReposDeletePagesSiteResponse,
           next
         );
@@ -64470,7 +64891,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListPagesBuildsRequest,
+          req as unknown as ReposListPagesBuildsRequest,
           res as ReposListPagesBuildsResponse,
           next
         );
@@ -64500,7 +64921,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposRequestPagesBuildRequest,
+          req as unknown as ReposRequestPagesBuildRequest,
           res as ReposRequestPagesBuildResponse,
           next
         );
@@ -64532,7 +64953,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetLatestPagesBuildRequest,
+          req as unknown as ReposGetLatestPagesBuildRequest,
           res as ReposGetLatestPagesBuildResponse,
           next
         );
@@ -64568,7 +64989,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetPagesBuildRequest,
+          req as unknown as ReposGetPagesBuildRequest,
           res as ReposGetPagesBuildResponse,
           next
         );
@@ -64630,7 +65051,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposCreatePagesDeploymentRequest,
+          req as unknown as ReposCreatePagesDeploymentRequest,
           res as ReposCreatePagesDeploymentResponse,
           next
         );
@@ -64660,7 +65081,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetPagesHealthCheckRequest,
+          req as unknown as ReposGetPagesHealthCheckRequest,
           res as ReposGetPagesHealthCheckResponse,
           next
         );
@@ -64703,7 +65124,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ProjectsListForRepoRequest,
+          req as unknown as ProjectsListForRepoRequest,
           res as ProjectsListForRepoResponse,
           next
         );
@@ -64745,7 +65166,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ProjectsCreateForRepoRequest,
+          req as unknown as ProjectsCreateForRepoRequest,
           res as ProjectsCreateForRepoResponse,
           next
         );
@@ -64796,7 +65217,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PullsListRequest,
+          req as unknown as PullsListRequest,
           res as PullsListResponse,
           next
         );
@@ -64868,7 +65289,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PullsCreateRequest,
+          req as unknown as PullsCreateRequest,
           res as PullsCreateResponse,
           next
         );
@@ -64911,7 +65332,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PullsListReviewCommentsForRepoRequest,
+          req as unknown as PullsListReviewCommentsForRepoRequest,
           res as PullsListReviewCommentsForRepoResponse,
           next
         );
@@ -64949,7 +65370,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PullsGetReviewCommentRequest,
+          req as unknown as PullsGetReviewCommentRequest,
           res as PullsGetReviewCommentResponse,
           next
         );
@@ -64998,7 +65419,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PullsUpdateReviewCommentRequest,
+          req as unknown as PullsUpdateReviewCommentRequest,
           res as PullsUpdateReviewCommentResponse,
           next
         );
@@ -65036,7 +65457,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PullsDeleteReviewCommentRequest,
+          req as unknown as PullsDeleteReviewCommentRequest,
           res as PullsDeleteReviewCommentResponse,
           next
         );
@@ -65095,7 +65516,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReactionsListForPullRequestReviewCommentRequest,
+          req as unknown as ReactionsListForPullRequestReviewCommentRequest,
           res as ReactionsListForPullRequestReviewCommentResponse,
           next
         );
@@ -65155,7 +65576,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReactionsCreateForPullRequestReviewCommentRequest,
+          req as unknown as ReactionsCreateForPullRequestReviewCommentRequest,
           res as ReactionsCreateForPullRequestReviewCommentResponse,
           next
         );
@@ -65194,7 +65615,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReactionsDeleteForPullRequestCommentRequest,
+          req as unknown as ReactionsDeleteForPullRequestCommentRequest,
           res as ReactionsDeleteForPullRequestCommentResponse,
           next
         );
@@ -65230,7 +65651,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PullsGetRequest,
+          req as unknown as PullsGetRequest,
           res as PullsGetResponse,
           next
         );
@@ -65296,7 +65717,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PullsUpdateRequest,
+          req as unknown as PullsUpdateRequest,
           res as PullsUpdateResponse,
           next
         );
@@ -65383,7 +65804,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesCreateWithPrForAuthenticatedUserRequest,
+          req as unknown as CodespacesCreateWithPrForAuthenticatedUserRequest,
           res as CodespacesCreateWithPrForAuthenticatedUserResponse,
           next
         );
@@ -65436,7 +65857,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PullsListReviewCommentsRequest,
+          req as unknown as PullsListReviewCommentsRequest,
           res as PullsListReviewCommentsResponse,
           next
         );
@@ -65530,7 +65951,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PullsCreateReviewCommentRequest,
+          req as unknown as PullsCreateReviewCommentRequest,
           res as PullsCreateReviewCommentResponse,
           next
         );
@@ -65580,7 +66001,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PullsCreateReplyForReviewCommentRequest,
+          req as unknown as PullsCreateReplyForReviewCommentRequest,
           res as PullsCreateReplyForReviewCommentResponse,
           next
         );
@@ -65626,7 +66047,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PullsListCommitsRequest,
+          req as unknown as PullsListCommitsRequest,
           res as PullsListCommitsResponse,
           next
         );
@@ -65670,7 +66091,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PullsListFilesRequest,
+          req as unknown as PullsListFilesRequest,
           res as PullsListFilesResponse,
           next
         );
@@ -65706,7 +66127,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PullsCheckIfMergedRequest,
+          req as unknown as PullsCheckIfMergedRequest,
           res as PullsCheckIfMergedResponse,
           next
         );
@@ -65766,7 +66187,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PullsMergeRequest,
+          req as unknown as PullsMergeRequest,
           res as PullsMergeResponse,
           next
         );
@@ -65804,7 +66225,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PullsListRequestedReviewersRequest,
+          req as unknown as PullsListRequestedReviewersRequest,
           res as PullsListRequestedReviewersResponse,
           next
         );
@@ -65859,7 +66280,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PullsRequestReviewersRequest,
+          req as unknown as PullsRequestReviewersRequest,
           res as PullsRequestReviewersResponse,
           next
         );
@@ -65914,7 +66335,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PullsRemoveRequestedReviewersRequest,
+          req as unknown as PullsRemoveRequestedReviewersRequest,
           res as PullsRemoveRequestedReviewersResponse,
           next
         );
@@ -65960,7 +66381,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PullsListReviewsRequest,
+          req as unknown as PullsListReviewsRequest,
           res as PullsListReviewsResponse,
           next
         );
@@ -66049,7 +66470,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PullsCreateReviewRequest,
+          req as unknown as PullsCreateReviewRequest,
           res as PullsCreateReviewResponse,
           next
         );
@@ -66088,7 +66509,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PullsGetReviewRequest,
+          req as unknown as PullsGetReviewRequest,
           res as PullsGetReviewResponse,
           next
         );
@@ -66138,7 +66559,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PullsUpdateReviewRequest,
+          req as unknown as PullsUpdateReviewRequest,
           res as PullsUpdateReviewResponse,
           next
         );
@@ -66177,7 +66598,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PullsDeletePendingReviewRequest,
+          req as unknown as PullsDeletePendingReviewRequest,
           res as PullsDeletePendingReviewResponse,
           next
         );
@@ -66224,7 +66645,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PullsListCommentsForReviewRequest,
+          req as unknown as PullsListCommentsForReviewRequest,
           res as PullsListCommentsForReviewResponse,
           next
         );
@@ -66275,7 +66696,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PullsDismissReviewRequest,
+          req as unknown as PullsDismissReviewRequest,
           res as PullsDismissReviewResponse,
           next
         );
@@ -66331,7 +66752,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PullsSubmitReviewRequest,
+          req as unknown as PullsSubmitReviewRequest,
           res as PullsSubmitReviewResponse,
           next
         );
@@ -66381,7 +66802,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PullsUpdateBranchRequest,
+          req as unknown as PullsUpdateBranchRequest,
           res as PullsUpdateBranchResponse,
           next
         );
@@ -66416,7 +66837,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetReadmeRequest,
+          req as unknown as ReposGetReadmeRequest,
           res as ReposGetReadmeResponse,
           next
         );
@@ -66455,7 +66876,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetReadmeInDirectoryRequest,
+          req as unknown as ReposGetReadmeInDirectoryRequest,
           res as ReposGetReadmeInDirectoryResponse,
           next
         );
@@ -66493,7 +66914,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListReleasesRequest,
+          req as unknown as ReposListReleasesRequest,
           res as ReposListReleasesResponse,
           next
         );
@@ -66564,7 +66985,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposCreateReleaseRequest,
+          req as unknown as ReposCreateReleaseRequest,
           res as ReposCreateReleaseResponse,
           next
         );
@@ -66600,7 +67021,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetReleaseAssetRequest,
+          req as unknown as ReposGetReleaseAssetRequest,
           res as ReposGetReleaseAssetResponse,
           next
         );
@@ -66649,7 +67070,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposUpdateReleaseAssetRequest,
+          req as unknown as ReposUpdateReleaseAssetRequest,
           res as ReposUpdateReleaseAssetResponse,
           next
         );
@@ -66685,7 +67106,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposDeleteReleaseAssetRequest,
+          req as unknown as ReposDeleteReleaseAssetRequest,
           res as ReposDeleteReleaseAssetResponse,
           next
         );
@@ -66744,7 +67165,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGenerateReleaseNotesRequest,
+          req as unknown as ReposGenerateReleaseNotesRequest,
           res as ReposGenerateReleaseNotesResponse,
           next
         );
@@ -66776,7 +67197,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetLatestReleaseRequest,
+          req as unknown as ReposGetLatestReleaseRequest,
           res as ReposGetLatestReleaseResponse,
           next
         );
@@ -66812,7 +67233,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetReleaseByTagRequest,
+          req as unknown as ReposGetReleaseByTagRequest,
           res as ReposGetReleaseByTagResponse,
           next
         );
@@ -66848,7 +67269,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetReleaseRequest,
+          req as unknown as ReposGetReleaseRequest,
           res as ReposGetReleaseResponse,
           next
         );
@@ -66916,7 +67337,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposUpdateReleaseRequest,
+          req as unknown as ReposUpdateReleaseRequest,
           res as ReposUpdateReleaseResponse,
           next
         );
@@ -66952,7 +67373,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposDeleteReleaseRequest,
+          req as unknown as ReposDeleteReleaseRequest,
           res as ReposDeleteReleaseResponse,
           next
         );
@@ -66998,7 +67419,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListReleaseAssetsRequest,
+          req as unknown as ReposListReleaseAssetsRequest,
           res as ReposListReleaseAssetsResponse,
           next
         );
@@ -67041,7 +67462,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposUploadReleaseAssetRequest,
+          req as unknown as ReposUploadReleaseAssetRequest,
           res as ReposUploadReleaseAssetResponse,
           next
         );
@@ -67091,7 +67512,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReactionsListForReleaseRequest,
+          req as unknown as ReactionsListForReleaseRequest,
           res as ReactionsListForReleaseResponse,
           next
         );
@@ -67142,7 +67563,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReactionsCreateForReleaseRequest,
+          req as unknown as ReactionsCreateForReleaseRequest,
           res as ReactionsCreateForReleaseResponse,
           next
         );
@@ -67181,7 +67602,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReactionsDeleteForReleaseRequest,
+          req as unknown as ReactionsDeleteForReleaseRequest,
           res as ReactionsDeleteForReleaseResponse,
           next
         );
@@ -67232,7 +67653,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as SecretScanningListAlertsForRepoRequest,
+          req as unknown as SecretScanningListAlertsForRepoRequest,
           res as SecretScanningListAlertsForRepoResponse,
           next
         );
@@ -67278,7 +67699,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as SecretScanningGetAlertRequest,
+          req as unknown as SecretScanningGetAlertRequest,
           res as SecretScanningGetAlertResponse,
           next
         );
@@ -67368,7 +67789,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as SecretScanningUpdateAlertRequest,
+          req as unknown as SecretScanningUpdateAlertRequest,
           res as SecretScanningUpdateAlertResponse,
           next
         );
@@ -67422,7 +67843,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as SecretScanningListLocationsForAlertRequest,
+          req as unknown as SecretScanningListLocationsForAlertRequest,
           res as SecretScanningListLocationsForAlertResponse,
           next
         );
@@ -67460,7 +67881,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityListStargazersForRepoRequest,
+          req as unknown as ActivityListStargazersForRepoRequest,
           res as ActivityListStargazersForRepoResponse,
           next
         );
@@ -67492,7 +67913,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetCodeFrequencyStatsRequest,
+          req as unknown as ReposGetCodeFrequencyStatsRequest,
           res as ReposGetCodeFrequencyStatsResponse,
           next
         );
@@ -67524,7 +67945,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetCommitActivityStatsRequest,
+          req as unknown as ReposGetCommitActivityStatsRequest,
           res as ReposGetCommitActivityStatsResponse,
           next
         );
@@ -67556,7 +67977,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetContributorsStatsRequest,
+          req as unknown as ReposGetContributorsStatsRequest,
           res as ReposGetContributorsStatsResponse,
           next
         );
@@ -67588,7 +68009,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetParticipationStatsRequest,
+          req as unknown as ReposGetParticipationStatsRequest,
           res as ReposGetParticipationStatsResponse,
           next
         );
@@ -67620,7 +68041,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetPunchCardStatsRequest,
+          req as unknown as ReposGetPunchCardStatsRequest,
           res as ReposGetPunchCardStatsResponse,
           next
         );
@@ -67683,7 +68104,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposCreateCommitStatusRequest,
+          req as unknown as ReposCreateCommitStatusRequest,
           res as ReposCreateCommitStatusResponse,
           next
         );
@@ -67721,7 +68142,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityListWatchersForRepoRequest,
+          req as unknown as ActivityListWatchersForRepoRequest,
           res as ActivityListWatchersForRepoResponse,
           next
         );
@@ -67751,7 +68172,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityGetRepoSubscriptionRequest,
+          req as unknown as ActivityGetRepoSubscriptionRequest,
           res as ActivityGetRepoSubscriptionResponse,
           next
         );
@@ -67797,7 +68218,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivitySetRepoSubscriptionRequest,
+          req as unknown as ActivitySetRepoSubscriptionRequest,
           res as ActivitySetRepoSubscriptionResponse,
           next
         );
@@ -67827,7 +68248,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityDeleteRepoSubscriptionRequest,
+          req as unknown as ActivityDeleteRepoSubscriptionRequest,
           res as ActivityDeleteRepoSubscriptionResponse,
           next
         );
@@ -67865,7 +68286,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListTagsRequest,
+          req as unknown as ReposListTagsRequest,
           res as ReposListTagsResponse,
           next
         );
@@ -67897,7 +68318,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListTagProtectionRequest,
+          req as unknown as ReposListTagProtectionRequest,
           res as ReposListTagProtectionResponse,
           next
         );
@@ -67941,7 +68362,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposCreateTagProtectionRequest,
+          req as unknown as ReposCreateTagProtectionRequest,
           res as ReposCreateTagProtectionResponse,
           next
         );
@@ -67979,7 +68400,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposDeleteTagProtectionRequest,
+          req as unknown as ReposDeleteTagProtectionRequest,
           res as ReposDeleteTagProtectionResponse,
           next
         );
@@ -68013,7 +68434,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposDownloadTarballArchiveRequest,
+          req as unknown as ReposDownloadTarballArchiveRequest,
           res as ReposDownloadTarballArchiveResponse,
           next
         );
@@ -68051,7 +68472,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListTeamsRequest,
+          req as unknown as ReposListTeamsRequest,
           res as ReposListTeamsResponse,
           next
         );
@@ -68089,7 +68510,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetAllTopicsRequest,
+          req as unknown as ReposGetAllTopicsRequest,
           res as ReposGetAllTopicsResponse,
           next
         );
@@ -68132,7 +68553,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposReplaceAllTopicsRequest,
+          req as unknown as ReposReplaceAllTopicsRequest,
           res as ReposReplaceAllTopicsResponse,
           next
         );
@@ -68171,7 +68592,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetClonesRequest,
+          req as unknown as ReposGetClonesRequest,
           res as ReposGetClonesResponse,
           next
         );
@@ -68203,7 +68624,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetTopPathsRequest,
+          req as unknown as ReposGetTopPathsRequest,
           res as ReposGetTopPathsResponse,
           next
         );
@@ -68235,7 +68656,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetTopReferrersRequest,
+          req as unknown as ReposGetTopReferrersRequest,
           res as ReposGetTopReferrersResponse,
           next
         );
@@ -68272,7 +68693,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposGetViewsRequest,
+          req as unknown as ReposGetViewsRequest,
           res as ReposGetViewsResponse,
           next
         );
@@ -68320,7 +68741,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposTransferRequest,
+          req as unknown as ReposTransferRequest,
           res as ReposTransferResponse,
           next
         );
@@ -68352,7 +68773,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposCheckVulnerabilityAlertsRequest,
+          req as unknown as ReposCheckVulnerabilityAlertsRequest,
           res as ReposCheckVulnerabilityAlertsResponse,
           next
         );
@@ -68384,7 +68805,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposEnableVulnerabilityAlertsRequest,
+          req as unknown as ReposEnableVulnerabilityAlertsRequest,
           res as ReposEnableVulnerabilityAlertsResponse,
           next
         );
@@ -68416,7 +68837,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposDisableVulnerabilityAlertsRequest,
+          req as unknown as ReposDisableVulnerabilityAlertsRequest,
           res as ReposDisableVulnerabilityAlertsResponse,
           next
         );
@@ -68450,7 +68871,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposDownloadZipballArchiveRequest,
+          req as unknown as ReposDownloadZipballArchiveRequest,
           res as ReposDownloadZipballArchiveResponse,
           next
         );
@@ -68519,7 +68940,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposCreateUsingTemplateRequest,
+          req as unknown as ReposCreateUsingTemplateRequest,
           res as ReposCreateUsingTemplateResponse,
           next
         );
@@ -68549,7 +68970,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListPublicRequest,
+          req as unknown as ReposListPublicRequest,
           res as ReposListPublicResponse,
           next
         );
@@ -68594,7 +69015,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsListEnvironmentSecretsRequest,
+          req as unknown as ActionsListEnvironmentSecretsRequest,
           res as ActionsListEnvironmentSecretsResponse,
           next
         );
@@ -68631,7 +69052,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetEnvironmentPublicKeyRequest,
+          req as unknown as ActionsGetEnvironmentPublicKeyRequest,
           res as ActionsGetEnvironmentPublicKeyResponse,
           next
         );
@@ -68669,7 +69090,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsGetEnvironmentSecretRequest,
+          req as unknown as ActionsGetEnvironmentSecretRequest,
           res as ActionsGetEnvironmentSecretResponse,
           next
         );
@@ -68725,7 +69146,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsCreateOrUpdateEnvironmentSecretRequest,
+          req as unknown as ActionsCreateOrUpdateEnvironmentSecretRequest,
           res as ActionsCreateOrUpdateEnvironmentSecretResponse,
           next
         );
@@ -68763,7 +69184,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActionsDeleteEnvironmentSecretRequest,
+          req as unknown as ActionsDeleteEnvironmentSecretRequest,
           res as ActionsDeleteEnvironmentSecretResponse,
           next
         );
@@ -68799,7 +69220,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as SearchCodeRequest,
+          req as unknown as SearchCodeRequest,
           res as SearchCodeResponse,
           next
         );
@@ -68835,7 +69256,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as SearchCommitsRequest,
+          req as unknown as SearchCommitsRequest,
           res as SearchCommitsResponse,
           next
         );
@@ -68886,7 +69307,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as SearchIssuesAndPullRequestsRequest,
+          req as unknown as SearchIssuesAndPullRequestsRequest,
           res as SearchIssuesAndPullRequestsResponse,
           next
         );
@@ -68923,7 +69344,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as SearchLabelsRequest,
+          req as unknown as SearchLabelsRequest,
           res as SearchLabelsResponse,
           next
         );
@@ -68962,7 +69383,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as SearchReposRequest,
+          req as unknown as SearchReposRequest,
           res as SearchReposResponse,
           next
         );
@@ -68996,7 +69417,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as SearchTopicsRequest,
+          req as unknown as SearchTopicsRequest,
           res as SearchTopicsResponse,
           next
         );
@@ -69035,7 +69456,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as SearchUsersRequest,
+          req as unknown as SearchUsersRequest,
           res as SearchUsersResponse,
           next
         );
@@ -69065,7 +69486,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsGetLegacyRequest,
+          req as unknown as TeamsGetLegacyRequest,
           res as TeamsGetLegacyResponse,
           next
         );
@@ -69125,7 +69546,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsUpdateLegacyRequest,
+          req as unknown as TeamsUpdateLegacyRequest,
           res as TeamsUpdateLegacyResponse,
           next
         );
@@ -69155,7 +69576,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsDeleteLegacyRequest,
+          req as unknown as TeamsDeleteLegacyRequest,
           res as TeamsDeleteLegacyResponse,
           next
         );
@@ -69194,7 +69615,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsListDiscussionsLegacyRequest,
+          req as unknown as TeamsListDiscussionsLegacyRequest,
           res as TeamsListDiscussionsLegacyResponse,
           next
         );
@@ -69245,7 +69666,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsCreateDiscussionLegacyRequest,
+          req as unknown as TeamsCreateDiscussionLegacyRequest,
           res as TeamsCreateDiscussionLegacyResponse,
           next
         );
@@ -69282,7 +69703,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsGetDiscussionLegacyRequest,
+          req as unknown as TeamsGetDiscussionLegacyRequest,
           res as TeamsGetDiscussionLegacyResponse,
           next
         );
@@ -69333,7 +69754,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsUpdateDiscussionLegacyRequest,
+          req as unknown as TeamsUpdateDiscussionLegacyRequest,
           res as TeamsUpdateDiscussionLegacyResponse,
           next
         );
@@ -69370,7 +69791,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsDeleteDiscussionLegacyRequest,
+          req as unknown as TeamsDeleteDiscussionLegacyRequest,
           res as TeamsDeleteDiscussionLegacyResponse,
           next
         );
@@ -69416,7 +69837,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsListDiscussionCommentsLegacyRequest,
+          req as unknown as TeamsListDiscussionCommentsLegacyRequest,
           res as TeamsListDiscussionCommentsLegacyResponse,
           next
         );
@@ -69464,7 +69885,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsCreateDiscussionCommentLegacyRequest,
+          req as unknown as TeamsCreateDiscussionCommentLegacyRequest,
           res as TeamsCreateDiscussionCommentLegacyResponse,
           next
         );
@@ -69502,7 +69923,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsGetDiscussionCommentLegacyRequest,
+          req as unknown as TeamsGetDiscussionCommentLegacyRequest,
           res as TeamsGetDiscussionCommentLegacyResponse,
           next
         );
@@ -69551,7 +69972,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsUpdateDiscussionCommentLegacyRequest,
+          req as unknown as TeamsUpdateDiscussionCommentLegacyRequest,
           res as TeamsUpdateDiscussionCommentLegacyResponse,
           next
         );
@@ -69589,7 +70010,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsDeleteDiscussionCommentLegacyRequest,
+          req as unknown as TeamsDeleteDiscussionCommentLegacyRequest,
           res as TeamsDeleteDiscussionCommentLegacyResponse,
           next
         );
@@ -69648,7 +70069,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReactionsListForTeamDiscussionCommentLegacyRequest,
+          req as unknown as ReactionsListForTeamDiscussionCommentLegacyRequest,
           res as ReactionsListForTeamDiscussionCommentLegacyResponse,
           next
         );
@@ -69708,7 +70129,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReactionsCreateForTeamDiscussionCommentLegacyRequest,
+          req as unknown as ReactionsCreateForTeamDiscussionCommentLegacyRequest,
           res as ReactionsCreateForTeamDiscussionCommentLegacyResponse,
           next
         );
@@ -69766,7 +70187,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReactionsListForTeamDiscussionLegacyRequest,
+          req as unknown as ReactionsListForTeamDiscussionLegacyRequest,
           res as ReactionsListForTeamDiscussionLegacyResponse,
           next
         );
@@ -69825,7 +70246,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReactionsCreateForTeamDiscussionLegacyRequest,
+          req as unknown as ReactionsCreateForTeamDiscussionLegacyRequest,
           res as ReactionsCreateForTeamDiscussionLegacyResponse,
           next
         );
@@ -69863,7 +70284,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsListPendingInvitationsLegacyRequest,
+          req as unknown as TeamsListPendingInvitationsLegacyRequest,
           res as TeamsListPendingInvitationsLegacyResponse,
           next
         );
@@ -69906,7 +70327,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsListMembersLegacyRequest,
+          req as unknown as TeamsListMembersLegacyRequest,
           res as TeamsListMembersLegacyResponse,
           next
         );
@@ -69939,7 +70360,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsGetMemberLegacyRequest,
+          req as unknown as TeamsGetMemberLegacyRequest,
           res as TeamsGetMemberLegacyResponse,
           next
         );
@@ -69972,7 +70393,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsAddMemberLegacyRequest,
+          req as unknown as TeamsAddMemberLegacyRequest,
           res as TeamsAddMemberLegacyResponse,
           next
         );
@@ -70005,7 +70426,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsRemoveMemberLegacyRequest,
+          req as unknown as TeamsRemoveMemberLegacyRequest,
           res as TeamsRemoveMemberLegacyResponse,
           next
         );
@@ -70040,7 +70461,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsGetMembershipForUserLegacyRequest,
+          req as unknown as TeamsGetMembershipForUserLegacyRequest,
           res as TeamsGetMembershipForUserLegacyResponse,
           next
         );
@@ -70087,7 +70508,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsAddOrUpdateMembershipForUserLegacyRequest,
+          req as unknown as TeamsAddOrUpdateMembershipForUserLegacyRequest,
           res as TeamsAddOrUpdateMembershipForUserLegacyResponse,
           next
         );
@@ -70122,7 +70543,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsRemoveMembershipForUserLegacyRequest,
+          req as unknown as TeamsRemoveMembershipForUserLegacyRequest,
           res as TeamsRemoveMembershipForUserLegacyResponse,
           next
         );
@@ -70160,7 +70581,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsListProjectsLegacyRequest,
+          req as unknown as TeamsListProjectsLegacyRequest,
           res as TeamsListProjectsLegacyResponse,
           next
         );
@@ -70195,7 +70616,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsCheckPermissionsForProjectLegacyRequest,
+          req as unknown as TeamsCheckPermissionsForProjectLegacyRequest,
           res as TeamsCheckPermissionsForProjectLegacyResponse,
           next
         );
@@ -70242,7 +70663,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsAddOrUpdateProjectPermissionsLegacyRequest,
+          req as unknown as TeamsAddOrUpdateProjectPermissionsLegacyRequest,
           res as TeamsAddOrUpdateProjectPermissionsLegacyResponse,
           next
         );
@@ -70277,7 +70698,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsRemoveProjectLegacyRequest,
+          req as unknown as TeamsRemoveProjectLegacyRequest,
           res as TeamsRemoveProjectLegacyResponse,
           next
         );
@@ -70315,7 +70736,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsListReposLegacyRequest,
+          req as unknown as TeamsListReposLegacyRequest,
           res as TeamsListReposLegacyResponse,
           next
         );
@@ -70351,7 +70772,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsCheckPermissionsForRepoLegacyRequest,
+          req as unknown as TeamsCheckPermissionsForRepoLegacyRequest,
           res as TeamsCheckPermissionsForRepoLegacyResponse,
           next
         );
@@ -70399,7 +70820,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsAddOrUpdateRepoPermissionsLegacyRequest,
+          req as unknown as TeamsAddOrUpdateRepoPermissionsLegacyRequest,
           res as TeamsAddOrUpdateRepoPermissionsLegacyResponse,
           next
         );
@@ -70435,7 +70856,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsRemoveRepoLegacyRequest,
+          req as unknown as TeamsRemoveRepoLegacyRequest,
           res as TeamsRemoveRepoLegacyResponse,
           next
         );
@@ -70473,7 +70894,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsListChildLegacyRequest,
+          req as unknown as TeamsListChildLegacyRequest,
           res as TeamsListChildLegacyResponse,
           next
         );
@@ -70495,7 +70916,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersGetAuthenticatedRequest,
+          req as unknown as UsersGetAuthenticatedRequest,
           res as UsersGetAuthenticatedResponse,
           next
         );
@@ -70564,7 +70985,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersUpdateAuthenticatedRequest,
+          req as unknown as UsersUpdateAuthenticatedRequest,
           res as UsersUpdateAuthenticatedResponse,
           next
         );
@@ -70597,7 +71018,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersListBlockedByAuthenticatedUserRequest,
+          req as unknown as UsersListBlockedByAuthenticatedUserRequest,
           res as UsersListBlockedByAuthenticatedUserResponse,
           next
         );
@@ -70627,7 +71048,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersCheckBlockedRequest,
+          req as unknown as UsersCheckBlockedRequest,
           res as UsersCheckBlockedResponse,
           next
         );
@@ -70657,7 +71078,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersBlockRequest,
+          req as unknown as UsersBlockRequest,
           res as UsersBlockResponse,
           next
         );
@@ -70687,7 +71108,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersUnblockRequest,
+          req as unknown as UsersUnblockRequest,
           res as UsersUnblockResponse,
           next
         );
@@ -70721,7 +71142,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesListForAuthenticatedUserRequest,
+          req as unknown as CodespacesListForAuthenticatedUserRequest,
           res as CodespacesListForAuthenticatedUserResponse,
           next
         );
@@ -70851,7 +71272,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesCreateForAuthenticatedUserRequest,
+          req as unknown as CodespacesCreateForAuthenticatedUserRequest,
           res as CodespacesCreateForAuthenticatedUserResponse,
           next
         );
@@ -70884,7 +71305,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesListSecretsForAuthenticatedUserRequest,
+          req as unknown as CodespacesListSecretsForAuthenticatedUserRequest,
           res as CodespacesListSecretsForAuthenticatedUserResponse,
           next
         );
@@ -70908,7 +71329,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesGetPublicKeyForAuthenticatedUserRequest,
+          req as unknown as CodespacesGetPublicKeyForAuthenticatedUserRequest,
           res as CodespacesGetPublicKeyForAuthenticatedUserResponse,
           next
         );
@@ -70940,7 +71361,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesGetSecretForAuthenticatedUserRequest,
+          req as unknown as CodespacesGetSecretForAuthenticatedUserRequest,
           res as CodespacesGetSecretForAuthenticatedUserResponse,
           next
         );
@@ -70997,7 +71418,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesCreateOrUpdateSecretForAuthenticatedUserRequest,
+          req as unknown as CodespacesCreateOrUpdateSecretForAuthenticatedUserRequest,
           res as CodespacesCreateOrUpdateSecretForAuthenticatedUserResponse,
           next
         );
@@ -71029,7 +71450,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesDeleteSecretForAuthenticatedUserRequest,
+          req as unknown as CodespacesDeleteSecretForAuthenticatedUserRequest,
           res as CodespacesDeleteSecretForAuthenticatedUserResponse,
           next
         );
@@ -71064,7 +71485,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesListRepositoriesForSecretForAuthenticatedUserRequest,
+          req as unknown as CodespacesListRepositoriesForSecretForAuthenticatedUserRequest,
           res as CodespacesListRepositoriesForSecretForAuthenticatedUserResponse,
           next
         );
@@ -71112,7 +71533,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesSetRepositoriesForSecretForAuthenticatedUserRequest,
+          req as unknown as CodespacesSetRepositoriesForSecretForAuthenticatedUserRequest,
           res as CodespacesSetRepositoriesForSecretForAuthenticatedUserResponse,
           next
         );
@@ -71150,7 +71571,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesAddRepositoryForSecretForAuthenticatedUserRequest,
+          req as unknown as CodespacesAddRepositoryForSecretForAuthenticatedUserRequest,
           res as CodespacesAddRepositoryForSecretForAuthenticatedUserResponse,
           next
         );
@@ -71188,7 +71609,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesRemoveRepositoryForSecretForAuthenticatedUserRequest,
+          req as unknown as CodespacesRemoveRepositoryForSecretForAuthenticatedUserRequest,
           res as CodespacesRemoveRepositoryForSecretForAuthenticatedUserResponse,
           next
         );
@@ -71218,7 +71639,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesGetForAuthenticatedUserRequest,
+          req as unknown as CodespacesGetForAuthenticatedUserRequest,
           res as CodespacesGetForAuthenticatedUserResponse,
           next
         );
@@ -71268,7 +71689,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesUpdateForAuthenticatedUserRequest,
+          req as unknown as CodespacesUpdateForAuthenticatedUserRequest,
           res as CodespacesUpdateForAuthenticatedUserResponse,
           next
         );
@@ -71298,7 +71719,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesDeleteForAuthenticatedUserRequest,
+          req as unknown as CodespacesDeleteForAuthenticatedUserRequest,
           res as CodespacesDeleteForAuthenticatedUserResponse,
           next
         );
@@ -71330,7 +71751,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesExportForAuthenticatedUserRequest,
+          req as unknown as CodespacesExportForAuthenticatedUserRequest,
           res as CodespacesExportForAuthenticatedUserResponse,
           next
         );
@@ -71368,7 +71789,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesGetExportDetailsForAuthenticatedUserRequest,
+          req as unknown as CodespacesGetExportDetailsForAuthenticatedUserRequest,
           res as CodespacesGetExportDetailsForAuthenticatedUserResponse,
           next
         );
@@ -71401,7 +71822,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesCodespaceMachinesForAuthenticatedUserRequest,
+          req as unknown as CodespacesCodespaceMachinesForAuthenticatedUserRequest,
           res as CodespacesCodespaceMachinesForAuthenticatedUserResponse,
           next
         );
@@ -71433,7 +71854,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesStartForAuthenticatedUserRequest,
+          req as unknown as CodespacesStartForAuthenticatedUserRequest,
           res as CodespacesStartForAuthenticatedUserResponse,
           next
         );
@@ -71465,7 +71886,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as CodespacesStopForAuthenticatedUserRequest,
+          req as unknown as CodespacesStopForAuthenticatedUserRequest,
           res as CodespacesStopForAuthenticatedUserResponse,
           next
         );
@@ -71502,7 +71923,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequest,
+          req as unknown as UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequest,
           res as UsersSetPrimaryEmailVisibilityForAuthenticatedUserResponse,
           next
         );
@@ -71535,7 +71956,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersListEmailsForAuthenticatedUserRequest,
+          req as unknown as UsersListEmailsForAuthenticatedUserRequest,
           res as UsersListEmailsForAuthenticatedUserResponse,
           next
         );
@@ -71591,7 +72012,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersAddEmailForAuthenticatedUserRequest,
+          req as unknown as UsersAddEmailForAuthenticatedUserRequest,
           res as UsersAddEmailForAuthenticatedUserResponse,
           next
         );
@@ -71648,7 +72069,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersDeleteEmailForAuthenticatedUserRequest,
+          req as unknown as UsersDeleteEmailForAuthenticatedUserRequest,
           res as UsersDeleteEmailForAuthenticatedUserResponse,
           next
         );
@@ -71681,7 +72102,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersListFollowersForAuthenticatedUserRequest,
+          req as unknown as UsersListFollowersForAuthenticatedUserRequest,
           res as UsersListFollowersForAuthenticatedUserResponse,
           next
         );
@@ -71714,7 +72135,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersListFollowedByAuthenticatedUserRequest,
+          req as unknown as UsersListFollowedByAuthenticatedUserRequest,
           res as UsersListFollowedByAuthenticatedUserResponse,
           next
         );
@@ -71744,7 +72165,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersCheckPersonIsFollowedByAuthenticatedRequest,
+          req as unknown as UsersCheckPersonIsFollowedByAuthenticatedRequest,
           res as UsersCheckPersonIsFollowedByAuthenticatedResponse,
           next
         );
@@ -71774,7 +72195,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersFollowRequest,
+          req as unknown as UsersFollowRequest,
           res as UsersFollowResponse,
           next
         );
@@ -71804,7 +72225,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersUnfollowRequest,
+          req as unknown as UsersUnfollowRequest,
           res as UsersUnfollowResponse,
           next
         );
@@ -71837,7 +72258,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersListGpgKeysForAuthenticatedUserRequest,
+          req as unknown as UsersListGpgKeysForAuthenticatedUserRequest,
           res as UsersListGpgKeysForAuthenticatedUserResponse,
           next
         );
@@ -71876,7 +72297,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersCreateGpgKeyForAuthenticatedUserRequest,
+          req as unknown as UsersCreateGpgKeyForAuthenticatedUserRequest,
           res as UsersCreateGpgKeyForAuthenticatedUserResponse,
           next
         );
@@ -71906,7 +72327,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersGetGpgKeyForAuthenticatedUserRequest,
+          req as unknown as UsersGetGpgKeyForAuthenticatedUserRequest,
           res as UsersGetGpgKeyForAuthenticatedUserResponse,
           next
         );
@@ -71936,7 +72357,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersDeleteGpgKeyForAuthenticatedUserRequest,
+          req as unknown as UsersDeleteGpgKeyForAuthenticatedUserRequest,
           res as UsersDeleteGpgKeyForAuthenticatedUserResponse,
           next
         );
@@ -71969,7 +72390,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsListInstallationsForAuthenticatedUserRequest,
+          req as unknown as AppsListInstallationsForAuthenticatedUserRequest,
           res as AppsListInstallationsForAuthenticatedUserResponse,
           next
         );
@@ -72011,7 +72432,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsListInstallationReposForAuthenticatedUserRequest,
+          req as unknown as AppsListInstallationReposForAuthenticatedUserRequest,
           res as AppsListInstallationReposForAuthenticatedUserResponse,
           next
         );
@@ -72048,7 +72469,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsAddRepoToInstallationForAuthenticatedUserRequest,
+          req as unknown as AppsAddRepoToInstallationForAuthenticatedUserRequest,
           res as AppsAddRepoToInstallationForAuthenticatedUserResponse,
           next
         );
@@ -72086,7 +72507,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsRemoveRepoFromInstallationForAuthenticatedUserRequest,
+          req as unknown as AppsRemoveRepoFromInstallationForAuthenticatedUserRequest,
           res as AppsRemoveRepoFromInstallationForAuthenticatedUserResponse,
           next
         );
@@ -72109,7 +72530,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as InteractionsGetRestrictionsForAuthenticatedUserRequest,
+          req as unknown as InteractionsGetRestrictionsForAuthenticatedUserRequest,
           res as InteractionsGetRestrictionsForAuthenticatedUserResponse,
           next
         );
@@ -72173,7 +72594,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as InteractionsSetRestrictionsForAuthenticatedUserRequest,
+          req as unknown as InteractionsSetRestrictionsForAuthenticatedUserRequest,
           res as InteractionsSetRestrictionsForAuthenticatedUserResponse,
           next
         );
@@ -72196,7 +72617,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as InteractionsRemoveRestrictionsForAuthenticatedUserRequest,
+          req as unknown as InteractionsRemoveRestrictionsForAuthenticatedUserRequest,
           res as InteractionsRemoveRestrictionsForAuthenticatedUserResponse,
           next
         );
@@ -72254,7 +72675,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as IssuesListForAuthenticatedUserRequest,
+          req as unknown as IssuesListForAuthenticatedUserRequest,
           res as IssuesListForAuthenticatedUserResponse,
           next
         );
@@ -72287,7 +72708,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersListPublicSshKeysForAuthenticatedUserRequest,
+          req as unknown as UsersListPublicSshKeysForAuthenticatedUserRequest,
           res as UsersListPublicSshKeysForAuthenticatedUserResponse,
           next
         );
@@ -72328,7 +72749,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersCreatePublicSshKeyForAuthenticatedUserRequest,
+          req as unknown as UsersCreatePublicSshKeyForAuthenticatedUserRequest,
           res as UsersCreatePublicSshKeyForAuthenticatedUserResponse,
           next
         );
@@ -72358,7 +72779,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersGetPublicSshKeyForAuthenticatedUserRequest,
+          req as unknown as UsersGetPublicSshKeyForAuthenticatedUserRequest,
           res as UsersGetPublicSshKeyForAuthenticatedUserResponse,
           next
         );
@@ -72388,7 +72809,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersDeletePublicSshKeyForAuthenticatedUserRequest,
+          req as unknown as UsersDeletePublicSshKeyForAuthenticatedUserRequest,
           res as UsersDeletePublicSshKeyForAuthenticatedUserResponse,
           next
         );
@@ -72421,7 +72842,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsListSubscriptionsForAuthenticatedUserRequest,
+          req as unknown as AppsListSubscriptionsForAuthenticatedUserRequest,
           res as AppsListSubscriptionsForAuthenticatedUserResponse,
           next
         );
@@ -72457,7 +72878,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsListSubscriptionsForAuthenticatedUserStubbedRequest,
+          req as unknown as AppsListSubscriptionsForAuthenticatedUserStubbedRequest,
           res as AppsListSubscriptionsForAuthenticatedUserStubbedResponse,
           next
         );
@@ -72491,7 +72912,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsListMembershipsForAuthenticatedUserRequest,
+          req as unknown as OrgsListMembershipsForAuthenticatedUserRequest,
           res as OrgsListMembershipsForAuthenticatedUserResponse,
           next
         );
@@ -72521,7 +72942,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsGetMembershipForAuthenticatedUserRequest,
+          req as unknown as OrgsGetMembershipForAuthenticatedUserRequest,
           res as OrgsGetMembershipForAuthenticatedUserResponse,
           next
         );
@@ -72564,7 +72985,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsUpdateMembershipForAuthenticatedUserRequest,
+          req as unknown as OrgsUpdateMembershipForAuthenticatedUserRequest,
           res as OrgsUpdateMembershipForAuthenticatedUserResponse,
           next
         );
@@ -72597,7 +73018,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as MigrationsListForAuthenticatedUserRequest,
+          req as unknown as MigrationsListForAuthenticatedUserRequest,
           res as MigrationsListForAuthenticatedUserResponse,
           next
         );
@@ -72697,7 +73118,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as MigrationsStartForAuthenticatedUserRequest,
+          req as unknown as MigrationsStartForAuthenticatedUserRequest,
           res as MigrationsStartForAuthenticatedUserResponse,
           next
         );
@@ -72739,7 +73160,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as MigrationsGetStatusForAuthenticatedUserRequest,
+          req as unknown as MigrationsGetStatusForAuthenticatedUserRequest,
           res as MigrationsGetStatusForAuthenticatedUserResponse,
           next
         );
@@ -72771,7 +73192,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as MigrationsGetArchiveForAuthenticatedUserRequest,
+          req as unknown as MigrationsGetArchiveForAuthenticatedUserRequest,
           res as MigrationsGetArchiveForAuthenticatedUserResponse,
           next
         );
@@ -72803,7 +73224,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as MigrationsDeleteArchiveForAuthenticatedUserRequest,
+          req as unknown as MigrationsDeleteArchiveForAuthenticatedUserRequest,
           res as MigrationsDeleteArchiveForAuthenticatedUserResponse,
           next
         );
@@ -72840,7 +73261,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as MigrationsUnlockRepoForAuthenticatedUserRequest,
+          req as unknown as MigrationsUnlockRepoForAuthenticatedUserRequest,
           res as MigrationsUnlockRepoForAuthenticatedUserResponse,
           next
         );
@@ -72880,7 +73301,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as MigrationsListReposForAuthenticatedUserRequest,
+          req as unknown as MigrationsListReposForAuthenticatedUserRequest,
           res as MigrationsListReposForAuthenticatedUserResponse,
           next
         );
@@ -72913,7 +73334,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsListForAuthenticatedUserRequest,
+          req as unknown as OrgsListForAuthenticatedUserRequest,
           res as OrgsListForAuthenticatedUserResponse,
           next
         );
@@ -72952,7 +73373,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PackagesListPackagesForAuthenticatedUserRequest,
+          req as unknown as PackagesListPackagesForAuthenticatedUserRequest,
           res as PackagesListPackagesForAuthenticatedUserResponse,
           next
         );
@@ -72990,7 +73411,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PackagesGetPackageForAuthenticatedUserRequest,
+          req as unknown as PackagesGetPackageForAuthenticatedUserRequest,
           res as PackagesGetPackageForAuthenticatedUserResponse,
           next
         );
@@ -73028,7 +73449,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PackagesDeletePackageForAuthenticatedUserRequest,
+          req as unknown as PackagesDeletePackageForAuthenticatedUserRequest,
           res as PackagesDeletePackageForAuthenticatedUserResponse,
           next
         );
@@ -73073,7 +73494,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PackagesRestorePackageForAuthenticatedUserRequest,
+          req as unknown as PackagesRestorePackageForAuthenticatedUserRequest,
           res as PackagesRestorePackageForAuthenticatedUserResponse,
           next
         );
@@ -73129,7 +73550,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest,
+          req as unknown as PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest,
           res as PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse,
           next
         );
@@ -73170,7 +73591,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PackagesGetPackageVersionForAuthenticatedUserRequest,
+          req as unknown as PackagesGetPackageVersionForAuthenticatedUserRequest,
           res as PackagesGetPackageVersionForAuthenticatedUserResponse,
           next
         );
@@ -73212,7 +73633,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PackagesDeletePackageVersionForAuthenticatedUserRequest,
+          req as unknown as PackagesDeletePackageVersionForAuthenticatedUserRequest,
           res as PackagesDeletePackageVersionForAuthenticatedUserResponse,
           next
         );
@@ -73254,7 +73675,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PackagesRestorePackageVersionForAuthenticatedUserRequest,
+          req as unknown as PackagesRestorePackageVersionForAuthenticatedUserRequest,
           res as PackagesRestorePackageVersionForAuthenticatedUserResponse,
           next
         );
@@ -73297,7 +73718,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ProjectsCreateForAuthenticatedUserRequest,
+          req as unknown as ProjectsCreateForAuthenticatedUserRequest,
           res as ProjectsCreateForAuthenticatedUserResponse,
           next
         );
@@ -73330,7 +73751,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersListPublicEmailsForAuthenticatedUserRequest,
+          req as unknown as UsersListPublicEmailsForAuthenticatedUserRequest,
           res as UsersListPublicEmailsForAuthenticatedUserResponse,
           next
         );
@@ -73385,7 +73806,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListForAuthenticatedUserRequest,
+          req as unknown as ReposListForAuthenticatedUserRequest,
           res as ReposListForAuthenticatedUserResponse,
           next
         );
@@ -73544,7 +73965,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposCreateForAuthenticatedUserRequest,
+          req as unknown as ReposCreateForAuthenticatedUserRequest,
           res as ReposCreateForAuthenticatedUserResponse,
           next
         );
@@ -73577,7 +73998,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListInvitationsForAuthenticatedUserRequest,
+          req as unknown as ReposListInvitationsForAuthenticatedUserRequest,
           res as ReposListInvitationsForAuthenticatedUserResponse,
           next
         );
@@ -73609,7 +74030,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposAcceptInvitationForAuthenticatedUserRequest,
+          req as unknown as ReposAcceptInvitationForAuthenticatedUserRequest,
           res as ReposAcceptInvitationForAuthenticatedUserResponse,
           next
         );
@@ -73641,7 +74062,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposDeclineInvitationForAuthenticatedUserRequest,
+          req as unknown as ReposDeclineInvitationForAuthenticatedUserRequest,
           res as ReposDeclineInvitationForAuthenticatedUserResponse,
           next
         );
@@ -73674,7 +74095,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersListSshSigningKeysForAuthenticatedUserRequest,
+          req as unknown as UsersListSshSigningKeysForAuthenticatedUserRequest,
           res as UsersListSshSigningKeysForAuthenticatedUserResponse,
           next
         );
@@ -73717,7 +74138,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersCreateSshSigningKeyForAuthenticatedUserRequest,
+          req as unknown as UsersCreateSshSigningKeyForAuthenticatedUserRequest,
           res as UsersCreateSshSigningKeyForAuthenticatedUserResponse,
           next
         );
@@ -73749,7 +74170,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersGetSshSigningKeyForAuthenticatedUserRequest,
+          req as unknown as UsersGetSshSigningKeyForAuthenticatedUserRequest,
           res as UsersGetSshSigningKeyForAuthenticatedUserResponse,
           next
         );
@@ -73781,7 +74202,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersDeleteSshSigningKeyForAuthenticatedUserRequest,
+          req as unknown as UsersDeleteSshSigningKeyForAuthenticatedUserRequest,
           res as UsersDeleteSshSigningKeyForAuthenticatedUserResponse,
           next
         );
@@ -73820,7 +74241,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityListReposStarredByAuthenticatedUserRequest,
+          req as unknown as ActivityListReposStarredByAuthenticatedUserRequest,
           res as ActivityListReposStarredByAuthenticatedUserResponse,
           next
         );
@@ -73850,7 +74271,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityCheckRepoIsStarredByAuthenticatedUserRequest,
+          req as unknown as ActivityCheckRepoIsStarredByAuthenticatedUserRequest,
           res as ActivityCheckRepoIsStarredByAuthenticatedUserResponse,
           next
         );
@@ -73880,7 +74301,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityStarRepoForAuthenticatedUserRequest,
+          req as unknown as ActivityStarRepoForAuthenticatedUserRequest,
           res as ActivityStarRepoForAuthenticatedUserResponse,
           next
         );
@@ -73910,7 +74331,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityUnstarRepoForAuthenticatedUserRequest,
+          req as unknown as ActivityUnstarRepoForAuthenticatedUserRequest,
           res as ActivityUnstarRepoForAuthenticatedUserResponse,
           next
         );
@@ -73943,7 +74364,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityListWatchedReposForAuthenticatedUserRequest,
+          req as unknown as ActivityListWatchedReposForAuthenticatedUserRequest,
           res as ActivityListWatchedReposForAuthenticatedUserResponse,
           next
         );
@@ -73976,7 +74397,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as TeamsListForAuthenticatedUserRequest,
+          req as unknown as TeamsListForAuthenticatedUserRequest,
           res as TeamsListForAuthenticatedUserResponse,
           next
         );
@@ -74009,7 +74430,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersListRequest,
+          req as unknown as UsersListRequest,
           res as UsersListResponse,
           next
         );
@@ -74039,7 +74460,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersGetByUsernameRequest,
+          req as unknown as UsersGetByUsernameRequest,
           res as UsersGetByUsernameResponse,
           next
         );
@@ -74077,7 +74498,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityListEventsForAuthenticatedUserRequest,
+          req as unknown as ActivityListEventsForAuthenticatedUserRequest,
           res as ActivityListEventsForAuthenticatedUserResponse,
           next
         );
@@ -74115,7 +74536,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityListOrgEventsForAuthenticatedUserRequest,
+          req as unknown as ActivityListOrgEventsForAuthenticatedUserRequest,
           res as ActivityListOrgEventsForAuthenticatedUserResponse,
           next
         );
@@ -74153,7 +74574,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityListPublicEventsForUserRequest,
+          req as unknown as ActivityListPublicEventsForUserRequest,
           res as ActivityListPublicEventsForUserResponse,
           next
         );
@@ -74191,7 +74612,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersListFollowersForUserRequest,
+          req as unknown as UsersListFollowersForUserRequest,
           res as UsersListFollowersForUserResponse,
           next
         );
@@ -74229,7 +74650,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersListFollowingForUserRequest,
+          req as unknown as UsersListFollowingForUserRequest,
           res as UsersListFollowingForUserResponse,
           next
         );
@@ -74264,7 +74685,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersCheckFollowingForUserRequest,
+          req as unknown as UsersCheckFollowingForUserRequest,
           res as UsersCheckFollowingForUserResponse,
           next
         );
@@ -74303,7 +74724,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as GistsListForUserRequest,
+          req as unknown as GistsListForUserRequest,
           res as GistsListForUserResponse,
           next
         );
@@ -74341,7 +74762,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersListGpgKeysForUserRequest,
+          req as unknown as UsersListGpgKeysForUserRequest,
           res as UsersListGpgKeysForUserResponse,
           next
         );
@@ -74382,7 +74803,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersGetContextForUserRequest,
+          req as unknown as UsersGetContextForUserRequest,
           res as UsersGetContextForUserResponse,
           next
         );
@@ -74412,7 +74833,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as AppsGetUserInstallationRequest,
+          req as unknown as AppsGetUserInstallationRequest,
           res as AppsGetUserInstallationResponse,
           next
         );
@@ -74450,7 +74871,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersListPublicKeysForUserRequest,
+          req as unknown as UsersListPublicKeysForUserRequest,
           res as UsersListPublicKeysForUserResponse,
           next
         );
@@ -74488,7 +74909,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as OrgsListForUserRequest,
+          req as unknown as OrgsListForUserRequest,
           res as OrgsListForUserResponse,
           next
         );
@@ -74532,7 +74953,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PackagesListPackagesForUserRequest,
+          req as unknown as PackagesListPackagesForUserRequest,
           res as PackagesListPackagesForUserResponse,
           next
         );
@@ -74573,7 +74994,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PackagesGetPackageForUserRequest,
+          req as unknown as PackagesGetPackageForUserRequest,
           res as PackagesGetPackageForUserResponse,
           next
         );
@@ -74614,7 +75035,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PackagesDeletePackageForUserRequest,
+          req as unknown as PackagesDeletePackageForUserRequest,
           res as PackagesDeletePackageForUserResponse,
           next
         );
@@ -74660,7 +75081,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PackagesRestorePackageForUserRequest,
+          req as unknown as PackagesRestorePackageForUserRequest,
           res as PackagesRestorePackageForUserResponse,
           next
         );
@@ -74702,7 +75123,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PackagesGetAllPackageVersionsForPackageOwnedByUserRequest,
+          req as unknown as PackagesGetAllPackageVersionsForPackageOwnedByUserRequest,
           res as PackagesGetAllPackageVersionsForPackageOwnedByUserResponse,
           next
         );
@@ -74749,7 +75170,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PackagesGetPackageVersionForUserRequest,
+          req as unknown as PackagesGetPackageVersionForUserRequest,
           res as PackagesGetPackageVersionForUserResponse,
           next
         );
@@ -74796,7 +75217,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PackagesDeletePackageVersionForUserRequest,
+          req as unknown as PackagesDeletePackageVersionForUserRequest,
           res as PackagesDeletePackageVersionForUserResponse,
           next
         );
@@ -74843,7 +75264,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as PackagesRestorePackageVersionForUserRequest,
+          req as unknown as PackagesRestorePackageVersionForUserRequest,
           res as PackagesRestorePackageVersionForUserResponse,
           next
         );
@@ -74886,7 +75307,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ProjectsListForUserRequest,
+          req as unknown as ProjectsListForUserRequest,
           res as ProjectsListForUserResponse,
           next
         );
@@ -74924,7 +75345,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityListReceivedEventsForUserRequest,
+          req as unknown as ActivityListReceivedEventsForUserRequest,
           res as ActivityListReceivedEventsForUserResponse,
           next
         );
@@ -74964,7 +75385,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityListReceivedPublicEventsForUserRequest,
+          req as unknown as ActivityListReceivedPublicEventsForUserRequest,
           res as ActivityListReceivedPublicEventsForUserResponse,
           next
         );
@@ -75013,7 +75434,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ReposListForUserRequest,
+          req as unknown as ReposListForUserRequest,
           res as ReposListForUserResponse,
           next
         );
@@ -75045,7 +75466,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as BillingGetGithubActionsBillingUserRequest,
+          req as unknown as BillingGetGithubActionsBillingUserRequest,
           res as BillingGetGithubActionsBillingUserResponse,
           next
         );
@@ -75077,7 +75498,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as BillingGetGithubPackagesBillingUserRequest,
+          req as unknown as BillingGetGithubPackagesBillingUserRequest,
           res as BillingGetGithubPackagesBillingUserResponse,
           next
         );
@@ -75111,7 +75532,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as BillingGetSharedStorageBillingUserRequest,
+          req as unknown as BillingGetSharedStorageBillingUserRequest,
           res as BillingGetSharedStorageBillingUserResponse,
           next
         );
@@ -75149,7 +75570,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as UsersListSshSigningKeysForUserRequest,
+          req as unknown as UsersListSshSigningKeysForUserRequest,
           res as UsersListSshSigningKeysForUserResponse,
           next
         );
@@ -75193,7 +75614,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityListReposStarredByUserRequest,
+          req as unknown as ActivityListReposStarredByUserRequest,
           res as ActivityListReposStarredByUserResponse,
           next
         );
@@ -75231,7 +75652,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as ActivityListReposWatchedByUserRequest,
+          req as unknown as ActivityListReposWatchedByUserRequest,
           res as ActivityListReposWatchedByUserResponse,
           next
         );
@@ -75253,7 +75674,7 @@ export const addHandlers = (app: Express, handlers: Partial<Handlers>) => {
 
       try {
         await handler(
-          (req as unknown) as MetaGetZenRequest,
+          req as unknown as MetaGetZenRequest,
           res as MetaGetZenResponse,
           next
         );

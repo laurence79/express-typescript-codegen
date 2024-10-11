@@ -12,7 +12,7 @@ export const typeDefForEnum = (
         return 'null';
       }
       if (typeof e === 'number') {
-        return `${e}`;
+        return String(e);
       }
       if (typeof e === 'boolean') {
         return e ? 'true' : 'false';

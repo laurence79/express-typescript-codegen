@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 type ObjectKeys<T> = T extends object
   ? (keyof T)[]
   : T extends number
-  ? []
-  : T extends Array<any> | string
-  ? string[]
-  : never;
+    ? []
+    : T extends any[] | string
+      ? string[]
+      : never;
 
 declare namespace globalThis {
   interface ObjectConstructor {

@@ -1,20 +1,33 @@
-/* eslint-disable max-classes-per-file */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-/* eslint-disable no-param-reassign */
+
 import type { Json, JsonArray, JsonMap } from '@laurence79/ts-json';
-import fs from 'fs';
+import fs from 'fs/promises';
 import path from 'path';
 import yaml from 'yaml';
 import jsonPointer from 'json-pointer';
-import { promisify } from 'util';
 import { Logger, success } from '../../lib/cli-logging';
 import * as OpenApi from '../../types/OpenApi';
 import * as OpenApiV3 from '../../types/OpenApiV3';
 import * as OpenApiV2 from '../../types/OpenApiV2';
 import { AsyncJsonWalker } from './AsyncJsonWalker';
 
-const fileExists = promisify(fs.exists);
-const readFile = promisify(fs.readFile);
+async function fileExists(filename: string) {
+  try {
+    await fs.access(filename);
+    return true;
+  } catch (err: unknown) {
+    if (
+      typeof err === 'object' &&
+      err &&
+      'code' in err &&
+      err.code === 'ENOENT'
+    ) {
+      return false;
+    } else {
+      throw err;
+    }
+  }
+}
 
 type JsonReferenceObject =
   | OpenApiV2.ReferenceObject
@@ -73,7 +86,7 @@ class Loader {
     }
 
     const extension = path.extname(filename);
-    const data = await readFile(filename, 'utf-8');
+    const data = await fs.readFile(filename, 'utf-8');
 
     const doc = (() => {
       if (['.yaml', '.yml'].includes(extension)) {
@@ -155,7 +168,7 @@ export const load = async (source: string, logger?: Logger): Promise<Json> => {
 
   const loader = new Loader(logger);
 
-  const doc = ((await loader.load(filename)) as unknown) as OpenApi.Document &
+  const doc = (await loader.load(filename)) as unknown as OpenApi.Document &
     JsonMap;
 
   const walked: string[] = [];

@@ -7,7 +7,7 @@ import { getSecurityParams } from './getSecurityParams';
 import { isReferenceObject } from './isReferenceObject';
 import { methodsOfPathItemObject } from './methodsOfPathItemObject';
 
-type MappedOperation = {
+interface MappedOperation {
   path: string;
   method: string;
   operationId: string;
@@ -18,7 +18,7 @@ type MappedOperation = {
     statusCode: string;
     response: OpenApiV3.ResponseObject;
   }[];
-};
+}
 
 export const mapOperations = (
   document: OpenApiV3.Document
@@ -76,7 +76,7 @@ export const mapOperations = (
           method,
           operationId,
           operation: operationObject,
-          parameters: inlinedParameters ?? [],
+          parameters: inlinedParameters,
           requestBody: inlinedRequestBody,
           responses: inlinedResponses
         };

@@ -1,6 +1,3 @@
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable no-continue */
-
 import { initCap } from '../helpers/initCap';
 
 export class IdentifierFormat {

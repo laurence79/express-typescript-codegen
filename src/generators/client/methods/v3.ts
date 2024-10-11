@@ -24,7 +24,11 @@ export const fromV3 = (
       const body = ((): ClientMethodTemplateArgs['body'] => {
         if (!requestBody) return null;
 
-        if ('application/json' in requestBody.content) {
+        if (
+          'application/json' in requestBody.content &&
+          requestBody.content['application/json'] &&
+          'schema' in requestBody.content['application/json']
+        ) {
           const { schema } = requestBody.content['application/json'];
 
           return {
@@ -36,7 +40,11 @@ export const fromV3 = (
           } as ClientMethodTemplateArgs['body'];
         }
 
-        if ('multipart/form-data' in requestBody.content) {
+        if (
+          'multipart/form-data' in requestBody.content &&
+          requestBody.content['multipart/form-data'] &&
+          'schema' in requestBody.content['multipart/form-data']
+        ) {
           const { schema } = requestBody.content['multipart/form-data'];
 
           if (!schema) return null;
@@ -135,30 +143,28 @@ export const fromV3 = (
               };
             }
 
-            if (response.content) {
-              if ('application/json' in response.content) {
-                const { schema } = response.content['application/json'];
+            if ('application/json' in response.content) {
+              const { schema } = response.content['application/json'];
 
-                return {
-                  statusCode,
-                  type: 'json',
-                  jsonType: schema
-                    ? HelpersV3.typeDefForSchema(
-                        schema,
-                        document,
-                        options,
-                        context
-                      )
-                    : options.emptyType
-                };
-              }
+              return {
+                statusCode,
+                type: 'json',
+                jsonType: schema
+                  ? HelpersV3.typeDefForSchema(
+                      schema,
+                      document,
+                      options,
+                      context
+                    )
+                  : options.emptyType
+              };
+            }
 
-              if ('text/html' in response.content) {
-                return {
-                  statusCode,
-                  type: 'text'
-                };
-              }
+            if ('text/html' in response.content) {
+              return {
+                statusCode,
+                type: 'text'
+              };
             }
 
             return {

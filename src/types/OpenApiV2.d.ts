@@ -51,9 +51,7 @@ export type SecuritySchemeOauth2 =
   | SecuritySchemeOauth2Password
   | SecuritySchemeOauth2Application;
 
-export interface ScopesObject {
-  [index: string]: any;
-}
+export type ScopesObject = Record<string, any>;
 
 export interface SecuritySchemeOauth2Base extends SecuritySchemeObjectBase {
   type: 'oauth2';
@@ -89,13 +87,9 @@ export type SecuritySchemeObject =
   | SecuritySchemeApiKey
   | SecuritySchemeOauth2;
 
-export interface SecurityDefinitionsObject {
-  [index: string]: SecuritySchemeObject;
-}
+export type SecurityDefinitionsObject = Record<string, SecuritySchemeObject>;
 
-export interface SecurityRequirementObject {
-  [index: string]: string[];
-}
+export type SecurityRequirementObject = Record<string, string[]>;
 
 export interface ReferenceObject {
   $ref: string;
@@ -104,9 +98,7 @@ export interface ReferenceObject {
 
 export type Response = ResponseObject | ReferenceObject;
 
-export interface ResponsesDefinitionsObject {
-  [index: string]: ResponseObject;
-}
+export type ResponsesDefinitionsObject = Record<string, ResponseObject>;
 
 export type Schema = SchemaObject | ReferenceObject;
 
@@ -117,16 +109,12 @@ export interface ResponseObject {
   examples?: ExampleObject;
 }
 
-export interface HeadersObject {
-  [index: string]: HeaderObject;
-}
+export type HeadersObject = Record<string, HeaderObject>;
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface HeaderObject extends ItemsObject {}
 
-export interface ExampleObject {
-  [index: string]: any;
-}
+export type ExampleObject = Record<string, any>;
 
 export interface OperationObject {
   tags?: string[];
@@ -176,13 +164,9 @@ export interface PathItemObject {
   parameters?: Parameters;
 }
 
-export interface PathsObject {
-  [index: string]: PathItemObject;
-}
+export type PathsObject = Record<string, PathItemObject>;
 
-export interface ParametersDefinitionsObject {
-  [index: string]: Parameter;
-}
+export type ParametersDefinitionsObject = Record<string, Parameter>;
 
 export interface ParameterObject {
   name: string;
@@ -193,9 +177,7 @@ export interface ParameterObject {
 
 export type MimeTypes = string[];
 
-export interface DefinitionsObject {
-  [index: string]: SchemaObject;
-}
+export type DefinitionsObject = Record<string, SchemaObject>;
 
 export interface SchemaObject extends JsonSchema {
   [index: string]: any;
@@ -206,9 +188,7 @@ export interface SchemaObject extends JsonSchema {
   example?: any;
   default?: any;
   items?: ItemsObject;
-  properties?: {
-    [name: string]: SchemaObject;
-  };
+  properties?: Record<string, SchemaObject>;
 }
 
 export interface ExternalDocumentationObject {

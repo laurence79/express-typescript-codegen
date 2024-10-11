@@ -23,7 +23,11 @@ export const fromV3 = (
       const requestBodyType = (() => {
         if (!requestBody) return options.emptyType;
 
-        if ('application/json' in requestBody.content) {
+        if (
+          'application/json' in requestBody.content &&
+          requestBody.content['application/json'] &&
+          'schema' in requestBody.content['application/json']
+        ) {
           const { schema } = requestBody.content['application/json'];
 
           if (schema) {
@@ -37,7 +41,11 @@ export const fromV3 = (
           }
         }
 
-        if ('multipart/form-data' in requestBody.content) {
+        if (
+          'multipart/form-data' in requestBody.content &&
+          requestBody.content['multipart/form-data'] &&
+          'schema' in requestBody.content['multipart/form-data']
+        ) {
           const { schema } = requestBody.content['multipart/form-data'];
 
           if (schema) {
@@ -117,18 +125,16 @@ export const fromV3 = (
             return options.emptyType;
           }
 
-          if (response.content) {
-            if ('application/json' in response.content) {
-              const { schema } = response.content['application/json'];
+          if ('application/json' in response.content) {
+            const { schema } = response.content['application/json'];
 
-              return schema
-                ? HelpersV3.typeDefForSchema(schema, document, options, context)
-                : options.emptyType;
-            }
+            return schema
+              ? HelpersV3.typeDefForSchema(schema, document, options, context)
+              : options.emptyType;
+          }
 
-            if ('text/html' in response.content) {
-              return 'string';
-            }
+          if ('text/html' in response.content) {
+            return 'string';
           }
 
           return 'Buffer';
@@ -147,7 +153,7 @@ export const fromV3 = (
 
       const expressPath = path.replace(
         /\{(?:.*?)\}/g,
-        x => `:${x.substr(1, x.length - 2)}`
+        x => `:${x.substring(1, x.length - 1)}`
       );
 
       return `

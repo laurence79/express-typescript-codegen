@@ -1,8 +1,0 @@
-# 3rd party code
-node_modules
-
-# generated code
-generated
-
-# build output
-dist

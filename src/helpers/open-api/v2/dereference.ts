@@ -1,5 +1,5 @@
 export const dereference = <T>(
-  references: { [key: string]: T | undefined } | undefined,
+  references: Record<string, T | undefined> | undefined,
   $ref: string,
   prefix: string
 ): T => {

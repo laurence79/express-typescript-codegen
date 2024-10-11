@@ -1,7 +1,7 @@
 import JsonPointer from 'json-pointer';
 import * as OpenApiV3 from '../../../types/OpenApiV3';
 
-// eslint-disable-next-line @typescript-eslint/ban-types
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters
 export const dereference = <T extends object>(
   document: OpenApiV3.Document,
   $ref: string

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import type { Json, JsonMap } from '@laurence79/ts-json';
 import JsonPointer from 'json-pointer';
 import { JSONSchema7 } from 'json-schema';
@@ -6,14 +5,11 @@ import * as OpenApiV2 from '../../../types/OpenApiV2';
 import { JsonWalker } from '../../JsonWalker';
 import { isReferenceObject } from './isReferenceObject';
 
-const mapProperties = (properties: {
-  [name: string]: OpenApiV2.SchemaObject;
-}): {
-  [key: string]: JSONSchema7;
-} => {
-  const r: { [key: string]: JSONSchema7 } = {};
+const mapProperties = (
+  properties: Record<string, OpenApiV2.SchemaObject>
+): Record<string, JSONSchema7> => {
+  const r: Record<string, JSONSchema7> = {};
   Object.keys(properties).forEach(key => {
-    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     r[key] = mapSchema(properties[key]);
   });
   return r;
@@ -65,11 +61,11 @@ const bundleReferences = (
 
     const pointer = obj.$ref.split('#')[1];
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     const target = mapSchema(JsonPointer.get(document, pointer));
 
     JsonPointer.set(schema, pointer, target);
 
-    // eslint-disable-next-line no-param-reassign
     obj.$ref = `#${pointer}`;
 
     JsonWalker.walk(schema as Json, walker, pointer);

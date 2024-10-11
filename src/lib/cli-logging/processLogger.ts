@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import chalk from 'chalk';
 import readline from 'readline';
 import { LogFn, Logger } from './types';
