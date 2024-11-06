@@ -5571,7 +5571,7 @@ export class GitHubV3RestApiClient {
   ) {
     if (typeof options === 'function') {
       this.options = {
-        fetch,
+        fetch: global.fetch.bind(global),
         logger: {
           info: options,
           error: options
@@ -5580,7 +5580,7 @@ export class GitHubV3RestApiClient {
       };
     } else {
       this.options = {
-        fetch,
+        fetch: global.fetch.bind(global),
         logger: console,
         requestOptions: {},
         ...options

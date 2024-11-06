@@ -57,7 +57,7 @@ export const generate = ({
       ) {
         if (typeof options === 'function') {
           this.options = {
-            fetch,
+            fetch: global.fetch.bind(global),
             logger: {
               info: options,
               error: options
@@ -66,7 +66,7 @@ export const generate = ({
           }
         } else {
           this.options = {
-            fetch,
+            fetch: global.fetch.bind(global),
             logger: console,
             requestOptions: {},
             ...options

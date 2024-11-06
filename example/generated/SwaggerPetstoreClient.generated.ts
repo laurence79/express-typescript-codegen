@@ -55,7 +55,7 @@ export class SwaggerPetstoreClient {
   ) {
     if (typeof options === 'function') {
       this.options = {
-        fetch,
+        fetch: global.fetch.bind(global),
         logger: {
           info: options,
           error: options
@@ -64,7 +64,7 @@ export class SwaggerPetstoreClient {
       };
     } else {
       this.options = {
-        fetch,
+        fetch: global.fetch.bind(global),
         logger: console,
         requestOptions: {},
         ...options
