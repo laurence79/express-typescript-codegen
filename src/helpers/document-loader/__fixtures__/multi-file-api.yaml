@@ -1,0 +1,63 @@
+openapi: 3.1.0
+info:
+  title: Multi File API
+  version: 0.1.0
+paths:
+  /companies:
+    get:
+      operationId: listCompanies
+      responses:
+        '200':
+          description: List of companies
+          content:
+            application/json:
+              schema:
+                $ref: 'models.yaml#/components/schemas/CompanyList'
+    post:
+      operationId: createCompany
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: 'models.yaml#/components/schemas/Company'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: 'models.yaml#/components/schemas/Company'
+  /companies/{id}:
+    get:
+      operationId: getCompany
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Company detail
+          content:
+            application/json:
+              schema:
+                $ref: 'models.yaml#/components/schemas/Company'
+    put:
+      operationId: updateCompany
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: 'models.yaml#/components/schemas/Company'
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: 'models.yaml#/components/schemas/Company'

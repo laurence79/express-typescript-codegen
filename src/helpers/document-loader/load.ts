@@ -172,6 +172,7 @@ export const load = async (source: string, logger?: Logger): Promise<Json> => {
     JsonMap;
 
   const walked: string[] = [];
+  const inlinedRefs = new Set<string>();
 
   const walkFn = async (node: JsonMap, ptr: string) => {
     if (!isReference(node) || walked.includes(ptr)) {
@@ -198,11 +199,18 @@ export const load = async (source: string, logger?: Logger): Promise<Json> => {
         return new Reference(`#/components/${key}/${title}`, filename);
       })();
 
-      jsonPointer.set(doc, newRef.pointer, refNode);
-
       node.$ref = newRef.$;
 
-      await AsyncJsonWalker.walk(doc, walkFn, newRef.pointer);
+      const canonicalKey = ref.$;
+
+      if (!inlinedRefs.has(canonicalKey)) {
+        inlinedRefs.add(canonicalKey);
+
+        const cloned = JSON.parse(JSON.stringify(refNode)) as JsonMap;
+        jsonPointer.set(doc, newRef.pointer, cloned);
+
+        await AsyncJsonWalker.walk(cloned, walkFn, newRef.pointer);
+      }
     }
   };
 
