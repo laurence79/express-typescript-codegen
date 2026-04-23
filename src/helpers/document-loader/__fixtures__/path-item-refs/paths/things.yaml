@@ -1,0 +1,27 @@
+listThings:
+  get:
+    operationId: listThings
+    responses:
+      '200':
+        description: OK
+        content:
+          application/json:
+            schema:
+              $ref: '../../models.yaml#/components/schemas/Thing'
+
+getThing:
+  get:
+    operationId: getThing
+    parameters:
+      - in: path
+        name: thingId
+        required: true
+        schema:
+          type: string
+    responses:
+      '200':
+        description: OK
+        content:
+          application/json:
+            schema:
+              $ref: '../../models.yaml#/components/schemas/Thing'

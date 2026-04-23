@@ -161,6 +161,19 @@ const componentKeyForPointer = (ptr: string): string => {
   return 'schemas';
 };
 
+/**
+ * Returns true when the given JSON pointer refers to a PathItemObject
+ * position - i.e. a direct child of `/paths`. These refs need special
+ * handling because the parent key is the OpenAPI path string (e.g.
+ * `/things/{thingId}`), which is not a safe destination for placing
+ * components and whose characters must never be URL-encoded when
+ * building internal JSON pointers.
+ */
+const isPathItemPointer = (ptr: string): boolean => {
+  const tokens = jsonPointer.parse(ptr);
+  return tokens.length === 2 && tokens[0] === 'paths';
+};
+
 export const load = async (source: string, logger?: Logger): Promise<Json> => {
   const filename = path.isAbsolute(source)
     ? source
@@ -185,6 +198,33 @@ export const load = async (source: string, logger?: Logger): Promise<Json> => {
 
     const refDoc = await loader.load(ref.filename);
     const refNode = jsonPointer.get(refDoc, ref.pointer) as JsonMap;
+
+    // PathItemObject refs (e.g. the value of a `/things/{thingId}` entry)
+    // are inlined in place rather than being relocated into
+    // `#/components/...`. The path key is not a valid destination for a
+    // component and building a JSON pointer that traverses it runs the
+    // risk of tokens (like `{thingId}`) being misinterpreted as
+    // URL-encoded values.
+    if (isPathItemPointer(ptr)) {
+      const cloned = JSON.parse(JSON.stringify(refNode)) as JsonMap;
+
+      // Replace the `{ $ref: ... }` node in place with the target
+      // PathItemObject's contents. Mutating `node` preserves the object
+      // identity held by the surrounding `paths` map, so the original
+      // path key (e.g. `/things/{thingId}`) is kept verbatim and no
+      // JSON-pointer manipulation of the path string is required.
+      Object.keys(node).forEach(k => {
+        Reflect.deleteProperty(node, k);
+      });
+      Object.entries(cloned).forEach(([k, v]) => {
+        node[k] = v;
+      });
+
+      await AsyncJsonWalker.walk(node, walkFn, ptr);
+
+      return;
+    }
+
     const title = inferTitle(refNode, ref);
     refNode.title = title;
 

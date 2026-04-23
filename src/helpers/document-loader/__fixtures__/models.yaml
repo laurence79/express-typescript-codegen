@@ -32,3 +32,10 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/Company'
+
+    Thing:
+      title: Thing
+      type: object
+      properties:
+        id: { type: string }
+        name: { type: string }
