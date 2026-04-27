@@ -42,11 +42,18 @@ export const typeDefForSchema = (
       context.willEmitType(type);
     }
 
-    const code = (() => {
-      if (enumProp) {
-        return typeDefForEnum(enumProp);
+    if (enumProp) {
+      const literals = typeDefForEnum(enumProp);
+
+      if (type) {
+        context.emitEnum(type, literals, false);
+        return type;
       }
 
+      return literals.join(' | ');
+    }
+
+    const code = (() => {
       if (schema.type === 'object') {
         const def = typeDefForObject(
           schema,

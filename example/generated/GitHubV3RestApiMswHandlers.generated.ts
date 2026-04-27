@@ -1162,9 +1162,11 @@ export type EnterpriseAdminGetGithubActionsPermissionsEnterpriseRequestBody =
 export type EnterpriseAdminGetGithubActionsPermissionsEnterpriseResponseStatus =
   200;
 
-export type EnabledOrganizations = 'all' | 'none' | 'selected';
+export const EnabledOrganizations = ['all', 'none', 'selected'] as const;
+export type EnabledOrganizations = (typeof EnabledOrganizations)[number];
 
-export type AllowedActions = 'all' | 'local_only' | 'selected';
+export const AllowedActions = ['all', 'local_only', 'selected'] as const;
+export type AllowedActions = (typeof AllowedActions)[number];
 
 export type SelectedActionsUrl = string;
 
@@ -1395,7 +1397,9 @@ export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseRequestBo
 export type ActionsGetGithubActionsDefaultWorkflowPermissionsEnterpriseResponseStatus =
   200;
 
-export type ActionsDefaultWorkflowPermissions = 'read' | 'write';
+export const ActionsDefaultWorkflowPermissions = ['read', 'write'] as const;
+export type ActionsDefaultWorkflowPermissions =
+  (typeof ActionsDefaultWorkflowPermissions)[number];
 
 export type ActionsCanApprovePullRequestReviews = boolean;
 
@@ -2205,17 +2209,26 @@ export type AlertHtmlUrl = string;
 
 export type AlertInstancesUrl = string;
 
-export type CodeScanningAlertState = 'open' | 'closed' | 'dismissed' | 'fixed';
+export const CodeScanningAlertState = [
+  'open',
+  'closed',
+  'dismissed',
+  'fixed'
+] as const;
+export type CodeScanningAlertState = (typeof CodeScanningAlertState)[number];
 
 export type AlertFixedAt = string | null;
 
 export type AlertDismissedAt = string | null;
 
+export const CodeScanningAlertDismissedReason = [
+  null,
+  'false positive',
+  "won't fix",
+  'used in tests'
+] as const;
 export type CodeScanningAlertDismissedReason =
-  | null
-  | 'false positive'
-  | "won't fix"
-  | 'used in tests'
+  | (typeof CodeScanningAlertDismissedReason)[number]
   | null;
 
 export type CodeScanningAlertDismissedComment = string | null;
@@ -2265,11 +2278,14 @@ export type CodeScanningAlertLocation = {
   readonly end_column?: number;
 };
 
+export const CodeScanningAlertClassification = [
+  'source',
+  'generated',
+  'test',
+  'library'
+] as const;
 export type CodeScanningAlertClassification =
-  | 'source'
-  | 'generated'
-  | 'test'
-  | 'library'
+  | (typeof CodeScanningAlertClassification)[number]
   | null;
 
 export type CodeScanningAlertInstance = {
@@ -2395,14 +2411,19 @@ export type SecretScanningListAlertsForEnterpriseResponseStatus =
 
 export type NullableAlertUpdatedAt = string | null;
 
-export type SecretScanningAlertState = 'open' | 'resolved';
+export const SecretScanningAlertState = ['open', 'resolved'] as const;
+export type SecretScanningAlertState =
+  (typeof SecretScanningAlertState)[number];
 
+export const SecretScanningAlertResolution = [
+  null,
+  'false_positive',
+  'wont_fix',
+  'revoked',
+  'used_in_tests'
+] as const;
 export type SecretScanningAlertResolution =
-  | null
-  | 'false_positive'
-  | 'wont_fix'
-  | 'revoked'
-  | 'used_in_tests'
+  | (typeof SecretScanningAlertResolution)[number]
   | null;
 
 export type OrganizationSecretScanningAlert = {
@@ -2528,15 +2549,17 @@ export type Milestone = {
   readonly due_on: string | null;
 } | null;
 
-export type AuthorAssociation =
-  | 'COLLABORATOR'
-  | 'CONTRIBUTOR'
-  | 'FIRST_TIMER'
-  | 'FIRST_TIME_CONTRIBUTOR'
-  | 'MANNEQUIN'
-  | 'MEMBER'
-  | 'NONE'
-  | 'OWNER';
+export const AuthorAssociation = [
+  'COLLABORATOR',
+  'CONTRIBUTOR',
+  'FIRST_TIMER',
+  'FIRST_TIME_CONTRIBUTOR',
+  'MANNEQUIN',
+  'MEMBER',
+  'NONE',
+  'OWNER'
+] as const;
+export type AuthorAssociation = (typeof AuthorAssociation)[number];
 
 export type ReactionRollup = {
   readonly url: string;
@@ -4376,7 +4399,8 @@ export type ActionsGetGithubActionsPermissionsOrganizationRequestBody = never;
 
 export type ActionsGetGithubActionsPermissionsOrganizationResponseStatus = 200;
 
-export type EnabledRepositories = 'all' | 'none' | 'selected';
+export const EnabledRepositories = ['all', 'none', 'selected'] as const;
+export type EnabledRepositories = (typeof EnabledRepositories)[number];
 
 export type ActionsOrganizationPermissions = {
   readonly enabled_repositories: EnabledRepositories;
@@ -6844,10 +6868,12 @@ export type InteractionsGetRestrictionsForOrgRequestBody = never;
 
 export type InteractionsGetRestrictionsForOrgResponseStatus = 200;
 
-export type InteractionGroup =
-  | 'existing_users'
-  | 'contributors_only'
-  | 'collaborators_only';
+export const InteractionGroup = [
+  'existing_users',
+  'contributors_only',
+  'collaborators_only'
+] as const;
+export type InteractionGroup = (typeof InteractionGroup)[number];
 
 export type InteractionLimits = {
   readonly limit: InteractionGroup;
@@ -6866,12 +6892,14 @@ export type InteractionsGetRestrictionsForOrgResolver =
     InteractionsGetRestrictionsForOrgResponseBody
   >;
 
-export type InteractionExpiry =
-  | 'one_day'
-  | 'three_days'
-  | 'one_week'
-  | 'one_month'
-  | 'six_months';
+export const InteractionExpiry = [
+  'one_day',
+  'three_days',
+  'one_week',
+  'one_month',
+  'six_months'
+] as const;
+export type InteractionExpiry = (typeof InteractionExpiry)[number];
 
 export type InteractionRestrictions = {
   readonly limit: InteractionGroup;
@@ -11592,7 +11620,8 @@ export type ActionsGetPendingDeploymentsForRunRequestBody = never;
 
 export type ActionsGetPendingDeploymentsForRunResponseStatus = 200;
 
-export type DeploymentReviewerType = 'User' | 'Team';
+export const DeploymentReviewerType = ['User', 'Team'] as const;
+export type DeploymentReviewerType = (typeof DeploymentReviewerType)[number];
 
 export type PendingDeployment = {
   readonly environment: {
@@ -14065,7 +14094,9 @@ export type CodeScanningGetAlertResolver = msw.HttpResponseResolver<
   CodeScanningGetAlertResponseBody
 >;
 
-export type CodeScanningAlertSetState = 'open' | 'dismissed';
+export const CodeScanningAlertSetState = ['open', 'dismissed'] as const;
+export type CodeScanningAlertSetState =
+  (typeof CodeScanningAlertSetState)[number];
 
 export type CodeScanningUpdateAlertRequestQuery = {};
 

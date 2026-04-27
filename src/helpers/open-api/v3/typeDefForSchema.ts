@@ -40,11 +40,20 @@ export const typeDefForSchema = (
     context.willEmitType(type);
   }
 
-  const preliminaryType = (() => {
-    if (enumProp) {
-      return typeDefForEnum(enumProp);
+  if (enumProp) {
+    const literals = typeDefForEnum(enumProp);
+    const isNullable = 'nullable' in schema && !!schema.nullable;
+
+    if (type) {
+      context.emitEnum(type, literals, isNullable);
+      return type;
     }
 
+    const union = literals.join(' | ');
+    return isNullable ? `${union} | null` : union;
+  }
+
+  const preliminaryType = (() => {
     const base = isObjectSchema(schema)
       ? typeDefForObject(schema, document, typeDefForSchema, options, context)
       : null;
