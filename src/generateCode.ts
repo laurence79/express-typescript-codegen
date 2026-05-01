@@ -4,6 +4,7 @@ import * as Express from './generators/express/generate';
 import * as ExpressWithDi from './generators/express-with-di/generate';
 import * as Types from './generators/types/generate';
 import * as MswHandlers from './generators/msw-handlers/generate';
+import * as MockServer from './generators/mock-server/generate';
 import { assertNever } from './helpers/assertNever';
 import { initUpper } from './helpers/initUpper';
 import { load } from './helpers/document-loader/load';
@@ -67,6 +68,8 @@ export const generateCode = async (
         return ExpressWithDi.generate;
       case 'express':
         return Express.generate;
+      case 'mock-server':
+        return MockServer.generate;
       case 'TYPES':
       case 'types':
         return Types.generate;

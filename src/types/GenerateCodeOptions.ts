@@ -10,6 +10,7 @@ export interface GenerateCodeOptions {
     | 'client'
     | 'express'
     | 'express-di'
+    | 'mock-server'
     | 'types'
     | 'msw-handlers';
   outputFilename?: string;
