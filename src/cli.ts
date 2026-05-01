@@ -19,7 +19,7 @@ const cmd = new commander.Command('generate')
   .arguments('<spec-filename-or-url>')
   .option(
     '--template <template>',
-    'the type to output. client, express, express-di or types. Default "client". "server" is an alias for express-di.'
+    'the type to output. client, express, express-di, mock-server, msw-handlers or types. Default "client". "server" is an alias for express-di.'
   )
   .option(
     '--filename <filename>',
@@ -65,6 +65,7 @@ const cmd = new commander.Command('generate')
           'server',
           'express',
           'express-di',
+          'mock-server',
           'types',
           'msw-handlers'
         ].includes(options.template.toLowerCase())
